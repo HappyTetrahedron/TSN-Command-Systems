@@ -1,0 +1,856 @@
+
+
+<mission_data version="1.0" background_id_arme="f1f9329a-5fb4-454b-b10b-8fca1bce67c4" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <start id_arme="f1f9329a-5fb4-454b-b10b-8fca1bce67c4">
+    <!---->
+  </start>
+  <folder_arme name="CureTags" id_arme="4ae5d7c7-a5e0-444a-b413-4de00dd0ffa6" expanded_arme="" />
+  <event name="CureTags Init Tag Scanner" id_arme="71452a50-2820-4e93-9e75-5185041d69c0" parent_id_arme="4ae5d7c7-a5e0-444a-b413-4de00dd0ffa6">
+    <if_variable name="CureTags Tag scanner initted" comparator="NOT" value="1.0" />
+    <if_variable name="Sandbox Activation" comparator="GREATER" value="1.0" />
+    <set_timer name="CureTags Rescan tags" seconds="1" />
+    <set_variable name="CureTags Tag scanner initted" value="1.0" integer="yes" />
+  </event>
+  <event name="CureTags Coarse Scan" id_arme="cf134689-488f-4e77-b311-33a99fbd3e83" parent_id_arme="4ae5d7c7-a5e0-444a-b413-4de00dd0ffa6">
+    <if_timer_finished name="Rescan tags" />
+    <set_variable name="CureTags_isThisTagged" value="0.0" integer="no"/>
+    <set_variable name="CureTags_tagCounterCoarse" value="0" integer="yes" />
+    
+      
+          <get_object_property name="A00" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A01" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A02" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A03" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A04" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A05" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A06" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A07" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A08" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A09" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A10" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A11" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A12" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A13" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A14" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A15" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A16" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A17" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A18" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A19" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A20" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A21" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A22" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A23" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A24" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A25" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A26" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A27" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A28" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A29" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A30" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A31" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A32" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A33" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A34" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A35" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A36" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A37" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A38" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A39" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A40" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A41" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A42" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A43" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A44" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A45" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A46" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A47" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A48" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A49" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A50" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A51" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A52" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A53" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A54" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A55" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A56" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A57" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A58" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A59" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A60" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A61" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A62" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A63" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A64" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A65" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A66" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A67" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A68" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A69" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A70" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A71" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A72" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A73" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A74" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A75" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A76" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A77" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A78" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A79" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A80" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A81" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A82" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A83" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A84" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A85" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A86" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A87" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A88" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A89" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A90" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A91" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A92" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A93" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A94" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A95" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A96" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A97" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A98" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+          <get_object_property name="A99" property="isTagged" variable="CureTags_isThisTagged" />
+          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
+      
+    
+    <set_timer name="CureTags Rescan tags" seconds="1" />
+  </event>
+  <event name="CureTags Global Scan" id_arme="9ecf706f-39d0-4ca4-b9f9-eb7a2385f9cc" parent_id_arme="4ae5d7c7-a5e0-444a-b413-4de00dd0ffa6">
+    <if_variable name="CureTags_tagCounterCoarse" comparator="GREATER" value="0.0" />
+    <log text="CureTags Global Scan" />
+    <set_variable name="CureTags_isThisTagged" value="0.0" integer="no" />
+    <set_variable name="CureTags_tagCounter" value="0" integer="yes" />
+    <set_variable name="CureTags_tagShipNumber" value="0" integer="yes" />
+    
+      
+        <get_object_property property="isTagged" name="A00" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 0 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A01" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 1 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A02" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 2 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A03" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 3 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A04" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 4 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A05" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 5 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A06" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 6 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A07" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 7 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A08" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 8 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A09" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 9 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A10" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 10 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A11" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 11 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A12" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 12 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A13" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 13 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A14" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 14 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A15" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 15 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A16" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 16 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A17" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 17 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A18" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 18 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A19" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 19 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A20" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 20 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A21" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 21 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A22" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 22 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A23" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 23 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A24" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 24 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A25" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 25 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A26" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 26 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A27" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 27 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A28" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 28 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A29" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 29 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A30" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 30 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A31" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 31 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A32" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 32 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A33" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 33 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A34" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 34 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A35" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 35 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A36" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 36 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A37" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 37 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A38" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 38 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A39" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 39 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A40" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 40 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A41" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 41 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A42" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 42 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A43" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 43 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A44" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 44 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A45" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 45 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A46" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 46 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A47" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 47 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A48" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 48 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A49" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 49 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A50" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 50 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A51" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 51 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A52" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 52 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A53" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 53 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A54" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 54 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A55" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 55 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A56" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 56 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A57" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 57 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A58" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 58 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A59" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 59 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A60" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 60 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A61" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 61 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A62" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 62 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A63" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 63 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A64" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 64 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A65" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 65 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A66" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 66 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A67" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 67 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A68" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 68 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A69" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 69 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A70" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 70 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A71" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 71 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A72" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 72 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A73" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 73 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A74" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 74 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A75" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 75 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A76" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 76 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A77" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 77 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A78" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 78 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A79" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 79 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A80" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 80 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A81" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 81 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A82" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 82 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A83" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 83 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A84" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 84 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A85" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 85 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A86" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 86 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A87" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 87 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A88" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 88 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A89" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 89 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A90" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 90 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A91" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 91 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A92" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 92 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A93" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 93 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A94" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 94 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A95" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 95 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A96" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 96 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A97" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 97 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A98" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 98 * CureTags_isThisTagged" integer="yes" />
+      
+        <get_object_property property="isTagged" name="A99" variable="CureTags_isThisTagged" />
+        <set_variable name="CureTags_tagCounter" value="CureTags_tagCounter + CureTags_isThisTagged" integer="yes" />
+        <set_variable name="CureTags_isTagCounterEqualOne" value="-0.0001020304 * (CureTags_tagCounter-1) * (CureTags_tagCounter-1) + 1" integer="yes" />
+        <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * 99 * CureTags_isThisTagged" integer="yes" />
+      
+    
+    <log text="CureTags Global Scan End: tagShipNumber |CureTags_tagShipNumber|" />
+    <warning_popup_message message="tagShipNumber = |CureTags_tagShipNumber|" consoles="MHWESCO" player_slot="0" />
+    <set_variable name="CureTags_tagCounterCoarse" value="0" integer="yes" />
+  </event>
+  
+    <event name="CureTags Ship Tagged A0x" parent_id_arme="4ae5d7c7-a5e0-444a-b413-4de00dd0ffa6">
+      <log text="Check - A0|CureTags_tagShipNumber|" />
+      <if_variable name="CureTags_tagShipNumber" comparator="LESS" value="10.0" />
+      <if_exists name="A0|CureTags_tagShipNumber|" />
+      <if_object_property name="A0|CureTags_tagShipNumber|" property="isTagged" comparator="EQUALS" value="1.0" />
+      <log text="CureTags tag detected A0|CureTags_tagShipNumber|" />
+      <set_side_value value="2" name="A0|CureTags_tagShipNumber|" />
+      <set_named_object_tag_state name="A0|CureTags_tagShipNumber|" tagged="0" />
+    </event>
+    <event name="CureTags Ship Tagged Axx" parent_id_arme="4ae5d7c7-a5e0-444a-b413-4de00dd0ffa6">
+      <log text="Check - A|CureTags_tagShipNumber|" />
+      <if_variable name="CureTags_tagShipNumber" comparator="GREATER" value="9.0" />
+      <if_exists name="A|CureTags_tagShipNumber|" />
+      <if_object_property name="A|CureTags_tagShipNumber|" property="isTagged" comparator="EQUALS" value="1.0" />
+      <log text="CureTags tag detected A|CureTags_tagShipNumber|" />
+      <set_side_value value="2" name="A|CureTags_tagShipNumber|" />
+      <set_named_object_tag_state name="A|CureTags_tagShipNumber|" tagged="0" />
+    </event>
+  
+</mission_data>
