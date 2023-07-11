@@ -11,20 +11,8 @@
     <set_timer name="CureTags Rescan tags" seconds="1" />
     <set_variable name="CureTags Tag scanner initted" value="1.0" integer="yes" />
   </event>
-  <event name="CureTags Coarse Scan" id_arme="cf134689-488f-4e77-b311-33a99fbd3e83" parent_id_arme="4ae5d7c7-a5e0-444a-b413-4de00dd0ffa6">
-    <if_timer_finished name="Rescan tags" />
-    <set_variable name="CureTags_isThisTagged" value="0.0" integer="no"/>
-    <set_variable name="CureTags_tagCounterCoarse" value="0" integer="yes" />
-    {% for letter in letters %}
-      {% for i in range(0,100) %}
-          <get_object_property name="{{letter}}{{'%02d' % (i)}}" property="isTagged" variable="CureTags_isThisTagged" />
-          <set_variable name="CureTags_tagCounterCoarse" value="CureTags_tagCounterCoarse + CureTags_isThisTagged" integer="yes" />
-      {% endfor %}
-    {% endfor %}
-    <set_timer name="CureTags Rescan tags" seconds="1" />
-  </event>
   <event name="CureTags Global Scan" id_arme="9ecf706f-39d0-4ca4-b9f9-eb7a2385f9cc" parent_id_arme="4ae5d7c7-a5e0-444a-b413-4de00dd0ffa6">
-    <if_variable name="CureTags_tagCounterCoarse" comparator="GREATER" value="0.0" />
+    <if_timer_finished name="CureTags Rescan tags" />
     <log text="CureTags Global Scan" />
     <set_variable name="CureTags_isThisTagged" value="0.0" integer="no" />
     <set_variable name="CureTags_tagCounter" value="0" integer="yes" />
@@ -37,9 +25,8 @@
         <set_variable name="CureTags_tagShipNumber" value="CureTags_tagShipNumber + CureTags_isTagCounterEqualOne * {{i}} * CureTags_isThisTagged" integer="yes" />
       {% endfor %}
     {% endfor %}
+    <set_timer name="CureTags Rescan tags" seconds="1" />
     <log text="CureTags Global Scan End: tagShipNumber |CureTags_tagShipNumber|" />
-    <warning_popup_message message="tagShipNumber = |CureTags_tagShipNumber|" consoles="MHWESCO" player_slot="0" />
-    <set_variable name="CureTags_tagCounterCoarse" value="0" integer="yes" />
   </event>
   {% for letter in letters %}
     <event name="CureTags Ship Tagged {{letter}}0x" parent_id_arme="4ae5d7c7-a5e0-444a-b413-4de00dd0ffa6">
