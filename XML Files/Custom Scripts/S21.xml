@@ -48,7 +48,6 @@
 
   </event>
 
-
   <event name="Keloi Gitosz" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="Single Hegemony\+KeloiGitos" />
     <create type="enemy" use_gm_position="" angle="0" name="Keloi Gitosz" hullID="2002" sideValue="SideValue" fleetnumber="-1" />
@@ -82,8 +81,6 @@
 
   </event>
 
-
-
   <event name="TSN Verdant" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="TSN Ships\+Verdant" />
     <create type="enemy" use_gm_position="" angle="0" name="TSN Verdant" hullID="1701" sideValue="SideValue" fleetnumber="-1" />
@@ -91,7 +88,6 @@
     <clear_ai name="TSN Verdant" />
 
     <set_object_property property="surrenderChance" value="0" name="TSN Verdant" />
-
 
     <set_object_property property="shieldMaxStateFront" value="150" name="TSN Verdant" />
     <set_object_property property="shieldStateFront" value="150" name="TSN Verdant" />
@@ -115,8 +111,6 @@
       scan_desc="Flagship of the 1st Space Fleet, 1st Heavy Division. Commanded by Flt. Cpt. Min Mwenya. Specials: HET Warp AntiTorp Drones" />
   </event>
 
-
-
   <event name="TSN Whispers of Freedom" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="TSN Ships\+WhispersofFreedom" />
     <create type="neutral" use_gm_position="" angle="0" name="TSN Whispers of Freedom" hullID="1503" sideValue="SideValue" fleetnumber="-1" />
@@ -138,7 +132,6 @@
       scan_desc="Able to carry approximately 3500 souls." />
   </event>
 
-
   <event name="S21_VerdantFleet" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="TSN Ships\+VerdantFleet" />
 
@@ -159,7 +152,6 @@
     <set_object_property property="shieldStateFront" value="150" name="TSN Verdant" />
     <set_object_property property="shieldMaxStateBack" value="130" name="TSN Verdant" />
     <set_object_property property="shieldStateBack" value="130" name="TSN Verdant" />
-
 
       <clear_ai name="TSN Verdant" />
 
@@ -287,7 +279,6 @@
       <set_special name="TSN Daring" ability="Drones" />
       <set_special name="TSN Daring" ability="HET" />
 
-
     <set_special name="TSN Verdant" ship="1" /> <!-- overpowered -->
 
     <set_ship_text name="TSN Verdant" desc="TSN Athena Class."
@@ -376,7 +367,6 @@
 
   </event>
 
-
   <event name="Wisdom" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="Civilian USFP\+Wisdom" />
     <create type="neutral" use_gm_position="" angle="0" name="Wisdom" hullID="1504" sideValue="SideValue" fleetnumber="-1" />
@@ -400,8 +390,6 @@
     <set_ship_text name="Wisdom" race="USFP" class="Luxury Liner" desc="Reinforced presidential luxury liner."
       scan_desc="Vessel of President Amandu Liam. Specials: Warp AntiMine AntiTorp" />
   </event>
-
-
 
   <event name="Ubuntu" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="Civilian USFP\+Ubuntu" />
@@ -430,63 +418,7 @@
       scan_desc="Vessel of Former President Kuyas Tolunay. Specials: Warp AntiMine AntiTorp" />
   </event>
 
-
   <!-- System changes -->
-
-    <event name="S21_DeleteOnwiaMapMarkers_I" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
-      <if_exists name="Onwia I" />
-      <if_variable name="Onwia System" comparator="EQUALS" value="2.0" />
-      <destroy name="Onwia I" />
-    </event>
-
-    <event name="S21_DeleteOnwiaMapMarkers_II" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
-      <if_exists name="Onwia II" />
-      <if_variable name="Onwia System" comparator="EQUALS" value="2.0" />
-      <destroy name="Onwia II" />
-    </event>
-
-    <event name="S21_DeleteOnwiaMapMarkers_III" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
-      <if_exists name="Onwia III" />
-      <if_variable name="Onwia System" comparator="EQUALS" value="2.0" />
-      <destroy name="Onwia III" />
-    </event>
-
-    <event name="S21_DeleteOnwiaMapMarkers_IV" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
-      <if_exists name="Onwia IV" />
-      <if_variable name="Onwia System" comparator="EQUALS" value="2.0" />
-      <destroy name="Onwia IV" />
-    </event>
-
-    <event name="S21_DeleteOnwiaMapMarkers_V" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
-      <if_exists name="Onwia V" />
-      <if_variable name="Onwia System" comparator="EQUALS" value="2.0" />
-      <destroy name="Onwia V" />
-    </event>
-
-    <event name="S21_DeleteOnwiaMapMarkers_VI" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
-      <if_exists name="Onwia VI" />
-      <if_variable name="Onwia System" comparator="EQUALS" value="2.0" />
-      <destroy name="Onwia VI" />
-    </event>
-
-    <event name="S21_DeleteOnwiaMapMarkers_VII" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
-      <if_exists name="Onwia VII" />
-      <if_variable name="Onwia System" comparator="EQUALS" value="2.0" />
-      <destroy name="Onwia VII" />
-    </event>
-
-    <event name="S21_DeleteOnwiaMapMarkers_VIII" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
-      <if_exists name="Onwia VIII" />
-      <if_variable name="Onwia System" comparator="EQUALS" value="2.0" />
-      <destroy name="Onwia VIII" />
-    </event>
-
-    <event name="S21_DeleteOnwiaMapMarkers_IX" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
-      <if_exists name="Onwia IX" />
-      <if_variable name="Onwia System" comparator="EQUALS" value="2.0" />
-      <destroy name="Onwia IX" />
-    </event>
-
   <event name="S21_Drenan_14_Gate" id_arme="490fd3ca-37fd-4acb-b446-092f73e0b7b3">
     <if_exists name="Ibroan Gate" />
     <if_variable name="Drenan System" comparator="EQUALS" value="2.0" />
@@ -494,17 +426,19 @@
   </event>
   <event name="S21_Drenan_14_CustomObjectsCreate" id_arme="f42a1458-fc0a-4130-be26-598883808b5e">
     <if_variable name="Drenan System" comparator="EQUALS" value="2.0" />
-    <if_not_exists name="Slingshot Platform" />
+    <if_not_exists name=" Drenan XIV " />
     <if_variable name="Sector" comparator="EQUALS" value="14.0" />
     <create type="enemy" x="50000.0" y="0.0" z="72000.0" angle="22" name="Slingshot Platform" hullID="1355" sideValue="1" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Drenan XIV " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <clear_ai name="Slingshot Platform" />
     <set_object_property property="surrenderChance" value="0.0" name="Slingshot Platform" />
   </event>
   <event name="S21_Drenan_14_CustomObjectsRemove" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Drenan System" comparator="EQUALS" value="2.0" />
-    <if_exists name="Slingshot Platform" />
+    <if_exists name=" Drenan XIV " />
     <if_variable name="Sector" comparator="NOT" value="14.0" />
     <destroy name="Slingshot Platform" />
+    <destroy name=" Drenan XIV " />
   </event>
   <event name="S21_Krellis_1_Gate" id_arme="4e63749f-6292-411b-83f6-7196ad7aa673">
     <if_exists name="Acantha Gate" />
@@ -666,7 +600,6 @@
       <clear_ai name="Zorazi Mining" />
     </event>
 
-
     <event name="S21_Acantha_DestroyCR-982" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="CR-982" />
       <if_variable name="Acantha System" comparator="EQUALS" value="2.0" />
@@ -706,7 +639,8 @@
   <event name="S21_Acantha_5_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
     <if_variable name="Acantha System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
-    <if_not_exists name="WP-41" />
+    <if_not_exists name=" Acantha V " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Acantha V " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <create type="enemy" x="58844.0" y="0.0" z="41380.0" angle="20" name="WP-41" hullID="1350" sideValue="1" fleetnumber="-1" />
     <create type="enemy" x="39814.0" y="0.0" z="49216.0" angle="40" name="WP-19" hullID="1350" sideValue="1" fleetnumber="-1" />
     <create type="enemy" x="56829.0" y="0.0" z="58843.0" angle="168" name="WP-82" hullID="1350" sideValue="1" fleetnumber="-1" />
@@ -747,7 +681,7 @@
   </event>
   <event name="S21_Acantha_5_CustomObjectsRemove" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Acantha System" comparator="EQUALS" value="2.0" />
-    <if_exists name="WP-41" />
+    <if_exists name=" Acantha V " />
     <if_variable name="Sector" comparator="NOT" value="5.0" />
 
       <destroy name="WP-41" />
@@ -755,6 +689,8 @@
       <destroy name="WP-19" />
 
       <destroy name="WP-82" />
+
+      <destroy name=" Acantha V " />
 
   </event>
 
@@ -982,7 +918,6 @@
       <clear_ai name="Indigo Mining" />
     </event>
 
-
     <event name="S21_Ashia_DestroyAcantha Gate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Acantha Gate" />
       <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
@@ -1100,7 +1035,8 @@
   <event name="S21_Ashia_1_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
     <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="1.0" />
-    <if_not_exists name="WP-50" />
+    <if_not_exists name=" Ashia I " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Ashia I " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <create count="10" type="mines" startAngle="-20" endAngle="70" startX="47206.0" startY="0.0" startZ="36739.0" radius="7000" />
     <create count="10" type="mines" startAngle="200" endAngle="290" startX="47325.0" startY="0.0" startZ="36501.0" radius="7000" />
     <create type="enemy" x="53084.0" y="0.0" z="30049.0" angle="320" name="WP-50" hullID="1350" sideValue="1" fleetnumber="-1" />
@@ -1143,8 +1079,10 @@
   </event>
   <event name="S21_Ashia_1_CustomObjectsRemove" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-    <if_exists name="WP-50" />
+    <if_exists name=" Ashia I " />
     <if_variable name="Sector" comparator="NOT" value="1.0" />
+
+      <destroy name=" Ashia I " />
 
       <destroy name="WP-50" />
 
@@ -1156,7 +1094,8 @@
   <event name="S21_Ashia_4_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
     <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="4.0" />
-    <if_not_exists name="Venga Planetary Supervision" />
+    <if_not_exists name=" Ashia IV " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Ashia IV " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <create type="enemy" x="15333.0" y="0.0" z="15450.0" angle="30" name="Venga Planetary Supervision" hullID="1005" sideValue="1" fleetnumber="-1" />
     <create type="enemy" x="47087.0" y="0.0" z="12834.0" angle="0" name="CJ-503" hullID="1351" sideValue="1" fleetnumber="-1" />
     <create type="enemy" x="7126.0" y="0.0" z="43280.0" angle="180" name="CJ-422" hullID="1351" sideValue="1" fleetnumber="-1" />
@@ -1198,7 +1137,6 @@
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="WP-B" />
       <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="WP-B" />
 
-
       <set_object_property property="topSpeed" value="0" name="Venga Antenna" />
       <set_object_property property="surrenderChance" value="0" name="Venga Antenna" />
       <clear_ai name="Venga Antenna" />
@@ -1218,8 +1156,10 @@
   </event>
   <event name="S21_Ashia_4_CustomObjectsRemove" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-    <if_exists name="Venga Planetary Supervision" />
+    <if_exists name=" Ashia IV " />
     <if_variable name="Sector" comparator="NOT" value="4.0" />
+
+      <destroy name=" Ashia IV " />
 
       <destroy name="Venga Planetary Supervision" />
 
@@ -1239,7 +1179,8 @@
   <event name="S21_Ashia_9_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
     <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="9.0" />
-    <if_not_exists name="Ashia Planetary Supervision" />
+    <if_not_exists name=" Ashia IX " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Ashia IX " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <create count="10" type="mines" startAngle="90" endAngle="190" startX="55888.0" startY="0.0" startZ="43875.0" radius="5000" />
     <create type="enemy" x="50655.0" y="0.0" z="29008.0" angle="100" name="CJ-404" hullID="1351" fleetnumber="-1" />
     <create type="enemy" x="70159.0" y="0.0" z="53508.0" angle="300" name="CJ-304" hullID="1351" fleetnumber="-1" />
@@ -1281,7 +1222,6 @@
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Ashia Planetary Supervision" />
       <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="Ashia Planetary Supervision" />
 
-
       <set_object_property property="topSpeed" value="0" name="CJ-500" />
       <set_object_property property="surrenderChance" value="0" name="CJ-500" />
       <clear_ai name="CJ-500" />
@@ -1297,8 +1237,10 @@
   </event>
   <event name="S21_Ashia_9_CustomObjectsRemove" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-    <if_exists name="Ashia Planetary Supervision" />
+    <if_exists name=" Ashia IX " />
     <if_variable name="Sector" comparator="NOT" value="9.0" />
+
+      <destroy name=" Ashia IX " />
 
       <destroy name="WP-G" />
 
@@ -1433,7 +1375,6 @@
       <clear_ai name="Sam's Junkyard" />
     </event>
 
-
     <event name="S21_Tyr_DestroyPhinmor Gate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Phinmor Gate" />
       <if_variable name="Tyr System" comparator="EQUALS" value="2.0" />
@@ -1467,7 +1408,8 @@
   <event name="S21_Tyr_5_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
     <if_variable name="Tyr System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
-    <if_not_exists name="Tyr Planetary Supervision" />
+    <if_not_exists name=" Tyr V " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Tyr V " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <create count="10" type="mines" startX="53666.0" startY="0.0" startZ="44745.0" radius="23000" randomRange="1000" />
     <create type="enemy" x="40836.0" y="0.0" z="54154.0" angle="0" name="Tyr Planetary Supervision" hullID="1005" sideValue="1" fleetnumber="-1" />
     <create type="enemy" x="42936.0" y="0.0" z="32636.0" angle="0" name="CJ-42" hullID="1005" sideValue="1" fleetnumber="-1" />
@@ -1495,7 +1437,6 @@
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Tyr Planetary Supervision" />
       <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="Tyr Planetary Supervision" />
 
-
       <set_object_property property="topSpeed" value="0" name="CJ-42" />
       <set_object_property property="surrenderChance" value="0" name="CJ-42" />
       <clear_ai name="CJ-42" />
@@ -1503,8 +1444,10 @@
   </event>
   <event name="S21_Tyr_5_CustomObjectsRemove" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Tyr System" comparator="EQUALS" value="2.0" />
-    <if_exists name="Tyr Planetary Supervision" />
+    <if_exists name=" Tyr V " />
     <if_variable name="Sector" comparator="NOT" value="5.0" />
+
+      <destroy name=" Tyr V " />
 
       <destroy name="WP-42" />
 
@@ -1548,7 +1491,6 @@
       <set_ship_text name="Ying'er Forges" scan_desc="No life signs. No power signature." hailtext="No response." />
       <clear_ai name="Ying'er Forges" />
     </event>
-
 
     <event name="S21_Vilnara_DestroyZu Chongzhi Astrolab" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Zu Chongzhi Astrolab" />
@@ -1595,7 +1537,8 @@
   <event name="S21_Vilnara_2_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
     <if_variable name="Vilnara System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
-    <if_not_exists name="Gohtzao-De Staging Platform" />
+    <if_not_exists name=" Vilnara II " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Vilnara II " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <create type="enemy" x="68098.0" y="0.0" z="30931.0" angle="0" name="WP-55" hullID="1007" sideValue="1" fleetnumber="-1" />
     <create type="enemy" x="68219.0" y="0.0" z="39919.0" angle="0" name="WP-57" hullID="1007" sideValue="1" fleetnumber="-1" />
     <create type="enemy" x="68062.0" y="0.0" z="48542.0" angle="0" name="WP-58" hullID="1007" sideValue="1" fleetnumber="-1" />
@@ -1647,7 +1590,6 @@
       <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Gohtzao-De Staging Platform" />
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Gohtzao-De Staging Platform" />
 
-
       <set_object_property property="topSpeed" value="0" name="SB-11" />
       <set_object_property property="surrenderChance" value="0" name="SB-11" />
       <clear_ai name="SB-11" />
@@ -1659,8 +1601,10 @@
   </event>
   <event name="S21_Vilnara_2_CustomObjectsRemove" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Vilnara System" comparator="EQUALS" value="2.0" />
-    <if_exists name="Gohtzao-De Staging Platform" />
+    <if_exists name=" Vilnara II " />
     <if_variable name="Sector" comparator="NOT" value="2.0" />
+
+      <destroy name=" Vilnara II " />
 
       <destroy name="WP-55" />
 
@@ -2040,7 +1984,6 @@
       <clear_ai name="Umber" />
     </event>
 
-
     <event name="S21_Loria_DestroyCustoms House" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Customs House" />
       <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
@@ -2320,7 +2263,8 @@
   <event name="S21_Loria_11_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
     <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="11.0" />
-    <if_not_exists name="Loria Platform" />
+    <if_not_exists name=" Loria XI " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Loria XI " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <create type="enemy" x="60081.0" y="0.0" z="45219.0" angle="0" name="Loria Platform" hullID="1355" sideValue="1" fleetnumber="-1" />
     <create type="enemy" x="65490.0" y="0.0" z="37396.0" angle="0" name="Loria Antenna" hullID="1353" sideValue="1" fleetnumber="-1" />
     <create type="enemy" x="55137.0" y="0.0" z="37239.0" angle="0" name="Loria Generator" hullID="1354" sideValue="1" fleetnumber="-1" />
@@ -2337,7 +2281,6 @@
 
       <set_special name="WP-B" ship="-1" captain="-1" ability="AntiMine" />
       <set_special name="WP-B" ship="-1" captain="-1" ability="AntiTorp" />
-
 
       <set_object_property property="topSpeed" value="0" name="WP-A" />
       <set_object_property property="surrenderChance" value="0" name="WP-A" />
@@ -2396,8 +2339,10 @@
   </event>
   <event name="S21_Loria_11_CustomObjectsRemove" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
-    <if_exists name="Loria Platform" />
+    <if_exists name=" Loria XI " />
     <if_variable name="Sector" comparator="NOT" value="11.0" />
+
+      <destroy name=" Loria XI " />
 
       <destroy name="WP-A" />
 
@@ -2419,7 +2364,8 @@
   <event name="S21_Loria_6_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
     <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
-    <if_not_exists name="Staunton Forward Observation" />
+    <if_not_exists name=" Loria VI " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Loria VI " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <create type="enemy" x="52065.0" y="0.0" z="48421.0" angle="0" name="Staunton Forward Observation" hullID="1350" sideValue="1" fleetnumber="-1" />
     <create type="enemy" x="80365.0" y="0.0" z="33117.0" angle="0" name="SB-4a" hullID="1351" sideValue="1" fleetnumber="-1" />
     <create type="enemy" x="21094.0" y="0.0" z="20242.0" angle="0" name="SB-4f" hullID="1351" sideValue="1" fleetnumber="-1" />
@@ -2433,7 +2379,6 @@
       <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Staunton Forward Observation" />
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Staunton Forward Observation" />
       <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="Staunton Forward Observation" />
-
 
       <set_object_property property="topSpeed" value="0" name="SB-4a" />
       <set_object_property property="surrenderChance" value="0" name="SB-4a" />
@@ -2450,8 +2395,10 @@
   </event>
   <event name="S21_Loria_6_CustomObjectsRemove" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
-    <if_exists name="Staunton Forward Observation" />
+    <if_exists name=" Loria VI " />
     <if_variable name="Sector" comparator="NOT" value="6.0" />
+
+      <destroy name=" Loria VI " />
 
       <destroy name="SB-4a" />
 
@@ -2694,7 +2641,6 @@
       <clear_ai name="Zildi Systems" />
     </event>
 
-
     <event name="S21_Mria_DestroyLoria Gate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Loria Gate" />
       <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
@@ -2872,7 +2818,8 @@
   <event name="S21_Mria_2_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
     <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
-    <if_not_exists name="Capara Base" />
+    <if_not_exists name=" Mria II " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Mria II " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <create type="enemy" x="20000.0" y="0.0" z="51457.0" angle="0" name=" Mria Shipyards " hullID="1005" sideValue="1" fleetnumber="-1" />
     <create type="enemy" x="60324.0" y="0.0" z="59838.0" angle="0" name="Relay a6" hullID="1352" sideValue="1" fleetnumber="-1" />
     <create type="enemy" x="39798.0" y="0.0" z="60202.0" angle="0" name="Relay 7f" hullID="1352" sideValue="1" fleetnumber="-1" />
@@ -2896,7 +2843,6 @@
       <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Capara Base" />
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Capara Base" />
 
-
       <set_object_property property="topSpeed" value="0" name="Relay a6" />
       <set_object_property property="surrenderChance" value="0" name="Relay a6" />
       <clear_ai name="Relay a6" />
@@ -2908,8 +2854,10 @@
   </event>
   <event name="S21_Mria_2_CustomObjectsRemove" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-    <if_exists name="Capara Base" />
+    <if_exists name=" Mria II " />
     <if_variable name="Sector" comparator="NOT" value="2.0" />
+
+      <destroy name=" Mria II " />
 
       <destroy name=" Mria Shipyards " />
 
@@ -2923,7 +2871,8 @@
   <event name="S21_Mria_9_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
     <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="9.0" />
-    <if_not_exists name="Mria Supervision" />
+    <if_not_exists name=" Mria IX " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Mria IX " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <create type="enemy" x="40891.0" y="0.0" z="24979.0" angle="0" name=" Capitol City " hullID="1001" sideValue="1" fleetnumber="-1" />
     <create type="enemy" x="53887.0" y="0.0" z="30445.0" angle="0" name="Mria Supervision" hullID="1005" sideValue="1" fleetnumber="-1" />
     <create type="enemy" x="27409.0" y="0.0" z="53886.0" angle="0" name="WP-Elson" hullID="1058" sideValue="1" fleetnumber="-1" />
@@ -2962,8 +2911,10 @@
   </event>
   <event name="S21_Mria_9_CustomObjectsRemove" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-    <if_exists name="Mria Supervision" />
+    <if_exists name=" Mria IX " />
     <if_variable name="Sector" comparator="NOT" value="9.0" />
+
+      <destroy name=" Mria IX " />
 
       <destroy name=" Capitol City " />
 
