@@ -2,6 +2,42 @@
   <start id_arme="f1f9329a-5fb4-454b-b10b-8fca1bce67c4">
     <!---->
   </start>
+  <!-- GM button patches -->
+  <event name="S21_FixDelMines" id_arme="acca2d78-a30b-4570-96d4-2b1356a27f4d" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_gm_button name="DelAllMines" />
+    <destroy_near type="mines" radius="100000" centerX="50000.0" centerY="0.0" centerZ="50000.0" />
+  </event>
+  <event name="S21_RemoveS21Ships create" id_arme="acca2d78-a30b-4570-96d4-2b1356a27f4d" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_variable name="Shortcut Keys" comparator="EQUALS" value="1.0" />
+
+    <set_gm_button text="RemoveS21Ships" x="295" y="130" h="28" w="150" />
+  </event>
+  <event name="S21_RemoveS21Ships destroy" id_arme="509244b2-e84d-4e16-9777-0782dc5214e9" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_variable name="Shortcut Keys" comparator="EQUALS" value="0.0" />
+    <clear_gm_button text="RemoveS21Ships" />
+  </event>
+  <event name="S21_RemoveS21Ships destroy2" id_arme="509244b2-e84d-4e16-9777-0782dc5214e9" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_variable name="GMmenuSelect" comparator="EQUALS" value="1.0" />
+    <set_variable name="Shortcut Keys" value="0.0" />
+
+    <clear_gm_button text="RemoveS21Ships" />
+  </event>
+
+  <event name="S21_RemoveCustomShips" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_gm_button text="RemoveS21Ships" />
+    <destroy name="Keloi Gitosz" />
+    <destroy name="Black Bertha" />
+    <destroy name="TSN Verdant" />
+    <destroy name="TSN Whispers of Freedom" />
+    <destroy name="TSN Vengeance" />
+    <destroy name="TSN Warspite" />
+    <destroy name="TSN Fury" />
+    <destroy name="TSN Dawn" />
+    <destroy name="TSN Shield" />
+    <destroy name="TSN Daring" />
+    <destroy name="Wisdom" />
+    <destroy name="Ubuntu" />
+  </event>
   <!-- Ships -->
   {% for spawnKey, ships in {
       "3": [
@@ -15,6 +51,9 @@
       ],
       "7": [
         "Single Hegemony\+KeloiGitos"
+      ],
+      "10": [
+        "Euphini Pirates\+BlackBertha"
       ],
     }.items() %}
   <event name="S21_Set_SpawnKey_{{ spawnKey }}" id_arme="acca2d78-a30b-4570-96d4-2b1356a27f4d" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
@@ -32,7 +71,8 @@
           "TSN Ships\+WhispersofFreedom",
           "Civilian USFP\+Wisdom",
           "Civilian USFP\+Ubuntu",
-          "Single Hegemony\+KeloiGitos"
+          "Single Hegemony\+KeloiGitos",
+          "Euphini Pirates\+BlackBertha",
         ]
     %}
       <clear_gm_button text="{{ ship }}" />
@@ -74,6 +114,40 @@
   </event>
   {% endfor %}
 
+  {% for name in ["Black Bertha"] %}
+  <event name="{{ name }}" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_gm_button text="Euphini Pirates\+BlackBertha" />
+    <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="7301" sideValue="SideValue" fleetnumber="-1" />
+
+    <set_object_property property="shieldMaxStateFront" value="400" name="{{ name }}" />
+    <set_object_property property="shieldMaxStateBack" value="500" name="{{ name }}" />
+    <set_object_property property="shieldStateFront" value="400" name="{{ name }}" />
+    <set_object_property property="shieldStateBack" value="500" name="{{ name }}" />
+
+    <clear_ai name="{{ name }}" />
+
+    <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+
+    <add_ai type="SPCL_AI" name="{{ name }}" />
+    <add_ai type="CHASE_PLAYER" value1="5000" value2="500" name="{{ name }}" />
+    <add_ai type="CHASE_STATION" value1="1000" name="{{ name }}" />
+    <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="{{ name }}" />
+    <add_ai type="CHASE_ANGER" name="{{ name }}" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="2000" name="{{ name }}" />
+
+    <set_special name="{{ name }}" ability="HET" />
+    <set_special name="{{ name }}" ability="Teleport" />
+    <set_special name="{{ name }}" ability="AntiMine" />
+    <set_special name="{{ name }}" ability="AntiTorp" />
+    <set_special name="{{ name }}" ability="Drones" />
+    <set_special name="{{ name }}" ship="1" /> <!-- overpowered -->
+
+    <set_ship_text name="{{ name }}" race="Helios Marauders" class="Axe" desc="Upgraded Axe class"
+      scan_desc="Commanded by Black Bertha, daughter of the infamous pirate Black Billy, who was long wanted for piracy, hijacking, kidnapping, smuggling, illegal whaling, illegal dumping, deliberatly interfering with wireless telegraphy, anti-social behaviour and disorderly conduct before finally being brought to justice by TSN forces. Specials: Warp HET AntiMine AntiTorp Drones" />
+
+  </event>
+  {% endfor %}
+
   {% for name in ["TSN Verdant"] %}
   <event name="{{ name }}" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="TSN Ships\+Verdant" />
@@ -103,7 +177,7 @@
     <set_special name="{{ name }}" ship="1" /> <!-- overpowered -->
 
     <set_ship_text name="{{ name }}" desc="TSN Athena Class."
-      scan_desc="Flagship of the 1st Space Fleet, 1st Heavy Division. Commanded by Flt. Cpt. Min Mwenya. Specials: HET Warp AntiTorp Drones" />
+      scan_desc="Flagship of the 2nd Space Fleet, 1st Heavy Division. Commanded by Flt. Cpt. Min Mwenya. Specials: HET Warp AntiTorp Drones" />
   </event>
   {% endfor %}
 
@@ -174,7 +248,7 @@
     <set_special name="TSN Verdant" ship="1" /> <!-- overpowered -->
 
     <set_ship_text name="TSN Verdant" desc="TSN Athena Class."
-      scan_desc="Flagship of the 1st Space Fleet, 1st Heavy Division. Commanded by Rear Adm. Min Mwenya. Specials: HET Warp AntiTorp Drones" />
+      scan_desc="Flagship of the 2nd Space Fleet, 1st Heavy Division. Commanded by Rear Adm. Min Mwenya. Specials: HET Warp AntiTorp Drones" />
   </event>
 
   <event name="S21_VerdantFleet_AIReset" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">

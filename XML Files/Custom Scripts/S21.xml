@@ -2,7 +2,50 @@
   <start id_arme="f1f9329a-5fb4-454b-b10b-8fca1bce67c4">
     <!---->
   </start>
+  <!-- GM button patches -->
+  <event name="S21_FixDelMines" id_arme="acca2d78-a30b-4570-96d4-2b1356a27f4d" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_gm_button text="DelAllMines" />
+    <destroy_near type="mines" radius="80000" centerX="50000" centerY="0" centerZ="50000" />
+  </event>
+  <event name="S21_RemoveS21Ships create" id_arme="acca2d78-a30b-4570-96d4-2b1356a27f4d" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_variable name="Shortcut Keys" comparator="EQUALS" value="1.0" />
+
+    <set_gm_button text="RemoveS21Ships" x="295" y="130" h="28" w="150" />
+  </event>
+  <event name="S21_RemoveS21Ships destroy" id_arme="509244b2-e84d-4e16-9777-0782dc5214e9" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_variable name="Shortcut Keys" comparator="EQUALS" value="0.0" />
+    <clear_gm_button text="RemoveS21Ships" />
+  </event>
+  <event name="S21_RemoveS21Ships destroy2" id_arme="509244b2-e84d-4e16-9777-0782dc5214e9" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_variable name="GMmenuSelect" comparator="EQUALS" value="1.0" />
+    <set_variable name="Shortcut Keys" value="0.0" />
+
+    <clear_gm_button text="RemoveS21Ships" />
+  </event>
+
+  <event name="S21_RemoveCustomShips" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_gm_button text="RemoveS21Ships" />
+    <destroy name="Keloi Gitosz" />
+    <destroy name="Black Bertha" />
+    <destroy name="TSN Verdant" />
+    <destroy name="TSN Whispers of Freedom" />
+    <destroy name="TSN Vengeance" />
+    <destroy name="TSN Warspite" />
+    <destroy name="TSN Fury" />
+    <destroy name="TSN Dawn" />
+    <destroy name="TSN Shield" />
+    <destroy name="TSN Daring" />
+    <destroy name="Wisdom" />
+    <destroy name="Ubuntu" />
+  </event>
   <!-- Ships -->
+
+  <event name="S21_Set_SpawnKey_10" id_arme="acca2d78-a30b-4570-96d4-2b1356a27f4d" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="10.0" />
+
+      <set_gm_button text="Euphini Pirates\+BlackBertha" />
+
+  </event>
 
   <event name="S21_Set_SpawnKey_3" id_arme="acca2d78-a30b-4570-96d4-2b1356a27f4d" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="3.0" />
@@ -46,7 +89,10 @@
 
       <clear_gm_button text="Single Hegemony\+KeloiGitos" />
 
+      <clear_gm_button text="Euphini Pirates\+BlackBertha" />
+
   </event>
+
 
   <event name="Keloi Gitosz" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="Single Hegemony\+KeloiGitos" />
@@ -81,6 +127,42 @@
 
   </event>
 
+
+
+  <event name="Black Bertha" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_gm_button text="Euphini Pirates\+BlackBertha" />
+    <create type="enemy" use_gm_position="" angle="0" name="Black Bertha" hullID="7301" sideValue="SideValue" fleetnumber="-1" />
+
+    <set_object_property property="shieldMaxStateFront" value="400" name="Black Bertha" />
+    <set_object_property property="shieldMaxStateBack" value="500" name="Black Bertha" />
+    <set_object_property property="shieldStateFront" value="400" name="Black Bertha" />
+    <set_object_property property="shieldStateBack" value="500" name="Black Bertha" />
+
+    <clear_ai name="Black Bertha" />
+
+    <set_object_property property="surrenderChance" value="0" name="Black Bertha" />
+
+    <add_ai type="SPCL_AI" name="Black Bertha" />
+    <add_ai type="CHASE_PLAYER" value1="5000" value2="500" name="Black Bertha" />
+    <add_ai type="CHASE_STATION" value1="1000" name="Black Bertha" />
+    <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="Black Bertha" />
+    <add_ai type="CHASE_ANGER" name="Black Bertha" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="2000" name="Black Bertha" />
+
+    <set_special name="Black Bertha" ability="HET" />
+    <set_special name="Black Bertha" ability="Teleport" />
+    <set_special name="Black Bertha" ability="AntiMine" />
+    <set_special name="Black Bertha" ability="AntiTorp" />
+    <set_special name="Black Bertha" ability="Drones" />
+    <set_special name="Black Bertha" ship="1" /> <!-- overpowered -->
+
+    <set_ship_text name="Black Bertha" race="Helios Marauders" class="Axe" desc="Upgraded Axe class"
+      scan_desc="Commanded by Black Bertha, daughter of the infamous pirate Black Billy, who was long wanted for piracy, hijacking, kidnapping, smuggling, illegal whaling, illegal dumping, deliberatly interfering with wireless telegraphy, anti-social behaviour and disorderly conduct before finally being brought to justice by TSN forces. Specials: Warp HET AntiMine AntiTorp Drones" />
+
+  </event>
+
+
+
   <event name="TSN Verdant" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="TSN Ships\+Verdant" />
     <create type="enemy" use_gm_position="" angle="0" name="TSN Verdant" hullID="1701" sideValue="SideValue" fleetnumber="-1" />
@@ -88,6 +170,7 @@
     <clear_ai name="TSN Verdant" />
 
     <set_object_property property="surrenderChance" value="0" name="TSN Verdant" />
+
 
     <set_object_property property="shieldMaxStateFront" value="150" name="TSN Verdant" />
     <set_object_property property="shieldStateFront" value="150" name="TSN Verdant" />
@@ -108,8 +191,10 @@
     <set_special name="TSN Verdant" ship="1" /> <!-- overpowered -->
 
     <set_ship_text name="TSN Verdant" desc="TSN Athena Class."
-      scan_desc="Flagship of the 1st Space Fleet, 1st Heavy Division. Commanded by Flt. Cpt. Min Mwenya. Specials: HET Warp AntiTorp Drones" />
+      scan_desc="Flagship of the 2nd Space Fleet, 1st Heavy Division. Commanded by Flt. Cpt. Min Mwenya. Specials: HET Warp AntiTorp Drones" />
   </event>
+
+
 
   <event name="TSN Whispers of Freedom" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="TSN Ships\+WhispersofFreedom" />
@@ -132,6 +217,7 @@
       scan_desc="Able to carry approximately 3500 souls." />
   </event>
 
+
   <event name="S21_VerdantFleet" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="TSN Ships\+VerdantFleet" />
 
@@ -152,6 +238,7 @@
     <set_object_property property="shieldStateFront" value="150" name="TSN Verdant" />
     <set_object_property property="shieldMaxStateBack" value="130" name="TSN Verdant" />
     <set_object_property property="shieldStateBack" value="130" name="TSN Verdant" />
+
 
       <clear_ai name="TSN Verdant" />
 
@@ -279,10 +366,11 @@
       <set_special name="TSN Daring" ability="Drones" />
       <set_special name="TSN Daring" ability="HET" />
 
+
     <set_special name="TSN Verdant" ship="1" /> <!-- overpowered -->
 
     <set_ship_text name="TSN Verdant" desc="TSN Athena Class."
-      scan_desc="Flagship of the 1st Space Fleet, 1st Heavy Division. Commanded by Rear Adm. Min Mwenya. Specials: HET Warp AntiTorp Drones" />
+      scan_desc="Flagship of the 2nd Space Fleet, 1st Heavy Division. Commanded by Rear Adm. Min Mwenya. Specials: HET Warp AntiTorp Drones" />
   </event>
 
   <event name="S21_VerdantFleet_AIReset" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
@@ -367,6 +455,7 @@
 
   </event>
 
+
   <event name="Wisdom" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="Civilian USFP\+Wisdom" />
     <create type="neutral" use_gm_position="" angle="0" name="Wisdom" hullID="1504" sideValue="SideValue" fleetnumber="-1" />
@@ -390,6 +479,8 @@
     <set_ship_text name="Wisdom" race="USFP" class="Luxury Liner" desc="Reinforced presidential luxury liner."
       scan_desc="Vessel of President Amandu Liam. Specials: Warp AntiMine AntiTorp" />
   </event>
+
+
 
   <event name="Ubuntu" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="Civilian USFP\+Ubuntu" />
@@ -417,6 +508,7 @@
     <set_ship_text name="Ubuntu" race="USFP" class="Modified Patrol Boat" desc="Decommissioned USFP Patrol Boat, in civilian use."
       scan_desc="Vessel of Former President Kuyas Tolunay. Specials: Warp AntiMine AntiTorp" />
   </event>
+
 
   <!-- System changes -->
   <event name="S21_Drenan_14_Gate" id_arme="490fd3ca-37fd-4acb-b446-092f73e0b7b3">
@@ -446,18 +538,18 @@
     <destroy name="Acantha Gate" />
   </event>
 
-    <event name="S21_Acantha_A'ania Denabite" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="A'ania Denabite" />
+    <event name="S21_Acantha_A&#39;ania Denabite" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="A&#39;ania Denabite" />
       <if_variable name="Acantha System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="A'ania Denabite" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="A'ania Denabite" />
+      <set_ship_text name="A&#39;ania Denabite" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="A&#39;ania Denabite" />
     </event>
 
-    <event name="S21_Acantha_Gi'Yanu Mall" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Gi'Yanu Mall" />
+    <event name="S21_Acantha_Gi&#39;Yanu Mall" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Gi&#39;Yanu Mall" />
       <if_variable name="Acantha System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Gi'Yanu Mall" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Gi'Yanu Mall" />
+      <set_ship_text name="Gi&#39;Yanu Mall" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Gi&#39;Yanu Mall" />
     </event>
 
     <event name="S21_Acantha_Intaka" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -523,11 +615,11 @@
       <clear_ai name="Nessin" />
     </event>
 
-    <event name="S21_Acantha_Ni'yata" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Ni'yata" />
+    <event name="S21_Acantha_Ni&#39;yata" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Ni&#39;yata" />
       <if_variable name="Acantha System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Ni'yata" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Ni'yata" />
+      <set_ship_text name="Ni&#39;yata" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Ni&#39;yata" />
     </event>
 
     <event name="S21_Acantha_Nuzeli" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -599,6 +691,7 @@
       <set_ship_text name="Zorazi Mining" scan_desc="No life signs. No power signature." hailtext="No response." />
       <clear_ai name="Zorazi Mining" />
     </event>
+
 
     <event name="S21_Acantha_DestroyCR-982" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="CR-982" />
@@ -918,6 +1011,7 @@
       <clear_ai name="Indigo Mining" />
     </event>
 
+
     <event name="S21_Ashia_DestroyAcantha Gate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Acantha Gate" />
       <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
@@ -1002,10 +1096,10 @@
       <destroy name="DS-76" />
     </event>
 
-    <event name="S21_Ashia_DestroyCustoms &amp; Immigration" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Customs &amp; Immigration" />
+    <event name="S21_Ashia_DestroyCustoms &amp;amp; Immigration" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Customs &amp;amp; Immigration" />
       <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <destroy name="Customs &amp; Immigration" />
+      <destroy name="Customs &amp;amp; Immigration" />
     </event>
 
     <event name="S21_Ashia_DestroyAltun Ha Denabite" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -1137,6 +1231,7 @@
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="WP-B" />
       <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="WP-B" />
 
+
       <set_object_property property="topSpeed" value="0" name="Venga Antenna" />
       <set_object_property property="surrenderChance" value="0" name="Venga Antenna" />
       <clear_ai name="Venga Antenna" />
@@ -1221,6 +1316,7 @@
       <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Ashia Planetary Supervision" />
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Ashia Planetary Supervision" />
       <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="Ashia Planetary Supervision" />
+
 
       <set_object_property property="topSpeed" value="0" name="CJ-500" />
       <set_object_property property="surrenderChance" value="0" name="CJ-500" />
@@ -1368,12 +1464,13 @@
       <clear_ai name="M-846" />
     </event>
 
-    <event name="S21_Tyr_Sam's Junkyard" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Sam's Junkyard" />
+    <event name="S21_Tyr_Sam&#39;s Junkyard" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Sam&#39;s Junkyard" />
       <if_variable name="Tyr System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Sam's Junkyard" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Sam's Junkyard" />
+      <set_ship_text name="Sam&#39;s Junkyard" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Sam&#39;s Junkyard" />
     </event>
+
 
     <event name="S21_Tyr_DestroyPhinmor Gate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Phinmor Gate" />
@@ -1437,6 +1534,7 @@
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Tyr Planetary Supervision" />
       <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="Tyr Planetary Supervision" />
 
+
       <set_object_property property="topSpeed" value="0" name="CJ-42" />
       <set_object_property property="surrenderChance" value="0" name="CJ-42" />
       <clear_ai name="CJ-42" />
@@ -1485,12 +1583,13 @@
       <clear_ai name="Sheng Gaowan Mining" />
     </event>
 
-    <event name="S21_Vilnara_Ying'er Forges" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Ying'er Forges" />
+    <event name="S21_Vilnara_Ying&#39;er Forges" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Ying&#39;er Forges" />
       <if_variable name="Vilnara System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Ying'er Forges" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Ying'er Forges" />
+      <set_ship_text name="Ying&#39;er Forges" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Ying&#39;er Forges" />
     </event>
+
 
     <event name="S21_Vilnara_DestroyZu Chongzhi Astrolab" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Zu Chongzhi Astrolab" />
@@ -1589,6 +1688,7 @@
       <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Gohtzao-De Staging Platform" />
       <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Gohtzao-De Staging Platform" />
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Gohtzao-De Staging Platform" />
+
 
       <set_object_property property="topSpeed" value="0" name="SB-11" />
       <set_object_property property="surrenderChance" value="0" name="SB-11" />
@@ -1984,6 +2084,7 @@
       <clear_ai name="Umber" />
     </event>
 
+
     <event name="S21_Loria_DestroyCustoms House" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Customs House" />
       <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
@@ -2282,6 +2383,7 @@
       <set_special name="WP-B" ship="-1" captain="-1" ability="AntiMine" />
       <set_special name="WP-B" ship="-1" captain="-1" ability="AntiTorp" />
 
+
       <set_object_property property="topSpeed" value="0" name="WP-A" />
       <set_object_property property="surrenderChance" value="0" name="WP-A" />
       <clear_ai name="WP-A" />
@@ -2379,6 +2481,7 @@
       <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Staunton Forward Observation" />
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Staunton Forward Observation" />
       <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="Staunton Forward Observation" />
+
 
       <set_object_property property="topSpeed" value="0" name="SB-4a" />
       <set_object_property property="surrenderChance" value="0" name="SB-4a" />
@@ -2641,6 +2744,7 @@
       <clear_ai name="Zildi Systems" />
     </event>
 
+
     <event name="S21_Mria_DestroyLoria Gate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Loria Gate" />
       <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
@@ -2683,10 +2787,10 @@
       <destroy name="Shachat Denabite" />
     </event>
 
-    <event name="S21_Mria_DestroyCustoms &amp; Immigration" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Customs &amp; Immigration" />
+    <event name="S21_Mria_DestroyCustoms &amp;amp; Immigration" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Customs &amp;amp; Immigration" />
       <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Customs &amp; Immigration" />
+      <destroy name="Customs &amp;amp; Immigration" />
     </event>
 
     <event name="S21_Mria_DestroyDS-701" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -2842,6 +2946,7 @@
       <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Capara Base" />
       <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Capara Base" />
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Capara Base" />
+
 
       <set_object_property property="topSpeed" value="0" name="Relay a6" />
       <set_object_property property="surrenderChance" value="0" name="Relay a6" />
