@@ -191,7 +191,7 @@
     <set_special name="TSN Verdant" ship="1" /> <!-- overpowered -->
 
     <set_ship_text name="TSN Verdant" desc="TSN Athena Class."
-      scan_desc="Flagship of the 2nd Space Fleet, 1st Heavy Division. Commanded by Flt. Cpt. Min Mwenya. Specials: HET Warp AntiTorp Drones" />
+      scan_desc="Flagship of the 2nd Space Fleet, 1st Battle Division. Commanded by Flt. Cpt. Min Mwenya. Specials: HET Warp AntiTorp Drones" />
   </event>
 
 
@@ -370,7 +370,7 @@
     <set_special name="TSN Verdant" ship="1" /> <!-- overpowered -->
 
     <set_ship_text name="TSN Verdant" desc="TSN Athena Class."
-      scan_desc="Flagship of the 2nd Space Fleet, 1st Heavy Division. Commanded by Rear Adm. Min Mwenya. Specials: HET Warp AntiTorp Drones" />
+      scan_desc="Flagship of the 2nd Space Fleet, 1st Battle Division. Commanded by Rear Adm. Min Mwenya. Specials: HET Warp AntiTorp Drones" />
   </event>
 
   <event name="S21_VerdantFleet_AIReset" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
@@ -540,752 +540,13 @@
 
 
 
-    <event name="S21_Mria_Alkanillion" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Alkanillion" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Alkanillion" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Alkanillion" />
+    <event name="S21_Tibur_Astral Agora" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Astral Agora" />
+      <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Astral Agora" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Astral Agora" />
     </event>
 
-    <event name="S21_Mria_Axitymy" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Axitymy" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Axitymy" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Axitymy" />
-    </event>
-
-    <event name="S21_Mria_Cholander Ores" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Cholander Ores" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Cholander Ores" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Cholander Ores" />
-    </event>
-
-    <event name="S21_Mria_Crescent Denabite" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Crescent Denabite" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Crescent Denabite" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Crescent Denabite" />
-    </event>
-
-    <event name="S21_Mria_Djakinti" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Djakinti" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Djakinti" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Djakinti" />
-    </event>
-
-    <event name="S21_Mria_Finaro" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Finaro" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Finaro" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Finaro" />
-    </event>
-
-    <event name="S21_Mria_Goldstone industries" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Goldstone industries" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Goldstone industries" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Goldstone industries" />
-    </event>
-
-    <event name="S21_Mria_Imidri Mining" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Imidri Mining" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Imidri Mining" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Imidri Mining" />
-    </event>
-
-    <event name="S21_Mria_Jetel" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Jetel" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Jetel" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Jetel" />
-    </event>
-
-    <event name="S21_Mria_Kazu" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Kazu" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Kazu" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Kazu" />
-    </event>
-
-    <event name="S21_Mria_Majarki" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Majarki" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Majarki" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Majarki" />
-    </event>
-
-    <event name="S21_Mria_Massimon" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Massimon" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Massimon" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Massimon" />
-    </event>
-
-    <event name="S21_Mria_Oophedran" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Oophedran" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Oophedran" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Oophedran" />
-    </event>
-
-    <event name="S21_Mria_Opal Ores" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Opal Ores" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Opal Ores" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Opal Ores" />
-    </event>
-
-    <event name="S21_Mria_Paragusan" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Paragusan" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Paragusan" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Paragusan" />
-    </event>
-
-    <event name="S21_Mria_Premoler" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Premoler" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Premoler" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Premoler" />
-    </event>
-
-    <event name="S21_Mria_Pretara" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Pretara" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Pretara" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Pretara" />
-    </event>
-
-    <event name="S21_Mria_Redeymo Ores" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Redeymo Ores" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Redeymo Ores" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Redeymo Ores" />
-    </event>
-
-    <event name="S21_Mria_Roshtic Market" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Roshtic Market" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Roshtic Market" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Roshtic Market" />
-    </event>
-
-    <event name="S21_Mria_Sandinal" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Sandinal" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Sandinal" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Sandinal" />
-    </event>
-
-    <event name="S21_Mria_Tergi" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Tergi" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Tergi" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Tergi" />
-    </event>
-
-    <event name="S21_Mria_DS-795" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-795" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-795" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-795" />
-    </event>
-
-    <event name="S21_Mria_DS-506" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-506" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-506" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-506" />
-    </event>
-
-    <event name="S21_Mria_DS-441" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-441" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-441" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-441" />
-    </event>
-
-    <event name="S21_Mria_DS-459" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-459" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-459" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-459" />
-    </event>
-
-    <event name="S21_Mria_DS-900" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-900" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-900" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-900" />
-    </event>
-
-    <event name="S21_Mria_DS-881" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-881" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-881" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-881" />
-    </event>
-
-    <event name="S21_Mria_DS-521" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-521" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-521" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-521" />
-    </event>
-
-    <event name="S21_Mria_Goldone Industries" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Goldone Industries" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Goldone Industries" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Goldone Industries" />
-    </event>
-
-    <event name="S21_Mria_Pargusan" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Pargusan" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Pargusan" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Pargusan" />
-    </event>
-
-    <event name="S21_Mria_Oppia" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Oppia" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Oppia" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Oppia" />
-    </event>
-
-    <event name="S21_Mria_Tossey Fabricants" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Tossey Fabricants" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Tossey Fabricants" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Tossey Fabricants" />
-    </event>
-
-    <event name="S21_Mria_Zildi Systems" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Zildi Systems" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Zildi Systems" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Zildi Systems" />
-    </event>
-
-
-    <event name="S21_Mria_DestroyLoria Gate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Loria Gate" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Loria Gate" />
-    </event>
-
-    <event name="S21_Mria_DestroyHooke Labs" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Hooke Labs" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Hooke Labs" />
-    </event>
-
-    <event name="S21_Mria_DestroyInidabi Institute" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Inidabi Institute" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Inidabi Institute" />
-    </event>
-
-    <event name="S21_Mria_DestroyCapara Processors" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Capara Processors" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Capara Processors" />
-    </event>
-
-    <event name="S21_Mria_DestroyElite Refining" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Elite Refining" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Elite Refining" />
-    </event>
-
-    <event name="S21_Mria_DestroySheol Ore Processing" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Sheol Ore Processing" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Sheol Ore Processing" />
-    </event>
-
-    <event name="S21_Mria_DestroyShachat Denabite" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Shachat Denabite" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Shachat Denabite" />
-    </event>
-
-    <event name="S21_Mria_DestroyCustoms &amp;amp; Immigration" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Customs &amp;amp; Immigration" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Customs &amp;amp; Immigration" />
-    </event>
-
-    <event name="S21_Mria_DestroyDS-701" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-701" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="DS-701" />
-    </event>
-
-    <event name="S21_Mria_DestroyDS-312" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-312" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="DS-312" />
-    </event>
-
-    <event name="S21_Mria_DestroyDS-448" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-448" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="DS-448" />
-    </event>
-
-    <event name="S21_Mria_DestroyDS-662" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-662" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="DS-662" />
-    </event>
-
-    <event name="S21_Mria_DestroyElson" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Elson" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Elson" />
-    </event>
-
-    <event name="S21_Mria_DestroyEla Industries" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Ela Industries" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Ela Industries" />
-    </event>
-
-    <event name="S21_Mria_DestroyElson Shipyards" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Elson Shipyards" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Elson Shipyards" />
-    </event>
-
-    <event name="S21_Mria_DestroyUfaqi Mining" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Ufaqi Mining" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Ufaqi Mining" />
-    </event>
-
-    <event name="S21_Mria_DestroyMria Command" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Mria Command" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Mria Command" />
-    </event>
-
-    <event name="S21_Mria_DestroyMrir Authority" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Mrir Authority" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Mrir Authority" />
-    </event>
-
-    <event name="S21_Mria_DestroyMria Shipyards" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Mria Shipyards" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Mria Shipyards" />
-    </event>
-
-    <event name="S21_Mria_DestroyPrecious Mining" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Precious Mining" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Precious Mining" />
-    </event>
-
-    <event name="S21_Mria_DestroyJeketa Ores" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Jeketa Ores" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Jeketa Ores" />
-    </event>
-
-    <event name="S21_Mria_DestroyCapitol City" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Capitol City" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Capitol City" />
-    </event>
-
-    <event name="S21_Mria_DestroyAyala Trading Post" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Ayala Trading Post" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Ayala Trading Post" />
-    </event>
-
-    <event name="S21_Mria_DestroyDS-257" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-257" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="DS-257" />
-    </event>
-
-    <event name="S21_Mria_DestroySY-110" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="SY-110" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="SY-110" />
-    </event>
-
-    <event name="S21_Mria_DestroySY-198" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="SY-198" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="SY-198" />
-    </event>
-
-    <event name="S21_Mria_DestroyDS-202" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-202" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="DS-202" />
-    </event>
-
-    <event name="S21_Mria_DestroyWP-62A" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="WP-62A" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="WP-62A" />
-    </event>
-
-    <event name="S21_Mria_DestroyWP-87B" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="WP-87B" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="WP-87B" />
-    </event>
-
-
-
-    <event name="S21_Ashia_Casey" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Casey" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Casey" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Casey" />
-    </event>
-
-    <event name="S21_Ashia_Cenotes Market" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Cenotes Market" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Cenotes Market" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Cenotes Market" />
-    </event>
-
-    <event name="S21_Ashia_DS-03T" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-03T" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-03T" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-03T" />
-    </event>
-
-    <event name="S21_Ashia_DS-128" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-128" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-128" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-128" />
-    </event>
-
-    <event name="S21_Ashia_DS-165" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-165" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-165" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-165" />
-    </event>
-
-    <event name="S21_Ashia_DS-189" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-189" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-189" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-189" />
-    </event>
-
-    <event name="S21_Ashia_DS-201" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-201" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-201" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-201" />
-    </event>
-
-    <event name="S21_Ashia_DS-229" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-229" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-229" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-229" />
-    </event>
-
-    <event name="S21_Ashia_DS-250" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-250" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-250" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-250" />
-    </event>
-
-    <event name="S21_Ashia_DS-256" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-256" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-256" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-256" />
-    </event>
-
-    <event name="S21_Ashia_DS-269" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-269" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-269" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-269" />
-    </event>
-
-    <event name="S21_Ashia_DS-277" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-277" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-277" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-277" />
-    </event>
-
-    <event name="S21_Ashia_DS-29X" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-29X" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-29X" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-29X" />
-    </event>
-
-    <event name="S21_Ashia_DS-303" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-303" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-303" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-303" />
-    </event>
-
-    <event name="S21_Ashia_DS-311" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-311" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-311" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-311" />
-    </event>
-
-    <event name="S21_Ashia_DS-31R" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-31R" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-31R" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-31R" />
-    </event>
-
-    <event name="S21_Ashia_DS-388" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-388" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-388" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-388" />
-    </event>
-
-    <event name="S21_Ashia_DS-42A" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-42A" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-42A" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-42A" />
-    </event>
-
-    <event name="S21_Ashia_DS-476" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-476" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-476" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-476" />
-    </event>
-
-    <event name="S21_Ashia_DS-505" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-505" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-505" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-505" />
-    </event>
-
-    <event name="S21_Ashia_DS-512" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-512" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-512" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-512" />
-    </event>
-
-    <event name="S21_Ashia_DS-541" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-541" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-541" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-541" />
-    </event>
-
-    <event name="S21_Ashia_DS-552" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-552" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-552" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-552" />
-    </event>
-
-    <event name="S21_Ashia_DS-567" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-567" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-567" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-567" />
-    </event>
-
-    <event name="S21_Ashia_DS-661" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-661" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-661" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-661" />
-    </event>
-
-    <event name="S21_Ashia_DS-67E" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-67E" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-67E" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-67E" />
-    </event>
-
-    <event name="S21_Ashia_DS-781" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-781" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-781" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-781" />
-    </event>
-
-    <event name="S21_Ashia_DS-819" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-819" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-819" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-819" />
-    </event>
-
-    <event name="S21_Ashia_DS-88P" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-88P" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-88P" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-88P" />
-    </event>
-
-    <event name="S21_Ashia_Franklin" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Franklin" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Franklin" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Franklin" />
-    </event>
-
-    <event name="S21_Ashia_Goshen Hitchpost" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Goshen Hitchpost" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Goshen Hitchpost" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Goshen Hitchpost" />
-    </event>
-
-    <event name="S21_Ashia_Indigo Mining" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Indigo Mining" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Indigo Mining" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Indigo Mining" />
-    </event>
-
-
-    <event name="S21_Ashia_DestroyAcantha Gate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Acantha Gate" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <destroy name="Acantha Gate" />
-    </event>
-
-    <event name="S21_Ashia_DestroyPhinmor Gate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Phinmor Gate" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <destroy name="Phinmor Gate" />
-    </event>
-
-    <event name="S21_Ashia_DestroyAshia Command" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Ashia Command" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <destroy name="Ashia Command" />
-    </event>
-
-    <event name="S21_Ashia_DestroyAshia Transit" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Ashia Transit" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <destroy name="Ashia Transit" />
-    </event>
-
-    <event name="S21_Ashia_DestroyIronmast" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Ironmast" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <destroy name="Ironmast" />
-    </event>
-
-    <event name="S21_Ashia_DestroySY-716" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="SY-716" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <destroy name="SY-716" />
-    </event>
-
-    <event name="S21_Ashia_DestroyWP-40" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="WP-40" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <destroy name="WP-40" />
-    </event>
-
-    <event name="S21_Ashia_DestroyWP-10" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="WP-10" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <destroy name="WP-10" />
-    </event>
-
-    <event name="S21_Ashia_DestroyWP-247" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="WP-247" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <destroy name="WP-247" />
-    </event>
-
-    <event name="S21_Ashia_DestroyWP-221" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="WP-221" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <destroy name="WP-221" />
-    </event>
-
-    <event name="S21_Ashia_DestroyWP-262" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="WP-262" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <destroy name="WP-262" />
-    </event>
-
-    <event name="S21_Ashia_DestroyWP-285" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="WP-285" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <destroy name="WP-285" />
-    </event>
-
-    <event name="S21_Ashia_DestroySY-737" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="SY-737" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <destroy name="SY-737" />
-    </event>
-
-    <event name="S21_Ashia_DestroyDS-76" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-76" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <destroy name="DS-76" />
-    </event>
-
-    <event name="S21_Ashia_DestroyCustoms &amp;amp; Immigration" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Customs &amp;amp; Immigration" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <destroy name="Customs &amp;amp; Immigration" />
-    </event>
-
-    <event name="S21_Ashia_DestroyAltun Ha Denabite" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Altun Ha Denabite" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <destroy name="Altun Ha Denabite" />
-    </event>
-
-    <event name="S21_Ashia_DestroyTazumal Exchange" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Tazumal Exchange" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <destroy name="Tazumal Exchange" />
-    </event>
-
-    <event name="S21_Ashia_DestroyAshia Authority" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Ashia Authority" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <destroy name="Ashia Authority" />
-    </event>
-
-    <event name="S21_Ashia_DestroyValti" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Valti" />
-      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
-      <destroy name="Valti" />
-    </event>
 
 
 
@@ -2196,6 +1457,755 @@
 
 
 
+    <event name="S21_Ashia_Casey" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Casey" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Casey" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Casey" />
+    </event>
+
+    <event name="S21_Ashia_Cenotes Market" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Cenotes Market" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Cenotes Market" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Cenotes Market" />
+    </event>
+
+    <event name="S21_Ashia_DS-03T" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-03T" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-03T" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-03T" />
+    </event>
+
+    <event name="S21_Ashia_DS-128" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-128" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-128" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-128" />
+    </event>
+
+    <event name="S21_Ashia_DS-165" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-165" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-165" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-165" />
+    </event>
+
+    <event name="S21_Ashia_DS-189" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-189" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-189" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-189" />
+    </event>
+
+    <event name="S21_Ashia_DS-201" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-201" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-201" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-201" />
+    </event>
+
+    <event name="S21_Ashia_DS-229" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-229" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-229" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-229" />
+    </event>
+
+    <event name="S21_Ashia_DS-250" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-250" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-250" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-250" />
+    </event>
+
+    <event name="S21_Ashia_DS-256" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-256" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-256" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-256" />
+    </event>
+
+    <event name="S21_Ashia_DS-269" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-269" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-269" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-269" />
+    </event>
+
+    <event name="S21_Ashia_DS-277" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-277" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-277" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-277" />
+    </event>
+
+    <event name="S21_Ashia_DS-29X" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-29X" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-29X" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-29X" />
+    </event>
+
+    <event name="S21_Ashia_DS-303" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-303" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-303" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-303" />
+    </event>
+
+    <event name="S21_Ashia_DS-311" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-311" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-311" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-311" />
+    </event>
+
+    <event name="S21_Ashia_DS-31R" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-31R" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-31R" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-31R" />
+    </event>
+
+    <event name="S21_Ashia_DS-388" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-388" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-388" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-388" />
+    </event>
+
+    <event name="S21_Ashia_DS-42A" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-42A" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-42A" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-42A" />
+    </event>
+
+    <event name="S21_Ashia_DS-476" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-476" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-476" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-476" />
+    </event>
+
+    <event name="S21_Ashia_DS-505" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-505" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-505" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-505" />
+    </event>
+
+    <event name="S21_Ashia_DS-512" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-512" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-512" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-512" />
+    </event>
+
+    <event name="S21_Ashia_DS-541" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-541" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-541" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-541" />
+    </event>
+
+    <event name="S21_Ashia_DS-552" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-552" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-552" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-552" />
+    </event>
+
+    <event name="S21_Ashia_DS-567" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-567" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-567" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-567" />
+    </event>
+
+    <event name="S21_Ashia_DS-661" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-661" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-661" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-661" />
+    </event>
+
+    <event name="S21_Ashia_DS-67E" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-67E" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-67E" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-67E" />
+    </event>
+
+    <event name="S21_Ashia_DS-781" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-781" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-781" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-781" />
+    </event>
+
+    <event name="S21_Ashia_DS-819" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-819" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-819" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-819" />
+    </event>
+
+    <event name="S21_Ashia_DS-88P" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-88P" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-88P" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-88P" />
+    </event>
+
+    <event name="S21_Ashia_Franklin" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Franklin" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Franklin" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Franklin" />
+    </event>
+
+    <event name="S21_Ashia_Goshen Hitchpost" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Goshen Hitchpost" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Goshen Hitchpost" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Goshen Hitchpost" />
+    </event>
+
+    <event name="S21_Ashia_Indigo Mining" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Indigo Mining" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Indigo Mining" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Indigo Mining" />
+    </event>
+
+
+    <event name="S21_Ashia_DestroyAcantha Gate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Acantha Gate" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <destroy name="Acantha Gate" />
+    </event>
+
+    <event name="S21_Ashia_DestroyPhinmor Gate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Phinmor Gate" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <destroy name="Phinmor Gate" />
+    </event>
+
+    <event name="S21_Ashia_DestroyAshia Command" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Ashia Command" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <destroy name="Ashia Command" />
+    </event>
+
+    <event name="S21_Ashia_DestroyAshia Transit" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Ashia Transit" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <destroy name="Ashia Transit" />
+    </event>
+
+    <event name="S21_Ashia_DestroyIronmast" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Ironmast" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <destroy name="Ironmast" />
+    </event>
+
+    <event name="S21_Ashia_DestroySY-716" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="SY-716" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <destroy name="SY-716" />
+    </event>
+
+    <event name="S21_Ashia_DestroyWP-40" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="WP-40" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <destroy name="WP-40" />
+    </event>
+
+    <event name="S21_Ashia_DestroyWP-10" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="WP-10" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <destroy name="WP-10" />
+    </event>
+
+    <event name="S21_Ashia_DestroyWP-247" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="WP-247" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <destroy name="WP-247" />
+    </event>
+
+    <event name="S21_Ashia_DestroyWP-221" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="WP-221" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <destroy name="WP-221" />
+    </event>
+
+    <event name="S21_Ashia_DestroyWP-262" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="WP-262" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <destroy name="WP-262" />
+    </event>
+
+    <event name="S21_Ashia_DestroyWP-285" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="WP-285" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <destroy name="WP-285" />
+    </event>
+
+    <event name="S21_Ashia_DestroySY-737" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="SY-737" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <destroy name="SY-737" />
+    </event>
+
+    <event name="S21_Ashia_DestroyDS-76" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-76" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <destroy name="DS-76" />
+    </event>
+
+    <event name="S21_Ashia_DestroyCustoms &amp;amp; Immigration" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Customs &amp;amp; Immigration" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <destroy name="Customs &amp;amp; Immigration" />
+    </event>
+
+    <event name="S21_Ashia_DestroyAltun Ha Denabite" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Altun Ha Denabite" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <destroy name="Altun Ha Denabite" />
+    </event>
+
+    <event name="S21_Ashia_DestroyTazumal Exchange" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Tazumal Exchange" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <destroy name="Tazumal Exchange" />
+    </event>
+
+    <event name="S21_Ashia_DestroyAshia Authority" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Ashia Authority" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <destroy name="Ashia Authority" />
+    </event>
+
+    <event name="S21_Ashia_DestroyValti" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Valti" />
+      <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
+      <destroy name="Valti" />
+    </event>
+
+
+
+    <event name="S21_Mria_Alkanillion" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Alkanillion" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Alkanillion" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Alkanillion" />
+    </event>
+
+    <event name="S21_Mria_Axitymy" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Axitymy" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Axitymy" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Axitymy" />
+    </event>
+
+    <event name="S21_Mria_Cholander Ores" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Cholander Ores" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Cholander Ores" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Cholander Ores" />
+    </event>
+
+    <event name="S21_Mria_Crescent Denabite" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Crescent Denabite" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Crescent Denabite" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Crescent Denabite" />
+    </event>
+
+    <event name="S21_Mria_Djakinti" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Djakinti" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Djakinti" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Djakinti" />
+    </event>
+
+    <event name="S21_Mria_Finaro" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Finaro" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Finaro" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Finaro" />
+    </event>
+
+    <event name="S21_Mria_Goldstone industries" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Goldstone industries" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Goldstone industries" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Goldstone industries" />
+    </event>
+
+    <event name="S21_Mria_Imidri Mining" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Imidri Mining" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Imidri Mining" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Imidri Mining" />
+    </event>
+
+    <event name="S21_Mria_Jetel" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Jetel" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Jetel" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Jetel" />
+    </event>
+
+    <event name="S21_Mria_Kazu" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Kazu" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Kazu" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Kazu" />
+    </event>
+
+    <event name="S21_Mria_Majarki" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Majarki" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Majarki" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Majarki" />
+    </event>
+
+    <event name="S21_Mria_Massimon" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Massimon" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Massimon" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Massimon" />
+    </event>
+
+    <event name="S21_Mria_Oophedran" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Oophedran" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Oophedran" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Oophedran" />
+    </event>
+
+    <event name="S21_Mria_Opal Ores" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Opal Ores" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Opal Ores" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Opal Ores" />
+    </event>
+
+    <event name="S21_Mria_Paragusan" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Paragusan" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Paragusan" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Paragusan" />
+    </event>
+
+    <event name="S21_Mria_Premoler" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Premoler" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Premoler" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Premoler" />
+    </event>
+
+    <event name="S21_Mria_Pretara" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Pretara" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Pretara" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Pretara" />
+    </event>
+
+    <event name="S21_Mria_Redeymo Ores" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Redeymo Ores" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Redeymo Ores" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Redeymo Ores" />
+    </event>
+
+    <event name="S21_Mria_Roshtic Market" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Roshtic Market" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Roshtic Market" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Roshtic Market" />
+    </event>
+
+    <event name="S21_Mria_Sandinal" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Sandinal" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Sandinal" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Sandinal" />
+    </event>
+
+    <event name="S21_Mria_Tergi" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Tergi" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Tergi" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Tergi" />
+    </event>
+
+    <event name="S21_Mria_DS-795" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-795" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-795" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-795" />
+    </event>
+
+    <event name="S21_Mria_DS-506" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-506" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-506" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-506" />
+    </event>
+
+    <event name="S21_Mria_DS-441" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-441" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-441" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-441" />
+    </event>
+
+    <event name="S21_Mria_DS-459" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-459" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-459" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-459" />
+    </event>
+
+    <event name="S21_Mria_DS-900" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-900" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-900" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-900" />
+    </event>
+
+    <event name="S21_Mria_DS-881" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-881" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-881" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-881" />
+    </event>
+
+    <event name="S21_Mria_DS-521" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-521" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-521" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-521" />
+    </event>
+
+    <event name="S21_Mria_Goldone Industries" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Goldone Industries" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Goldone Industries" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Goldone Industries" />
+    </event>
+
+    <event name="S21_Mria_Pargusan" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Pargusan" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Pargusan" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Pargusan" />
+    </event>
+
+    <event name="S21_Mria_Oppia" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Oppia" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Oppia" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Oppia" />
+    </event>
+
+    <event name="S21_Mria_Tossey Fabricants" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Tossey Fabricants" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Tossey Fabricants" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Tossey Fabricants" />
+    </event>
+
+    <event name="S21_Mria_Zildi Systems" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Zildi Systems" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Zildi Systems" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Zildi Systems" />
+    </event>
+
+
+    <event name="S21_Mria_DestroyLoria Gate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Loria Gate" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Loria Gate" />
+    </event>
+
+    <event name="S21_Mria_DestroyHooke Labs" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Hooke Labs" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Hooke Labs" />
+    </event>
+
+    <event name="S21_Mria_DestroyInidabi Institute" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Inidabi Institute" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Inidabi Institute" />
+    </event>
+
+    <event name="S21_Mria_DestroyCapara Processors" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Capara Processors" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Capara Processors" />
+    </event>
+
+    <event name="S21_Mria_DestroyElite Refining" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Elite Refining" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Elite Refining" />
+    </event>
+
+    <event name="S21_Mria_DestroySheol Ore Processing" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Sheol Ore Processing" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Sheol Ore Processing" />
+    </event>
+
+    <event name="S21_Mria_DestroyShachat Denabite" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Shachat Denabite" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Shachat Denabite" />
+    </event>
+
+    <event name="S21_Mria_DestroyCustoms &amp;amp; Immigration" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Customs &amp;amp; Immigration" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Customs &amp;amp; Immigration" />
+    </event>
+
+    <event name="S21_Mria_DestroyDS-701" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-701" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="DS-701" />
+    </event>
+
+    <event name="S21_Mria_DestroyDS-312" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-312" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="DS-312" />
+    </event>
+
+    <event name="S21_Mria_DestroyDS-448" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-448" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="DS-448" />
+    </event>
+
+    <event name="S21_Mria_DestroyDS-662" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-662" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="DS-662" />
+    </event>
+
+    <event name="S21_Mria_DestroyElson" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Elson" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Elson" />
+    </event>
+
+    <event name="S21_Mria_DestroyEla Industries" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Ela Industries" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Ela Industries" />
+    </event>
+
+    <event name="S21_Mria_DestroyElson Shipyards" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Elson Shipyards" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Elson Shipyards" />
+    </event>
+
+    <event name="S21_Mria_DestroyUfaqi Mining" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Ufaqi Mining" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Ufaqi Mining" />
+    </event>
+
+    <event name="S21_Mria_DestroyMria Command" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Mria Command" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Mria Command" />
+    </event>
+
+    <event name="S21_Mria_DestroyMrir Authority" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Mrir Authority" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Mrir Authority" />
+    </event>
+
+    <event name="S21_Mria_DestroyMria Shipyards" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Mria Shipyards" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Mria Shipyards" />
+    </event>
+
+    <event name="S21_Mria_DestroyPrecious Mining" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Precious Mining" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Precious Mining" />
+    </event>
+
+    <event name="S21_Mria_DestroyJeketa Ores" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Jeketa Ores" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Jeketa Ores" />
+    </event>
+
+    <event name="S21_Mria_DestroyCapitol City" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Capitol City" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Capitol City" />
+    </event>
+
+    <event name="S21_Mria_DestroyAyala Trading Post" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Ayala Trading Post" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Ayala Trading Post" />
+    </event>
+
+    <event name="S21_Mria_DestroyDS-257" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-257" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="DS-257" />
+    </event>
+
+    <event name="S21_Mria_DestroySY-110" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="SY-110" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="SY-110" />
+    </event>
+
+    <event name="S21_Mria_DestroySY-198" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="SY-198" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="SY-198" />
+    </event>
+
+    <event name="S21_Mria_DestroyDS-202" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-202" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="DS-202" />
+    </event>
+
+    <event name="S21_Mria_DestroyWP-62A" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="WP-62A" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="WP-62A" />
+    </event>
+
+    <event name="S21_Mria_DestroyWP-87B" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="WP-87B" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="WP-87B" />
+    </event>
+
+
+
     <event name="S21_Tyr_Edo" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Edo" />
       <if_variable name="Tyr System" comparator="EQUALS" value="2.0" />
@@ -2354,7 +2364,7 @@
 
 
 
-  <event name="S21_Acantha_5_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+  <event name="S21_Acantha_5_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Acantha System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
     <if_not_exists name=" Acantha V " />
@@ -2429,7 +2439,7 @@
 
 
 
-  <event name="S21_Ashia_1_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+  <event name="S21_Ashia_1_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="1.0" />
     <if_not_exists name=" Ashia I " />
@@ -2506,7 +2516,7 @@
 
 
 
-  <event name="S21_Ashia_4_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+  <event name="S21_Ashia_4_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="4.0" />
     <if_not_exists name=" Ashia IV " />
@@ -2597,7 +2607,7 @@
 
 
 
-  <event name="S21_Ashia_9_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+  <event name="S21_Ashia_9_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="9.0" />
     <if_not_exists name=" Ashia IX " />
@@ -2682,7 +2692,7 @@
 
 
 
-  <event name="S21_Tyr_5_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+  <event name="S21_Tyr_5_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Tyr System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
     <if_not_exists name=" Tyr V " />
@@ -2739,7 +2749,7 @@
 
 
 
-  <event name="S21_Vilnara_4_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+  <event name="S21_Vilnara_4_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Vilnara System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="4.0" />
     <if_not_exists name=" Vilnara IV " />
@@ -2766,7 +2776,7 @@
 
 
 
-  <event name="S21_Vilnara_2_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+  <event name="S21_Vilnara_2_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Vilnara System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
     <if_not_exists name=" Vilnara II " />
@@ -2876,7 +2886,7 @@
 
 
 
-  <event name="S21_Loria_11_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+  <event name="S21_Loria_11_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="11.0" />
     <if_not_exists name=" Loria XI " />
@@ -2983,7 +2993,7 @@
 
 
 
-  <event name="S21_Loria_6_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+  <event name="S21_Loria_6_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_not_exists name=" Loria VI " />
@@ -3037,7 +3047,7 @@
 
 
 
-  <event name="S21_Mria_2_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+  <event name="S21_Mria_2_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
     <if_not_exists name=" Mria II " />
@@ -3096,7 +3106,7 @@
 
 
 
-  <event name="S21_Mria_9_CustomObjectsCreate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+  <event name="S21_Mria_9_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="9.0" />
     <if_not_exists name=" Mria IX " />
@@ -3150,6 +3160,287 @@
       <destroy name="WP-Elson" />
 
       <destroy name="Mria Supervision" />
+
+  </event>
+
+
+
+
+  <event name="S21_Tibur_1_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_not_exists name=" Tibur I " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Tibur I " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <create count="50" type="mines" startAngle="170" endAngle="460" startX="58745.0" startY="0.0" startZ="39068.0" radius="12000" />
+    <create count="35" type="mines" startAngle="90" endAngle="180" startX="58745.0" startY="0.0" startZ="39068.0" radius="30000" />
+    <create type="neutral" x="48057.0" y="0.0" z="51093.0" angle="0" name="WP-11G" hullID="1052" sideValue="2" fleetnumber="-1" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-11G" />
+      <set_object_property property="surrenderChance" value="0" name="WP-11G" />
+      <clear_ai name="WP-11G" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="WP-11G" />
+
+
+  </event>
+  <event name="S21_Tibur_1_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_exists name=" Tibur I " />
+    <if_variable name="Sector" comparator="NOT" value="1.0" />
+    <destroy name=" Tibur I " />
+
+      <destroy name="WP-11G" />
+
+  </event>
+
+
+
+
+  <event name="S21_Tibur_2_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_not_exists name=" Tibur II " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Tibur II " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <create count="25" type="mines" startAngle="10" endAngle="280" startX="48786.0" startY="0.0" startZ="64817.0" radius="7000" />
+    <create type="neutral" x="52065.0" y="0.0" z="36032.0" angle="0" name="Tibur Mall Refugee Camp" hullID="1000" sideValue="2" />
+    <create type="neutral" x="55952.0" y="0.0" z="38947.0" angle="22" name="Base 46G" hullID="1056" sideValue="2" />
+    <create type="neutral" x="48543.0" y="0.0" z="38340.0" angle="123" name="Emergency Base C" hullID="1601" sideValue="2" />
+    <create type="neutral" x="54009.0" y="0.0" z="40890.0" angle="100" name="Gundula" hullID="1606" sideValue="2" />
+    <create type="neutral" x="53037.0" y="0.0" z="59473.0" angle="100" name="WP-2" hullID="1052" sideValue="2" />
+
+      <set_object_property property="topSpeed" value="0" name="Tibur Mall Refugee Camp" />
+      <set_object_property property="surrenderChance" value="0" name="Tibur Mall Refugee Camp" />
+      <clear_ai name="Tibur Mall Refugee Camp" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Tibur Mall Refugee Camp" />
+
+      <set_object_property property="topSpeed" value="0" name="Emergency Base C" />
+      <set_object_property property="surrenderChance" value="0" name="Emergency Base C" />
+      <clear_ai name="Emergency Base C" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Emergency Base C" />
+
+      <set_object_property property="topSpeed" value="0" name="Gundula" />
+      <set_object_property property="surrenderChance" value="0" name="Gundula" />
+      <clear_ai name="Gundula" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Gundula" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-2" />
+      <set_object_property property="surrenderChance" value="0" name="WP-2" />
+      <clear_ai name="WP-2" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="WP-2" />
+
+    <add_ai type="POINT_THROTTLE" value1="54009.0" value2="0.0" value3="38947.0" value4="0.0" name="Gundula" />
+    <add_ai type="POINT_THROTTLE" value1="48543.0" value2="0.0" value3="38340.0" value4="0.0" name="Emergency Base C" />
+
+    <set_ship_text name="Tibur Mall Refugee Camp" desc="A USFP base, hastily constructed to house refugees from occupied systems." />
+
+    <set_ship_text name="Base 46G" desc="A USFP base, hastily constructed to house refugees from occupied systems." />
+
+
+    <set_ship_text name="Emergency Base C" desc="Ship anchored in place to serve as an emergency base and house refugees." />
+
+    <set_ship_text name="Gundula" desc="Ship anchored in place to serve as an emergency base and house refugees." />
+
+
+  </event>
+  <event name="S21_Tibur_2_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_exists name=" Tibur II " />
+    <if_variable name="Sector" comparator="NOT" value="2.0" />
+    <destroy name=" Tibur II " />
+
+      <destroy name="Tibur Mall Refugee Camp" />
+
+      <destroy name="Emergency Base C" />
+
+      <destroy name="Gundula" />
+
+      <destroy name="WP-2" />
+
+      <destroy name="Base 46G" />
+
+  </event>
+
+
+
+
+  <event name="S21_Tibur_4_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_not_exists name=" Tibur IV " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Tibur IV " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <create type="neutral" x="51579.0" y="0.0" z="48299.0" angle="0" name="Tibur Refugee Camp" hullID="1000" sideValue="2" />
+    <create type="neutral" x="57895.0" y="0.0" z="49271.0" angle="0" name="Base 23" hullID="1003" sideValue="2" />
+    <create type="neutral" x="54009.0" y="0.0" z="51457.0" angle="0" name="Base 25" hullID="1003" sideValue="2" />
+    <create type="neutral" x="51944.0" y="0.0" z="54251.0" angle="200" name="Emergency Base" hullID="1503" sideValue="2" />
+    <create type="neutral" x="57288.0" y="0.0" z="52307.0" angle="150" name="Tibur Refugee Supervision" hullID="1600" sideValue="2" />
+    <create type="neutral" x="66033.0" y="0.0" z="65303.0" angle="30" name="USFP LET US IN" hullID="1606" sideValue="2" />
+    <create type="neutral" x="64211.0" y="0.0" z="68097.0" angle="200" name="Scion" hullID="1502" sideValue="2" />
+    <create type="neutral" x="69920.0" y="0.0" z="65789.0" angle="300" name="Solar Wind" hullID="1600" sideValue="2" />
+
+      <set_object_property property="topSpeed" value="0" name="Tibur Refugee Camp" />
+      <set_object_property property="surrenderChance" value="0" name="Tibur Refugee Camp" />
+      <clear_ai name="Tibur Refugee Camp" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Tibur Refugee Camp" />
+
+      <set_object_property property="topSpeed" value="0" name="Base 23" />
+      <set_object_property property="surrenderChance" value="0" name="Base 23" />
+      <clear_ai name="Base 23" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Base 23" />
+
+      <set_object_property property="topSpeed" value="0" name="Base 25" />
+      <set_object_property property="surrenderChance" value="0" name="Base 25" />
+      <clear_ai name="Base 25" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Base 25" />
+
+      <set_object_property property="topSpeed" value="0" name="Emergency Base" />
+      <set_object_property property="surrenderChance" value="0" name="Emergency Base" />
+      <clear_ai name="Emergency Base" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Emergency Base" />
+
+      <set_object_property property="topSpeed" value="0" name="Tibur Refugee Supervision" />
+      <set_object_property property="surrenderChance" value="0" name="Tibur Refugee Supervision" />
+      <clear_ai name="Tibur Refugee Supervision" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Tibur Refugee Supervision" />
+
+      <set_object_property property="topSpeed" value="0" name="USFP LET US IN" />
+      <set_object_property property="surrenderChance" value="0" name="USFP LET US IN" />
+      <clear_ai name="USFP LET US IN" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="USFP LET US IN" />
+
+      <set_object_property property="topSpeed" value="0" name="Scion" />
+      <set_object_property property="surrenderChance" value="0" name="Scion" />
+      <clear_ai name="Scion" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Scion" />
+
+      <set_object_property property="topSpeed" value="0" name="Solar Wind" />
+      <set_object_property property="surrenderChance" value="0" name="Solar Wind" />
+      <clear_ai name="Solar Wind" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Solar Wind" />
+
+    <add_ai type="POINT_THROTTLE" value1="51944.0" value2="0.0" value3="54251.0" value4="0.0" name="Emergency Base" />
+    <add_ai type="POINT_THROTTLE" value1="57288.0" value2="0.0" value3="52307.0" value4="0.0" name="Tibur Refugee Supervision" />
+    <add_ai type="POINT_THROTTLE" value1="66033.0" value2="0.0" value3="65303.0" value4="0.0" name="USFP LET US IN" />
+    <add_ai type="POINT_THROTTLE" value1="64211.0" value2="0.0" value3="68097.0" value4="0.0" name="Scion" />
+    <add_ai type="POINT_THROTTLE" value1="69920.0" value2="0.0" value3="65789.0" value4="0.0" name="Solar Wind" />
+
+    <set_ship_text name="Tibur Refugee Camp" desc="A USFP base, hastily constructed to house refugees from occupied systems." />
+
+    <set_ship_text name="Base 23" desc="A USFP base, hastily constructed to house refugees from occupied systems." />
+
+    <set_ship_text name="Base 25" desc="A USFP base, hastily constructed to house refugees from occupied systems." />
+
+
+    <set_ship_text name="Emergency Base" desc="Ship anchored in place to serve as an emergency base and house refugees." />
+
+    <set_ship_text name="Scion" desc="Ship anchored in place to serve as an emergency base and house refugees." />
+
+    <set_ship_text name="Solar Wind" desc="Ship anchored in place to serve as an emergency base and house refugees." />
+
+    <set_ship_text name="Tibur Refugee Supervision" desc="Ship anchored in place to serve as an emergency base and house refugees." />
+
+
+    <set_ship_text name="USFP LET US IN" desc="Ship anchored in place to serve as an emergency base and house refugees." scan_desc="Evidently, the ship recently changed its designation in protest against USFP migration policies." />
+
+
+  </event>
+  <event name="S21_Tibur_4_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_exists name=" Tibur IV " />
+    <if_variable name="Sector" comparator="NOT" value="4.0" />
+    <destroy name=" Tibur IV " />
+
+      <destroy name="Tibur Refugee Camp" />
+
+      <destroy name="Base 23" />
+
+      <destroy name="Base 25" />
+
+      <destroy name="Emergency Base" />
+
+      <destroy name="Tibur Refugee Supervision" />
+
+      <destroy name="USFP LET US IN" />
+
+      <destroy name="Scion" />
+
+      <destroy name="Solar Wind" />
+
+  </event>
+
+
+
+
+  <event name="S21_Tibur_5_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_not_exists name=" Tibur V " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Tibur V " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <create type="neutral" x="47571.0" y="0.0" z="42955.0" angle="0" name="Keltor Immigration Control" hullID="1001" sideValue="2" />
+
+  </event>
+  <event name="S21_Tibur_5_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_exists name=" Tibur V " />
+    <if_variable name="Sector" comparator="NOT" value="5.0" />
+    <destroy name=" Tibur V " />
+
+      <destroy name="Keltor Immigration Control" />
+
+  </event>
+
+
+
+
+  <event name="S21_Tibur_8_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_not_exists name=" Tibur VIII " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Tibur VIII " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <create type="neutral" x="35790.0" y="0.0" z="44412.0" angle="0" name="Tibur Secondary Refugee Camp" hullID="1001" sideValue="2" />
+    <create type="neutral" x="35061.0" y="0.0" z="48663.0" angle="300" name="USFP Pancreas" hullID="1603" sideValue="2" />
+    <create type="neutral" x="40527.0" y="0.0" z="45506.0" angle="20" name="Base 66" hullID="1003" sideValue="2" />
+
+      <set_object_property property="topSpeed" value="0" name="Tibur Secondary Refugee Camp" />
+      <set_object_property property="surrenderChance" value="0" name="Tibur Secondary Refugee Camp" />
+      <clear_ai name="Tibur Secondary Refugee Camp" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Tibur Secondary Refugee Camp" />
+
+      <set_object_property property="topSpeed" value="0" name="USFP Pancreas" />
+      <set_object_property property="surrenderChance" value="0" name="USFP Pancreas" />
+      <clear_ai name="USFP Pancreas" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="USFP Pancreas" />
+
+      <set_object_property property="topSpeed" value="0" name="Base 66" />
+      <set_object_property property="surrenderChance" value="0" name="Base 66" />
+      <clear_ai name="Base 66" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Base 66" />
+
+    <add_ai type="POINT_THROTTLE" value1="35061.0" value2="0.0" value3="48663.0" value4="0.0" name="USFP Pancreas" />
+
+    <set_ship_text name="Tibur Secondary Refugee Camp" desc="A USFP base, hastily constructed to house refugees from occupied systems." />
+
+    <set_ship_text name="Base 66" desc="A USFP base, hastily constructed to house refugees from occupied systems." />
+
+
+    <set_ship_text name="USFP Pancreas" desc="Ship anchored in place to serve as an emergency base and house refugees." />
+
+
+  </event>
+  <event name="S21_Tibur_8_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_exists name=" Tibur VIII " />
+    <if_variable name="Sector" comparator="NOT" value="8.0" />
+    <destroy name=" Tibur VIII " />
+
+      <destroy name="Tibur Secondary Refugee Camp" />
+
+      <destroy name="USFP Pancreas" />
+
+      <destroy name="Base 66" />
 
   </event>
 

@@ -177,7 +177,7 @@
     <set_special name="{{ name }}" ship="1" /> <!-- overpowered -->
 
     <set_ship_text name="{{ name }}" desc="TSN Athena Class."
-      scan_desc="Flagship of the 2nd Space Fleet, 1st Heavy Division. Commanded by Flt. Cpt. Min Mwenya. Specials: HET Warp AntiTorp Drones" />
+      scan_desc="Flagship of the 2nd Space Fleet, 1st Battle Division. Commanded by Flt. Cpt. Min Mwenya. Specials: HET Warp AntiTorp Drones" />
   </event>
   {% endfor %}
 
@@ -248,7 +248,7 @@
     <set_special name="TSN Verdant" ship="1" /> <!-- overpowered -->
 
     <set_ship_text name="TSN Verdant" desc="TSN Athena Class."
-      scan_desc="Flagship of the 2nd Space Fleet, 1st Heavy Division. Commanded by Rear Adm. Min Mwenya. Specials: HET Warp AntiTorp Drones" />
+      scan_desc="Flagship of the 2nd Space Fleet, 1st Battle Division. Commanded by Rear Adm. Min Mwenya. Specials: HET Warp AntiTorp Drones" />
   </event>
 
   <event name="S21_VerdantFleet_AIReset" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
@@ -659,6 +659,13 @@
                     "Zildi Systems"
               ],
           },
+          "Tibur": {
+              "destroy": [
+              ],
+              "desolate": [
+                "Astral Agora"
+              ],
+          },
           "Template": {
               "destroy": [
               ],
@@ -955,5 +962,94 @@
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="{{ name }}" />
     {% endfor %}
   {{ destroyEvent('Mria', 9, 'IX', [" Capitol City ", "WP-Elson", "Mria Supervision"]) }}
+
+  {{ createEvent('Tibur', 1, 'I') }}
+    <create count="50" type="mines" startAngle="170" endAngle="460" startX="58745.0" startY="0.0" startZ="39068.0" radius="12000" />
+    <create count="35" type="mines" startAngle="90" endAngle="180" startX="58745.0" startY="0.0" startZ="39068.0" radius="30000" />
+    <create type="neutral" x="48057.0" y="0.0" z="51093.0" angle="0" name="WP-11G" hullID="1052" sideValue="2" fleetnumber="-1" />
+    {% for name in ["WP-11G"] %}
+      <set_object_property property="topSpeed" value="0" name="{{ name }}" />
+      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+      <clear_ai name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="{{ name }}" />
+    {% endfor %}
+  {{ destroyEvent('Tibur', 1, 'I', ["WP-11G"]) }}
+
+  {{ createEvent('Tibur', 2, 'II') }}
+    <create count="25" type="mines" startAngle="10" endAngle="280" startX="48786.0" startY="0.0" startZ="64817.0" radius="7000" />
+    <create type="neutral" x="52065.0" y="0.0" z="36032.0" angle="0" name="Tibur Mall Refugee Camp" hullID="1000" sideValue="2" />
+    <create type="neutral" x="55952.0" y="0.0" z="38947.0" angle="22" name="Base 46G" hullID="1056" sideValue="2" />
+    <create type="neutral" x="48543.0" y="0.0" z="38340.0" angle="123" name="Emergency Base C" hullID="1601" sideValue="2" />
+    <create type="neutral" x="54009.0" y="0.0" z="40890.0" angle="100" name="Gundula" hullID="1606" sideValue="2" />
+    <create type="neutral" x="53037.0" y="0.0" z="59473.0" angle="100" name="WP-2" hullID="1052" sideValue="2" />
+    {% for name in ["Tibur Mall Refugee Camp", "Emergency Base C", "Gundula", "WP-2"] %}
+      <set_object_property property="topSpeed" value="0" name="{{ name }}" />
+      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+      <clear_ai name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="{{ name }}" />
+    {% endfor %}
+    <add_ai type="POINT_THROTTLE" value1="54009.0" value2="0.0" value3="38947.0" value4="0.0" name="Gundula" />
+    <add_ai type="POINT_THROTTLE" value1="48543.0" value2="0.0" value3="38340.0" value4="0.0" name="Emergency Base C" />
+    {% for name in ["Tibur Mall Refugee Camp", "Base 46G"] %}
+    <set_ship_text name="{{ name }}" desc="A USFP base, hastily constructed to house refugees from occupied systems." />
+    {% endfor %}
+    {% for name in ["Emergency Base C", "Gundula"] %}
+    <set_ship_text name="{{ name }}" desc="Ship anchored in place to serve as an emergency base and house refugees." />
+    {% endfor %}
+  {{ destroyEvent('Tibur', 2, 'II', ["Tibur Mall Refugee Camp", "Emergency Base C", "Gundula", "WP-2", "Base 46G"]) }}
+
+  {{ createEvent('Tibur', 4, 'IV') }}
+    <create type="neutral" x="51579.0" y="0.0" z="48299.0" angle="0" name="Tibur Refugee Camp" hullID="1000" sideValue="2" />
+    <create type="neutral" x="57895.0" y="0.0" z="49271.0" angle="0" name="Base 23" hullID="1003" sideValue="2" />
+    <create type="neutral" x="54009.0" y="0.0" z="51457.0" angle="0" name="Base 25" hullID="1003" sideValue="2" />
+    <create type="neutral" x="51944.0" y="0.0" z="54251.0" angle="200" name="Emergency Base" hullID="1503" sideValue="2" />
+    <create type="neutral" x="57288.0" y="0.0" z="52307.0" angle="150" name="Tibur Refugee Supervision" hullID="1600" sideValue="2" />
+    <create type="neutral" x="66033.0" y="0.0" z="65303.0" angle="30" name="USFP LET US IN" hullID="1606" sideValue="2" />
+    <create type="neutral" x="64211.0" y="0.0" z="68097.0" angle="200" name="Scion" hullID="1502" sideValue="2" />
+    <create type="neutral" x="69920.0" y="0.0" z="65789.0" angle="300" name="Solar Wind" hullID="1600" sideValue="2" />
+    {% for name in ["Tibur Refugee Camp", "Base 23", "Base 25", "Emergency Base", "Tibur Refugee Supervision", "USFP LET US IN", "Scion", "Solar Wind"] %}
+      <set_object_property property="topSpeed" value="0" name="{{ name }}" />
+      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+      <clear_ai name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="{{ name }}" />
+    {% endfor %}
+    <add_ai type="POINT_THROTTLE" value1="51944.0" value2="0.0" value3="54251.0" value4="0.0" name="Emergency Base" />
+    <add_ai type="POINT_THROTTLE" value1="57288.0" value2="0.0" value3="52307.0" value4="0.0" name="Tibur Refugee Supervision" />
+    <add_ai type="POINT_THROTTLE" value1="66033.0" value2="0.0" value3="65303.0" value4="0.0" name="USFP LET US IN" />
+    <add_ai type="POINT_THROTTLE" value1="64211.0" value2="0.0" value3="68097.0" value4="0.0" name="Scion" />
+    <add_ai type="POINT_THROTTLE" value1="69920.0" value2="0.0" value3="65789.0" value4="0.0" name="Solar Wind" />
+    {% for name in ["Tibur Refugee Camp", "Base 23", "Base 25"] %}
+    <set_ship_text name="{{ name }}" desc="A USFP base, hastily constructed to house refugees from occupied systems." />
+    {% endfor %}
+    {% for name in ["Emergency Base", "Scion", "Solar Wind", "Tibur Refugee Supervision"] %}
+    <set_ship_text name="{{ name }}" desc="Ship anchored in place to serve as an emergency base and house refugees." />
+    {% endfor %}
+    {% for name in ["USFP LET US IN"] %}
+    <set_ship_text name="{{ name }}" desc="Ship anchored in place to serve as an emergency base and house refugees." scan_desc="Evidently, the ship recently changed its designation in protest against USFP migration policies." />
+    {% endfor %}
+  {{ destroyEvent('Tibur', 4, 'IV', ["Tibur Refugee Camp", "Base 23", "Base 25", "Emergency Base", "Tibur Refugee Supervision", "USFP LET US IN", "Scion", "Solar Wind"]) }}
+
+  {{ createEvent('Tibur', 5, 'V') }}
+    <create type="neutral" x="47571.0" y="0.0" z="42955.0" angle="0" name="Keltor Immigration Control" hullID="1001" sideValue="2" />
+  {{ destroyEvent('Tibur', 5, 'V', ["Keltor Immigration Control"]) }}
+
+  {{ createEvent('Tibur', 8, 'VIII') }}
+    <create type="neutral" x="35790.0" y="0.0" z="44412.0" angle="0" name="Tibur Secondary Refugee Camp" hullID="1001" sideValue="2" />
+    <create type="neutral" x="35061.0" y="0.0" z="48663.0" angle="300" name="USFP Pancreas" hullID="1603" sideValue="2" />
+    <create type="neutral" x="40527.0" y="0.0" z="45506.0" angle="20" name="Base 66" hullID="1003" sideValue="2" />
+    {% for name in ["Tibur Secondary Refugee Camp", "USFP Pancreas", "Base 66"] %}
+      <set_object_property property="topSpeed" value="0" name="{{ name }}" />
+      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+      <clear_ai name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="{{ name }}" />
+    {% endfor %}
+    <add_ai type="POINT_THROTTLE" value1="35061.0" value2="0.0" value3="48663.0" value4="0.0" name="USFP Pancreas" />
+    {% for name in ["Tibur Secondary Refugee Camp", "Base 66"] %}
+    <set_ship_text name="{{ name }}" desc="A USFP base, hastily constructed to house refugees from occupied systems." />
+    {% endfor %}
+    {% for name in ["USFP Pancreas"] %}
+    <set_ship_text name="{{ name }}" desc="Ship anchored in place to serve as an emergency base and house refugees." />
+    {% endfor %}
+  {{ destroyEvent('Tibur', 8, 'VIII', ["Tibur Secondary Refugee Camp", "USFP Pancreas", "Base 66"]) }}
 
 </mission_data>
