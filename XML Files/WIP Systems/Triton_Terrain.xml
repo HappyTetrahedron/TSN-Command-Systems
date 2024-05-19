@@ -1,30 +1,5 @@
 <mission_data version="1.0" background_id_arme="dda933ed-46a0-4818-a199-cd89928410f2" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
   <start id_arme="dda933ed-46a0-4818-a199-cd89928410f2" />
-  <event name="Example Sector" id_arme="4706dcf5-448b-457d-9156-d5840c59dc30">
-    <!--Terrain Features - Nebulae, Mines and Asteroids-->
-    <create count="40" type="asteroids" startX="65697.0" startY="0.0" startZ="19853.0" endX="82861.0" endY="0.0" endZ="31149.0" randomRange="6736" />
-    <create count="50" type="asteroids" startX="61810.0" startY="0.0" startZ="21613.0" endX="25722.0" endY="0.0" endZ="18679.0" randomRange="4754" />
-    <create count="10" type="nebulas" startX="72739.0" startY="0.0" startZ="33863.0" endX="56895.0" endY="0.0" endZ="24254.0" randomRange="5033" />
-    <create count="80" type="nebulas" startX="43912.0" startY="0.0" startZ="86014.0" endX="5844.0" endY="0.0" endZ="71124.0" randomRange="6392" />
-    <create count="60" type="nebulas" startX="51394.0" startY="0.0" startZ="95403.0" endX="3790.0" endY="0.0" endZ="94009.0" randomRange="4822" />
-    <create count="40" type="asteroids" startX="27189.0" startY="0.0" startZ="87334.0" endX="4597.0" endY="0.0" endZ="83667.0" randomRange="5359" />
-    <!--Sector Objects-->
-    <create type="station" x="72445.0" y="0.0" z="53447.0" angle="0" name="Loris" hullID="1001" />
-    <create type="station" x="43399.0" y="0.0" z="47139.0" angle="0" name="DS-43" hullID="1000" />
-    <create type="station" x="51174.0" y="0.0" z="61735.0" angle="0" name="M-473" hullID="1003" />
-    <create type="neutral" x="40758.0" y="0.0" z="50513.0" angle="0" name="WP-43" hullID="1052" />
-    <create type="neutral" x="27996.0" y="0.0" z="77579.0" angle="0" name="B-67" hullID="1054" />
-    <create type="genericMesh" x="82643.0" y="0.0" z="14373.0" angle="0" name="Altirin Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
-    <create type="genericMesh" x="71824.0" y="0.0" z="73191.0" angle="0" name="Illian (Planet)" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
-    <!--Destroy Command-->
-    <destroy name="Loris" />
-    <destroy name="DS-43" />
-    <destroy name="M-473" />
-    <destroy name="WP-43" />
-    <destroy name="B-67" />
-    <destroy name="Altirin Gate" />
-    <destroy name="Illian (Planet)" />
-  </event>
   <event name="Sector 1" id_arme="0bd28183-e99a-4f22-a3d0-3ec00aa3ec28">
     <!--Terrain Features - Nebulae, Mines and Asteroids-->
     <create count="100" type="nebulas" nebType="2" startX="86300.0" startY="0.0" startZ="31174.0" endX="24943.0" endY="0.0" endZ="98947.0" randomRange="10000" />
@@ -226,70 +201,5 @@
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton XII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <!--Destroy Command-->
     <destroy name="Triton XII" />
-  </event>
-  <event name="Sector 13" id_arme="9e18495d-5b10-432e-9cfa-8aff57e41e29">
-    <!--Terrain Features - Nebulae, Mines and Asteroids-->
-    <!--Sector Objects-->
-    <!--Destroy Command-->
-  </event>
-  <event name="Sector 14" id_arme="4a809330-68a4-452d-a688-f04709dfe805">
-    <!--Terrain Features - Nebulae, Mines and Asteroids-->
-    <!--Sector Objects-->
-    <!--Destroy Command-->
-  </event>
-  <event name="Sector 15" id_arme="679fe320-3593-470a-b97c-e2a754fcf910">
-    <!--Terrain Features - Nebulae, Mines and Asteroids-->
-    <!--Sector Objects-->
-    <!--Destroy Command-->
-  </event>
-  <event name="Sector 16" id_arme="c5778c5a-e96b-497a-9a01-eefc0b2cab45">
-    <!--Terrain Features - Nebulae, Mines and Asteroids-->
-    <!--Sector Objects-->
-    <!--Destroy Command-->
-  </event>
-  <event name="Sector 17" id_arme="2a61d681-129d-461f-9d63-14b5c5105b88">
-    <!--Terrain Features - Nebulae, Mines and Asteroids-->
-    <!--Sector Objects-->
-    <!--Destroy Command-->
-  </event>
-  <event name="Sector 18" id_arme="fffdad8a-ff9a-4d15-b6fe-37ebc57299a7">
-    <!--Terrain Features - Nebulae, Mines and Asteroids-->
-    <!--Sector Objects-->
-    <!--Destroy Command-->
-  </event>
-  <event name="Sector 19" id_arme="d961c681-34bb-4075-a825-47267c99818b">
-    <!--Terrain Features - Nebulae, Mines and Asteroids-->
-    <!--Sector Objects-->
-    <!--Destroy Command-->
-  </event>
-  <event name="Sector 20" id_arme="937168b5-3e4c-443f-9abb-bc3f878eb25c">
-    <!--Terrain Features - Nebulae, Mines and Asteroids-->
-    <!--Sector Objects-->
-    <!--Destroy Command-->
-  </event>
-  <event name="Sector 21" id_arme="a4edadf9-e0cd-488f-a951-863adf1f16ec">
-    <!--Terrain Features - Nebulae, Mines and Asteroids-->
-    <!--Sector Objects-->
-    <!--Destroy Command-->
-  </event>
-  <event name="Sector 22" id_arme="da2d03f5-b442-4064-9c25-8b783c5535c7">
-    <!--Terrain Features - Nebulae, Mines and Asteroids-->
-    <!--Sector Objects-->
-    <!--Destroy Command-->
-  </event>
-  <event name="Sector 23" id_arme="99149da9-7d3b-4c96-afea-efa8ce009ca1">
-    <!--Terrain Features - Nebulae, Mines and Asteroids-->
-    <!--Sector Objects-->
-    <!--Destroy Command-->
-  </event>
-  <event name="Sector 24" id_arme="e15ad2e4-5e37-47c7-9b8f-def09d496102">
-    <!--Terrain Features - Nebulae, Mines and Asteroids-->
-    <!--Sector Objects-->
-    <!--Destroy Command-->
-  </event>
-  <event name="Sector 25" id_arme="f4c3f5d9-7349-4682-af2b-08489954348e">
-    <!--Terrain Features - Nebulae, Mines and Asteroids-->
-    <!--Sector Objects-->
-    <!--Destroy Command-->
   </event>
 </mission_data>

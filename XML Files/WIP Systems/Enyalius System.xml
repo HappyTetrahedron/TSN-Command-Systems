@@ -1,0 +1,148 @@
+<mission_data version="1.0" background_id_arme="a8a90c55-28b4-49c6-a22b-70327378c359" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <start id_arme="a8a90c55-28b4-49c6-a22b-70327378c359" />
+  <event name="Sector 1" id_arme="687a5a9b-ceef-4fb3-96a3-37209d1e46f5">
+    <!--Terrain-->
+    <create count="50" type="nebulas" nebType="1" startX="86697.0" startY="0.0" startZ="55625.0" endX="62858.0" endY="0.0" endZ="22008.0" randomRange="15000" />
+    <create count="50" type="nebulas" nebType="1" startX="24554.0" startY="0.0" startZ="20000.0" endX="22545.0" endY="0.0" endZ="53616.0" randomRange="15000" />
+    <create count="50" type="asteroids" startX="48929.0" startY="0.0" startZ="57767.0" endX="48929.0" endY="0.0" endZ="57767.0" randomRange="20000" />
+    <!--Named Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Enyalius I" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <!--Destroy Objects-->
+    <destroy name="Enyalius I" />
+  </event>
+  <event name="Sector 2" id_arme="be463eb3-9079-4904-9ef5-2216f5cdfbb4">
+    <!--Terrain-->
+    <create count="100" type="nebulas" nebType="2" startX="61227.0" startY="0.0" startZ="39516.0" endX="18848.0" endY="0.0" endZ="61672.0" randomRange="10000" />
+    <create count="100" type="nebulas" nebType="1" startX="72082.0" startY="0.0" startZ="61078.0" endX="50521.0" endY="0.0" endZ="14089.0" randomRange="10000" />
+    <create count="100" type="asteroids" startX="57064.0" startY="0.0" startZ="57211.0" radius="20000" randomRange="10000" />
+    <!--Named Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Enyalius II" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="42099.0" y="0.0" z="37946.0" name="Tibur Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="56172.0" y="0.0" z="58401.0" angle="0" name="Kashawn Trading" hullID="1001" />
+    <set_ship_text name="Kashawn Trading" desc="Enyalius' primary hub for trade with the Tibur system." scan_desc="The station commander is renowned for their honor and bravery, but has no combat experience." />
+    <!--Destroy Objects-->
+    <destroy name="Enyalius II" />
+    <destroy name="Tibur Gate" />
+    <destroy name="Kashawn Trading" />
+  </event>
+  <event name="Sector 3" id_arme="c87ddcf4-be0f-4ae1-a90f-f74d110c5343">
+    <!--Terrain-->
+    <create count="100" type="nebulas" nebType="2" startX="69822.0" startY="0.0" startZ="20669.0" endX="48929.0" endY="0.0" endZ="66205.0" randomRange="20000" />
+    <create count="100" type="nebulas" nebType="1" startX="64331.0" startY="0.0" startZ="20669.0" endX="60849.0" endY="0.0" endZ="79062.0" randomRange="20000" />
+    <create count="50" type="asteroids" startX="27768.0" startY="0.0" startZ="28705.0" endX="25090.0" endY="0.0" endZ="79598.0" randomRange="15000" />
+    <create count="10" type="asteroids" startX="28170.0" startY="0.0" startZ="45848.0" endX="28170.0" endY="0.0" endZ="45848.0" randomRange="2000" />
+    <!--Named Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Enyalius III" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="28036.0" y="0.0" z="47053.0" angle="0" name="Kalnath Research" hullID="1004" />
+    <create type="neutral" x="37545.0" y="0.0" z="53348.0" angle="180" name="ESN Yuroman" hullID="1502" />
+    <set_ship_text name="ESN Yuroman" scan_desc="The captain is the USFP's leading expert on tetracalcite." hailtext="Would you like to export some tetracalcite?" />
+    <set_ship_text name="Kalnath Research" desc="Research station investigating applications of a rare harmonic mineral, tetracalcite." hailtext="Would you like to export some tetracalcite?" />
+    <!--Destroy Objects-->
+    <destroy name="Enyalius III" />
+    <destroy name="Kalnath Research" />
+    <destroy name="ESN Yuroman" />
+  </event>
+  <event name="Sector 4" id_arme="5a3fe667-ecaf-44b2-bb60-9ae1db0707bd">
+    <!--Terrain-->
+    <create count="100" type="nebulas" startX="40409.0" startY="0.0" startZ="33568.0" endX="39666.0" endY="0.0" endZ="52602.0" randomRange="20000" />
+    <create count="100" type="nebulas" startX="73421.0" startY="0.0" startZ="69107.0" endX="39666.0" endY="0.0" endZ="52602.0" randomRange="20000" />
+    <create count="50" type="asteroids" startX="11413.0" startY="0.0" startZ="90223.0" endX="18105.0" endY="0.0" endZ="80260.0" randomRange="10000" />
+    <create count="50" type="asteroids" startX="11413.0" startY="0.0" startZ="77732.0" endX="34164.0" endY="0.0" endZ="93643.0" randomRange="10000" />
+    <!--Named Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Enyalius IV" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="73706.0" y="0.0" z="43035.0" name="Vanir Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="45019.0" y="0.0" z="43382.0" angle="0" name="Idrissa Idyl" hullID="1001" />
+    <create type="neutral" x="59294.0" y="0.0" z="57360.0" angle="0" name="SY-852" hullID="1001" />
+    <set_ship_text name="Idrissa Idyl" desc="Trading post for luxury goods, equipped with a small refit shipyard." scan_desc="The station chief got the post through bribery and is allegedly associated with pirates." hailtext="Rumours of our involvement with pirates are completely unfounded." />
+    <!--Destroy Objects-->
+    <destroy name="Enyalius IV" />
+    <destroy name="Vanir Gate" />
+    <destroy name="Idrissa Idyl" />
+    <destroy name="SY-852" />
+  </event>
+  <event name="Sector 5" id_arme="3d0cb0d0-706b-4045-aabb-11d121317b36">
+    <!--Terrain-->
+    <create count="100" type="nebulas" nebType="2" startX="67009.0" startY="0.0" startZ="27767.0" endX="28036.0" endY="0.0" endZ="62053.0" randomRange="20000" />
+    <create count="100" type="asteroids" startX="88036.0" startY="0.0" startZ="85758.0" endX="68349.0" endY="0.0" endZ="72767.0" randomRange="15000" />
+    <create count="100" type="mines" startAngle="20" endAngle="160" startX="50000.0" startY="0.0" startZ="50000.0" radius="15000" />
+    <create count="100" type="mines" startAngle="200" endAngle="340" startX="50000.0" startY="0.0" startZ="50000.0" radius="15000" />
+    <!--Named Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Enyalius V" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="22947.0" y="0.0" z="49866.0" angle="0" name="Rysdak Markets" hullID="1001" />
+    <create type="neutral" x="50000.0" y="0.0" z="50000.0" angle="0" name="Enyalia Command" hullID="1002" />
+    <create type="neutral" x="50000.0" y="0.0" z="65000.0" angle="0" name="WP-33J" hullID="1052" />
+    <create type="neutral" x="50000.0" y="0.0" z="35000.0" angle="0" name="WP-82W" hullID="1052" />
+    <set_ship_text name="Rysdak Markets" desc="Central trading post for all traffic transiting Enyalius." />
+    <!--Destroy Objects-->
+    <destroy name="Enyalius V" />
+    <destroy name="Rysdak Markets" />
+    <destroy name="Enyalia Command" />
+    <destroy name="WP-33J" />
+    <destroy name="WP-82W" />
+  </event>
+  <event name="Sector 6" id_arme="2636494d-d1a7-4205-b5b6-6be1e8e1160f">
+    <!--Terrain-->
+    <create count="50" type="nebulas" startX="37545.0" startY="0.0" startZ="47455.0" endX="20938.0" endY="0.0" endZ="10892.0" randomRange="10000" />
+    <create count="50" type="asteroids" startX="55625.0" startY="0.0" startZ="86428.0" endX="21072.0" endY="0.0" endZ="39955.0" randomRange="15000" />
+    <!--Named Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Enyalius VI" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="58438.0" y="0.0" z="38616.0" name="Enyalius Prime" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="0.0" colorGreen="0.8" colorBlue="0.0" />
+    <create type="genericMesh" x="27500.0" y="0.0" z="66339.0" name="Toray Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="67009.0" y="0.0" z="56830.0" angle="0" name="Capitol Base" hullID="1001" />
+    <!--Destroy Objects-->
+    <destroy name="Enyalius VI" />
+    <destroy name="Toray Gate" />
+    <destroy name="Capitol Base" />
+  </event>
+  <event name="Sector 7" id_arme="0f5c9736-59e8-4ca0-91cc-e0aeb47f9b5c">
+    <!--Terrain-->
+    <create count="100" type="asteroids" startX="9956.0" startY="0.0" startZ="8348.0" endX="23884.0" endY="0.0" endZ="26696.0" randomRange="10000" />
+    <create count="100" type="asteroids" startX="36395.0" startY="0.0" startZ="7546.0" endX="12603.0" endY="0.0" endZ="41747.0" randomRange="15000" />
+    <create count="100" type="nebulas" startX="34015.0" startY="0.0" startZ="38327.0" endX="34015.0" endY="0.0" endZ="38327.0" randomRange="20000" />
+    <!--Named Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Enyalius VII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="53792.0" y="0.0" z="54832.0" angle="0" name="Hulca Smelters" hullID="1003" />
+    <create type="neutral" x="30149.0" y="0.0" z="22118.0" angle="0" name="Wrokin Ores" hullID="1050" />
+    <create type="neutral" x="18253.0" y="0.0" z="16468.0" angle="0" name="Adrath Mining" hullID="1050" />
+    <create type="neutral" x="17064.0" y="0.0" z="32973.0" angle="0" name="Simnex Denabite" hullID="1051" />
+    <create type="neutral" x="52603.0" y="0.0" z="60780.0" angle="45" name="ESN St James" hullID="1503" />
+    <set_ship_text name="Hulca Smelters" desc="Enyalius' main industrial base, processing ore and denabite from the highly productive asteroid mines in the sector." />
+    <set_ship_text name="ESN St James" desc="Refitted USFP ore transport" />
+    <!--Destroy Objects-->
+    <destroy name="Enyalius VII" />
+    <destroy name="Hulca Smelters" />
+    <destroy name="Wrokin Ores" />
+    <destroy name="Adrath Mining" />
+    <destroy name="Simnex Denabite" />
+    <destroy name="ESN St James" />
+  </event>
+  <event name="Sector 8" id_arme="91e48218-d39b-422a-941d-3e2e13b74970">
+    <!--Terrain-->
+    <create count="100" type="asteroids" startX="92054.0" startY="0.0" startZ="7142.0" endX="63929.0" endY="0.0" endZ="38348.0" randomRange="10000" />
+    <create count="100" type="asteroids" startX="86965.0" startY="0.0" startZ="39285.0" endX="58706.0" endY="0.0" endZ="11696.0" randomRange="10000" />
+    <create count="200" type="nebulas" startX="46384.0" startY="0.0" startZ="40758.0" endX="44375.0" endY="0.0" endZ="75178.0" randomRange="30000" />
+    <!--Named Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Enyalius VIII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="50268.0" y="0.0" z="61383.0" name="Loria Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="42233.0" y="0.0" z="43571.0" angle="0" name="Yknik Spas" hullID="1001" />
+    <create type="neutral" x="64465.0" y="0.0" z="16651.0" angle="0" name="Drazma Mining" hullID="1050" />
+    <set_ship_text name="Yknik Spas" desc="Deluxe resort for our esteemed guests in Enyalius. High-quality saltwater spas enriched with tetracalcite. Harmonize your chakras with tetracalcite therapy! Luxury massages, peelings, gill cleansing, manicure, scale-shining, and more." hailtext="Admission deposit is 3000 credits." />
+    <!--Destroy Objects-->
+    <destroy name="Enyalius VIII" />
+    <destroy name="Loria Gate" />
+    <destroy name="Yknik Spas" />
+    <destroy name="Drazma Mining" />
+  </event>
+  <event name="Sector 9" id_arme="e50f09b1-0ef1-4ee5-9912-69719a2ffe27">
+    <!--Terrain-->
+    <create count="100" type="nebulas" startX="80804.0" startY="0.0" startZ="41026.0" endX="56027.0" endY="0.0" endZ="17589.0" randomRange="8000" />
+    <create count="100" type="nebulas" nebType="2" startX="80670.0" startY="0.0" startZ="53482.0" endX="69152.0" endY="0.0" endZ="12901.0" randomRange="8000" />
+    <create count="100" type="nebulas" startX="19331.0" startY="0.0" startZ="36875.0" endX="45715.0" endY="0.0" endZ="67678.0" randomRange="8000" />
+    <create count="100" type="nebulas" nebType="2" startX="49063.0" startY="0.0" startZ="66339.0" endX="13438.0" endY="0.0" endZ="43303.0" randomRange="8000" />
+    <create count="100" type="asteroids" startX="65134.0" startY="0.0" startZ="60714.0" endX="35402.0" endY="0.0" endZ="23080.0" randomRange="8000" />
+    <!--Named Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Enyalius IX" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <!--Destroy Objects-->
+    <destroy name="Enyalius IX" />
+  </event>
+</mission_data>

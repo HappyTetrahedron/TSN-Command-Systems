@@ -1,0 +1,153 @@
+<mission_data version="1.0" background_id_arme="a8a90c55-28b4-49c6-a22b-70327378c359" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <start id_arme="a8a90c55-28b4-49c6-a22b-70327378c359" />
+  <event name="Sector 1" id_arme="687a5a9b-ceef-4fb3-96a3-37209d1e46f5">
+    <!--Terrain-->
+    <create count="100" type="nebulas" nebType="1" startX="71295.0" startY="300.0" startZ="21607.0" endX="39688.0" endY="300.0" endZ="90312.0" randomRange="15000" />
+    <create count="100" type="nebulas" nebType="1" startX="64063.0" startY="-300.0" startZ="17053.0" endX="36340.0" endY="-300.0" endZ="91651.0" randomRange="15000" />
+    <create count="100" type="asteroids" startX="65670.0" startY="-300.0" startZ="32321.0" endX="36340.0" endY="-300.0" endZ="75982.0" randomRange="10000" />
+    <create count="100" type="asteroids" startX="58840.0" startY="300.0" startZ="24419.0" endX="49599.0" endY="300.0" endZ="64732.0" randomRange="10000" />
+    <!--Named Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios I" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <!--Destroy Objects-->
+    <destroy name="Helios I" />
+  </event>
+  <event name="Sector 2" id_arme="be463eb3-9079-4904-9ef5-2216f5cdfbb4">
+    <!--Terrain-->
+    <create count="150" type="nebulas" nebType="1" startX="79599.0" startY="0.0" startZ="66741.0" endX="7545.0" endY="0.0" endZ="33125.0" randomRange="10000" />
+    <create count="50" type="asteroids" startX="82545.0" startY="-400.0" startZ="35401.0" endX="66742.0" endY="0.0" endZ="57767.0" randomRange="10000" />
+    <create count="50" type="asteroids" startX="28036.0" startY="0.0" startZ="28839.0" endX="25224.0" endY="400.0" endZ="62187.0" randomRange="10000" />
+    <create count="50" type="mines" startX="65000.0" startY="0.0" startZ="66700.0" endX="35000.0" endY="0.0" endZ="66700.0" />
+    <!--Named Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios II" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="60581.0" y="0.0" z="30178.0" name="Athorn Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="50000.0" y="0.0" z="75714.0" angle="0" name="DS-1126" hullID="1000" />
+    <create type="neutral" x="33000.0" y="0.0" z="71294.0" angle="0" name="WP-48T" hullID="1052" />
+    <create type="neutral" x="67000.0" y="0.0" z="71294.0" angle="0" name="WP-92Q" hullID="1052" />
+    <set_ship_text name="Hulca Smelters" desc="Enyalius' main industrial base, processing ore and denabite from the highly productive asteroid mines in the sector." />
+    <set_ship_text name="DS-1126" desc="Unusually well-defended USFP deep space station." scan_desc="The Station Commander is a battle-tested marine who likes to give TSN ships a hard time in good fun." />
+    <!--Destroy Objects-->
+    <destroy name="Helios II" />
+    <destroy name="Athorn Gate" />
+    <destroy name="DS-1126" />
+    <destroy name="WP-48T" />
+    <destroy name="WP-92Q" />
+  </event>
+  <event name="Sector 3" id_arme="c87ddcf4-be0f-4ae1-a90f-f74d110c5343">
+    <!--Terrain-->
+    <create count="150" type="nebulas" nebType="1" startX="25224.0" startY="0.0" startZ="66071.0" endX="94465.0" endY="0.0" endZ="33794.0" randomRange="10000" />
+    <!--Named Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios III" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="68483.0" y="0.0" z="52008.0" name="Tibur Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="32590.0" y="0.0" z="46250.0" angle="0" name="Procanthi" hullID="1003" />
+    <create type="neutral" x="22545.0" y="0.0" z="42232.0" angle="0" name="Procanthi SY" hullID="1053" />
+    <set_ship_text name="Procanthi" desc="Industrial hub of the sector, fabricating a wide range of ship and station parts from ores imported from Tibur." scan_desc="The station chief is friendly to anyone willing to do business here (and pay the station fees)." />
+    <!--Destroy Objects-->
+    <destroy name="Helios III" />
+    <destroy name="Tibur Gate" />
+    <destroy name="Procanthi" />
+    <destroy name="Procanthi SY" />
+  </event>
+  <event name="Sector 4" id_arme="5a3fe667-ecaf-44b2-bb60-9ae1db0707bd">
+    <!--Terrain-->
+    <create count="40" type="nebulas" nebType="1" startX="76786.0" startY="0.0" startZ="51741.0" endX="45045.0" endY="0.0" endZ="90714.0" randomRange="10000" />
+    <create count="30" type="nebulas" nebType="1" startX="30849.0" startY="0.0" startZ="7008.0" endX="31384.0" endY="0.0" endZ="20133.0" randomRange="10000" />
+    <create count="30" type="asteroids" startX="64465.0" startY="0.0" startZ="21473.0" endX="39152.0" endY="0.0" endZ="23883.0" randomRange="8000" />
+    <create count="30" type="asteroids" startX="27367.0" startY="0.0" startZ="58839.0" endX="25893.0" endY="0.0" endZ="80803.0" randomRange="8000" />
+    <create count="30" type="asteroids" startX="9956.0" startY="0.0" startZ="7946.0" endX="18125.0" endY="0.0" endZ="17991.0" randomRange="5000" />
+    <!--Named Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios IV" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="57233.0" y="0.0" z="38348.0" name="Castor Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="45179.0" y="0.0" z="62589.0" angle="0" name="Polydeukes Market" hullID="1001" />
+    <set_ship_text name="Polydeukes Market" desc="Civilian trading post and refit station. Primarily deals in imported ores, which are stored in the large zero-gravity ore vaults." scan_desc="The station director was appointed through nepotism and is largely considered a total nut-job. The day-to-day operations are handled by the chief of staff." hailtext="(In the background, you hear someone singing very loudly and very off-key.)" />
+    <!--Destroy Objects-->
+    <destroy name="Helios IV" />
+    <destroy name="Castor Gate" />
+    <destroy name="Polydeukes Market" />
+  </event>
+  <event name="Sector 5" id_arme="3d0cb0d0-706b-4045-aabb-11d121317b36">
+    <!--Terrain-->
+    <create count="20" type="nebulas" nebType="1" startX="24554.0" startY="400.0" startZ="38883.0" endX="24554.0" endY="400.0" endZ="38883.0" randomRange="8000" />
+    <create count="15" type="nebulas" nebType="1" startX="41563.0" startY="-400.0" startZ="76116.0" endX="41563.0" endY="-400.0" endZ="76116.0" randomRange="7000" />
+    <create count="10" type="nebulas" nebType="1" startX="65000.0" startY="100.0" startZ="16517.0" endX="65000.0" endY="100.0" endZ="16517.0" randomRange="5000" />
+    <create count="10" type="nebulas" nebType="2" startX="65134.0" startY="-100.0" startZ="19196.0" endX="65134.0" endY="-100.0" endZ="19196.0" randomRange="5000" />
+    <create count="100" type="asteroids" startX="41697.0" startY="-400.0" startZ="19330.0" endX="17858.0" endY="400.0" endZ="43035.0" randomRange="15000" />
+    <create count="7" type="nebulas" nebType="3" startX="56027.0" startY="0.0" startZ="60580.0" radius="3000" randomRange="1000" />
+    <create count="30" type="nebulas" nebType="3" startX="56027.0" startY="0.0" startZ="60580.0" radius="10000" randomRange="1500" />
+    <!--Named Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios V" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="56027.0" y="0.0" z="60580.0" name="Planet Helios" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+    <create type="neutral" x="48527.0" y="0.0" z="41428.0" angle="0" name="Helios Memorial" hullID="1056" />
+    <create type="neutral" x="38705.0" y="0.0" z="49028.0" angle="0" name="Helios Habitat" hullID="1001" />
+    <set_ship_text name="Helios Habitat" desc="Civilian base originally set up to house survivors of the Helios Massacre, now a permanent habitat." scan_desc="The station is struggling to keep its population over the minimum threshold, since many inhabitants choose to emigrate." />
+    <set_ship_text name="Helios Memorial" race="USFP" class="Art Installation" desc="Art installation set up in memory of the Helios Massacre, where a Hegemony strike force used a bioweapon to make Planet Helios uninhabitable, killing millions." scan_desc="The art installation is not inhabited and has no power signature." />
+    <!--Destroy Objects-->
+    <destroy name="Helios V" />
+    <destroy name="Planet Helios" />
+    <destroy name="Helios Habitat" />
+    <destroy name="Helios Memorial" />
+  </event>
+  <event name="Sector 6" id_arme="2636494d-d1a7-4205-b5b6-6be1e8e1160f">
+    <!--Terrain-->
+    <create count="50" type="mines" startAngle="20" endAngle="160" startX="53617.0" startY="0.0" startZ="48928.0" radius="15000" />
+    <create count="50" type="mines" startAngle="200" endAngle="340" startX="53617.0" startY="0.0" startZ="48928.0" radius="15000" />
+    <create count="100" type="nebulas" nebType="1" startX="82343.0" startY="0.0" startZ="54386.0" endX="12305.0" endY="0.0" endZ="35650.0" randomRange="15000" />
+    <create count="100" type="nebulas" nebType="2" startX="80558.0" startY="0.0" startZ="41598.0" endX="17807.0" endY="0.0" endZ="50669.0" randomRange="15000" />
+    <create count="50" type="asteroids" startX="70298.0" startY="0.0" startZ="23308.0" endX="38030.0" endY="0.0" endZ="22118.0" randomRange="8000" />
+    <create count="50" type="asteroids" startX="37435.0" startY="0.0" startZ="72973.0" endX="75651.0" endY="0.0" endZ="73866.0" randomRange="8000" />
+    <create count="50" type="asteroids" startX="79963.0" startY="0.0" startZ="66579.0" endX="82194.0" endY="0.0" endZ="28066.0" randomRange="8000" />
+    <!--Named Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios VI" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="53750.0" y="0.0" z="48928.0" angle="0" name="Helios Command" hullID="1002" />
+    <create type="neutral" x="53750.0" y="0.0" z="63526.0" angle="0" name="WP-52A" hullID="1052" />
+    <create type="neutral" x="53750.0" y="0.0" z="34464.0" angle="0" name="WP-81K" hullID="1052" />
+    <!--Destroy Objects-->
+    <destroy name="Helios VI" />
+    <destroy name="Helios Command" />
+    <destroy name="WP-52A" />
+    <destroy name="WP-81K" />
+  </event>
+  <event name="Sector 7" id_arme="0f5c9736-59e8-4ca0-91cc-e0aeb47f9b5c">
+    <!--Terrain-->
+    <create count="40" type="nebulas" nebType="1" startX="22143.0" startY="0.0" startZ="54955.0" endX="48125.0" endY="0.0" endZ="5803.0" randomRange="10000" />
+    <create count="50" type="asteroids" startX="72099.0" startY="200.0" startZ="48125.0" endX="47992.0" endY="200.0" endZ="67544.0" randomRange="5000" />
+    <create count="50" type="asteroids" startX="53349.0" startY="0.0" startZ="50669.0" endX="70759.0" endY="0.0" endZ="70223.0" randomRange="5000" />
+    <create count="50" type="asteroids" startX="73706.0" startY="-200.0" startZ="48794.0" endX="81206.0" endY="-200.0" endZ="68080.0" randomRange="5000" />
+    <!--Named Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios VII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="66742.0" y="200.0" z="52946.0" angle="0" name="Semelei Processors" hullID="1003" />
+    <create type="neutral" x="50804.0" y="200.0" z="63794.0" angle="0" name="Leda Denabite" hullID="1051" />
+    <create type="neutral" x="62322.0" y="0.0" z="66205.0" angle="0" name="Nyx Denabite" hullID="1051" />
+    <create type="neutral" x="74108.0" y="-200.0" z="60044.0" angle="0" name="Brontes Ores" hullID="1050" />
+    <set_ship_text name="Semelei Processors" desc="Private industrial enterprise processing raw ore into more usable forms." scan_desc="The station chief is probably tied to organized crime." hailtext="Why yes, would you like to export some of our processed minerals?" />
+    <!--Destroy Objects-->
+    <destroy name="Helios VII" />
+    <destroy name="Semelei Processors" />
+    <destroy name="Brontes Ores" />
+    <destroy name="Nyx Denabite" />
+    <destroy name="Leda Denabite" />
+  </event>
+  <event name="Sector 8" id_arme="91e48218-d39b-422a-941d-3e2e13b74970">
+    <!--Terrain-->
+    <create count="100" type="nebulas" nebType="1" startX="73170.0" startY="0.0" startZ="71830.0" endX="17322.0" endY="0.0" endZ="53482.0" randomRange="15000" />
+    <create count="50" type="asteroids" startX="28840.0" startY="0.0" startZ="34196.0" endX="15581.0" endY="0.0" endZ="64330.0" randomRange="15000" />
+    <!--Named Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios VIII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="49331.0" y="0.0" z="56160.0" name="Atilia Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="62858.0" y="0.0" z="30312.0" angle="0" name="Zarkov Labs" hullID="1004" />
+    <set_ship_text name="Zarkov Labs" desc="Center for scientific missions in-system, doubles as gate control." scan_desc="The station chief will not shut up about weird conspiracy theories involving wandering planets." hailtext="Ming the Merciless is coming for us! He will destroy our planets! I warned them, but nobody would listen." />
+    <!--Destroy Objects-->
+    <destroy name="Helios VIII" />
+    <destroy name="Atilia Gate" />
+    <destroy name="Zarkov Labs" />
+  </event>
+  <event name="Sector 9" id_arme="e50f09b1-0ef1-4ee5-9912-69719a2ffe27">
+    <!--Terrain-->
+    <create count="50" type="asteroids" startX="47992.0" startY="0.0" startZ="79196.0" endX="93527.0" endY="0.0" endZ="66607.0" randomRange="15000" />
+    <create count="100" type="nebulas" nebType="1" startX="38884.0" startY="0.0" startZ="22410.0" endX="68884.0" endY="0.0" endZ="60580.0" randomRange="20000" />
+    <create count="100" type="nebulas" nebType="2" startX="53081.0" startY="0.0" startZ="19866.0" endX="41429.0" endY="0.0" endZ="67410.0" randomRange="20000" />
+    <!--Named Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios IX" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <!--Destroy Objects-->
+    <destroy name="Helios IX" />
+  </event>
+</mission_data>
