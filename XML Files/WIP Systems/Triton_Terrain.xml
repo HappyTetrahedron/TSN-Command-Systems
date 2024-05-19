@@ -1,0 +1,295 @@
+<mission_data version="1.0" background_id_arme="dda933ed-46a0-4818-a199-cd89928410f2" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <start id_arme="dda933ed-46a0-4818-a199-cd89928410f2" />
+  <event name="Example Sector" id_arme="4706dcf5-448b-457d-9156-d5840c59dc30">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <create count="40" type="asteroids" startX="65697.0" startY="0.0" startZ="19853.0" endX="82861.0" endY="0.0" endZ="31149.0" randomRange="6736" />
+    <create count="50" type="asteroids" startX="61810.0" startY="0.0" startZ="21613.0" endX="25722.0" endY="0.0" endZ="18679.0" randomRange="4754" />
+    <create count="10" type="nebulas" startX="72739.0" startY="0.0" startZ="33863.0" endX="56895.0" endY="0.0" endZ="24254.0" randomRange="5033" />
+    <create count="80" type="nebulas" startX="43912.0" startY="0.0" startZ="86014.0" endX="5844.0" endY="0.0" endZ="71124.0" randomRange="6392" />
+    <create count="60" type="nebulas" startX="51394.0" startY="0.0" startZ="95403.0" endX="3790.0" endY="0.0" endZ="94009.0" randomRange="4822" />
+    <create count="40" type="asteroids" startX="27189.0" startY="0.0" startZ="87334.0" endX="4597.0" endY="0.0" endZ="83667.0" randomRange="5359" />
+    <!--Sector Objects-->
+    <create type="station" x="72445.0" y="0.0" z="53447.0" angle="0" name="Loris" hullID="1001" />
+    <create type="station" x="43399.0" y="0.0" z="47139.0" angle="0" name="DS-43" hullID="1000" />
+    <create type="station" x="51174.0" y="0.0" z="61735.0" angle="0" name="M-473" hullID="1003" />
+    <create type="neutral" x="40758.0" y="0.0" z="50513.0" angle="0" name="WP-43" hullID="1052" />
+    <create type="neutral" x="27996.0" y="0.0" z="77579.0" angle="0" name="B-67" hullID="1054" />
+    <create type="genericMesh" x="82643.0" y="0.0" z="14373.0" angle="0" name="Altirin Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    <create type="genericMesh" x="71824.0" y="0.0" z="73191.0" angle="0" name="Illian (Planet)" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <!--Destroy Command-->
+    <destroy name="Loris" />
+    <destroy name="DS-43" />
+    <destroy name="M-473" />
+    <destroy name="WP-43" />
+    <destroy name="B-67" />
+    <destroy name="Altirin Gate" />
+    <destroy name="Illian (Planet)" />
+  </event>
+  <event name="Sector 1" id_arme="0bd28183-e99a-4f22-a3d0-3ec00aa3ec28">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <create count="100" type="nebulas" nebType="2" startX="86300.0" startY="0.0" startZ="31174.0" endX="24943.0" endY="0.0" endZ="98947.0" randomRange="10000" />
+    <create count="100" type="nebulas" nebType="2" startX="54943.0" startY="0.0" startZ="65546.0" endX="-39693.0" endY="0.0" endZ="166598.0" randomRange="5000" />
+    <create count="100" type="nebulas" nebType="2" startX="88229.0" startY="0.0" startZ="28016.0" endX="60072.0" endY="0.0" endZ="61417.0" randomRange="30000" />
+    <create count="25" type="mines" startAngle="70" endAngle="200" startX="24573.0" startY="0.0" startZ="39240.0" radius="15000" />
+    <!--Sector Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton I" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="24567.0" y="0.0" z="39199.0" name="Waypoint 89 Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="12327.0" y="0.0" z="30909.0" angle="0" name="WP-89" hullID="1052" />
+    <create type="neutral" x="33361.0" y="0.0" z="51228.0" angle="0" name="WP-88" hullID="1052" />
+    <!--Destroy Command-->
+    <destroy name="Triton I" />
+    <destroy name="WP-88" />
+    <destroy name="Waypoint 89 Gate" />
+    <destroy name="WP-89" />
+  </event>
+  <event name="Sector 2" id_arme="d823de2a-bafd-464f-a88d-7bd57bfc2872">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <create count="100" type="nebulas" nebType="1" startX="51701.0" startY="0.0" startZ="52186.0" endX="26102.0" endY="0.0" endZ="23157.0" randomRange="14000" />
+    <create count="100" type="nebulas" nebType="1" startX="68948.0" startY="0.0" startZ="72105.0" endX="-11186.0" endY="0.0" endZ="-17896.0" randomRange="7000" />
+    <create count="50" type="asteroids" startX="57652.0" startY="0.0" startZ="79271.0" endX="38369.0" endY="0.0" endZ="53765.0" randomRange="3000" />
+    <create count="30" type="asteroids" startX="49150.0" startY="0.0" startZ="68097.0" endX="25616.0" endY="0.0" endZ="36761.0" randomRange="6000" />
+    <create count="10" type="nebulas" nebType="1" startX="2010.0" startY="0.0" startZ="98590.0" endX="2010.0" endY="0.0" endZ="98590.0" randomRange="5000" />
+    <!--Sector Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton II" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="55952.0" y="0.0" z="64696.0" angle="0" name="I-601" hullID="1003" />
+    <create type="neutral" x="57652.0" y="0.0" z="30931.0" angle="0" name="SY-280" hullID="1053" />
+    <create type="neutral" x="24737.0" y="0.0" z="22120.0" angle="0" name="Tarnis Nebula Refinery" hullID="1051" />
+    <create type="neutral" x="32389.0" y="0.0" z="47813.0" angle="0" name="I-280" hullID="1051" />
+    <set_ship_text name="Tarnis Nebula Refinery" desc="The finest refinery for natural gases in Triton. Stop by for helium, helium-3, xenon, vaporized tobacco, many more!" />
+    <!--Destroy Command-->
+    <destroy name="Triton II" />
+    <destroy name="I-280" />
+    <destroy name="I-601" />
+    <destroy name="Tarnis Nebula Refinery" />
+    <destroy name="SY-280" />
+  </event>
+  <event name="Sector 3" id_arme="4cb15fb0-6dd7-4430-8b5b-9a7c13d3be06">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <create count="100" type="nebulas" nebType="1" startX="30567.0" startY="0.0" startZ="31417.0" endX="99534.0" endY="0.0" endZ="98461.0" randomRange="7000" />
+    <create count="70" type="nebulas" startX="33118.0" startY="0.0" startZ="31781.0" endX="81865.0" endY="0.0" endZ="81155.0" randomRange="14000" />
+    <create count="30" type="nebulas" startX="76833.0" startY="0.0" startZ="76475.0" endX="99467.0" endY="0.0" endZ="99493.0" randomRange="4000" />
+    <create count="30" type="asteroids" startX="41498.0" startY="0.0" startZ="38825.0" endX="64132.0" endY="0.0" endZ="61843.0" randomRange="4000" />
+    <create count="30" type="nebulas" startX="2268.0" startY="0.0" startZ="84372.0" endX="24902.0" endY="0.0" endZ="107390.0" randomRange="14000" />
+    <create count="30" type="nebulas" startX="1296.0" startY="0.0" startZ="96639.0" endX="23930.0" endY="0.0" endZ="119657.0" randomRange="4000" />
+    <!--Sector Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton III" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="29110.0" y="0.0" z="28137.0" angle="0" name="DS-20" hullID="1000" />
+    <create type="neutral" x="40770.0" y="0.0" z="70647.0" angle="0" name="Farosh" hullID="1001" />
+    <create type="neutral" x="47936.0" y="0.0" z="54493.0" angle="0" name="Farosh Denabite" hullID="1051" />
+    <set_ship_text name="Farosh" desc="USFP civilian station operated by the Farosh family." />
+    <set_ship_text name="Farosh Denabite" desc="Denabite refinery operated by the Farosh family. Known system-wide for their highly refined products." />
+    <!--Destroy Command-->
+    <destroy name="Triton III" />
+    <destroy name="Farosh Denabite" />
+    <destroy name="DS-20" />
+    <destroy name="Farosh" />
+  </event>
+  <event name="Sector 4" id_arme="818a73cb-d70e-46a1-b84e-035a3a070693">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <create count="100" type="nebulas" startX="92947.0" startY="0.0" startZ="102353.0" endX="64586.0" endY="0.0" endZ="69924.0" randomRange="14000" />
+    <create count="70" type="nebulas" startX="76920.0" startY="0.0" startZ="85312.0" endX="21717.0" endY="0.0" endZ="23004.0" randomRange="10000" />
+    <create count="140" type="nebulas" startX="90689.0" startY="0.0" startZ="99190.0" endX="47702.0" endY="0.0" endZ="52977.0" randomRange="25000" />
+    <create count="30" type="asteroids" startX="37733.0" startY="0.0" startZ="55344.0" endX="19557.0" endY="0.0" endZ="35992.0" randomRange="7000" />
+    <!--Sector Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton IV" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <!--Destroy Command-->
+    <destroy name="Triton IV" />
+  </event>
+  <event name="Sector 5" id_arme="9a7bcee2-aafa-45d7-9801-0808a070de3b">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <create count="10" type="nebulas" nebType="2" startX="19903.0" startY="0.0" startZ="5423.0" endX="19903.0" endY="0.0" endZ="5423.0" randomRange="5000" />
+    <create count="15" type="nebulas" nebType="2" startX="25950.0" startY="0.0" startZ="931.0" endX="25950.0" endY="0.0" endZ="931.0" randomRange="7000" />
+    <create count="15" type="nebulas" nebType="1" startX="4618.0" startY="0.0" startZ="98376.0" endX="4618.0" endY="0.0" endZ="98376.0" randomRange="5000" />
+    <!--Sector Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton V" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="77450.0" y="0.0" z="39068.0" angle="0" name="Triton Refuge" hullID="1001" />
+    <set_ship_text name="Triton Refuge" desc="Luxury refuge for wealthy USFP citizens looking to get away from everything. &quot;Care about nothing but the distant glimmering stars.&quot; 3 habitation units available." />
+    <!--Destroy Command-->
+    <destroy name="Triton V" />
+    <destroy name="Triton Refuge" />
+  </event>
+  <event name="Sector 6" id_arme="590c08a3-1df7-44ba-b6b5-e94848955091">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <create count="150" type="nebulas" nebType="1" startX="70527.0" startY="0.0" startZ="65425.0" radius="30000" randomRange="1000" />
+    <create count="200" type="nebulas" nebType="1" startX="70284.0" startY="0.0" startZ="65303.0" radius="33000" randomRange="3000" />
+    <create count="50" type="nebulas" nebType="1" startAngle="270" endAngle="330" startX="8299.0" startY="0.0" startZ="52946.0" radius="33000" randomRange="3000" />
+    <create count="50" type="nebulas" nebType="1" startAngle="120" endAngle="175" startX="59473.0" startY="0.0" startZ="5211.0" radius="33000" randomRange="3000" />
+    <create count="50" type="nebulas" nebType="1" startX="26073.0" startY="0.0" startZ="23036.0" endX="4427.0" endY="0.0" endZ="2268.0" randomRange="2000" />
+    <create count="50" type="nebulas" nebType="1" startX="44435.0" startY="0.0" startZ="40040.0" radius="10" randomRange="6000" randomSeed="2" />
+    <create count="90" type="nebulas" nebType="1" startX="95783.0" startY="0.0" startZ="94131.0" endX="95783.0" endY="0.0" endZ="94131.0" randomRange="7000" randomSeed="5" />
+    <create count="10" type="nebulas" nebType="1" startX="42470.0" startY="0.0" startZ="48906.0" endX="27509.0" endY="0.0" endZ="24251.0" randomRange="3000" />
+    <create count="20" type="nebulas" nebType="1" startX="27409.0" startY="0.0" startZ="23643.0" endX="2744.0" endY="0.0" endZ="688.0" randomRange="10000" randomSeed="1" />
+    <create count="10" type="nebulas" nebType="1" startX="86559.0" startY="0.0" startZ="95910.0" endX="86559.0" endY="0.0" endZ="95910.0" randomRange="3000" />
+    <create count="10" type="nebulas" nebType="1" startX="98583.0" startY="0.0" startZ="84251.0" endX="98583.0" endY="0.0" endZ="84251.0" randomRange="3000" />
+    <!--Sector Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton VI" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="22500.0" y="0.0" z="53524.0" angle="0" name="Cassandra Observation" hullID="1004" />
+    <create type="blackHole" x="70527.0" y="0.0" z="65303.0" name="Cassandra" />
+    <set_ship_text name="Cassandra Observation" desc="Observation and research post studying Schwarzschild phenomena on the rim of Cassandra. LOOKING FOR PhD/RESEARCH PROJECT? Contact us." />
+    <!--Destroy Command-->
+    <destroy name="Triton VI" />
+    <destroy name="Cassandra Observation" />
+    <destroy name="Cassandra" />
+  </event>
+  <event name="Sector 7" id_arme="550e264c-7717-4c94-93be-d3727e5e6b9f">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <create count="5" type="nebulas" nebType="1" startX="99177.0" startY="0.0" startZ="2266.0" endX="99177.0" endY="0.0" endZ="2266.0" randomRange="3000" />
+    <create count="50" type="nebulas" startX="78057.0" startY="0.0" startZ="76963.0" endX="7614.0" endY="0.0" endZ="2024.0" randomRange="5000" />
+    <create count="100" type="nebulas" startX="41863.0" startY="0.0" startZ="41619.0" endX="5428.0" endY="0.0" endZ="3360.0" randomRange="15000" />
+    <create count="100" type="nebulas" startX="28503.0" startY="0.0" startZ="26072.0" endX="5792.0" endY="0.0" endZ="4696.0" randomRange="20000" />
+    <create count="10" type="asteroids" startX="45110.0" startY="0.0" startZ="42834.0" endX="22399.0" endY="0.0" endZ="21458.0" randomRange="20000" />
+    <!--Sector Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton VII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="49272.0" y="0.0" z="31538.0" angle="0" name="I-402" hullID="1051" />
+    <create type="neutral" x="54859.0" y="0.0" z="36032.0" angle="0" name="SY-402" hullID="1053" />
+    <create type="neutral" x="17207.0" y="0.0" z="28016.0" angle="0" name="Denabite Derby" hullID="1051" />
+    <set_ship_text name="Denabite Derby" desc="USFP Denabite refinery, known system-wide for their unbeatable prices." />
+    <!--Destroy Command-->
+    <destroy name="Triton VII" />
+    <destroy name="SY-402" />
+    <destroy name="I-402" />
+    <destroy name="Denabite Derby" />
+  </event>
+  <event name="Sector 8" id_arme="6435dcf2-b0fe-4f5c-85ed-d758986c9cde">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <create count="20" type="nebulas" startX="99677.0" startY="0.0" startZ="19392.0" endX="84580.0" endY="0.0" endZ="323.0" randomRange="10000" />
+    <create count="10" type="nebulas" startX="99539.0" startY="0.0" startZ="9176.0" endX="92822.0" endY="0.0" endZ="860.0" randomRange="5000" />
+    <create count="20" type="nebulas" startX="100041.0" startY="0.0" startZ="36396.0" endX="70369.0" endY="0.0" endZ="931.0" randomRange="10000" />
+    <create count="10" type="mines" startAngle="280" endAngle="330" startX="38583.0" startY="0.0" startZ="39433.0" radius="15000" />
+    <create count="10" type="mines" startAngle="190" endAngle="240" startX="38462.0" startY="0.0" startZ="39433.0" radius="15000" />
+    <create count="10" type="mines" startAngle="100" endAngle="150" startX="38462.0" startY="0.0" startZ="39433.0" radius="15000" />
+    <!--Sector Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton VIII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="38219.0" y="0.0" z="39433.0" name="Tethys Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="35590.0" y="0.0" z="53822.0" angle="0" name="WP-43L" hullID="1052" />
+    <create type="neutral" x="53080.0" y="0.0" z="42662.0" angle="0" name="WP-43R" hullID="1052" />
+    <create type="neutral" x="25588.0" y="0.0" z="24129.0" angle="0" name="DS-44" hullID="1000" />
+    <set_ship_text name="DS-44" desc="USFP Military deep space base overseeing traffic at Tethys Gate." />
+    <!--Destroy Command-->
+    <destroy name="Triton VIII" />
+    <destroy name="Tethys Gate" />
+    <destroy name="WP-43R" />
+    <destroy name="DS-44" />
+    <destroy name="WP-43L" />
+  </event>
+  <event name="Sector 9" id_arme="dd399058-be9b-4fa5-bc73-f732d71cbc2b">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <create count="50" type="nebulas" startX="59474.0" startY="0.0" startZ="58987.0" endX="1953.0" endY="0.0" endZ="80.0" randomRange="5000" />
+    <create count="30" type="nebulas" startX="31782.0" startY="0.0" startZ="28987.0" endX="2318.0" endY="0.0" endZ="-405.0" randomRange="2000" />
+    <create count="20" type="nebulas" startX="5004.0" startY="0.0" startZ="3209.0" endX="5004.0" endY="0.0" endZ="3209.0" randomRange="6000" />
+    <create count="50" type="nebulas" startX="91175.0" startY="0.0" startZ="91659.0" endX="61590.0" endY="0.0" endZ="63603.0" randomRange="15000" />
+    <!--Sector Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton IX" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <!--Destroy Command-->
+    <destroy name="Triton IX" />
+  </event>
+  <event name="Sector 10" id_arme="fabf771d-9cb8-4a26-a2ad-2d09eb9583fb">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <create count="20" type="nebulas" startX="98991.0" startY="0.0" startZ="4439.0" endX="94448.0" endY="0.0" endZ="-526.0" randomRange="6000" randomSeed="3" />
+    <create count="15" type="nebulas" nebType="2" startX="1053.0" startY="0.0" startZ="44655.0" endX="12206.0" endY="0.0" endZ="32659.0" randomRange="6000" />
+    <create count="15" type="nebulas" nebType="2" startX="932.0" startY="0.0" startZ="44048.0" endX="21437.0" endY="0.0" endZ="22943.0" randomRange="3000" />
+    <create count="70" type="nebulas" startX="90324.0" startY="0.0" startZ="89473.0" endX="57595.0" endY="0.0" endZ="51336.0" randomRange="15000" />
+    <create count="70" type="nebulas" startX="96883.0" startY="0.0" startZ="97854.0" endX="34518.0" endY="0.0" endZ="24373.0" randomRange="5000" />
+    <create count="30" type="asteroids" startX="91175.0" startY="0.0" startZ="89230.0" endX="58446.0" endY="0.0" endZ="51093.0" randomRange="15000" />
+    <!--Sector Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton X" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="52430.0" y="0.0" z="64453.0" angle="0" name="I-566" hullID="1003" />
+    <!--Destroy Command-->
+    <destroy name="Triton X" />
+    <destroy name="I-566" />
+  </event>
+  <event name="Sector 11" id_arme="487b347a-ff71-4e5a-aed4-26b3a7472779">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <create count="70" type="nebulas" nebType="2" startX="53401.0" startY="0.0" startZ="99433.0" endX="99612.0" endY="0.0" endZ="42712.0" randomRange="5000" />
+    <create count="70" type="nebulas" nebType="2" startX="55102.0" startY="0.0" startZ="99554.0" endX="77993.0" endY="0.0" endZ="71254.0" randomRange="10000" />
+    <create count="70" type="nebulas" nebType="2" startX="54616.0" startY="0.0" startZ="99554.0" endX="77507.0" endY="0.0" endZ="71254.0" randomRange="30000" />
+    <create count="20" type="mines" startAngle="160" endAngle="270" startX="10806.0" startY="0.0" startZ="26265.0" radius="15000" />
+    <create count="20" type="mines" startAngle="170" endAngle="280" startX="34818.0" startY="0.0" startZ="7489.0" radius="15000" />
+    <!--Sector Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton XI" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="43806.0" y="0.0" z="42105.0" name="Charon Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="27916.0" y="0.0" z="22693.0" angle="0" name="WP-062" hullID="1052" />
+    <create type="neutral" x="13685.0" y="0.0" z="27165.0" angle="0" name="DS-62" hullID="1000" />
+    <set_ship_text name="DS-62" desc="USFP military deep space base monitoring Charon Gate." />
+    <!--Destroy Command-->
+    <destroy name="Triton XI" />
+    <destroy name="WP-062" />
+    <destroy name="DS-62" />
+    <destroy name="Charon Gate" />
+  </event>
+  <event name="Sector 12" id_arme="d4bbcf51-a0cd-4408-be1b-816e3ee7ea13">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <create count="100" type="nebulas" startX="67855.0" startY="0.0" startZ="99554.0" endX="24767.0" endY="0.0" endZ="59595.0" randomRange="15000" />
+    <create count="50" type="nebulas" startX="62268.0" startY="0.0" startZ="98704.0" endX="6184.0" endY="0.0" endZ="41619.0" randomRange="5000" />
+    <create count="10" type="asteroids" startX="67976.0" startY="0.0" startZ="98947.0" endX="24888.0" endY="0.0" endZ="58988.0" randomRange="15000" />
+    <!--Sector Objects-->
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton XII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <!--Destroy Command-->
+    <destroy name="Triton XII" />
+  </event>
+  <event name="Sector 13" id_arme="9e18495d-5b10-432e-9cfa-8aff57e41e29">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <!--Sector Objects-->
+    <!--Destroy Command-->
+  </event>
+  <event name="Sector 14" id_arme="4a809330-68a4-452d-a688-f04709dfe805">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <!--Sector Objects-->
+    <!--Destroy Command-->
+  </event>
+  <event name="Sector 15" id_arme="679fe320-3593-470a-b97c-e2a754fcf910">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <!--Sector Objects-->
+    <!--Destroy Command-->
+  </event>
+  <event name="Sector 16" id_arme="c5778c5a-e96b-497a-9a01-eefc0b2cab45">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <!--Sector Objects-->
+    <!--Destroy Command-->
+  </event>
+  <event name="Sector 17" id_arme="2a61d681-129d-461f-9d63-14b5c5105b88">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <!--Sector Objects-->
+    <!--Destroy Command-->
+  </event>
+  <event name="Sector 18" id_arme="fffdad8a-ff9a-4d15-b6fe-37ebc57299a7">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <!--Sector Objects-->
+    <!--Destroy Command-->
+  </event>
+  <event name="Sector 19" id_arme="d961c681-34bb-4075-a825-47267c99818b">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <!--Sector Objects-->
+    <!--Destroy Command-->
+  </event>
+  <event name="Sector 20" id_arme="937168b5-3e4c-443f-9abb-bc3f878eb25c">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <!--Sector Objects-->
+    <!--Destroy Command-->
+  </event>
+  <event name="Sector 21" id_arme="a4edadf9-e0cd-488f-a951-863adf1f16ec">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <!--Sector Objects-->
+    <!--Destroy Command-->
+  </event>
+  <event name="Sector 22" id_arme="da2d03f5-b442-4064-9c25-8b783c5535c7">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <!--Sector Objects-->
+    <!--Destroy Command-->
+  </event>
+  <event name="Sector 23" id_arme="99149da9-7d3b-4c96-afea-efa8ce009ca1">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <!--Sector Objects-->
+    <!--Destroy Command-->
+  </event>
+  <event name="Sector 24" id_arme="e15ad2e4-5e37-47c7-9b8f-def09d496102">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <!--Sector Objects-->
+    <!--Destroy Command-->
+  </event>
+  <event name="Sector 25" id_arme="f4c3f5d9-7349-4682-af2b-08489954348e">
+    <!--Terrain Features - Nebulae, Mines and Asteroids-->
+    <!--Sector Objects-->
+    <!--Destroy Command-->
+  </event>
+</mission_data>

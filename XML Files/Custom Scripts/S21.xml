@@ -3751,6 +3751,50 @@
 
 
 
+  <event name="S21_Tibur_3_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_not_exists name=" Tibur III " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Tibur III " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <create type="neutral" x="65061.0" y="0.0" z="23036.0" angle="125.3" name="SB-23" hullID="1054" sideValue="2" />
+    <create type="neutral" x="52187.0" y="0.0" z="26923.0" angle="268" name="SB-28" hullID="1054" sideValue="2" />
+    <create type="neutral" x="61053.0" y="0.0" z="33117.0" angle="17" name="SB-29" hullID="1054" sideValue="2" />
+
+      <set_object_property property="topSpeed" value="0" name="SB-23" />
+      <set_object_property property="surrenderChance" value="0" name="SB-23" />
+      <clear_ai name="SB-23" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="SB-23" />
+
+      <set_object_property property="topSpeed" value="0" name="SB-28" />
+      <set_object_property property="surrenderChance" value="0" name="SB-28" />
+      <clear_ai name="SB-28" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="SB-28" />
+
+      <set_object_property property="topSpeed" value="0" name="SB-29" />
+      <set_object_property property="surrenderChance" value="0" name="SB-29" />
+      <clear_ai name="SB-29" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="SB-29" />
+
+
+  </event>
+  <event name="S21_Tibur_3_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_exists name=" Tibur III " />
+    <if_variable name="Sector" comparator="NOT" value="3.0" />
+    <destroy name=" Tibur III " />
+
+      <destroy name="SB-23" />
+
+      <destroy name="SB-28" />
+
+      <destroy name="SB-29" />
+
+  </event>
+
+
+
+
   <event name="S21_Tibur_4_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="4.0" />
