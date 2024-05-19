@@ -35,6 +35,13 @@
     <destroy name="TSN Dawn" />
     <destroy name="TSN Shield" />
     <destroy name="TSN Daring" />
+    <destroy name=" TSN Verdant " />
+    <destroy name=" TSN Vengeance " />
+    <destroy name=" TSN Warspite " />
+    <destroy name=" TSN Fury " />
+    <destroy name=" TSN Dawn " />
+    <destroy name=" TSN Shield " />
+    <destroy name=" TSN Daring " />
     <destroy name="Wisdom" />
     <destroy name="Ubuntu" />
   </event>
@@ -42,8 +49,9 @@
   {% for spawnKey, ships in {
       "3": [
         "TSN Ships\+Verdant",
-        "TSN Ships\+VerdantFleet",
-        "TSN Ships\+WhispersofFreedom"
+        "TSN Ships\+WhispersofFreedom",
+        "TSN Fleets\+VerdantFleet",
+        "TSN Fleets\+VerdantForm",
       ],
       "4": [
         "Civilian USFP\+Wisdom",
@@ -67,7 +75,8 @@
     <if_variable name="CycleSpawnMenu" comparator="EQUALS" value="1.0" />
     {% for ship in [
           "TSN Ships\+Verdant",
-          "TSN Ships\+VerdantFleet",
+          "TSN Fleets\+VerdantFleet",
+          "TSN Fleets\+VerdantForm",
           "TSN Ships\+WhispersofFreedom",
           "Civilian USFP\+Wisdom",
           "Civilian USFP\+Ubuntu",
@@ -164,11 +173,16 @@
     <set_object_property property="shieldStateBack" value="130" name="TSN Verdant" />
 
     <add_ai type="SPCL_AI" name="{{ name }}" />
-    <add_ai type="CHASE_STATION" value1="5000" name="{{ name }}" />
-    <add_ai type="CHASE_AI_SHIP" value1="10000" value2="5000" name="{{ name }}" />
+    <add_ai type="CHASE_STATION" value1="0" name="{{ name }}" />
+    <add_ai type="CHASE_AI_SHIP" value1="0" value2="0" name="{{ name }}" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="{{ name }}" />
+    <add_ai type="CHASE_STATION" value1="10000" name="{{ name }}" />
+    <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="{{ name }}" />
+    <add_ai type="CHASE_PLAYER" value1="10000" value2="10000" name="{{ name }}" />
     <add_ai type="CHASE_ANGER" name="{{ name }}" />
     <add_ai type="FOLLOW_COMMS_ORDERS" name="{{ name }}" />
-    <add_ai type="LAUNCH_FIGHTERS" value1="2000" name="{{ name }}" />
+    <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="{{ name }}" />
+    <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="{{ name }}" />
 
     <set_special name="{{ name }}" ability="HET" />
     <set_special name="{{ name }}" ability="Warp" />
@@ -204,66 +218,202 @@
   </event>
   {% endfor %}
 
-  <event name="S21_VerdantFleet" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
-    <if_gm_button text="TSN Ships\+VerdantFleet" />
+
+  {% for mode in ["Fleet", "Form"] %}
+  <event name="S21_Verdant{{ mode }}" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_gm_button text="TSN Fleets\+Verdant{{ mode }}" />
 
     <!-- flagship -->
-    <create type="neutral" use_gm_position="" angle="0" name="TSN Verdant" hullID="1701" sideValue="SideValue" fleetnumber="99" />
+    <create type="neutral" use_gm_position="" angle="0" name="TSN Verdant" hullID="1701" sideValue="SideValue" fleetnumber="98" />
 
     <!-- 2 cruisers -->
-    <create type="neutral" use_gm_position="" angle="0" name="TSN Vengeance" hullID="0" sideValue="SideValue" fleetnumber="99" />
-    <create type="neutral" use_gm_position="" angle="0" name="TSN Warspite" hullID="0" sideValue="SideValue" fleetnumber="99" />
+    <create type="neutral" use_gm_position="" angle="0" name="TSN Vengeance" hullID="0" sideValue="SideValue" fleetnumber="98" />
+    <create type="neutral" use_gm_position="" angle="0" name="TSN Warspite" hullID="0" sideValue="SideValue" fleetnumber="98" />
     <!-- 3 battleships -->
-    <create type="neutral" use_gm_position="" angle="0" name="TSN Fury" hullID="2" sideValue="SideValue" fleetnumber="99" />
-    <create type="neutral" use_gm_position="" angle="0" name="TSN Dawn" hullID="2" sideValue="SideValue" fleetnumber="99" />
-    <create type="neutral" use_gm_position="" angle="0" name="TSN Shield" hullID="2" sideValue="SideValue" fleetnumber="99" />
+    <create type="neutral" use_gm_position="" angle="0" name="TSN Fury" hullID="2" sideValue="SideValue" fleetnumber="98" />
+    <create type="neutral" use_gm_position="" angle="0" name="TSN Dawn" hullID="2" sideValue="SideValue" fleetnumber="98" />
+    <create type="neutral" use_gm_position="" angle="0" name="TSN Shield" hullID="2" sideValue="SideValue" fleetnumber="98" />
     <!-- 1 scout -->
-    <create type="neutral" use_gm_position="" angle="0" name="TSN Daring" hullID="1" sideValue="SideValue" fleetnumber="99" />
+    <create type="neutral" use_gm_position="" angle="0" name="TSN Daring" hullID="1" sideValue="SideValue" fleetnumber="98" />
 
     <set_object_property property="shieldMaxStateFront" value="150" name="TSN Verdant" />
     <set_object_property property="shieldStateFront" value="150" name="TSN Verdant" />
     <set_object_property property="shieldMaxStateBack" value="130" name="TSN Verdant" />
     <set_object_property property="shieldStateBack" value="130" name="TSN Verdant" />
 
-    {% for name in ["TSN Verdant", "TSN Vengeance", "TSN Warspite", "TSN Fury", "TSN Dawn", "TSN Shield", "TSN Daring"] %}
+    {% for name in ["TSN Verdant"] %}
       <clear_ai name="{{ name }}" />
 
       <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
 
       <add_ai type="SPCL_AI" name="{{ name }}" />
-      <add_ai type="TRY_TO_BECOME_LEADER" name="{{ name }}" />
-      <add_ai type="CHASE_STATION" value1="5000" name="{{ name }}" />
-      <add_ai type="CHASE_AI_SHIP" value1="10000" value2="5000" name="{{ name }}" />
+      <add_ai type="CHASE_STATION" value1="0" name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="0" value2="0" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="{{ name }}" />
+      <add_ai type="CHASE_STATION" value1="10000" name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="10000" value2="10000" name="{{ name }}" />
       <add_ai type="CHASE_ANGER" name="{{ name }}" />
-      <add_ai type="LEADER_LEADS" name="{{ name }}" />
-      <add_ai type="FOLLOW_LEADER" name="{{ name }}" />
       <add_ai type="FOLLOW_COMMS_ORDERS" name="{{ name }}" />
-      <add_ai type="LAUNCH_FIGHTERS" value1="2000" name="{{ name }}" />
-      <set_special name="{{ name }}" ability="Warp" />
+      <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="{{ name }}" />
+
+    {% endfor %}
+
+    {% for name in ["TSN Vengeance", "TSN Warspite", "TSN Fury", "TSN Dawn", "TSN Shield", "TSN Daring", "TSN Verdant"] %}
       <set_special name="{{ name }}" ability="AntiTorp" />
       <set_special name="{{ name }}" ability="Drones" />
       <set_special name="{{ name }}" ability="HET" />
+      {% if mode != "Form" %}
+      <set_special name="{{ name }}" ability="Warp" />
+      {% endif %}
     {% endfor %}
 
     <set_special name="TSN Verdant" ship="1" /> <!-- overpowered -->
 
     <set_ship_text name="TSN Verdant" desc="TSN Athena Class."
       scan_desc="Flagship of the 2nd Space Fleet, 1st Battle Division. Commanded by Rear Adm. Min Mwenya. Specials: HET Warp AntiTorp Drones" />
-  </event>
 
-  <event name="S21_VerdantFleet_AIReset" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
-    <if_gm_button text="Ally12" />
+    <set_timer name="S21_VerdantFormationTimer" seconds="0"/>
+  </event>
+  {% endfor %}
+
+  {# approximate cosine for range [-pi/2, pi/2] #}
+  {% macro center_cos(x, pi) %}({{pi}} * {{pi}} - 4 * {{x}} * {{x}})/({{pi}} * {{pi}} + {{x}} * {{x}}){% endmacro %}
+  {# With positive sign, approximate cosine for range [-3*pi/2, -pi/2]. With negative sign, for range [pi/2, 3*pi/2] #}
+  {% macro rim_cos(x, pi, sideSign) %}(4 * {{pi}} * {{pi}} {{sideSign}} 8 * {{x}} * {{pi}} + 3 * {{x}} * {{x}})/({{x}} * {{x}} {{sideSign}} 2 * {{pi}} * {{x}} + 2 * {{pi}} * {{pi}}){% endmacro %}
+  {# With positive sign, approximate sine for range [-pi, 0]. With negative sign, for range [0, pi] #}
+  {% macro sin(x, pi, sideSign) %}(16 * {{x}} * ({{pi}} {{sideSign}} {{x}}))/(5 * {{pi}} * {{pi}} {{sideSign}} 4 * {{x}} * ({{pi}} {{sideSign}} {{x}})){% endmacro %}
+
+    {% for quadrant, data in {
+      "Q1": {
+        "sinSign": "-",
+        "angleMin": "0",
+        "angleMax": "1.57079632679",
+        "cosCenter": True,
+        "cosSign": "n/a",
+      },
+      "Q2": {
+        "sinSign": "-",
+        "angleMax": "3.1415926535989",
+        "angleMin": "1.57079632679",
+        "cosCenter": False,
+        "cosSign": "-",
+      },
+      "Q3": {
+        "sinSign": "+",
+        "angleMin": "-3.1415926535989",
+        "angleMax": "-1.57079632679",
+        "cosCenter": False,
+        "cosSign": "+",
+      },
+      "Q4": {
+        "sinSign": "+",
+        "angleMax": "0",
+        "angleMin": "-1.57079632679",
+        "cosCenter": True,
+        "cosSign": "n/a",
+      },
+    }.items() %}
+    <event name="S21_VerdantFormationUpdate_{{ quadrant }}" id_arme="5e421777-0fb0-4df4-9c81-7c160ff3f7e4" parent_id_arme="78fa2f1b-700f-4a72-8254-4be22e7c74ac">
+    <if_timer_finished name="S21_VerdantFormationTimer" />
+    <if_exists name="TSN Verdant" />
+    <if_object_property property="angle" name="TSN Verdant" comparator="GREATER_EQUAL" value="{{ data.angleMin }}" />
+    <if_object_property property="angle" name="TSN Verdant" comparator="LESS" value="{{ data.angleMax }}" />
+
+    <get_object_property property="positionX" name="TSN Verdant" variable="S21_VerdantX" />
+    <get_object_property property="positionZ" name="TSN Verdant" variable="S21_VerdantZ" />
+    <get_object_property property="deltaX" name="TSN Verdant" variable="S21_VerdantDX" />
+    <get_object_property property="deltaZ" name="TSN Verdant" variable="S21_VerdantDZ" />
+    <get_object_property property="angle" name="TSN Verdant" variable="S21_VerdantAngle" />
+    <set_variable name="S21_pi" value="3.1415926535989" />
+    <set_variable name="S21_VerdantSin" value="{{ sin("S21_VerdantAngle", "S21_pi", data.sinSign) }}" />
+    {% if data.cosCenter %}
+    <set_variable name="S21_VerdantCos" value="{{ center_cos("S21_VerdantAngle", "S21_pi") }}" />
+    {% else %}
+    <set_variable name="S21_VerdantCos" value="{{ rim_cos("S21_VerdantAngle", "S21_pi", data.cosSign) }}" />
+    {% endif %}
+
+    {% for name, offset in {
+      "TSN Vengeance": {
+        "straight": -1000,
+        "lateral": 700,
+      },
+      "TSN Warspite": {
+        "straight": -1000,
+        "lateral": -700,
+      },
+      "TSN Fury": {
+        "straight": -2000,
+        "lateral": 1400,
+      },
+      "TSN Dawn": {
+        "straight": -2000,
+        "lateral": -1400,
+      },
+      "TSN Shield": {
+        "straight": -3000,
+        "lateral": 2100,
+      },
+      "TSN Daring": {
+        "straight": -3000,
+        "lateral": -2100,
+      },
+    }.items() %}
+    <clear_ai name="{{ name }}" />
+    <add_ai type="SPCL_AI" name="{{ name }}" />
+    <add_ai type="POINT_THROTTLE" value4="2.0" value1="S21_VerdantX + 700 * S21_VerdantDX + S21_VerdantSin * {{ offset.straight }} + S21_VerdantCos * {{ offset.lateral }}" value3="S21_VerdantZ + 700 * S21_VerdantDZ + S21_VerdantCos * {{ offset.straight }} - S21_VerdantSin * {{ offset.lateral }}" name="{{ name }}" />
+    <add_ai type="DEFEND" value1="10000" value2="10000" name="{{ name }}" />
+    <add_ai type="CHASE_STATION" value1="5000" name="{{ name }}" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="3000" name="{{ name }}" />
+    <add_ai type="CHASE_ANGER" name="{{ name }}" />
+    <add_ai type="DEFEND" value1="5000" value2="5000" name="{{ name }}" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="{{ name }}" />
+    <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="{{ name }}" />
+    <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="{{ name }}" />
+    {% endfor %}
+
+    <set_timer name="S21_VerdantFormationTimer" seconds="1"/>
+  </event>
+  {% endfor %}
+
+  <event name="S21_VerdantFormationUpdate_Dissolve" id_arme="5e421777-0fb0-4df4-9c81-7c160ff3f7e4" parent_id_arme="78fa2f1b-700f-4a72-8254-4be22e7c74ac">
+    <if_timer_finished name="S21_VerdantFormationTimer" />
+    <if_not_exists name="TSN Verdant" />
     {% for name in ["TSN Verdant", "TSN Vengeance", "TSN Warspite", "TSN Fury", "TSN Dawn", "TSN Shield", "TSN Daring"] %}
       <clear_ai name="{{ name }}" />
       <add_ai type="SPCL_AI" name="{{ name }}" />
       <add_ai type="TRY_TO_BECOME_LEADER" name="{{ name }}" />
-      <add_ai type="CHASE_STATION" value1="5000" name="{{ name }}" />
-      <add_ai type="CHASE_AI_SHIP" value1="10000" value2="5000" name="{{ name }}" />
+      <add_ai type="CHASE_STATION" value1="0" name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="0" value2="0" name="{{ name }}" />
+      <add_ai type="CHASE_STATION" value1="10000" name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="10000" value2="10000" name="{{ name }}" />
       <add_ai type="CHASE_ANGER" name="{{ name }}" />
       <add_ai type="LEADER_LEADS" name="{{ name }}" />
       <add_ai type="FOLLOW_LEADER" name="{{ name }}" />
       <add_ai type="FOLLOW_COMMS_ORDERS" name="{{ name }}" />
-      <add_ai type="LAUNCH_FIGHTERS" value1="2000" name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="{{ name }}" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="{{ name }}" />
+    {% endfor %}
+  </event>
+
+  <event name="S21_VerdantFleet_AIReset" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_gm_button text="Ally12" />
+    {% for name in ["TSN Verdant"] %}
+      <clear_ai name="{{ name }}" />
+      <add_ai type="SPCL_AI" name="{{ name }}" />
+      <add_ai type="CHASE_STATION" value1="0" name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="0" value2="0" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="{{ name }}" />
+      <add_ai type="CHASE_STATION" value1="10000" name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="10000" value2="10000" name="{{ name }}" />
+      <add_ai type="CHASE_ANGER" name="{{ name }}" />
+      <add_ai type="FOLLOW_COMMS_ORDERS" name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="{{ name }}" />
     {% endfor %}
   </event>
 
