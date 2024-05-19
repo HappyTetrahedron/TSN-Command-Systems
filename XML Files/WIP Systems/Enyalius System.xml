@@ -69,7 +69,7 @@
     <!--Named Objects-->
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Enyalius V" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <create type="neutral" x="22947.0" y="0.0" z="49866.0" angle="0" name="Rysdak Markets" hullID="1001" />
-    <create type="neutral" x="50000.0" y="0.0" z="50000.0" angle="0" name="Enyalia Command" hullID="1002" />
+    <create type="neutral" x="50000.0" y="0.0" z="50000.0" angle="0" name="Enyalius Command" hullID="1002" />
     <create type="neutral" x="50000.0" y="0.0" z="65000.0" angle="0" name="WP-33J" hullID="1052" />
     <create type="neutral" x="50000.0" y="0.0" z="35000.0" angle="0" name="WP-82W" hullID="1052" />
     <set_ship_text name="Rysdak Markets" desc="Central trading post for all traffic transiting Enyalius." />

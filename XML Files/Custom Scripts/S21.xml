@@ -105,7 +105,7 @@
   </event>
 
 
-  <event name="Keloi Gitosz" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+  <event name="S21_Keloi Gitosz" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="Single Hegemony\+KeloiGitos" />
     <create type="enemy" use_gm_position="" angle="0" name="Keloi Gitosz" hullID="2002" sideValue="SideValue" fleetnumber="-1" />
 
@@ -2839,6 +2839,122 @@
       <clear_ai name="Astral Agora" />
     </event>
 
+    <event name="S21_Tibur_Interstellar Spas" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Interstellar Spas" />
+      <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Interstellar Spas" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Interstellar Spas" />
+    </event>
+
+
+
+
+    <event name="S21_Enyalius_Kashawn Trading" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Kashawn Trading" />
+      <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Kashawn Trading" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Kashawn Trading" />
+    </event>
+
+    <event name="S21_Enyalius_Kalnath Research" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Kalnath Research" />
+      <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Kalnath Research" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Kalnath Research" />
+    </event>
+
+    <event name="S21_Enyalius_Rysdak Markets" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Rysdak Markets" />
+      <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Rysdak Markets" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Rysdak Markets" />
+    </event>
+
+    <event name="S21_Enyalius_SY-852" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="SY-852" />
+      <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="SY-852" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="SY-852" />
+    </event>
+
+    <event name="S21_Enyalius_Idrissa Idyl" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Idrissa Idyl" />
+      <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Idrissa Idyl" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Idrissa Idyl" />
+    </event>
+
+    <event name="S21_Enyalius_Hulca Smelters" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Hulca Smelters" />
+      <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Hulca Smelters" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Hulca Smelters" />
+    </event>
+
+    <event name="S21_Enyalius_Simnex Denabite" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Simnex Denabite" />
+      <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Simnex Denabite" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Simnex Denabite" />
+    </event>
+
+    <event name="S21_Enyalius_Wronkin Ores" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Wronkin Ores" />
+      <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Wronkin Ores" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Wronkin Ores" />
+    </event>
+
+    <event name="S21_Enyalius_Adrath Mining" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Adrath Mining" />
+      <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Adrath Mining" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Adrath Mining" />
+    </event>
+
+    <event name="S21_Enyalius_Drazma Mining" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Drazma Mining" />
+      <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Drazma Mining" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Drazma Mining" />
+    </event>
+
+
+    <event name="S21_Enyalius_DestroyVanir Gate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Vanir Gate" />
+      <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
+      <destroy name="Vanir Gate" />
+    </event>
+
+    <event name="S21_Enyalius_DestroyESN Yuroman" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="ESN Yuroman" />
+      <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
+      <destroy name="ESN Yuroman" />
+    </event>
+
+    <event name="S21_Enyalius_DestroyCapitol Base" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Capitol Base" />
+      <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
+      <destroy name="Capitol Base" />
+    </event>
+
+    <event name="S21_Enyalius_DestroyEnyalius Command" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Enyalius Command" />
+      <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
+      <destroy name="Enyalius Command" />
+    </event>
+
+    <event name="S21_Enyalius_DestroyESN St James" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="ESN St James" />
+      <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
+      <destroy name="ESN St James" />
+    </event>
+
+    <event name="S21_Enyalius_DestroyYknik Spas" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Yknik Spas" />
+      <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
+      <destroy name="Yknik Spas" />
+    </event>
 
 
 
@@ -3680,6 +3796,15 @@
 
   </event>
 
+  <event name="S21_Tibur_1_CustomObjectsJumpRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Tibur System" comparator="NOT" value="2.0" />
+    <if_exists name=" Tibur I " />
+    <destroy name=" Tibur I " />
+
+      <destroy name="WP-11G" />
+
+  </event>
+
 
 
 
@@ -3782,6 +3907,19 @@
     <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
     <if_exists name=" Tibur III " />
     <if_variable name="Sector" comparator="NOT" value="3.0" />
+    <destroy name=" Tibur III " />
+
+      <destroy name="SB-23" />
+
+      <destroy name="SB-28" />
+
+      <destroy name="SB-29" />
+
+  </event>
+
+  <event name="S21_Tibur_3_CustomObjectsJumpRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Tibur System" comparator="NOT" value="2.0" />
+    <if_exists name=" Tibur III " />
     <destroy name=" Tibur III " />
 
       <destroy name="SB-23" />
@@ -3922,6 +4060,15 @@
 
   </event>
 
+  <event name="S21_Tibur_5_CustomObjectsJumpRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Tibur System" comparator="NOT" value="2.0" />
+    <if_exists name=" Tibur V " />
+    <destroy name=" Tibur V " />
+
+      <destroy name="Keltor Immigration Control" />
+
+  </event>
+
 
 
 
@@ -3975,6 +4122,228 @@
 
   </event>
 
+  <event name="S21_Tibur_8_CustomObjectsJumpRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Tibur System" comparator="NOT" value="2.0" />
+    <if_exists name=" Tibur VIII " />
+    <destroy name=" Tibur VIII " />
+
+      <destroy name="Tibur Secondary Refugee Camp" />
+
+      <destroy name="USFP Pancreas" />
+
+      <destroy name="Base 66" />
+
+  </event>
+
+
+
+
+  <event name="S21_Helios_5_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
+    <if_variable name="Helios System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_not_exists name=" Helios V " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Helios V " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <create type="neutral" x="29474.0" y="0.0" z="46477.0" angle="0" name="Helios Refugee Camp" hullID="1000" sideValue="2" />
+    <create type="neutral" x="23037.0" y="0.0" z="45506.0" angle="224" name="Base 56" hullID="1004" sideValue="2" />
+    <create type="neutral" x="30324.0" y="0.0" z="50728.0" angle="90" name="Base 57" hullID="1050" sideValue="2" />
+    <create type="neutral" x="23037.0" y="0.0" z="52307.0" angle="58.6" name="Base 59" hullID="1056" sideValue="2" />
+    <create type="neutral" x="28988.0" y="0.0" z="54736.0" angle="0" name="Emergency Base 50" hullID="1600" sideValue="2" />
+    <create type="neutral" x="22187.0" y="0.0" z="56923.0" angle="0" name="Emergency Base 55" hullID="1503" sideValue="2" />
+    <create type="neutral" x="26073.0" y="0.0" z="60202.0" angle="0" name="Emergency Base 56" hullID="1504" sideValue="2" />
+    <create type="neutral" x="16357.0" y="0.0" z="46842.0" angle="58.6" name="WP-74" hullID="1052" sideValue="2" />
+    <create type="neutral" x="29474.0" y="0.0" z="40890.0" angle="58.6" name="WP-27" hullID="1052" sideValue="2" />
+    <create type="neutral" x="19393.0" y="0.0" z="63117.0" angle="58.6" name="WP-292" hullID="1052" sideValue="2" />
+
+      <set_object_property property="topSpeed" value="0" name="Helios Refugee Camp" />
+      <set_object_property property="surrenderChance" value="0" name="Helios Refugee Camp" />
+      <clear_ai name="Helios Refugee Camp" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Helios Refugee Camp" />
+
+      <set_object_property property="topSpeed" value="0" name="Base 56" />
+      <set_object_property property="surrenderChance" value="0" name="Base 56" />
+      <clear_ai name="Base 56" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Base 56" />
+
+      <set_object_property property="topSpeed" value="0" name="Base 57" />
+      <set_object_property property="surrenderChance" value="0" name="Base 57" />
+      <clear_ai name="Base 57" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Base 57" />
+
+      <set_object_property property="topSpeed" value="0" name="Base 59" />
+      <set_object_property property="surrenderChance" value="0" name="Base 59" />
+      <clear_ai name="Base 59" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Base 59" />
+
+      <set_object_property property="topSpeed" value="0" name="Emergency Base 50" />
+      <set_object_property property="surrenderChance" value="0" name="Emergency Base 50" />
+      <clear_ai name="Emergency Base 50" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Emergency Base 50" />
+
+      <set_object_property property="topSpeed" value="0" name="Emergency Base 55" />
+      <set_object_property property="surrenderChance" value="0" name="Emergency Base 55" />
+      <clear_ai name="Emergency Base 55" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Emergency Base 55" />
+
+      <set_object_property property="topSpeed" value="0" name="Emergency Base 56" />
+      <set_object_property property="surrenderChance" value="0" name="Emergency Base 56" />
+      <clear_ai name="Emergency Base 56" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Emergency Base 56" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-74" />
+      <set_object_property property="surrenderChance" value="0" name="WP-74" />
+      <clear_ai name="WP-74" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="WP-74" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-27" />
+      <set_object_property property="surrenderChance" value="0" name="WP-27" />
+      <clear_ai name="WP-27" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="WP-27" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-292" />
+      <set_object_property property="surrenderChance" value="0" name="WP-292" />
+      <clear_ai name="WP-292" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="WP-292" />
+
+    <add_ai type="POINT_THROTTLE" value1="28988.0" value2="0.0" value3="54736.0" value4="0.0" name="Emergency Base 50" />
+    <add_ai type="POINT_THROTTLE" value1="22187.0" value2="0.0" value3="56923.0" value4="0.0" name="Emergency Base 55" />
+    <add_ai type="POINT_THROTTLE" value1="26073.0" value2="0.0" value3="60202.0" value4="0.0" name="Emergency Base 56" />
+
+    <set_ship_text name="Helios Refugee Camp" desc="A USFP base, hastily constructed to house refugees from occupied systems." />
+
+    <set_ship_text name="Base 56" desc="A USFP base, hastily constructed to house refugees from occupied systems." />
+
+    <set_ship_text name="Base 57" desc="A USFP base, hastily constructed to house refugees from occupied systems." />
+
+    <set_ship_text name="Base 59" desc="A USFP base, hastily constructed to house refugees from occupied systems." />
+
+
+    <set_ship_text name="Emergency Base 50" desc="Ship anchored in place to serve as an emergency base and house refugees." />
+
+    <set_ship_text name="Emergency Base 55" desc="Ship anchored in place to serve as an emergency base and house refugees." />
+
+    <set_ship_text name="Emergency Base 56" desc="Ship anchored in place to serve as an emergency base and house refugees." />
+
+
+  </event>
+  <event name="S21_Helios_5_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Helios System" comparator="EQUALS" value="2.0" />
+    <if_exists name=" Helios V " />
+    <if_variable name="Sector" comparator="NOT" value="5.0" />
+    <destroy name=" Helios V " />
+
+      <destroy name="Helios Refugee Camp" />
+
+      <destroy name="Base 56" />
+
+      <destroy name="Base 57" />
+
+      <destroy name="Base 59" />
+
+      <destroy name="Emergency Base 50" />
+
+      <destroy name="Emergency Base 55" />
+
+      <destroy name="Emergency Base 56" />
+
+      <destroy name="WP-74" />
+
+      <destroy name="WP-27" />
+
+      <destroy name="WP-292" />
+
+  </event>
+
+
+
+
+  <event name="S21_Helios_6_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
+    <if_variable name="Helios System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_not_exists name=" Helios VI " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Helios VI " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <create count="70" type="mines" startAngle="-50" endAngle="50" startX="53280.0" startY="0.0" startZ="49028.0" radius="25000" />
+    <create count="70" type="mines" startAngle="130" endAngle="230" startX="53280.0" startY="0.0" startZ="49028.0" radius="25000" />
+    <create type="neutral" x="33361.0" y="0.0" z="38704.0" angle="0" name="WP-22T" hullID="1052" sideValue="2" />
+    <create type="neutral" x="34090.0" y="0.0" z="59352.0" angle="0" name="WP-38F" hullID="1052" sideValue="2" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-22T" />
+      <set_object_property property="surrenderChance" value="0" name="WP-22T" />
+      <clear_ai name="WP-22T" />
+      <set_special name="WP-22T" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="WP-22T" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="WP-22T" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="WP-22T" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="WP-22T" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-38F" />
+      <set_object_property property="surrenderChance" value="0" name="WP-38F" />
+      <clear_ai name="WP-38F" />
+      <set_special name="WP-38F" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="WP-38F" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="WP-38F" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="WP-38F" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="WP-38F" />
+
+
+  </event>
+  <event name="S21_Helios_6_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Helios System" comparator="EQUALS" value="2.0" />
+    <if_exists name=" Helios VI " />
+    <if_variable name="Sector" comparator="NOT" value="6.0" />
+    <destroy name=" Helios VI " />
+
+      <destroy name="WP-22T" />
+
+      <destroy name="WP-38F" />
+
+  </event>
+
+
+
+
+  <event name="S21_Enyalius_8_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
+    <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_not_exists name=" Enyalius VIII " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Enyalius VIII " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <create count="25" type="mines" startAngle="130" endAngle="230" startX="49879.0" startY="0.0" startZ="33481.0" radius="15000" />
+    <create count="25" type="mines" startAngle="130" endAngle="230" startX="15992.0" startY="0.0" startZ="33360.0" radius="15000" />
+    <create count="14" type="mines" startAngle="170" endAngle="230" startX="83037.0" startY="0.0" startZ="32995.0" radius="15000" />
+    <create type="enemy" x="66812.0" y="0.0" z="41497.0" angle="0" name="Defense Platform C" hullID="1005" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="32875.0" y="0.0" z="41255.0" angle="0" name="Defense Platform H" hullID="1005" sideValue="1" fleetnumber="-1" />
+
+      <set_object_property property="topSpeed" value="0" name="Defense Platform H" />
+      <set_object_property property="surrenderChance" value="0" name="Defense Platform H" />
+      <clear_ai name="Defense Platform H" />
+      <set_special name="Defense Platform H" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="Defense Platform H" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Defense Platform H" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Defense Platform H" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Defense Platform H" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="2000" name="Defense Platform H" />
+
+
+      <set_object_property property="topSpeed" value="0" name="Defense Platform C" />
+      <set_object_property property="surrenderChance" value="0" name="Defense Platform C" />
+      <clear_ai name="Defense Platform C" />
+      <set_ship_text name="Defense Platform C" desc="Construction site. Non-functional." scan_desc="Estimated construction time: 0.4 years" />
+
+
+  </event>
+  <event name="S21_Enyalius_8_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
+    <if_exists name=" Enyalius VIII " />
+    <if_variable name="Sector" comparator="NOT" value="8.0" />
+    <destroy name=" Enyalius VIII " />
+
+      <destroy name="Defense Platform C" />
+
+      <destroy name="Defense Platform H" />
+
+  </event>
 
 
 </mission_data>

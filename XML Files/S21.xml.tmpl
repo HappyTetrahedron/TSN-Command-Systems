@@ -89,7 +89,7 @@
   </event>
 
   {% for name in ["Keloi Gitosz"] %}
-  <event name="{{ name }}" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+  <event name="S21_{{ name }}" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="Single Hegemony\+KeloiGitos" />
     <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="2002" sideValue="SideValue" fleetnumber="-1" />
 
@@ -813,7 +813,30 @@
               "destroy": [
               ],
               "desolate": [
-                "Astral Agora"
+                "Astral Agora",
+                "Interstellar Spas"
+              ],
+          },
+          "Enyalius": {
+              "destroy": [
+                "Vanir Gate",
+                "ESN Yuroman",
+                "Capitol Base",
+                "Enyalius Command",
+                "ESN St James",
+                "Yknik Spas",
+              ],
+              "desolate": [
+                "Kashawn Trading",
+                "Kalnath Research",
+                "Rysdak Markets",
+                "SY-852",
+                "Idrissa Idyl",
+                "Hulca Smelters",
+                "Simnex Denabite",
+                "Wronkin Ores",
+                "Adrath Mining",
+                "Drazma Mining",
               ],
           },
           "Template": {
@@ -1123,7 +1146,7 @@
       <clear_ai name="{{ name }}" />
       <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="{{ name }}" />
     {% endfor %}
-  {{ destroyEvent('Tibur', 1, 'I', ["WP-11G"]) }}
+  {{ destroyEvent('Tibur', 1, 'I', ["WP-11G"], True) }}
 
   {{ createEvent('Tibur', 2, 'II') }}
     <create count="25" type="mines" startAngle="10" endAngle="280" startX="48786.0" startY="0.0" startZ="64817.0" radius="7000" />
@@ -1158,7 +1181,7 @@
       <clear_ai name="{{ name }}" />
       <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="{{ name }}" />
     {% endfor %}
-  {{ destroyEvent('Tibur', 3, 'III', ["SB-23", "SB-28", "SB-29"]) }}
+  {{ destroyEvent('Tibur', 3, 'III', ["SB-23", "SB-28", "SB-29"], True) }}
 
   {{ createEvent('Tibur', 4, 'IV') }}
     <create type="neutral" x="51579.0" y="0.0" z="48299.0" angle="0" name="Tibur Refugee Camp" hullID="1000" sideValue="2" />
@@ -1193,7 +1216,7 @@
 
   {{ createEvent('Tibur', 5, 'V') }}
     <create type="neutral" x="47571.0" y="0.0" z="42955.0" angle="0" name="Keltor Immigration Control" hullID="1001" sideValue="2" />
-  {{ destroyEvent('Tibur', 5, 'V', ["Keltor Immigration Control"]) }}
+  {{ destroyEvent('Tibur', 5, 'V', ["Keltor Immigration Control"], True) }}
 
   {{ createEvent('Tibur', 8, 'VIII') }}
     <create type="neutral" x="35790.0" y="0.0" z="44412.0" angle="0" name="Tibur Secondary Refugee Camp" hullID="1001" sideValue="2" />
@@ -1212,6 +1235,75 @@
     {% for name in ["USFP Pancreas"] %}
     <set_ship_text name="{{ name }}" desc="Ship anchored in place to serve as an emergency base and house refugees." />
     {% endfor %}
-  {{ destroyEvent('Tibur', 8, 'VIII', ["Tibur Secondary Refugee Camp", "USFP Pancreas", "Base 66"]) }}
+  {{ destroyEvent('Tibur', 8, 'VIII', ["Tibur Secondary Refugee Camp", "USFP Pancreas", "Base 66"], True) }}
 
+  {{ createEvent('Helios', 5, 'V') }}
+    <create type="neutral" x="29474.0" y="0.0" z="46477.0" angle="0" name="Helios Refugee Camp" hullID="1000" sideValue="2" />
+    <create type="neutral" x="23037.0" y="0.0" z="45506.0" angle="224" name="Base 56" hullID="1004" sideValue="2" />
+    <create type="neutral" x="30324.0" y="0.0" z="50728.0" angle="90" name="Base 57" hullID="1050" sideValue="2" />
+    <create type="neutral" x="23037.0" y="0.0" z="52307.0" angle="58.6" name="Base 59" hullID="1056" sideValue="2" />
+    <create type="neutral" x="28988.0" y="0.0" z="54736.0" angle="0" name="Emergency Base 50" hullID="1600" sideValue="2" />
+    <create type="neutral" x="22187.0" y="0.0" z="56923.0" angle="0" name="Emergency Base 55" hullID="1503" sideValue="2" />
+    <create type="neutral" x="26073.0" y="0.0" z="60202.0" angle="0" name="Emergency Base 56" hullID="1504" sideValue="2" />
+    <create type="neutral" x="16357.0" y="0.0" z="46842.0" angle="58.6" name="WP-74" hullID="1052" sideValue="2" />
+    <create type="neutral" x="29474.0" y="0.0" z="40890.0" angle="58.6" name="WP-27" hullID="1052" sideValue="2" />
+    <create type="neutral" x="19393.0" y="0.0" z="63117.0" angle="58.6" name="WP-292" hullID="1052" sideValue="2" />
+    {% for name in ["Helios Refugee Camp", "Base 56", "Base 57", "Base 59", "Emergency Base 50", "Emergency Base 55", "Emergency Base 56", "WP-74", "WP-27", "WP-292"] %}
+      <set_object_property property="topSpeed" value="0" name="{{ name }}" />
+      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+      <clear_ai name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="{{ name }}" />
+    {% endfor %}
+    <add_ai type="POINT_THROTTLE" value1="28988.0" value2="0.0" value3="54736.0" value4="0.0" name="Emergency Base 50" />
+    <add_ai type="POINT_THROTTLE" value1="22187.0" value2="0.0" value3="56923.0" value4="0.0" name="Emergency Base 55" />
+    <add_ai type="POINT_THROTTLE" value1="26073.0" value2="0.0" value3="60202.0" value4="0.0" name="Emergency Base 56" />
+    {% for name in ["Helios Refugee Camp", "Base 56", "Base 57", "Base 59"] %}
+    <set_ship_text name="{{ name }}" desc="A USFP base, hastily constructed to house refugees from occupied systems." />
+    {% endfor %}
+    {% for name in ["Emergency Base 50", "Emergency Base 55", "Emergency Base 56"] %}
+    <set_ship_text name="{{ name }}" desc="Ship anchored in place to serve as an emergency base and house refugees." />
+    {% endfor %}
+  {{ destroyEvent('Helios', 5, 'V', ["Helios Refugee Camp", "Base 56", "Base 57", "Base 59", "Emergency Base 50", "Emergency Base 55", "Emergency Base 56", "WP-74", "WP-27", "WP-292"]) }}
+
+  {{ createEvent('Helios', 6, 'VI') }}
+    <create count="70" type="mines" startAngle="-50" endAngle="50" startX="53280.0" startY="0.0" startZ="49028.0" radius="25000" />
+    <create count="70" type="mines" startAngle="130" endAngle="230" startX="53280.0" startY="0.0" startZ="49028.0" radius="25000" />
+    <create type="neutral" x="33361.0" y="0.0" z="38704.0" angle="0" name="WP-22T" hullID="1052" sideValue="2" />
+    <create type="neutral" x="34090.0" y="0.0" z="59352.0" angle="0" name="WP-38F" hullID="1052" sideValue="2" />
+    {% for name in ["WP-22T", "WP-38F"] %}
+      <set_object_property property="topSpeed" value="0" name="{{ name }}" />
+      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+      <clear_ai name="{{ name }}" />
+      <set_special name="{{ name }}" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="{{ name }}" />
+    {% endfor %}
+  {{ destroyEvent('Helios', 6, 'VI', ["WP-22T", "WP-38F"]) }}
+
+  {{ createEvent('Enyalius', 8, 'VIII') }}
+    <create count="25" type="mines" startAngle="130" endAngle="230" startX="49879.0" startY="0.0" startZ="33481.0" radius="15000" />
+    <create count="25" type="mines" startAngle="130" endAngle="230" startX="15992.0" startY="0.0" startZ="33360.0" radius="15000" />
+    <create count="14" type="mines" startAngle="170" endAngle="230" startX="83037.0" startY="0.0" startZ="32995.0" radius="15000" />
+    <create type="enemy" x="66812.0" y="0.0" z="41497.0" angle="0" name="Defense Platform C" hullID="1005" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="32875.0" y="0.0" z="41255.0" angle="0" name="Defense Platform H" hullID="1005" sideValue="1" fleetnumber="-1" />
+    {% for name in ["Defense Platform H"] %}
+      <set_object_property property="topSpeed" value="0" name="{{ name }}" />
+      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+      <clear_ai name="{{ name }}" />
+      <set_special name="{{ name }}" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="{{ name }}" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="2000" name="{{ name }}" />
+    {% endfor %}
+    {% for name in ["Defense Platform C"] %}
+      <set_object_property property="topSpeed" value="0" name="{{ name }}" />
+      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+      <clear_ai name="{{ name }}" />
+      <set_ship_text name="{{ name }}" desc="Construction site. Non-functional." scan_desc="Estimated construction time: 0.4 years" />
+    {% endfor %}
+  {{ destroyEvent('Enyalius', 8, 'VIII', ["Defense Platform C", "Defense Platform H"]) }}
 </mission_data>
