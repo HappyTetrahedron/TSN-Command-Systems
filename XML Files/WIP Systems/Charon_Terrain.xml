@@ -133,6 +133,8 @@
     <create count="10" type="asteroids" startX="91175.0" startY="0.0" startZ="96396.0" endX="73564.0" endY="0.0" endZ="81215.0" randomRange="5000" />
     <create count="30" type="mines" startX="77814.0" startY="0.0" startZ="38380.0" endX="57814.0" endY="0.0" endZ="38380.0" />
     <create count="30" type="mines" startX="47814.0" startY="0.0" startZ="38380.0" endX="47814.0" endY="0.0" endZ="58380.0" />
+    <create count="100" type="nebulas" nebType="2" startX="24889.0" startY="0.0" startZ="31884.0" endX="-1972.0" endY="0.0" endZ="8952.0" randomRange="20000" />
+    <create count="35" type="nebulas" nebType="1" startX="21822.0" startY="0.0" startZ="31501.0" endX="-5039.0" endY="0.0" endZ="8569.0" randomRange="10000" />
     <!--Sector Objects-->
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Charon VII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <create type="genericMesh" x="67976.0" y="0.0" z="48299.0" name="Triton Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
