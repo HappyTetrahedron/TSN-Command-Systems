@@ -1175,6 +1175,12 @@
     <create type="neutral" x="65061.0" y="0.0" z="23036.0" angle="125.3" name="SB-23" hullID="1054" sideValue="2" />
     <create type="neutral" x="52187.0" y="0.0" z="26923.0" angle="268" name="SB-28" hullID="1054" sideValue="2" />
     <create type="neutral" x="61053.0" y="0.0" z="33117.0" angle="17" name="SB-29" hullID="1054" sideValue="2" />
+    <create count="5" type="mines" startX="70858.0" startY="0.0" startZ="5863.0" endX="60959.0" endY="0.0" endZ="1360.0" randomRange="90" />
+    <create count="4" type="mines" startAngle="295" endAngle="325" startX="61039.0" startY="0.0" startZ="21984.0" radius="19000" randomRange="100" />
+    <create count="10" type="mines" startX="53632.0" startY="0.0" startZ="8450.0" endX="37718.0" endY="0.0" endZ="23200.0" randomRange="130" />
+    <create count="10" type="mines" startAngle="110" endAngle="180" startX="59287.0" startY="0.0" startZ="28596.0" radius="18000" randomRange="100" />
+    <create count="4" type="mines" startAngle="96" endAngle="117" startX="67589.0" startY="0.0" startZ="21091.0" radius="29000" randomRange="100" />
+ 
     {% for name in ["SB-23", "SB-28", "SB-29"] %}
       <set_object_property property="topSpeed" value="0" name="{{ name }}" />
       <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
