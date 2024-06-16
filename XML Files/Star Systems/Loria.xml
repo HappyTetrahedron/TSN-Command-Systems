@@ -4,7 +4,7 @@
     <set_variable name="Coordinate Y" value="562.0" integer="yes" />
     <set_variable name="Alignment" value="USFP" integer="yes" />
   </start>
-  <folder_arme name="Loria System" id_arme="5aafddc1-e70d-40e1-b872-d8494ffd8e98" />
+  <folder_arme name="Loria System" id_arme="5aafddc1-e70d-40e1-b872-d8494ffd8e98" expanded_arme="" />
   <folder_arme name="Loria Settings" id_arme="ffcf1a16-893d-4a3b-b006-403b3374067c" parent_id_arme="5aafddc1-e70d-40e1-b872-d8494ffd8e98" />
   <folder_arme name="Loria Menu" id_arme="22a66b71-1df2-45ee-8eda-9da6108be998" parent_id_arme="ffcf1a16-893d-4a3b-b006-403b3374067c" />
   <event name="Loria Active" id_arme="337134ea-f9d6-433b-9cce-8a40014d2f9b" parent_id_arme="22a66b71-1df2-45ee-8eda-9da6108be998">
@@ -141,7 +141,7 @@
     <set_variable name="Loria System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-  <folder_arme name="Loria Sector II" id_arme="e887bc5f-398a-4b23-a291-5ad2de429229" parent_id_arme="5aafddc1-e70d-40e1-b872-d8494ffd8e98" />
+  <folder_arme name="Loria Sector II" id_arme="e887bc5f-398a-4b23-a291-5ad2de429229" parent_id_arme="5aafddc1-e70d-40e1-b872-d8494ffd8e98" expanded_arme="" />
   <event name="Create Loria Sector II" id_arme="886fa335-b555-4556-a51a-dc4e21e810d8" parent_id_arme="e887bc5f-398a-4b23-a291-5ad2de429229">
     <if_timer_finished name="Transition" />
     <if_variable name="Loria System" comparator="EQUALS" value="1.0" />
@@ -166,7 +166,7 @@
     <create count="40" type="asteroids" startX="49634.0" startY="0.0" startZ="75378.0" endX="26309.0" endY="0.0" endZ="56454.0" randomRange="5439" />
     <create count="10" type="asteroids" startX="30416.0" startY="0.0" startZ="49779.0" endX="22714.0" endY="0.0" endZ="45892.0" randomRange="7251" />
   </event>
-  <folder_arme name="Navigation" id_arme="30d551e8-c1fa-40f4-b420-ad9c2d143b6e" parent_id_arme="e887bc5f-398a-4b23-a291-5ad2de429229" />
+  <folder_arme name="Navigation" id_arme="30d551e8-c1fa-40f4-b420-ad9c2d143b6e" parent_id_arme="e887bc5f-398a-4b23-a291-5ad2de429229" expanded_arme="" />
   <event name="Transition to Sector III" id_arme="f0044381-731a-4baa-896a-1f502db7d73c" parent_id_arme="30d551e8-c1fa-40f4-b420-ad9c2d143b6e">
     <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
@@ -1070,7 +1070,7 @@
     <set_variable name="Loria System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-  <folder_arme name="Loria Sector VIII" id_arme="d9961ffc-bf59-4620-a1b9-7282f3001502" parent_id_arme="5aafddc1-e70d-40e1-b872-d8494ffd8e98" />
+  <folder_arme name="Loria Sector VIII" id_arme="d9961ffc-bf59-4620-a1b9-7282f3001502" parent_id_arme="5aafddc1-e70d-40e1-b872-d8494ffd8e98" expanded_arme="" />
   <event name="Create Loria Sector VIII" id_arme="d6c6373d-160d-4aa8-845c-11f54fe7f4ac" parent_id_arme="d9961ffc-bf59-4620-a1b9-7282f3001502">
     <if_timer_finished name="Transition" />
     <if_variable name="Loria System" comparator="EQUALS" value="1.0" />
@@ -1094,7 +1094,7 @@
     <create count="10" type="nebulas" startX="2910.0" startY="0.0" startZ="67163.0" endX="2910.0" endY="0.0" endZ="87188.0" randomRange="3185" />
     <create count="10" type="nebulas" startX="9952.0" startY="0.0" startZ="44352.0" endX="8191.0" endY="0.0" endZ="68190.0" randomRange="8105" />
   </event>
-  <folder_arme name="Navigation" id_arme="aa6680f3-6cf9-4455-b1e8-25f247b696d4" parent_id_arme="d9961ffc-bf59-4620-a1b9-7282f3001502" />
+  <folder_arme name="Navigation" id_arme="aa6680f3-6cf9-4455-b1e8-25f247b696d4" parent_id_arme="d9961ffc-bf59-4620-a1b9-7282f3001502" expanded_arme="" />
   <event name="Transition to Sector VII" id_arme="52f0762e-f588-4e5d-a6de-79da8d6f5b07" parent_id_arme="aa6680f3-6cf9-4455-b1e8-25f247b696d4">
     <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
@@ -1150,7 +1150,188 @@
     <set_variable name="Sector" value="11.0" integer="yes" />
     <set_variable name="Loria System" value="3.0" integer="yes" />
   </event>
-  <folder_arme name="Sector Entities" id_arme="ebe3dabf-1ca7-4f30-af8b-dd73b3fde327" parent_id_arme="d9961ffc-bf59-4620-a1b9-7282f3001502" />
+  <folder_arme name="System - Jump Gate Settings" id_arme="3e34a907-d489-4e50-9013-9e4b7de857d0" parent_id_arme="aa6680f3-6cf9-4455-b1e8-25f247b696d4" expanded_arme="" />
+  <event name="Gate Offline" id_arme="5fb7a7a6-5d11-4c20-ac25-dfeb6c92734e" parent_id_arme="3e34a907-d489-4e50-9013-9e4b7de857d0">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="Enyalius Gate" />
+  </event>
+  <folder_arme name="Tracking System" id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc" parent_id_arme="3e34a907-d489-4e50-9013-9e4b7de857d0" />
+  <event name="Ship1 Activation Range" id_arme="a6ad1f0e-8d07-40f3-be5c-b8cddc4719d4" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="0" name2="Enyalius Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship1" value="1.0" />
+  </event>
+  <event name="Ship1 Out of Range" id_arme="77b6d436-d515-46b7-a519-c170b8e68dc7" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="0" name2="Enyalius Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship1" value="0.0" />
+  </event>
+  <event name="Ship2 Activation Range" id_arme="04c7f140-7816-403c-a234-12cdf13c1222" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="1" name2="Enyalius Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship2" value="1.0" />
+  </event>
+  <event name="Ship2 Out of Range" id_arme="e4c4086b-3327-4a40-a877-d4efb8002bf9" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="1" name2="Enyalius Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship2" value="0.0" />
+  </event>
+  <event name="Ship3 Activation Range" id_arme="0e07da67-738a-41c9-bd02-30300a2ea692" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="2" name2="Enyalius Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship3" value="1.0" />
+  </event>
+  <event name="Ship3 Out of Range" id_arme="dfdd9b22-c16b-43ed-ae75-174df1fc9f32" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="2" name2="Enyalius Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship3" value="0.0" />
+  </event>
+  <event name="Ship4 Activation Range" id_arme="4b81b0d3-9fc9-43fe-8a66-eda946f6c6bc" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="3" name2="Enyalius Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship4" value="1.0" />
+  </event>
+  <event name="Ship4 Out of Range" id_arme="286d9ea1-fe7c-4c2d-a89d-b82b93bcc840" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="3" name2="Enyalius Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship4" value="0.0" />
+  </event>
+  <event name="Ship5 Activation Range" id_arme="615c153b-6c99-4143-9777-34b41d3ea9ee" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="4" name2="Enyalius Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship5" value="1.0" />
+  </event>
+  <event name="Ship5 Out of Range" id_arme="b6f5688a-a2da-4267-845f-12cc88c02d26" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="4" name2="Enyalius Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship5" value="0.0" />
+  </event>
+  <event name="Ship6 Activation Range" id_arme="14e6d3ba-612c-4b73-a8af-432acb2d9a28" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="5" name2="Enyalius Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship6" value="1.0" />
+  </event>
+  <event name="Ship6 Out of Range" id_arme="94d313d3-d965-4507-a994-47b4dbe9a1ca" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="5" name2="Enyalius Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship6" value="0.0" />
+  </event>
+  <event name="Ship7 Activation Range" id_arme="564315bd-fff8-41de-b85a-3c1bf5873336" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="6" name2="Enyalius Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship7" value="1.0" />
+  </event>
+  <event name="Ship7 Out of Range" id_arme="5e443e5c-d50e-4050-93b5-7b7e3b35eb05" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="6" name2="Enyalius Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship7" value="0.0" />
+  </event>
+  <event name="Ship8 Activation Range" id_arme="3663d095-86b4-480d-aa1a-3570ba4f4725" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="7" name2="Enyalius Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship8" value="1.0" />
+  </event>
+  <event name="Ship8 Out of Range" id_arme="4b44b801-50c3-424e-b33d-0cbcec8230c0" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="7" name2="Enyalius Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship8" value="0.0" />
+  </event>
+  <event name="Gate Online" id_arme="b5360176-4634-4fa4-a360-33a4a49f98c7" parent_id_arme="3e34a907-d489-4e50-9013-9e4b7de857d0">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="Enyalius Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated" id_arme="09d8c96d-1645-4ce1-a9fe-66e9f73418d3" parent_id_arme="3e34a907-d489-4e50-9013-9e4b7de857d0">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="Loria System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Loria to Enyalius" value="1.0" />
+    <set_variable name="Enyalius System" value="1.0" />
+    <set_variable name="Sector" value="8.0" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="Gate System" value="0.0" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="ebe3dabf-1ca7-4f30-af8b-dd73b3fde327" parent_id_arme="d9961ffc-bf59-4620-a1b9-7282f3001502" expanded_arme="" />
   <event name="Generate Sector Entities" id_arme="d2081652-0926-4ded-85b6-d8699d46105a" parent_id_arme="ebe3dabf-1ca7-4f30-af8b-dd73b3fde327">
     <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="8" />
@@ -1164,6 +1345,7 @@
     <create type="neutral" x="50268.0" y="0.0" z="27633.0" angle="0" name="Rockaway Metallurgy" hullID="1050" sideValue="sectorSide" />
     <create type="neutral" x="32724.0" y="0.0" z="22812.0" angle="0" name="Taylor Denabite" hullID="1051" sideValue="sectorSide" />
     <create type="neutral" x="76786.0" y="0.0" z="46517.0" angle="0" name="Immigration" hullID="1001" sideValue="sectorSide" />
+    <create type="genericMesh" x="55208.0" y="0.0" z="64401.0" name="Enyalius Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
     <set_variable name="MissionCode" value="1.0" />
@@ -1187,6 +1369,29 @@
     <destroy name="Immigration" />
     <set_variable name="Loria System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <event name="Arrival From Enyalius" id_arme="a737b2a9-0ac0-4d31-a6ab-b500e64de6ad" parent_id_arme="5aafddc1-e70d-40e1-b872-d8494ffd8e98">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Enyalius to Loria" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="Enyalius Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="Enyalius Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="Enyalius Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="Enyalius Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="Enyalius Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="Enyalius Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="Enyalius Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="Enyalius Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="Enyalius to Loria" value="0.0" />
   </event>
   <folder_arme name="Loria Sector IX" id_arme="eef2d753-81bb-410b-99bd-ea927f07b2a4" parent_id_arme="5aafddc1-e70d-40e1-b872-d8494ffd8e98" />
   <event name="Create Loria Sector IX" id_arme="f9d7b30d-eaac-4f14-a9bf-f1d3b7b523e8" parent_id_arme="eef2d753-81bb-410b-99bd-ea927f07b2a4">

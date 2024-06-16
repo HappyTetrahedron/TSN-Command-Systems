@@ -236,6 +236,7 @@
 
 
 
+
   <event name="S21_VerdantFleet" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="TSN Fleets\+VerdantFleet" />
 
@@ -252,10 +253,45 @@
     <!-- 1 scout -->
     <create type="neutral" use_gm_position="" angle="0" name="TSN Daring" hullID="1" sideValue="SideValue" fleetnumber="98" />
 
-    <set_object_property property="shieldMaxStateFront" value="150" name="TSN Verdant" />
-    <set_object_property property="shieldStateFront" value="150" name="TSN Verdant" />
-    <set_object_property property="shieldMaxStateBack" value="130" name="TSN Verdant" />
-    <set_object_property property="shieldStateBack" value="130" name="TSN Verdant" />
+
+    <set_object_property property="shieldMaxStateFront" value="1050" name="TSN Verdant" />
+    <set_object_property property="shieldStateFront" value="1050" name="TSN Verdant" />
+    <set_object_property property="shieldMaxStateBack" value="930" name="TSN Verdant" />
+    <set_object_property property="shieldStateBack" value="930" name="TSN Verdant" />
+
+    <set_object_property property="shieldMaxStateFront" value="260" name="TSN Vengeance" />
+    <set_object_property property="shieldStateFront" value="260" name="TSN Vengeance" />
+    <set_object_property property="shieldMaxStateBack" value="260" name="TSN Vengeance" />
+    <set_object_property property="shieldStateBack" value="260" name="TSN Vengeance" />
+
+    <set_object_property property="shieldMaxStateFront" value="260" name="TSN Warspite" />
+    <set_object_property property="shieldStateFront" value="260" name="TSN Warspite" />
+    <set_object_property property="shieldMaxStateBack" value="260" name="TSN Warspite" />
+    <set_object_property property="shieldStateBack" value="260" name="TSN Warspite" />
+
+
+    <set_object_property property="shieldMaxStateFront" value="630" name="TSN Fury" />
+    <set_object_property property="shieldStateFront" value="630" name="TSN Fury" />
+    <set_object_property property="shieldMaxStateBack" value="380" name="TSN Fury" />
+    <set_object_property property="shieldStateBack" value="380" name="TSN Fury" />
+
+    <set_object_property property="shieldMaxStateFront" value="630" name="TSN Dawn" />
+    <set_object_property property="shieldStateFront" value="630" name="TSN Dawn" />
+    <set_object_property property="shieldMaxStateBack" value="380" name="TSN Dawn" />
+    <set_object_property property="shieldStateBack" value="380" name="TSN Dawn" />
+
+    <set_object_property property="shieldMaxStateFront" value="630" name="TSN Shield" />
+    <set_object_property property="shieldStateFront" value="630" name="TSN Shield" />
+    <set_object_property property="shieldMaxStateBack" value="380" name="TSN Shield" />
+    <set_object_property property="shieldStateBack" value="380" name="TSN Shield" />
+
+
+    <set_object_property property="shieldMaxStateFront" value="150" name="TSN Daring" />
+    <set_object_property property="shieldStateFront" value="150" name="TSN Daring" />
+    <set_object_property property="shieldMaxStateBack" value="150" name="TSN Daring" />
+    <set_object_property property="shieldStateBack" value="150" name="TSN Daring" />
+
+
 
 
       <clear_ai name="TSN Verdant" />
@@ -351,10 +387,45 @@
     <!-- 1 scout -->
     <create type="neutral" use_gm_position="" angle="0" name="TSN Daring" hullID="1" sideValue="SideValue" fleetnumber="98" />
 
-    <set_object_property property="shieldMaxStateFront" value="150" name="TSN Verdant" />
-    <set_object_property property="shieldStateFront" value="150" name="TSN Verdant" />
-    <set_object_property property="shieldMaxStateBack" value="130" name="TSN Verdant" />
-    <set_object_property property="shieldStateBack" value="130" name="TSN Verdant" />
+
+    <set_object_property property="shieldMaxStateFront" value="1050" name="TSN Verdant" />
+    <set_object_property property="shieldStateFront" value="1050" name="TSN Verdant" />
+    <set_object_property property="shieldMaxStateBack" value="930" name="TSN Verdant" />
+    <set_object_property property="shieldStateBack" value="930" name="TSN Verdant" />
+
+    <set_object_property property="shieldMaxStateFront" value="260" name="TSN Vengeance" />
+    <set_object_property property="shieldStateFront" value="260" name="TSN Vengeance" />
+    <set_object_property property="shieldMaxStateBack" value="260" name="TSN Vengeance" />
+    <set_object_property property="shieldStateBack" value="260" name="TSN Vengeance" />
+
+    <set_object_property property="shieldMaxStateFront" value="260" name="TSN Warspite" />
+    <set_object_property property="shieldStateFront" value="260" name="TSN Warspite" />
+    <set_object_property property="shieldMaxStateBack" value="260" name="TSN Warspite" />
+    <set_object_property property="shieldStateBack" value="260" name="TSN Warspite" />
+
+
+    <set_object_property property="shieldMaxStateFront" value="630" name="TSN Fury" />
+    <set_object_property property="shieldStateFront" value="630" name="TSN Fury" />
+    <set_object_property property="shieldMaxStateBack" value="380" name="TSN Fury" />
+    <set_object_property property="shieldStateBack" value="380" name="TSN Fury" />
+
+    <set_object_property property="shieldMaxStateFront" value="630" name="TSN Dawn" />
+    <set_object_property property="shieldStateFront" value="630" name="TSN Dawn" />
+    <set_object_property property="shieldMaxStateBack" value="380" name="TSN Dawn" />
+    <set_object_property property="shieldStateBack" value="380" name="TSN Dawn" />
+
+    <set_object_property property="shieldMaxStateFront" value="630" name="TSN Shield" />
+    <set_object_property property="shieldStateFront" value="630" name="TSN Shield" />
+    <set_object_property property="shieldMaxStateBack" value="380" name="TSN Shield" />
+    <set_object_property property="shieldStateBack" value="380" name="TSN Shield" />
+
+
+    <set_object_property property="shieldMaxStateFront" value="150" name="TSN Daring" />
+    <set_object_property property="shieldStateFront" value="150" name="TSN Daring" />
+    <set_object_property property="shieldMaxStateBack" value="150" name="TSN Daring" />
+    <set_object_property property="shieldStateBack" value="150" name="TSN Daring" />
+
+
 
 
       <clear_ai name="TSN Verdant" />
@@ -939,6 +1010,127 @@
       <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Verdant" />
       <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="TSN Verdant" />
       <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="TSN Verdant" />
+
+      <clear_ai name="TSN Vengeance" />
+      <add_ai type="SPCL_AI" name="TSN Vengeance" />
+      <add_ai type="CHASE_STATION" value1="0" name="TSN Vengeance" />
+      <add_ai type="CHASE_AI_SHIP" value1="0" value2="0" name="TSN Vengeance" />
+      <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="TSN Vengeance" />
+      <add_ai type="CHASE_STATION" value1="10000" name="TSN Vengeance" />
+      <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="TSN Vengeance" />
+      <add_ai type="CHASE_PLAYER" value1="10000" value2="10000" name="TSN Vengeance" />
+      <add_ai type="CHASE_ANGER" name="TSN Vengeance" />
+      <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Vengeance" />
+      <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="TSN Vengeance" />
+      <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="TSN Vengeance" />
+
+      <clear_ai name="TSN Warspite" />
+      <add_ai type="SPCL_AI" name="TSN Warspite" />
+      <add_ai type="CHASE_STATION" value1="0" name="TSN Warspite" />
+      <add_ai type="CHASE_AI_SHIP" value1="0" value2="0" name="TSN Warspite" />
+      <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="TSN Warspite" />
+      <add_ai type="CHASE_STATION" value1="10000" name="TSN Warspite" />
+      <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="TSN Warspite" />
+      <add_ai type="CHASE_PLAYER" value1="10000" value2="10000" name="TSN Warspite" />
+      <add_ai type="CHASE_ANGER" name="TSN Warspite" />
+      <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Warspite" />
+      <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="TSN Warspite" />
+      <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="TSN Warspite" />
+
+      <clear_ai name="TSN Fury" />
+      <add_ai type="SPCL_AI" name="TSN Fury" />
+      <add_ai type="CHASE_STATION" value1="0" name="TSN Fury" />
+      <add_ai type="CHASE_AI_SHIP" value1="0" value2="0" name="TSN Fury" />
+      <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="TSN Fury" />
+      <add_ai type="CHASE_STATION" value1="10000" name="TSN Fury" />
+      <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="TSN Fury" />
+      <add_ai type="CHASE_PLAYER" value1="10000" value2="10000" name="TSN Fury" />
+      <add_ai type="CHASE_ANGER" name="TSN Fury" />
+      <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Fury" />
+      <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="TSN Fury" />
+      <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="TSN Fury" />
+
+      <clear_ai name="TSN Dawn" />
+      <add_ai type="SPCL_AI" name="TSN Dawn" />
+      <add_ai type="CHASE_STATION" value1="0" name="TSN Dawn" />
+      <add_ai type="CHASE_AI_SHIP" value1="0" value2="0" name="TSN Dawn" />
+      <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="TSN Dawn" />
+      <add_ai type="CHASE_STATION" value1="10000" name="TSN Dawn" />
+      <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="TSN Dawn" />
+      <add_ai type="CHASE_PLAYER" value1="10000" value2="10000" name="TSN Dawn" />
+      <add_ai type="CHASE_ANGER" name="TSN Dawn" />
+      <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Dawn" />
+      <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="TSN Dawn" />
+      <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="TSN Dawn" />
+
+      <clear_ai name="TSN Shield" />
+      <add_ai type="SPCL_AI" name="TSN Shield" />
+      <add_ai type="CHASE_STATION" value1="0" name="TSN Shield" />
+      <add_ai type="CHASE_AI_SHIP" value1="0" value2="0" name="TSN Shield" />
+      <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="TSN Shield" />
+      <add_ai type="CHASE_STATION" value1="10000" name="TSN Shield" />
+      <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="TSN Shield" />
+      <add_ai type="CHASE_PLAYER" value1="10000" value2="10000" name="TSN Shield" />
+      <add_ai type="CHASE_ANGER" name="TSN Shield" />
+      <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Shield" />
+      <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="TSN Shield" />
+      <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="TSN Shield" />
+
+      <clear_ai name="TSN Daring" />
+      <add_ai type="SPCL_AI" name="TSN Daring" />
+      <add_ai type="CHASE_STATION" value1="0" name="TSN Daring" />
+      <add_ai type="CHASE_AI_SHIP" value1="0" value2="0" name="TSN Daring" />
+      <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="TSN Daring" />
+      <add_ai type="CHASE_STATION" value1="10000" name="TSN Daring" />
+      <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="TSN Daring" />
+      <add_ai type="CHASE_PLAYER" value1="10000" value2="10000" name="TSN Daring" />
+      <add_ai type="CHASE_ANGER" name="TSN Daring" />
+      <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Daring" />
+      <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="TSN Daring" />
+      <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="TSN Daring" />
+
+  </event>
+
+  <event name="S21_VerdantFleet_PlotArmor" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_gm_button text="Ally11" />
+
+    <set_object_property property="shieldMaxStateFront" value="1050" name="TSN Verdant" />
+    <set_object_property property="shieldStateFront" value="1050" name="TSN Verdant" />
+    <set_object_property property="shieldMaxStateBack" value="930" name="TSN Verdant" />
+    <set_object_property property="shieldStateBack" value="930" name="TSN Verdant" />
+
+    <set_object_property property="shieldMaxStateFront" value="260" name="TSN Vengeance" />
+    <set_object_property property="shieldStateFront" value="260" name="TSN Vengeance" />
+    <set_object_property property="shieldMaxStateBack" value="260" name="TSN Vengeance" />
+    <set_object_property property="shieldStateBack" value="260" name="TSN Vengeance" />
+
+    <set_object_property property="shieldMaxStateFront" value="260" name="TSN Warspite" />
+    <set_object_property property="shieldStateFront" value="260" name="TSN Warspite" />
+    <set_object_property property="shieldMaxStateBack" value="260" name="TSN Warspite" />
+    <set_object_property property="shieldStateBack" value="260" name="TSN Warspite" />
+
+
+    <set_object_property property="shieldMaxStateFront" value="630" name="TSN Fury" />
+    <set_object_property property="shieldStateFront" value="630" name="TSN Fury" />
+    <set_object_property property="shieldMaxStateBack" value="380" name="TSN Fury" />
+    <set_object_property property="shieldStateBack" value="380" name="TSN Fury" />
+
+    <set_object_property property="shieldMaxStateFront" value="630" name="TSN Dawn" />
+    <set_object_property property="shieldStateFront" value="630" name="TSN Dawn" />
+    <set_object_property property="shieldMaxStateBack" value="380" name="TSN Dawn" />
+    <set_object_property property="shieldStateBack" value="380" name="TSN Dawn" />
+
+    <set_object_property property="shieldMaxStateFront" value="630" name="TSN Shield" />
+    <set_object_property property="shieldStateFront" value="630" name="TSN Shield" />
+    <set_object_property property="shieldMaxStateBack" value="380" name="TSN Shield" />
+    <set_object_property property="shieldStateBack" value="380" name="TSN Shield" />
+
+
+    <set_object_property property="shieldMaxStateFront" value="150" name="TSN Daring" />
+    <set_object_property property="shieldStateFront" value="150" name="TSN Daring" />
+    <set_object_property property="shieldMaxStateBack" value="150" name="TSN Daring" />
+    <set_object_property property="shieldStateBack" value="150" name="TSN Daring" />
+
 
   </event>
 
@@ -2445,13 +2637,6 @@
       <clear_ai name="Cholander Ores" />
     </event>
 
-    <event name="S21_Mria_Crescent Denabite" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Crescent Denabite" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Crescent Denabite" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Crescent Denabite" />
-    </event>
-
     <event name="S21_Mria_Djakinti" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Djakinti" />
       <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
@@ -2478,13 +2663,6 @@
       <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
       <set_ship_text name="Imidri Mining" scan_desc="No life signs. No power signature." hailtext="No response." />
       <clear_ai name="Imidri Mining" />
-    </event>
-
-    <event name="S21_Mria_Jetel" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Jetel" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Jetel" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Jetel" />
     </event>
 
     <event name="S21_Mria_Kazu" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -2515,13 +2693,6 @@
       <clear_ai name="Oophedran" />
     </event>
 
-    <event name="S21_Mria_Opal Ores" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Opal Ores" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Opal Ores" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Opal Ores" />
-    </event>
-
     <event name="S21_Mria_Paragusan" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Paragusan" />
       <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
@@ -2541,13 +2712,6 @@
       <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
       <set_ship_text name="Pretara" scan_desc="No life signs. No power signature." hailtext="No response." />
       <clear_ai name="Pretara" />
-    </event>
-
-    <event name="S21_Mria_Redeymo Ores" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Redeymo Ores" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Redeymo Ores" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Redeymo Ores" />
     </event>
 
     <event name="S21_Mria_Roshtic Market" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -2571,55 +2735,6 @@
       <clear_ai name="Tergi" />
     </event>
 
-    <event name="S21_Mria_DS-795" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-795" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-795" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-795" />
-    </event>
-
-    <event name="S21_Mria_DS-506" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-506" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-506" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-506" />
-    </event>
-
-    <event name="S21_Mria_DS-441" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-441" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-441" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-441" />
-    </event>
-
-    <event name="S21_Mria_DS-459" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-459" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-459" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-459" />
-    </event>
-
-    <event name="S21_Mria_DS-900" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-900" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-900" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-900" />
-    </event>
-
-    <event name="S21_Mria_DS-881" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-881" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-881" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-881" />
-    </event>
-
-    <event name="S21_Mria_DS-521" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="DS-521" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="DS-521" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="DS-521" />
-    </event>
-
     <event name="S21_Mria_Goldone Industries" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Goldone Industries" />
       <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
@@ -2639,13 +2754,6 @@
       <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
       <set_ship_text name="Oppia" scan_desc="No life signs. No power signature." hailtext="No response." />
       <clear_ai name="Oppia" />
-    </event>
-
-    <event name="S21_Mria_Tossey Fabricants" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Tossey Fabricants" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Tossey Fabricants" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Tossey Fabricants" />
     </event>
 
     <event name="S21_Mria_Zildi Systems" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -2672,12 +2780,6 @@
       <if_exists name="Inidabi Institute" />
       <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
       <destroy name="Inidabi Institute" />
-    </event>
-
-    <event name="S21_Mria_DestroyCapara Processors" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Capara Processors" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Capara Processors" />
     </event>
 
     <event name="S21_Mria_DestroyElite Refining" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -2764,12 +2866,6 @@
       <destroy name="Mrir Authority" />
     </event>
 
-    <event name="S21_Mria_DestroyMria Shipyards" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Mria Shipyards" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Mria Shipyards" />
-    </event>
-
     <event name="S21_Mria_DestroyPrecious Mining" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Precious Mining" />
       <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
@@ -2780,12 +2876,6 @@
       <if_exists name="Jeketa Ores" />
       <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
       <destroy name="Jeketa Ores" />
-    </event>
-
-    <event name="S21_Mria_DestroyCapitol City" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Capitol City" />
-      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-      <destroy name="Capitol City" />
     </event>
 
     <event name="S21_Mria_DestroyAyala Trading Post" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -2822,6 +2912,18 @@
       <if_exists name="WP-62A" />
       <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
       <destroy name="WP-62A" />
+    </event>
+
+    <event name="S21_Mria_DestroyJetel" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Jetel" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Jetel" />
+    </event>
+
+    <event name="S21_Mria_DestroyKhoros Gate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Khoros Gate" />
+      <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
+      <destroy name="Khoros Gate" />
     </event>
 
     <event name="S21_Mria_DestroyWP-87B" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -2898,11 +3000,11 @@
       <clear_ai name="Simnex Denabite" />
     </event>
 
-    <event name="S21_Enyalius_Wronkin Ores" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-      <if_exists name="Wronkin Ores" />
+    <event name="S21_Enyalius_Wrokin Ores" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Wrokin Ores" />
       <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
-      <set_ship_text name="Wronkin Ores" scan_desc="No life signs. No power signature." hailtext="No response." />
-      <clear_ai name="Wronkin Ores" />
+      <set_ship_text name="Wrokin Ores" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Wrokin Ores" />
     </event>
 
     <event name="S21_Enyalius_Adrath Mining" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -3650,125 +3752,6 @@
 
 
 
-  <event name="S21_Mria_2_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
-    <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
-    <if_not_exists name=" Mria II " />
-    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Mria II " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
-
-    <create type="enemy" x="20000.0" y="0.0" z="51457.0" angle="0" name=" Mria Shipyards " hullID="1005" sideValue="1" fleetnumber="-1" />
-    <create type="enemy" x="60324.0" y="0.0" z="59838.0" angle="0" name="Relay a6" hullID="1352" sideValue="1" fleetnumber="-1" />
-    <create type="enemy" x="39798.0" y="0.0" z="60202.0" angle="0" name="Relay 7f" hullID="1352" sideValue="1" fleetnumber="-1" />
-    <create type="enemy" x="47693.0" y="0.0" z="46234.0" angle="0" name="Capara Base" hullID="1005" sideValue="1" fleetnumber="-1" />
-
-      <set_object_property property="topSpeed" value="0" name=" Mria Shipyards " />
-      <set_object_property property="surrenderChance" value="0" name=" Mria Shipyards " />
-      <clear_ai name=" Mria Shipyards " />
-      <set_special name=" Mria Shipyards " ship="-1" captain="-1" ability="Drones" />
-      <add_ai type="SPCL_AI" name=" Mria Shipyards " />
-      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name=" Mria Shipyards " />
-      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name=" Mria Shipyards " />
-      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name=" Mria Shipyards " />
-
-      <set_object_property property="topSpeed" value="0" name="Capara Base" />
-      <set_object_property property="surrenderChance" value="0" name="Capara Base" />
-      <clear_ai name="Capara Base" />
-      <set_special name="Capara Base" ship="-1" captain="-1" ability="Drones" />
-      <add_ai type="SPCL_AI" name="Capara Base" />
-      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Capara Base" />
-      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Capara Base" />
-      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Capara Base" />
-
-
-      <set_object_property property="topSpeed" value="0" name="Relay a6" />
-      <set_object_property property="surrenderChance" value="0" name="Relay a6" />
-      <clear_ai name="Relay a6" />
-
-      <set_object_property property="topSpeed" value="0" name="Relay 7f" />
-      <set_object_property property="surrenderChance" value="0" name="Relay 7f" />
-      <clear_ai name="Relay 7f" />
-
-
-  </event>
-  <event name="S21_Mria_2_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-    <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-    <if_exists name=" Mria II " />
-    <if_variable name="Sector" comparator="NOT" value="2.0" />
-    <destroy name=" Mria II " />
-
-      <destroy name=" Mria Shipyards " />
-
-      <destroy name="Capara Base" />
-
-      <destroy name="Relay a6" />
-
-      <destroy name="Relay 7f" />
-
-  </event>
-
-
-
-
-  <event name="S21_Mria_9_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
-    <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-    <if_variable name="Sector" comparator="EQUALS" value="9.0" />
-    <if_not_exists name=" Mria IX " />
-    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Mria IX " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
-
-    <create type="enemy" x="40891.0" y="0.0" z="24979.0" angle="0" name=" Capitol City " hullID="1001" sideValue="1" fleetnumber="-1" />
-    <create type="enemy" x="53887.0" y="0.0" z="30445.0" angle="0" name="Mria Supervision" hullID="1005" sideValue="1" fleetnumber="-1" />
-    <create type="enemy" x="27409.0" y="0.0" z="53886.0" angle="0" name="WP-Elson" hullID="1058" sideValue="1" fleetnumber="-1" />
-    <set_ship_text name="WP-Elson" desc="A USFP civilian base hastily retrofitted into a Hegemony weapon station of sorts." />
-
-      <set_object_property property="topSpeed" value="0" name=" Capitol City " />
-      <set_object_property property="surrenderChance" value="0" name=" Capitol City " />
-      <clear_ai name=" Capitol City " />
-      <set_special name=" Capitol City " ship="-1" captain="-1" ability="Drones" />
-      <set_special name=" Capitol City " ship="-1" captain="-1" ability="AntiTorp" />
-      <add_ai type="SPCL_AI" name=" Capitol City " />
-      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name=" Capitol City " />
-      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name=" Capitol City " />
-      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name=" Capitol City " />
-
-      <set_object_property property="topSpeed" value="0" name="WP-Elson" />
-      <set_object_property property="surrenderChance" value="0" name="WP-Elson" />
-      <clear_ai name="WP-Elson" />
-      <set_special name="WP-Elson" ship="-1" captain="-1" ability="Drones" />
-      <set_special name="WP-Elson" ship="-1" captain="-1" ability="AntiTorp" />
-      <add_ai type="SPCL_AI" name="WP-Elson" />
-      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="WP-Elson" />
-      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="WP-Elson" />
-      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="WP-Elson" />
-
-      <set_object_property property="topSpeed" value="0" name="Mria Supervision" />
-      <set_object_property property="surrenderChance" value="0" name="Mria Supervision" />
-      <clear_ai name="Mria Supervision" />
-      <set_special name="Mria Supervision" ship="-1" captain="-1" ability="Drones" />
-      <set_special name="Mria Supervision" ship="-1" captain="-1" ability="AntiTorp" />
-      <add_ai type="SPCL_AI" name="Mria Supervision" />
-      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Mria Supervision" />
-      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Mria Supervision" />
-      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Mria Supervision" />
-
-
-  </event>
-  <event name="S21_Mria_9_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-    <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
-    <if_exists name=" Mria IX " />
-    <if_variable name="Sector" comparator="NOT" value="9.0" />
-    <destroy name=" Mria IX " />
-
-      <destroy name=" Capitol City " />
-
-      <destroy name="WP-Elson" />
-
-      <destroy name="Mria Supervision" />
-
-  </event>
-
-
-
-
   <event name="S21_Tibur_1_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="1.0" />
@@ -3886,7 +3869,7 @@
     <create type="neutral" x="52187.0" y="0.0" z="26923.0" angle="268" name="SB-28" hullID="1054" sideValue="2" />
     <create type="neutral" x="61053.0" y="0.0" z="33117.0" angle="17" name="SB-29" hullID="1054" sideValue="2" />
     <create count="5" type="mines" startX="70858.0" startY="0.0" startZ="5863.0" endX="60959.0" endY="0.0" endZ="1360.0" randomRange="90" />
-    <create count:wanted="4" type="mines" startAngle="295" endAngle="325" startX="61039.0" startY="0.0" startZ="21984.0" radius="19000" randomRange="100" />
+    <create count="4" type="mines" startAngle="295" endAngle="325" startX="61039.0" startY="0.0" startZ="21984.0" radius="19000" randomRange="100" />
     <create count="10" type="mines" startX="53632.0" startY="0.0" startZ="8450.0" endX="37718.0" endY="0.0" endZ="23200.0" randomRange="130" />
     <create count="10" type="mines" startAngle="110" endAngle="180" startX="59287.0" startY="0.0" startZ="28596.0" radius="18000" randomRange="100" />
     <create count="4" type="mines" startAngle="96" endAngle="117" startX="67589.0" startY="0.0" startZ="21091.0" radius="29000" randomRange="100" />

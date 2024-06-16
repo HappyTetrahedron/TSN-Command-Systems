@@ -218,6 +218,30 @@
   </event>
   {% endfor %}
 
+  {% macro verdantFleetShields() %}
+    <set_object_property property="shieldMaxStateFront" value="1050" name="TSN Verdant" />
+    <set_object_property property="shieldStateFront" value="1050" name="TSN Verdant" />
+    <set_object_property property="shieldMaxStateBack" value="930" name="TSN Verdant" />
+    <set_object_property property="shieldStateBack" value="930" name="TSN Verdant" />
+    {% for name in ["TSN Vengeance", "TSN Warspite"] %}
+    <set_object_property property="shieldMaxStateFront" value="260" name="{{ name }}" />
+    <set_object_property property="shieldStateFront" value="260" name="{{ name }}" />
+    <set_object_property property="shieldMaxStateBack" value="260" name="{{ name }}" />
+    <set_object_property property="shieldStateBack" value="260" name="{{ name }}" />
+    {% endfor %}
+    {% for name in ["TSN Fury", "TSN Dawn", "TSN Shield"] %}
+    <set_object_property property="shieldMaxStateFront" value="630" name="{{ name }}" />
+    <set_object_property property="shieldStateFront" value="630" name="{{ name }}" />
+    <set_object_property property="shieldMaxStateBack" value="380" name="{{ name }}" />
+    <set_object_property property="shieldStateBack" value="380" name="{{ name }}" />
+    {% endfor %}
+    {% for name in ["TSN Daring"] %}
+    <set_object_property property="shieldMaxStateFront" value="150" name="{{ name }}" />
+    <set_object_property property="shieldStateFront" value="150" name="{{ name }}" />
+    <set_object_property property="shieldMaxStateBack" value="150" name="{{ name }}" />
+    <set_object_property property="shieldStateBack" value="150" name="{{ name }}" />
+    {% endfor %}
+  {% endmacro %}
 
   {% for mode in ["Fleet", "Form"] %}
   <event name="S21_Verdant{{ mode }}" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
@@ -236,10 +260,7 @@
     <!-- 1 scout -->
     <create type="neutral" use_gm_position="" angle="0" name="TSN Daring" hullID="1" sideValue="SideValue" fleetnumber="98" />
 
-    <set_object_property property="shieldMaxStateFront" value="150" name="TSN Verdant" />
-    <set_object_property property="shieldStateFront" value="150" name="TSN Verdant" />
-    <set_object_property property="shieldMaxStateBack" value="130" name="TSN Verdant" />
-    <set_object_property property="shieldStateBack" value="130" name="TSN Verdant" />
+    {{ verdantFleetShields() }}
 
     {% for name in ["TSN Verdant"] %}
       <clear_ai name="{{ name }}" />
@@ -401,7 +422,7 @@
 
   <event name="S21_VerdantFleet_AIReset" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="Ally12" />
-    {% for name in ["TSN Verdant"] %}
+    {% for name in ["TSN Verdant", "TSN Vengeance", "TSN Warspite", "TSN Fury", "TSN Dawn", "TSN Shield", "TSN Daring"] %}
       <clear_ai name="{{ name }}" />
       <add_ai type="SPCL_AI" name="{{ name }}" />
       <add_ai type="CHASE_STATION" value1="0" name="{{ name }}" />
@@ -415,6 +436,11 @@
       <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="{{ name }}" />
       <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="{{ name }}" />
     {% endfor %}
+  </event>
+
+  <event name="S21_VerdantFleet_PlotArmor" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_gm_button text="Ally11" />
+    {{ verdantFleetShields() }}
   </event>
 
   {% for name in ["Wisdom"] %}
@@ -746,7 +772,6 @@
                       "Loria Gate",
                       "Hooke Labs",
                       "Inidabi Institute",
-                      "Capara Processors",
                       "Elite Refining",
                       "Sheol Ore Processing",
                       "Shachat Denabite",
@@ -761,51 +786,39 @@
                       "Ufaqi Mining",
                       "Mria Command",
                       "Mrir Authority",
-                      "Mria Shipyards",
                       "Precious Mining",
                       "Jeketa Ores",
-                      "Capitol City",
                       "Ayala Trading Post",
                       "DS-257",
                       "SY-110",
                       "SY-198",
                       "DS-202",
                       "WP-62A",
+                      "Jetel",
+                      "Khoros Gate",
                       "WP-87B"
               ],
               "desolate": [
                     "Alkanillion",
                     "Axitymy",
                     "Cholander Ores",
-                    "Crescent Denabite",
                     "Djakinti",
                     "Finaro",
                     "Goldstone industries",
                     "Imidri Mining",
-                    "Jetel",
                     "Kazu",
                     "Majarki",
                     "Massimon",
                     "Oophedran",
-                    "Opal Ores",
                     "Paragusan",
                     "Premoler",
                     "Pretara",
-                    "Redeymo Ores",
                     "Roshtic Market",
                     "Sandinal",
                     "Tergi",
-                    "DS-795",
-                    "DS-506",
-                    "DS-441",
-                    "DS-459",
-                    "DS-900",
-                    "DS-881",
-                    "DS-521",
                     "Goldone Industries",
                     "Pargusan",
                     "Oppia",
-                    "Tossey Fabricants",
                     "Zildi Systems"
               ],
           },
@@ -834,7 +847,7 @@
                 "Idrissa Idyl",
                 "Hulca Smelters",
                 "Simnex Denabite",
-                "Wronkin Ores",
+                "Wrokin Ores",
                 "Adrath Mining",
                 "Drazma Mining",
               ],
@@ -1095,46 +1108,6 @@
       <clear_ai name="{{ name }}" />
     {% endfor %}
   {{ destroyEvent('Loria', 6, 'VI', ["SB-4a", "SB-4f", "SB-4g", "Staunton Forward Observation"]) }}
-
-  {{ createEvent('Mria', 2, 'II') }}
-    <create type="enemy" x="20000.0" y="0.0" z="51457.0" angle="0" name=" Mria Shipyards " hullID="1005" sideValue="1" fleetnumber="-1" />
-    <create type="enemy" x="60324.0" y="0.0" z="59838.0" angle="0" name="Relay a6" hullID="1352" sideValue="1" fleetnumber="-1" />
-    <create type="enemy" x="39798.0" y="0.0" z="60202.0" angle="0" name="Relay 7f" hullID="1352" sideValue="1" fleetnumber="-1" />
-    <create type="enemy" x="47693.0" y="0.0" z="46234.0" angle="0" name="Capara Base" hullID="1005" sideValue="1" fleetnumber="-1" />
-    {% for name in [" Mria Shipyards ", "Capara Base"] %}
-      <set_object_property property="topSpeed" value="0" name="{{ name }}" />
-      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
-      <clear_ai name="{{ name }}" />
-      <set_special name="{{ name }}" ship="-1" captain="-1" ability="Drones" />
-      <add_ai type="SPCL_AI" name="{{ name }}" />
-      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="{{ name }}" />
-      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="{{ name }}" />
-      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="{{ name }}" />
-    {% endfor %}
-    {% for name in ["Relay a6", "Relay 7f"] %}
-      <set_object_property property="topSpeed" value="0" name="{{ name }}" />
-      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
-      <clear_ai name="{{ name }}" />
-    {% endfor %}
-  {{ destroyEvent('Mria', 2, 'II', [" Mria Shipyards ", "Capara Base", "Relay a6", "Relay 7f"]) }}
-
-  {{ createEvent('Mria', 9, 'IX') }}
-    <create type="enemy" x="40891.0" y="0.0" z="24979.0" angle="0" name=" Capitol City " hullID="1001" sideValue="1" fleetnumber="-1" />
-    <create type="enemy" x="53887.0" y="0.0" z="30445.0" angle="0" name="Mria Supervision" hullID="1005" sideValue="1" fleetnumber="-1" />
-    <create type="enemy" x="27409.0" y="0.0" z="53886.0" angle="0" name="WP-Elson" hullID="1058" sideValue="1" fleetnumber="-1" />
-    <set_ship_text name="WP-Elson" desc="A USFP civilian base hastily retrofitted into a Hegemony weapon station of sorts." />
-    {% for name in [" Capitol City ", "WP-Elson", "Mria Supervision"] %}
-      <set_object_property property="topSpeed" value="0" name="{{ name }}" />
-      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
-      <clear_ai name="{{ name }}" />
-      <set_special name="{{ name }}" ship="-1" captain="-1" ability="Drones" />
-      <set_special name="{{ name }}" ship="-1" captain="-1" ability="AntiTorp" />
-      <add_ai type="SPCL_AI" name="{{ name }}" />
-      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="{{ name }}" />
-      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="{{ name }}" />
-      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="{{ name }}" />
-    {% endfor %}
-  {{ destroyEvent('Mria', 9, 'IX', [" Capitol City ", "WP-Elson", "Mria Supervision"]) }}
 
   {{ createEvent('Tibur', 1, 'I') }}
     <create count="50" type="mines" startAngle="170" endAngle="460" startX="58745.0" startY="0.0" startZ="39068.0" radius="12000" />

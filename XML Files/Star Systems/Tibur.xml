@@ -4,7 +4,7 @@
     <set_variable name="Coordinate Y" value="550" integer="yes" />
     <set_variable name="Alignment" value="USFP" integer="yes" />
   </start>
-  <folder_arme name="Tibur System" id_arme="c4b0eaf0-41b9-4c9c-8a23-c4c857ebd744" />
+  <folder_arme name="Tibur System" id_arme="c4b0eaf0-41b9-4c9c-8a23-c4c857ebd744" expanded_arme="" />
   <folder_arme name="Tibur Settings" id_arme="a776f9c4-1690-40c2-a31a-a61e5fbf5a99" parent_id_arme="c4b0eaf0-41b9-4c9c-8a23-c4c857ebd744" />
   <folder_arme name="Tibur Menu" id_arme="44df6866-bd20-4269-90e7-9be7e4bd0227" parent_id_arme="a776f9c4-1690-40c2-a31a-a61e5fbf5a99" />
   <event name="Tibur Active" id_arme="337134ea-f9d6-433b-9cce-8a40014d2f9b" parent_id_arme="44df6866-bd20-4269-90e7-9be7e4bd0227">
@@ -72,7 +72,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
-
     <create count="100" type="nebulas" startX="72500.0" startY="0.0" startZ="79464.0" endX="39554.0" endY="0.0" endZ="32991.0" randomRange="9000" />
     <create count="100" type="asteroids" startX="47456.0" startY="300.0" startZ="67678.0" endX="11697.0" endY="0.0" endZ="90580.0" randomRange="7000" />
     <create count="100" type="asteroids" startX="29911.0" startY="-300.0" startZ="49732.0" endX="8081.0" endY="0.0" endZ="77053.0" randomRange="7000" />
@@ -114,8 +113,7 @@
     <set_timer name="Transition" seconds="0.5" />
     <set_variable name="Corner E5 Transition" value="0.0" />
   </event>
-
-  <folder_arme name="System - Jump Gate Settings" id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83" parent_id_arme="0449f601-eb0e-4282-9139-4ca2d9dc6708" />
+  <folder_arme name="System - Jump Gate Settings" id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83" parent_id_arme="4975773b-0efa-4e1a-be5a-4413587b7212" />
   <event name="Gate Offline" id_arme="90d63b6d-4f3d-40bc-86f5-dfe24357a66a" parent_id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
@@ -278,7 +276,6 @@
     <set_timer name="Transition" seconds="2" />
     <set_variable name="Gate System" value="0.0" />
   </event>
-
   <folder_arme name="Sector Entities" id_arme="6478d327-fe3c-4276-860c-283f7b770741" parent_id_arme="994a941f-a7a1-45b2-9635-b52ce51d6029" />
   <event name="Generate Sector Entities" id_arme="295cbbad-46a7-4f31-a309-8f3bc47d77ea" parent_id_arme="6478d327-fe3c-4276-860c-283f7b770741">
     <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
@@ -287,11 +284,9 @@
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
     <set_variable name="MissionCode" value="1.0" />
-
-    <create type="genericMesh" x="58974.0" y="0.0" z="39285.0" angle="0" name="Mria Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="genericMesh" x="58974.0" y="0.0" z="39285.0" name="Mria Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
     <create type="neutral" x="30447.0" y="0.0" z="65401.0" angle="0" name="DS 903" hullID="1000" />
     <set_ship_text name="DS 903" desc="Primary gatekeeper for traffic to/from Mria, especially neutrals. Station Commander has a general distrust of neutrals." />
-
     <create type="neutral" x="34063.0" y="0.0" z="41294.0" angle="0" name="WP-123J" hullID="1052" />
     <create type="neutral" x="61384.0" y="0.0" z="65000.0" angle="0" name="WP-67U" hullID="1052" />
   </event>
@@ -302,28 +297,22 @@
     <set_variable name="Entry Random" value="1.0" />
     <set_timer name="Entry Random" seconds="1" />
     <set_variable name="Infiltrators" value="1.0" />
-
     <set_object_property property="artScale" value="1.0" name="Mria Gate" />
     <set_object_property property="pushRadius" value="0.0" name="Mria Gate" />
     <set_object_property property="angle" value="4.71238898" name="Mria Gate" />
     <set_object_property property="rollDelta" value="0.3" name="Mria Gate" />
-
-
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="2bebeb7e-d7f2-4201-88df-eea883fadedf" parent_id_arme="6478d327-fe3c-4276-860c-283f7b770741">
     <if_variable name="Tibur System" comparator="EQUALS" value="3.0" />
-
     <destroy name="Mria Gate" />
     <destroy name="DS 903" />
     <destroy name="WP-123J" />
     <destroy name="WP-67U" />
-
     <set_variable name="Tibur System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-
-  <event name="Arrival From Mria" id_arme="708fb0d4-2d70-4140-898b-8cb4cbc6d044" parent_id_arme="bd8aa687-c8d9-4c5e-b303-244c1df64884">
+  <event name="Arrival From Mria" id_arme="708fb0d4-2d70-4140-898b-8cb4cbc6d044" parent_id_arme="994a941f-a7a1-45b2-9635-b52ce51d6029">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
     <if_variable name="Mria to Tibur" comparator="EQUALS" value="1.0" />
@@ -346,8 +335,6 @@
     <set_object_property property="angle" value="3.141592654" player_slot="7" />
     <set_variable name="Mria to Tibur" value="0.0" />
   </event>
-
-
   <folder_arme name="Tibur Sector II" id_arme="c62ea1fb-451b-4033-bc7a-b3813cafd0da" parent_id_arme="c4b0eaf0-41b9-4c9c-8a23-c4c857ebd744" />
   <event name="Create Tibur Sector II" id_arme="cbcb7ea4-4969-4fb9-a34c-96a8bfc90014" parent_id_arme="c62ea1fb-451b-4033-bc7a-b3813cafd0da">
     <if_variable name="Tibur System" comparator="EQUALS" value="1.0" />
@@ -364,7 +351,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
-
     <create count="100" type="nebulas" startX="65402.0" startY="300.0" startZ="18392.0" endX="26563.0" endY="300.0" endZ="43169.0" randomRange="15000" />
     <create count="100" type="nebulas" nebType="2" startX="74108.0" startY="-300.0" startZ="19062.0" endX="17322.0" endY="-300.0" endZ="33392.0" randomRange="15000" />
     <create count="100" type="asteroids" startX="79465.0" startY="0.0" startZ="52008.0" endX="48929.0" endY="0.0" endZ="16517.0" randomRange="10000" />
@@ -430,9 +416,7 @@
     <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-
     <!-- <create type="genericMesh" x="49197.0" y="0.0" z="66339.0" angle="0" name="Tibur Prime" colorRed="0.0" colorGreen="0.8" colorBlue="0.0" /> -->
-    
     <create type="genericMesh" x="49197.0" y="0.0" z="66339.0" name="Tibur Prime" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="0.8" colorBlue="0.0" />
     <set_ship_text name="Tibur Prime" desc="Ocean world. Water world, 50,000 islands; heavy fishing and tourism; peaceful unified republic. Friendly, open culture; loves gambling, haggling, and general trading." />
     <set_object_property property="pushRadius" value="0.0" name="Tibur Prime" />
@@ -476,13 +460,11 @@
     <set_object_property property="angle" value="3.926990817" name="PF" />
     <set_object_property property="angle" value="4.71238898" name="PG" />
     <set_object_property property="angle" value="5.497787144" name="PH" />
-
     <!-- Roll every 2nd slice so that the texture loops  -->
     <set_object_property property="roll" value="3.141592654" name="PA" />
     <set_object_property property="roll" value="3.141592654" name="PC" />
     <set_object_property property="roll" value="3.141592654" name="PE" />
     <set_object_property property="roll" value="3.141592654" name="PG" />
-    
     <set_ship_text name="PA" newname=" " />
     <set_ship_text name="PB" newname=" " />
     <set_ship_text name="PC" newname=" " />
@@ -491,13 +473,10 @@
     <set_ship_text name="PF" newname=" " />
     <set_ship_text name="PG" newname=" " />
     <set_ship_text name="PH" newname=" " />
-
     <create type="neutral" x="49197.0" y="0.0" z="43169.0" angle="0" name="Tibur Mall" hullID="1001" />
     <set_ship_text name="Tibur Mall" desc="Primary market for planet exports and general trade." />
-
     <create type="neutral" x="35536.0" y="0.0" z="52276.0" angle="0" name="Alders Council" hullID="1001" />
     <set_ship_text name="Alders Council" desc="Seat of administration for Tibur sector." />
-
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
     <set_variable name="MissionCode" value="1.0" />
@@ -519,18 +498,12 @@
     <if_variable name="Tibur System" comparator="EQUALS" value="3.0" />
     <set_variable name="Tibur System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
-
     <destroy name="Tibur Mall" />
     <destroy name="Alders Council" />
-
     <set_variable name="DestroyPlanet" value="1.0" integer="yes" />
     <destroy name="Tibur Prime" />
-
   </event>
-
-
-
-  <folder_arme name="Tibur Sector III" id_arme="a3a38c1f-9640-45c9-b638-db2509d3d18a" parent_id_arme="c4b0eaf0-41b9-4c9c-8a23-c4c857ebd744" />
+  <folder_arme name="Tibur Sector III" id_arme="a3a38c1f-9640-45c9-b638-db2509d3d18a" parent_id_arme="c4b0eaf0-41b9-4c9c-8a23-c4c857ebd744" expanded_arme="" />
   <event name="Create Tibur Sector III" id_arme="4d9141ec-c868-4ca6-85e5-74a62a9aea4e" parent_id_arme="a3a38c1f-9640-45c9-b638-db2509d3d18a">
     <if_variable name="Tibur System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="3.0" />
@@ -546,11 +519,10 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-
     <create count="100" type="nebulas" nebType="2" startX="36474.0" startY="0.0" startZ="48125.0" endX="53081.0" endY="0.0" endZ="21875.0" randomRange="15000" />
     <create count="50" type="asteroids" startX="72233.0" startY="-300.0" startZ="49062.0" endX="80000.0" endY="300.0" endZ="81205.0" randomRange="10000" />
   </event>
-  <folder_arme name="Navigation" id_arme="a6f851cd-bdef-4629-95d9-231168a9f9e6" parent_id_arme="a3a38c1f-9640-45c9-b638-db2509d3d18a" />
+  <folder_arme name="Navigation" id_arme="a6f851cd-bdef-4629-95d9-231168a9f9e6" parent_id_arme="a3a38c1f-9640-45c9-b638-db2509d3d18a" expanded_arme="" />
   <event name="Transition to Sector II" id_arme="cf917f7b-b0ea-43e2-84fb-244bf2418837" parent_id_arme="a6f851cd-bdef-4629-95d9-231168a9f9e6">
     <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="3.0" />
@@ -584,48 +556,219 @@
     <set_variable name="Tibur System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="5.0" integer="yes" />
   </event>
+  <folder_arme name="System - Jump Gate Settings" id_arme="3d0fccff-6eae-4712-bcfb-94a1a5f54a86" parent_id_arme="a6f851cd-bdef-4629-95d9-231168a9f9e6" expanded_arme="" />
+  <event name="Gate Offline" id_arme="b7a6395b-ab84-4093-b6d4-172a6456a438" parent_id_arme="3d0fccff-6eae-4712-bcfb-94a1a5f54a86">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="Enyalius Gate" />
+  </event>
+  <folder_arme name="Tracking System" id_arme="5a66f8e5-51f5-4b6a-87a1-e87d6b2b2a3e" parent_id_arme="3d0fccff-6eae-4712-bcfb-94a1a5f54a86" />
+  <event name="Ship1 Activation Range" id_arme="c8d18c29-dd01-4204-bd7a-05dc78512ebd" parent_id_arme="5a66f8e5-51f5-4b6a-87a1-e87d6b2b2a3e">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="0" name2="Enyalius Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship1" value="1.0" />
+  </event>
+  <event name="Ship1 Out of Range" id_arme="6c8f28e6-f133-4bf3-9f40-3ec7da27cf6f" parent_id_arme="5a66f8e5-51f5-4b6a-87a1-e87d6b2b2a3e">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="0" name2="Enyalius Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship1" value="0.0" />
+  </event>
+  <event name="Ship2 Activation Range" id_arme="ca0efce4-05fc-44c2-8851-99e441706b5a" parent_id_arme="5a66f8e5-51f5-4b6a-87a1-e87d6b2b2a3e">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="1" name2="Enyalius Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship2" value="1.0" />
+  </event>
+  <event name="Ship2 Out of Range" id_arme="236fdacb-03a5-4a65-a2c7-f6f9ec39becc" parent_id_arme="5a66f8e5-51f5-4b6a-87a1-e87d6b2b2a3e">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="1" name2="Enyalius Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship2" value="0.0" />
+  </event>
+  <event name="Ship3 Activation Range" id_arme="3ed69bb9-1ddd-49aa-8a76-726077553cb6" parent_id_arme="5a66f8e5-51f5-4b6a-87a1-e87d6b2b2a3e">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="2" name2="Enyalius Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship3" value="1.0" />
+  </event>
+  <event name="Ship3 Out of Range" id_arme="2c80c0ea-7529-4b31-8509-8c2809f0cf2f" parent_id_arme="5a66f8e5-51f5-4b6a-87a1-e87d6b2b2a3e">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="2" name2="Enyalius Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship3" value="0.0" />
+  </event>
+  <event name="Ship4 Activation Range" id_arme="eba4c5f7-b1fd-4799-944c-4e04c475ee00" parent_id_arme="5a66f8e5-51f5-4b6a-87a1-e87d6b2b2a3e">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="3" name2="Enyalius Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship4" value="1.0" />
+  </event>
+  <event name="Ship4 Out of Range" id_arme="471a9ef2-1522-4854-99d7-0b14f6c9b1e8" parent_id_arme="5a66f8e5-51f5-4b6a-87a1-e87d6b2b2a3e">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="3" name2="Enyalius Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship4" value="0.0" />
+  </event>
+  <event name="Ship5 Activation Range" id_arme="46bb1ee7-7b95-498c-b20c-e580073e6555" parent_id_arme="5a66f8e5-51f5-4b6a-87a1-e87d6b2b2a3e">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="4" name2="Enyalius Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship5" value="1.0" />
+  </event>
+  <event name="Ship5 Out of Range" id_arme="1898a38e-e9a9-437e-8605-6b1984f93fba" parent_id_arme="5a66f8e5-51f5-4b6a-87a1-e87d6b2b2a3e">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="4" name2="Enyalius Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship5" value="0.0" />
+  </event>
+  <event name="Ship6 Activation Range" id_arme="9bc639f4-9d12-4bb9-bc47-920cbae2ceec" parent_id_arme="5a66f8e5-51f5-4b6a-87a1-e87d6b2b2a3e">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="5" name2="Enyalius Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship6" value="1.0" />
+  </event>
+  <event name="Ship6 Out of Range" id_arme="e6a8788a-bb46-4de1-a2e3-10de4ecee266" parent_id_arme="5a66f8e5-51f5-4b6a-87a1-e87d6b2b2a3e">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="5" name2="Enyalius Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship6" value="0.0" />
+  </event>
+  <event name="Ship7 Activation Range" id_arme="7e7832be-fb14-4fd3-b655-4686e321e376" parent_id_arme="5a66f8e5-51f5-4b6a-87a1-e87d6b2b2a3e">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="6" name2="Enyalius Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship7" value="1.0" />
+  </event>
+  <event name="Ship7 Out of Range" id_arme="8f966d1f-5c0f-4180-9926-a91895bbd4fa" parent_id_arme="5a66f8e5-51f5-4b6a-87a1-e87d6b2b2a3e">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="6" name2="Enyalius Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship7" value="0.0" />
+  </event>
+  <event name="Ship8 Activation Range" id_arme="3210150e-cd14-4892-9605-cd2c0023245d" parent_id_arme="5a66f8e5-51f5-4b6a-87a1-e87d6b2b2a3e">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="7" name2="Enyalius Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship8" value="1.0" />
+  </event>
+  <event name="Ship8 Out of Range" id_arme="5ba4ff77-3796-454f-a34f-58f7db77e7f6" parent_id_arme="5a66f8e5-51f5-4b6a-87a1-e87d6b2b2a3e">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="7" name2="Enyalius Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship8" value="0.0" />
+  </event>
+  <event name="Gate Online" id_arme="63ed59c4-f57c-4148-b41a-7e5ce8ef872d" parent_id_arme="3d0fccff-6eae-4712-bcfb-94a1a5f54a86">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="Enyalius Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated" id_arme="4b79346e-40ee-4af6-aef4-5a426faacee1" parent_id_arme="3d0fccff-6eae-4712-bcfb-94a1a5f54a86">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="Enyalius Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="Tibur System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Tibur to Enyalius" value="1.0" />
+    <set_variable name="Enyalius System" value="1.0" />
+    <set_variable name="Sector" value="2.0" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="Gate System" value="0.0" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+  </event>
   <folder_arme name="Sector Entities" id_arme="cbe556ab-699d-4c9c-b8eb-ba0a9ccbd923" parent_id_arme="a3a38c1f-9640-45c9-b638-db2509d3d18a" />
   <event name="Generate Sector Entities" id_arme="e02be73f-fa81-427a-bbfd-268b6d24966f" parent_id_arme="cbe556ab-699d-4c9c-b8eb-ba0a9ccbd923">
     <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="3.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-
-    <create type="genericMesh" x="58170.0" y="0.0" z="25312.0" angle="0" name="Enyalius Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="genericMesh" x="58170.0" y="0.0" z="25312.0" name="Enyalius Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
     <create type="neutral" x="52545.0" y="0.0" z="65000.0" angle="0" name="Astral Agora" hullID="1001" />
     <set_ship_text name="Astral Agora" desc="Ancient and sacred diplomatic facility. A demilitarized zone (DMZ) is set up around it." />
-
     <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.3" colorGreen="0.5" colorBlue="0.8" />
     <set_relative_position name2="--" distance="20000" angle="0.0" name1="Astral Agora" />
     <set_ship_text name="--" newname="DMZ" desc="Boundary of demilitarized zone." />
-
     <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.3" colorGreen="0.5" colorBlue="0.8" />
     <set_relative_position name2="--" distance="20000" angle="45.0" name1="Astral Agora" />
     <set_ship_text name="--" newname="DMZ" desc="Boundary of demilitarized zone." />
-
     <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.3" colorGreen="0.5" colorBlue="0.8" />
     <set_relative_position name2="--" distance="20000" angle="90.0" name1="Astral Agora" />
     <set_ship_text name="--" newname="DMZ" desc="Boundary of demilitarized zone." />
-
     <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.3" colorGreen="0.5" colorBlue="0.8" />
     <set_relative_position name2="--" distance="20000" angle="135.0" name1="Astral Agora" />
     <set_ship_text name="--" newname="DMZ" desc="Boundary of demilitarized zone." />
-
     <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.3" colorGreen="0.5" colorBlue="0.8" />
     <set_relative_position name2="--" distance="20000" angle="180.0" name1="Astral Agora" />
     <set_ship_text name="--" newname="DMZ" desc="Boundary of demilitarized zone." />
-
     <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.3" colorGreen="0.5" colorBlue="0.8" />
     <set_relative_position name2="--" distance="20000" angle="225.0" name1="Astral Agora" />
     <set_ship_text name="--" newname="DMZ" desc="Boundary of demilitarized zone." />
-
     <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.3" colorGreen="0.5" colorBlue="0.8" />
     <set_relative_position name2="--" distance="20000" angle="270.0" name1="Astral Agora" />
     <set_ship_text name="--" newname="DMZ" desc="Boundary of demilitarized zone." />
-
     <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.3" colorGreen="0.5" colorBlue="0.8" />
     <set_relative_position name2="--" distance="20000" angle="315.0" name1="Astral Agora" />
     <set_ship_text name="--" newname="DMZ" desc="Boundary of demilitarized zone." />
-
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
     <set_variable name="MissionCode" value="1.0" />
@@ -639,15 +782,12 @@
     <set_object_property property="pushRadius" value="0.0" name="Enyalius Gate" />
     <set_object_property property="angle" value="4.71238898" name="Enyalius Gate" />
     <set_object_property property="rollDelta" value="0.3" name="Enyalius Gate" />
-
-    
     <set_variable name="Entry Random" value="1.0" />
     <set_variable name="PirateRaid" value="1.0" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="0a68c9d8-de1d-47e5-b741-6a2cff910d11" parent_id_arme="cbe556ab-699d-4c9c-b8eb-ba0a9ccbd923">
     <if_variable name="Tibur System" comparator="EQUALS" value="3.0" />
-
     <destroy name="Enyalius Gate" />
     <destroy name="Astral Agora" />
     <destroy name="DMZ" />
@@ -658,11 +798,32 @@
     <destroy name="DMZ" />
     <destroy name="DMZ" />
     <destroy name="DMZ" />
-
     <set_variable name="Tibur System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-
+  <event name="Arrival From Enyalius" id_arme="08cc717a-4ebd-43d4-913b-eafa76059af1" parent_id_arme="a3a38c1f-9640-45c9-b638-db2509d3d18a">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Enyalius to Tibur" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="Enyalius Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="Enyalius Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="Enyalius Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="Enyalius Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="Enyalius Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="Enyalius Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="Enyalius Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="Enyalius Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="Enyalius to Tibur" value="0.0" />
+  </event>
   <folder_arme name="Tibur Sector IV" id_arme="87e16a09-cbfe-4b61-a51e-98be03376df0" parent_id_arme="c4b0eaf0-41b9-4c9c-8a23-c4c857ebd744" />
   <event name="Create Tibur Sector IV" id_arme="3b6279e5-1fba-4463-858e-023106689cac" parent_id_arme="87e16a09-cbfe-4b61-a51e-98be03376df0">
     <if_variable name="Tibur System" comparator="EQUALS" value="1.0" />
@@ -679,7 +840,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
-
     <create count="100" type="mines" startAngle="35" endAngle="185" startX="44500.0" startY="0.0" startZ="46500.0" radius="20000" />
     <create count="100" type="mines" startAngle="210" endAngle="370" startX="44500.0" startY="0.0" startZ="46500.0" radius="20000" />
     <create count="100" type="nebulas" startX="73974.0" startY="-300.0" startZ="61785.0" endX="47724.0" endY="300.0" endZ="18125.0" randomRange="10000" />
@@ -747,17 +907,13 @@
     <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="4.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-
     <create type="neutral" x="44500.0" y="0.0" z="46500.0" angle="0" name="Tibur Command" hullID="1002" />
     <set_ship_text name="Tibur Command" desc="Recently constructed due to the war efforts. Commandant is young but brilliant, clearly ambitious" />
-
     <create type="neutral" x="54554.0" y="0.0" z="37410.0" angle="0" name="DS-59" hullID="1000" />
     <set_ship_text name="DS-59" desc="Previously the command base for Tibur system. Base commander got the post just before Tibur Command was announced and built; highly resentful and petty" />
-
     <create type="neutral" x="37009.0" y="0.0" z="28571.0" angle="0" name="WP-99T" hullID="1052" />
     <create type="neutral" x="50268.0" y="0.0" z="65401.0" angle="0" name="WP-101E" hullID="1052" />
     <create type="neutral" x="34599.0" y="0.0" z="50803.0" angle="0" name="SY-42" hullID="1053" />
-
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
     <set_variable name="MissionCode" value="1.0" />
@@ -773,13 +929,11 @@
   </event>
   <event name="Destroy Sector Entities" id_arme="a7beb0b6-57c9-46e7-bc25-1e02b63dd8fa" parent_id_arme="9bed4d39-9396-4b95-9dc1-49ee8973f0e1">
     <if_variable name="Tibur System" comparator="EQUALS" value="3.0" />
-
     <destroy name="Tibur Command" />
     <destroy name="DS-59" />
     <destroy name="WP-99T" />
     <destroy name="WP-101E" />
     <destroy name="SY-42" />
-
     <set_variable name="Tibur System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
@@ -799,7 +953,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
-
     <create count="50" type="nebulas" startX="75983.0" startY="0.0" startZ="62991.0" endX="35536.0" endY="0.0" endZ="90446.0" randomRange="9000" />
     <create count="50" type="nebulas" nebType="2" startX="78929.0" startY="0.0" startZ="54285.0" endX="41697.0" endY="0.0" endZ="89375.0" randomRange="9000" />
     <create count="70" type="asteroids" startX="60313.0" startY="0.0" startZ="16116.0" endX="21742.0" endY="-300.0" endZ="34866.0" randomRange="10000" />
@@ -898,11 +1051,9 @@
     <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-
-    <create type="genericMesh" x="58170.0" y="0.0" z="45312.0" angle="0" name="Keltor Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="genericMesh" x="58170.0" y="0.0" z="45312.0" name="Keltor Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
     <create type="neutral" x="41965.0" y="0.0" z="56428.0" angle="0" name="Grand Emporium" hullID="1001" />
     <set_ship_text name="Grand Emporium" desc="Biggest trading post for Tibur sector, benefits from its strategic central location. Home to 100,000, mostly small shopkeeps. Recently beefed with TSN marines. Station Chief loves visitors of any kind, extremely friendly (because she gets rich from them)" />
-
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
     <set_variable name="MissionCode" value="1.0" />
@@ -914,21 +1065,16 @@
     <set_variable name="Entry Random" value="1.0" />
     <set_timer name="Entry Random" seconds="1" />
     <set_variable name="Infiltrators" value="1.0" />
-
     <set_object_property property="artScale" value="1.0" name="Keltor Gate" />
     <set_object_property property="pushRadius" value="0.0" name="Keltor Gate" />
     <set_object_property property="angle" value="4.71238898" name="Keltor Gate" />
     <set_object_property property="rollDelta" value="0.3" name="Keltor Gate" />
-
-
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="c70a4b12-fb21-4082-950c-4edfc8c610a3" parent_id_arme="e2f45a04-e0a9-49e7-a304-8e720d51b5a1">
     <if_variable name="Tibur System" comparator="EQUALS" value="3.0" />
-
     <destroy name="Keltor Gate" />
     <destroy name="Grand Emporium" />
-
     <set_variable name="Tibur System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
@@ -948,7 +1094,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-
     <create count="100" type="nebulas" startX="74911.0" startY="200.0" startZ="47187.0" endX="44108.0" endY="-200.0" endZ="94866.0" randomRange="10000" />
     <create count="100" type="nebulas" nebType="2" startX="67411.0" startY="-200.0" startZ="44642.0" endX="52947.0" endY="200.0" endZ="92723.0" randomRange="10000" />
     <create count="100" type="asteroids" startX="47992.0" startY="0.0" startZ="92187.0" endX="67411.0" endY="0.0" endZ="41696.0" randomRange="10000" />
@@ -1014,10 +1159,8 @@
     <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-
     <create type="neutral" x="54286.0" y="0.0" z="73437.0" angle="0" name="SB-87" hullID="1054" />
     <create type="neutral" x="58036.0" y="0.0" z="65937.0" angle="0" name="CR-66" hullID="1055" />
-
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
     <set_variable name="MissionCode" value="1.0" />
@@ -1058,7 +1201,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-
     <create count="100" type="nebulas" startX="57099.0" startY="400.0" startZ="70491.0" endX="4197.0" endY="0.0" endZ="15178.0" randomRange="10000" />
     <create count="100" type="nebulas" nebType="2" startX="51875.0" startY="400.0" startZ="77321.0" endX="1786.0" endY="0.0" endZ="20803.0" randomRange="10000" />
     <create count="10" type="asteroids" startX="24286.0" startY="-300.0" startZ="65937.0" endX="24286.0" endY="-300.0" endZ="65937.0" randomRange="5000" />
@@ -1104,11 +1246,9 @@
     <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-
-    <create type="genericMesh" x="63125.0" y="0.0" z="56696.0" angle="0" name="Atilia Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="genericMesh" x="63125.0" y="0.0" z="56696.0" name="Atilia Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
     <create type="neutral" x="41295.0" y="0.0" z="36339.0" angle="0" name="Interstellar Spas" hullID="1001" />
     <set_ship_text name="Interstellar Spas" desc="Primary marketplace for traffic to/from Atilia. Regional get-away for rich and famous. Station Chief is arrogant and snobby, disdains the TSN." />
-
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
     <set_variable name="MissionCode" value="1.0" />
@@ -1128,14 +1268,11 @@
   </event>
   <event name="Destroy Sector Entities" id_arme="d4e3b9bf-637f-492a-b093-3a2c81d22dd7" parent_id_arme="f40250e0-ea85-448e-9c02-6039b07d18b2">
     <if_variable name="Tibur System" comparator="EQUALS" value="3.0" />
-
     <destroy name="Atilia Gate" />
     <destroy name="Interstellar Spas" />
-
     <set_variable name="Tibur System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-
   <folder_arme name="Tibur Sector VIII" id_arme="f50b6e5b-6c1f-4eb3-b010-790d941a1e40" parent_id_arme="c4b0eaf0-41b9-4c9c-8a23-c4c857ebd744" />
   <event name="Create Tibur Sector VIII" id_arme="3675c7d8-9e52-4b73-a381-5a853516edaa" parent_id_arme="f50b6e5b-6c1f-4eb3-b010-790d941a1e40">
     <if_variable name="Tibur System" comparator="EQUALS" value="1.0" />
@@ -1152,7 +1289,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-
     <create count="100" type="nebulas" nebType="2" startX="87768.0" startY="0.0" startZ="17321.0" endX="46652.0" endY="0.0" endZ="78526.0" randomRange="10000" />
     <create count="100" type="nebulas" startX="97545.0" startY="0.0" startZ="12901.0" endX="75179.0" endY="0.0" endZ="49866.0" randomRange="10000" />
     <create count="100" type="nebulas" nebType="2" startX="51875.0" startY="0.0" startZ="77321.0" endX="17456.0" endY="0.0" endZ="68348.0" randomRange="10000" />
@@ -1221,19 +1357,197 @@
     <set_variable name="Tibur System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="4.0" integer="yes" />
   </event>
+  <folder_arme name="System - Jump Gate Settings" id_arme="2a54901a-8eed-46ea-9c25-560a1a57975f" parent_id_arme="60ba9cae-a40e-4d35-94aa-f4d2a77f3659" />
+  <event name="Gate Offline" id_arme="9b1c3936-a249-472a-bef7-42ac810c6afd" parent_id_arme="2a54901a-8eed-46ea-9c25-560a1a57975f">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="Helios Gate" />
+  </event>
+  <folder_arme name="Tracking Systems" id_arme="e33cdc9b-8091-4eaf-8989-724602331888" parent_id_arme="2a54901a-8eed-46ea-9c25-560a1a57975f" />
+  <event name="Ship1 Activation Range" id_arme="1b827460-89ae-45c3-b4b1-03ffaa5b14f0" parent_id_arme="e33cdc9b-8091-4eaf-8989-724602331888">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="0" name2="Helios Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship1" value="1.0" />
+  </event>
+  <event name="Ship1 Out of Range" id_arme="99827d46-30a2-43dc-99e8-2eebe2727c03" parent_id_arme="e33cdc9b-8091-4eaf-8989-724602331888">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="0" name2="Helios Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship1" value="0.0" />
+  </event>
+  <event name="Ship2 Activation Range" id_arme="c2bff492-b80d-4711-ac44-66e4c61acc54" parent_id_arme="e33cdc9b-8091-4eaf-8989-724602331888">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="1" name2="Helios Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship2" value="1.0" />
+  </event>
+  <event name="Ship2 Out of Range" id_arme="43bcac16-b538-476b-8778-e5cb291b513b" parent_id_arme="e33cdc9b-8091-4eaf-8989-724602331888">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="1" name2="Helios Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship2" value="0.0" />
+  </event>
+  <event name="Ship3 Activation Range" id_arme="6beb79f0-0086-4a94-89c2-6aa9a788bc59" parent_id_arme="e33cdc9b-8091-4eaf-8989-724602331888">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="2" name2="Helios Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship3" value="1.0" />
+  </event>
+  <event name="Ship3 Out of Range" id_arme="d662e724-b370-4cdd-89ff-ecec60f3f5c9" parent_id_arme="e33cdc9b-8091-4eaf-8989-724602331888">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="2" name2="Helios Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship3" value="0.0" />
+  </event>
+  <event name="Ship4 Activation Range" id_arme="940be901-e7d1-4340-a9d8-966f7ceea181" parent_id_arme="e33cdc9b-8091-4eaf-8989-724602331888">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="3" name2="Helios Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship4" value="1.0" />
+  </event>
+  <event name="Ship4 Out of Range" id_arme="b3c794c7-ad0f-4ae4-9e03-2dd48c230912" parent_id_arme="e33cdc9b-8091-4eaf-8989-724602331888">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="3" name2="Helios Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship4" value="0.0" />
+  </event>
+  <event name="Ship5 Activation Range" id_arme="38fe1b75-efb9-4667-8dee-8a8f21317444" parent_id_arme="e33cdc9b-8091-4eaf-8989-724602331888">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="4" name2="Helios Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship5" value="1.0" />
+  </event>
+  <event name="Ship5 Out of Range" id_arme="f63b1d49-aac6-4cd1-aefc-71f68b61b40f" parent_id_arme="e33cdc9b-8091-4eaf-8989-724602331888">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="4" name2="Helios Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship5" value="0.0" />
+  </event>
+  <event name="Ship6 Activation Range" id_arme="9a4bbc18-c317-440f-bd15-537ba67c4503" parent_id_arme="e33cdc9b-8091-4eaf-8989-724602331888">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="5" name2="Helios Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship6" value="1.0" />
+  </event>
+  <event name="Ship6 Out of Range" id_arme="3b94096e-a996-454a-9683-4d2026d9787e" parent_id_arme="e33cdc9b-8091-4eaf-8989-724602331888">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="5" name2="Helios Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship6" value="0.0" />
+  </event>
+  <event name="Ship7 Activation Range" id_arme="79e579dd-9c28-44b7-bba5-fddb7e373461" parent_id_arme="e33cdc9b-8091-4eaf-8989-724602331888">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="6" name2="Helios Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship7" value="1.0" />
+  </event>
+  <event name="Ship7 Out of Range" id_arme="8dc3a47a-0063-440a-8c9a-cd2a4cb368cc" parent_id_arme="e33cdc9b-8091-4eaf-8989-724602331888">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="6" name2="Helios Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship7" value="0.0" />
+  </event>
+  <event name="Ship8 Activation Range" id_arme="08c8fb37-5d65-4a3c-9469-5abf01d57030" parent_id_arme="e33cdc9b-8091-4eaf-8989-724602331888">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="7" name2="Helios Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship8" value="1.0" />
+  </event>
+  <event name="Ship8 Out of Range" id_arme="6520f014-a3f7-4faa-adfd-6288aa8b76cf" parent_id_arme="e33cdc9b-8091-4eaf-8989-724602331888">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="7" name2="Helios Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship8" value="0.0" />
+  </event>
+  <event name="Gate Online" id_arme="06ed2103-7292-4405-964b-3e7dd5d190d2" parent_id_arme="2a54901a-8eed-46ea-9c25-560a1a57975f">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="Helios Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated" id_arme="89b32cb2-4d21-46be-af51-6cb7b4b55fb7" parent_id_arme="2a54901a-8eed-46ea-9c25-560a1a57975f">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="Tibur System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Tibur to Helios" value="1.0" />
+    <set_variable name="Helios System" value="1.0" />
+    <set_variable name="Sector" value="3.0" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="Gate System" value="0.0" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+  </event>
   <folder_arme name="Sector Entities" id_arme="781ed8c5-308e-48ad-bbba-007c4557bbcc" parent_id_arme="f50b6e5b-6c1f-4eb3-b010-790d941a1e40" />
   <event name="Generate Sector Entities" id_arme="a5cb4eb6-8426-4bd2-a22e-b949193898bc" parent_id_arme="781ed8c5-308e-48ad-bbba-007c4557bbcc">
     <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="8.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-
-    <create type="genericMesh" x="40500.0" y="0.0" z="59000.0" angle="0" name="Helios Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="genericMesh" x="40500.0" y="0.0" z="59000.0" name="Helios Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
     <create type="neutral" x="72500.0" y="0.0" z="29375.0" angle="0" name="DS 777" hullID="1000" />
     <set_ship_text name="DS 777" desc="Primary gatekeeper for traffic to/from Mria, especially neutrals. Station commander has an odd affections for xenos, rumored to be into doing unspecified weird stuff with them." />
-
     <create type="neutral" x="36608.0" y="0.0" z="33794.0" angle="0" name="WP-89W" hullID="1052" />
     <create type="neutral" x="65804.0" y="0.0" z="58571.0" angle="0" name="WP-104Z" hullID="1052" />
-
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
     <set_variable name="MissionCode" value="1.0" />
@@ -1248,20 +1562,40 @@
     <set_object_property property="pushRadius" value="0.0" name="Helios Gate" />
     <set_object_property property="angle" value="4.71238898" name="Helios Gate" />
     <set_object_property property="rollDelta" value="0.3" name="Helios Gate" />
-
     <set_variable name="Infiltrators" value="1.0" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="95529f9e-709a-45c2-b5ba-f2d079877a43" parent_id_arme="781ed8c5-308e-48ad-bbba-007c4557bbcc">
     <if_variable name="Tibur System" comparator="EQUALS" value="3.0" />
-    
     <destroy name="Helios Gate" />
     <destroy name="DS 777" />
     <destroy name="WP-89W" />
     <destroy name="WP-104Z" />
-
     <set_variable name="Tibur System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <event name="Arrival From Helios" id_arme="65e04873-e698-4a2c-9b06-583b6fa18347" parent_id_arme="f50b6e5b-6c1f-4eb3-b010-790d941a1e40">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Helios to Tibur" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="Helios Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="Helios Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="Helios Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="Helios Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="Helios Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="Helios Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="Helios Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="Helios Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="Helios to Tibur" value="0.0" />
   </event>
   <folder_arme name="Tibur Sector IX" id_arme="2cca11a0-d788-4074-ad4f-41b71fffd729" parent_id_arme="c4b0eaf0-41b9-4c9c-8a23-c4c857ebd744" />
   <event name="Create Tibur Sector IX" id_arme="263489ad-2277-4443-be3c-89db441fb52a" parent_id_arme="2cca11a0-d788-4074-ad4f-41b71fffd729">
@@ -1279,7 +1613,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-
     <create count="100" type="nebulas" nebType="1" startX="41295.0" startY="-200.0" startZ="2723.0" endX="38617.0" endY="200.0" endZ="47857.0" randomRange="10000" />
     <create count="100" type="nebulas" nebType="2" startX="44242.0" startY="200.0" startZ="848.0" endX="33929.0" endY="-200.0" endZ="49062.0" randomRange="10000" />
     <create count="100" type="asteroids" startX="32724.0" startY="0.0" startZ="45848.0" endX="44375.0" endY="0.0" endZ="2455.0" randomRange="10000" />
