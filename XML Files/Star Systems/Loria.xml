@@ -1367,6 +1367,7 @@
     <destroy name="Rockaway Metallurgy" />
     <destroy name="Taylor Denabite" />
     <destroy name="Immigration" />
+    <destroy name="Enyalius Gate" />
     <set_variable name="Loria System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>

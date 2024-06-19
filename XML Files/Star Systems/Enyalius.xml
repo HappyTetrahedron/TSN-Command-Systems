@@ -1,10 +1,20 @@
 <mission_data version="1.7" background_id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4" playerShipNames_arme="TSN Sabre\TSN Valiant\TSN Lancer\TSN Stalker\TSN Viper\TSN Horizon\TSN Necessity\TSN Hunter">
+  <!--Alignment Values-->
+  <!--0 - Neutral (Green)-->
+  <!--1 - Hegemony (Red)-->
+  <!--2 - USFP (Blue)-->
+  <!--3 - Badlands (Purple-->
+  <!--Set Coord and Alignment in Start Block-->
+  <!--Set System Side in Default System Side-->
+  <!--System Side Values-->
+  <!--1 - Hegemony Side-->
+  <!--2 - Player Side-->
   <start name="Start" id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4">
-    <set_variable name="Coordinate X" value="1360.0" integer="yes" />
-    <set_variable name="Coordinate Y" value="640.0" integer="yes" />
+    <set_variable name="Coordinate X" value="1365.0" integer="yes" />
+    <set_variable name="Coordinate Y" value="663.0" integer="yes" />
     <set_variable name="Alignment" value="USFP" integer="yes" />
   </start>
-  <folder_arme name="Enyalius System" id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" expanded_arme="" />
+  <folder_arme name="Enyalius System" id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
   <folder_arme name="Enyalius Settings" id_arme="6015d1ff-e9fa-487d-8d3b-9eed19300e12" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
   <folder_arme name="Enyalius Menu" id_arme="fdd61fc0-8866-4474-96e2-f619715b8f31" parent_id_arme="6015d1ff-e9fa-487d-8d3b-9eed19300e12" />
   <event name="Enyalius Active" id_arme="337134ea-f9d6-433b-9cce-8a40014d2f9b" parent_id_arme="fdd61fc0-8866-4474-96e2-f619715b8f31">
@@ -56,12 +66,15 @@
     <set_variable name="sectorSide" value="systemSide" integer="yes" />
     <set_variable name="System Settings" value="0.0" integer="yes" />
   </event>
-  <folder_arme name="Enyalius Sector I" id_arme="bd8aa687-c8d9-4c5e-b303-244c1df64884" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" expanded_arme="" />
+  <folder_arme name="Enyalius Sector I" id_arme="bd8aa687-c8d9-4c5e-b303-244c1df64884" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
   <event name="Create Enyalius Sector I" id_arme="32458fc2-4bb6-455e-8446-23f5e7574323" parent_id_arme="bd8aa687-c8d9-4c5e-b303-244c1df64884">
     <if_variable name="Enyalius System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="1.0" />
     <if_timer_finished name="Transition" />
     <set_skybox_index index="26" />
+    <create count="50" type="nebulas" nebType="1" startX="86697.0" startY="0.0" startZ="55625.0" endX="62858.0" endY="0.0" endZ="22008.0" randomRange="15000" />
+    <create count="50" type="nebulas" nebType="1" startX="24554.0" startY="0.0" startZ="20000.0" endX="22545.0" endY="0.0" endZ="53616.0" randomRange="15000" />
+    <create count="50" type="asteroids" startX="48929.0" startY="0.0" startZ="57767.0" endX="48929.0" endY="0.0" endZ="57767.0" randomRange="20000" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Enyalius System" value="2.0" />
     <set_variable name="Grid 5 Transition Enabled" value="1.0" />
@@ -72,9 +85,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
-    <create count="50" type="nebulas" nebType="1" startX="86697.0" startY="0.0" startZ="55625.0" endX="62858.0" endY="0.0" endZ="22008.0" randomRange="15000" />
-    <create count="50" type="nebulas" nebType="1" startX="24554.0" startY="0.0" startZ="20000.0" endX="22545.0" endY="0.0" endZ="53616.0" randomRange="15000" />
-    <create count="50" type="asteroids" startX="48929.0" startY="0.0" startZ="57767.0" endX="48929.0" endY="0.0" endZ="57767.0" randomRange="20000" />
   </event>
   <folder_arme name="Navigation" id_arme="0449f601-eb0e-4282-9139-4ca2d9dc6708" parent_id_arme="bd8aa687-c8d9-4c5e-b303-244c1df64884" />
   <event name="Transition to Sector II" id_arme="cd353cd3-19b5-488a-bb3f-194baaa92c23" parent_id_arme="0449f601-eb0e-4282-9139-4ca2d9dc6708">
@@ -126,16 +136,19 @@
   </event>
   <event name="Destroy Sector Entities" id_arme="847894ee-2de5-4481-b0ce-91f37357a3be" parent_id_arme="94cae3cf-1a20-4ba3-8196-3294d979bf3f">
     <if_variable name="Enyalius System" comparator="EQUALS" value="3.0" />
-    <destroy name="Enyalius I" />
     <set_variable name="Enyalius System" value="System" integer="yes" />
+    <destroy name="Enyalius I" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-  <folder_arme name="Enyalius Sector II" id_arme="7bc1753c-21c1-4375-ae7b-58ae9fed048c" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" expanded_arme="" />
+  <folder_arme name="Enyalius Sector II" id_arme="7bc1753c-21c1-4375-ae7b-58ae9fed048c" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
   <event name="Create Enyalius Sector II" id_arme="e7ad10c8-ca65-468b-a021-fa8bd33414ea" parent_id_arme="7bc1753c-21c1-4375-ae7b-58ae9fed048c">
     <if_variable name="Enyalius System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
     <if_timer_finished name="Transition" />
     <set_skybox_index index="26" />
+    <create count="100" type="nebulas" nebType="2" startX="61227.0" startY="0.0" startZ="39516.0" endX="18848.0" endY="0.0" endZ="61672.0" randomRange="10000" />
+    <create count="100" type="nebulas" nebType="1" startX="72082.0" startY="0.0" startZ="61078.0" endX="50521.0" endY="0.0" endZ="14089.0" randomRange="10000" />
+    <create count="100" type="asteroids" startX="57064.0" startY="0.0" startZ="57211.0" radius="20000" randomRange="10000" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Enyalius System" value="2.0" />
     <set_variable name="Grid 5 Transition Enabled" value="1.0" />
@@ -146,9 +159,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
-    <create count="100" type="nebulas" nebType="2" startX="61227.0" startY="0.0" startZ="39516.0" endX="18848.0" endY="0.0" endZ="61672.0" randomRange="10000" />
-    <create count="100" type="nebulas" nebType="1" startX="72082.0" startY="0.0" startZ="61078.0" endX="50521.0" endY="0.0" endZ="14089.0" randomRange="10000" />
-    <create count="100" type="asteroids" startX="57064.0" startY="0.0" startZ="57211.0" radius="20000" randomRange="10000" />
   </event>
   <folder_arme name="Navigation" id_arme="2e31124d-5303-4b44-ac43-ec4bc3e547ef" parent_id_arme="7bc1753c-21c1-4375-ae7b-58ae9fed048c" expanded_arme="" />
   <event name="Transition to Sector III" id_arme="ca768fc3-842c-4862-b3ae-aeea7223db55" parent_id_arme="2e31124d-5303-4b44-ac43-ec4bc3e547ef">
@@ -206,15 +216,15 @@
     <set_variable name="Enyalius System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="4.0" integer="yes" />
   </event>
-  <folder_arme name="System - Jump Gate Settings" id_arme="3f68e2d1-b070-4ebc-8a12-6b98727021f7" parent_id_arme="2e31124d-5303-4b44-ac43-ec4bc3e547ef" expanded_arme="" />
-  <event name="Gate Offline" id_arme="90d63b6d-4f3d-40bc-86f5-dfe24357a66a" parent_id_arme="3f68e2d1-b070-4ebc-8a12-6b98727021f7">
+  <folder_arme name="System - Jump Gate Settings" id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83" parent_id_arme="2e31124d-5303-4b44-ac43-ec4bc3e547ef" />
+  <event name="Gate Offline" id_arme="90d63b6d-4f3d-40bc-86f5-dfe24357a66a" parent_id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83">
     <if_variable name="Sector" comparator="EQUALS" value="2" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
     <set_object_property property="rollDelta" value="0.3" name="Tibur Gate" />
   </event>
-  <folder_arme name="Tracking System" id_arme="8d1aa766-d915-4279-b58f-92b8771e49ea" parent_id_arme="3f68e2d1-b070-4ebc-8a12-6b98727021f7" />
-  <event name="Ship1 Activation Range" id_arme="9ee3d7c6-fc41-4126-9f10-ff4740910803" parent_id_arme="8d1aa766-d915-4279-b58f-92b8771e49ea">
+  <folder_arme name="Tracking System" id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247" parent_id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83" />
+  <event name="Ship1 Activation Range" id_arme="9ee3d7c6-fc41-4126-9f10-ff4740910803" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="2" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
@@ -223,7 +233,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship1" value="1.0" />
   </event>
-  <event name="Ship1 Out of Range" id_arme="a17eaf43-4ffc-4aab-8b15-1a3117b245d3" parent_id_arme="8d1aa766-d915-4279-b58f-92b8771e49ea">
+  <event name="Ship1 Out of Range" id_arme="a17eaf43-4ffc-4aab-8b15-1a3117b245d3" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="2" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
@@ -232,7 +242,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship1" value="0.0" />
   </event>
-  <event name="Ship2 Activation Range" id_arme="821c7eeb-4bda-470d-b813-db2f91f723f0" parent_id_arme="8d1aa766-d915-4279-b58f-92b8771e49ea">
+  <event name="Ship2 Activation Range" id_arme="821c7eeb-4bda-470d-b813-db2f91f723f0" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="2" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
@@ -241,7 +251,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship2" value="1.0" />
   </event>
-  <event name="Ship2 Out of Range" id_arme="8538df1f-9f88-48bc-8fd3-25f196f7707d" parent_id_arme="8d1aa766-d915-4279-b58f-92b8771e49ea">
+  <event name="Ship2 Out of Range" id_arme="8538df1f-9f88-48bc-8fd3-25f196f7707d" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="2" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
@@ -250,7 +260,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship2" value="0.0" />
   </event>
-  <event name="Ship3 Activation Range" id_arme="487a4879-0868-4f63-8533-6213ba0d530f" parent_id_arme="8d1aa766-d915-4279-b58f-92b8771e49ea">
+  <event name="Ship3 Activation Range" id_arme="487a4879-0868-4f63-8533-6213ba0d530f" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="2" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
@@ -259,7 +269,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship3" value="1.0" />
   </event>
-  <event name="Ship3 Out of Range" id_arme="cfecc391-c0f4-40c4-ac0c-262dce7f46bb" parent_id_arme="8d1aa766-d915-4279-b58f-92b8771e49ea">
+  <event name="Ship3 Out of Range" id_arme="cfecc391-c0f4-40c4-ac0c-262dce7f46bb" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="2" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
@@ -268,7 +278,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship3" value="0.0" />
   </event>
-  <event name="Ship4 Activation Range" id_arme="f6a229f0-ba8d-42f4-b3a7-e17f26ffaa78" parent_id_arme="8d1aa766-d915-4279-b58f-92b8771e49ea">
+  <event name="Ship4 Activation Range" id_arme="f6a229f0-ba8d-42f4-b3a7-e17f26ffaa78" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="2" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
@@ -277,7 +287,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship4" value="1.0" />
   </event>
-  <event name="Ship4 Out of Range" id_arme="6aefb361-f909-4601-b04d-64ee277ae1fa" parent_id_arme="8d1aa766-d915-4279-b58f-92b8771e49ea">
+  <event name="Ship4 Out of Range" id_arme="6aefb361-f909-4601-b04d-64ee277ae1fa" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="2" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
@@ -286,7 +296,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship4" value="0.0" />
   </event>
-  <event name="Ship5 Activation Range" id_arme="ab17df6f-e69c-4bb7-88d2-466ab15382a3" parent_id_arme="8d1aa766-d915-4279-b58f-92b8771e49ea">
+  <event name="Ship5 Activation Range" id_arme="ab17df6f-e69c-4bb7-88d2-466ab15382a3" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="2" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
@@ -295,7 +305,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship5" value="1.0" />
   </event>
-  <event name="Ship5 Out of Range" id_arme="305f2236-daf5-477e-a42f-c20a910ca54f" parent_id_arme="8d1aa766-d915-4279-b58f-92b8771e49ea">
+  <event name="Ship5 Out of Range" id_arme="305f2236-daf5-477e-a42f-c20a910ca54f" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="2" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
@@ -304,7 +314,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship5" value="0.0" />
   </event>
-  <event name="Ship6 Activation Range" id_arme="a06e393a-a845-4ac1-a474-f561bafe34cc" parent_id_arme="8d1aa766-d915-4279-b58f-92b8771e49ea">
+  <event name="Ship6 Activation Range" id_arme="a06e393a-a845-4ac1-a474-f561bafe34cc" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="2" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
@@ -313,7 +323,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship6" value="1.0" />
   </event>
-  <event name="Ship6 Out of Range" id_arme="6f3cc0a7-9479-4ed6-8f08-1d2e8862b558" parent_id_arme="8d1aa766-d915-4279-b58f-92b8771e49ea">
+  <event name="Ship6 Out of Range" id_arme="6f3cc0a7-9479-4ed6-8f08-1d2e8862b558" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="2" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
@@ -322,7 +332,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship6" value="0.0" />
   </event>
-  <event name="Ship7 Activation Range" id_arme="aa322b59-8748-4f26-a9ea-089be033b6fd" parent_id_arme="8d1aa766-d915-4279-b58f-92b8771e49ea">
+  <event name="Ship7 Activation Range" id_arme="aa322b59-8748-4f26-a9ea-089be033b6fd" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="2" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
@@ -331,7 +341,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship7" value="1.0" />
   </event>
-  <event name="Ship7 Out of Range" id_arme="6605b477-d0b3-406f-98b2-d317c4c1f2b6" parent_id_arme="8d1aa766-d915-4279-b58f-92b8771e49ea">
+  <event name="Ship7 Out of Range" id_arme="6605b477-d0b3-406f-98b2-d317c4c1f2b6" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="2" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
@@ -340,7 +350,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship7" value="0.0" />
   </event>
-  <event name="Ship8 Activation Range" id_arme="6d6d19a5-7e59-4609-a4d6-057b979f2dfe" parent_id_arme="8d1aa766-d915-4279-b58f-92b8771e49ea">
+  <event name="Ship8 Activation Range" id_arme="6d6d19a5-7e59-4609-a4d6-057b979f2dfe" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="2" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
@@ -349,7 +359,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship8" value="1.0" />
   </event>
-  <event name="Ship8 Out of Range" id_arme="e727d711-e221-4770-bdcf-0205f51d2e40" parent_id_arme="8d1aa766-d915-4279-b58f-92b8771e49ea">
+  <event name="Ship8 Out of Range" id_arme="e727d711-e221-4770-bdcf-0205f51d2e40" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="2" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
@@ -358,7 +368,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship8" value="0.0" />
   </event>
-  <event name="Gate Online" id_arme="e113c47c-ccd7-48c8-b520-4174a25a8a6a" parent_id_arme="3f68e2d1-b070-4ebc-8a12-6b98727021f7">
+  <event name="Gate Online" id_arme="e113c47c-ccd7-48c8-b520-4174a25a8a6a" parent_id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83">
     <if_variable name="Sector" comparator="EQUALS" value="2" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
@@ -370,7 +380,7 @@
     <set_variable name="Gate System" value="2.0" />
     <clear_comms_button text="Activate Gate" sideValue="playerSide" />
   </event>
-  <event name="Jump Initiated" id_arme="cbb7a700-d872-4afe-97b3-23b096f478c8" parent_id_arme="3f68e2d1-b070-4ebc-8a12-6b98727021f7">
+  <event name="Jump Initiated" id_arme="cbb7a700-d872-4afe-97b3-23b096f478c8" parent_id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83">
     <if_variable name="Sector" comparator="EQUALS" value="2" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_comms_button text="Jump" />
@@ -382,7 +392,7 @@
     <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
     <set_variable name="Enyalius to Tibur" value="1.0" />
     <set_variable name="Tibur System" value="1.0" />
-    <set_variable name="Sector" value="3.0" />
+    <set_variable name="Sector" value="3" />
     <set_timer name="Transition" seconds="2" />
     <set_variable name="Gate System" value="0.0" />
     <set_variable name="ExitorRetreat" value="1.0" />
@@ -401,11 +411,11 @@
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
-    <set_ship_text name="Kashawn Trading" desc="Enyalius' primary hub for trade with the Tibur system." scan_desc="The station commander is renowned for their honor and bravery, but has no combat experience." />
     <set_object_property property="artScale" value="1.0" name="Tibur Gate" />
     <set_object_property property="pushRadius" value="0.0" name="Tibur Gate" />
     <set_object_property property="angle" value="4.71238898" name="Tibur Gate" />
     <set_object_property property="rollDelta" value="0.3" name="Tibur Gate" />
+    <set_ship_text name="Kashawn Trading" desc="Enyalius' primary hub for trade with the Tibur system." scan_desc="The station commander is renowned for their honor and bravery, but has no combat experience." />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="b7b599b2-886c-441b-a59b-ed08e98555a5" parent_id_arme="563d3840-7948-40f0-9f73-888cbd14e85d">
@@ -439,12 +449,16 @@
     <set_object_property property="angle" value="3.141592654" player_slot="7" />
     <set_variable name="Tibur to Enyalius" value="0.0" />
   </event>
-  <folder_arme name="Enyalius Sector III" id_arme="c0e96d96-c22b-47fd-8911-1f0071938b65" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" expanded_arme="" />
+  <folder_arme name="Enyalius Sector III" id_arme="c0e96d96-c22b-47fd-8911-1f0071938b65" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
   <event name="Create Enyalius Sector III" id_arme="1bd39347-45be-45ed-92ba-3c4ff16259fe" parent_id_arme="c0e96d96-c22b-47fd-8911-1f0071938b65">
     <if_variable name="Enyalius System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="3.0" />
     <if_timer_finished name="Transition" />
     <set_skybox_index index="26" />
+    <create count="100" type="nebulas" nebType="2" startX="69822.0" startY="0.0" startZ="20669.0" endX="48929.0" endY="0.0" endZ="66205.0" randomRange="20000" />
+    <create count="100" type="nebulas" nebType="1" startX="64331.0" startY="0.0" startZ="20669.0" endX="60849.0" endY="0.0" endZ="79062.0" randomRange="20000" />
+    <create count="50" type="asteroids" startX="27768.0" startY="0.0" startZ="28705.0" endX="25090.0" endY="0.0" endZ="79598.0" randomRange="15000" />
+    <create count="10" type="asteroids" startX="28170.0" startY="0.0" startZ="45848.0" endX="28170.0" endY="0.0" endZ="45848.0" randomRange="2000" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Enyalius System" value="2.0" />
     <set_variable name="Grid 5 Transition Enabled" value="0.0" />
@@ -455,10 +469,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-    <create count="100" type="nebulas" nebType="2" startX="69822.0" startY="0.0" startZ="20669.0" endX="48929.0" endY="0.0" endZ="66205.0" randomRange="20000" />
-    <create count="100" type="nebulas" nebType="1" startX="64331.0" startY="0.0" startZ="20669.0" endX="60849.0" endY="0.0" endZ="79062.0" randomRange="20000" />
-    <create count="50" type="asteroids" startX="27768.0" startY="0.0" startZ="28705.0" endX="25090.0" endY="0.0" endZ="79598.0" randomRange="15000" />
-    <create count="10" type="asteroids" startX="28170.0" startY="0.0" startZ="45848.0" endX="28170.0" endY="0.0" endZ="45848.0" randomRange="2000" />
   </event>
   <folder_arme name="Navigation" id_arme="4c4faf6e-c90d-4544-b4ee-615a239f6bce" parent_id_arme="c0e96d96-c22b-47fd-8911-1f0071938b65" />
   <event name="Transition to Sector II" id_arme="94f9a07b-651d-442e-bcc6-c4a7de8521b2" parent_id_arme="4c4faf6e-c90d-4544-b4ee-615a239f6bce">
@@ -520,12 +530,16 @@
     <set_variable name="Enyalius System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-  <folder_arme name="Enyalius Sector IV" id_arme="6797704b-85b6-463b-82c0-02e2e4dcf8f6" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" expanded_arme="" />
+  <folder_arme name="Enyalius Sector IV" id_arme="6797704b-85b6-463b-82c0-02e2e4dcf8f6" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
   <event name="Create Enyalius Sector IV" id_arme="722c9594-7acc-4854-85eb-84bcb64ad6e8" parent_id_arme="6797704b-85b6-463b-82c0-02e2e4dcf8f6">
     <if_variable name="Enyalius System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="4.0" />
     <if_timer_finished name="Transition" />
     <set_skybox_index index="26" />
+    <create count="100" type="nebulas" startX="40409.0" startY="0.0" startZ="33568.0" endX="39666.0" endY="0.0" endZ="52602.0" randomRange="20000" />
+    <create count="100" type="nebulas" startX="73421.0" startY="0.0" startZ="69107.0" endX="39666.0" endY="0.0" endZ="52602.0" randomRange="20000" />
+    <create count="50" type="asteroids" startX="11413.0" startY="0.0" startZ="90223.0" endX="18105.0" endY="0.0" endZ="80260.0" randomRange="10000" />
+    <create count="50" type="asteroids" startX="11413.0" startY="0.0" startZ="77732.0" endX="34164.0" endY="0.0" endZ="93643.0" randomRange="10000" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Enyalius System" value="2.0" />
     <set_variable name="Grid 5 Transition Enabled" value="1.0" />
@@ -536,12 +550,8 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
-    <create count="100" type="nebulas" startX="40409.0" startY="0.0" startZ="33568.0" endX="39666.0" endY="0.0" endZ="52602.0" randomRange="20000" />
-    <create count="100" type="nebulas" startX="73421.0" startY="0.0" startZ="69107.0" endX="39666.0" endY="0.0" endZ="52602.0" randomRange="20000" />
-    <create count="50" type="asteroids" startX="11413.0" startY="0.0" startZ="90223.0" endX="18105.0" endY="0.0" endZ="80260.0" randomRange="10000" />
-    <create count="50" type="asteroids" startX="11413.0" startY="0.0" startZ="77732.0" endX="34164.0" endY="0.0" endZ="93643.0" randomRange="10000" />
   </event>
-  <folder_arme name="Navigation" id_arme="4740f1ec-6ad6-4ada-93dc-c3f213dd9786" parent_id_arme="6797704b-85b6-463b-82c0-02e2e4dcf8f6" />
+  <folder_arme name="Navigation" id_arme="4740f1ec-6ad6-4ada-93dc-c3f213dd9786" parent_id_arme="6797704b-85b6-463b-82c0-02e2e4dcf8f6" expanded_arme="" />
   <event name="Transition to Sector V" id_arme="09537c50-674d-4412-b6cc-4efc93ce91ea" parent_id_arme="4740f1ec-6ad6-4ada-93dc-c3f213dd9786">
     <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="4.0" />
@@ -597,15 +607,15 @@
     <set_variable name="Enyalius System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="2.0" integer="yes" />
   </event>
-  <folder_arme name="System - Jump Gate Settings" id_arme="b58ce02f-0fa7-4999-b983-09c2d017cc1a" parent_id_arme="4740f1ec-6ad6-4ada-93dc-c3f213dd9786" />
-  <event name="Gate Offline" id_arme="ef14a476-7a69-4465-990d-e3b13d8fe002" parent_id_arme="b58ce02f-0fa7-4999-b983-09c2d017cc1a">
+  <folder_arme name="System - Jump Gate Settings" id_arme="22151f69-16e4-4932-990a-8a08047427f9" parent_id_arme="4740f1ec-6ad6-4ada-93dc-c3f213dd9786" />
+  <event name="Gate Offline" id_arme="a8fbf0a6-a5c5-42d7-8bf0-a5e9bb85d8d4" parent_id_arme="22151f69-16e4-4932-990a-8a08047427f9">
     <if_variable name="Sector" comparator="EQUALS" value="4" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
     <set_object_property property="rollDelta" value="0.3" name="Vanir Gate" />
   </event>
-  <folder_arme name="Tracking System" id_arme="fc415573-8f9d-4275-b356-4235b14b50a0" parent_id_arme="b58ce02f-0fa7-4999-b983-09c2d017cc1a" />
-  <event name="Ship1 Activation Range" id_arme="bfc35f4d-ae55-45dc-8119-d4f07d3a17c2" parent_id_arme="fc415573-8f9d-4275-b356-4235b14b50a0">
+  <folder_arme name="Tracking System" id_arme="b4608f4b-b232-4e85-a542-b060783908a6" parent_id_arme="22151f69-16e4-4932-990a-8a08047427f9" />
+  <event name="Ship1 Activation Range" id_arme="9d407373-5221-4b53-ba91-1eb2ddbcb06e" parent_id_arme="b4608f4b-b232-4e85-a542-b060783908a6">
     <if_variable name="Sector" comparator="EQUALS" value="4" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
@@ -614,7 +624,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship1" value="1.0" />
   </event>
-  <event name="Ship1 Out of Range" id_arme="a535ada3-95cc-4b50-bc61-05b3a205451b" parent_id_arme="fc415573-8f9d-4275-b356-4235b14b50a0">
+  <event name="Ship1 Out of Range" id_arme="0346b653-515e-4c0e-ab98-d5b67b715b3b" parent_id_arme="b4608f4b-b232-4e85-a542-b060783908a6">
     <if_variable name="Sector" comparator="EQUALS" value="4" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
@@ -623,7 +633,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship1" value="0.0" />
   </event>
-  <event name="Ship2 Activation Range" id_arme="1d7f34fe-8335-470d-8dd4-438f4b3f1197" parent_id_arme="fc415573-8f9d-4275-b356-4235b14b50a0">
+  <event name="Ship2 Activation Range" id_arme="2a075970-5371-4954-90ec-bc1e257d7437" parent_id_arme="b4608f4b-b232-4e85-a542-b060783908a6">
     <if_variable name="Sector" comparator="EQUALS" value="4" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
@@ -632,7 +642,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship2" value="1.0" />
   </event>
-  <event name="Ship2 Out of Range" id_arme="a307304c-8924-442f-bd70-1362b3f6c731" parent_id_arme="fc415573-8f9d-4275-b356-4235b14b50a0">
+  <event name="Ship2 Out of Range" id_arme="0d4259f6-dd43-47fb-a76f-72b23da0d6a1" parent_id_arme="b4608f4b-b232-4e85-a542-b060783908a6">
     <if_variable name="Sector" comparator="EQUALS" value="4" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
@@ -641,7 +651,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship2" value="0.0" />
   </event>
-  <event name="Ship3 Activation Range" id_arme="af911864-95f2-4bc8-aa76-f6bc2928d36b" parent_id_arme="fc415573-8f9d-4275-b356-4235b14b50a0">
+  <event name="Ship3 Activation Range" id_arme="92a0c54f-328d-490c-a6c3-297274d845c8" parent_id_arme="b4608f4b-b232-4e85-a542-b060783908a6">
     <if_variable name="Sector" comparator="EQUALS" value="4" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
@@ -650,7 +660,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship3" value="1.0" />
   </event>
-  <event name="Ship3 Out of Range" id_arme="83ff4a5d-47af-4b67-9db7-9d5185ec6127" parent_id_arme="fc415573-8f9d-4275-b356-4235b14b50a0">
+  <event name="Ship3 Out of Range" id_arme="9cc186a2-c3d9-4c10-8731-76fb4fbba32a" parent_id_arme="b4608f4b-b232-4e85-a542-b060783908a6">
     <if_variable name="Sector" comparator="EQUALS" value="4" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
@@ -659,7 +669,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship3" value="0.0" />
   </event>
-  <event name="Ship4 Activation Range" id_arme="e80b6b1f-9c14-42bf-8cd4-4237c6e46546" parent_id_arme="fc415573-8f9d-4275-b356-4235b14b50a0">
+  <event name="Ship4 Activation Range" id_arme="477ef51e-440c-4fdd-a23a-15a79be3f290" parent_id_arme="b4608f4b-b232-4e85-a542-b060783908a6">
     <if_variable name="Sector" comparator="EQUALS" value="4" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
@@ -668,7 +678,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship4" value="1.0" />
   </event>
-  <event name="Ship4 Out of Range" id_arme="060f42b1-498c-4af3-a299-377eaaf41729" parent_id_arme="fc415573-8f9d-4275-b356-4235b14b50a0">
+  <event name="Ship4 Out of Range" id_arme="f2b399ab-41d8-4dd7-b0f2-39d2f34b7b32" parent_id_arme="b4608f4b-b232-4e85-a542-b060783908a6">
     <if_variable name="Sector" comparator="EQUALS" value="4" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
@@ -677,7 +687,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship4" value="0.0" />
   </event>
-  <event name="Ship5 Activation Range" id_arme="d4531ba7-b958-40e5-bc9c-7d75a2e818c1" parent_id_arme="fc415573-8f9d-4275-b356-4235b14b50a0">
+  <event name="Ship5 Activation Range" id_arme="8fb87e4a-3059-4ee0-9bf0-273ca13d85bf" parent_id_arme="b4608f4b-b232-4e85-a542-b060783908a6">
     <if_variable name="Sector" comparator="EQUALS" value="4" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
@@ -686,7 +696,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship5" value="1.0" />
   </event>
-  <event name="Ship5 Out of Range" id_arme="228e5e3d-fb4d-4c8a-b823-5614e03f0ed3" parent_id_arme="fc415573-8f9d-4275-b356-4235b14b50a0">
+  <event name="Ship5 Out of Range" id_arme="c7c1f9a7-fa65-4c79-a000-e638ecef46a7" parent_id_arme="b4608f4b-b232-4e85-a542-b060783908a6">
     <if_variable name="Sector" comparator="EQUALS" value="4" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
@@ -695,7 +705,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship5" value="0.0" />
   </event>
-  <event name="Ship6 Activation Range" id_arme="92481ec3-d25c-40a9-9e3e-8fc6a1868982" parent_id_arme="fc415573-8f9d-4275-b356-4235b14b50a0">
+  <event name="Ship6 Activation Range" id_arme="ad0e9876-28f9-4c45-a55f-2c10b394dab8" parent_id_arme="b4608f4b-b232-4e85-a542-b060783908a6">
     <if_variable name="Sector" comparator="EQUALS" value="4" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
@@ -704,7 +714,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship6" value="1.0" />
   </event>
-  <event name="Ship6 Out of Range" id_arme="ac68d974-357d-414e-a3a3-698bd90a4db3" parent_id_arme="fc415573-8f9d-4275-b356-4235b14b50a0">
+  <event name="Ship6 Out of Range" id_arme="161fa8ff-ed94-4760-be27-738beaa231a2" parent_id_arme="b4608f4b-b232-4e85-a542-b060783908a6">
     <if_variable name="Sector" comparator="EQUALS" value="4" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
@@ -713,7 +723,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship6" value="0.0" />
   </event>
-  <event name="Ship7 Activation Range" id_arme="a98d71e0-69f8-4354-9708-c09dbc7cf5c3" parent_id_arme="fc415573-8f9d-4275-b356-4235b14b50a0">
+  <event name="Ship7 Activation Range" id_arme="0b92b6ce-1352-48c5-967e-1538215ad845" parent_id_arme="b4608f4b-b232-4e85-a542-b060783908a6">
     <if_variable name="Sector" comparator="EQUALS" value="4" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
@@ -722,7 +732,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship7" value="1.0" />
   </event>
-  <event name="Ship7 Out of Range" id_arme="89180238-d117-43ef-9d22-4436c48c30c4" parent_id_arme="fc415573-8f9d-4275-b356-4235b14b50a0">
+  <event name="Ship7 Out of Range" id_arme="9cd22261-dcea-4421-84b7-4efc79b09ad7" parent_id_arme="b4608f4b-b232-4e85-a542-b060783908a6">
     <if_variable name="Sector" comparator="EQUALS" value="4" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
@@ -731,7 +741,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship7" value="0.0" />
   </event>
-  <event name="Ship8 Activation Range" id_arme="343824a4-e654-4cb0-8078-3e7e0043a632" parent_id_arme="fc415573-8f9d-4275-b356-4235b14b50a0">
+  <event name="Ship8 Activation Range" id_arme="663182f2-ba1c-4d23-aa4d-f4dcf05bb7b4" parent_id_arme="b4608f4b-b232-4e85-a542-b060783908a6">
     <if_variable name="Sector" comparator="EQUALS" value="4" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
@@ -740,7 +750,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship8" value="1.0" />
   </event>
-  <event name="Ship8 Out of Range" id_arme="8d78fe18-fdd4-4a90-bfab-fb5beb8a41a8" parent_id_arme="fc415573-8f9d-4275-b356-4235b14b50a0">
+  <event name="Ship8 Out of Range" id_arme="fcecf942-6ea7-4515-b711-ef90003673a3" parent_id_arme="b4608f4b-b232-4e85-a542-b060783908a6">
     <if_variable name="Sector" comparator="EQUALS" value="4" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
@@ -749,7 +759,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship8" value="0.0" />
   </event>
-  <event name="Gate Online" id_arme="6d7db65b-82ea-424d-83cf-98c1e0e63f3e" parent_id_arme="b58ce02f-0fa7-4999-b983-09c2d017cc1a">
+  <event name="Gate Online" id_arme="e64a7ca4-ca38-4f37-962e-9bcfbad14ec1" parent_id_arme="22151f69-16e4-4932-990a-8a08047427f9">
     <if_variable name="Sector" comparator="EQUALS" value="4" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
@@ -761,7 +771,7 @@
     <set_variable name="Gate System" value="2.0" />
     <clear_comms_button text="Activate Gate" sideValue="playerSide" />
   </event>
-  <event name="Jump Initiated" id_arme="0c0c86f4-886b-489b-b258-051be8cd62db" parent_id_arme="b58ce02f-0fa7-4999-b983-09c2d017cc1a">
+  <event name="Jump Initiated" id_arme="3008b026-8fad-43c2-ad82-2280942f4511" parent_id_arme="22151f69-16e4-4932-990a-8a08047427f9">
     <if_variable name="Sector" comparator="EQUALS" value="4" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_comms_button text="Jump" />
@@ -773,7 +783,7 @@
     <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
     <set_variable name="Enyalius to Vanir" value="1.0" />
     <set_variable name="Vanir System" value="1.0" />
-    <set_variable name="Sector" value="targetSector" />
+    <set_variable name="Sector" value="1" />
     <set_timer name="Transition" seconds="2" />
     <set_variable name="Gate System" value="0.0" />
     <set_variable name="ExitorRetreat" value="1.0" />
@@ -809,7 +819,7 @@
     <set_variable name="Enyalius System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-  <event name="Arrival From Vanir" id_arme="bf7de5a2-19b8-46df-a8f6-72ea2a93e76c" parent_id_arme="6797704b-85b6-463b-82c0-02e2e4dcf8f6">
+  <event name="Arrival From Vanir" id_arme="b21b3c0a-6a69-4ada-9186-cbf719eabafc" parent_id_arme="6797704b-85b6-463b-82c0-02e2e4dcf8f6">
     <if_variable name="Sector" comparator="EQUALS" value="4" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Vanir to Enyalius" comparator="EQUALS" value="1.0" />
@@ -832,12 +842,16 @@
     <set_object_property property="angle" value="3.141592654" player_slot="7" />
     <set_variable name="Vanir to Enyalius" value="0.0" />
   </event>
-  <folder_arme name="Enyalius Sector V" id_arme="c1e6332c-5c64-4995-bf24-72a634605bda" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" expanded_arme="" />
+  <folder_arme name="Enyalius Sector V" id_arme="c1e6332c-5c64-4995-bf24-72a634605bda" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
   <event name="Create Enyalius Sector V" id_arme="b712d4ae-1542-49c5-9122-35ba03f9d2de" parent_id_arme="c1e6332c-5c64-4995-bf24-72a634605bda">
     <if_variable name="Enyalius System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
     <if_timer_finished name="Transition" />
     <set_skybox_index index="26" />
+    <create count="100" type="nebulas" nebType="2" startX="67009.0" startY="0.0" startZ="27767.0" endX="28036.0" endY="0.0" endZ="62053.0" randomRange="20000" />
+    <create count="100" type="asteroids" startX="88036.0" startY="0.0" startZ="85758.0" endX="68349.0" endY="0.0" endZ="72767.0" randomRange="15000" />
+    <create count="100" type="mines" startAngle="20" endAngle="160" startX="50000.0" startY="0.0" startZ="50000.0" radius="15000" />
+    <create count="100" type="mines" startAngle="200" endAngle="340" startX="50000.0" startY="0.0" startZ="50000.0" radius="15000" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Enyalius System" value="2.0" />
     <set_variable name="Grid 5 Transition Enabled" value="1.0" />
@@ -848,10 +862,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
-    <create count="100" type="nebulas" nebType="2" startX="67009.0" startY="0.0" startZ="27767.0" endX="28036.0" endY="0.0" endZ="62053.0" randomRange="20000" />
-    <create count="100" type="asteroids" startX="88036.0" startY="0.0" startZ="85758.0" endX="68349.0" endY="0.0" endZ="72767.0" randomRange="15000" />
-    <create count="100" type="mines" startAngle="20" endAngle="160" startX="50000.0" startY="0.0" startZ="50000.0" radius="15000" />
-    <create count="100" type="mines" startAngle="200" endAngle="340" startX="50000.0" startY="0.0" startZ="50000.0" radius="15000" />
   </event>
   <folder_arme name="Navigation" id_arme="e50ce6d7-14d6-4c88-8081-21a5979ef85f" parent_id_arme="c1e6332c-5c64-4995-bf24-72a634605bda" />
   <event name="Transition to Sector VI" id_arme="9e190538-f04c-45b1-90b6-e5a6e088e125" parent_id_arme="e50ce6d7-14d6-4c88-8081-21a5979ef85f">
@@ -942,7 +952,7 @@
     <set_variable name="Enyalius System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="1.0" integer="yes" />
   </event>
-  <folder_arme name="Sector Entities" id_arme="33a17718-a44b-4a95-b2e8-8e8393e44137" parent_id_arme="c1e6332c-5c64-4995-bf24-72a634605bda" expanded_arme="" />
+  <folder_arme name="Sector Entities" id_arme="33a17718-a44b-4a95-b2e8-8e8393e44137" parent_id_arme="c1e6332c-5c64-4995-bf24-72a634605bda" />
   <event name="Generate Sector Entities" id_arme="ff2bc030-0dd5-457a-873d-fc1743ce9215" parent_id_arme="33a17718-a44b-4a95-b2e8-8e8393e44137">
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
@@ -965,18 +975,20 @@
     <if_variable name="Enyalius System" comparator="EQUALS" value="3.0" />
     <destroy name="Enyalius V" />
     <destroy name="Rysdak Markets" />
-    <destroy name="WP-33J" />
     <destroy name="Enyalius Command" />
+    <destroy name="WP-33J" />
     <destroy name="WP-82W" />
     <set_variable name="Enyalius System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-  <folder_arme name="Enyalius Sector VI" id_arme="c78971ed-58c2-4607-8f75-b07db6a40817" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" expanded_arme="" />
+  <folder_arme name="Enyalius Sector VI" id_arme="c78971ed-58c2-4607-8f75-b07db6a40817" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
   <event name="Create Enyalius Sector VI" id_arme="4e5c0731-175e-4d97-a8fb-9bfc7630ee55" parent_id_arme="c78971ed-58c2-4607-8f75-b07db6a40817">
     <if_variable name="Enyalius System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_timer_finished name="Transition" />
     <set_skybox_index index="26" />
+    <create count="50" type="nebulas" startX="37545.0" startY="0.0" startZ="47455.0" endX="20938.0" endY="0.0" endZ="10892.0" randomRange="10000" />
+    <create count="50" type="asteroids" startX="55625.0" startY="0.0" startZ="86428.0" endX="21072.0" endY="0.0" endZ="39955.0" randomRange="15000" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Enyalius System" value="2.0" />
     <set_variable name="Grid A Transition Enabled" value="1.0" />
@@ -987,8 +999,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-    <create count="50" type="nebulas" startX="37545.0" startY="0.0" startZ="47455.0" endX="20938.0" endY="0.0" endZ="10892.0" randomRange="10000" />
-    <create count="50" type="asteroids" startX="55625.0" startY="0.0" startZ="86428.0" endX="21072.0" endY="0.0" endZ="39955.0" randomRange="15000" />
   </event>
   <folder_arme name="Navigation" id_arme="f8cf7bc4-c925-47df-92a3-b47b272b320a" parent_id_arme="c78971ed-58c2-4607-8f75-b07db6a40817" />
   <event name="Transition to Sector V" id_arme="73931322-b2da-434a-a455-a2dfffdc4bc5" parent_id_arme="f8cf7bc4-c925-47df-92a3-b47b272b320a">
@@ -1046,15 +1056,15 @@
     <set_variable name="Enyalius System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="2.0" integer="yes" />
   </event>
-  <folder_arme name="System - Jump Gate Settings" id_arme="8b76db1a-48f9-4885-948b-54effb286bc2" parent_id_arme="f8cf7bc4-c925-47df-92a3-b47b272b320a" />
-  <event name="Gate Offline" id_arme="5dc4303f-a0a7-4e11-9b34-21489a2835d8" parent_id_arme="8b76db1a-48f9-4885-948b-54effb286bc2">
+  <folder_arme name="System - Jump Gate Settings" id_arme="730feb47-07f2-40dc-908c-a6d66dae1d6b" parent_id_arme="f8cf7bc4-c925-47df-92a3-b47b272b320a" />
+  <event name="Gate Offline" id_arme="0ce80a1d-db46-4578-b430-8517f4773bd9" parent_id_arme="730feb47-07f2-40dc-908c-a6d66dae1d6b">
     <if_variable name="Sector" comparator="EQUALS" value="6" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
     <set_object_property property="rollDelta" value="0.3" name="Toray Gate" />
   </event>
-  <folder_arme name="Tracking System" id_arme="3c5f86f5-b9fa-4531-b2fb-a66a1de48dd1" parent_id_arme="8b76db1a-48f9-4885-948b-54effb286bc2" expanded_arme="" />
-  <event name="Ship1 Activation Range" id_arme="72761f0c-e14b-47e5-a42b-56cc8b5c72ec" parent_id_arme="3c5f86f5-b9fa-4531-b2fb-a66a1de48dd1">
+  <folder_arme name="Tracking System" id_arme="867bf37f-3a97-4651-8714-2ed415605f11" parent_id_arme="730feb47-07f2-40dc-908c-a6d66dae1d6b" />
+  <event name="Ship1 Activation Range" id_arme="543671a2-3008-45f5-b180-9a69ddb3dbf0" parent_id_arme="867bf37f-3a97-4651-8714-2ed415605f11">
     <if_variable name="Sector" comparator="EQUALS" value="6" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
@@ -1063,7 +1073,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship1" value="1.0" />
   </event>
-  <event name="Ship1 Out of Range" id_arme="c7b83ef8-fd09-4553-862e-ddd0baa28714" parent_id_arme="3c5f86f5-b9fa-4531-b2fb-a66a1de48dd1">
+  <event name="Ship1 Out of Range" id_arme="fa190068-96b3-4d6e-a45a-66cef557fc59" parent_id_arme="867bf37f-3a97-4651-8714-2ed415605f11">
     <if_variable name="Sector" comparator="EQUALS" value="6" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
@@ -1072,7 +1082,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship1" value="0.0" />
   </event>
-  <event name="Ship2 Activation Range" id_arme="7a127f8f-1866-403a-b20f-d6369d01f369" parent_id_arme="3c5f86f5-b9fa-4531-b2fb-a66a1de48dd1">
+  <event name="Ship2 Activation Range" id_arme="2e2d3173-a513-4c01-9a46-9de0ecd93d74" parent_id_arme="867bf37f-3a97-4651-8714-2ed415605f11">
     <if_variable name="Sector" comparator="EQUALS" value="6" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
@@ -1081,7 +1091,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship2" value="1.0" />
   </event>
-  <event name="Ship2 Out of Range" id_arme="642f4008-b7ab-4162-b576-37b2298b576e" parent_id_arme="3c5f86f5-b9fa-4531-b2fb-a66a1de48dd1">
+  <event name="Ship2 Out of Range" id_arme="eef67ba7-66a1-4c8d-a238-6aedc4228099" parent_id_arme="867bf37f-3a97-4651-8714-2ed415605f11">
     <if_variable name="Sector" comparator="EQUALS" value="6" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
@@ -1090,7 +1100,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship2" value="0.0" />
   </event>
-  <event name="Ship3 Activation Range" id_arme="5e597ab7-8c90-4ba2-8107-61fe5309684c" parent_id_arme="3c5f86f5-b9fa-4531-b2fb-a66a1de48dd1">
+  <event name="Ship3 Activation Range" id_arme="123b6b83-2a52-4bcf-8e89-f15087cd1ba3" parent_id_arme="867bf37f-3a97-4651-8714-2ed415605f11">
     <if_variable name="Sector" comparator="EQUALS" value="6" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
@@ -1099,7 +1109,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship3" value="1.0" />
   </event>
-  <event name="Ship3 Out of Range" id_arme="88aec3aa-90bb-4747-a668-d983166fe40b" parent_id_arme="3c5f86f5-b9fa-4531-b2fb-a66a1de48dd1">
+  <event name="Ship3 Out of Range" id_arme="3cc4da58-1288-4fe6-b9e8-d49389c56189" parent_id_arme="867bf37f-3a97-4651-8714-2ed415605f11">
     <if_variable name="Sector" comparator="EQUALS" value="6" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
@@ -1108,7 +1118,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship3" value="0.0" />
   </event>
-  <event name="Ship4 Activation Range" id_arme="0f3f42bc-1650-46f0-a24e-a19341ed8f63" parent_id_arme="3c5f86f5-b9fa-4531-b2fb-a66a1de48dd1">
+  <event name="Ship4 Activation Range" id_arme="6331099e-cd0b-4d71-80f1-583e7372cf3d" parent_id_arme="867bf37f-3a97-4651-8714-2ed415605f11">
     <if_variable name="Sector" comparator="EQUALS" value="6" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
@@ -1117,7 +1127,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship4" value="1.0" />
   </event>
-  <event name="Ship4 Out of Range" id_arme="69ee6a90-2c82-4c07-8088-229cec87445d" parent_id_arme="3c5f86f5-b9fa-4531-b2fb-a66a1de48dd1">
+  <event name="Ship4 Out of Range" id_arme="a7b797ac-641e-4edf-aeff-60c06e53330e" parent_id_arme="867bf37f-3a97-4651-8714-2ed415605f11">
     <if_variable name="Sector" comparator="EQUALS" value="6" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
@@ -1126,7 +1136,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship4" value="0.0" />
   </event>
-  <event name="Ship5 Activation Range" id_arme="6ede7562-3b12-4b9f-ba7b-36ac4bdb2a1f" parent_id_arme="3c5f86f5-b9fa-4531-b2fb-a66a1de48dd1">
+  <event name="Ship5 Activation Range" id_arme="8fad4e53-2543-457a-a4f2-e195da9ee673" parent_id_arme="867bf37f-3a97-4651-8714-2ed415605f11">
     <if_variable name="Sector" comparator="EQUALS" value="6" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
@@ -1135,7 +1145,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship5" value="1.0" />
   </event>
-  <event name="Ship5 Out of Range" id_arme="8a16c737-284a-473f-896c-f45de0ed2c69" parent_id_arme="3c5f86f5-b9fa-4531-b2fb-a66a1de48dd1">
+  <event name="Ship5 Out of Range" id_arme="09b1f8a1-60c5-4927-8214-6108a32db748" parent_id_arme="867bf37f-3a97-4651-8714-2ed415605f11">
     <if_variable name="Sector" comparator="EQUALS" value="6" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
@@ -1144,7 +1154,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship5" value="0.0" />
   </event>
-  <event name="Ship6 Activation Range" id_arme="661b1bad-2511-40f2-ae2f-f6e5c7579723" parent_id_arme="3c5f86f5-b9fa-4531-b2fb-a66a1de48dd1">
+  <event name="Ship6 Activation Range" id_arme="220f7661-e3f1-4971-9c7b-596538fd506e" parent_id_arme="867bf37f-3a97-4651-8714-2ed415605f11">
     <if_variable name="Sector" comparator="EQUALS" value="6" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
@@ -1153,7 +1163,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship6" value="1.0" />
   </event>
-  <event name="Ship6 Out of Range" id_arme="950e7d70-4b77-4120-b2cd-e7fb307687c0" parent_id_arme="3c5f86f5-b9fa-4531-b2fb-a66a1de48dd1">
+  <event name="Ship6 Out of Range" id_arme="c0632bc2-816c-45c7-94a8-ad86d56da0d8" parent_id_arme="867bf37f-3a97-4651-8714-2ed415605f11">
     <if_variable name="Sector" comparator="EQUALS" value="6" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
@@ -1162,7 +1172,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship6" value="0.0" />
   </event>
-  <event name="Ship7 Activation Range" id_arme="4ef586b0-d761-4ff9-9ed0-2bdd7034d33c" parent_id_arme="3c5f86f5-b9fa-4531-b2fb-a66a1de48dd1">
+  <event name="Ship7 Activation Range" id_arme="04387f89-b979-4256-8694-c231ee93ca36" parent_id_arme="867bf37f-3a97-4651-8714-2ed415605f11">
     <if_variable name="Sector" comparator="EQUALS" value="6" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
@@ -1171,7 +1181,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship7" value="1.0" />
   </event>
-  <event name="Ship7 Out of Range" id_arme="368a220c-f5af-41a4-af8a-b8888fdb3a61" parent_id_arme="3c5f86f5-b9fa-4531-b2fb-a66a1de48dd1">
+  <event name="Ship7 Out of Range" id_arme="a22cb6e4-6e78-492b-a620-a05d2e404d84" parent_id_arme="867bf37f-3a97-4651-8714-2ed415605f11">
     <if_variable name="Sector" comparator="EQUALS" value="6" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
@@ -1180,7 +1190,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship7" value="0.0" />
   </event>
-  <event name="Ship8 Activation Range" id_arme="f8c2ea2c-a2e0-428e-8bc3-f1b35ae27415" parent_id_arme="3c5f86f5-b9fa-4531-b2fb-a66a1de48dd1">
+  <event name="Ship8 Activation Range" id_arme="a97a59b4-5d34-4046-b102-28f4569c87f5" parent_id_arme="867bf37f-3a97-4651-8714-2ed415605f11">
     <if_variable name="Sector" comparator="EQUALS" value="6" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
@@ -1189,7 +1199,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship8" value="1.0" />
   </event>
-  <event name="Ship8 Out of Range" id_arme="fd66d550-c637-4978-b1a1-0e20f06679a4" parent_id_arme="3c5f86f5-b9fa-4531-b2fb-a66a1de48dd1">
+  <event name="Ship8 Out of Range" id_arme="8947034b-9a7c-4ef1-a2cf-d3156433f00a" parent_id_arme="867bf37f-3a97-4651-8714-2ed415605f11">
     <if_variable name="Sector" comparator="EQUALS" value="6" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
@@ -1198,7 +1208,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship8" value="0.0" />
   </event>
-  <event name="Gate Online" id_arme="560d8649-fc64-41c1-adfa-2cd8cd164e01" parent_id_arme="8b76db1a-48f9-4885-948b-54effb286bc2">
+  <event name="Gate Online" id_arme="31bc8bf4-2a52-497d-a208-ccbfa8190c4b" parent_id_arme="730feb47-07f2-40dc-908c-a6d66dae1d6b">
     <if_variable name="Sector" comparator="EQUALS" value="6" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
@@ -1210,7 +1220,7 @@
     <set_variable name="Gate System" value="2.0" />
     <clear_comms_button text="Activate Gate" sideValue="playerSide" />
   </event>
-  <event name="Jump Initiated" id_arme="399f441c-4474-4194-8f3e-1a0eac239cc5" parent_id_arme="8b76db1a-48f9-4885-948b-54effb286bc2">
+  <event name="Jump Initiated" id_arme="6c53b724-ec3f-492e-8416-de41066b549c" parent_id_arme="730feb47-07f2-40dc-908c-a6d66dae1d6b">
     <if_variable name="Sector" comparator="EQUALS" value="6" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_comms_button text="Jump" />
@@ -1227,37 +1237,27 @@
     <set_variable name="Gate System" value="0.0" />
     <set_variable name="ExitorRetreat" value="1.0" />
   </event>
-  <folder_arme name="Sector Entities" id_arme="3fc0314a-bc58-4152-8eaa-8d46a2f7a0a5" parent_id_arme="c78971ed-58c2-4607-8f75-b07db6a40817" expanded_arme="" />
+  <folder_arme name="Sector Entities" id_arme="3fc0314a-bc58-4152-8eaa-8d46a2f7a0a5" parent_id_arme="c78971ed-58c2-4607-8f75-b07db6a40817" />
   <event name="Generate Sector Entities" id_arme="b67f7793-8108-4e0f-9048-3fc833572fd3" parent_id_arme="3fc0314a-bc58-4152-8eaa-8d46a2f7a0a5">
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Enyalius VI" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
-    <create type="genericMesh" x="58438.0" y="0.0" z="38616.0" name="Planet" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="0.8" colorBlue="0.0" />
+    <create type="genericMesh" x="58438.0" y="0.0" z="38616.0" name="Planet" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\Planets\planetTex4.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <create type="genericMesh" x="27500.0" y="0.0" z="66339.0" name="Toray Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
     <create type="neutral" x="67009.0" y="0.0" z="56830.0" angle="0" name="Capitol Base" hullID="1001" />
-    <set_variable name="CustomPlanet" value="1.0" integer="yes" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
   <event name="Settings" id_arme="748927e6-6fb1-484b-b3a2-dd06ad6f7f02" parent_id_arme="3fc0314a-bc58-4152-8eaa-8d46a2f7a0a5">
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
-    <set_object_property property="rollDelta" value="0.3" name="Toray Gate" />
-    <set_object_property property="angle" value="4.71238898" name="Toray Gate" />
-    <set_object_property property="pushRadius" value="0.0" name="Toray Gate" />
+    <set_variable name="CustomPlanet" value="1.0" integer="yes" />
     <set_object_property property="artScale" value="1.0" name="Toray Gate" />
+    <set_object_property property="pushRadius" value="0.0" name="Toray Gate" />
+    <set_object_property property="angle" value="4.71238898" name="Toray Gate" />
+    <set_object_property property="rollDelta" value="0.3" name="Toray Gate" />
     <set_variable name="Sector Entities" value="3.0" />
-  </event>
-  <event name="Destroy Sector Entities" id_arme="3d56b2bf-b86c-448c-9ac6-65b24549da2c" parent_id_arme="3fc0314a-bc58-4152-8eaa-8d46a2f7a0a5">
-    <if_variable name="Enyalius System" comparator="EQUALS" value="3.0" />
-    <destroy name="Enyalius Prime" />
-    <destroy name="Enyalius VI" />
-    <destroy name="Toray Gate" />
-    <destroy name="Capitol Base" />
-    <set_variable name="DestroyPlanet" value="1.0" integer="yes" />
-    <set_variable name="Enyalius System" value="System" integer="yes" />
-    <set_variable name="Sector Entities" value="0.0" />
   </event>
   <event name="Custom Planet Data" id_arme="4cd1920a-39e5-47b1-b650-8bca7932e0e3" parent_id_arme="3fc0314a-bc58-4152-8eaa-8d46a2f7a0a5">
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
@@ -1272,10 +1272,20 @@
     <set_ship_text name="PF" newname=" " />
     <set_ship_text name="PG" newname=" " />
     <set_ship_text name="PH" newname=" " />
-    <set_ship_text name="Planet" newname="Enyalius Prime" class="Class M Planet" />
+    <set_ship_text name="Planet" newname="Enyalius Prime" class="Class P Planet" />
     <set_variable name="CustomPlanet" value="0.0" integer="yes" />
   </event>
-  <event name="Arrival From Toray" id_arme="148b646f-af0a-4c49-8724-488ef0659c09" parent_id_arme="c78971ed-58c2-4607-8f75-b07db6a40817">
+  <event name="Destroy Sector Entities" id_arme="3d56b2bf-b86c-448c-9ac6-65b24549da2c" parent_id_arme="3fc0314a-bc58-4152-8eaa-8d46a2f7a0a5">
+    <if_variable name="Enyalius System" comparator="EQUALS" value="3.0" />
+    <destroy name="Enyalius VI" />
+    <destroy name="Toray Gate" />
+    <destroy name="Capitol Base" />
+    <destroy name="Enyalius Prime" />
+    <set_variable name="DestroyPlanet" value="1.0" integer="yes" />
+    <set_variable name="Enyalius System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <event name="Arrival From Toray" id_arme="1bb11377-1e09-4e2f-82b2-fe0d0cc36816" parent_id_arme="c78971ed-58c2-4607-8f75-b07db6a40817">
     <if_variable name="Sector" comparator="EQUALS" value="6" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Toray to Enyalius" comparator="EQUALS" value="1.0" />
@@ -1298,12 +1308,15 @@
     <set_object_property property="angle" value="3.141592654" player_slot="7" />
     <set_variable name="Toray to Enyalius" value="0.0" />
   </event>
-  <folder_arme name="Enyalius Sector VII" id_arme="e2d55524-a6bd-4018-9b07-688afae855de" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" expanded_arme="" />
+  <folder_arme name="Enyalius Sector VII" id_arme="e2d55524-a6bd-4018-9b07-688afae855de" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
   <event name="Create Enyalius Sector VII" id_arme="1163159b-b277-4e16-b80e-a71d8360c29d" parent_id_arme="e2d55524-a6bd-4018-9b07-688afae855de">
     <if_variable name="Enyalius System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
     <if_timer_finished name="Transition" />
     <set_skybox_index index="26" />
+    <create count="100" type="asteroids" startX="9956.0" startY="0.0" startZ="8348.0" endX="23884.0" endY="0.0" endZ="26696.0" randomRange="10000" />
+    <create count="100" type="asteroids" startX="36395.0" startY="0.0" startZ="7546.0" endX="12603.0" endY="0.0" endZ="41747.0" randomRange="15000" />
+    <create count="100" type="nebulas" startX="34015.0" startY="0.0" startZ="38327.0" endX="34015.0" endY="0.0" endZ="38327.0" randomRange="20000" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Enyalius System" value="2.0" />
     <set_variable name="Grid 5 Transition Enabled" value="1.0" />
@@ -1314,9 +1327,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-    <create count="100" type="asteroids" startX="9956.0" startY="0.0" startZ="8348.0" endX="23884.0" endY="0.0" endZ="26696.0" randomRange="10000" />
-    <create count="100" type="asteroids" startX="36395.0" startY="0.0" startZ="7546.0" endX="12603.0" endY="0.0" endZ="41747.0" randomRange="15000" />
-    <create count="100" type="nebulas" startX="34015.0" startY="0.0" startZ="38327.0" endX="34015.0" endY="0.0" endZ="38327.0" randomRange="20000" />
   </event>
   <folder_arme name="Navigation" id_arme="b0176281-1c2e-4951-a043-be63996a31a1" parent_id_arme="e2d55524-a6bd-4018-9b07-688afae855de" />
   <event name="Transition to Sector VIII" id_arme="2199956d-bdfb-450b-9c4f-e46db380aed1" parent_id_arme="b0176281-1c2e-4951-a043-be63996a31a1">
@@ -1358,8 +1368,8 @@
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Enyalius VII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
-    <create type="neutral" x="30149.0" y="0.0" z="22118.0" angle="0" name="Wrokin Ores" hullID="1050" />
     <create type="neutral" x="53792.0" y="0.0" z="54832.0" angle="0" name="Hulca Smelters" hullID="1003" />
+    <create type="neutral" x="30149.0" y="0.0" z="22118.0" angle="0" name="Wrokin Ores" hullID="1050" />
     <create type="neutral" x="18253.0" y="0.0" z="16468.0" angle="0" name="Adrath Mining" hullID="1050" />
     <create type="neutral" x="17064.0" y="0.0" z="32973.0" angle="0" name="Simnex Denabite" hullID="1051" />
     <create type="neutral" x="52603.0" y="0.0" z="60780.0" angle="45" name="ESN St James" hullID="1503" />
@@ -1379,17 +1389,20 @@
     <destroy name="Hulca Smelters" />
     <destroy name="Wrokin Ores" />
     <destroy name="Adrath Mining" />
-    <destroy name="ESN St James" />
     <destroy name="Simnex Denabite" />
+    <destroy name="ESN St James" />
     <set_variable name="Enyalius System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-  <folder_arme name="Enyalius Sector VIII" id_arme="9016d9b0-12e6-4392-aa2e-3a0f091bc19c" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" expanded_arme="" />
+  <folder_arme name="Enyalius Sector VIII" id_arme="9016d9b0-12e6-4392-aa2e-3a0f091bc19c" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
   <event name="Create Enyalius Sector VIII" id_arme="ba89a4e6-f595-4e57-8d0d-916ec5b940f1" parent_id_arme="9016d9b0-12e6-4392-aa2e-3a0f091bc19c">
     <if_variable name="Enyalius System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="8.0" />
     <if_timer_finished name="Transition" />
     <set_skybox_index index="26" />
+    <create count="100" type="asteroids" startX="92054.0" startY="0.0" startZ="7142.0" endX="63929.0" endY="0.0" endZ="38348.0" randomRange="10000" />
+    <create count="100" type="asteroids" startX="86965.0" startY="0.0" startZ="39285.0" endX="58706.0" endY="0.0" endZ="11696.0" randomRange="10000" />
+    <create count="200" type="nebulas" startX="46384.0" startY="0.0" startZ="40758.0" endX="44375.0" endY="0.0" endZ="75178.0" randomRange="30000" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Enyalius System" value="2.0" />
     <set_variable name="Grid 5 Transition Enabled" value="1.0" />
@@ -1400,11 +1413,8 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-    <create count="100" type="asteroids" startX="92054.0" startY="0.0" startZ="7142.0" endX="63929.0" endY="0.0" endZ="38348.0" randomRange="10000" />
-    <create count="100" type="asteroids" startX="86965.0" startY="0.0" startZ="39285.0" endX="58706.0" endY="0.0" endZ="11696.0" randomRange="10000" />
-    <create count="200" type="nebulas" startX="46384.0" startY="0.0" startZ="40758.0" endX="44375.0" endY="0.0" endZ="75178.0" randomRange="30000" />
   </event>
-  <folder_arme name="Navigation" id_arme="b4637506-9f1c-4490-b8bd-bd9685c50d14" parent_id_arme="9016d9b0-12e6-4392-aa2e-3a0f091bc19c" expanded_arme="" />
+  <folder_arme name="Navigation" id_arme="b4637506-9f1c-4490-b8bd-bd9685c50d14" parent_id_arme="9016d9b0-12e6-4392-aa2e-3a0f091bc19c" />
   <event name="Transition to Sector IX" id_arme="034a76f5-8570-47a5-a237-5d8176bf7604" parent_id_arme="b4637506-9f1c-4490-b8bd-bd9685c50d14">
     <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="8.0" />
@@ -1460,15 +1470,15 @@
     <set_variable name="Enyalius System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="4.0" integer="yes" />
   </event>
-  <folder_arme name="System - Jump Gate Settings" id_arme="3e34a907-d489-4e50-9013-9e4b7de857d0" parent_id_arme="b4637506-9f1c-4490-b8bd-bd9685c50d14" expanded_arme="" />
-  <event name="Gate Offline" id_arme="5fb7a7a6-5d11-4c20-ac25-dfeb6c92734e" parent_id_arme="3e34a907-d489-4e50-9013-9e4b7de857d0">
+  <folder_arme name="System - Jump Gate Settings" id_arme="d39fa3c9-a551-4f0d-bb2c-6a22e9508c40" parent_id_arme="b4637506-9f1c-4490-b8bd-bd9685c50d14" />
+  <event name="Gate Offline" id_arme="78dc0284-6e25-4912-b152-d6f7433f6949" parent_id_arme="d39fa3c9-a551-4f0d-bb2c-6a22e9508c40">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
     <set_object_property property="rollDelta" value="0.3" name="Loria Gate" />
   </event>
-  <folder_arme name="Tracking System" id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc" parent_id_arme="3e34a907-d489-4e50-9013-9e4b7de857d0" />
-  <event name="Ship1 Activation Range" id_arme="a6ad1f0e-8d07-40f3-be5c-b8cddc4719d4" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <folder_arme name="Tracking System" id_arme="a341b277-7ee3-40c7-ada8-7d9bd660305b" parent_id_arme="d39fa3c9-a551-4f0d-bb2c-6a22e9508c40" />
+  <event name="Ship1 Activation Range" id_arme="4d5d7170-ee46-4b03-8c3f-3be34b9e197d" parent_id_arme="a341b277-7ee3-40c7-ada8-7d9bd660305b">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
@@ -1477,7 +1487,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship1" value="1.0" />
   </event>
-  <event name="Ship1 Out of Range" id_arme="77b6d436-d515-46b7-a519-c170b8e68dc7" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship1 Out of Range" id_arme="bdab6c9b-3140-4f81-afeb-9bbffc75a89d" parent_id_arme="a341b277-7ee3-40c7-ada8-7d9bd660305b">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
@@ -1486,7 +1496,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship1" value="0.0" />
   </event>
-  <event name="Ship2 Activation Range" id_arme="04c7f140-7816-403c-a234-12cdf13c1222" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship2 Activation Range" id_arme="c42b90f1-6312-4535-a00a-76a1f8961ba8" parent_id_arme="a341b277-7ee3-40c7-ada8-7d9bd660305b">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
@@ -1495,7 +1505,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship2" value="1.0" />
   </event>
-  <event name="Ship2 Out of Range" id_arme="e4c4086b-3327-4a40-a877-d4efb8002bf9" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship2 Out of Range" id_arme="bdd8ef46-98be-403f-bd72-a178c0122181" parent_id_arme="a341b277-7ee3-40c7-ada8-7d9bd660305b">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
@@ -1504,7 +1514,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship2" value="0.0" />
   </event>
-  <event name="Ship3 Activation Range" id_arme="0e07da67-738a-41c9-bd02-30300a2ea692" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship3 Activation Range" id_arme="79c844f3-5bd3-4c3e-8f35-131ad34b8c57" parent_id_arme="a341b277-7ee3-40c7-ada8-7d9bd660305b">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
@@ -1513,7 +1523,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship3" value="1.0" />
   </event>
-  <event name="Ship3 Out of Range" id_arme="dfdd9b22-c16b-43ed-ae75-174df1fc9f32" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship3 Out of Range" id_arme="703012ac-731b-465b-ae45-17e691a9c412" parent_id_arme="a341b277-7ee3-40c7-ada8-7d9bd660305b">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
@@ -1522,7 +1532,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship3" value="0.0" />
   </event>
-  <event name="Ship4 Activation Range" id_arme="4b81b0d3-9fc9-43fe-8a66-eda946f6c6bc" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship4 Activation Range" id_arme="b6db3273-d34f-4bfe-b933-eb48c3f9a638" parent_id_arme="a341b277-7ee3-40c7-ada8-7d9bd660305b">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
@@ -1531,7 +1541,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship4" value="1.0" />
   </event>
-  <event name="Ship4 Out of Range" id_arme="286d9ea1-fe7c-4c2d-a89d-b82b93bcc840" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship4 Out of Range" id_arme="4803b1cb-e481-45f5-89fe-f1f3c2f2f9c8" parent_id_arme="a341b277-7ee3-40c7-ada8-7d9bd660305b">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
@@ -1540,7 +1550,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship4" value="0.0" />
   </event>
-  <event name="Ship5 Activation Range" id_arme="615c153b-6c99-4143-9777-34b41d3ea9ee" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship5 Activation Range" id_arme="068539f8-6c26-4735-95b6-eb6a25e72dbc" parent_id_arme="a341b277-7ee3-40c7-ada8-7d9bd660305b">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
@@ -1549,7 +1559,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship5" value="1.0" />
   </event>
-  <event name="Ship5 Out of Range" id_arme="b6f5688a-a2da-4267-845f-12cc88c02d26" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship5 Out of Range" id_arme="328a9216-6dc9-43e4-9e73-f9d48c2896e9" parent_id_arme="a341b277-7ee3-40c7-ada8-7d9bd660305b">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
@@ -1558,7 +1568,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship5" value="0.0" />
   </event>
-  <event name="Ship6 Activation Range" id_arme="14e6d3ba-612c-4b73-a8af-432acb2d9a28" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship6 Activation Range" id_arme="94c6c7a0-41b5-4b69-856b-aa6124d01b39" parent_id_arme="a341b277-7ee3-40c7-ada8-7d9bd660305b">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
@@ -1567,7 +1577,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship6" value="1.0" />
   </event>
-  <event name="Ship6 Out of Range" id_arme="94d313d3-d965-4507-a994-47b4dbe9a1ca" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship6 Out of Range" id_arme="02302f7b-c1c4-4621-9c6c-ad029d7756bf" parent_id_arme="a341b277-7ee3-40c7-ada8-7d9bd660305b">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
@@ -1576,7 +1586,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship6" value="0.0" />
   </event>
-  <event name="Ship7 Activation Range" id_arme="564315bd-fff8-41de-b85a-3c1bf5873336" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship7 Activation Range" id_arme="7d847f5c-33c3-4847-b1f1-8b6ba03fa8c9" parent_id_arme="a341b277-7ee3-40c7-ada8-7d9bd660305b">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
@@ -1585,7 +1595,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship7" value="1.0" />
   </event>
-  <event name="Ship7 Out of Range" id_arme="5e443e5c-d50e-4050-93b5-7b7e3b35eb05" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship7 Out of Range" id_arme="444c037e-0691-4817-a92e-ad66a73b2ea2" parent_id_arme="a341b277-7ee3-40c7-ada8-7d9bd660305b">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
@@ -1594,7 +1604,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship7" value="0.0" />
   </event>
-  <event name="Ship8 Activation Range" id_arme="3663d095-86b4-480d-aa1a-3570ba4f4725" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship8 Activation Range" id_arme="429bea34-bd48-4671-b4ce-9e8c30e95525" parent_id_arme="a341b277-7ee3-40c7-ada8-7d9bd660305b">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
@@ -1603,7 +1613,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship8" value="1.0" />
   </event>
-  <event name="Ship8 Out of Range" id_arme="4b44b801-50c3-424e-b33d-0cbcec8230c0" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship8 Out of Range" id_arme="7967f7d6-81a4-4b90-bcbb-1b85c89c56ae" parent_id_arme="a341b277-7ee3-40c7-ada8-7d9bd660305b">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
@@ -1612,7 +1622,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship8" value="0.0" />
   </event>
-  <event name="Gate Online" id_arme="b5360176-4634-4fa4-a360-33a4a49f98c7" parent_id_arme="3e34a907-d489-4e50-9013-9e4b7de857d0">
+  <event name="Gate Online" id_arme="c8c22a3c-a31c-4a74-ae0c-901d2b92ff9a" parent_id_arme="d39fa3c9-a551-4f0d-bb2c-6a22e9508c40">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
@@ -1624,7 +1634,7 @@
     <set_variable name="Gate System" value="2.0" />
     <clear_comms_button text="Activate Gate" sideValue="playerSide" />
   </event>
-  <event name="Jump Initiated" id_arme="09d8c96d-1645-4ce1-a9fe-66e9f73418d3" parent_id_arme="3e34a907-d489-4e50-9013-9e4b7de857d0">
+  <event name="Jump Initiated" id_arme="db39e2f1-817c-41b6-8831-b764911f1524" parent_id_arme="d39fa3c9-a551-4f0d-bb2c-6a22e9508c40">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_comms_button text="Jump" />
@@ -1636,7 +1646,7 @@
     <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
     <set_variable name="Enyalius to Loria" value="1.0" />
     <set_variable name="Loria System" value="1.0" />
-    <set_variable name="Sector" value="8.0" />
+    <set_variable name="Sector" value="8" />
     <set_timer name="Transition" seconds="2" />
     <set_variable name="Gate System" value="0.0" />
     <set_variable name="ExitorRetreat" value="1.0" />
@@ -1672,7 +1682,7 @@
     <set_variable name="Enyalius System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-  <event name="Arrival From Loria" id_arme="a737b2a9-0ac0-4d31-a6ab-b500e64de6ad" parent_id_arme="9016d9b0-12e6-4392-aa2e-3a0f091bc19c">
+  <event name="Arrival From Loria" id_arme="55e48fc6-9abf-43ae-81d8-88f063cb7ca3" parent_id_arme="9016d9b0-12e6-4392-aa2e-3a0f091bc19c">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
     <if_variable name="Loria to Enyalius" comparator="EQUALS" value="1.0" />
@@ -1695,12 +1705,17 @@
     <set_object_property property="angle" value="3.141592654" player_slot="7" />
     <set_variable name="Loria to Enyalius" value="0.0" />
   </event>
-  <folder_arme name="Enyalius Sector IX" id_arme="f3f7be47-f8e2-4d35-8535-d303ebb78736" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" expanded_arme="" />
+  <folder_arme name="Enyalius Sector IX" id_arme="f3f7be47-f8e2-4d35-8535-d303ebb78736" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
   <event name="Create Enyalius Sector IX" id_arme="a05a68ee-c3c8-422b-9e5c-886bb65cecad" parent_id_arme="f3f7be47-f8e2-4d35-8535-d303ebb78736">
     <if_variable name="Enyalius System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="9.0" />
     <if_timer_finished name="Transition" />
     <set_skybox_index index="26" />
+    <create count="100" type="nebulas" startX="80804.0" startY="0.0" startZ="41026.0" endX="56027.0" endY="0.0" endZ="17589.0" randomRange="8000" />
+    <create count="100" type="nebulas" nebType="2" startX="80670.0" startY="0.0" startZ="53482.0" endX="69152.0" endY="0.0" endZ="12901.0" randomRange="8000" />
+    <create count="100" type="nebulas" startX="19331.0" startY="0.0" startZ="36875.0" endX="45715.0" endY="0.0" endZ="67678.0" randomRange="8000" />
+    <create count="100" type="nebulas" nebType="2" startX="49063.0" startY="0.0" startZ="66339.0" endX="13438.0" endY="0.0" endZ="43303.0" randomRange="8000" />
+    <create count="100" type="asteroids" startX="65134.0" startY="0.0" startZ="60714.0" endX="35402.0" endY="0.0" endZ="23080.0" randomRange="8000" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Enyalius System" value="2.0" />
     <set_variable name="Grid 5 Transition Enabled" value="0.0" />
@@ -1711,11 +1726,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-    <create count="100" type="nebulas" startX="80804.0" startY="0.0" startZ="41026.0" endX="56027.0" endY="0.0" endZ="17589.0" randomRange="8000" />
-    <create count="100" type="nebulas" nebType="2" startX="80670.0" startY="0.0" startZ="53482.0" endX="69152.0" endY="0.0" endZ="12901.0" randomRange="8000" />
-    <create count="100" type="nebulas" startX="19331.0" startY="0.0" startZ="36875.0" endX="45715.0" endY="0.0" endZ="67678.0" randomRange="8000" />
-    <create count="100" type="nebulas" nebType="2" startX="49063.0" startY="0.0" startZ="66339.0" endX="13438.0" endY="0.0" endZ="43303.0" randomRange="8000" />
-    <create count="100" type="asteroids" startX="65134.0" startY="0.0" startZ="60714.0" endX="35402.0" endY="0.0" endZ="23080.0" randomRange="8000" />
   </event>
   <folder_arme name="Navigation" id_arme="d82c3305-8a5d-4e39-b209-755970e3e258" parent_id_arme="f3f7be47-f8e2-4d35-8535-d303ebb78736" />
   <event name="Transition to Sector VIII" id_arme="7899320b-decd-4cfa-a270-b2728f625593" parent_id_arme="d82c3305-8a5d-4e39-b209-755970e3e258">
