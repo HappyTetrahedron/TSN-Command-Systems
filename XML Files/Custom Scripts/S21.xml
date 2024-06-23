@@ -67,6 +67,10 @@
 
       <set_gm_button text="Civilian USFP\+Ubuntu" />
 
+      <set_gm_button text="Military USFP\Fleet small" />
+
+      <set_gm_button text="Military USFP\Fleet large" />
+
   </event>
 
   <event name="S21_Set_SpawnKey_7" id_arme="acca2d78-a30b-4570-96d4-2b1356a27f4d" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
@@ -102,6 +106,39 @@
 
       <clear_gm_button text="Euphini Pirates\+BlackBertha" />
 
+      <clear_gm_button text="Military USFP\Fleet small" />
+
+      <clear_gm_button text="Military USFP\Fleet large" />
+
+  </event>
+
+  <event name="S21_MilitaryUSFPSmall" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_gm_button text="Military USFP\Fleet small" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1603" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1603" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1500" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1501" sideValue="SideValue" fleetnumber="-1" />
+    <set_variable name="Fleet Settings" value="1.0" />
+    <set_variable name="Auto AI Type" value="1.0" integer="yes" />
+    <set_variable name="Random Direction" value="1.0" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+  </event>
+
+  <event name="S21_MilitaryUSFPLarge" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_gm_button text="Military USFP\Fleet large" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1603" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1603" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1603" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1603" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1500" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1500" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1500" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1501" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1501" sideValue="SideValue" fleetnumber="-1" />
+    <set_variable name="Fleet Settings" value="1.0" />
+    <set_variable name="Auto AI Type" value="1.0" integer="yes" />
+    <set_variable name="Random Direction" value="1.0" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
   </event>
 
 
@@ -3060,6 +3097,274 @@
 
 
 
+    <event name="S21_Charon_DS-01" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-01" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-01" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-01" />
+    </event>
+
+    <event name="S21_Charon_DS-76" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-76" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="DS-76" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="DS-76" />
+    </event>
+
+    <event name="S21_Charon_RS-9992" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="RS-9992" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="RS-9992" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="RS-9992" />
+    </event>
+
+    <event name="S21_Charon_Harrling" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Harrling" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Harrling" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Harrling" />
+    </event>
+
+    <event name="S21_Charon_Serrin" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Serrin" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Serrin" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Serrin" />
+    </event>
+
+    <event name="S21_Charon_Soulin" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Soulin" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Soulin" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Soulin" />
+    </event>
+
+    <event name="S21_Charon_Casarosso" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Casarosso" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Casarosso" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Casarosso" />
+    </event>
+
+    <event name="S21_Charon_I-442" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="I-442" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="I-442" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="I-442" />
+    </event>
+
+    <event name="S21_Charon_I-465" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="I-465" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="I-465" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="I-465" />
+    </event>
+
+    <event name="S21_Charon_I-474" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="I-474" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="I-474" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="I-474" />
+    </event>
+
+
+    <event name="S21_Charon_DestroyCharon Forward Command" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Charon Forward Command" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <destroy name="Charon Forward Command" />
+    </event>
+
+    <event name="S21_Charon_DestroySY-101" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="SY-101" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <destroy name="SY-101" />
+    </event>
+
+    <event name="S21_Charon_DestroyWP-101" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="WP-101" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <destroy name="WP-101" />
+    </event>
+
+    <event name="S21_Charon_DestroyWP-1011" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="WP-1011" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <destroy name="WP-1011" />
+    </event>
+
+    <event name="S21_Charon_DestroyWP-NA" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="WP-NA" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <destroy name="WP-NA" />
+    </event>
+
+    <event name="S21_Charon_DestroyWP-NB" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="WP-NB" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <destroy name="WP-NB" />
+    </event>
+
+    <event name="S21_Charon_DestroyWP-NC" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="WP-NC" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <destroy name="WP-NC" />
+    </event>
+
+    <event name="S21_Charon_DestroyWP-ND" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="WP-ND" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <destroy name="WP-ND" />
+    </event>
+
+    <event name="S21_Charon_DestroyWP-E" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="WP-E" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <destroy name="WP-E" />
+    </event>
+
+    <event name="S21_Charon_DestroyWP-33" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="WP-33" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <destroy name="WP-33" />
+    </event>
+
+    <event name="S21_Charon_DestroyDS-30" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-30" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <destroy name="DS-30" />
+    </event>
+
+    <event name="S21_Charon_DestroyDS-37" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-37" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <destroy name="DS-37" />
+    </event>
+
+    <event name="S21_Charon_DestroyDS-7" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-7" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <destroy name="DS-7" />
+    </event>
+
+    <event name="S21_Charon_DestroyWP-(-2)" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="WP-(-2)" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <destroy name="WP-(-2)" />
+    </event>
+
+    <event name="S21_Charon_DestroySY-519" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="SY-519" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <destroy name="SY-519" />
+    </event>
+
+    <event name="S21_Charon_DestroySY-520" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="SY-520" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <destroy name="SY-520" />
+    </event>
+
+    <event name="S21_Charon_DestroyI-407" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="I-407" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <destroy name="I-407" />
+    </event>
+
+    <event name="S21_Charon_DestroyI-410" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="I-410" />
+      <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+      <destroy name="I-410" />
+    </event>
+
+
+
+    <event name="S21_Triton_Cassandra Observation" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Cassandra Observation" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Cassandra Observation" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Cassandra Observation" />
+    </event>
+
+    <event name="S21_Triton_Denabite Derby" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Denabite Derby" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Denabite Derby" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Denabite Derby" />
+    </event>
+
+    <event name="S21_Triton_Farosh" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Farosh" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Farosh" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Farosh" />
+    </event>
+
+    <event name="S21_Triton_Farosh Denabyte" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Farosh Denabyte" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Farosh Denabyte" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Farosh Denabyte" />
+    </event>
+
+    <event name="S21_Triton_Tarnis Nebula Refinery" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Tarnis Nebula Refinery" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Tarnis Nebula Refinery" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Tarnis Nebula Refinery" />
+    </event>
+
+    <event name="S21_Triton_Triton Refuge" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Triton Refuge" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <set_ship_text name="Triton Refuge" scan_desc="No life signs. No power signature." hailtext="No response." />
+      <clear_ai name="Triton Refuge" />
+    </event>
+
+
+    <event name="S21_Triton_DestroyDS-20" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-20" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <destroy name="DS-20" />
+    </event>
+
+    <event name="S21_Triton_DestroyDS-44" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-44" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <destroy name="DS-44" />
+    </event>
+
+    <event name="S21_Triton_DestroyDS-62" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="DS-62" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <destroy name="DS-62" />
+    </event>
+
+    <event name="S21_Triton_DestroyI-280" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="I-280" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <destroy name="I-280" />
+    </event>
+
+    <event name="S21_Triton_DestroyI-402" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="I-402" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <destroy name="I-402" />
+    </event>
+
+    <event name="S21_Triton_DestroyI-556" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="I-556" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <destroy name="I-556" />
+    </event>
+
+    <event name="S21_Triton_DestroyI-601" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="I-601" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <destroy name="I-601" />
+    </event>
+
+
+
 
 
 
@@ -4331,6 +4636,797 @@
       <destroy name="Defense Platform C" />
 
       <destroy name="Defense Platform H" />
+
+  </event>
+
+  <event name="S21_Enyalius_8_CustomObjectsJumpRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Enyalius System" comparator="NOT" value="2.0" />
+    <if_exists name=" Enyalius VIII " />
+    <destroy name=" Enyalius VIII " />
+
+      <destroy name="Defense Platform C" />
+
+      <destroy name="Defense Platform H" />
+
+  </event>
+
+
+
+
+  <event name="S21_Waypoint 89_1_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
+    <if_variable name="Waypoint 89" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_not_exists name=" Waypoint 89 I " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Waypoint 89 I " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <create count="20" type="mines" startAngle="160" endAngle="320" startX="56600.0" startY="0.0" startZ="28281.0" radius="15000" />
+    <create count="20" type="mines" startAngle="160" endAngle="320" startX="31805.0" startY="0.0" startZ="63684.0" radius="15000" />
+    <create count="10" type="mines" startX="42019.0" startY="0.0" startZ="44870.0" endX="42019.0" endY="0.0" endZ="44870.0" randomRange="40000" randomSeed="3" />
+    <create type="enemy" x="45640.0" y="0.0" z="47593.0" angle="0" name="WP-3" hullID="1005" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="21579.0" y="0.0" z="79774.0" angle="0" name="WP-33" hullID="1005" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="67745.0" y="0.0" z="10300.0" angle="0" name="WP-333" hullID="1005" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="32707.0" y="0.0" z="65037.0" angle="0" name="Ka'zaa" hullID="1008" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="60076.0" y="0.0" z="30000.0" angle="0" name="Gitos" hullID="1005" sideValue="1" fleetnumber="-1" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-3" />
+      <set_object_property property="surrenderChance" value="0" name="WP-3" />
+      <clear_ai name="WP-3" />
+      <set_special name="WP-3" ship="-1" captain="-1" ability="Drones" />
+      <set_special name="WP-3" ship="-1" captain="-1" ability="AntiTorp" />
+      <set_special name="WP-3" ship="-1" captain="-1" ability="AntiMine" />
+      <add_ai type="SPCL_AI" name="WP-3" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="WP-3" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="WP-3" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="WP-3" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="2000" name="WP-3" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-33" />
+      <set_object_property property="surrenderChance" value="0" name="WP-33" />
+      <clear_ai name="WP-33" />
+      <set_special name="WP-33" ship="-1" captain="-1" ability="Drones" />
+      <set_special name="WP-33" ship="-1" captain="-1" ability="AntiTorp" />
+      <set_special name="WP-33" ship="-1" captain="-1" ability="AntiMine" />
+      <add_ai type="SPCL_AI" name="WP-33" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="WP-33" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="WP-33" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="WP-33" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="2000" name="WP-33" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-333" />
+      <set_object_property property="surrenderChance" value="0" name="WP-333" />
+      <clear_ai name="WP-333" />
+      <set_special name="WP-333" ship="-1" captain="-1" ability="Drones" />
+      <set_special name="WP-333" ship="-1" captain="-1" ability="AntiTorp" />
+      <set_special name="WP-333" ship="-1" captain="-1" ability="AntiMine" />
+      <add_ai type="SPCL_AI" name="WP-333" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="WP-333" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="WP-333" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="WP-333" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="2000" name="WP-333" />
+
+      <set_object_property property="topSpeed" value="0" name="Gitos" />
+      <set_object_property property="surrenderChance" value="0" name="Gitos" />
+      <clear_ai name="Gitos" />
+      <set_special name="Gitos" ship="-1" captain="-1" ability="Drones" />
+      <set_special name="Gitos" ship="-1" captain="-1" ability="AntiTorp" />
+      <set_special name="Gitos" ship="-1" captain="-1" ability="AntiMine" />
+      <add_ai type="SPCL_AI" name="Gitos" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Gitos" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Gitos" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Gitos" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="2000" name="Gitos" />
+
+
+      <set_object_property property="topSpeed" value="0" name="Ka'zaa" />
+      <set_object_property property="surrenderChance" value="0" name="Ka'zaa" />
+      <clear_ai name="Ka'zaa" />
+      <set_special name="Ka'zaa" ship="-1" captain="-1" ability="Drones" />
+      <set_special name="Ka'zaa" ship="-1" captain="-1" ability="AntiTorp" />
+      <set_special name="Ka'zaa" ship="-1" captain="-1" ability="AntiMine" />
+      <set_special name="Ka'zaa" ship="-1" captain="-1" ability="Tractor" />
+      <set_special name="Ka'zaa" ship="-1" captain="-1" ability="ShldVamp" />
+      <set_special name="Ka'zaa" clear="yes" ship="-1" captain="-1" ability="Warp" />
+      <set_special name="Ka'zaa" clear="yes" ship="-1" captain="-1" ability="Teleback" />
+      <set_special name="Ka'zaa" clear="yes" ship="-1" captain="-1" ability="Teleport" />
+      <add_ai type="SPCL_AI" name="Ka'zaa" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Ka'zaa" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Ka'zaa" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Ka'zaa" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="2000" name="Ka'zaa" />
+
+
+  </event>
+  <event name="S21_Waypoint 89_1_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Waypoint 89" comparator="EQUALS" value="2.0" />
+    <if_exists name=" Waypoint 89 I " />
+    <if_variable name="Sector" comparator="NOT" value="1.0" />
+    <destroy name=" Waypoint 89 I " />
+
+      <destroy name="WP-3" />
+
+      <destroy name="WP-33" />
+
+      <destroy name="WP-333" />
+
+      <destroy name="Gitos" />
+
+      <destroy name="Ka'zaa" />
+
+  </event>
+
+  <event name="S21_Waypoint 89_1_CustomObjectsJumpRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Waypoint 89" comparator="NOT" value="2.0" />
+    <if_exists name=" Waypoint 89 I " />
+    <destroy name=" Waypoint 89 I " />
+
+      <destroy name="WP-3" />
+
+      <destroy name="WP-33" />
+
+      <destroy name="WP-333" />
+
+      <destroy name="Gitos" />
+
+      <destroy name="Ka'zaa" />
+
+  </event>
+
+
+
+  <event name="S21_Waypoint 89_2_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
+    <if_variable name="Waypoint 89" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_not_exists name=" Waypoint 89 II " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Waypoint 89 II " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <create count="30" type="mines" startAngle="390" endAngle="90" startX="53910.0" startY="0.0" startZ="69849.0" radius="15000" />
+    <create count="15" type="mines" startAngle="20" endAngle="110" startX="53910.0" startY="0.0" startZ="69699.0" radius="25000" />
+    <create count="10" type="mines" startX="97364.0" startY="0.0" startZ="59870.0" endX="97514.0" endY="0.0" endZ="97464.0" randomRange="1000" />
+    <create count="10" type="mines" startX="60677.0" startY="0.0" startZ="96963.0" endX="97519.0" endY="0.0" endZ="98016.0" randomRange="1000" />
+    <create count="30" type="mines" startAngle="220" endAngle="270" startX="40226.0" startY="0.0" startZ="14511.0" radius="40000" />
+    <create type="enemy" x="41661.0" y="0.0" z="62112.0" angle="0" name="Defence Platform C" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="34716.0" y="0.0" z="74909.0" angle="0" name="Defence Platform D" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="46498.0" y="0.0" z="52009.0" angle="0" name="Defence Platform A" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="67143.0" y="0.0" z="26439.0" angle="0" name="Kurmuk" hullID="1007" sideValue="1" fleetnumber="-1" />
+
+      <set_object_property property="topSpeed" value="0" name="Defence Platform C" />
+      <set_object_property property="surrenderChance" value="0" name="Defence Platform C" />
+      <clear_ai name="Defence Platform C" />
+      <set_special name="Defence Platform C" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="Defence Platform C" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Defence Platform C" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Defence Platform C" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Defence Platform C" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="Defence Platform C" />
+
+      <set_object_property property="topSpeed" value="0" name="Defence Platform D" />
+      <set_object_property property="surrenderChance" value="0" name="Defence Platform D" />
+      <clear_ai name="Defence Platform D" />
+      <set_special name="Defence Platform D" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="Defence Platform D" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Defence Platform D" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Defence Platform D" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Defence Platform D" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="Defence Platform D" />
+
+      <set_object_property property="topSpeed" value="0" name="Defence Platform A" />
+      <set_object_property property="surrenderChance" value="0" name="Defence Platform A" />
+      <clear_ai name="Defence Platform A" />
+      <set_special name="Defence Platform A" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="Defence Platform A" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Defence Platform A" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Defence Platform A" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Defence Platform A" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="Defence Platform A" />
+
+      <set_object_property property="topSpeed" value="0" name="Kurmuk" />
+      <set_object_property property="surrenderChance" value="0" name="Kurmuk" />
+      <clear_ai name="Kurmuk" />
+      <set_special name="Kurmuk" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="Kurmuk" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Kurmuk" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Kurmuk" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Kurmuk" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="Kurmuk" />
+
+
+  </event>
+  <event name="S21_Waypoint 89_2_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Waypoint 89" comparator="EQUALS" value="2.0" />
+    <if_exists name=" Waypoint 89 II " />
+    <if_variable name="Sector" comparator="NOT" value="2.0" />
+    <destroy name=" Waypoint 89 II " />
+
+      <destroy name="Defence Platform C" />
+
+      <destroy name="Defence Platform D" />
+
+      <destroy name="Defence Platform A" />
+
+      <destroy name="Kurmuk" />
+
+  </event>
+
+  <event name="S21_Waypoint 89_2_CustomObjectsJumpRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Waypoint 89" comparator="NOT" value="2.0" />
+    <if_exists name=" Waypoint 89 II " />
+    <destroy name=" Waypoint 89 II " />
+
+      <destroy name="Defence Platform C" />
+
+      <destroy name="Defence Platform D" />
+
+      <destroy name="Defence Platform A" />
+
+      <destroy name="Kurmuk" />
+
+  </event>
+
+
+
+
+  <event name="S21_Waypoint 89_3_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
+    <if_variable name="Waypoint 89" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_not_exists name=" Waypoint 89 III " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Waypoint 89 III " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <create count="50" type="mines" startAngle="-100" endAngle="180" startX="47745.0" startY="0.0" startZ="47142.0" radius="20000" />
+    <create count="30" type="mines" startAngle="-100" endAngle="60" startX="11354.0" startY="0.0" startZ="87375.0" radius="20000" />
+    <create count="25" type="mines" startAngle="70" endAngle="180" startX="81125.0" startY="0.0" startZ="5639.0" radius="20000" />
+    <create type="neutral" x="64888.0" y="0.0" z="57669.0" angle="0" name="WP-0" hullID="1052" sideValue="2" />
+    <create type="neutral" x="54662.0" y="0.0" z="65037.0" angle="0" name="WP-(-1)" hullID="1052" sideValue="2" />
+    <create type="genericMesh" x="63685.0" y="0.0" z="25939.0" angle="4" name="Lambda" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+    <create type="genericMesh" x="28797.0" y="0.0" z="66691.0" angle="0" name="Nu" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+    <create type="genericMesh" x="65489.0" y="0.0" z="65338.0" angle="0" name="Sigma" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+    <create type="neutral" x="35564.0" y="0.0" z="68345.0" angle="0" name="WP-N4" hullID="1052" sideValue="2" />
+    <create type="neutral" x="32106.0" y="0.0" z="72105.0" angle="0" name="WP-N9" hullID="1052" sideValue="2" />
+    <create type="neutral" x="72610.0" y="0.0" z="28141.0" angle="0" name="WP-L3" hullID="1052" sideValue="2" />
+    <create type="neutral" x="69098.0" y="0.0" z="31804.0" angle="0" name="WP-L5" hullID="1052" sideValue="2" />
+    <create type="neutral" x="49549.0" y="0.0" z="45187.0" angle="0" name="Gate Command" hullID="1002" sideValue="2" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-0" />
+      <set_object_property property="surrenderChance" value="0" name="WP-0" />
+      <clear_ai name="WP-0" />
+      <set_special name="WP-0" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="WP-0" />
+      <add_ai type="CHASE_AI_SHIP" value1="6000" value2="5000" name="WP-0" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="WP-0" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-(-1)" />
+      <set_object_property property="surrenderChance" value="0" name="WP-(-1)" />
+      <clear_ai name="WP-(-1)" />
+      <set_special name="WP-(-1)" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="WP-(-1)" />
+      <add_ai type="CHASE_AI_SHIP" value1="6000" value2="5000" name="WP-(-1)" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="WP-(-1)" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-N4" />
+      <set_object_property property="surrenderChance" value="0" name="WP-N4" />
+      <clear_ai name="WP-N4" />
+      <set_special name="WP-N4" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="WP-N4" />
+      <add_ai type="CHASE_AI_SHIP" value1="6000" value2="5000" name="WP-N4" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="WP-N4" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-N9" />
+      <set_object_property property="surrenderChance" value="0" name="WP-N9" />
+      <clear_ai name="WP-N9" />
+      <set_special name="WP-N9" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="WP-N9" />
+      <add_ai type="CHASE_AI_SHIP" value1="6000" value2="5000" name="WP-N9" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="WP-N9" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-L3" />
+      <set_object_property property="surrenderChance" value="0" name="WP-L3" />
+      <clear_ai name="WP-L3" />
+      <set_special name="WP-L3" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="WP-L3" />
+      <add_ai type="CHASE_AI_SHIP" value1="6000" value2="5000" name="WP-L3" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="WP-L3" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-L5" />
+      <set_object_property property="surrenderChance" value="0" name="WP-L5" />
+      <clear_ai name="WP-L5" />
+      <set_special name="WP-L5" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="WP-L5" />
+      <add_ai type="CHASE_AI_SHIP" value1="6000" value2="5000" name="WP-L5" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="WP-L5" />
+
+      <set_object_property property="topSpeed" value="0" name="Gate Command" />
+      <set_object_property property="surrenderChance" value="0" name="Gate Command" />
+      <clear_ai name="Gate Command" />
+      <set_special name="Gate Command" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="Gate Command" />
+      <add_ai type="CHASE_AI_SHIP" value1="6000" value2="5000" name="Gate Command" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="Gate Command" />
+
+
+      <set_ship_text name="Sigma" desc="USFP strategic point marker" scan_desc="Designation Sigma." />
+
+      <set_ship_text name="Nu" desc="USFP strategic point marker" scan_desc="Designation Nu." />
+
+      <set_ship_text name="Lambda" desc="USFP strategic point marker" scan_desc="Designation Lambda." />
+
+
+  </event>
+  <event name="S21_Waypoint 89_3_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Waypoint 89" comparator="EQUALS" value="2.0" />
+    <if_exists name=" Waypoint 89 III " />
+    <if_variable name="Sector" comparator="NOT" value="3.0" />
+    <destroy name=" Waypoint 89 III " />
+
+      <destroy name="WP-0" />
+
+      <destroy name="WP-(-1)" />
+
+      <destroy name="WP-N4" />
+
+      <destroy name="WP-N9" />
+
+      <destroy name="WP-L3" />
+
+      <destroy name="WP-L5" />
+
+      <destroy name="Gate Command" />
+
+      <destroy name="Sigma" />
+
+      <destroy name="Nu" />
+
+      <destroy name="Lambda" />
+
+  </event>
+
+  <event name="S21_Waypoint 89_3_CustomObjectsJumpRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Waypoint 89" comparator="NOT" value="2.0" />
+    <if_exists name=" Waypoint 89 III " />
+    <destroy name=" Waypoint 89 III " />
+
+      <destroy name="WP-0" />
+
+      <destroy name="WP-(-1)" />
+
+      <destroy name="WP-N4" />
+
+      <destroy name="WP-N9" />
+
+      <destroy name="WP-L3" />
+
+      <destroy name="WP-L5" />
+
+      <destroy name="Gate Command" />
+
+      <destroy name="Sigma" />
+
+      <destroy name="Nu" />
+
+      <destroy name="Lambda" />
+
+  </event>
+
+
+
+
+  <event name="S21_Waypoint 89_4_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
+    <if_variable name="Waypoint 89" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_not_exists name=" Waypoint 89 IV " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Waypoint 89 IV " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <create count="20" type="mines" startX="80828.0" startY="0.0" startZ="3834.0" endX="57519.0" endY="0.0" endZ="33759.0" />
+    <create count="20" type="mines" startX="43384.0" startY="0.0" startZ="59924.0" endX="25789.0" endY="0.0" endZ="94060.0" />
+    <create count="15" type="mines" startX="78271.0" startY="0.0" startZ="45639.0" endX="65338.0" endY="0.0" endZ="69248.0" />
+    <create type="enemy" x="68196.0" y="0.0" z="36917.0" angle="0" name="WP-5" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="54662.0" y="0.0" z="62932.0" angle="0" name="WP-55" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="50151.0" y="0.0" z="44887.0" angle="0" name="WP-556" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="60226.0" y="0.0" z="10300.0" angle="0" name="Covenant" hullID="1006" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="28497.0" y="0.0" z="66992.0" angle="0" name="Tell" hullID="1005" sideValue="1" fleetnumber="-1" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-5" />
+      <set_object_property property="surrenderChance" value="0" name="WP-5" />
+      <clear_ai name="WP-5" />
+      <set_special name="WP-5" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="WP-5" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="WP-5" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="WP-5" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="WP-5" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="WP-5" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-55" />
+      <set_object_property property="surrenderChance" value="0" name="WP-55" />
+      <clear_ai name="WP-55" />
+      <set_special name="WP-55" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="WP-55" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="WP-55" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="WP-55" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="WP-55" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="WP-55" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-556" />
+      <set_object_property property="surrenderChance" value="0" name="WP-556" />
+      <clear_ai name="WP-556" />
+      <set_special name="WP-556" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="WP-556" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="WP-556" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="WP-556" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="WP-556" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="WP-556" />
+
+      <set_object_property property="topSpeed" value="0" name="Covenant" />
+      <set_object_property property="surrenderChance" value="0" name="Covenant" />
+      <clear_ai name="Covenant" />
+      <set_special name="Covenant" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="Covenant" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Covenant" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Covenant" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Covenant" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="Covenant" />
+
+      <set_object_property property="topSpeed" value="0" name="Tell" />
+      <set_object_property property="surrenderChance" value="0" name="Tell" />
+      <clear_ai name="Tell" />
+      <set_special name="Tell" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="Tell" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Tell" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Tell" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Tell" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="Tell" />
+
+
+  </event>
+  <event name="S21_Waypoint 89_4_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Waypoint 89" comparator="EQUALS" value="2.0" />
+    <if_exists name=" Waypoint 89 IV " />
+    <if_variable name="Sector" comparator="NOT" value="4.0" />
+    <destroy name=" Waypoint 89 IV " />
+
+      <destroy name="WP-5" />
+
+      <destroy name="WP-55" />
+
+      <destroy name="WP-556" />
+
+      <destroy name="Covenant" />
+
+      <destroy name="Tell" />
+
+  </event>
+
+
+
+
+  <event name="S21_Triton_11_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="11.0" />
+    <if_not_exists name=" Triton XI " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Triton XI " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <create count="30" type="mines" startAngle="160" endAngle="280" startX="43685.0" startY="0.0" startZ="41278.0" radius="19000" />
+    <create type="enemy" x="59430.0" y="0.0" z="32052.0" angle="0" name="WP-Q" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="33760.0" y="0.0" z="56165.0" angle="0" name="WP-O" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="35414.0" y="0.0" z="75263.0" angle="0" name="Triton Forward Command" hullID="1005" sideValue="1" fleetnumber="-1" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-Q" />
+      <set_object_property property="surrenderChance" value="0" name="WP-Q" />
+      <clear_ai name="WP-Q" />
+      <set_special name="WP-Q" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="WP-Q" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="WP-Q" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="WP-Q" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="WP-Q" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="WP-Q" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-O" />
+      <set_object_property property="surrenderChance" value="0" name="WP-O" />
+      <clear_ai name="WP-O" />
+      <set_special name="WP-O" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="WP-O" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="WP-O" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="WP-O" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="WP-O" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="WP-O" />
+
+      <set_object_property property="topSpeed" value="0" name="Triton Forward Command" />
+      <set_object_property property="surrenderChance" value="0" name="Triton Forward Command" />
+      <clear_ai name="Triton Forward Command" />
+      <set_special name="Triton Forward Command" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="Triton Forward Command" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Triton Forward Command" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Triton Forward Command" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Triton Forward Command" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="Triton Forward Command" />
+
+
+  </event>
+  <event name="S21_Triton_11_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_exists name=" Triton XI " />
+    <if_variable name="Sector" comparator="NOT" value="11.0" />
+    <destroy name=" Triton XI " />
+
+      <destroy name="WP-Q" />
+
+      <destroy name="WP-O" />
+
+      <destroy name="Triton Forward Command" />
+
+  </event>
+
+  <event name="S21_Triton_11_CustomObjectsJumpRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Triton System" comparator="NOT" value="2.0" />
+    <if_exists name=" Triton XI " />
+    <destroy name=" Triton XI " />
+
+      <destroy name="WP-Q" />
+
+      <destroy name="WP-O" />
+
+      <destroy name="Triton Forward Command" />
+
+  </event>
+
+
+
+
+  <event name="S21_Charon_2_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_not_exists name=" Charon II " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Charon II " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <create count="30" type="mines" startX="3384.0" startY="0.0" startZ="59022.0" endX="3384.0" endY="0.0" endZ="30022.0" />
+    <create type="enemy" x="60076.0" y="0.0" z="64135.0" angle="0" name="Defence Platform 82" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="31053.0" y="0.0" z="77518.0" angle="0" name="Defence Platform 17" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="4737.0" y="0.0" z="69398.0" angle="0" name="Defence Platform 57" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="50000.0" y="0.0" z="30000.0" angle="0" name="Defence Platform 71" hullID="1350" sideValue="1" fleetnumber="-1" />
+
+      <set_object_property property="topSpeed" value="0" name="Defence Platform 82" />
+      <set_object_property property="surrenderChance" value="0" name="Defence Platform 82" />
+      <clear_ai name="Defence Platform 82" />
+      <set_special name="Defence Platform 82" ship="-1" captain="-1" ability="Drones" />
+      <set_special name="Defence Platform 82" ship="-1" captain="-1" ability="AntiMine" />
+      <add_ai type="SPCL_AI" name="Defence Platform 82" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Defence Platform 82" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Defence Platform 82" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Defence Platform 82" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="Defence Platform 82" />
+
+      <set_object_property property="topSpeed" value="0" name="Defence Platform 17" />
+      <set_object_property property="surrenderChance" value="0" name="Defence Platform 17" />
+      <clear_ai name="Defence Platform 17" />
+      <set_special name="Defence Platform 17" ship="-1" captain="-1" ability="Drones" />
+      <set_special name="Defence Platform 17" ship="-1" captain="-1" ability="AntiMine" />
+      <add_ai type="SPCL_AI" name="Defence Platform 17" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Defence Platform 17" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Defence Platform 17" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Defence Platform 17" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="Defence Platform 17" />
+
+      <set_object_property property="topSpeed" value="0" name="Defence Platform 57" />
+      <set_object_property property="surrenderChance" value="0" name="Defence Platform 57" />
+      <clear_ai name="Defence Platform 57" />
+      <set_special name="Defence Platform 57" ship="-1" captain="-1" ability="Drones" />
+      <set_special name="Defence Platform 57" ship="-1" captain="-1" ability="AntiMine" />
+      <add_ai type="SPCL_AI" name="Defence Platform 57" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Defence Platform 57" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Defence Platform 57" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Defence Platform 57" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="Defence Platform 57" />
+
+      <set_object_property property="topSpeed" value="0" name="Defence Platform 71" />
+      <set_object_property property="surrenderChance" value="0" name="Defence Platform 71" />
+      <clear_ai name="Defence Platform 71" />
+      <set_special name="Defence Platform 71" ship="-1" captain="-1" ability="Drones" />
+      <set_special name="Defence Platform 71" ship="-1" captain="-1" ability="AntiMine" />
+      <add_ai type="SPCL_AI" name="Defence Platform 71" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Defence Platform 71" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Defence Platform 71" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Defence Platform 71" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="Defence Platform 71" />
+
+
+  </event>
+  <event name="S21_Charon_2_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_exists name=" Charon II " />
+    <if_variable name="Sector" comparator="NOT" value="2.0" />
+    <destroy name=" Charon II " />
+
+      <destroy name="Defence Platform 82" />
+
+      <destroy name="Defence Platform 17" />
+
+      <destroy name="Defence Platform 57" />
+
+      <destroy name="Defence Platform 71" />
+
+  </event>
+
+  <event name="S21_Charon_2_CustomObjectsJumpRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Charon System" comparator="NOT" value="2.0" />
+    <if_exists name=" Charon II " />
+    <destroy name=" Charon II " />
+
+      <destroy name="Defence Platform 82" />
+
+      <destroy name="Defence Platform 17" />
+
+      <destroy name="Defence Platform 57" />
+
+      <destroy name="Defence Platform 71" />
+
+  </event>
+
+
+
+
+  <event name="S21_Charon_8_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_not_exists name=" Charon VIII " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Charon VIII " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <create type="enemy" x="48346.0" y="0.0" z="51503.0" angle="0" name="Defence Platform 9" hullID="1005" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="24286.0" y="0.0" z="72556.0" angle="0" name="Defence Platform 10" hullID="1005" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="73459.0" y="0.0" z="73909.0" angle="0" name="Defence Platform 13" hullID="1005" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="66241.0" y="0.0" z="59924.0" angle="0" name="Pam Ana" hullID="1007" sideValue="1" fleetnumber="-1" />
+
+      <set_object_property property="topSpeed" value="0" name="Pam Ana" />
+      <set_object_property property="surrenderChance" value="0" name="Pam Ana" />
+      <clear_ai name="Pam Ana" />
+      <set_special name="Pam Ana" ship="-1" captain="-1" ability="AntiTorp" />
+      <add_ai type="SPCL_AI" name="Pam Ana" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Pam Ana" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Pam Ana" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Pam Ana" />
+
+      <set_object_property property="topSpeed" value="0" name="Defence Platform 9" />
+      <set_object_property property="surrenderChance" value="0" name="Defence Platform 9" />
+      <clear_ai name="Defence Platform 9" />
+      <set_special name="Defence Platform 9" ship="-1" captain="-1" ability="AntiTorp" />
+      <add_ai type="SPCL_AI" name="Defence Platform 9" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Defence Platform 9" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Defence Platform 9" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Defence Platform 9" />
+
+      <set_object_property property="topSpeed" value="0" name="Defence Platform 10" />
+      <set_object_property property="surrenderChance" value="0" name="Defence Platform 10" />
+      <clear_ai name="Defence Platform 10" />
+      <set_special name="Defence Platform 10" ship="-1" captain="-1" ability="AntiTorp" />
+      <add_ai type="SPCL_AI" name="Defence Platform 10" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Defence Platform 10" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Defence Platform 10" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Defence Platform 10" />
+
+      <set_object_property property="topSpeed" value="0" name="Defence Platform 13" />
+      <set_object_property property="surrenderChance" value="0" name="Defence Platform 13" />
+      <clear_ai name="Defence Platform 13" />
+      <set_special name="Defence Platform 13" ship="-1" captain="-1" ability="AntiTorp" />
+      <add_ai type="SPCL_AI" name="Defence Platform 13" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Defence Platform 13" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Defence Platform 13" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Defence Platform 13" />
+
+
+  </event>
+  <event name="S21_Charon_8_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_exists name=" Charon VIII " />
+    <if_variable name="Sector" comparator="NOT" value="8.0" />
+    <destroy name=" Charon VIII " />
+
+      <destroy name="Pam Ana" />
+
+      <destroy name="Defence Platform 9" />
+
+      <destroy name="Defence Platform 10" />
+
+      <destroy name="Defence Platform 13" />
+
+  </event>
+
+  <event name="S21_Charon_8_CustomObjectsJumpRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Charon System" comparator="NOT" value="2.0" />
+    <if_exists name=" Charon VIII " />
+    <destroy name=" Charon VIII " />
+
+      <destroy name="Pam Ana" />
+
+      <destroy name="Defence Platform 9" />
+
+      <destroy name="Defence Platform 10" />
+
+      <destroy name="Defence Platform 13" />
+
+  </event>
+
+
+
+
+  <event name="S21_Charon_5_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_not_exists name=" Charon V " />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" Charon V " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <create type="enemy" x="63985.0" y="0.0" z="33609.0" angle="0" name="Slingshot Platform" hullID="1355" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="54662.0" y="0.0" z="37368.0" angle="0" name="Slingshot Power" hullID="1354" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="67594.0" y="0.0" z="48195.0" angle="0" name="Slingshot Antenna" hullID="1353" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="59775.0" y="0.0" z="54360.0" angle="0" name="WP-11011" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="40076.0" y="0.0" z="25488.0" angle="0" name="WP-110" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="62482.0" y="0.0" z="40075.0" angle="0" name="Commune" hullID="1006" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="49249.0" y="0.0" z="49248.0" angle="0" name="Fortress" hullID="1007" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="51504.0" y="0.0" z="25037.0" angle="0" name="Gink" hullID="1005" sideValue="1" fleetnumber="-1" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-11011" />
+      <set_object_property property="surrenderChance" value="0" name="WP-11011" />
+      <clear_ai name="WP-11011" />
+      <set_special name="WP-11011" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="WP-11011" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="WP-11011" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="WP-11011" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="WP-11011" />
+
+      <set_object_property property="topSpeed" value="0" name="WP-110" />
+      <set_object_property property="surrenderChance" value="0" name="WP-110" />
+      <clear_ai name="WP-110" />
+      <set_special name="WP-110" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="WP-110" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="WP-110" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="WP-110" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="WP-110" />
+
+      <set_object_property property="topSpeed" value="0" name="Commune" />
+      <set_object_property property="surrenderChance" value="0" name="Commune" />
+      <clear_ai name="Commune" />
+      <set_special name="Commune" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="Commune" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Commune" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Commune" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Commune" />
+
+      <set_object_property property="topSpeed" value="0" name="Fortress" />
+      <set_object_property property="surrenderChance" value="0" name="Fortress" />
+      <clear_ai name="Fortress" />
+      <set_special name="Fortress" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="Fortress" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Fortress" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Fortress" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Fortress" />
+
+      <set_object_property property="topSpeed" value="0" name="Gink" />
+      <set_object_property property="surrenderChance" value="0" name="Gink" />
+      <clear_ai name="Gink" />
+      <set_special name="Gink" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="Gink" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="Gink" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Gink" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Gink" />
+
+
+  </event>
+  <event name="S21_Charon_5_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_exists name=" Charon V " />
+    <if_variable name="Sector" comparator="NOT" value="5.0" />
+    <destroy name=" Charon V " />
+
+      <destroy name="WP-11011" />
+
+      <destroy name="WP-110" />
+
+      <destroy name="Commune" />
+
+      <destroy name="Fortress" />
+
+      <destroy name="Gink" />
+
+      <destroy name="Slingshot Platform" />
+
+      <destroy name="Slingshot Power" />
+
+      <destroy name="Slingshot Antenna" />
 
   </event>
 

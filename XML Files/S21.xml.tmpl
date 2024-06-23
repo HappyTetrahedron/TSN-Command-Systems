@@ -55,7 +55,9 @@
       ],
       "4": [
         "Civilian USFP\+Wisdom",
-        "Civilian USFP\+Ubuntu"
+        "Civilian USFP\+Ubuntu",
+        "Military USFP\Fleet small",
+        "Military USFP\Fleet large",
       ],
       "7": [
         "Single Hegemony\+KeloiGitos"
@@ -82,10 +84,41 @@
           "Civilian USFP\+Ubuntu",
           "Single Hegemony\+KeloiGitos",
           "Euphini Pirates\+BlackBertha",
+          "Military USFP\Fleet small",
+          "Military USFP\Fleet large",
         ]
     %}
       <clear_gm_button text="{{ ship }}" />
     {% endfor %}
+  </event>
+
+  <event name="S21_MilitaryUSFPSmall" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_gm_button text="Military USFP\Fleet small" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1603" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1603" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1500" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1501" sideValue="SideValue" fleetnumber="-1" />
+    <set_variable name="Fleet Settings" value="1.0" />
+    <set_variable name="Auto AI Type" value="1.0" integer="yes" />
+    <set_variable name="Random Direction" value="1.0" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+  </event>
+
+  <event name="S21_MilitaryUSFPLarge" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_gm_button text="Military USFP\Fleet large" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1603" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1603" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1603" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1603" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1500" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1500" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1500" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1501" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1501" sideValue="SideValue" fleetnumber="-1" />
+    <set_variable name="Fleet Settings" value="1.0" />
+    <set_variable name="Auto AI Type" value="1.0" integer="yes" />
+    <set_variable name="Random Direction" value="1.0" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
   </event>
 
   {% for name in ["Keloi Gitosz"] %}
@@ -852,6 +885,59 @@
                 "Drazma Mining",
               ],
           },
+          "Charon": {
+              "destroy": [
+                "Charon Forward Command",
+                "SY-101",
+                "WP-101",
+                "WP-1011",
+                "WP-NA",
+                "WP-NB",
+                "WP-NC",
+                "WP-ND",
+                "WP-E",
+                "WP-33",
+                "DS-30",
+                "DS-37",
+                "DS-7",
+                "WP-(-2)",
+                "SY-519",
+                "SY-520",
+                "I-407",
+                "I-410",
+              ],
+              "desolate": [
+                "DS-01",
+                "DS-76",
+                "RS-9992",
+                "Harrling",
+                "Serrin",
+                "Soulin",
+                "Casarosso",
+                "I-442",
+                "I-465",
+                "I-474",
+              ],
+          },
+          "Triton": {
+              "destroy": [
+                "DS-20",
+                "DS-44",
+                "DS-62",
+                "I-280",
+                "I-402",
+                "I-556",
+                "I-601",
+              ],
+              "desolate": [
+                "Cassandra Observation",
+                "Denabite Derby",
+                "Farosh",
+                "Farosh Denabyte",
+                "Tarnis Nebula Refinery",
+                "Triton Refuge",
+              ],
+          },
           "Template": {
               "destroy": [
               ],
@@ -879,17 +965,17 @@
 
   <!-- Custom new objects in sectors -->
 
-  {% macro createEvent(system, sector, roman) %}
+  {% macro createEvent(system, sector, roman, suffix=" System") %}
   <event name="S21_{{ system }}_{{ sector }}_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
-    <if_variable name="{{ system }} System" comparator="EQUALS" value="2.0" />
+    <if_variable name="{{ system }}{{ suffix }}" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="{{ sector }}.0" />
     <if_not_exists name=" {{ system }} {{ roman }} " />
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name=" {{ system }} {{ roman }} " meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
   {% endmacro %}
-  {% macro destroyEvent(system, sector, roman, objects, gate=False) %}
+  {% macro destroyEvent(system, sector, roman, objects, gate=False, suffix=" System") %}
   </event>
   <event name="S21_{{ system }}_{{ sector }}_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-    <if_variable name="{{ system }} System" comparator="EQUALS" value="2.0" />
+    <if_variable name="{{ system }}{{ suffix }}" comparator="EQUALS" value="2.0" />
     <if_exists name=" {{ system }} {{ roman }} " />
     <if_variable name="Sector" comparator="NOT" value="{{ sector }}.0" />
     <destroy name=" {{ system }} {{ roman }} " />
@@ -899,7 +985,7 @@
   </event>
   {% if gate %}
   <event name="S21_{{ system }}_{{ sector }}_CustomObjectsJumpRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
-    <if_variable name="{{ system }} System" comparator="NOT" value="2.0" />
+    <if_variable name="{{ system }}{{ suffix }}" comparator="NOT" value="2.0" />
     <if_exists name=" {{ system }} {{ roman }} " />
     <destroy name=" {{ system }} {{ roman }} " />
     {% for name in objects %}
@@ -1284,5 +1370,195 @@
       <clear_ai name="{{ name }}" />
       <set_ship_text name="{{ name }}" desc="Construction site. Non-functional." scan_desc="Estimated construction time: 0.4 years" />
     {% endfor %}
-  {{ destroyEvent('Enyalius', 8, 'VIII', ["Defense Platform C", "Defense Platform H"]) }}
+  {{ destroyEvent('Enyalius', 8, 'VIII', ["Defense Platform C", "Defense Platform H"], true) }}
+
+  {{ createEvent('Waypoint 89', 1, 'I', "") }}
+    <create count="20" type="mines" startAngle="160" endAngle="320" startX="56600.0" startY="0.0" startZ="28281.0" radius="15000" />
+    <create count="20" type="mines" startAngle="160" endAngle="320" startX="31805.0" startY="0.0" startZ="63684.0" radius="15000" />
+    <create count="10" type="mines" startX="42019.0" startY="0.0" startZ="44870.0" endX="42019.0" endY="0.0" endZ="44870.0" randomRange="40000" randomSeed="3" />
+    <create type="enemy" x="45640.0" y="0.0" z="47593.0" angle="0" name="WP-3" hullID="1005" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="21579.0" y="0.0" z="79774.0" angle="0" name="WP-33" hullID="1005" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="67745.0" y="0.0" z="10300.0" angle="0" name="WP-333" hullID="1005" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="32707.0" y="0.0" z="65037.0" angle="0" name="Ka'zaa" hullID="1008" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="60076.0" y="0.0" z="30000.0" angle="0" name="Gitos" hullID="1005" sideValue="1" fleetnumber="-1" />
+    {% for name in ["WP-3", "WP-33", "WP-333", "Gitos"] %}
+      <set_object_property property="topSpeed" value="0" name="{{ name }}" />
+      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+      <clear_ai name="{{ name }}" />
+      <set_special name="{{ name }}" ship="-1" captain="-1" ability="Drones" />
+      <set_special name="{{ name }}" ship="-1" captain="-1" ability="AntiTorp" />
+      <set_special name="{{ name }}" ship="-1" captain="-1" ability="AntiMine" />
+      <add_ai type="SPCL_AI" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="{{ name }}" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="2000" name="{{ name }}" />
+    {% endfor %}
+    {% for name in ["Ka'zaa"] %}
+      <set_object_property property="topSpeed" value="0" name="{{ name }}" />
+      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+      <clear_ai name="{{ name }}" />
+      <set_special name="{{ name }}" ship="-1" captain="-1" ability="Drones" />
+      <set_special name="{{ name }}" ship="-1" captain="-1" ability="AntiTorp" />
+      <set_special name="{{ name }}" ship="-1" captain="-1" ability="AntiMine" />
+      <set_special name="{{ name }}" ship="-1" captain="-1" ability="Tractor" />
+      <set_special name="{{ name }}" ship="-1" captain="-1" ability="ShldVamp" />
+      <set_special name="{{ name }}" clear="yes" ship="-1" captain="-1" ability="Warp" />
+      <set_special name="{{ name }}" clear="yes" ship="-1" captain="-1" ability="Teleback" />
+      <set_special name="{{ name }}" clear="yes" ship="-1" captain="-1" ability="Teleport" />
+      <add_ai type="SPCL_AI" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="{{ name }}" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="2000" name="{{ name }}" />
+    {% endfor %}
+  {{ destroyEvent('Waypoint 89', 1, 'I', ["WP-3", "WP-33", "WP-333", "Gitos", "Ka'zaa"], true, "") }}
+  {{ createEvent('Waypoint 89', 2, 'II', "") }}
+    <create count="30" type="mines" startAngle="390" endAngle="90" startX="53910.0" startY="0.0" startZ="69849.0" radius="15000" />
+    <create count="15" type="mines" startAngle="20" endAngle="110" startX="53910.0" startY="0.0" startZ="69699.0" radius="25000" />
+    <create count="10" type="mines" startX="97364.0" startY="0.0" startZ="59870.0" endX="97514.0" endY="0.0" endZ="97464.0" randomRange="1000" />
+    <create count="10" type="mines" startX="60677.0" startY="0.0" startZ="96963.0" endX="97519.0" endY="0.0" endZ="98016.0" randomRange="1000" />
+    <create count="30" type="mines" startAngle="220" endAngle="270" startX="40226.0" startY="0.0" startZ="14511.0" radius="40000" />
+    <create type="enemy" x="41661.0" y="0.0" z="62112.0" angle="0" name="Defence Platform C" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="34716.0" y="0.0" z="74909.0" angle="0" name="Defence Platform D" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="46498.0" y="0.0" z="52009.0" angle="0" name="Defence Platform A" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="67143.0" y="0.0" z="26439.0" angle="0" name="Kurmuk" hullID="1007" sideValue="1" fleetnumber="-1" />
+    {% for name in ["Defence Platform C", "Defence Platform D", "Defence Platform A", "Kurmuk"] %}
+      <set_object_property property="topSpeed" value="0" name="{{ name }}" />
+      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+      <clear_ai name="{{ name }}" />
+      <set_special name="{{ name }}" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="{{ name }}" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="{{ name }}" />
+    {% endfor %}
+  {{ destroyEvent('Waypoint 89', 2, 'II', ["Defence Platform C", "Defence Platform D", "Defence Platform A", "Kurmuk"], true, "") }}
+
+  {{ createEvent('Waypoint 89', 3, 'III', "") }}
+    <create count="50" type="mines" startAngle="-100" endAngle="180" startX="47745.0" startY="0.0" startZ="47142.0" radius="20000" />
+    <create count="30" type="mines" startAngle="-100" endAngle="60" startX="11354.0" startY="0.0" startZ="87375.0" radius="20000" />
+    <create count="25" type="mines" startAngle="70" endAngle="180" startX="81125.0" startY="0.0" startZ="5639.0" radius="20000" />
+    <create type="neutral" x="64888.0" y="0.0" z="57669.0" angle="0" name="WP-0" hullID="1052" sideValue="2" />
+    <create type="neutral" x="54662.0" y="0.0" z="65037.0" angle="0" name="WP-(-1)" hullID="1052" sideValue="2" />
+    <create type="genericMesh" x="63685.0" y="0.0" z="25939.0" angle="4" name="Lambda" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+    <create type="genericMesh" x="28797.0" y="0.0" z="66691.0" angle="0" name="Nu" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+    <create type="genericMesh" x="65489.0" y="0.0" z="65338.0" angle="0" name="Sigma" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+    <create type="neutral" x="35564.0" y="0.0" z="68345.0" angle="0" name="WP-N4" hullID="1052" sideValue="2" />
+    <create type="neutral" x="32106.0" y="0.0" z="72105.0" angle="0" name="WP-N9" hullID="1052" sideValue="2" />
+    <create type="neutral" x="72610.0" y="0.0" z="28141.0" angle="0" name="WP-L3" hullID="1052" sideValue="2" />
+    <create type="neutral" x="69098.0" y="0.0" z="31804.0" angle="0" name="WP-L5" hullID="1052" sideValue="2" />
+    <create type="neutral" x="49549.0" y="0.0" z="45187.0" angle="0" name="Gate Command" hullID="1002" sideValue="2" />
+    {% for name in ["WP-0", "WP-(-1)", "WP-N4", "WP-N9", "WP-L3", "WP-L5", "Gate Command"] %}
+      <set_object_property property="topSpeed" value="0" name="{{ name }}" />
+      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+      <clear_ai name="{{ name }}" />
+      <set_special name="{{ name }}" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="6000" value2="5000" name="{{ name }}" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="{{ name }}" />
+    {% endfor %}
+    {% for name in ["Sigma", "Nu", "Lambda"] %}
+      <set_ship_text name="{{ name }}" desc="USFP strategic point marker" scan_desc="Designation {{ name }}." />
+    {% endfor %}
+  {{ destroyEvent('Waypoint 89', 3, 'III', ["WP-0", "WP-(-1)", "WP-N4", "WP-N9", "WP-L3", "WP-L5", "Gate Command", "Sigma", "Nu", "Lambda"], true, "") }}
+
+  {{ createEvent('Waypoint 89', 4, 'IV', '') }}
+    <create count="20" type="mines" startX="80828.0" startY="0.0" startZ="3834.0" endX="57519.0" endY="0.0" endZ="33759.0" />
+    <create count="20" type="mines" startX="43384.0" startY="0.0" startZ="59924.0" endX="25789.0" endY="0.0" endZ="94060.0" />
+    <create count="15" type="mines" startX="78271.0" startY="0.0" startZ="45639.0" endX="65338.0" endY="0.0" endZ="69248.0" />
+    <create type="enemy" x="68196.0" y="0.0" z="36917.0" angle="0" name="WP-5" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="54662.0" y="0.0" z="62932.0" angle="0" name="WP-55" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="50151.0" y="0.0" z="44887.0" angle="0" name="WP-556" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="60226.0" y="0.0" z="10300.0" angle="0" name="Covenant" hullID="1006" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="28497.0" y="0.0" z="66992.0" angle="0" name="Tell" hullID="1005" sideValue="1" fleetnumber="-1" />
+    {% for name in ["WP-5", "WP-55", "WP-556", "Covenant", "Tell"] %}
+      <set_object_property property="topSpeed" value="0" name="{{ name }}" />
+      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+      <clear_ai name="{{ name }}" />
+      <set_special name="{{ name }}" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="{{ name }}" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="{{ name }}" />
+    {% endfor %}
+  {{ destroyEvent('Waypoint 89', 4, 'IV', ["WP-5", "WP-55", "WP-556", "Covenant", "Tell"], false, "") }}
+
+  {{ createEvent('Triton', 11, 'XI') }}
+    <create count="30" type="mines" startAngle="160" endAngle="280" startX="43685.0" startY="0.0" startZ="41278.0" radius="19000" />
+    <create type="enemy" x="59430.0" y="0.0" z="32052.0" angle="0" name="WP-Q" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="33760.0" y="0.0" z="56165.0" angle="0" name="WP-O" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="35414.0" y="0.0" z="75263.0" angle="0" name="Triton Forward Command" hullID="1005" sideValue="1" fleetnumber="-1" />
+    {% for name in ["WP-Q", "WP-O", "Triton Forward Command"] %}
+      <set_object_property property="topSpeed" value="0" name="{{ name }}" />
+      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+      <clear_ai name="{{ name }}" />
+      <set_special name="{{ name }}" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="{{ name }}" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="{{ name }}" />
+    {% endfor %}
+  {{ destroyEvent('Triton', 11, 'XI', ["WP-Q", "WP-O", "Triton Forward Command"], true) }}
+
+  {{ createEvent('Charon', 2, 'II') }}
+    <create count="30" type="mines" startX="3384.0" startY="0.0" startZ="59022.0" endX="3384.0" endY="0.0" endZ="30022.0" />
+    <create type="enemy" x="60076.0" y="0.0" z="64135.0" angle="0" name="Defence Platform 82" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="31053.0" y="0.0" z="77518.0" angle="0" name="Defence Platform 17" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="4737.0" y="0.0" z="69398.0" angle="0" name="Defence Platform 57" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="50000.0" y="0.0" z="30000.0" angle="0" name="Defence Platform 71" hullID="1350" sideValue="1" fleetnumber="-1" />
+    {% for name in ["Defence Platform 82", "Defence Platform 17", "Defence Platform 57", "Defence Platform 71"] %}
+      <set_object_property property="topSpeed" value="0" name="{{ name }}" />
+      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+      <clear_ai name="{{ name }}" />
+      <set_special name="{{ name }}" ship="-1" captain="-1" ability="Drones" />
+      <set_special name="{{ name }}" ship="-1" captain="-1" ability="AntiMine" />
+      <add_ai type="SPCL_AI" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="{{ name }}" />
+      <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="{{ name }}" />
+    {% endfor %}
+  {{ destroyEvent('Charon', 2, 'II', ["Defence Platform 82", "Defence Platform 17", "Defence Platform 57", "Defence Platform 71"], true) }}
+
+  {{ createEvent('Charon', 8, 'VIII') }}
+    <create type="enemy" x="48346.0" y="0.0" z="51503.0" angle="0" name="Defence Platform 9" hullID="1005" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="24286.0" y="0.0" z="72556.0" angle="0" name="Defence Platform 10" hullID="1005" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="73459.0" y="0.0" z="73909.0" angle="0" name="Defence Platform 13" hullID="1005" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="66241.0" y="0.0" z="59924.0" angle="0" name="Pam Ana" hullID="1007" sideValue="1" fleetnumber="-1" />
+    {% for name in ["Pam Ana", "Defence Platform 9", "Defence Platform 10", "Defence Platform 13"] %}
+      <set_object_property property="topSpeed" value="0" name="{{ name }}" />
+      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+      <clear_ai name="{{ name }}" />
+      <set_special name="{{ name }}" ship="-1" captain="-1" ability="AntiTorp" />
+      <add_ai type="SPCL_AI" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="{{ name }}" />
+    {% endfor %}
+  {{ destroyEvent('Charon', 8, 'VIII', ["Pam Ana", "Defence Platform 9", "Defence Platform 10", "Defence Platform 13"], true) }}
+
+  {{ createEvent('Charon', 5, 'V') }}
+    <create type="enemy" x="63985.0" y="0.0" z="33609.0" angle="0" name="Slingshot Platform" hullID="1355" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="54662.0" y="0.0" z="37368.0" angle="0" name="Slingshot Power" hullID="1354" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="67594.0" y="0.0" z="48195.0" angle="0" name="Slingshot Antenna" hullID="1353" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="59775.0" y="0.0" z="54360.0" angle="0" name="WP-11011" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="40076.0" y="0.0" z="25488.0" angle="0" name="WP-110" hullID="1350" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="62482.0" y="0.0" z="40075.0" angle="0" name="Commune" hullID="1006" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="49249.0" y="0.0" z="49248.0" angle="0" name="Fortress" hullID="1007" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="51504.0" y="0.0" z="25037.0" angle="0" name="Gink" hullID="1005" sideValue="1" fleetnumber="-1" />
+    {% for name in ["WP-11011", "WP-110", "Commune", "Fortress", "Gink"] %}
+      <set_object_property property="topSpeed" value="0" name="{{ name }}" />
+      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+      <clear_ai name="{{ name }}" />
+      <set_special name="{{ name }}" ship="-1" captain="-1" ability="Drones" />
+      <add_ai type="SPCL_AI" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="{{ name }}" />
+      <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="{{ name }}" />
+      <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="{{ name }}" />
+    {% endfor %}
+  {{ destroyEvent('Charon', 5, 'V', ["WP-11011", "WP-110", "Commune", "Fortress", "Gink", "Slingshot Platform", "Slingshot Power", "Slingshot Antenna"], false) }}
 </mission_data>
