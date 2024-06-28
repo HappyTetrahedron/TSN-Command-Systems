@@ -575,7 +575,7 @@
     <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
     <set_variable name="Waypoint 89 to Triton" value="1.0" />
     <set_variable name="Triton System" value="1.0" />
-    <set_variable name="Sector" value="6" />
+    <set_variable name="Sector" value="1" />
     <set_variable name="shipsInrange" value="0.0" integer="yes" />
     <set_timer name="Transition" seconds="2" />
     <set_variable name="Gate System" value="0.0" />

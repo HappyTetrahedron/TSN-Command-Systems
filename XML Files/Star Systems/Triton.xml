@@ -1,10 +1,10 @@
 <mission_data version="1.7" background_id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4" playerShipNames_arme="TSN Sabre\TSN Valiant\TSN Lancer\TSN Stalker\TSN Viper\TSN Horizon\TSN Necessity\TSN Hunter">
   <start name="Start" id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4">
-    <set_variable name="Coordinate X" value="565.0" integer="yes" />
-    <set_variable name="Coordinate Y" value="355.0" integer="yes" />
+    <set_variable name="Coordinate X" value="780.0" integer="yes" />
+    <set_variable name="Coordinate Y" value="466.0" integer="yes" />
     <set_variable name="Alignment" value="USFP" integer="yes" />
   </start>
-  <folder_arme name="Triton System" id_arme="bca1b0f7-2803-4617-895d-5a2365355c91" expanded_arme="" />
+  <folder_arme name="Triton System" id_arme="bca1b0f7-2803-4617-895d-5a2365355c91" />
   <folder_arme name="Triton Settings" id_arme="352c5b33-563d-4083-a83f-a6bab4571ca3" parent_id_arme="bca1b0f7-2803-4617-895d-5a2365355c91" />
   <folder_arme name="Triton Menu" id_arme="82c94686-4fd0-476a-a48e-b4f11f16a29f" parent_id_arme="352c5b33-563d-4083-a83f-a6bab4571ca3" />
   <event name="Triton Active" id_arme="337134ea-f9d6-433b-9cce-8a40014d2f9b" parent_id_arme="82c94686-4fd0-476a-a48e-b4f11f16a29f">
@@ -287,7 +287,7 @@
     <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
     <set_variable name="Triton to Waypoint 89" value="1.0" />
     <set_variable name="Waypoint 89" value="1.0" />
-    <set_variable name="Sector" value="targetSector" />
+    <set_variable name="Sector" value="2" />
     <set_timer name="Transition" seconds="2" />
     <set_variable name="Gate System" value="0.0" />
     <set_variable name="ExitorRetreat" value="1.0" />
@@ -1759,7 +1759,7 @@
     <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
     <set_variable name="Triton to Charon" value="1.0" />
     <set_variable name="Charon System" value="1.0" />
-    <set_variable name="Sector" value="targetSector" />
+    <set_variable name="Sector" value="7" />
     <set_timer name="Transition" seconds="2" />
     <set_variable name="Gate System" value="0.0" />
     <set_variable name="ExitorRetreat" value="1.0" />
