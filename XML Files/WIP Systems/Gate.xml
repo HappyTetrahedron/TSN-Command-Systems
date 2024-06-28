@@ -1,0 +1,210 @@
+
+  <folder_arme name="System - Jump Gate Settings" id_arme="ID2" parent_id_arme="" />
+  <event name="Gate Offline" id_arme="683f41c9-1acf-4ba8-863e-e20479604f49" parent_id_arme="ID2">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="GATE_N Gate" />
+  </event>
+  <folder_arme name="Tracking System" id_arme="ID3" parent_id_arme="ID2" expanded_arme="" />
+  <event name="Ship1 Activation Range" id_arme="3196669c-94d8-42cd-923b-d8ee66d2ac0c" parent_id_arme="ID3">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="0" name2="GATE_N Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="GATE_N Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship1" value="1.0" />
+  </event>
+  <event name="Ship1 Out of Range" id_arme="9ecddaa8-f022-4796-96b0-f54b37b76260" parent_id_arme="ID3">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="0" name2="GATE_N Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="GATE_N Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship1" value="0.0" />
+  </event>
+  <event name="Ship2 Activation Range" id_arme="26082da8-b9b7-4caf-b745-4fa9935c0847" parent_id_arme="ID3">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="1" name2="GATE_N Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="GATE_N Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship2" value="1.0" />
+  </event>
+  <event name="Ship2 Out of Range" id_arme="8537a74e-ac82-44e5-9eef-49327fe79d05" parent_id_arme="ID3">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="1" name2="GATE_N Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="GATE_N Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship2" value="0.0" />
+  </event>
+  <event name="Ship3 Activation Range" id_arme="d3d864c1-cd38-4c25-bd9b-a4f7bd1c3395" parent_id_arme="ID3">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="2" name2="GATE_N Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="GATE_N Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship3" value="1.0" />
+  </event>
+  <event name="Ship3 Out of Range" id_arme="7c8cccb0-0a81-4774-93e4-2a9ecb9e1ac3" parent_id_arme="ID3">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="2" name2="GATE_N Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="GATE_N Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship3" value="0.0" />
+  </event>
+  <event name="Ship4 Activation Range" id_arme="e8310752-292a-43b0-acc0-99089b8a970f" parent_id_arme="ID3">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="3" name2="GATE_N Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="GATE_N Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship4" value="1.0" />
+  </event>
+  <event name="Ship4 Out of Range" id_arme="0ef4f429-d789-4689-920f-9136f15e4789" parent_id_arme="ID3">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="3" name2="GATE_N Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="GATE_N Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship4" value="0.0" />
+  </event>
+  <event name="Ship5 Activation Range" id_arme="d0e63e21-911c-47e5-87e0-c14fe5f4f0e6" parent_id_arme="ID3">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="4" name2="GATE_N Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="GATE_N Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship5" value="1.0" />
+  </event>
+  <event name="Ship5 Out of Range" id_arme="5c1445df-03ff-4dbb-84ae-79ee189da135" parent_id_arme="ID3">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="4" name2="GATE_N Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="GATE_N Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship5" value="0.0" />
+  </event>
+  <event name="Ship6 Activation Range" id_arme="76379d8d-d9a1-46ec-aada-603548d3a1e5" parent_id_arme="ID3">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="5" name2="GATE_N Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="GATE_N Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship6" value="1.0" />
+  </event>
+  <event name="Ship6 Out of Range" id_arme="57d61d34-9821-4fc7-a1f2-938cce2d9eff" parent_id_arme="ID3">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="5" name2="GATE_N Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="GATE_N Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship6" value="0.0" />
+  </event>
+  <event name="Ship7 Activation Range" id_arme="9cb1c6a3-19e8-4d7f-870f-8ad85ced3895" parent_id_arme="ID3">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="6" name2="GATE_N Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="GATE_N Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship7" value="1.0" />
+  </event>
+  <event name="Ship7 Out of Range" id_arme="6d71a0c5-07b4-4e7b-9970-5cb8bdb3d42e" parent_id_arme="ID3">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="6" name2="GATE_N Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="GATE_N Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship7" value="0.0" />
+  </event>
+  <event name="Ship8 Activation Range" id_arme="d330be45-8dbe-4a84-97c6-6771a54beae6" parent_id_arme="ID3">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="7" name2="GATE_N Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="GATE_N Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship8" value="1.0" />
+  </event>
+  <event name="Ship8 Out of Range" id_arme="4aff08ad-36cd-4bdc-9f58-b54d518b4bde" parent_id_arme="ID3">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="7" name2="GATE_N Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="GATE_N Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship8" value="0.0" />
+  </event>
+  <event name="Gate Online" id_arme="98057c35-3cd7-4ab5-8b3c-45d315bcf4ea" parent_id_arme="ID2">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="GATE_N Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="GATE_N Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated" id_arme="583595fe-fea6-42f9-bb88-c439e30ec27b" parent_id_arme="ID2">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="GATE_N Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="SYSTEMNAME System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="SYSTEMNAME to GATE_N" value="1.0" />
+    <set_variable name="GATE_N System" value="1.0" />
+    <set_variable name="Sector" value="targetSector" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="Gate System" value="0.0" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+  </event>
+
+
+
+
+
+  <event name="Arrival From GATE_N" id_arme="ID1" parent_id_arme="">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
+    <if_variable name="GATE_N to SYSTEMNAME" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="GATE_N Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="GATE_N Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="GATE_N Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="GATE_N Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="GATE_N Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="GATE_N Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="GATE_N Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="GATE_N Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="GATE_N to SYSTEMNAME" value="0.0" />
+  </event>
