@@ -141,7 +141,6 @@
     <set_variable name="Name Assign" value="1.0" integer="yes" />
   </event>
 
-
   <event name="S21_Keloi Gitosz" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="Single Hegemony\+KeloiGitos" />
     <create type="enemy" use_gm_position="" angle="0" name="Keloi Gitosz" hullID="2002" sideValue="SideValue" fleetnumber="-1" />
@@ -175,8 +174,6 @@
 
   </event>
 
-
-
   <event name="Black Bertha" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="Euphini Pirates\+BlackBertha" />
     <create type="enemy" use_gm_position="" angle="0" name="Black Bertha" hullID="7301" sideValue="SideValue" fleetnumber="-1" />
@@ -209,8 +206,6 @@
 
   </event>
 
-
-
   <event name="TSN Verdant" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="TSN Ships\+Verdant" />
     <create type="enemy" use_gm_position="" angle="0" name="TSN Verdant" hullID="1701" sideValue="SideValue" fleetnumber="-1" />
@@ -218,7 +213,6 @@
     <clear_ai name="TSN Verdant" />
 
     <set_object_property property="surrenderChance" value="0" name="TSN Verdant" />
-
 
     <set_object_property property="shieldMaxStateFront" value="150" name="TSN Verdant" />
     <set_object_property property="shieldStateFront" value="150" name="TSN Verdant" />
@@ -247,8 +241,6 @@
       scan_desc="Flagship of the 2nd Space Fleet, 1st Battle Division. Commanded by Flt. Cpt. Min Mwenya. Specials: HET Warp AntiTorp Drones" />
   </event>
 
-
-
   <event name="TSN Whispers of Freedom" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="TSN Ships\+WhispersofFreedom" />
     <create type="neutral" use_gm_position="" angle="0" name="TSN Whispers of Freedom" hullID="1503" sideValue="SideValue" fleetnumber="-1" />
@@ -270,10 +262,6 @@
       scan_desc="Able to carry approximately 3500 souls." />
   </event>
 
-
-
-
-
   <event name="S21_VerdantFleet" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="TSN Fleets\+VerdantFleet" />
 
@@ -290,7 +278,6 @@
     <!-- 1 scout -->
     <create type="neutral" use_gm_position="" angle="0" name="TSN Daring" hullID="1" sideValue="SideValue" fleetnumber="98" />
 
-
     <set_object_property property="shieldMaxStateFront" value="1050" name="TSN Verdant" />
     <set_object_property property="shieldStateFront" value="1050" name="TSN Verdant" />
     <set_object_property property="shieldMaxStateBack" value="930" name="TSN Verdant" />
@@ -305,7 +292,6 @@
     <set_object_property property="shieldStateFront" value="260" name="TSN Warspite" />
     <set_object_property property="shieldMaxStateBack" value="260" name="TSN Warspite" />
     <set_object_property property="shieldStateBack" value="260" name="TSN Warspite" />
-
 
     <set_object_property property="shieldMaxStateFront" value="630" name="TSN Fury" />
     <set_object_property property="shieldStateFront" value="630" name="TSN Fury" />
@@ -322,14 +308,10 @@
     <set_object_property property="shieldMaxStateBack" value="380" name="TSN Shield" />
     <set_object_property property="shieldStateBack" value="380" name="TSN Shield" />
 
-
     <set_object_property property="shieldMaxStateFront" value="150" name="TSN Daring" />
     <set_object_property property="shieldStateFront" value="150" name="TSN Daring" />
     <set_object_property property="shieldMaxStateBack" value="150" name="TSN Daring" />
     <set_object_property property="shieldStateBack" value="150" name="TSN Daring" />
-
-
-
 
       <clear_ai name="TSN Verdant" />
 
@@ -347,15 +329,11 @@
       <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="TSN Verdant" />
       <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="TSN Verdant" />
 
-
-
-
       <set_special name="TSN Vengeance" ability="AntiTorp" />
       <set_special name="TSN Vengeance" ability="Drones" />
       <set_special name="TSN Vengeance" ability="HET" />
 
       <set_special name="TSN Vengeance" ability="Warp" />
-
 
       <set_special name="TSN Warspite" ability="AntiTorp" />
       <set_special name="TSN Warspite" ability="Drones" />
@@ -363,13 +341,11 @@
 
       <set_special name="TSN Warspite" ability="Warp" />
 
-
       <set_special name="TSN Fury" ability="AntiTorp" />
       <set_special name="TSN Fury" ability="Drones" />
       <set_special name="TSN Fury" ability="HET" />
 
       <set_special name="TSN Fury" ability="Warp" />
-
 
       <set_special name="TSN Dawn" ability="AntiTorp" />
       <set_special name="TSN Dawn" ability="Drones" />
@@ -377,13 +353,11 @@
 
       <set_special name="TSN Dawn" ability="Warp" />
 
-
       <set_special name="TSN Shield" ability="AntiTorp" />
       <set_special name="TSN Shield" ability="Drones" />
       <set_special name="TSN Shield" ability="HET" />
 
       <set_special name="TSN Shield" ability="Warp" />
-
 
       <set_special name="TSN Daring" ability="AntiTorp" />
       <set_special name="TSN Daring" ability="Drones" />
@@ -391,14 +365,11 @@
 
       <set_special name="TSN Daring" ability="Warp" />
 
-
       <set_special name="TSN Verdant" ability="AntiTorp" />
       <set_special name="TSN Verdant" ability="Drones" />
       <set_special name="TSN Verdant" ability="HET" />
 
       <set_special name="TSN Verdant" ability="Warp" />
-
-
 
     <set_special name="TSN Verdant" ship="1" /> <!-- overpowered -->
 
@@ -424,7 +395,6 @@
     <!-- 1 scout -->
     <create type="neutral" use_gm_position="" angle="0" name="TSN Daring" hullID="1" sideValue="SideValue" fleetnumber="98" />
 
-
     <set_object_property property="shieldMaxStateFront" value="1050" name="TSN Verdant" />
     <set_object_property property="shieldStateFront" value="1050" name="TSN Verdant" />
     <set_object_property property="shieldMaxStateBack" value="930" name="TSN Verdant" />
@@ -439,7 +409,6 @@
     <set_object_property property="shieldStateFront" value="260" name="TSN Warspite" />
     <set_object_property property="shieldMaxStateBack" value="260" name="TSN Warspite" />
     <set_object_property property="shieldStateBack" value="260" name="TSN Warspite" />
-
 
     <set_object_property property="shieldMaxStateFront" value="630" name="TSN Fury" />
     <set_object_property property="shieldStateFront" value="630" name="TSN Fury" />
@@ -456,14 +425,10 @@
     <set_object_property property="shieldMaxStateBack" value="380" name="TSN Shield" />
     <set_object_property property="shieldStateBack" value="380" name="TSN Shield" />
 
-
     <set_object_property property="shieldMaxStateFront" value="150" name="TSN Daring" />
     <set_object_property property="shieldStateFront" value="150" name="TSN Daring" />
     <set_object_property property="shieldMaxStateBack" value="150" name="TSN Daring" />
     <set_object_property property="shieldStateBack" value="150" name="TSN Daring" />
-
-
-
 
       <clear_ai name="TSN Verdant" />
 
@@ -481,44 +446,33 @@
       <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="TSN Verdant" />
       <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="TSN Verdant" />
 
-
-
-
       <set_special name="TSN Vengeance" ability="AntiTorp" />
       <set_special name="TSN Vengeance" ability="Drones" />
       <set_special name="TSN Vengeance" ability="HET" />
-
 
       <set_special name="TSN Warspite" ability="AntiTorp" />
       <set_special name="TSN Warspite" ability="Drones" />
       <set_special name="TSN Warspite" ability="HET" />
 
-
       <set_special name="TSN Fury" ability="AntiTorp" />
       <set_special name="TSN Fury" ability="Drones" />
       <set_special name="TSN Fury" ability="HET" />
-
 
       <set_special name="TSN Dawn" ability="AntiTorp" />
       <set_special name="TSN Dawn" ability="Drones" />
       <set_special name="TSN Dawn" ability="HET" />
 
-
       <set_special name="TSN Shield" ability="AntiTorp" />
       <set_special name="TSN Shield" ability="Drones" />
       <set_special name="TSN Shield" ability="HET" />
-
 
       <set_special name="TSN Daring" ability="AntiTorp" />
       <set_special name="TSN Daring" ability="Drones" />
       <set_special name="TSN Daring" ability="HET" />
 
-
       <set_special name="TSN Verdant" ability="AntiTorp" />
       <set_special name="TSN Verdant" ability="Drones" />
       <set_special name="TSN Verdant" ability="HET" />
-
-
 
     <set_special name="TSN Verdant" ship="1" /> <!-- overpowered -->
 
@@ -527,15 +481,6 @@
 
     <set_timer name="S21_VerdantFormationTimer" seconds="0"/>
   </event>
-
-
-
-
-
-
-
-
-
 
     <event name="S21_VerdantFormationUpdate_Q1" id_arme="5e421777-0fb0-4df4-9c81-7c160ff3f7e4" parent_id_arme="78fa2f1b-700f-4a72-8254-4be22e7c74ac">
     <if_timer_finished name="S21_VerdantFormationTimer" />
@@ -552,8 +497,6 @@
     <set_variable name="S21_VerdantSin" value="(16 * S21_VerdantAngle * (S21_pi - S21_VerdantAngle))/(5 * S21_pi * S21_pi - 4 * S21_VerdantAngle * (S21_pi - S21_VerdantAngle))" />
 
     <set_variable name="S21_VerdantCos" value="(S21_pi * S21_pi - 4 * S21_VerdantAngle * S21_VerdantAngle)/(S21_pi * S21_pi + S21_VerdantAngle * S21_VerdantAngle)" />
-
-
 
     <clear_ai name="TSN Vengeance" />
     <add_ai type="SPCL_AI" name="TSN Vengeance" />
@@ -626,7 +569,6 @@
     <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Daring" />
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="TSN Daring" />
     <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="TSN Daring" />
-
 
     <set_timer name="S21_VerdantFormationTimer" seconds="1"/>
   </event>
@@ -647,8 +589,6 @@
 
     <set_variable name="S21_VerdantCos" value="(4 * S21_pi * S21_pi - 8 * S21_VerdantAngle * S21_pi + 3 * S21_VerdantAngle * S21_VerdantAngle)/(S21_VerdantAngle * S21_VerdantAngle - 2 * S21_pi * S21_VerdantAngle + 2 * S21_pi * S21_pi)" />
 
-
-
     <clear_ai name="TSN Vengeance" />
     <add_ai type="SPCL_AI" name="TSN Vengeance" />
     <add_ai type="POINT_THROTTLE" value4="2.0" value1="S21_VerdantX + 700 * S21_VerdantDX + S21_VerdantSin * -1000 + S21_VerdantCos * 700" value3="S21_VerdantZ + 700 * S21_VerdantDZ + S21_VerdantCos * -1000 - S21_VerdantSin * 700" name="TSN Vengeance" />
@@ -720,7 +660,6 @@
     <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Daring" />
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="TSN Daring" />
     <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="TSN Daring" />
-
 
     <set_timer name="S21_VerdantFormationTimer" seconds="1"/>
   </event>
@@ -741,8 +680,6 @@
 
     <set_variable name="S21_VerdantCos" value="(4 * S21_pi * S21_pi + 8 * S21_VerdantAngle * S21_pi + 3 * S21_VerdantAngle * S21_VerdantAngle)/(S21_VerdantAngle * S21_VerdantAngle + 2 * S21_pi * S21_VerdantAngle + 2 * S21_pi * S21_pi)" />
 
-
-
     <clear_ai name="TSN Vengeance" />
     <add_ai type="SPCL_AI" name="TSN Vengeance" />
     <add_ai type="POINT_THROTTLE" value4="2.0" value1="S21_VerdantX + 700 * S21_VerdantDX + S21_VerdantSin * -1000 + S21_VerdantCos * 700" value3="S21_VerdantZ + 700 * S21_VerdantDZ + S21_VerdantCos * -1000 - S21_VerdantSin * 700" name="TSN Vengeance" />
@@ -814,7 +751,6 @@
     <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Daring" />
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="TSN Daring" />
     <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="TSN Daring" />
-
 
     <set_timer name="S21_VerdantFormationTimer" seconds="1"/>
   </event>
@@ -835,8 +771,6 @@
 
     <set_variable name="S21_VerdantCos" value="(S21_pi * S21_pi - 4 * S21_VerdantAngle * S21_VerdantAngle)/(S21_pi * S21_pi + S21_VerdantAngle * S21_VerdantAngle)" />
 
-
-
     <clear_ai name="TSN Vengeance" />
     <add_ai type="SPCL_AI" name="TSN Vengeance" />
     <add_ai type="POINT_THROTTLE" value4="2.0" value1="S21_VerdantX + 700 * S21_VerdantDX + S21_VerdantSin * -1000 + S21_VerdantCos * 700" value3="S21_VerdantZ + 700 * S21_VerdantDZ + S21_VerdantCos * -1000 - S21_VerdantSin * 700" name="TSN Vengeance" />
@@ -909,10 +843,8 @@
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="TSN Daring" />
     <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="TSN Daring" />
 
-
     <set_timer name="S21_VerdantFormationTimer" seconds="1"/>
   </event>
-
 
   <event name="S21_VerdantFormationUpdate_Dissolve" id_arme="5e421777-0fb0-4df4-9c81-7c160ff3f7e4" parent_id_arme="78fa2f1b-700f-4a72-8254-4be22e7c74ac">
     <if_timer_finished name="S21_VerdantFormationTimer" />
@@ -1146,7 +1078,6 @@
     <set_object_property property="shieldMaxStateBack" value="260" name="TSN Warspite" />
     <set_object_property property="shieldStateBack" value="260" name="TSN Warspite" />
 
-
     <set_object_property property="shieldMaxStateFront" value="630" name="TSN Fury" />
     <set_object_property property="shieldStateFront" value="630" name="TSN Fury" />
     <set_object_property property="shieldMaxStateBack" value="380" name="TSN Fury" />
@@ -1162,15 +1093,12 @@
     <set_object_property property="shieldMaxStateBack" value="380" name="TSN Shield" />
     <set_object_property property="shieldStateBack" value="380" name="TSN Shield" />
 
-
     <set_object_property property="shieldMaxStateFront" value="150" name="TSN Daring" />
     <set_object_property property="shieldStateFront" value="150" name="TSN Daring" />
     <set_object_property property="shieldMaxStateBack" value="150" name="TSN Daring" />
     <set_object_property property="shieldStateBack" value="150" name="TSN Daring" />
 
-
   </event>
-
 
   <event name="Wisdom" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="Civilian USFP\+Wisdom" />
@@ -1195,8 +1123,6 @@
     <set_ship_text name="Wisdom" race="USFP" class="Luxury Liner" desc="Reinforced presidential luxury liner."
       scan_desc="Vessel of President Amandu Liam. Specials: Warp AntiMine AntiTorp" />
   </event>
-
-
 
   <event name="Ubuntu" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_gm_button text="Civilian USFP\+Ubuntu" />
@@ -1225,7 +1151,6 @@
       scan_desc="Vessel of Former President Kuyas Tolunay. Specials: Warp AntiMine AntiTorp" />
   </event>
 
-
   <!-- System changes -->
   <event name="S21_Drenan_14_Gate" id_arme="490fd3ca-37fd-4acb-b446-092f73e0b7b3">
     <if_exists name="Ibroan Gate" />
@@ -1253,8 +1178,6 @@
     <if_variable name="Krellis System" comparator="EQUALS" value="2.0" />
     <destroy name="Acantha Gate" />
   </event>
-
-
 
     <event name="S21_Acantha_A'ania Denabite" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="A'ania Denabite" />
@@ -1410,7 +1333,6 @@
       <clear_ai name="Zorazi Mining" />
     </event>
 
-
     <event name="S21_Acantha_DestroyCR-982" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="CR-982" />
       <if_variable name="Acantha System" comparator="EQUALS" value="2.0" />
@@ -1446,8 +1368,6 @@
       <if_variable name="Acantha System" comparator="EQUALS" value="2.0" />
       <destroy name="Acantha Protectorate" />
     </event>
-
-
 
     <event name="S21_Ashia_Casey" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Casey" />
@@ -1673,7 +1593,6 @@
       <clear_ai name="Indigo Mining" />
     </event>
 
-
     <event name="S21_Ashia_DestroyAcantha Gate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Acantha Gate" />
       <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
@@ -1787,8 +1706,6 @@
       <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
       <destroy name="Valti" />
     </event>
-
-
 
     <event name="S21_Tyr_Edo" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Edo" />
@@ -1909,7 +1826,6 @@
       <clear_ai name="Sam's Junkyard" />
     </event>
 
-
     <event name="S21_Tyr_DestroyPhinmor Gate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Phinmor Gate" />
       <if_variable name="Tyr System" comparator="EQUALS" value="2.0" />
@@ -1939,8 +1855,6 @@
       <if_variable name="Tyr System" comparator="EQUALS" value="2.0" />
       <destroy name="Anning Research" />
     </event>
-
-
 
     <event name="S21_Vilnara_DS-26T" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="DS-26T" />
@@ -1977,7 +1891,6 @@
       <clear_ai name="Ying'er Forges" />
     </event>
 
-
     <event name="S21_Vilnara_DestroyZu Chongzhi Astrolab" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Zu Chongzhi Astrolab" />
       <if_variable name="Vilnara System" comparator="EQUALS" value="2.0" />
@@ -2007,8 +1920,6 @@
       <if_variable name="Vilnara System" comparator="EQUALS" value="2.0" />
       <destroy name="DS-500" />
     </event>
-
-
 
     <event name="S21_Loria_Akira Metal Works" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Akira Metal Works" />
@@ -2374,7 +2285,6 @@
       <clear_ai name="Umber" />
     </event>
 
-
     <event name="S21_Loria_DestroyCustoms House" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Customs House" />
       <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
@@ -2651,8 +2561,6 @@
       <destroy name="Lorian Council" />
     </event>
 
-
-
     <event name="S21_Mria_Alkanillion" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Alkanillion" />
       <if_variable name="Mria System" comparator="EQUALS" value="2.0" />
@@ -2799,7 +2707,6 @@
       <set_ship_text name="Zildi Systems" scan_desc="No life signs. No power signature." hailtext="No response." />
       <clear_ai name="Zildi Systems" />
     </event>
-
 
     <event name="S21_Mria_DestroyLoria Gate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Loria Gate" />
@@ -2969,8 +2876,6 @@
       <destroy name="WP-87B" />
     </event>
 
-
-
     <event name="S21_Tibur_Astral Agora" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Astral Agora" />
       <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
@@ -2984,9 +2889,6 @@
       <set_ship_text name="Interstellar Spas" scan_desc="No life signs. No power signature." hailtext="No response." />
       <clear_ai name="Interstellar Spas" />
     </event>
-
-
-
 
     <event name="S21_Enyalius_Kashawn Trading" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Kashawn Trading" />
@@ -3058,7 +2960,6 @@
       <clear_ai name="Drazma Mining" />
     </event>
 
-
     <event name="S21_Enyalius_DestroyVanir Gate" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Vanir Gate" />
       <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
@@ -3094,8 +2995,6 @@
       <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
       <destroy name="Yknik Spas" />
     </event>
-
-
 
     <event name="S21_Charon_DS-01" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="DS-01" />
@@ -3166,7 +3065,6 @@
       <set_ship_text name="I-474" scan_desc="No life signs. No power signature." hailtext="No response." />
       <clear_ai name="I-474" />
     </event>
-
 
     <event name="S21_Charon_DestroyCharon Forward Command" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Charon Forward Command" />
@@ -3276,8 +3174,6 @@
       <destroy name="I-410" />
     </event>
 
-
-
     <event name="S21_Triton_Cassandra Observation" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="Cassandra Observation" />
       <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -3319,7 +3215,6 @@
       <set_ship_text name="Triton Refuge" scan_desc="No life signs. No power signature." hailtext="No response." />
       <clear_ai name="Triton Refuge" />
     </event>
-
 
     <event name="S21_Triton_DestroyDS-20" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
       <if_exists name="DS-20" />
@@ -3363,16 +3258,79 @@
       <destroy name="I-601" />
     </event>
 
+    <event name="S21_Triton_DestroyTriton I" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Triton I" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <destroy name="Triton I" />
+    </event>
 
+    <event name="S21_Triton_DestroyTriton II" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Triton II" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <destroy name="Triton II" />
+    </event>
 
+    <event name="S21_Triton_DestroyTriton III" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Triton III" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <destroy name="Triton III" />
+    </event>
 
+    <event name="S21_Triton_DestroyTriton IV" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Triton IV" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <destroy name="Triton IV" />
+    </event>
 
+    <event name="S21_Triton_DestroyTriton V" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Triton V" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <destroy name="Triton V" />
+    </event>
+
+    <event name="S21_Triton_DestroyTriton VI" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Triton VI" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <destroy name="Triton VI" />
+    </event>
+
+    <event name="S21_Triton_DestroyTriton VII" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Triton VII" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <destroy name="Triton VII" />
+    </event>
+
+    <event name="S21_Triton_DestroyTriton VIII" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Triton VIII" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <destroy name="Triton VIII" />
+    </event>
+
+    <event name="S21_Triton_DestroyTriton IX" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Triton IX" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <destroy name="Triton IX" />
+    </event>
+
+    <event name="S21_Triton_DestroyTriton X" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Triton X" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <destroy name="Triton X" />
+    </event>
+
+    <event name="S21_Triton_DestroyTriton XI" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Triton XI" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <destroy name="Triton XI" />
+    </event>
+
+    <event name="S21_Triton_DestroyTriton XII" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
+      <if_exists name="Triton XII" />
+      <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+      <destroy name="Triton XII" />
+    </event>
 
   <!-- Custom new objects in sectors -->
-
-
-
-
 
   <event name="S21_Acantha_5_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Acantha System" comparator="EQUALS" value="2.0" />
@@ -3417,7 +3375,6 @@
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="WP-82" />
       <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="WP-82" />
 
-
   </event>
   <event name="S21_Acantha_5_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
     <if_variable name="Acantha System" comparator="EQUALS" value="2.0" />
@@ -3445,9 +3402,6 @@
       <destroy name="WP-82" />
 
   </event>
-
-
-
 
   <event name="S21_Ashia_1_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
@@ -3494,7 +3448,6 @@
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="WP-53" />
       <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="WP-53" />
 
-
   </event>
   <event name="S21_Ashia_1_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
     <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
@@ -3522,9 +3475,6 @@
       <destroy name="WP-53" />
 
   </event>
-
-
-
 
   <event name="S21_Ashia_4_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
@@ -3573,7 +3523,6 @@
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="WP-B" />
       <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="WP-B" />
 
-
       <set_object_property property="topSpeed" value="0" name="Venga Antenna" />
       <set_object_property property="surrenderChance" value="0" name="Venga Antenna" />
       <clear_ai name="Venga Antenna" />
@@ -3589,7 +3538,6 @@
       <set_object_property property="topSpeed" value="0" name="CJ-319" />
       <set_object_property property="surrenderChance" value="0" name="CJ-319" />
       <clear_ai name="CJ-319" />
-
 
   </event>
   <event name="S21_Ashia_4_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -3613,9 +3561,6 @@
       <destroy name="CJ-319" />
 
   </event>
-
-
-
 
   <event name="S21_Ashia_9_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Ashia System" comparator="EQUALS" value="2.0" />
@@ -3664,7 +3609,6 @@
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Ashia Planetary Supervision" />
       <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="Ashia Planetary Supervision" />
 
-
       <set_object_property property="topSpeed" value="0" name="CJ-500" />
       <set_object_property property="surrenderChance" value="0" name="CJ-500" />
       <clear_ai name="CJ-500" />
@@ -3676,7 +3620,6 @@
       <set_object_property property="topSpeed" value="0" name="CJ-304" />
       <set_object_property property="surrenderChance" value="0" name="CJ-304" />
       <clear_ai name="CJ-304" />
-
 
   </event>
   <event name="S21_Ashia_9_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -3698,9 +3641,6 @@
       <destroy name="CJ-304" />
 
   </event>
-
-
-
 
   <event name="S21_Tyr_5_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Tyr System" comparator="EQUALS" value="2.0" />
@@ -3735,11 +3675,9 @@
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Tyr Planetary Supervision" />
       <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="Tyr Planetary Supervision" />
 
-
       <set_object_property property="topSpeed" value="0" name="CJ-42" />
       <set_object_property property="surrenderChance" value="0" name="CJ-42" />
       <clear_ai name="CJ-42" />
-
 
   </event>
   <event name="S21_Tyr_5_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -3755,9 +3693,6 @@
       <destroy name="Tyr Planetary Supervision" />
 
   </event>
-
-
-
 
   <event name="S21_Vilnara_4_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Vilnara System" comparator="EQUALS" value="2.0" />
@@ -3782,9 +3717,6 @@
     <destroy name=" Vilnara IV " />
 
   </event>
-
-
-
 
   <event name="S21_Vilnara_2_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Vilnara System" comparator="EQUALS" value="2.0" />
@@ -3843,7 +3775,6 @@
       <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Gohtzao-De Staging Platform" />
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Gohtzao-De Staging Platform" />
 
-
       <set_object_property property="topSpeed" value="0" name="SB-11" />
       <set_object_property property="surrenderChance" value="0" name="SB-11" />
       <clear_ai name="SB-11" />
@@ -3851,7 +3782,6 @@
       <set_object_property property="topSpeed" value="0" name="SB-22" />
       <set_object_property property="surrenderChance" value="0" name="SB-22" />
       <clear_ai name="SB-22" />
-
 
   </event>
   <event name="S21_Vilnara_2_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -3893,9 +3823,6 @@
 
   </event>
 
-
-
-
   <event name="S21_Loria_11_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="11.0" />
@@ -3918,7 +3845,6 @@
 
       <set_special name="WP-B" ship="-1" captain="-1" ability="AntiMine" />
       <set_special name="WP-B" ship="-1" captain="-1" ability="AntiTorp" />
-
 
       <set_object_property property="topSpeed" value="0" name="WP-A" />
       <set_object_property property="surrenderChance" value="0" name="WP-A" />
@@ -3974,7 +3900,6 @@
       <set_object_property property="surrenderChance" value="0" name="Loria Generator" />
       <clear_ai name="Loria Generator" />
 
-
   </event>
   <event name="S21_Loria_11_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
     <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
@@ -4000,9 +3925,6 @@
 
   </event>
 
-
-
-
   <event name="S21_Loria_6_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Loria System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
@@ -4023,7 +3945,6 @@
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Staunton Forward Observation" />
       <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="Staunton Forward Observation" />
 
-
       <set_object_property property="topSpeed" value="0" name="SB-4a" />
       <set_object_property property="surrenderChance" value="0" name="SB-4a" />
       <clear_ai name="SB-4a" />
@@ -4035,7 +3956,6 @@
       <set_object_property property="topSpeed" value="0" name="SB-4g" />
       <set_object_property property="surrenderChance" value="0" name="SB-4g" />
       <clear_ai name="SB-4g" />
-
 
   </event>
   <event name="S21_Loria_6_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -4054,9 +3974,6 @@
 
   </event>
 
-
-
-
   <event name="S21_Tibur_1_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="1.0" />
@@ -4071,7 +3988,6 @@
       <set_object_property property="surrenderChance" value="0" name="WP-11G" />
       <clear_ai name="WP-11G" />
       <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="WP-11G" />
-
 
   </event>
   <event name="S21_Tibur_1_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -4092,9 +4008,6 @@
       <destroy name="WP-11G" />
 
   </event>
-
-
-
 
   <event name="S21_Tibur_2_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
@@ -4136,11 +4049,9 @@
 
     <set_ship_text name="Base 46G" desc="A USFP base, hastily constructed to house refugees from occupied systems." />
 
-
     <set_ship_text name="Emergency Base C" desc="Ship anchored in place to serve as an emergency base and house refugees." />
 
     <set_ship_text name="Gundula" desc="Ship anchored in place to serve as an emergency base and house refugees." />
-
 
   </event>
   <event name="S21_Tibur_2_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -4161,9 +4072,6 @@
 
   </event>
 
-
-
-
   <event name="S21_Tibur_3_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="3.0" />
@@ -4179,7 +4087,6 @@
     <create count="10" type="mines" startAngle="110" endAngle="180" startX="59287.0" startY="0.0" startZ="28596.0" radius="18000" randomRange="100" />
     <create count="4" type="mines" startAngle="96" endAngle="117" startX="67589.0" startY="0.0" startZ="21091.0" radius="29000" randomRange="100" />
 
-
       <set_object_property property="topSpeed" value="0" name="SB-23" />
       <set_object_property property="surrenderChance" value="0" name="SB-23" />
       <clear_ai name="SB-23" />
@@ -4194,7 +4101,6 @@
       <set_object_property property="surrenderChance" value="0" name="SB-29" />
       <clear_ai name="SB-29" />
       <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="SB-29" />
-
 
   </event>
   <event name="S21_Tibur_3_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -4223,9 +4129,6 @@
       <destroy name="SB-29" />
 
   </event>
-
-
-
 
   <event name="S21_Tibur_4_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
@@ -4294,7 +4197,6 @@
 
     <set_ship_text name="Base 25" desc="A USFP base, hastily constructed to house refugees from occupied systems." />
 
-
     <set_ship_text name="Emergency Base" desc="Ship anchored in place to serve as an emergency base and house refugees." />
 
     <set_ship_text name="Scion" desc="Ship anchored in place to serve as an emergency base and house refugees." />
@@ -4303,9 +4205,7 @@
 
     <set_ship_text name="Tibur Refugee Supervision" desc="Ship anchored in place to serve as an emergency base and house refugees." />
 
-
     <set_ship_text name="USFP LET US IN" desc="Ship anchored in place to serve as an emergency base and house refugees." scan_desc="Evidently, the ship recently changed its designation in protest against USFP migration policies." />
-
 
   </event>
   <event name="S21_Tibur_4_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -4331,9 +4231,6 @@
       <destroy name="Solar Wind" />
 
   </event>
-
-
-
 
   <event name="S21_Tibur_5_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
@@ -4362,9 +4259,6 @@
       <destroy name="Keltor Immigration Control" />
 
   </event>
-
-
-
 
   <event name="S21_Tibur_8_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Tibur System" comparator="EQUALS" value="2.0" />
@@ -4397,9 +4291,7 @@
 
     <set_ship_text name="Base 66" desc="A USFP base, hastily constructed to house refugees from occupied systems." />
 
-
     <set_ship_text name="USFP Pancreas" desc="Ship anchored in place to serve as an emergency base and house refugees." />
-
 
   </event>
   <event name="S21_Tibur_8_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -4428,9 +4320,6 @@
       <destroy name="Base 66" />
 
   </event>
-
-
-
 
   <event name="S21_Helios_5_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Helios System" comparator="EQUALS" value="2.0" />
@@ -4511,13 +4400,11 @@
 
     <set_ship_text name="Base 59" desc="A USFP base, hastily constructed to house refugees from occupied systems." />
 
-
     <set_ship_text name="Emergency Base 50" desc="Ship anchored in place to serve as an emergency base and house refugees." />
 
     <set_ship_text name="Emergency Base 55" desc="Ship anchored in place to serve as an emergency base and house refugees." />
 
     <set_ship_text name="Emergency Base 56" desc="Ship anchored in place to serve as an emergency base and house refugees." />
-
 
   </event>
   <event name="S21_Helios_5_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -4548,9 +4435,6 @@
 
   </event>
 
-
-
-
   <event name="S21_Helios_6_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Helios System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
@@ -4580,7 +4464,6 @@
       <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="WP-38F" />
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="WP-38F" />
 
-
   </event>
   <event name="S21_Helios_6_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
     <if_variable name="Helios System" comparator="EQUALS" value="2.0" />
@@ -4593,9 +4476,6 @@
       <destroy name="WP-38F" />
 
   </event>
-
-
-
 
   <event name="S21_Enyalius_8_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Enyalius System" comparator="EQUALS" value="2.0" />
@@ -4619,12 +4499,10 @@
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Defense Platform H" />
       <add_ai type="LAUNCH_FIGHTERS" value1="2000" name="Defense Platform H" />
 
-
       <set_object_property property="topSpeed" value="0" name="Defense Platform C" />
       <set_object_property property="surrenderChance" value="0" name="Defense Platform C" />
       <clear_ai name="Defense Platform C" />
       <set_ship_text name="Defense Platform C" desc="Construction site. Non-functional." scan_desc="Estimated construction time: 0.4 years" />
-
 
   </event>
   <event name="S21_Enyalius_8_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -4649,9 +4527,6 @@
       <destroy name="Defense Platform H" />
 
   </event>
-
-
-
 
   <event name="S21_Waypoint 89_1_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Waypoint 89" comparator="EQUALS" value="2.0" />
@@ -4716,7 +4591,6 @@
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Gitos" />
       <add_ai type="LAUNCH_FIGHTERS" value1="2000" name="Gitos" />
 
-
       <set_object_property property="topSpeed" value="0" name="Ka'zaa" />
       <set_object_property property="surrenderChance" value="0" name="Ka'zaa" />
       <clear_ai name="Ka'zaa" />
@@ -4733,7 +4607,6 @@
       <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Ka'zaa" />
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Ka'zaa" />
       <add_ai type="LAUNCH_FIGHTERS" value1="2000" name="Ka'zaa" />
-
 
   </event>
   <event name="S21_Waypoint 89_1_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -4770,8 +4643,6 @@
       <destroy name="Ka'zaa" />
 
   </event>
-
-
 
   <event name="S21_Waypoint 89_2_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Waypoint 89" comparator="EQUALS" value="2.0" />
@@ -4829,7 +4700,6 @@
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Kurmuk" />
       <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="Kurmuk" />
 
-
   </event>
   <event name="S21_Waypoint 89_2_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
     <if_variable name="Waypoint 89" comparator="EQUALS" value="2.0" />
@@ -4861,9 +4731,6 @@
       <destroy name="Kurmuk" />
 
   </event>
-
-
-
 
   <event name="S21_Waypoint 89_3_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Waypoint 89" comparator="EQUALS" value="2.0" />
@@ -4941,13 +4808,11 @@
       <add_ai type="CHASE_AI_SHIP" value1="6000" value2="5000" name="Gate Command" />
       <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="Gate Command" />
 
-
       <set_ship_text name="Sigma" desc="USFP strategic point marker" scan_desc="Designation Sigma." />
 
       <set_ship_text name="Nu" desc="USFP strategic point marker" scan_desc="Designation Nu." />
 
       <set_ship_text name="Lambda" desc="USFP strategic point marker" scan_desc="Designation Lambda." />
-
 
   </event>
   <event name="S21_Waypoint 89_3_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
@@ -5004,9 +4869,6 @@
       <destroy name="Lambda" />
 
   </event>
-
-
-
 
   <event name="S21_Waypoint 89_4_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Waypoint 89" comparator="EQUALS" value="2.0" />
@@ -5073,7 +4935,6 @@
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Tell" />
       <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="Tell" />
 
-
   </event>
   <event name="S21_Waypoint 89_4_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
     <if_variable name="Waypoint 89" comparator="EQUALS" value="2.0" />
@@ -5092,9 +4953,6 @@
       <destroy name="Tell" />
 
   </event>
-
-
-
 
   <event name="S21_Triton_11_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -5137,7 +4995,6 @@
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Triton Forward Command" />
       <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="Triton Forward Command" />
 
-
   </event>
   <event name="S21_Triton_11_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -5165,9 +5022,6 @@
       <destroy name="Triton Forward Command" />
 
   </event>
-
-
-
 
   <event name="S21_Charon_2_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
@@ -5225,7 +5079,6 @@
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Defence Platform 71" />
       <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="Defence Platform 71" />
 
-
   </event>
   <event name="S21_Charon_2_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
     <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
@@ -5257,9 +5110,6 @@
       <destroy name="Defence Platform 71" />
 
   </event>
-
-
-
 
   <event name="S21_Charon_8_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
@@ -5308,7 +5158,6 @@
       <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Defence Platform 13" />
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Defence Platform 13" />
 
-
   </event>
   <event name="S21_Charon_8_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
     <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
@@ -5340,9 +5189,6 @@
       <destroy name="Defence Platform 13" />
 
   </event>
-
-
-
 
   <event name="S21_Charon_5_CustomObjectsCreate" id_arme="b9fe652e-d1bc-4871-850e-49f47fb98ac8">
     <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
@@ -5404,7 +5250,6 @@
       <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="Gink" />
       <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="Gink" />
 
-
   </event>
   <event name="S21_Charon_5_CustomObjectsRemove" id_arme="cf2d66e7-e5b4-4b4f-ac61-27c721a34ef6">
     <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
@@ -5429,6 +5274,5 @@
       <destroy name="Slingshot Antenna" />
 
   </event>
-
 
 </mission_data>
