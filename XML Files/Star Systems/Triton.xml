@@ -855,9 +855,10 @@
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton VI" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" angle="0" name="Triton VI" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <create type="neutral" x="22500.0" y="0.0" z="53524.0" angle="0" name="Cassandra Observation" hullID="1004" />
-    <create type="blackHole" x="70527.0" y="0.0" z="65303.0" name="Cassandra" />
+    <create type="blackHole" x="70527.0" y="0.0" z="65303.0" name="Cassandra Black Hole" />
+    <create type="genericMesh" x="70452.0" y="0.0" z="65338.0" angle="0" name="Cassandra" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="0.0" colorBlue="1.0" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
   <event name="Settings" id_arme="fae5afe6-3619-4cc3-a46f-266e144b81e6" parent_id_arme="18d82190-69d3-4244-8cf1-62116afa7717">
@@ -872,6 +873,7 @@
     <destroy name="Triton VI" />
     <destroy name="Cassandra Observation" />
     <destroy name="Cassandra" />
+    <destroy name="Cassandra Black Hole" />
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
