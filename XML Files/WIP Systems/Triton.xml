@@ -71,6 +71,10 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+    <create count="100" type="nebulas" nebType="2" startX="86300.0" startY="0.0" startZ="31174.0" endX="24943.0" endY="0.0" endZ="98947.0" randomRange="10000" />
+    <create count="100" type="nebulas" nebType="2" startX="54943.0" startY="0.0" startZ="65546.0" endX="-39693.0" endY="0.0" endZ="166598.0" randomRange="5000" />
+    <create count="100" type="nebulas" nebType="2" startX="88229.0" startY="0.0" startZ="28016.0" endX="60072.0" endY="0.0" endZ="61417.0" randomRange="30000" />
+    <create count="25" type="mines" startAngle="70" endAngle="200" startX="24573.0" startY="0.0" startZ="39240.0" radius="15000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="0d4c4d24-4e26-4187-a2c5-745cb681588d" parent_id_arme="dab48e71-c712-4bec-83a2-e509e2c52e69" />
@@ -293,6 +297,10 @@
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton I" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="24567.0" y="0.0" z="39199.0" name="Waypoint 89 Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="12327.0" y="0.0" z="30909.0" angle="0" name="WP-89" hullID="1052" />
+    <create type="neutral" x="33361.0" y="0.0" z="51228.0" angle="0" name="WP-88" hullID="1052" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
   <event name="Settings" id_arme="db1b66f1-a86b-428e-84a4-6e3bd1ecdfd9" parent_id_arme="9e6f55da-4a12-4d0d-8689-84a38d73d69a">
@@ -307,6 +315,10 @@
   </event>
   <event name="Destroy Sector Entities" id_arme="53edcf94-9156-4b85-84e1-477a930fcdb9" parent_id_arme="9e6f55da-4a12-4d0d-8689-84a38d73d69a">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton I" />
+    <destroy name="WP-88" />
+    <destroy name="Waypoint 89 Gate" />
+    <destroy name="WP-89" />
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
@@ -348,6 +360,11 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+    <create count="100" type="nebulas" nebType="1" startX="51701.0" startY="0.0" startZ="52186.0" endX="26102.0" endY="0.0" endZ="23157.0" randomRange="14000" />
+    <create count="100" type="nebulas" nebType="1" startX="68948.0" startY="0.0" startZ="72105.0" endX="-11186.0" endY="0.0" endZ="-17896.0" randomRange="7000" />
+    <create count="50" type="asteroids" startX="57652.0" startY="0.0" startZ="79271.0" endX="38369.0" endY="0.0" endZ="53765.0" randomRange="3000" />
+    <create count="30" type="asteroids" startX="49150.0" startY="0.0" startZ="68097.0" endX="25616.0" endY="0.0" endZ="36761.0" randomRange="6000" />
+    <create count="10" type="nebulas" nebType="1" startX="2010.0" startY="0.0" startZ="98590.0" endX="2010.0" endY="0.0" endZ="98590.0" randomRange="5000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="66e83ed2-a04d-4fdd-96ba-5968185119b6" parent_id_arme="d45c2904-9b38-40db-90df-ecd23c711e7c" />
@@ -593,12 +610,18 @@
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton II" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="55952.0" y="0.0" z="64696.0" angle="0" name="I-601" hullID="1003" />
+    <create type="neutral" x="57652.0" y="0.0" z="30931.0" angle="0" name="SY-280" hullID="1053" />
+    <create type="neutral" x="24737.0" y="0.0" z="22120.0" angle="0" name="Tarnis Nebula Refinery" hullID="1051" />
+    <create type="neutral" x="32389.0" y="0.0" z="47813.0" angle="0" name="I-280" hullID="1051" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
   <event name="Settings" id_arme="21006e29-94c0-468f-ad5f-c04136e70bb5" parent_id_arme="6dda00d6-1fd5-41b7-8dc4-737611587d74">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_ship_text name="Tarnis Nebula Refinery" desc="The finest refinery for natural gases in Triton. Stop by for helium, helium-3, xenon, vaporized tobacco, many more!" />
     <set_object_property property="artScale" value="1.0" name="GATE2 Gate" />
     <set_object_property property="pushRadius" value="0.0" name="GATE2 Gate" />
     <set_object_property property="angle" value="4.71238898" name="GATE2 Gate" />
@@ -607,6 +630,11 @@
   </event>
   <event name="Destroy Sector Entities" id_arme="8642d13c-12ae-474b-a01d-06bfe4f19814" parent_id_arme="6dda00d6-1fd5-41b7-8dc4-737611587d74">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton II" />
+    <destroy name="I-280" />
+    <destroy name="I-601" />
+    <destroy name="Tarnis Nebula Refinery" />
+    <destroy name="SY-280" />
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
@@ -648,6 +676,12 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+    <create count="100" type="nebulas" nebType="1" startX="30567.0" startY="0.0" startZ="31417.0" endX="99534.0" endY="0.0" endZ="98461.0" randomRange="7000" />
+    <create count="70" type="nebulas" startX="33118.0" startY="0.0" startZ="31781.0" endX="81865.0" endY="0.0" endZ="81155.0" randomRange="14000" />
+    <create count="30" type="nebulas" startX="76833.0" startY="0.0" startZ="76475.0" endX="99467.0" endY="0.0" endZ="99493.0" randomRange="4000" />
+    <create count="30" type="asteroids" startX="41498.0" startY="0.0" startZ="38825.0" endX="64132.0" endY="0.0" endZ="61843.0" randomRange="4000" />
+    <create count="30" type="nebulas" startX="2268.0" startY="0.0" startZ="84372.0" endX="24902.0" endY="0.0" endZ="107390.0" randomRange="14000" />
+    <create count="30" type="nebulas" startX="1296.0" startY="0.0" startZ="96639.0" endX="23930.0" endY="0.0" endZ="119657.0" randomRange="4000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="29fe9fa3-0019-4942-b9b1-54a5d16072ec" parent_id_arme="a63896d3-1233-41f4-aa06-9f9e4bf9e3ba" />
@@ -893,6 +927,10 @@
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="3.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton III" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="29110.0" y="0.0" z="28137.0" angle="0" name="DS-20" hullID="1000" />
+    <create type="neutral" x="40770.0" y="0.0" z="70647.0" angle="0" name="Farosh" hullID="1001" />
+    <create type="neutral" x="47936.0" y="0.0" z="54493.0" angle="0" name="Farosh Denabite" hullID="1051" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
   <event name="Settings" id_arme="844d67e6-5909-4d03-abd8-d5025a146ffc" parent_id_arme="8732b5c1-92c9-4938-812f-76158196553b">
@@ -903,10 +941,16 @@
     <set_object_property property="angle" value="4.71238898" name="GATE3 Gate" />
     <set_object_property property="pushRadius" value="0.0" name="GATE3 Gate" />
     <set_object_property property="artScale" value="1.0" name="GATE3 Gate" />
+    <set_ship_text name="Farosh" desc="USFP civilian station operated by the Farosh family." />
+    <set_ship_text name="Farosh Denabite" desc="Denabite refinery operated by the Farosh family. Known system-wide for their highly refined products." />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="cdc81e8f-58d7-49c6-91c7-85d287838585" parent_id_arme="8732b5c1-92c9-4938-812f-76158196553b">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton III" />
+    <destroy name="Farosh Denabite" />
+    <destroy name="DS-20" />
+    <destroy name="Farosh" />
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
@@ -948,6 +992,10 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+    <create count="100" type="nebulas" startX="92947.0" startY="0.0" startZ="102353.0" endX="64586.0" endY="0.0" endZ="69924.0" randomRange="14000" />
+    <create count="70" type="nebulas" startX="76920.0" startY="0.0" startZ="85312.0" endX="21717.0" endY="0.0" endZ="23004.0" randomRange="10000" />
+    <create count="140" type="nebulas" startX="90689.0" startY="0.0" startZ="99190.0" endX="47702.0" endY="0.0" endZ="52977.0" randomRange="25000" />
+    <create count="30" type="asteroids" startX="37733.0" startY="0.0" startZ="55344.0" endX="19557.0" endY="0.0" endZ="35992.0" randomRange="7000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="6f6f1242-f226-432c-b8c4-29a2582dae21" parent_id_arme="56d1cf80-83dd-414f-821b-cd5059d3b66c" />
@@ -1171,6 +1219,7 @@
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="4.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton IV" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
   <event name="Settings" id_arme="571b94c4-0b0c-4227-b3ba-c92263b92535" parent_id_arme="44251d0d-b8ca-45d8-892a-8c66583b86b5">
@@ -1185,6 +1234,7 @@
   </event>
   <event name="Destroy Sector Entities" id_arme="4fbde690-0b2a-417c-9390-43f8cb975108" parent_id_arme="44251d0d-b8ca-45d8-892a-8c66583b86b5">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton IV" />
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
@@ -1226,6 +1276,9 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+    <create count="10" type="nebulas" nebType="2" startX="19903.0" startY="0.0" startZ="5423.0" endX="19903.0" endY="0.0" endZ="5423.0" randomRange="5000" />
+    <create count="15" type="nebulas" nebType="2" startX="25950.0" startY="0.0" startZ="931.0" endX="25950.0" endY="0.0" endZ="931.0" randomRange="7000" />
+    <create count="15" type="nebulas" nebType="1" startX="4618.0" startY="0.0" startZ="98376.0" endX="4618.0" endY="0.0" endZ="98376.0" randomRange="5000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="d96e40b6-dafa-4613-9e46-efe84cc1f414" parent_id_arme="91a6d5d5-51e8-4765-a5d9-6eeadc130298" />
@@ -1470,6 +1523,8 @@
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton V" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="77450.0" y="0.0" z="39068.0" angle="0" name="Triton Refuge" hullID="1001" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
   <event name="Settings" id_arme="eed7aa37-5d13-4e51-b503-b6da15aa4f6d" parent_id_arme="b0059b05-f68c-4801-bbd9-1340d509c37e">
@@ -1480,10 +1535,13 @@
     <set_object_property property="angle" value="4.71238898" name="GATE5 Gate" />
     <set_object_property property="pushRadius" value="0.0" name="GATE5 Gate" />
     <set_object_property property="artScale" value="1.0" name="GATE5 Gate" />
+    <set_ship_text name="Triton Refuge" desc="Luxury refuge for wealthy USFP citizens looking to get away from everything. &quot;Care about nothing but the distant glimmering stars.&quot; 3 habitation units available." />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="c427652d-8fd9-43e1-bb2f-67b753aeec79" parent_id_arme="b0059b05-f68c-4801-bbd9-1340d509c37e">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton V" />
+    <destroy name="Triton Refuge" />
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
@@ -1525,6 +1583,17 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+    <create count="150" type="nebulas" nebType="1" startX="70527.0" startY="0.0" startZ="65425.0" radius="30000" randomRange="1000" />
+    <create count="200" type="nebulas" nebType="1" startX="70284.0" startY="0.0" startZ="65303.0" radius="33000" randomRange="3000" />
+    <create count="50" type="nebulas" nebType="1" startAngle="270" endAngle="330" startX="8299.0" startY="0.0" startZ="52946.0" radius="33000" randomRange="3000" />
+    <create count="50" type="nebulas" nebType="1" startAngle="120" endAngle="175" startX="59473.0" startY="0.0" startZ="5211.0" radius="33000" randomRange="3000" />
+    <create count="50" type="nebulas" nebType="1" startX="26073.0" startY="0.0" startZ="23036.0" endX="4427.0" endY="0.0" endZ="2268.0" randomRange="2000" />
+    <create count="50" type="nebulas" nebType="1" startX="44435.0" startY="0.0" startZ="40040.0" radius="10" randomRange="6000" randomSeed="2" />
+    <create count="90" type="nebulas" nebType="1" startX="95783.0" startY="0.0" startZ="94131.0" endX="95783.0" endY="0.0" endZ="94131.0" randomRange="7000" randomSeed="5" />
+    <create count="10" type="nebulas" nebType="1" startX="42470.0" startY="0.0" startZ="48906.0" endX="27509.0" endY="0.0" endZ="24251.0" randomRange="3000" />
+    <create count="20" type="nebulas" nebType="1" startX="27409.0" startY="0.0" startZ="23643.0" endX="2744.0" endY="0.0" endZ="688.0" randomRange="10000" randomSeed="1" />
+    <create count="10" type="nebulas" nebType="1" startX="86559.0" startY="0.0" startZ="95910.0" endX="86559.0" endY="0.0" endZ="95910.0" randomRange="3000" />
+    <create count="10" type="nebulas" nebType="1" startX="98583.0" startY="0.0" startZ="84251.0" endX="98583.0" endY="0.0" endZ="84251.0" randomRange="3000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="f940cf2e-0e27-4c91-be89-11baf733e35c" parent_id_arme="3528977f-4e4d-4113-84f7-70ce9e3284d9" />
@@ -1802,6 +1871,9 @@
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton VI" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="22500.0" y="0.0" z="53524.0" angle="0" name="Cassandra Observation" hullID="1004" />
+    <create type="blackHole" x="70527.0" y="0.0" z="65303.0" name="Cassandra" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
   <event name="Settings" id_arme="fae5afe6-3619-4cc3-a46f-266e144b81e6" parent_id_arme="18d82190-69d3-4244-8cf1-62116afa7717">
@@ -1812,10 +1884,14 @@
     <set_object_property property="angle" value="4.71238898" name="GATE6 Gate" />
     <set_object_property property="pushRadius" value="0.0" name="GATE6 Gate" />
     <set_object_property property="artScale" value="1.0" name="GATE6 Gate" />
+    <set_ship_text name="Cassandra Observation" desc="Observation and research post studying Schwarzschild phenomena on the rim of Cassandra. LOOKING FOR PhD/RESEARCH PROJECT? Contact us." />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="ccb70178-d7e9-49ca-b86e-1755aa975087" parent_id_arme="18d82190-69d3-4244-8cf1-62116afa7717">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton VI" />
+    <destroy name="Cassandra Observation" />
+    <destroy name="Cassandra" />
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
@@ -1857,6 +1933,11 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+    <create count="5" type="nebulas" nebType="1" startX="99177.0" startY="0.0" startZ="2266.0" endX="99177.0" endY="0.0" endZ="2266.0" randomRange="3000" />
+    <create count="50" type="nebulas" startX="78057.0" startY="0.0" startZ="76963.0" endX="7614.0" endY="0.0" endZ="2024.0" randomRange="5000" />
+    <create count="100" type="nebulas" startX="41863.0" startY="0.0" startZ="41619.0" endX="5428.0" endY="0.0" endZ="3360.0" randomRange="15000" />
+    <create count="100" type="nebulas" startX="28503.0" startY="0.0" startZ="26072.0" endX="5792.0" endY="0.0" endZ="4696.0" randomRange="20000" />
+    <create count="10" type="asteroids" startX="45110.0" startY="0.0" startZ="42834.0" endX="22399.0" endY="0.0" endZ="21458.0" randomRange="20000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="7425276f-138a-48a1-9495-a5ffcf8e596c" parent_id_arme="0a96d9c8-057b-480d-8070-1287fe075b9a" />
@@ -2135,12 +2216,17 @@
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton VII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="49272.0" y="0.0" z="31538.0" angle="0" name="I-402" hullID="1051" />
+    <create type="neutral" x="54859.0" y="0.0" z="36032.0" angle="0" name="SY-402" hullID="1053" />
+    <create type="neutral" x="17207.0" y="0.0" z="28016.0" angle="0" name="Denabite Derby" hullID="1051" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
   <event name="Settings" id_arme="339235c5-52bd-4bfd-835e-073c3502fe82" parent_id_arme="a0275c82-5b18-4dbd-b8b1-d866e49e4406">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_ship_text name="Denabite Derby" desc="USFP Denabite refinery, known system-wide for their unbeatable prices." />
     <set_object_property property="artScale" value="1.0" name="GATE7 Gate" />
     <set_object_property property="pushRadius" value="0.0" name="GATE7 Gate" />
     <set_object_property property="angle" value="4.71238898" name="GATE7 Gate" />
@@ -2149,6 +2235,10 @@
   </event>
   <event name="Destroy Sector Entities" id_arme="4c2b8db2-c057-4803-bad4-460ced3a7c3f" parent_id_arme="a0275c82-5b18-4dbd-b8b1-d866e49e4406">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton VII" />
+    <destroy name="SY-402" />
+    <destroy name="I-402" />
+    <destroy name="Denabite Derby" />
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
@@ -2190,6 +2280,12 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+    <create count="20" type="nebulas" startX="99677.0" startY="0.0" startZ="19392.0" endX="84580.0" endY="0.0" endZ="323.0" randomRange="10000" />
+    <create count="10" type="nebulas" startX="99539.0" startY="0.0" startZ="9176.0" endX="92822.0" endY="0.0" endZ="860.0" randomRange="5000" />
+    <create count="20" type="nebulas" startX="100041.0" startY="0.0" startZ="36396.0" endX="70369.0" endY="0.0" endZ="931.0" randomRange="10000" />
+    <create count="10" type="mines" startAngle="280" endAngle="330" startX="38583.0" startY="0.0" startZ="39433.0" radius="15000" />
+    <create count="10" type="mines" startAngle="190" endAngle="240" startX="38462.0" startY="0.0" startZ="39433.0" radius="15000" />
+    <create count="10" type="mines" startAngle="100" endAngle="150" startX="38462.0" startY="0.0" startZ="39433.0" radius="15000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="bc215e17-36ce-41ad-bcc2-67018401514b" parent_id_arme="561643d5-0568-4b64-af61-d2945da4af98" />
@@ -2434,6 +2530,11 @@
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="8.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton VIII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="38219.0" y="0.0" z="39433.0" name="Tethys Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="35590.0" y="0.0" z="53822.0" angle="0" name="WP-43L" hullID="1052" />
+    <create type="neutral" x="53080.0" y="0.0" z="42662.0" angle="0" name="WP-43R" hullID="1052" />
+    <create type="neutral" x="25588.0" y="0.0" z="24129.0" angle="0" name="DS-44" hullID="1000" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
   <event name="Settings" id_arme="96c63a94-50ee-4048-bc8a-abd946872c15" parent_id_arme="d6dd794c-4946-40da-b2b9-a0b1894646c4">
@@ -2444,10 +2545,16 @@
     <set_object_property property="angle" value="4.71238898" name="Tethys Gate" />
     <set_object_property property="pushRadius" value="0.0" name="Tethys Gate" />
     <set_object_property property="artScale" value="1.0" name="Tethys Gate" />
+    <set_ship_text name="DS-44" desc="USFP Military deep space base overseeing traffic at Tethys Gate." />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="6ecaf319-a377-42ef-81ce-5336bb16df4e" parent_id_arme="d6dd794c-4946-40da-b2b9-a0b1894646c4">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton VIII" />
+    <destroy name="Tethys Gate" />
+    <destroy name="WP-43R" />
+    <destroy name="DS-44" />
+    <destroy name="WP-43L" />
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
@@ -2489,6 +2596,10 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+    <create count="50" type="nebulas" startX="59474.0" startY="0.0" startZ="58987.0" endX="1953.0" endY="0.0" endZ="80.0" randomRange="5000" />
+    <create count="30" type="nebulas" startX="31782.0" startY="0.0" startZ="28987.0" endX="2318.0" endY="0.0" endZ="-405.0" randomRange="2000" />
+    <create count="20" type="nebulas" startX="5004.0" startY="0.0" startZ="3209.0" endX="5004.0" endY="0.0" endZ="3209.0" randomRange="6000" />
+    <create count="50" type="nebulas" startX="91175.0" startY="0.0" startZ="91659.0" endX="61590.0" endY="0.0" endZ="63603.0" randomRange="15000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="e4d69ada-b458-4068-bbb3-b552bc87cb70" parent_id_arme="86a18df2-abce-41cc-9193-e6f2a3d3db38" />
@@ -2711,6 +2822,7 @@
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="9.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton IX" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
   <event name="Settings" id_arme="fcd8ceb4-9a47-4c71-a2cc-c89a8b26338c" parent_id_arme="6f44c710-1702-47ee-8251-4e7b68fdd7b8">
@@ -2724,6 +2836,7 @@
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="6eaa044a-0b1e-49ad-9ed8-363892cac344" parent_id_arme="6f44c710-1702-47ee-8251-4e7b68fdd7b8">
+    <destroy name="Triton IX" />
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
@@ -2766,6 +2879,12 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+    <create count="20" type="nebulas" startX="98991.0" startY="0.0" startZ="4439.0" endX="94448.0" endY="0.0" endZ="-526.0" randomRange="6000" randomSeed="3" />
+    <create count="15" type="nebulas" nebType="2" startX="1053.0" startY="0.0" startZ="44655.0" endX="12206.0" endY="0.0" endZ="32659.0" randomRange="6000" />
+    <create count="15" type="nebulas" nebType="2" startX="932.0" startY="0.0" startZ="44048.0" endX="21437.0" endY="0.0" endZ="22943.0" randomRange="3000" />
+    <create count="70" type="nebulas" startX="90324.0" startY="0.0" startZ="89473.0" endX="57595.0" endY="0.0" endZ="51336.0" randomRange="15000" />
+    <create count="70" type="nebulas" startX="96883.0" startY="0.0" startZ="97854.0" endX="34518.0" endY="0.0" endZ="24373.0" randomRange="5000" />
+    <create count="30" type="asteroids" startX="91175.0" startY="0.0" startZ="89230.0" endX="58446.0" endY="0.0" endZ="51093.0" randomRange="15000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="28bc7f8d-913a-4391-a505-418dc1a75e5f" parent_id_arme="40ba5c71-f009-4129-b46d-2391cbaee08c" />
@@ -3010,6 +3129,8 @@
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="10.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton X" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="52430.0" y="0.0" z="64453.0" angle="0" name="I-566" hullID="1003" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
   <event name="Settings" id_arme="ff540a73-ebdc-4d6c-afbb-6b40f7912798" parent_id_arme="430d7057-3b21-44f6-92a2-1301cf09f329">
@@ -3024,6 +3145,8 @@
   </event>
   <event name="Destroy Sector Entities" id_arme="8b41991e-3af0-4061-a84d-7daa1dddeead" parent_id_arme="430d7057-3b21-44f6-92a2-1301cf09f329">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton X" />
+    <destroy name="I-566" />
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
@@ -3065,6 +3188,11 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+    <create count="70" type="nebulas" nebType="2" startX="53401.0" startY="0.0" startZ="99433.0" endX="99612.0" endY="0.0" endZ="42712.0" randomRange="5000" />
+    <create count="70" type="nebulas" nebType="2" startX="55102.0" startY="0.0" startZ="99554.0" endX="77993.0" endY="0.0" endZ="71254.0" randomRange="10000" />
+    <create count="70" type="nebulas" nebType="2" startX="54616.0" startY="0.0" startZ="99554.0" endX="77507.0" endY="0.0" endZ="71254.0" randomRange="30000" />
+    <create count="20" type="mines" startAngle="160" endAngle="270" startX="10806.0" startY="0.0" startZ="26265.0" radius="15000" />
+    <create count="20" type="mines" startAngle="170" endAngle="280" startX="34818.0" startY="0.0" startZ="7489.0" radius="15000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="2c8b7b00-3a8b-4400-85c9-3e825c13d2f3" parent_id_arme="5847a4f2-57e0-476b-a7bd-118763d957c6" />
@@ -3309,6 +3437,10 @@
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="11.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton XI" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="43806.0" y="0.0" z="42105.0" name="Charon Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="27916.0" y="0.0" z="22693.0" angle="0" name="WP-062" hullID="1052" />
+    <create type="neutral" x="13685.0" y="0.0" z="27165.0" angle="0" name="DS-62" hullID="1000" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
   <event name="Settings" id_arme="7911335e-0b06-4a5d-b57c-9a57dbb5a498" parent_id_arme="37f194e5-27e1-4733-a304-b0e469942b56">
@@ -3319,10 +3451,15 @@
     <set_object_property property="angle" value="4.71238898" name="Charon Gate" />
     <set_object_property property="pushRadius" value="0.0" name="Charon Gate" />
     <set_object_property property="artScale" value="1.0" name="Charon Gate" />
+    <set_ship_text name="DS-62" desc="USFP military deep space base monitoring Charon Gate." />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="dbb95aa9-a452-481b-97e3-b8e87c81b32f" parent_id_arme="37f194e5-27e1-4733-a304-b0e469942b56">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton XI" />
+    <destroy name="WP-062" />
+    <destroy name="DS-62" />
+    <destroy name="Charon Gate" />
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
@@ -3364,6 +3501,9 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+    <create count="100" type="nebulas" startX="67855.0" startY="0.0" startZ="99554.0" endX="24767.0" endY="0.0" endZ="59595.0" randomRange="15000" />
+    <create count="50" type="nebulas" startX="62268.0" startY="0.0" startZ="98704.0" endX="6184.0" endY="0.0" endZ="41619.0" randomRange="5000" />
+    <create count="10" type="asteroids" startX="67976.0" startY="0.0" startZ="98947.0" endX="24888.0" endY="0.0" endZ="58988.0" randomRange="15000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="ff688ea0-84b8-4563-abd8-7e5f1df5390f" parent_id_arme="4ddd0e6b-8ddc-4fca-82e5-48b755d530e2" />
@@ -3586,6 +3726,7 @@
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="12.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton XII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
   <event name="Settings" id_arme="27096ec5-680a-4047-a71c-b4fdaf490dab" parent_id_arme="2ef7894a-72c8-458a-8d98-44e1c38b6453">
@@ -3600,6 +3741,7 @@
   </event>
   <event name="Destroy Sector Entities" id_arme="758f4b1f-5f21-4d13-ae00-253ad31d2a05" parent_id_arme="2ef7894a-72c8-458a-8d98-44e1c38b6453">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton XII" />
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
