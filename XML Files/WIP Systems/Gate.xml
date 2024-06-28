@@ -208,3 +208,12 @@
     <set_object_property property="angle" value="3.141592654" player_slot="7" />
     <set_variable name="GATE_N to SYSTEMNAME" value="0.0" />
   </event>
+
+
+
+
+
+    <set_object_property property="rollDelta" value="0.3" name="GATE_N Gate" />
+    <set_object_property property="angle" value="4.71238898" name="GATE_N Gate" />
+    <set_object_property property="pushRadius" value="0.0" name="GATE_N Gate" />
+    <set_object_property property="artScale" value="1.0" name="GATE_N Gate" />

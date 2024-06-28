@@ -71,12 +71,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
-    <create count="110" type="nebulas" startX="51069.0" startY="0.0" startZ="9853.0" endX="83487.0" endY="0.0" endZ="12115.0" randomRange="12444" />
-    <create count="90" type="nebulas" startX="49309.0" startY="0.0" startZ="32219.0" endX="79969.0" endY="0.0" endZ="53832.0" randomRange="7755" />
-    <create count="70" type="nebulas" startX="56346.0" startY="0.0" startZ="84115.0" endX="22796.0" endY="0.0" endZ="67654.0" randomRange="7294" />
-    <create count="50" type="nebulas" startX="96304.0" startY="0.0" startZ="98691.0" endX="59362.0" endY="0.0" endZ="83863.0" randomRange="5425" />
-    <create count="30" type="asteroids" startX="58608.0" startY="0.0" startZ="39382.0" endX="39006.0" endY="0.0" endZ="32471.0" randomRange="3476" />
-    <create count="40" type="asteroids" startX="58231.0" startY="0.0" startZ="79089.0" endX="29079.0" endY="0.0" endZ="63884.0" randomRange="2624" />
     <set_variable name="SYSTEMNAME System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="0d4c4d24-4e26-4187-a2c5-745cb681588d" parent_id_arme="dab48e71-c712-4bec-83a2-e509e2c52e69" />
@@ -299,19 +293,16 @@
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-    <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
-    <set_variable name="MissionCode" value="1.0" />
   </event>
   <event name="Settings" id_arme="db1b66f1-a86b-428e-84a4-6e3bd1ecdfd9" parent_id_arme="9e6f55da-4a12-4d0d-8689-84a38d73d69a">
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
-    <set_variable name="Entry Random" value="1.0" />
-    <set_timer name="Entry Random" seconds="1" />
-    <set_variable name="USFPTraffic1" value="1.0" />
-    <set_variable name="USFPTraffic2" value="1.0" />
-    <set_variable name="Infiltrators" value="1.0" />
+    <set_object_property property="rollDelta" value="0.3" name="GATE1 Gate" />
+    <set_object_property property="angle" value="4.71238898" name="GATE1 Gate" />
+    <set_object_property property="pushRadius" value="0.0" name="GATE1 Gate" />
+    <set_object_property property="artScale" value="1.0" name="GATE1 Gate" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="53edcf94-9156-4b85-84e1-477a930fcdb9" parent_id_arme="9e6f55da-4a12-4d0d-8689-84a38d73d69a">
@@ -357,14 +348,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
-    <create count="80" type="nebulas" startX="63257.0" startY="0.0" startZ="11235.0" endX="22922.0" endY="0.0" endZ="14502.0" randomRange="7961" />
-    <create count="10" type="nebulas" startX="78587.0" startY="0.0" startZ="64513.0" endX="68660.0" endY="0.0" endZ="71298.0" randomRange="3305" />
-    <create count="30" type="asteroids" startX="66524.0" startY="0.0" startZ="70041.0" endX="51446.0" endY="0.0" endZ="66272.0" randomRange="4029" />
-    <create count="30" type="asteroids" startX="52576.0" startY="0.0" startZ="65141.0" endX="52451.0" endY="0.0" endZ="54837.0" randomRange="7341" />
-    <create count="20" type="nebulas" startX="53079.0" startY="0.0" startZ="62125.0" endX="54210.0" endY="0.0" endZ="64890.0" randomRange="1800" />
-    <create count="20" type="asteroids" startX="55718.0" startY="0.0" startZ="71675.0" endX="45791.0" endY="0.0" endZ="80973.0" randomRange="2384" />
-    <create count="10" type="asteroids" startX="49184.0" startY="0.0" startZ="79340.0" endX="57728.0" endY="0.0" endZ="88890.0" randomRange="2933" />
-    <create count="10" type="nebulas" startX="10859.0" startY="0.0" startZ="92785.0" endX="10231.0" endY="0.0" endZ="67026.0" randomRange="13294" />
     <set_variable name="SYSTEMNAME System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="66e83ed2-a04d-4fdd-96ba-5968185119b6" parent_id_arme="d45c2904-9b38-40db-90df-ecd23c711e7c" />
@@ -610,10 +593,7 @@
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-    <create type="genericMesh" x="68911.0" y="0.0" z="30460.0" name="GATE2 Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
-    <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
-    <set_variable name="MissionCode" value="1.0" />
   </event>
   <event name="Settings" id_arme="21006e29-94c0-468f-ad5f-c04136e70bb5" parent_id_arme="6dda00d6-1fd5-41b7-8dc4-737611587d74">
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
@@ -623,16 +603,10 @@
     <set_object_property property="pushRadius" value="0.0" name="GATE2 Gate" />
     <set_object_property property="angle" value="4.71238898" name="GATE2 Gate" />
     <set_object_property property="rollDelta" value="0.3" name="GATE2 Gate" />
-    <set_variable name="Entry Random" value="1.0" />
-    <set_timer name="Entry Random" seconds="1" />
-    <set_variable name="USFPTraffic1" value="1.0" />
-    <set_variable name="USFPTraffic2" value="1.0" />
-    <set_variable name="Infiltrators" value="1.0" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="8642d13c-12ae-474b-a01d-06bfe4f19814" parent_id_arme="6dda00d6-1fd5-41b7-8dc4-737611587d74">
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="3.0" />
-    <destroy name="GATE2 Gate" />
     <set_variable name="SYSTEMNAME System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
@@ -674,15 +648,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
-    <create count="40" type="nebulas" startX="47667.0" startY="0.0" startZ="15144.0" endX="25383.0" endY="0.0" endZ="24328.0" randomRange="3728" />
-    <create count="30" type="nebulas" startX="85760.0" startY="0.0" startZ="79585.0" endX="66487.0" endY="0.0" endZ="75821.0" randomRange="15447" />
-    <create count="40" type="nebulas" startX="11531.0" startY="0.0" startZ="87264.0" endX="21920.0" endY="0.0" endZ="80188.0" randomRange="9832" />
-    <create count="30" type="asteroids" startX="59561.0" startY="0.0" startZ="6863.0" endX="49474.0" endY="0.0" endZ="11831.0" randomRange="2908" />
-    <create count="100" type="mines" startX="38000.0" startY="0.0" startZ="10000.0" endX="38000.0" endY="0.0" endZ="20000.0" />
-    <create count="100" type="mines" startX="30900.0" startY="0.0" startZ="20000.0" endX="30900.0" endY="0.0" endZ="30000.0" />
-    <create count="100" type="mines" startX="37900.0" startY="0.0" startZ="30000.0" endX="37900.0" endY="0.0" endZ="40000.0" />
-    <create count="30" type="mines" startAngle="0" endAngle="110" startX="22640.0" startY="0.0" startZ="67485.0" radius="7000" />
-    <create count="30" type="mines" startAngle="0" endAngle="110" startX="33612.0" startY="0.0" startZ="53360.0" radius="7000" />
     <set_variable name="SYSTEMNAME System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="29fe9fa3-0019-4942-b9b1-54a5d16072ec" parent_id_arme="a63896d3-1233-41f4-aa06-9f9e4bf9e3ba" />
@@ -928,31 +893,20 @@
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="3.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-    <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
-    <create type="neutral" x="49932.0" y="0.0" z="51577.0" angle="0" name="DS-34" hullID="1000" sideValue="sectorSide" />
-    <create type="neutral" x="28263.0" y="0.0" z="73108.0" angle="0" name="DS-17" hullID="1000" sideValue="sectorSide" />
-    <create type="neutral" x="59395.0" y="0.0" z="22091.0" angle="0" name="DS-53" hullID="1000" sideValue="sectorSide" />
-    <create type="neutral" x="73520.0" y="0.0" z="64057.0" angle="0" name="Outpost 16" hullID="1002" sideValue="sectorSide" />
-    <set_variable name="MissionCode" value="1.0" />
   </event>
   <event name="Settings" id_arme="844d67e6-5909-4d03-abd8-d5025a146ffc" parent_id_arme="8732b5c1-92c9-4938-812f-76158196553b">
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="3.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
-    <set_variable name="Entry Random" value="1.0" />
-    <set_timer name="Entry Random" seconds="1" />
-    <set_variable name="USFPTraffic1" value="1.0" />
-    <set_variable name="USFPTraffic2" value="1.0" />
-    <set_variable name="Infiltrators" value="1.0" />
+    <set_object_property property="rollDelta" value="0.3" name="GATE3 Gate" />
+    <set_object_property property="angle" value="4.71238898" name="GATE3 Gate" />
+    <set_object_property property="pushRadius" value="0.0" name="GATE3 Gate" />
+    <set_object_property property="artScale" value="1.0" name="GATE3 Gate" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="cdc81e8f-58d7-49c6-91c7-85d287838585" parent_id_arme="8732b5c1-92c9-4938-812f-76158196553b">
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="3.0" />
-    <destroy name="DS-34" />
-    <destroy name="DS-17" />
-    <destroy name="DS-53" />
-    <destroy name="Outpost 16" />
     <set_variable name="SYSTEMNAME System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
@@ -994,17 +948,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-    <create count="10" type="nebulas" startX="94922.0" startY="0.0" startZ="85748.0" endX="60618.0" endY="0.0" endZ="59109.0" randomRange="12694" />
-    <create count="40" type="nebulas" startX="44032.0" startY="0.0" startZ="14125.0" endX="28702.0" endY="0.0" endZ="21790.0" randomRange="2934" />
-    <create count="50" type="nebulas" startX="20786.0" startY="0.0" startZ="55340.0" endX="20786.0" endY="0.0" endZ="55340.0" randomRange="3491" />
-    <create count="10" type="nebulas" startX="54336.0" startY="0.0" startZ="84240.0" endX="37247.0" endY="0.0" endZ="82858.0" randomRange="2642" />
-    <create count="10" type="asteroids" startX="51948.0" startY="0.0" startZ="82732.0" endX="39760.0" endY="0.0" endZ="78335.0" randomRange="8749" />
-    <create count="60" type="asteroids" startX="60618.0" startY="0.0" startZ="13120.0" endX="60618.0" endY="0.0" endZ="13120.0" randomRange="10973" />
-    <create count="30" type="asteroids" startX="51194.0" startY="0.0" startZ="5581.0" endX="38754.0" endY="0.0" endZ="10356.0" randomRange="3346" />
-    <create count="10" type="asteroids" startX="48807.0" startY="0.0" startZ="15759.0" endX="33226.0" endY="0.0" endZ="14628.0" randomRange="2868" />
-    <create count="10" type="asteroids" startX="32974.0" startY="0.0" startZ="15382.0" endX="20283.0" endY="0.0" endZ="20408.0" randomRange="4279" />
-    <create count="30" type="asteroids" startX="87257.0" startY="0.0" startZ="1685.0" endX="73309.0" endY="0.0" endZ="17392.0" randomRange="4116" />
-    <create count="20" type="nebulas" startX="83110.0" startY="0.0" startZ="3068.0" endX="64765.0" endY="0.0" endZ="9225.0" randomRange="4122" />
     <set_variable name="SYSTEMNAME System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="6f6f1242-f226-432c-b8c4-29a2582dae21" parent_id_arme="56d1cf80-83dd-414f-821b-cd5059d3b66c" />
@@ -1228,10 +1171,7 @@
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="4.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-    <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
-    <create type="genericMesh" x="44911.0" y="0.0" z="44157.0" name="GATE4 Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
-    <set_variable name="MissionCode" value="1.0" />
   </event>
   <event name="Settings" id_arme="571b94c4-0b0c-4227-b3ba-c92263b92535" parent_id_arme="44251d0d-b8ca-45d8-892a-8c66583b86b5">
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
@@ -1241,16 +1181,10 @@
     <set_object_property property="pushRadius" value="0.0" name="GATE4 Gate" />
     <set_object_property property="angle" value="4.71238898" name="GATE4 Gate" />
     <set_object_property property="rollDelta" value="0.3" name="GATE4 Gate" />
-    <set_variable name="Entry Random" value="1.0" />
-    <set_timer name="Entry Random" seconds="1" />
-    <set_variable name="USFPTraffic1" value="1.0" />
-    <set_variable name="USFPTraffic2" value="1.0" />
-    <set_variable name="Infiltrators" value="1.0" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="4fbde690-0b2a-417c-9390-43f8cb975108" parent_id_arme="44251d0d-b8ca-45d8-892a-8c66583b86b5">
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="3.0" />
-    <destroy name="GATE4 Gate" />
     <set_variable name="SYSTEMNAME System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
@@ -1292,16 +1226,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
-    <create count="30" type="nebulas" startX="97938.0" startY="0.0" startZ="11486.0" endX="76451.0" endY="0.0" endZ="1434.0" randomRange="3870" />
-    <create count="5" type="nebulas" startX="75822.0" startY="0.0" startZ="15884.0" endX="58859.0" endY="0.0" endZ="5455.0" randomRange="9076" />
-    <create count="130" type="nebulas" startX="90524.0" startY="0.0" startZ="50062.0" endX="53833.0" endY="0.0" endZ="57225.0" randomRange="6530" />
-    <create count="30" type="nebulas" startX="49938.0" startY="0.0" startZ="57853.0" endX="26440.0" endY="0.0" endZ="65895.0" randomRange="5358" />
-    <create count="70" type="nebulas" startX="26189.0" startY="0.0" startZ="64890.0" endX="6838.0" endY="0.0" endZ="78083.0" randomRange="7892" />
-    <create count="30" type="asteroids" startX="70042.0" startY="0.0" startZ="46293.0" endX="52576.0" endY="0.0" endZ="50062.0" randomRange="2823" />
-    <create count="10" type="asteroids" startX="70796.0" startY="0.0" startZ="45664.0" endX="89644.0" endY="0.0" endZ="41015.0" randomRange="2418" />
-    <create count="30" type="asteroids" startX="62629.0" startY="0.0" startZ="52198.0" endX="89770.0" endY="0.0" endZ="56471.0" randomRange="3371" />
-    <create count="40" type="asteroids" startX="65644.0" startY="0.0" startZ="53706.0" endX="44032.0" endY="0.0" endZ="58481.0" randomRange="4504" />
-    <create count="10" type="asteroids" startX="42147.0" startY="0.0" startZ="59235.0" endX="30336.0" endY="0.0" endZ="62000.0" randomRange="1885" />
     <set_variable name="SYSTEMNAME System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="d96e40b6-dafa-4613-9e46-efe84cc1f414" parent_id_arme="91a6d5d5-51e8-4765-a5d9-6eeadc130298" />
@@ -1546,19 +1470,16 @@
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-    <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
-    <set_variable name="MissionCode" value="1.0" />
   </event>
   <event name="Settings" id_arme="eed7aa37-5d13-4e51-b503-b6da15aa4f6d" parent_id_arme="b0059b05-f68c-4801-bbd9-1340d509c37e">
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
-    <set_variable name="Entry Random" value="1.0" />
-    <set_timer name="Entry Random" seconds="1" />
-    <set_variable name="USFPTraffic1" value="1.0" />
-    <set_variable name="USFPTraffic2" value="1.0" />
-    <set_variable name="Infiltrators" value="1.0" />
+    <set_object_property property="rollDelta" value="0.3" name="GATE5 Gate" />
+    <set_object_property property="angle" value="4.71238898" name="GATE5 Gate" />
+    <set_object_property property="pushRadius" value="0.0" name="GATE5 Gate" />
+    <set_object_property property="artScale" value="1.0" name="GATE5 Gate" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="c427652d-8fd9-43e1-bb2f-67b753aeec79" parent_id_arme="b0059b05-f68c-4801-bbd9-1340d509c37e">
@@ -1604,19 +1525,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
-    <create count="70" type="nebulas" startX="96304.0" startY="0.0" startZ="69287.0" endX="72807.0" endY="0.0" endZ="80094.0" randomRange="7607" />
-    <create count="8" type="nebulas" startX="65393.0" startY="0.0" startZ="79465.0" endX="56095.0" endY="0.0" endZ="85246.0" randomRange="5237" />
-    <create count="30" type="asteroids" startX="90524.0" startY="0.0" startZ="61623.0" endX="72681.0" endY="0.0" endZ="66900.0" randomRange="2789" />
-    <create count="10" type="nebulas" startX="96932.0" startY="0.0" startZ="89643.0" endX="95048.0" endY="0.0" endZ="76324.0" randomRange="3973" />
-    <create count="5" type="nebulas" startX="10859.0" startY="0.0" startZ="10104.0" endX="10859.0" endY="0.0" endZ="10104.0" randomRange="12365" />
-    <create count="80" type="nebulas" startX="71676.0" startY="0.0" startZ="26942.0" endX="29456.0" endY="0.0" endZ="42146.0" randomRange="9401" />
-    <create count="10" type="nebulas" startX="49812.0" startY="0.0" startZ="43654.0" endX="41896.0" endY="0.0" endZ="57225.0" randomRange="7892" />
-    <create count="20" type="nebulas" startX="44911.0" startY="0.0" startZ="56094.0" endX="45540.0" endY="0.0" endZ="75947.0" randomRange="4389" />
-    <create count="30" type="nebulas" startX="22294.0" startY="0.0" startZ="49811.0" endX="12116.0" endY="0.0" endZ="57727.0" randomRange="3936" />
-    <create count="90" type="mines" startAngle="310" endAngle="220" startX="51194.0" startY="0.0" startZ="40890.0" radius="17579" />
-    <create count="70" type="mines" startAngle="110" endAngle="40" startX="51194.0" startY="0.0" startZ="40890.0" radius="17579" />
-    <create count="60" type="mines" startAngle="10" endAngle="-50" startX="51194.0" startY="0.0" startZ="40890.0" radius="17579" />
-    <create count="80" type="mines" startAngle="190" endAngle="110" startX="51194.0" startY="0.0" startZ="40890.0" radius="17579" />
     <set_variable name="SYSTEMNAME System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="f940cf2e-0e27-4c91-be89-11baf733e35c" parent_id_arme="3528977f-4e4d-4113-84f7-70ce9e3284d9" />
@@ -1894,36 +1802,20 @@
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-    <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
-    <create type="neutral" x="51194.0" y="0.0" z="40890.0" angle="0" name="SYSTEMNAME Command" hullID="1002" sideValue="sectorSide" />
-    <create type="neutral" x="58231.0" y="0.0" z="57225.0" angle="0" name="WP-15" hullID="1052" sideValue="sectorSide" />
-    <create type="neutral" x="43278.0" y="0.0" z="25560.0" angle="0" name="WP-34" hullID="1052" sideValue="sectorSide" />
-    <create type="neutral" x="60618.0" y="0.0" z="43026.0" angle="0" name="SY-08" hullID="1053" sideValue="sectorSide" />
-    <create type="neutral" x="41393.0" y="0.0" z="45916.0" angle="0" name="DS-71" hullID="1000" sideValue="sectorSide" />
-    <create type="neutral" x="54838.0" y="0.0" z="33350.0" angle="0" name="DS-93" hullID="1000" sideValue="sectorSide" />
-    <set_variable name="MissionCode" value="1.0" />
   </event>
   <event name="Settings" id_arme="fae5afe6-3619-4cc3-a46f-266e144b81e6" parent_id_arme="18d82190-69d3-4244-8cf1-62116afa7717">
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
-    <set_variable name="Entry Random" value="1.0" />
-    <set_timer name="Entry Random" seconds="1" />
-    <set_variable name="USFPTraffic1" value="1.0" />
-    <set_variable name="USFPTraffic2" value="1.0" />
-    <set_variable name="Infiltrators" value="1.0" />
-    <clear_ai name="SY-08" />
+    <set_object_property property="rollDelta" value="0.3" name="GATE6 Gate" />
+    <set_object_property property="angle" value="4.71238898" name="GATE6 Gate" />
+    <set_object_property property="pushRadius" value="0.0" name="GATE6 Gate" />
+    <set_object_property property="artScale" value="1.0" name="GATE6 Gate" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="ccb70178-d7e9-49ca-b86e-1755aa975087" parent_id_arme="18d82190-69d3-4244-8cf1-62116afa7717">
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="3.0" />
-    <destroy name="SYSTEMNAME Command" />
-    <destroy name="WP-15" />
-    <destroy name="WP-34" />
-    <destroy name="SY-08" />
-    <destroy name="DS-71" />
-    <destroy name="DS-93" />
     <set_variable name="SYSTEMNAME System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
@@ -1965,10 +1857,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
-    <create count="14" type="nebulas" startX="73058.0" startY="0.0" startZ="23926.0" endX="73058.0" endY="0.0" endZ="23926.0" randomRange="27708" />
-    <create count="50" type="nebulas" startX="59739.0" startY="0.0" startZ="69413.0" endX="23299.0" endY="0.0" endZ="77832.0" randomRange="5555" />
-    <create count="40" type="asteroids" startX="40891.0" startY="0.0" startZ="53329.0" endX="14880.0" endY="0.0" endZ="63256.0" randomRange="7517" />
-    <create count="30" type="asteroids" startX="70168.0" startY="0.0" startZ="29204.0" endX="41644.0" endY="0.0" endZ="49811.0" randomRange="5798" />
     <set_variable name="SYSTEMNAME System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="7425276f-138a-48a1-9495-a5ffcf8e596c" parent_id_arme="0a96d9c8-057b-480d-8070-1287fe075b9a" />
@@ -2247,10 +2135,7 @@
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-    <create type="genericMesh" x="8821.0" y="0.0" z="93588.0" name="GATE7 Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
-    <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
-    <set_variable name="MissionCode" value="1.0" />
   </event>
   <event name="Settings" id_arme="339235c5-52bd-4bfd-835e-073c3502fe82" parent_id_arme="a0275c82-5b18-4dbd-b8b1-d866e49e4406">
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
@@ -2260,16 +2145,10 @@
     <set_object_property property="pushRadius" value="0.0" name="GATE7 Gate" />
     <set_object_property property="angle" value="4.71238898" name="GATE7 Gate" />
     <set_object_property property="rollDelta" value="0.3" name="GATE7 Gate" />
-    <set_variable name="Entry Random" value="1.0" />
-    <set_timer name="Entry Random" seconds="1" />
-    <set_variable name="USFPTraffic1" value="1.0" />
-    <set_variable name="USFPTraffic2" value="1.0" />
-    <set_variable name="Infiltrators" value="1.0" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="4c2b8db2-c057-4803-bad4-460ced3a7c3f" parent_id_arme="a0275c82-5b18-4dbd-b8b1-d866e49e4406">
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="3.0" />
-    <destroy name="GATE7 Gate" />
     <set_variable name="SYSTEMNAME System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
@@ -2311,14 +2190,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-    <create count="10" type="nebulas" startX="83613.0" startY="0.0" startZ="91403.0" endX="10231.0" endY="0.0" endZ="92785.0" randomRange="9780" />
-    <create count="40" type="nebulas" startX="37875.0" startY="0.0" startZ="89392.0" endX="9603.0" endY="0.0" endZ="98188.0" randomRange="4533" />
-    <create count="50" type="nebulas" startX="60744.0" startY="0.0" startZ="38000.0" endX="22294.0" endY="0.0" endZ="56219.0" randomRange="3493" />
-    <create count="30" type="nebulas" startX="40514.0" startY="0.0" startZ="49685.0" endX="71173.0" endY="0.0" endZ="60115.0" randomRange="5002" />
-    <create count="30" type="nebulas" startX="43781.0" startY="0.0" startZ="41643.0" endX="48932.0" endY="0.0" endZ="23675.0" randomRange="4722" />
-    <create count="10" type="nebulas" startX="58608.0" startY="0.0" startZ="39382.0" endX="61372.0" endY="0.0" endZ="33727.0" randomRange="6239" />
-    <create count="20" type="asteroids" startX="36995.0" startY="0.0" startZ="12617.0" endX="18901.0" endY="0.0" endZ="21539.0" randomRange="2868" />
-    <create count="10" type="asteroids" startX="73184.0" startY="0.0" startZ="72554.0" endX="58231.0" endY="0.0" endZ="79089.0" randomRange="3541" />
     <set_variable name="SYSTEMNAME System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="bc215e17-36ce-41ad-bcc2-67018401514b" parent_id_arme="561643d5-0568-4b64-af61-d2945da4af98" />
@@ -2563,19 +2434,16 @@
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="8.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-    <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
-    <set_variable name="MissionCode" value="1.0" />
   </event>
   <event name="Settings" id_arme="96c63a94-50ee-4048-bc8a-abd946872c15" parent_id_arme="d6dd794c-4946-40da-b2b9-a0b1894646c4">
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="8.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
-    <set_variable name="Entry Random" value="1.0" />
-    <set_timer name="Entry Random" seconds="1" />
-    <set_variable name="USFPTraffic1" value="1.0" />
-    <set_variable name="USFPTraffic2" value="1.0" />
-    <set_variable name="Infiltrators" value="1.0" />
+    <set_object_property property="rollDelta" value="0.3" name="GATE8 Gate" />
+    <set_object_property property="angle" value="4.71238898" name="GATE8 Gate" />
+    <set_object_property property="pushRadius" value="0.0" name="GATE8 Gate" />
+    <set_object_property property="artScale" value="1.0" name="GATE8 Gate" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="6ecaf319-a377-42ef-81ce-5336bb16df4e" parent_id_arme="d6dd794c-4946-40da-b2b9-a0b1894646c4">
@@ -2621,14 +2489,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-    <create count="7" type="nebulas" startX="4199.0" startY="0.0" startZ="3821.0" endX="14126.0" endY="0.0" endZ="16010.0" randomRange="10258" />
-    <create count="10" type="nebulas" startX="78210.0" startY="0.0" startZ="22795.0" endX="43404.0" endY="0.0" endZ="47549.0" randomRange="9805" />
-    <create count="30" type="nebulas" startX="69540.0" startY="0.0" startZ="25057.0" endX="53959.0" endY="0.0" endZ="33853.0" randomRange="3021" />
-    <create count="20" type="asteroids" startX="47927.0" startY="0.0" startZ="31465.0" endX="41016.0" endY="0.0" endZ="40261.0" randomRange="3547" />
-    <create count="10" type="asteroids" startX="51446.0" startY="0.0" startZ="30837.0" endX="59613.0" endY="0.0" endZ="25434.0" randomRange="3450" />
-    <create count="20" type="nebulas" startX="79969.0" startY="0.0" startZ="84743.0" endX="53456.0" endY="0.0" endZ="71926.0" randomRange="3353" />
-    <create count="20" type="asteroids" startX="65896.0" startY="0.0" startZ="75445.0" endX="55592.0" endY="0.0" endZ="70795.0" randomRange="2526" />
-    <create count="10" type="nebulas" startX="73686.0" startY="0.0" startZ="81727.0" endX="67655.0" endY="0.0" endZ="76701.0" randomRange="3554" />
     <set_variable name="SYSTEMNAME System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="e4d69ada-b458-4068-bbb3-b552bc87cb70" parent_id_arme="86a18df2-abce-41cc-9193-e6f2a3d3db38" />
@@ -2851,19 +2711,16 @@
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="9.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-    <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
-    <set_variable name="MissionCode" value="1.0" />
   </event>
   <event name="Settings" id_arme="fcd8ceb4-9a47-4c71-a2cc-c89a8b26338c" parent_id_arme="6f44c710-1702-47ee-8251-4e7b68fdd7b8">
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="9.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
-    <set_variable name="Entry Random" value="1.0" />
-    <set_timer name="Entry Random" seconds="1" />
-    <set_variable name="USFPTraffic1" value="1.0" />
-    <set_variable name="USFPTraffic2" value="1.0" />
-    <set_variable name="Infiltrators" value="1.0" />
+    <set_object_property property="rollDelta" value="0.3" name="GATE9 Gate" />
+    <set_object_property property="angle" value="4.71238898" name="GATE9 Gate" />
+    <set_object_property property="pushRadius" value="0.0" name="GATE9 Gate" />
+    <set_object_property property="artScale" value="1.0" name="GATE9 Gate" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="6eaa044a-0b1e-49ad-9ed8-363892cac344" parent_id_arme="6f44c710-1702-47ee-8251-4e7b68fdd7b8">
@@ -2909,15 +2766,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-    <create count="20" type="nebulas" startX="56974.0" startY="0.0" startZ="24554.0" endX="56974.0" endY="0.0" endZ="24554.0" randomRange="5195" />
-    <create count="20" type="nebulas" startX="75697.0" startY="0.0" startZ="71424.0" endX="75697.0" endY="0.0" endZ="71424.0" randomRange="7735" />
-    <create count="30" type="nebulas" startX="51697.0" startY="0.0" startZ="50314.0" endX="51697.0" endY="0.0" endZ="50314.0" randomRange="6595" />
-    <create count="28" type="nebulas" startX="47048.0" startY="0.0" startZ="75319.0" endX="36618.0" endY="0.0" endZ="82104.0" randomRange="9953" />
-    <create count="20" type="asteroids" startX="53959.0" startY="0.0" startZ="24931.0" endX="45163.0" endY="0.0" endZ="29706.0" randomRange="3594" />
-    <create count="60" type="asteroids" startX="43152.0" startY="0.0" startZ="56973.0" endX="35613.0" endY="0.0" endZ="67277.0" randomRange="6611" />
-    <create count="17" type="asteroids" startX="31090.0" startY="0.0" startZ="69162.0" endX="26315.0" endY="0.0" endZ="76198.0" randomRange="3903" />
-    <create count="30" type="asteroids" startX="45163.0" startY="0.0" startZ="55214.0" endX="51697.0" endY="0.0" endZ="45790.0" randomRange="3780" />
-    <create count="6" type="nebulas" startX="91781.0" startY="0.0" startZ="10732.0" endX="97309.0" endY="0.0" endZ="1937.0" randomRange="9162" />
     <set_variable name="SYSTEMNAME System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="28bc7f8d-913a-4391-a505-418dc1a75e5f" parent_id_arme="40ba5c71-f009-4129-b46d-2391cbaee08c" />
@@ -3162,19 +3010,16 @@
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="10.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-    <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
-    <set_variable name="MissionCode" value="1.0" />
   </event>
   <event name="Settings" id_arme="ff540a73-ebdc-4d6c-afbb-6b40f7912798" parent_id_arme="430d7057-3b21-44f6-92a2-1301cf09f329">
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="10.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
-    <set_variable name="Entry Random" value="1.0" />
-    <set_timer name="Entry Random" seconds="1" />
-    <set_variable name="USFPTraffic1" value="1.0" />
-    <set_variable name="USFPTraffic2" value="1.0" />
-    <set_variable name="Infiltrators" value="1.0" />
+    <set_object_property property="rollDelta" value="0.3" name="GATE_10 Gate" />
+    <set_object_property property="angle" value="4.71238898" name="GATE_10 Gate" />
+    <set_object_property property="pushRadius" value="0.0" name="GATE_10 Gate" />
+    <set_object_property property="artScale" value="1.0" name="GATE_10 Gate" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="8b41991e-3af0-4061-a84d-7daa1dddeead" parent_id_arme="430d7057-3b21-44f6-92a2-1301cf09f329">
@@ -3220,9 +3065,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-    <create count="10" type="nebulas" startX="7592.0" startY="0.0" startZ="94167.0" endX="7592.0" endY="0.0" endZ="64764.0" randomRange="7497" />
-    <create count="10" type="nebulas" startX="17142.0" startY="0.0" startZ="82984.0" endX="54713.0" endY="0.0" endZ="85120.0" randomRange="15805" />
-    <create count="22" type="asteroids" startX="38377.0" startY="0.0" startZ="71801.0" endX="36618.0" endY="0.0" endZ="76073.0" randomRange="6930" />
     <set_variable name="SYSTEMNAME System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="2c8b7b00-3a8b-4400-85c9-3e825c13d2f3" parent_id_arme="5847a4f2-57e0-476b-a7bd-118763d957c6" />
@@ -3467,19 +3309,16 @@
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="11.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-    <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
-    <set_variable name="MissionCode" value="1.0" />
   </event>
   <event name="Settings" id_arme="7911335e-0b06-4a5d-b57c-9a57dbb5a498" parent_id_arme="37f194e5-27e1-4733-a304-b0e469942b56">
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="11.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
-    <set_variable name="Entry Random" value="1.0" />
-    <set_timer name="Entry Random" seconds="1" />
-    <set_variable name="USFPTraffic1" value="1.0" />
-    <set_variable name="USFPTraffic2" value="1.0" />
-    <set_variable name="Infiltrators" value="1.0" />
+    <set_object_property property="rollDelta" value="0.3" name="GATE_11 Gate" />
+    <set_object_property property="angle" value="4.71238898" name="GATE_11 Gate" />
+    <set_object_property property="pushRadius" value="0.0" name="GATE_11 Gate" />
+    <set_object_property property="artScale" value="1.0" name="GATE_11 Gate" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="dbb95aa9-a452-481b-97e3-b8e87c81b32f" parent_id_arme="37f194e5-27e1-4733-a304-b0e469942b56">
@@ -3525,11 +3364,6 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-    <create count="80" type="nebulas" startX="35739.0" startY="0.0" startZ="2188.0" endX="3446.0" endY="0.0" endZ="21036.0" randomRange="8851" />
-    <create count="15" type="nebulas" startX="72932.0" startY="0.0" startZ="17015.0" endX="53330.0" endY="0.0" endZ="23424.0" randomRange="22479" />
-    <create count="60" type="asteroids" startX="64137.0" startY="0.0" startZ="48554.0" endX="28828.0" endY="0.0" endZ="69287.0" randomRange="16816" />
-    <create count="20" type="nebulas" startX="59990.0" startY="0.0" startZ="62376.0" endX="49561.0" endY="0.0" endZ="65518.0" randomRange="2307" />
-    <create count="24" type="nebulas" startX="96932.0" startY="0.0" startZ="92659.0" endX="95676.0" endY="0.0" endZ="67277.0" randomRange="8839" />
     <set_variable name="SYSTEMNAME System" value="2.0" />
   </event>
   <folder_arme name="Navigation" id_arme="ff688ea0-84b8-4563-abd8-7e5f1df5390f" parent_id_arme="4ddd0e6b-8ddc-4fca-82e5-48b755d530e2" />
@@ -3752,19 +3586,16 @@
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="12.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-    <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="2.0" />
-    <set_variable name="MissionCode" value="1.0" />
   </event>
   <event name="Settings" id_arme="27096ec5-680a-4047-a71c-b4fdaf490dab" parent_id_arme="2ef7894a-72c8-458a-8d98-44e1c38b6453">
     <if_variable name="SYSTEMNAME System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="12.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
-    <set_variable name="Entry Random" value="1.0" />
-    <set_timer name="Entry Random" seconds="1" />
-    <set_variable name="USFPTraffic1" value="1.0" />
-    <set_variable name="USFPTraffic2" value="1.0" />
-    <set_variable name="Infiltrators" value="1.0" />
+    <set_object_property property="rollDelta" value="0.3" name="GATE_12 Gate" />
+    <set_object_property property="angle" value="4.71238898" name="GATE_12 Gate" />
+    <set_object_property property="pushRadius" value="0.0" name="GATE_12 Gate" />
+    <set_object_property property="artScale" value="1.0" name="GATE_12 Gate" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="758f4b1f-5f21-4d13-ae00-253ad31d2a05" parent_id_arme="2ef7894a-72c8-458a-8d98-44e1c38b6453">
