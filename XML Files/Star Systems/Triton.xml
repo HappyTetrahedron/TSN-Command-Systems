@@ -1,67 +1,71 @@
 <mission_data version="1.7" background_id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4" playerShipNames_arme="TSN Sabre\TSN Valiant\TSN Lancer\TSN Stalker\TSN Viper\TSN Horizon\TSN Necessity\TSN Hunter">
   <start name="Start" id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4">
-    <set_variable name="Coordinate X" value="780.0" integer="yes" />
-    <set_variable name="Coordinate Y" value="466.0" integer="yes" />
+    <set_variable name="Coordinate X" value="770.0" integer="yes" />
+    <set_variable name="Coordinate Y" value="490.0" integer="yes" />
     <set_variable name="Alignment" value="USFP" integer="yes" />
   </start>
-  <folder_arme name="Triton System" id_arme="bca1b0f7-2803-4617-895d-5a2365355c91" />
-  <folder_arme name="Triton Settings" id_arme="352c5b33-563d-4083-a83f-a6bab4571ca3" parent_id_arme="bca1b0f7-2803-4617-895d-5a2365355c91" />
-  <folder_arme name="Triton Menu" id_arme="82c94686-4fd0-476a-a48e-b4f11f16a29f" parent_id_arme="352c5b33-563d-4083-a83f-a6bab4571ca3" />
-  <event name="Triton Active" id_arme="337134ea-f9d6-433b-9cce-8a40014d2f9b" parent_id_arme="82c94686-4fd0-476a-a48e-b4f11f16a29f">
+  <folder_arme name="Triton System" id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <folder_arme name="Triton Settings" id_arme="96f1c40c-0df2-4d1f-b7df-407c3ee2b7e2" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <folder_arme name="Triton Menu" id_arme="a680029d-40d7-4fe7-ac26-951602f65d78" parent_id_arme="96f1c40c-0df2-4d1f-b7df-407c3ee2b7e2" />
+  <event name="Triton Active" id_arme="337134ea-f9d6-433b-9cce-8a40014d2f9b" parent_id_arme="a680029d-40d7-4fe7-ac26-951602f65d78">
     <if_variable name="Activation Menu" comparator="EQUALS" value="1.0" />
     <set_gm_button text="Upper Arc/Triton System" />
     <set_variable name="Triton Gate" value="1.0" integer="yes" />
   </event>
-  <event name="Clear Menu Item" id_arme="a949a464-0553-4fa8-8644-0faeb49a723d" parent_id_arme="82c94686-4fd0-476a-a48e-b4f11f16a29f">
+  <event name="Clear Menu Item" id_arme="a949a464-0553-4fa8-8644-0faeb49a723d" parent_id_arme="a680029d-40d7-4fe7-ac26-951602f65d78">
     <if_variable name="Activation Menu" comparator="EQUALS" value="0.0" />
     <clear_gm_button text="Upper Arc/Triton System" />
   </event>
-  <event name="Triton System" id_arme="574f28a8-7e17-4b5a-90c7-6c325f681710" parent_id_arme="82c94686-4fd0-476a-a48e-b4f11f16a29f">
+  <event name="Triton System" id_arme="574f28a8-7e17-4b5a-90c7-6c325f681710" parent_id_arme="a680029d-40d7-4fe7-ac26-951602f65d78">
     <if_gm_button text="Upper Arc/Triton System" />
     <set_variable name="Sandbox Activation" value="3.0" integer="yes" />
     <set_variable name="Sector" value="104.0" integer="yes" />
     <set_variable name="Triton System" value="1.0" integer="yes" />
     <set_variable name="GM Mode" value="3.0" integer="yes" />
   </event>
-  <event name="Default System Side" id_arme="6c13911f-0a70-4fe6-9625-86714d51a993" parent_id_arme="352c5b33-563d-4083-a83f-a6bab4571ca3">
+  <event name="Default System Side" id_arme="6c13911f-0a70-4fe6-9625-86714d51a993" parent_id_arme="96f1c40c-0df2-4d1f-b7df-407c3ee2b7e2">
     <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="System" />
     <if_variable name="systemSideOverride" comparator="LESS" value="1.0" />
     <set_variable name="systemSide" value="2.0" integer="yes" />
     <set_variable name="System Settings" value="2.0" integer="yes" />
   </event>
-  <event name="System Side Override" id_arme="cd61a7d0-01a8-403b-8b23-8b0c34bdac65" parent_id_arme="352c5b33-563d-4083-a83f-a6bab4571ca3">
+  <event name="System Side Override" id_arme="cd61a7d0-01a8-403b-8b23-8b0c34bdac65" parent_id_arme="96f1c40c-0df2-4d1f-b7df-407c3ee2b7e2">
     <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="System" />
     <if_variable name="systemSideOverride" comparator="GREATER_EQUAL" value="1.0" />
     <set_variable name="systemSide" value="systemSideOverride" integer="yes" />
     <set_variable name="System Settings" value="2.0" integer="yes" />
   </event>
-  <event name="Sector Side Override" id_arme="3f602d27-595b-43f1-8fdb-b80385a8ec79" parent_id_arme="352c5b33-563d-4083-a83f-a6bab4571ca3">
+  <event name="Sector Side Override" id_arme="3f602d27-595b-43f1-8fdb-b80385a8ec79" parent_id_arme="96f1c40c-0df2-4d1f-b7df-407c3ee2b7e2">
     <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="System" />
     <if_variable name="sectorSideOverride" comparator="GREATER_EQUAL" value="1.0" />
     <set_variable name="sectorSide" value="sectorSideOverride" integer="yes" />
     <set_variable name="System Settings" value="3.0" integer="yes" />
   </event>
-  <event name="Sector Side Override (RESET)" id_arme="6e959c03-0cf4-4896-8370-708ee5d520b5" parent_id_arme="352c5b33-563d-4083-a83f-a6bab4571ca3">
+  <event name="Sector Side Override (RESET)" id_arme="6e959c03-0cf4-4896-8370-708ee5d520b5" parent_id_arme="96f1c40c-0df2-4d1f-b7df-407c3ee2b7e2">
     <if_variable name="System Settings" comparator="EQUALS" value="3.0" />
     <set_variable name="sectorSideOverride" value="0.0" integer="yes" />
     <set_variable name="System Settings" value="0.0" integer="yes" />
   </event>
-  <event name="Set Sector Side" id_arme="f729a094-5131-48f9-a880-07becef4410b" parent_id_arme="352c5b33-563d-4083-a83f-a6bab4571ca3">
+  <event name="Set Sector Side" id_arme="f729a094-5131-48f9-a880-07becef4410b" parent_id_arme="96f1c40c-0df2-4d1f-b7df-407c3ee2b7e2">
     <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="System" />
     <if_variable name="sectorSideOverride" comparator="LESS" value="1.0" />
     <set_variable name="sectorSide" value="systemSide" integer="yes" />
     <set_variable name="System Settings" value="0.0" integer="yes" />
   </event>
-  <folder_arme name="Triton Sector I" id_arme="dab48e71-c712-4bec-83a2-e509e2c52e69" parent_id_arme="bca1b0f7-2803-4617-895d-5a2365355c91" />
-  <event name="Create Triton Sector I" id_arme="af370833-1975-4ecf-83b1-9d8d6ad76820" parent_id_arme="dab48e71-c712-4bec-83a2-e509e2c52e69">
+  <folder_arme name="Triton Sector I" id_arme="28dd7353-94e4-45b3-9249-0ec42257871b" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector I" id_arme="c7184d3b-7f52-4991-abcd-99ee8482dd91" parent_id_arme="28dd7353-94e4-45b3-9249-0ec42257871b">
     <if_timer_finished name="Transition" />
     <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="1.0" />
-    <set_skybox_index index="13" />
+    <set_skybox_index index="14" />
+    <create count="100" type="nebulas" nebType="2" startX="86300.0" startY="0.0" startZ="31174.0" endX="24943.0" endY="0.0" endZ="98947.0" randomRange="10000" />
+    <create count="100" type="nebulas" nebType="2" startX="54943.0" startY="0.0" startZ="65546.0" endX="-39693.0" endY="0.0" endZ="166598.0" randomRange="5000" />
+    <create count="100" type="nebulas" nebType="2" startX="88229.0" startY="0.0" startZ="28016.0" endX="60072.0" endY="0.0" endZ="61417.0" randomRange="30000" />
+    <create count="25" type="mines" startAngle="70" endAngle="200" startX="24573.0" startY="0.0" startZ="39240.0" radius="15000" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Grid 5 Transition Enabled" value="1.0" />
     <set_variable name="Grid 1 Transition Enabled" value="0.0" />
@@ -71,14 +75,10 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
-    <create count="100" type="nebulas" nebType="2" startX="86300.0" startY="0.0" startZ="31174.0" endX="24943.0" endY="0.0" endZ="98947.0" randomRange="10000" />
-    <create count="100" type="nebulas" nebType="2" startX="54943.0" startY="0.0" startZ="65546.0" endX="-39693.0" endY="0.0" endZ="166598.0" randomRange="5000" />
-    <create count="100" type="nebulas" nebType="2" startX="88229.0" startY="0.0" startZ="28016.0" endX="60072.0" endY="0.0" endZ="61417.0" randomRange="30000" />
-    <create count="25" type="mines" startAngle="70" endAngle="200" startX="24573.0" startY="0.0" startZ="39240.0" radius="15000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
-  <folder_arme name="Navigation" id_arme="0d4c4d24-4e26-4187-a2c5-745cb681588d" parent_id_arme="dab48e71-c712-4bec-83a2-e509e2c52e69" />
-  <event name="Transition to Sector II" id_arme="19fad6b9-2029-4272-888d-06c99a6eac08" parent_id_arme="0d4c4d24-4e26-4187-a2c5-745cb681588d">
+  <folder_arme name="Navigation" id_arme="424bf7cb-fa09-4d83-a41a-61055bd6eb7e" parent_id_arme="28dd7353-94e4-45b3-9249-0ec42257871b" />
+  <event name="Transition to Sector II" id_arme="bcabeb66-9df3-482d-8f72-e6d42fbc9766" parent_id_arme="424bf7cb-fa09-4d83-a41a-61055bd6eb7e">
     <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="1.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -89,7 +89,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="2.0" integer="yes" />
   </event>
-  <event name="Transition to Sector V" id_arme="a6ccedc4-b4fa-46eb-a167-1a9fc3e56a05" parent_id_arme="0d4c4d24-4e26-4187-a2c5-745cb681588d">
+  <event name="Transition to Sector V" id_arme="c9924754-f975-4014-a447-9d1a91436a39" parent_id_arme="424bf7cb-fa09-4d83-a41a-61055bd6eb7e">
     <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="1.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -100,7 +100,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="5.0" integer="yes" />
   </event>
-  <event name="Transition to (Bottom Right)" id_arme="bbeb4395-b059-431d-8c19-dce2a936783b" parent_id_arme="0d4c4d24-4e26-4187-a2c5-745cb681588d">
+  <event name="Transition to (Bottom Right)" id_arme="3af6d9fe-8cdc-4fe1-9b86-34431028618b" parent_id_arme="424bf7cb-fa09-4d83-a41a-61055bd6eb7e">
     <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="1.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -111,15 +111,15 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="6.0" integer="yes" />
   </event>
-  <folder_arme name="System - Jump Gate Settings" id_arme="108af6b0-06d2-4cd6-9567-b85686d37ac7" parent_id_arme="0d4c4d24-4e26-4187-a2c5-745cb681588d" />
-  <event name="Gate Offline" id_arme="1b096556-56c0-49f3-8e15-1d16a55f1c7d" parent_id_arme="108af6b0-06d2-4cd6-9567-b85686d37ac7">
+  <folder_arme name="System - Jump Gate Settings" id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83" parent_id_arme="424bf7cb-fa09-4d83-a41a-61055bd6eb7e" />
+  <event name="Gate Offline" id_arme="90d63b6d-4f3d-40bc-86f5-dfe24357a66a" parent_id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
     <set_object_property property="rollDelta" value="0.3" name="Waypoint 89 Gate" />
   </event>
-  <folder_arme name="Tracking System" id_arme="6759fdea-6c5f-4d26-8285-46f8794bd83c" parent_id_arme="108af6b0-06d2-4cd6-9567-b85686d37ac7" expanded_arme="" />
-  <event name="Ship1 Activation Range" id_arme="6244042c-29eb-4249-be3f-bb738df726fe" parent_id_arme="6759fdea-6c5f-4d26-8285-46f8794bd83c">
+  <folder_arme name="Tracking System" id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247" parent_id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83" />
+  <event name="Ship1 Activation Range" id_arme="9ee3d7c6-fc41-4126-9f10-ff4740910803" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
@@ -128,7 +128,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship1" value="1.0" />
   </event>
-  <event name="Ship1 Out of Range" id_arme="655e0608-f101-4644-8b27-8ffa37ae218a" parent_id_arme="6759fdea-6c5f-4d26-8285-46f8794bd83c">
+  <event name="Ship1 Out of Range" id_arme="a17eaf43-4ffc-4aab-8b15-1a3117b245d3" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
@@ -137,7 +137,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship1" value="0.0" />
   </event>
-  <event name="Ship2 Activation Range" id_arme="c540bdea-6e75-415f-b964-71b0ecfe977f" parent_id_arme="6759fdea-6c5f-4d26-8285-46f8794bd83c">
+  <event name="Ship2 Activation Range" id_arme="821c7eeb-4bda-470d-b813-db2f91f723f0" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
@@ -146,7 +146,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship2" value="1.0" />
   </event>
-  <event name="Ship2 Out of Range" id_arme="72373527-844e-4e7e-b5dc-354ad9d67ea0" parent_id_arme="6759fdea-6c5f-4d26-8285-46f8794bd83c">
+  <event name="Ship2 Out of Range" id_arme="8538df1f-9f88-48bc-8fd3-25f196f7707d" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
@@ -155,7 +155,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship2" value="0.0" />
   </event>
-  <event name="Ship3 Activation Range" id_arme="493e97d2-ef9a-407d-93da-e60f2a226f5d" parent_id_arme="6759fdea-6c5f-4d26-8285-46f8794bd83c">
+  <event name="Ship3 Activation Range" id_arme="487a4879-0868-4f63-8533-6213ba0d530f" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
@@ -164,7 +164,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship3" value="1.0" />
   </event>
-  <event name="Ship3 Out of Range" id_arme="cb427540-8718-40da-b64b-bee6cf181d65" parent_id_arme="6759fdea-6c5f-4d26-8285-46f8794bd83c">
+  <event name="Ship3 Out of Range" id_arme="cfecc391-c0f4-40c4-ac0c-262dce7f46bb" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
@@ -173,7 +173,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship3" value="0.0" />
   </event>
-  <event name="Ship4 Activation Range" id_arme="581345ca-99d7-4e71-ac81-35c486b3fedc" parent_id_arme="6759fdea-6c5f-4d26-8285-46f8794bd83c">
+  <event name="Ship4 Activation Range" id_arme="f6a229f0-ba8d-42f4-b3a7-e17f26ffaa78" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
@@ -182,7 +182,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship4" value="1.0" />
   </event>
-  <event name="Ship4 Out of Range" id_arme="fdcf4db1-0703-4c1b-bd5e-885d727a0440" parent_id_arme="6759fdea-6c5f-4d26-8285-46f8794bd83c">
+  <event name="Ship4 Out of Range" id_arme="6aefb361-f909-4601-b04d-64ee277ae1fa" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
@@ -191,7 +191,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship4" value="0.0" />
   </event>
-  <event name="Ship5 Activation Range" id_arme="ae25b14c-4c32-4551-99db-e81aff0cba8c" parent_id_arme="6759fdea-6c5f-4d26-8285-46f8794bd83c">
+  <event name="Ship5 Activation Range" id_arme="ab17df6f-e69c-4bb7-88d2-466ab15382a3" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
@@ -200,7 +200,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship5" value="1.0" />
   </event>
-  <event name="Ship5 Out of Range" id_arme="b09df70c-4287-456c-980d-6b15c602b8ff" parent_id_arme="6759fdea-6c5f-4d26-8285-46f8794bd83c">
+  <event name="Ship5 Out of Range" id_arme="305f2236-daf5-477e-a42f-c20a910ca54f" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
@@ -209,7 +209,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship5" value="0.0" />
   </event>
-  <event name="Ship6 Activation Range" id_arme="56b77096-16e9-4844-ae50-b1ace5e8b556" parent_id_arme="6759fdea-6c5f-4d26-8285-46f8794bd83c">
+  <event name="Ship6 Activation Range" id_arme="a06e393a-a845-4ac1-a474-f561bafe34cc" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
@@ -218,7 +218,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship6" value="1.0" />
   </event>
-  <event name="Ship6 Out of Range" id_arme="fce2d664-1d87-4f31-a29d-42c571e37793" parent_id_arme="6759fdea-6c5f-4d26-8285-46f8794bd83c">
+  <event name="Ship6 Out of Range" id_arme="6f3cc0a7-9479-4ed6-8f08-1d2e8862b558" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
@@ -227,7 +227,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship6" value="0.0" />
   </event>
-  <event name="Ship7 Activation Range" id_arme="7c17b77e-375e-4b7f-a34c-a33e5e3ff9ce" parent_id_arme="6759fdea-6c5f-4d26-8285-46f8794bd83c">
+  <event name="Ship7 Activation Range" id_arme="aa322b59-8748-4f26-a9ea-089be033b6fd" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
@@ -236,7 +236,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship7" value="1.0" />
   </event>
-  <event name="Ship7 Out of Range" id_arme="33502ec2-3880-413c-9805-18e7007a43dc" parent_id_arme="6759fdea-6c5f-4d26-8285-46f8794bd83c">
+  <event name="Ship7 Out of Range" id_arme="6605b477-d0b3-406f-98b2-d317c4c1f2b6" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
@@ -245,7 +245,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship7" value="0.0" />
   </event>
-  <event name="Ship8 Activation Range" id_arme="1401d865-a996-4d80-8836-beb9865869cc" parent_id_arme="6759fdea-6c5f-4d26-8285-46f8794bd83c">
+  <event name="Ship8 Activation Range" id_arme="6d6d19a5-7e59-4609-a4d6-057b979f2dfe" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
@@ -254,7 +254,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship8" value="1.0" />
   </event>
-  <event name="Ship8 Out of Range" id_arme="dd7595c0-a6a1-40a9-abcf-fe42b61dbe52" parent_id_arme="6759fdea-6c5f-4d26-8285-46f8794bd83c">
+  <event name="Ship8 Out of Range" id_arme="e727d711-e221-4770-bdcf-0205f51d2e40" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
@@ -263,7 +263,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship8" value="0.0" />
   </event>
-  <event name="Gate Online" id_arme="889a4d6e-2b5b-45d3-aa6e-df2b9f6a9e9b" parent_id_arme="108af6b0-06d2-4cd6-9567-b85686d37ac7">
+  <event name="Gate Online" id_arme="e113c47c-ccd7-48c8-b520-4174a25a8a6a" parent_id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
@@ -275,7 +275,7 @@
     <set_variable name="Gate System" value="2.0" />
     <clear_comms_button text="Activate Gate" sideValue="playerSide" />
   </event>
-  <event name="Jump Initiated" id_arme="065e421d-d408-4f98-9e0e-6d57a17435b8" parent_id_arme="108af6b0-06d2-4cd6-9567-b85686d37ac7">
+  <event name="Jump Initiated" id_arme="cbb7a700-d872-4afe-97b3-23b096f478c8" parent_id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_comms_button text="Jump" />
@@ -292,8 +292,8 @@
     <set_variable name="Gate System" value="0.0" />
     <set_variable name="ExitorRetreat" value="1.0" />
   </event>
-  <folder_arme name="Sector Entities" id_arme="9e6f55da-4a12-4d0d-8689-84a38d73d69a" parent_id_arme="dab48e71-c712-4bec-83a2-e509e2c52e69" />
-  <event name="Generate Sector Entities" id_arme="f5777fc3-6626-43c1-a9ee-8caa1b6ae6fd" parent_id_arme="9e6f55da-4a12-4d0d-8689-84a38d73d69a">
+  <folder_arme name="Sector Entities" id_arme="88c5bf62-190f-4f16-85d7-bd49548eddf2" parent_id_arme="28dd7353-94e4-45b3-9249-0ec42257871b" />
+  <event name="Generate Sector Entities" id_arme="193fdf29-4905-4ed2-a742-8095b701a1d1" parent_id_arme="88c5bf62-190f-4f16-85d7-bd49548eddf2">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
@@ -303,17 +303,17 @@
     <create type="neutral" x="33361.0" y="0.0" z="51228.0" angle="0" name="WP-88" hullID="1052" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
-  <event name="Settings" id_arme="db1b66f1-a86b-428e-84a4-6e3bd1ecdfd9" parent_id_arme="9e6f55da-4a12-4d0d-8689-84a38d73d69a">
+  <event name="Settings" id_arme="8d96ed18-7954-425f-bf7a-7b3fbd9c29be" parent_id_arme="88c5bf62-190f-4f16-85d7-bd49548eddf2">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
-    <set_object_property property="rollDelta" value="0.3" name="Waypoint 89 Gate" />
-    <set_object_property property="angle" value="4.71238898" name="Waypoint 89 Gate" />
-    <set_object_property property="pushRadius" value="0.0" name="Waypoint 89 Gate" />
     <set_object_property property="artScale" value="1.0" name="Waypoint 89 Gate" />
+    <set_object_property property="pushRadius" value="0.0" name="Waypoint 89 Gate" />
+    <set_object_property property="angle" value="4.71238898" name="Waypoint 89 Gate" />
+    <set_object_property property="rollDelta" value="0.3" name="Waypoint 89 Gate" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
-  <event name="Destroy Sector Entities" id_arme="53edcf94-9156-4b85-84e1-477a930fcdb9" parent_id_arme="9e6f55da-4a12-4d0d-8689-84a38d73d69a">
+  <event name="Destroy Sector Entities" id_arme="0d81f86d-6bfb-4ca3-8239-9d752c16a69a" parent_id_arme="88c5bf62-190f-4f16-85d7-bd49548eddf2">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
     <destroy name="Triton I" />
     <destroy name="WP-88" />
@@ -322,7 +322,7 @@
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-  <event name="Arrival From Waypoint 89" id_arme="d55c6b8c-5fbd-4288-bfaa-a9634a8f3f20" parent_id_arme="dab48e71-c712-4bec-83a2-e509e2c52e69">
+  <event name="Arrival From Waypoint 89" id_arme="708fb0d4-2d70-4140-898b-8cb4cbc6d044" parent_id_arme="28dd7353-94e4-45b3-9249-0ec42257871b">
     <if_variable name="Sector" comparator="EQUALS" value="1" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Waypoint 89 to Triton" comparator="EQUALS" value="1.0" />
@@ -345,12 +345,17 @@
     <set_object_property property="angle" value="3.141592654" player_slot="7" />
     <set_variable name="Waypoint 89 to Triton" value="0.0" />
   </event>
-  <folder_arme name="Triton Sector II" id_arme="d45c2904-9b38-40db-90df-ecd23c711e7c" parent_id_arme="bca1b0f7-2803-4617-895d-5a2365355c91" />
-  <event name="Create Triton Sector II" id_arme="05e06ddc-7913-462e-ba0b-dc3187f05960" parent_id_arme="d45c2904-9b38-40db-90df-ecd23c711e7c">
+  <folder_arme name="Triton Sector II" id_arme="2e07c0ef-76b9-430f-8f50-0fda8e47b471" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector II" id_arme="a809ba5b-a4de-453d-a686-511e5e880d0a" parent_id_arme="2e07c0ef-76b9-430f-8f50-0fda8e47b471">
     <if_timer_finished name="Transition" />
     <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
-    <set_skybox_index index="13" />
+    <set_skybox_index index="14" />
+    <create count="100" type="nebulas" nebType="1" startX="51701.0" startY="0.0" startZ="52186.0" endX="26102.0" endY="0.0" endZ="23157.0" randomRange="14000" />
+    <create count="100" type="nebulas" nebType="1" startX="68948.0" startY="0.0" startZ="72105.0" endX="-11186.0" endY="0.0" endZ="-17896.0" randomRange="7000" />
+    <create count="50" type="asteroids" startX="57652.0" startY="0.0" startZ="79271.0" endX="38369.0" endY="0.0" endZ="53765.0" randomRange="3000" />
+    <create count="30" type="asteroids" startX="49150.0" startY="0.0" startZ="68097.0" endX="25616.0" endY="0.0" endZ="36761.0" randomRange="6000" />
+    <create count="10" type="nebulas" nebType="1" startX="2010.0" startY="0.0" startZ="98590.0" endX="2010.0" endY="0.0" endZ="98590.0" randomRange="5000" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Grid 5 Transition Enabled" value="1.0" />
     <set_variable name="Grid 1 Transition Enabled" value="1.0" />
@@ -360,15 +365,10 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
-    <create count="100" type="nebulas" nebType="1" startX="51701.0" startY="0.0" startZ="52186.0" endX="26102.0" endY="0.0" endZ="23157.0" randomRange="14000" />
-    <create count="100" type="nebulas" nebType="1" startX="68948.0" startY="0.0" startZ="72105.0" endX="-11186.0" endY="0.0" endZ="-17896.0" randomRange="7000" />
-    <create count="50" type="asteroids" startX="57652.0" startY="0.0" startZ="79271.0" endX="38369.0" endY="0.0" endZ="53765.0" randomRange="3000" />
-    <create count="30" type="asteroids" startX="49150.0" startY="0.0" startZ="68097.0" endX="25616.0" endY="0.0" endZ="36761.0" randomRange="6000" />
-    <create count="10" type="nebulas" nebType="1" startX="2010.0" startY="0.0" startZ="98590.0" endX="2010.0" endY="0.0" endZ="98590.0" randomRange="5000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
-  <folder_arme name="Navigation" id_arme="66e83ed2-a04d-4fdd-96ba-5968185119b6" parent_id_arme="d45c2904-9b38-40db-90df-ecd23c711e7c" />
-  <event name="Transition to Sector III" id_arme="5e687f17-89bd-4a6a-97dc-d9d8263468e1" parent_id_arme="66e83ed2-a04d-4fdd-96ba-5968185119b6">
+  <folder_arme name="Navigation" id_arme="f9a1e8c3-e8a7-4f25-83f3-06b21b03d75e" parent_id_arme="2e07c0ef-76b9-430f-8f50-0fda8e47b471" />
+  <event name="Transition to Sector III" id_arme="a3adbe75-527b-4693-bd45-83dad22af448" parent_id_arme="f9a1e8c3-e8a7-4f25-83f3-06b21b03d75e">
     <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -379,7 +379,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="3.0" integer="yes" />
   </event>
-  <event name="Transition to Sector I" id_arme="6643dc2c-a2d8-417b-a031-a114c8a972bd" parent_id_arme="66e83ed2-a04d-4fdd-96ba-5968185119b6">
+  <event name="Transition to Sector I" id_arme="4f9099f6-6ea6-49af-b5ba-87fae50ca815" parent_id_arme="f9a1e8c3-e8a7-4f25-83f3-06b21b03d75e">
     <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -390,7 +390,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="1.0" integer="yes" />
   </event>
-  <event name="Transition to Sector VI" id_arme="08b6e0a5-6925-4a3b-88c0-a03688aa44a2" parent_id_arme="66e83ed2-a04d-4fdd-96ba-5968185119b6">
+  <event name="Transition to Sector VI" id_arme="b9e70cde-5226-48f6-8745-2c0ae32565fe" parent_id_arme="f9a1e8c3-e8a7-4f25-83f3-06b21b03d75e">
     <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -401,7 +401,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="6.0" integer="yes" />
   </event>
-  <event name="Transition to (Bottom Right)" id_arme="4f69e830-c58a-4d61-aab1-fa0a6ff8a711" parent_id_arme="66e83ed2-a04d-4fdd-96ba-5968185119b6">
+  <event name="Transition to (Bottom Right)" id_arme="3224c18e-b2bc-4d83-9760-1680985ab27d" parent_id_arme="f9a1e8c3-e8a7-4f25-83f3-06b21b03d75e">
     <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -412,7 +412,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="7.0" integer="yes" />
   </event>
-  <event name="Transition to (Bottom Left)" id_arme="505b9036-4778-4868-9f8c-7b4295db590e" parent_id_arme="66e83ed2-a04d-4fdd-96ba-5968185119b6">
+  <event name="Transition to (Bottom Left)" id_arme="a3367a1f-ac50-4006-b65d-f374608fa57b" parent_id_arme="f9a1e8c3-e8a7-4f25-83f3-06b21b03d75e">
     <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -423,8 +423,8 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="5.0" integer="yes" />
   </event>
-  <folder_arme name="Sector Entities" id_arme="6dda00d6-1fd5-41b7-8dc4-737611587d74" parent_id_arme="d45c2904-9b38-40db-90df-ecd23c711e7c" />
-  <event name="Generate Sector Entities" id_arme="7136e2f7-9c84-4ce6-a51d-7a4051bd10d6" parent_id_arme="6dda00d6-1fd5-41b7-8dc4-737611587d74">
+  <folder_arme name="Sector Entities" id_arme="f327503d-6438-48ab-8a1d-d9db64972062" parent_id_arme="2e07c0ef-76b9-430f-8f50-0fda8e47b471" />
+  <event name="Generate Sector Entities" id_arme="351e8c78-00ed-4923-99be-5c92b087a3de" parent_id_arme="f327503d-6438-48ab-8a1d-d9db64972062">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
@@ -435,14 +435,14 @@
     <create type="neutral" x="32389.0" y="0.0" z="47813.0" angle="0" name="I-280" hullID="1051" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
-  <event name="Settings" id_arme="21006e29-94c0-468f-ad5f-c04136e70bb5" parent_id_arme="6dda00d6-1fd5-41b7-8dc4-737611587d74">
+  <event name="Settings" id_arme="4fdfaa34-e608-4fe7-b16d-4f1cd220b319" parent_id_arme="f327503d-6438-48ab-8a1d-d9db64972062">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
     <set_ship_text name="Tarnis Nebula Refinery" desc="The finest refinery for natural gases in Triton. Stop by for helium, helium-3, xenon, vaporized tobacco, many more!" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
-  <event name="Destroy Sector Entities" id_arme="8642d13c-12ae-474b-a01d-06bfe4f19814" parent_id_arme="6dda00d6-1fd5-41b7-8dc4-737611587d74">
+  <event name="Destroy Sector Entities" id_arme="2c7e4c3f-da71-4639-9b0d-c7027b29d3c6" parent_id_arme="f327503d-6438-48ab-8a1d-d9db64972062">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
     <destroy name="Triton II" />
     <destroy name="I-280" />
@@ -452,12 +452,18 @@
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-  <folder_arme name="Triton Sector III" id_arme="a63896d3-1233-41f4-aa06-9f9e4bf9e3ba" parent_id_arme="bca1b0f7-2803-4617-895d-5a2365355c91" />
-  <event name="Create Triton Sector III" id_arme="0efe808e-38cb-40fe-85b9-40ba33e3bc06" parent_id_arme="a63896d3-1233-41f4-aa06-9f9e4bf9e3ba">
+  <folder_arme name="Triton Sector III" id_arme="6906c031-0705-49d7-b06e-0b6d1d786498" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector III" id_arme="a4fc3ba1-4e8e-48ee-bcc6-797c3dfcaafd" parent_id_arme="6906c031-0705-49d7-b06e-0b6d1d786498">
     <if_timer_finished name="Transition" />
     <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="3.0" />
-    <set_skybox_index index="13" />
+    <set_skybox_index index="14" />
+    <create count="100" type="nebulas" nebType="1" startX="30567.0" startY="0.0" startZ="31417.0" endX="99534.0" endY="0.0" endZ="98461.0" randomRange="7000" />
+    <create count="70" type="nebulas" startX="33118.0" startY="0.0" startZ="31781.0" endX="81865.0" endY="0.0" endZ="81155.0" randomRange="14000" />
+    <create count="30" type="nebulas" startX="76833.0" startY="0.0" startZ="76475.0" endX="99467.0" endY="0.0" endZ="99493.0" randomRange="4000" />
+    <create count="30" type="asteroids" startX="41498.0" startY="0.0" startZ="38825.0" endX="64132.0" endY="0.0" endZ="61843.0" randomRange="4000" />
+    <create count="30" type="nebulas" startX="2268.0" startY="0.0" startZ="84372.0" endX="24902.0" endY="0.0" endZ="107390.0" randomRange="14000" />
+    <create count="30" type="nebulas" startX="1296.0" startY="0.0" startZ="96639.0" endX="23930.0" endY="0.0" endZ="119657.0" randomRange="4000" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Grid 5 Transition Enabled" value="1.0" />
     <set_variable name="Grid 1 Transition Enabled" value="1.0" />
@@ -467,16 +473,10 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
-    <create count="100" type="nebulas" nebType="1" startX="30567.0" startY="0.0" startZ="31417.0" endX="99534.0" endY="0.0" endZ="98461.0" randomRange="7000" />
-    <create count="70" type="nebulas" startX="33118.0" startY="0.0" startZ="31781.0" endX="81865.0" endY="0.0" endZ="81155.0" randomRange="14000" />
-    <create count="30" type="nebulas" startX="76833.0" startY="0.0" startZ="76475.0" endX="99467.0" endY="0.0" endZ="99493.0" randomRange="4000" />
-    <create count="30" type="asteroids" startX="41498.0" startY="0.0" startZ="38825.0" endX="64132.0" endY="0.0" endZ="61843.0" randomRange="4000" />
-    <create count="30" type="nebulas" startX="2268.0" startY="0.0" startZ="84372.0" endX="24902.0" endY="0.0" endZ="107390.0" randomRange="14000" />
-    <create count="30" type="nebulas" startX="1296.0" startY="0.0" startZ="96639.0" endX="23930.0" endY="0.0" endZ="119657.0" randomRange="4000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
-  <folder_arme name="Navigation" id_arme="29fe9fa3-0019-4942-b9b1-54a5d16072ec" parent_id_arme="a63896d3-1233-41f4-aa06-9f9e4bf9e3ba" />
-  <event name="Transition to Sector IV" id_arme="594f0235-d7f8-44b5-b01a-78332c66000d" parent_id_arme="29fe9fa3-0019-4942-b9b1-54a5d16072ec">
+  <folder_arme name="Navigation" id_arme="00a7a66b-e7a2-486b-b16f-262d703dbc91" parent_id_arme="6906c031-0705-49d7-b06e-0b6d1d786498" />
+  <event name="Transition to Sector IV" id_arme="57d8baa5-19a2-4e00-a989-f223339af5f9" parent_id_arme="00a7a66b-e7a2-486b-b16f-262d703dbc91">
     <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="3.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -487,7 +487,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="4.0" integer="yes" />
   </event>
-  <event name="Transition to Sector II" id_arme="7dd0e191-6729-4cd9-8d1a-d4d6ff958485" parent_id_arme="29fe9fa3-0019-4942-b9b1-54a5d16072ec">
+  <event name="Transition to Sector II" id_arme="c7c3edc9-1a04-4ab2-ae8b-a9a0aad7e977" parent_id_arme="00a7a66b-e7a2-486b-b16f-262d703dbc91">
     <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="3.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -498,7 +498,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="2.0" integer="yes" />
   </event>
-  <event name="Transition to Sector VII" id_arme="1ce9da5a-5e0f-4a54-a4f9-0f17f3239d9c" parent_id_arme="29fe9fa3-0019-4942-b9b1-54a5d16072ec">
+  <event name="Transition to Sector VII" id_arme="ce282d1b-f067-4391-8d79-107f9de5b79d" parent_id_arme="00a7a66b-e7a2-486b-b16f-262d703dbc91">
     <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="3.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -509,7 +509,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="7.0" integer="yes" />
   </event>
-  <event name="Transition to (Bottom Right)" id_arme="67f26557-9e3a-432e-9369-f4b236dac6b6" parent_id_arme="29fe9fa3-0019-4942-b9b1-54a5d16072ec">
+  <event name="Transition to (Bottom Right)" id_arme="232096af-11f7-4f92-ac70-120be8e8f4bd" parent_id_arme="00a7a66b-e7a2-486b-b16f-262d703dbc91">
     <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="3.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -520,7 +520,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="8.0" integer="yes" />
   </event>
-  <event name="Transition to (Bottom Left)" id_arme="e79e4832-ecd6-4d90-a5c8-86ab0ef2a1fa" parent_id_arme="29fe9fa3-0019-4942-b9b1-54a5d16072ec">
+  <event name="Transition to (Bottom Left)" id_arme="fb68de04-80f0-4c85-a3fa-0f7e5e174f90" parent_id_arme="00a7a66b-e7a2-486b-b16f-262d703dbc91">
     <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="3.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -531,8 +531,8 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="6.0" integer="yes" />
   </event>
-  <folder_arme name="Sector Entities" id_arme="8732b5c1-92c9-4938-812f-76158196553b" parent_id_arme="a63896d3-1233-41f4-aa06-9f9e4bf9e3ba" />
-  <event name="Generate Sector Entities" id_arme="70d36331-f4ec-4352-a566-2d32eb9a84ec" parent_id_arme="8732b5c1-92c9-4938-812f-76158196553b">
+  <folder_arme name="Sector Entities" id_arme="5d72b334-8af7-4fb1-82ec-02f429fb34c5" parent_id_arme="6906c031-0705-49d7-b06e-0b6d1d786498" />
+  <event name="Generate Sector Entities" id_arme="883b850d-23ca-4adf-ba6d-4561dc95445a" parent_id_arme="5d72b334-8af7-4fb1-82ec-02f429fb34c5">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="3.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
@@ -542,7 +542,7 @@
     <create type="neutral" x="47936.0" y="0.0" z="54493.0" angle="0" name="Farosh Denabite" hullID="1051" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
-  <event name="Settings" id_arme="844d67e6-5909-4d03-abd8-d5025a146ffc" parent_id_arme="8732b5c1-92c9-4938-812f-76158196553b">
+  <event name="Settings" id_arme="76dfc599-c9cd-4e18-8425-c793a8ebfa27" parent_id_arme="5d72b334-8af7-4fb1-82ec-02f429fb34c5">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="3.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
@@ -550,7 +550,7 @@
     <set_ship_text name="Farosh Denabite" desc="Denabite refinery operated by the Farosh family. Known system-wide for their highly refined products." />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
-  <event name="Destroy Sector Entities" id_arme="cdc81e8f-58d7-49c6-91c7-85d287838585" parent_id_arme="8732b5c1-92c9-4938-812f-76158196553b">
+  <event name="Destroy Sector Entities" id_arme="8469c1c9-73b0-4cfb-9242-099233659f19" parent_id_arme="5d72b334-8af7-4fb1-82ec-02f429fb34c5">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
     <destroy name="Triton III" />
     <destroy name="Farosh Denabite" />
@@ -559,12 +559,16 @@
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-  <folder_arme name="Triton Sector IV" id_arme="56d1cf80-83dd-414f-821b-cd5059d3b66c" parent_id_arme="bca1b0f7-2803-4617-895d-5a2365355c91" />
-  <event name="Create Triton Sector IV" id_arme="c6f17a3e-bbcc-4628-b626-52025fca8580" parent_id_arme="56d1cf80-83dd-414f-821b-cd5059d3b66c">
+  <folder_arme name="Triton Sector IV" id_arme="49e27b78-c734-4108-9f0f-b6ad8a9a3c0d" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector IV" id_arme="b8b5c2f3-b684-4b4e-8654-fd73eb0bdc76" parent_id_arme="49e27b78-c734-4108-9f0f-b6ad8a9a3c0d">
     <if_timer_finished name="Transition" />
     <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="4.0" />
-    <set_skybox_index index="13" />
+    <set_skybox_index index="14" />
+    <create count="100" type="nebulas" startX="92947.0" startY="0.0" startZ="102353.0" endX="64586.0" endY="0.0" endZ="69924.0" randomRange="14000" />
+    <create count="70" type="nebulas" startX="76920.0" startY="0.0" startZ="85312.0" endX="21717.0" endY="0.0" endZ="23004.0" randomRange="10000" />
+    <create count="140" type="nebulas" startX="90689.0" startY="0.0" startZ="99190.0" endX="47702.0" endY="0.0" endZ="52977.0" randomRange="25000" />
+    <create count="30" type="asteroids" startX="37733.0" startY="0.0" startZ="55344.0" endX="19557.0" endY="0.0" endZ="35992.0" randomRange="7000" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Grid 5 Transition Enabled" value="0.0" />
     <set_variable name="Grid 1 Transition Enabled" value="1.0" />
@@ -574,14 +578,10 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-    <create count="100" type="nebulas" startX="92947.0" startY="0.0" startZ="102353.0" endX="64586.0" endY="0.0" endZ="69924.0" randomRange="14000" />
-    <create count="70" type="nebulas" startX="76920.0" startY="0.0" startZ="85312.0" endX="21717.0" endY="0.0" endZ="23004.0" randomRange="10000" />
-    <create count="140" type="nebulas" startX="90689.0" startY="0.0" startZ="99190.0" endX="47702.0" endY="0.0" endZ="52977.0" randomRange="25000" />
-    <create count="30" type="asteroids" startX="37733.0" startY="0.0" startZ="55344.0" endX="19557.0" endY="0.0" endZ="35992.0" randomRange="7000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
-  <folder_arme name="Navigation" id_arme="6f6f1242-f226-432c-b8c4-29a2582dae21" parent_id_arme="56d1cf80-83dd-414f-821b-cd5059d3b66c" />
-  <event name="Transition to Sector III" id_arme="ceb172e4-0701-4017-a7de-c4c2e707da22" parent_id_arme="6f6f1242-f226-432c-b8c4-29a2582dae21">
+  <folder_arme name="Navigation" id_arme="7a6973e3-11fa-4a82-b396-83a3edccf737" parent_id_arme="49e27b78-c734-4108-9f0f-b6ad8a9a3c0d" />
+  <event name="Transition to Sector III" id_arme="7fcdadb7-e01f-4a6f-b436-be36ca9d83cc" parent_id_arme="7a6973e3-11fa-4a82-b396-83a3edccf737">
     <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="4.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -592,7 +592,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="3.0" integer="yes" />
   </event>
-  <event name="Transition to Sector VIII" id_arme="2f873d1c-4af4-4e3f-ac50-66ef5a340267" parent_id_arme="6f6f1242-f226-432c-b8c4-29a2582dae21">
+  <event name="Transition to Sector VIII" id_arme="fd569edc-0a5e-4226-8a2c-850ba9bf1761" parent_id_arme="7a6973e3-11fa-4a82-b396-83a3edccf737">
     <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="4.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -603,7 +603,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="8.0" integer="yes" />
   </event>
-  <event name="Transition to (Bottom Left)" id_arme="56680de9-17e4-4881-b64b-37c0fa19d738" parent_id_arme="6f6f1242-f226-432c-b8c4-29a2582dae21">
+  <event name="Transition to (Bottom Left)" id_arme="ab83c2f7-601a-453a-a90a-4a98db7eadeb" parent_id_arme="7a6973e3-11fa-4a82-b396-83a3edccf737">
     <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="4.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -614,32 +614,35 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="7.0" integer="yes" />
   </event>
-  <folder_arme name="Sector Entities" id_arme="44251d0d-b8ca-45d8-892a-8c66583b86b5" parent_id_arme="56d1cf80-83dd-414f-821b-cd5059d3b66c" />
-  <event name="Generate Sector Entities" id_arme="2ed890ae-1749-481c-80a2-2636120ed8d1" parent_id_arme="44251d0d-b8ca-45d8-892a-8c66583b86b5">
+  <folder_arme name="Sector Entities" id_arme="af47a8b7-d28d-43d6-9fee-cd8261cd4bb3" parent_id_arme="49e27b78-c734-4108-9f0f-b6ad8a9a3c0d" />
+  <event name="Generate Sector Entities" id_arme="0b5f65d4-e50d-45a1-afd2-7429c12bb472" parent_id_arme="af47a8b7-d28d-43d6-9fee-cd8261cd4bb3">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="4.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton IV" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
-  <event name="Settings" id_arme="571b94c4-0b0c-4227-b3ba-c92263b92535" parent_id_arme="44251d0d-b8ca-45d8-892a-8c66583b86b5">
+  <event name="Settings" id_arme="eb9221eb-0471-4a97-9a4a-2bf1abf5f1bb" parent_id_arme="af47a8b7-d28d-43d6-9fee-cd8261cd4bb3">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="4.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
-  <event name="Destroy Sector Entities" id_arme="4fbde690-0b2a-417c-9390-43f8cb975108" parent_id_arme="44251d0d-b8ca-45d8-892a-8c66583b86b5">
+  <event name="Destroy Sector Entities" id_arme="1938269f-0405-410d-9f6a-a4a67a1755e9" parent_id_arme="af47a8b7-d28d-43d6-9fee-cd8261cd4bb3">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
     <destroy name="Triton IV" />
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-  <folder_arme name="Triton Sector V" id_arme="91a6d5d5-51e8-4765-a5d9-6eeadc130298" parent_id_arme="bca1b0f7-2803-4617-895d-5a2365355c91" />
-  <event name="Create Triton Sector V" id_arme="3e9b1524-e24f-4cb0-ad67-1a2a22f3cd5e" parent_id_arme="91a6d5d5-51e8-4765-a5d9-6eeadc130298">
+  <folder_arme name="Triton Sector V" id_arme="1bd2ae32-eb2a-44c5-a373-54271c683e70" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector V" id_arme="58750c96-2d10-4a6f-9325-ddd393d15bb4" parent_id_arme="1bd2ae32-eb2a-44c5-a373-54271c683e70">
     <if_timer_finished name="Transition" />
     <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
-    <set_skybox_index index="13" />
+    <set_skybox_index index="14" />
+    <create count="10" type="nebulas" nebType="2" startX="19903.0" startY="0.0" startZ="5423.0" endX="19903.0" endY="0.0" endZ="5423.0" randomRange="5000" />
+    <create count="15" type="nebulas" nebType="2" startX="25950.0" startY="0.0" startZ="931.0" endX="25950.0" endY="0.0" endZ="931.0" randomRange="7000" />
+    <create count="15" type="nebulas" nebType="1" startX="4618.0" startY="0.0" startZ="98376.0" endX="4618.0" endY="0.0" endZ="98376.0" randomRange="5000" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Grid 5 Transition Enabled" value="1.0" />
     <set_variable name="Grid 1 Transition Enabled" value="0.0" />
@@ -649,13 +652,10 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
-    <create count="10" type="nebulas" nebType="2" startX="19903.0" startY="0.0" startZ="5423.0" endX="19903.0" endY="0.0" endZ="5423.0" randomRange="5000" />
-    <create count="15" type="nebulas" nebType="2" startX="25950.0" startY="0.0" startZ="931.0" endX="25950.0" endY="0.0" endZ="931.0" randomRange="7000" />
-    <create count="15" type="nebulas" nebType="1" startX="4618.0" startY="0.0" startZ="98376.0" endX="4618.0" endY="0.0" endZ="98376.0" randomRange="5000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
-  <folder_arme name="Navigation" id_arme="d96e40b6-dafa-4613-9e46-efe84cc1f414" parent_id_arme="91a6d5d5-51e8-4765-a5d9-6eeadc130298" />
-  <event name="Transition to Sector VI" id_arme="b9b56ba1-c398-4a2c-978c-81684c044fcd" parent_id_arme="d96e40b6-dafa-4613-9e46-efe84cc1f414">
+  <folder_arme name="Navigation" id_arme="ebf0e097-14a2-4578-b134-a62f584db216" parent_id_arme="1bd2ae32-eb2a-44c5-a373-54271c683e70" />
+  <event name="Transition to Sector VI" id_arme="8f8fb367-3402-460f-80c5-a0164e47aeef" parent_id_arme="ebf0e097-14a2-4578-b134-a62f584db216">
     <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -666,7 +666,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="6.0" integer="yes" />
   </event>
-  <event name="Transition to Sector I" id_arme="afe53c24-8464-4e65-9427-d66c519553f2" parent_id_arme="d96e40b6-dafa-4613-9e46-efe84cc1f414">
+  <event name="Transition to Sector I" id_arme="cd0ad1a5-6a0c-4da4-ac7f-1804af6c33e2" parent_id_arme="ebf0e097-14a2-4578-b134-a62f584db216">
     <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -677,7 +677,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="1.0" integer="yes" />
   </event>
-  <event name="Transition to Sector IX" id_arme="108e2e2a-c847-44a6-9c3b-1a2e913a5b1d" parent_id_arme="d96e40b6-dafa-4613-9e46-efe84cc1f414">
+  <event name="Transition to Sector IX" id_arme="3e4f1a5d-9518-4fb1-b606-275054180a63" parent_id_arme="ebf0e097-14a2-4578-b134-a62f584db216">
     <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -688,7 +688,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="9.0" integer="yes" />
   </event>
-  <event name="Transition to (Bottom Right)" id_arme="39e34a77-5d6f-44fe-83ce-e25a2a813e35" parent_id_arme="d96e40b6-dafa-4613-9e46-efe84cc1f414">
+  <event name="Transition to (Bottom Right)" id_arme="ff2b9451-d4e5-4077-a287-aec1ed801449" parent_id_arme="ebf0e097-14a2-4578-b134-a62f584db216">
     <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -699,7 +699,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="10.0" integer="yes" />
   </event>
-  <event name="Transition to (Top Right)" id_arme="c58d6a34-8f51-483e-b03d-e417819aa51b" parent_id_arme="d96e40b6-dafa-4613-9e46-efe84cc1f414">
+  <event name="Transition to (Top Right)" id_arme="b76c2cfa-d8b9-48f5-baea-363d03340ebf" parent_id_arme="ebf0e097-14a2-4578-b134-a62f584db216">
     <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -710,8 +710,8 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="2.0" integer="yes" />
   </event>
-  <folder_arme name="Sector Entities" id_arme="b0059b05-f68c-4801-bbd9-1340d509c37e" parent_id_arme="91a6d5d5-51e8-4765-a5d9-6eeadc130298" />
-  <event name="Generate Sector Entities" id_arme="fa5c5bd8-d9c2-45aa-9080-15dbfa33f8cf" parent_id_arme="b0059b05-f68c-4801-bbd9-1340d509c37e">
+  <folder_arme name="Sector Entities" id_arme="379d893a-df52-4948-9e53-47728583800f" parent_id_arme="1bd2ae32-eb2a-44c5-a373-54271c683e70" />
+  <event name="Generate Sector Entities" id_arme="71676cd5-c73a-41c2-964b-37785f107576" parent_id_arme="379d893a-df52-4948-9e53-47728583800f">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
@@ -719,35 +719,26 @@
     <create type="neutral" x="77450.0" y="0.0" z="39068.0" angle="0" name="Triton Refuge" hullID="1001" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
-  <event name="Settings" id_arme="eed7aa37-5d13-4e51-b503-b6da15aa4f6d" parent_id_arme="b0059b05-f68c-4801-bbd9-1340d509c37e">
+  <event name="Settings" id_arme="847a4ea1-8714-4890-a5fa-5c74054c0ad1" parent_id_arme="379d893a-df52-4948-9e53-47728583800f">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
     <set_ship_text name="Triton Refuge" desc="Luxury refuge for wealthy USFP citizens looking to get away from everything. &quot;Care about nothing but the distant glimmering stars.&quot; 3 habitation units available." />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
-  <event name="Destroy Sector Entities" id_arme="c427652d-8fd9-43e1-bb2f-67b753aeec79" parent_id_arme="b0059b05-f68c-4801-bbd9-1340d509c37e">
+  <event name="Destroy Sector Entities" id_arme="548b1b9b-67fa-44c9-a43a-49bcfa7d4d29" parent_id_arme="379d893a-df52-4948-9e53-47728583800f">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
     <destroy name="Triton V" />
     <destroy name="Triton Refuge" />
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-  <folder_arme name="Triton Sector VI" id_arme="3528977f-4e4d-4113-84f7-70ce9e3284d9" parent_id_arme="bca1b0f7-2803-4617-895d-5a2365355c91" />
-  <event name="Create Triton Sector VI" id_arme="7f5baa29-d698-4439-9a1b-af6c9775c2a7" parent_id_arme="3528977f-4e4d-4113-84f7-70ce9e3284d9">
+  <folder_arme name="Triton Sector VI" id_arme="f806cbc0-4187-40fc-b1bc-12f24226032b" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector VI" id_arme="ab3896b3-05a7-4ad8-97fa-e2fead9c2506" parent_id_arme="f806cbc0-4187-40fc-b1bc-12f24226032b">
     <if_timer_finished name="Transition" />
     <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
-    <set_skybox_index index="13" />
-    <set_variable name="Sector Entities" value="1.0" />
-    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
-    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
-    <set_variable name="Grid E Transition Enabled" value="1.0" />
-    <set_variable name="Grid A Transition Enabled" value="1.0" />
-    <set_variable name="Corner A1 Transition Enabled" value="1.0" />
-    <set_variable name="Corner A5 Transition Enabled" value="1.0" />
-    <set_variable name="Corner E1 Transition Enabled" value="1.0" />
-    <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+    <set_skybox_index index="14" />
     <create count="150" type="nebulas" nebType="1" startX="70527.0" startY="0.0" startZ="65425.0" radius="30000" randomRange="1000" />
     <create count="200" type="nebulas" nebType="1" startX="70284.0" startY="0.0" startZ="65303.0" radius="33000" randomRange="3000" />
     <create count="50" type="nebulas" nebType="1" startAngle="270" endAngle="330" startX="8299.0" startY="0.0" startZ="52946.0" radius="33000" randomRange="3000" />
@@ -759,10 +750,19 @@
     <create count="20" type="nebulas" nebType="1" startX="27409.0" startY="0.0" startZ="23643.0" endX="2744.0" endY="0.0" endZ="688.0" randomRange="10000" randomSeed="1" />
     <create count="10" type="nebulas" nebType="1" startX="86559.0" startY="0.0" startZ="95910.0" endX="86559.0" endY="0.0" endZ="95910.0" randomRange="3000" />
     <create count="10" type="nebulas" nebType="1" startX="98583.0" startY="0.0" startZ="84251.0" endX="98583.0" endY="0.0" endZ="84251.0" randomRange="3000" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="1.0" />
     <set_variable name="Triton System" value="2.0" />
   </event>
-  <folder_arme name="Navigation" id_arme="f940cf2e-0e27-4c91-be89-11baf733e35c" parent_id_arme="3528977f-4e4d-4113-84f7-70ce9e3284d9" />
-  <event name="Transition to Sector VII" id_arme="8dcc3ea3-7ac2-4be7-a391-648f38c7ea96" parent_id_arme="f940cf2e-0e27-4c91-be89-11baf733e35c">
+  <folder_arme name="Navigation" id_arme="b4e95e77-c03c-46b9-bb1b-250ae92c8cf4" parent_id_arme="f806cbc0-4187-40fc-b1bc-12f24226032b" />
+  <event name="Transition to Sector VII" id_arme="08bb3e76-d107-4f90-b440-373a73882fe6" parent_id_arme="b4e95e77-c03c-46b9-bb1b-250ae92c8cf4">
     <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -773,7 +773,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="7.0" integer="yes" />
   </event>
-  <event name="Transition to Sector V" id_arme="dea94378-1d42-4ad7-b793-7fc1c5091613" parent_id_arme="f940cf2e-0e27-4c91-be89-11baf733e35c">
+  <event name="Transition to Sector V" id_arme="fb110a74-d0c1-4aad-9601-b5de3aa6110c" parent_id_arme="b4e95e77-c03c-46b9-bb1b-250ae92c8cf4">
     <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -784,7 +784,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="5.0" integer="yes" />
   </event>
-  <event name="Transition to Sector II" id_arme="c55ae6f1-dfee-4756-ae09-e2d305b27f00" parent_id_arme="f940cf2e-0e27-4c91-be89-11baf733e35c">
+  <event name="Transition to Sector II" id_arme="4cd53a67-89e6-45f4-a1be-8ac60e9337a7" parent_id_arme="b4e95e77-c03c-46b9-bb1b-250ae92c8cf4">
     <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -795,7 +795,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="2.0" integer="yes" />
   </event>
-  <event name="Transition to Sector X" id_arme="4301ad8e-fa84-4ce9-a04f-83522ea85a8e" parent_id_arme="f940cf2e-0e27-4c91-be89-11baf733e35c">
+  <event name="Transition to Sector X" id_arme="29240600-5461-4c59-80a4-9bbba75699ee" parent_id_arme="b4e95e77-c03c-46b9-bb1b-250ae92c8cf4">
     <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -806,7 +806,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="10.0" integer="yes" />
   </event>
-  <event name="Transition to (Bottom Right)" id_arme="ccd33115-6272-4b21-a9cd-4a225ca72425" parent_id_arme="f940cf2e-0e27-4c91-be89-11baf733e35c">
+  <event name="Transition to (Bottom Right)" id_arme="eda6cea8-c990-4ebc-968c-73911753e6d7" parent_id_arme="b4e95e77-c03c-46b9-bb1b-250ae92c8cf4">
     <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -817,7 +817,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="11.0" integer="yes" />
   </event>
-  <event name="Transition to (Top Right)" id_arme="16e30499-d04f-4319-be29-5eecb49e2b38" parent_id_arme="f940cf2e-0e27-4c91-be89-11baf733e35c">
+  <event name="Transition to (Top Right)" id_arme="ce26424c-f90d-4315-b5d4-675c0e6fee10" parent_id_arme="b4e95e77-c03c-46b9-bb1b-250ae92c8cf4">
     <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -828,7 +828,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="3.0" integer="yes" />
   </event>
-  <event name="Transition to (Bottom Left)" id_arme="91197a01-77b9-47c0-a551-ff1ea0b4c9a5" parent_id_arme="f940cf2e-0e27-4c91-be89-11baf733e35c">
+  <event name="Transition to (Bottom Left)" id_arme="27f179a4-ff8d-44ff-925e-d2c1bc5d5dff" parent_id_arme="b4e95e77-c03c-46b9-bb1b-250ae92c8cf4">
     <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -839,7 +839,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="9.0" integer="yes" />
   </event>
-  <event name="Transition to (Top Left)" id_arme="93157941-3061-43a2-9ac8-ba85d1478eba" parent_id_arme="f940cf2e-0e27-4c91-be89-11baf733e35c">
+  <event name="Transition to (Top Left)" id_arme="e3443c0e-a92b-4c09-ad0e-2e3bf4d43c4f" parent_id_arme="b4e95e77-c03c-46b9-bb1b-250ae92c8cf4">
     <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -850,39 +850,44 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="1.0" integer="yes" />
   </event>
-  <folder_arme name="Sector Entities" id_arme="18d82190-69d3-4244-8cf1-62116afa7717" parent_id_arme="3528977f-4e4d-4113-84f7-70ce9e3284d9" />
-  <event name="Generate Sector Entities" id_arme="dca22b54-5ed9-4826-9120-0d9620d32da9" parent_id_arme="18d82190-69d3-4244-8cf1-62116afa7717">
+  <folder_arme name="Sector Entities" id_arme="4034ee67-c0fb-4f10-b747-1a6ed5015fd4" parent_id_arme="f806cbc0-4187-40fc-b1bc-12f24226032b" />
+  <event name="Generate Sector Entities" id_arme="b8313b11-d96e-454f-a2c5-873b1e438dfe" parent_id_arme="4034ee67-c0fb-4f10-b747-1a6ed5015fd4">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" angle="0" name="Triton VI" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton VI" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <create type="neutral" x="22500.0" y="0.0" z="53524.0" angle="0" name="Cassandra Observation" hullID="1004" />
     <create type="blackHole" x="70527.0" y="0.0" z="65303.0" name="Cassandra Black Hole" />
-    <create type="genericMesh" x="70452.0" y="0.0" z="65338.0" angle="0" name="Cassandra" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="0.0" colorBlue="1.0" />
+    <create type="genericMesh" x="70452.0" y="0.0" z="68646.0" name="Cassandra" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="0.0" colorBlue="1.0" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
-  <event name="Settings" id_arme="fae5afe6-3619-4cc3-a46f-266e144b81e6" parent_id_arme="18d82190-69d3-4244-8cf1-62116afa7717">
+  <event name="Settings" id_arme="66c45ac7-8cef-45dc-8ec7-4c62ad3d0664" parent_id_arme="4034ee67-c0fb-4f10-b747-1a6ed5015fd4">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
     <set_ship_text name="Cassandra Observation" desc="Observation and research post studying Schwarzschild phenomena on the rim of Cassandra. LOOKING FOR PhD/RESEARCH PROJECT? Contact us." />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
-  <event name="Destroy Sector Entities" id_arme="ccb70178-d7e9-49ca-b86e-1755aa975087" parent_id_arme="18d82190-69d3-4244-8cf1-62116afa7717">
+  <event name="Destroy Sector Entities" id_arme="3649b11d-3b56-49ab-b2ed-932383e7ae75" parent_id_arme="4034ee67-c0fb-4f10-b747-1a6ed5015fd4">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
     <destroy name="Triton VI" />
     <destroy name="Cassandra Observation" />
-    <destroy name="Cassandra" />
     <destroy name="Cassandra Black Hole" />
+    <destroy name="Cassandra" />
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-  <folder_arme name="Triton Sector VII" id_arme="0a96d9c8-057b-480d-8070-1287fe075b9a" parent_id_arme="bca1b0f7-2803-4617-895d-5a2365355c91" />
-  <event name="Create Triton Sector VII" id_arme="1a0e6e37-a36e-4d83-9b7f-f1d2dafab607" parent_id_arme="0a96d9c8-057b-480d-8070-1287fe075b9a">
+  <folder_arme name="Triton Sector VII" id_arme="cb405639-a64c-4f68-9dd8-56b91558e351" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector VII" id_arme="0e82ab1d-af45-412b-a825-b41a4d78269c" parent_id_arme="cb405639-a64c-4f68-9dd8-56b91558e351">
     <if_timer_finished name="Transition" />
     <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
-    <set_skybox_index index="13" />
+    <set_skybox_index index="14" />
+    <create count="5" type="nebulas" nebType="1" startX="99177.0" startY="0.0" startZ="2266.0" endX="99177.0" endY="0.0" endZ="2266.0" randomRange="3000" />
+    <create count="50" type="nebulas" startX="78057.0" startY="0.0" startZ="76963.0" endX="7614.0" endY="0.0" endZ="2024.0" randomRange="5000" />
+    <create count="100" type="nebulas" startX="41863.0" startY="0.0" startZ="41619.0" endX="5428.0" endY="0.0" endZ="3360.0" randomRange="15000" />
+    <create count="100" type="nebulas" startX="28503.0" startY="0.0" startZ="26072.0" endX="5792.0" endY="0.0" endZ="4696.0" randomRange="20000" />
+    <create count="10" type="asteroids" startX="45110.0" startY="0.0" startZ="42834.0" endX="22399.0" endY="0.0" endZ="21458.0" randomRange="20000" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Grid 5 Transition Enabled" value="1.0" />
     <set_variable name="Grid 1 Transition Enabled" value="1.0" />
@@ -892,15 +897,10 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="1.0" />
-    <create count="5" type="nebulas" nebType="1" startX="99177.0" startY="0.0" startZ="2266.0" endX="99177.0" endY="0.0" endZ="2266.0" randomRange="3000" />
-    <create count="50" type="nebulas" startX="78057.0" startY="0.0" startZ="76963.0" endX="7614.0" endY="0.0" endZ="2024.0" randomRange="5000" />
-    <create count="100" type="nebulas" startX="41863.0" startY="0.0" startZ="41619.0" endX="5428.0" endY="0.0" endZ="3360.0" randomRange="15000" />
-    <create count="100" type="nebulas" startX="28503.0" startY="0.0" startZ="26072.0" endX="5792.0" endY="0.0" endZ="4696.0" randomRange="20000" />
-    <create count="10" type="asteroids" startX="45110.0" startY="0.0" startZ="42834.0" endX="22399.0" endY="0.0" endZ="21458.0" randomRange="20000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
-  <folder_arme name="Navigation" id_arme="7425276f-138a-48a1-9495-a5ffcf8e596c" parent_id_arme="0a96d9c8-057b-480d-8070-1287fe075b9a" />
-  <event name="Transition to Sector VIII" id_arme="935559c0-8308-4584-af87-86c46974bdc7" parent_id_arme="7425276f-138a-48a1-9495-a5ffcf8e596c">
+  <folder_arme name="Navigation" id_arme="fa6edee0-b01a-438e-b69b-199da7cb16ce" parent_id_arme="cb405639-a64c-4f68-9dd8-56b91558e351" />
+  <event name="Transition to Sector VIII" id_arme="138ead23-dbfd-44aa-81d8-bd1ceff7ea12" parent_id_arme="fa6edee0-b01a-438e-b69b-199da7cb16ce">
     <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -911,7 +911,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="8.0" integer="yes" />
   </event>
-  <event name="Transition to Sector VI" id_arme="d1821d16-eaac-4bda-8a96-8743fe800484" parent_id_arme="7425276f-138a-48a1-9495-a5ffcf8e596c">
+  <event name="Transition to Sector VI" id_arme="e883319d-5329-4884-94b1-950c25c55d5f" parent_id_arme="fa6edee0-b01a-438e-b69b-199da7cb16ce">
     <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -922,7 +922,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="6.0" integer="yes" />
   </event>
-  <event name="Transition to Sector III" id_arme="92561fe5-c41f-479b-b0d8-925a019b602d" parent_id_arme="7425276f-138a-48a1-9495-a5ffcf8e596c">
+  <event name="Transition to Sector III" id_arme="f1ff9eb0-c411-4d8c-93aa-968572f9730d" parent_id_arme="fa6edee0-b01a-438e-b69b-199da7cb16ce">
     <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -933,7 +933,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="3.0" integer="yes" />
   </event>
-  <event name="Transition to Sector XI" id_arme="95bea460-9388-41d7-93e3-933868bb1f51" parent_id_arme="7425276f-138a-48a1-9495-a5ffcf8e596c">
+  <event name="Transition to Sector XI" id_arme="752aa281-c29f-4d42-ad4b-f005951ea124" parent_id_arme="fa6edee0-b01a-438e-b69b-199da7cb16ce">
     <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -944,7 +944,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="11.0" integer="yes" />
   </event>
-  <event name="Transition to (Bottom Right)" id_arme="4be2f638-bd73-4146-8b65-56ddf0c78504" parent_id_arme="7425276f-138a-48a1-9495-a5ffcf8e596c">
+  <event name="Transition to (Bottom Right)" id_arme="de61506a-c0c4-47a7-b2b1-a57ee8cce468" parent_id_arme="fa6edee0-b01a-438e-b69b-199da7cb16ce">
     <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -955,7 +955,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="12.0" integer="yes" />
   </event>
-  <event name="Transition to (Top Right)" id_arme="2e1a8472-fd37-4646-8a9d-260863c52aeb" parent_id_arme="7425276f-138a-48a1-9495-a5ffcf8e596c">
+  <event name="Transition to (Top Right)" id_arme="db71a496-f8cd-45f0-93fd-3459ab77f9a9" parent_id_arme="fa6edee0-b01a-438e-b69b-199da7cb16ce">
     <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -966,7 +966,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="4.0" integer="yes" />
   </event>
-  <event name="Transition to (Bottom Left)" id_arme="bd8e618b-6093-4763-9b94-4a06aff4fc7a" parent_id_arme="7425276f-138a-48a1-9495-a5ffcf8e596c">
+  <event name="Transition to (Bottom Left)" id_arme="840f44f0-b9b3-4f2e-8322-bb96cff3e996" parent_id_arme="fa6edee0-b01a-438e-b69b-199da7cb16ce">
     <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -977,7 +977,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="10.0" integer="yes" />
   </event>
-  <event name="Transition to (Top Left)" id_arme="f2c040bc-3204-4f53-96b0-c62f6e3586ef" parent_id_arme="7425276f-138a-48a1-9495-a5ffcf8e596c">
+  <event name="Transition to (Top Left)" id_arme="919f1fbe-b3b5-43fe-9ca9-a36fa1889deb" parent_id_arme="fa6edee0-b01a-438e-b69b-199da7cb16ce">
     <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -988,8 +988,8 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="2.0" integer="yes" />
   </event>
-  <folder_arme name="Sector Entities" id_arme="a0275c82-5b18-4dbd-b8b1-d866e49e4406" parent_id_arme="0a96d9c8-057b-480d-8070-1287fe075b9a" />
-  <event name="Generate Sector Entities" id_arme="9702b6df-d4ba-45ce-b7b3-52730d3a4cac" parent_id_arme="a0275c82-5b18-4dbd-b8b1-d866e49e4406">
+  <folder_arme name="Sector Entities" id_arme="2261acc7-879c-4520-b456-245d9af95c5f" parent_id_arme="cb405639-a64c-4f68-9dd8-56b91558e351" />
+  <event name="Generate Sector Entities" id_arme="9ed6791b-36f2-44b1-ad3d-c2131877d2ad" parent_id_arme="2261acc7-879c-4520-b456-245d9af95c5f">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
@@ -999,14 +999,14 @@
     <create type="neutral" x="17207.0" y="0.0" z="28016.0" angle="0" name="Denabite Derby" hullID="1051" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
-  <event name="Settings" id_arme="339235c5-52bd-4bfd-835e-073c3502fe82" parent_id_arme="a0275c82-5b18-4dbd-b8b1-d866e49e4406">
+  <event name="Settings" id_arme="c688f470-b862-40ab-ab0a-a54eada769aa" parent_id_arme="2261acc7-879c-4520-b456-245d9af95c5f">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
     <set_ship_text name="Denabite Derby" desc="USFP Denabite refinery, known system-wide for their unbeatable prices." />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
-  <event name="Destroy Sector Entities" id_arme="4c2b8db2-c057-4803-bad4-460ced3a7c3f" parent_id_arme="a0275c82-5b18-4dbd-b8b1-d866e49e4406">
+  <event name="Destroy Sector Entities" id_arme="f39e4d7d-35fd-4fef-84e6-fd2cb785d57b" parent_id_arme="2261acc7-879c-4520-b456-245d9af95c5f">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
     <destroy name="Triton VII" />
     <destroy name="SY-402" />
@@ -1015,12 +1015,18 @@
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-  <folder_arme name="Triton Sector VIII" id_arme="561643d5-0568-4b64-af61-d2945da4af98" parent_id_arme="bca1b0f7-2803-4617-895d-5a2365355c91" />
-  <event name="Create Triton Sector VIII" id_arme="9ea79dd1-65c5-4348-9162-59e360f6af08" parent_id_arme="561643d5-0568-4b64-af61-d2945da4af98">
+  <folder_arme name="Triton Sector VIII" id_arme="d5e05fbf-f84c-4caf-a9dd-8c54abb264fd" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector VIII" id_arme="b3fc16b5-65ef-4c66-a800-96ba234de919" parent_id_arme="d5e05fbf-f84c-4caf-a9dd-8c54abb264fd">
     <if_timer_finished name="Transition" />
     <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="8.0" />
-    <set_skybox_index index="13" />
+    <set_skybox_index index="14" />
+    <create count="20" type="nebulas" startX="99677.0" startY="0.0" startZ="19392.0" endX="84580.0" endY="0.0" endZ="323.0" randomRange="10000" />
+    <create count="10" type="nebulas" startX="99539.0" startY="0.0" startZ="9176.0" endX="92822.0" endY="0.0" endZ="860.0" randomRange="5000" />
+    <create count="20" type="nebulas" startX="100041.0" startY="0.0" startZ="36396.0" endX="70369.0" endY="0.0" endZ="931.0" randomRange="10000" />
+    <create count="10" type="mines" startAngle="280" endAngle="330" startX="38583.0" startY="0.0" startZ="39433.0" radius="15000" />
+    <create count="10" type="mines" startAngle="190" endAngle="240" startX="38462.0" startY="0.0" startZ="39433.0" radius="15000" />
+    <create count="10" type="mines" startAngle="100" endAngle="150" startX="38462.0" startY="0.0" startZ="39433.0" radius="15000" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Grid 5 Transition Enabled" value="0.0" />
     <set_variable name="Grid 1 Transition Enabled" value="1.0" />
@@ -1030,16 +1036,10 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="1.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-    <create count="20" type="nebulas" startX="99677.0" startY="0.0" startZ="19392.0" endX="84580.0" endY="0.0" endZ="323.0" randomRange="10000" />
-    <create count="10" type="nebulas" startX="99539.0" startY="0.0" startZ="9176.0" endX="92822.0" endY="0.0" endZ="860.0" randomRange="5000" />
-    <create count="20" type="nebulas" startX="100041.0" startY="0.0" startZ="36396.0" endX="70369.0" endY="0.0" endZ="931.0" randomRange="10000" />
-    <create count="10" type="mines" startAngle="280" endAngle="330" startX="38583.0" startY="0.0" startZ="39433.0" radius="15000" />
-    <create count="10" type="mines" startAngle="190" endAngle="240" startX="38462.0" startY="0.0" startZ="39433.0" radius="15000" />
-    <create count="10" type="mines" startAngle="100" endAngle="150" startX="38462.0" startY="0.0" startZ="39433.0" radius="15000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
-  <folder_arme name="Navigation" id_arme="bc215e17-36ce-41ad-bcc2-67018401514b" parent_id_arme="561643d5-0568-4b64-af61-d2945da4af98" />
-  <event name="Transition to Sector VII" id_arme="eac291c6-d7a2-495c-ab8f-bd7adeac83ca" parent_id_arme="bc215e17-36ce-41ad-bcc2-67018401514b">
+  <folder_arme name="Navigation" id_arme="309b29f6-5b48-4404-8c9f-e8b6a184736f" parent_id_arme="d5e05fbf-f84c-4caf-a9dd-8c54abb264fd" />
+  <event name="Transition to Sector VII" id_arme="86b927dc-6ee4-492e-b5e6-b96628ae5967" parent_id_arme="309b29f6-5b48-4404-8c9f-e8b6a184736f">
     <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="8.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1050,7 +1050,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="7.0" integer="yes" />
   </event>
-  <event name="Transition to Sector IV" id_arme="b1977eea-5a37-4a36-82df-5a087e267442" parent_id_arme="bc215e17-36ce-41ad-bcc2-67018401514b">
+  <event name="Transition to Sector IV" id_arme="f38a8640-0755-43e3-a518-69bf1b992230" parent_id_arme="309b29f6-5b48-4404-8c9f-e8b6a184736f">
     <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="8.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1061,7 +1061,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="4.0" integer="yes" />
   </event>
-  <event name="Transition to Sector XII" id_arme="9190cee0-f482-4251-92de-3765fb06ab9d" parent_id_arme="bc215e17-36ce-41ad-bcc2-67018401514b">
+  <event name="Transition to Sector XII" id_arme="2b5611e9-59bb-45f3-9e0d-edc76c11c734" parent_id_arme="309b29f6-5b48-4404-8c9f-e8b6a184736f">
     <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="8.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1072,7 +1072,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="12.0" integer="yes" />
   </event>
-  <event name="Transition to (Bottom Left)" id_arme="f75101ea-0703-48cf-b0d3-999e98e69e2c" parent_id_arme="bc215e17-36ce-41ad-bcc2-67018401514b">
+  <event name="Transition to (Bottom Left)" id_arme="459edd50-3aec-4017-b523-82b86d8276bf" parent_id_arme="309b29f6-5b48-4404-8c9f-e8b6a184736f">
     <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="8.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1083,7 +1083,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="11.0" integer="yes" />
   </event>
-  <event name="Transition to (Top Left)" id_arme="99433f8a-93ff-438a-8f19-fe82c5a039fa" parent_id_arme="bc215e17-36ce-41ad-bcc2-67018401514b">
+  <event name="Transition to (Top Left)" id_arme="d2fad3c0-13ee-417e-80ea-16c05a67fdc7" parent_id_arme="309b29f6-5b48-4404-8c9f-e8b6a184736f">
     <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="8.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1094,15 +1094,15 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="3.0" integer="yes" />
   </event>
-  <folder_arme name="System - Jump Gate Settings" id_arme="3e34a907-d489-4e50-9013-9e4b7de857d0" parent_id_arme="bc215e17-36ce-41ad-bcc2-67018401514b" />
-  <event name="Gate Offline" id_arme="5fb7a7a6-5d11-4c20-ac25-dfeb6c92734e" parent_id_arme="3e34a907-d489-4e50-9013-9e4b7de857d0">
+  <folder_arme name="System - Jump Gate Settings" id_arme="072cf1e2-28d0-4094-92e7-9cea022eab16" parent_id_arme="309b29f6-5b48-4404-8c9f-e8b6a184736f" />
+  <event name="Gate Offline" id_arme="1652d853-7292-46fd-9f88-d4d09c314aac" parent_id_arme="072cf1e2-28d0-4094-92e7-9cea022eab16">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
     <set_object_property property="rollDelta" value="0.3" name="Tethys Gate" />
   </event>
-  <folder_arme name="Tracking System" id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc" parent_id_arme="3e34a907-d489-4e50-9013-9e4b7de857d0" />
-  <event name="Ship1 Activation Range" id_arme="a6ad1f0e-8d07-40f3-be5c-b8cddc4719d4" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <folder_arme name="Tracking System" id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad" parent_id_arme="072cf1e2-28d0-4094-92e7-9cea022eab16" />
+  <event name="Ship1 Activation Range" id_arme="66608cee-ccb6-48cd-897c-4c625b370abe" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
@@ -1111,7 +1111,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship1" value="1.0" />
   </event>
-  <event name="Ship1 Out of Range" id_arme="77b6d436-d515-46b7-a519-c170b8e68dc7" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship1 Out of Range" id_arme="5510e2a2-0ade-416e-936e-313a0706513c" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
@@ -1120,7 +1120,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship1" value="0.0" />
   </event>
-  <event name="Ship2 Activation Range" id_arme="04c7f140-7816-403c-a234-12cdf13c1222" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship2 Activation Range" id_arme="a97791d1-430a-4833-9294-f3469f923c5d" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
@@ -1129,7 +1129,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship2" value="1.0" />
   </event>
-  <event name="Ship2 Out of Range" id_arme="e4c4086b-3327-4a40-a877-d4efb8002bf9" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship2 Out of Range" id_arme="f128f41c-c6b9-4bbe-9a91-4f3fccf9c015" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
@@ -1138,7 +1138,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship2" value="0.0" />
   </event>
-  <event name="Ship3 Activation Range" id_arme="0e07da67-738a-41c9-bd02-30300a2ea692" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship3 Activation Range" id_arme="99975acf-8a14-4ad3-b0eb-0ab207f3983d" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
@@ -1147,7 +1147,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship3" value="1.0" />
   </event>
-  <event name="Ship3 Out of Range" id_arme="dfdd9b22-c16b-43ed-ae75-174df1fc9f32" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship3 Out of Range" id_arme="4460caa9-d36c-4b30-a7a4-095f9a2d4aaa" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
@@ -1156,7 +1156,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship3" value="0.0" />
   </event>
-  <event name="Ship4 Activation Range" id_arme="4b81b0d3-9fc9-43fe-8a66-eda946f6c6bc" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship4 Activation Range" id_arme="05e8e911-6c1b-4883-be6f-3fc8fdd8bcae" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
@@ -1165,7 +1165,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship4" value="1.0" />
   </event>
-  <event name="Ship4 Out of Range" id_arme="286d9ea1-fe7c-4c2d-a89d-b82b93bcc840" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship4 Out of Range" id_arme="59f8d112-cc81-4ce0-99ed-f9802b30bd7d" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
@@ -1174,7 +1174,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship4" value="0.0" />
   </event>
-  <event name="Ship5 Activation Range" id_arme="615c153b-6c99-4143-9777-34b41d3ea9ee" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship5 Activation Range" id_arme="b30d20e9-5010-4382-9054-a3b65ee56c48" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
@@ -1183,7 +1183,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship5" value="1.0" />
   </event>
-  <event name="Ship5 Out of Range" id_arme="b6f5688a-a2da-4267-845f-12cc88c02d26" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship5 Out of Range" id_arme="99b14762-46d4-46e8-a874-3deebdbf8995" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
@@ -1192,7 +1192,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship5" value="0.0" />
   </event>
-  <event name="Ship6 Activation Range" id_arme="14e6d3ba-612c-4b73-a8af-432acb2d9a28" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship6 Activation Range" id_arme="74068124-8b02-4155-92ab-251e2e5bee0f" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
@@ -1201,7 +1201,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship6" value="1.0" />
   </event>
-  <event name="Ship6 Out of Range" id_arme="94d313d3-d965-4507-a994-47b4dbe9a1ca" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship6 Out of Range" id_arme="289071b1-a6dc-447b-a512-19f2db09a936" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
@@ -1210,7 +1210,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship6" value="0.0" />
   </event>
-  <event name="Ship7 Activation Range" id_arme="564315bd-fff8-41de-b85a-3c1bf5873336" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship7 Activation Range" id_arme="5e169572-9de6-4133-81f5-45d495960b11" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
@@ -1219,7 +1219,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship7" value="1.0" />
   </event>
-  <event name="Ship7 Out of Range" id_arme="5e443e5c-d50e-4050-93b5-7b7e3b35eb05" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship7 Out of Range" id_arme="0f889e11-1461-4102-b69a-5f1bb3f31de5" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
@@ -1228,7 +1228,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship7" value="0.0" />
   </event>
-  <event name="Ship8 Activation Range" id_arme="3663d095-86b4-480d-aa1a-3570ba4f4725" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship8 Activation Range" id_arme="481da1b5-ed00-4bad-88fc-efb2067d3323" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
@@ -1237,7 +1237,7 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship8" value="1.0" />
   </event>
-  <event name="Ship8 Out of Range" id_arme="4b44b801-50c3-424e-b33d-0cbcec8230c0" parent_id_arme="df3e51b2-2f7f-4f9c-86b8-9cac92f6a3bc">
+  <event name="Ship8 Out of Range" id_arme="92f4edd7-7bb4-489a-b940-dfbe6f4e5c51" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
@@ -1246,7 +1246,7 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship8" value="0.0" />
   </event>
-  <event name="Gate Online" id_arme="b5360176-4634-4fa4-a360-33a4a49f98c7" parent_id_arme="3e34a907-d489-4e50-9013-9e4b7de857d0">
+  <event name="Gate Online" id_arme="0878c4a8-01ef-44e7-a7bd-e4e22628c499" parent_id_arme="072cf1e2-28d0-4094-92e7-9cea022eab16">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
@@ -1258,7 +1258,7 @@
     <set_variable name="Gate System" value="2.0" />
     <clear_comms_button text="Activate Gate" sideValue="playerSide" />
   </event>
-  <event name="Jump Initiated" id_arme="09d8c96d-1645-4ce1-a9fe-66e9f73418d3" parent_id_arme="3e34a907-d489-4e50-9013-9e4b7de857d0">
+  <event name="Jump Initiated" id_arme="cf392582-51c5-43d2-9684-fd0c418517b0" parent_id_arme="072cf1e2-28d0-4094-92e7-9cea022eab16">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_comms_button text="Jump" />
@@ -1270,13 +1270,13 @@
     <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
     <set_variable name="Triton to Tethys" value="1.0" />
     <set_variable name="Tethys System" value="1.0" />
-    <set_variable name="Sector" value="targetSector" />
+    <set_variable name="Sector" value="1" />
     <set_timer name="Transition" seconds="2" />
     <set_variable name="Gate System" value="0.0" />
     <set_variable name="ExitorRetreat" value="1.0" />
   </event>
-  <folder_arme name="Sector Entities" id_arme="d6dd794c-4946-40da-b2b9-a0b1894646c4" parent_id_arme="561643d5-0568-4b64-af61-d2945da4af98" />
-  <event name="Generate Sector Entities" id_arme="2fb06dc9-aed1-4280-ad12-98b3facb44e2" parent_id_arme="d6dd794c-4946-40da-b2b9-a0b1894646c4">
+  <folder_arme name="Sector Entities" id_arme="33a6a376-1225-484c-a587-1b9c6f27706b" parent_id_arme="d5e05fbf-f84c-4caf-a9dd-8c54abb264fd" />
+  <event name="Generate Sector Entities" id_arme="7552481b-73fd-4f78-b9f6-9d8f7192e863" parent_id_arme="33a6a376-1225-484c-a587-1b9c6f27706b">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="8.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
@@ -1287,18 +1287,18 @@
     <create type="neutral" x="25588.0" y="0.0" z="24129.0" angle="0" name="DS-44" hullID="1000" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
-  <event name="Settings" id_arme="96c63a94-50ee-4048-bc8a-abd946872c15" parent_id_arme="d6dd794c-4946-40da-b2b9-a0b1894646c4">
+  <event name="Settings" id_arme="3c60ee25-edb3-403c-b63b-7a808f8d6983" parent_id_arme="33a6a376-1225-484c-a587-1b9c6f27706b">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="8.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
-    <set_object_property property="rollDelta" value="0.3" name="Tethys Gate" />
-    <set_object_property property="angle" value="4.71238898" name="Tethys Gate" />
-    <set_object_property property="pushRadius" value="0.0" name="Tethys Gate" />
-    <set_object_property property="artScale" value="1.0" name="Tethys Gate" />
     <set_ship_text name="DS-44" desc="USFP Military deep space base overseeing traffic at Tethys Gate." />
+    <set_object_property property="artScale" value="1.0" name="Tethys Gate" />
+    <set_object_property property="pushRadius" value="0.0" name="Tethys Gate" />
+    <set_object_property property="angle" value="4.71238898" name="Tethys Gate" />
+    <set_object_property property="rollDelta" value="0.3" name="Tethys Gate" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
-  <event name="Destroy Sector Entities" id_arme="6ecaf319-a377-42ef-81ce-5336bb16df4e" parent_id_arme="d6dd794c-4946-40da-b2b9-a0b1894646c4">
+  <event name="Destroy Sector Entities" id_arme="52743fbc-e2be-45eb-a744-006f00813f78" parent_id_arme="33a6a376-1225-484c-a587-1b9c6f27706b">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
     <destroy name="Triton VIII" />
     <destroy name="Tethys Gate" />
@@ -1308,7 +1308,7 @@
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-  <event name="Arrival From Tethys" id_arme="a737b2a9-0ac0-4d31-a6ab-b500e64de6ad" parent_id_arme="561643d5-0568-4b64-af61-d2945da4af98">
+  <event name="Arrival From Tethys" id_arme="a2208fea-b4a0-4522-91ef-f90929d82a69" parent_id_arme="d5e05fbf-f84c-4caf-a9dd-8c54abb264fd">
     <if_variable name="Sector" comparator="EQUALS" value="8" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Tethys to Triton" comparator="EQUALS" value="1.0" />
@@ -1331,12 +1331,16 @@
     <set_object_property property="angle" value="3.141592654" player_slot="7" />
     <set_variable name="Tethys to Triton" value="0.0" />
   </event>
-  <folder_arme name="Triton Sector IX" id_arme="86a18df2-abce-41cc-9193-e6f2a3d3db38" parent_id_arme="bca1b0f7-2803-4617-895d-5a2365355c91" />
-  <event name="Create Triton Sector IX" id_arme="2daf4bf5-1e14-4751-a021-ba64325ae266" parent_id_arme="86a18df2-abce-41cc-9193-e6f2a3d3db38">
+  <folder_arme name="Triton Sector IX" id_arme="b9bccd53-91cb-4a58-b1a0-e26f861313ef" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector IX" id_arme="244c2706-f827-4bf5-a231-fb7163dd8a79" parent_id_arme="b9bccd53-91cb-4a58-b1a0-e26f861313ef">
     <if_timer_finished name="Transition" />
     <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="9.0" />
-    <set_skybox_index index="13" />
+    <set_skybox_index index="14" />
+    <create count="50" type="nebulas" startX="59474.0" startY="0.0" startZ="58987.0" endX="1953.0" endY="0.0" endZ="80.0" randomRange="5000" />
+    <create count="30" type="nebulas" startX="31782.0" startY="0.0" startZ="28987.0" endX="2318.0" endY="0.0" endZ="-405.0" randomRange="2000" />
+    <create count="20" type="nebulas" startX="5004.0" startY="0.0" startZ="3209.0" endX="5004.0" endY="0.0" endZ="3209.0" randomRange="6000" />
+    <create count="50" type="nebulas" startX="91175.0" startY="0.0" startZ="91659.0" endX="61590.0" endY="0.0" endZ="63603.0" randomRange="15000" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Grid 5 Transition Enabled" value="1.0" />
     <set_variable name="Grid 1 Transition Enabled" value="0.0" />
@@ -1346,14 +1350,10 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-    <create count="50" type="nebulas" startX="59474.0" startY="0.0" startZ="58987.0" endX="1953.0" endY="0.0" endZ="80.0" randomRange="5000" />
-    <create count="30" type="nebulas" startX="31782.0" startY="0.0" startZ="28987.0" endX="2318.0" endY="0.0" endZ="-405.0" randomRange="2000" />
-    <create count="20" type="nebulas" startX="5004.0" startY="0.0" startZ="3209.0" endX="5004.0" endY="0.0" endZ="3209.0" randomRange="6000" />
-    <create count="50" type="nebulas" startX="91175.0" startY="0.0" startZ="91659.0" endX="61590.0" endY="0.0" endZ="63603.0" randomRange="15000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
-  <folder_arme name="Navigation" id_arme="e4d69ada-b458-4068-bbb3-b552bc87cb70" parent_id_arme="86a18df2-abce-41cc-9193-e6f2a3d3db38" />
-  <event name="Transition to Sector X" id_arme="89d0583d-9a7a-464a-bfc2-b85312a247c6" parent_id_arme="e4d69ada-b458-4068-bbb3-b552bc87cb70">
+  <folder_arme name="Navigation" id_arme="0300c42f-cf2b-4e48-8354-c934abe1ca5f" parent_id_arme="b9bccd53-91cb-4a58-b1a0-e26f861313ef" />
+  <event name="Transition to Sector X" id_arme="7c033215-cade-4ca2-9564-a08d57d75c43" parent_id_arme="0300c42f-cf2b-4e48-8354-c934abe1ca5f">
     <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="9.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1364,7 +1364,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="10.0" integer="yes" />
   </event>
-  <event name="Transition to Sector V" id_arme="1397c89c-7682-4953-81b9-42f83f56fdaf" parent_id_arme="e4d69ada-b458-4068-bbb3-b552bc87cb70">
+  <event name="Transition to Sector V" id_arme="269f0ee9-78e8-408c-bcac-00a3dfd02cf6" parent_id_arme="0300c42f-cf2b-4e48-8354-c934abe1ca5f">
     <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="9.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1375,7 +1375,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="5.0" integer="yes" />
   </event>
-  <event name="Transition to (Top Right)" id_arme="f096d2a4-b498-412a-833c-384eeabed229" parent_id_arme="e4d69ada-b458-4068-bbb3-b552bc87cb70">
+  <event name="Transition to (Top Right)" id_arme="a3e0156b-9772-4d39-9f91-cb1ea7792a57" parent_id_arme="0300c42f-cf2b-4e48-8354-c934abe1ca5f">
     <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="9.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1386,32 +1386,38 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="6.0" integer="yes" />
   </event>
-  <folder_arme name="Sector Entities" id_arme="6f44c710-1702-47ee-8251-4e7b68fdd7b8" parent_id_arme="86a18df2-abce-41cc-9193-e6f2a3d3db38" />
-  <event name="Generate Sector Entities" id_arme="7e85866f-79bb-4073-9403-c6f5dc18fc92" parent_id_arme="6f44c710-1702-47ee-8251-4e7b68fdd7b8">
+  <folder_arme name="Sector Entities" id_arme="9f34bc6f-af0e-4f4e-a3e1-21fca4c73b6b" parent_id_arme="b9bccd53-91cb-4a58-b1a0-e26f861313ef" />
+  <event name="Generate Sector Entities" id_arme="7d252bf1-3b50-443f-9f6e-f165f7579c4a" parent_id_arme="9f34bc6f-af0e-4f4e-a3e1-21fca4c73b6b">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="9.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton IX" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
-  <event name="Settings" id_arme="fcd8ceb4-9a47-4c71-a2cc-c89a8b26338c" parent_id_arme="6f44c710-1702-47ee-8251-4e7b68fdd7b8">
+  <event name="Settings" id_arme="f20f00c6-d98a-433f-870c-dbeb37ce4ecc" parent_id_arme="9f34bc6f-af0e-4f4e-a3e1-21fca4c73b6b">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="9.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
-  <event name="Destroy Sector Entities" id_arme="6eaa044a-0b1e-49ad-9ed8-363892cac344" parent_id_arme="6f44c710-1702-47ee-8251-4e7b68fdd7b8">
+  <event name="Destroy Sector Entities" id_arme="e96cc8f3-7f40-43fb-8177-f5a2cb0f8600" parent_id_arme="9f34bc6f-af0e-4f4e-a3e1-21fca4c73b6b">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
     <destroy name="Triton IX" />
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-  <folder_arme name="Triton Sector X" id_arme="40ba5c71-f009-4129-b46d-2391cbaee08c" parent_id_arme="bca1b0f7-2803-4617-895d-5a2365355c91" />
-  <event name="Create Triton Sector X" id_arme="7eff5fa1-c484-447b-a3a5-3bb0e531a300" parent_id_arme="40ba5c71-f009-4129-b46d-2391cbaee08c">
+  <folder_arme name="Triton Sector X" id_arme="039e566e-993a-43ee-816f-0a49e9595594" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector X" id_arme="4204d83e-533f-4475-beb5-7818238ac615" parent_id_arme="039e566e-993a-43ee-816f-0a49e9595594">
     <if_timer_finished name="Transition" />
     <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="10.0" />
-    <set_skybox_index index="13" />
+    <set_skybox_index index="14" />
+    <create count="20" type="nebulas" startX="98991.0" startY="0.0" startZ="4439.0" endX="94448.0" endY="0.0" endZ="-526.0" randomRange="6000" randomSeed="3" />
+    <create count="15" type="nebulas" nebType="2" startX="1053.0" startY="0.0" startZ="44655.0" endX="12206.0" endY="0.0" endZ="32659.0" randomRange="6000" />
+    <create count="15" type="nebulas" nebType="2" startX="932.0" startY="0.0" startZ="44048.0" endX="21437.0" endY="0.0" endZ="22943.0" randomRange="3000" />
+    <create count="70" type="nebulas" startX="90324.0" startY="0.0" startZ="89473.0" endX="57595.0" endY="0.0" endZ="51336.0" randomRange="15000" />
+    <create count="70" type="nebulas" startX="96883.0" startY="0.0" startZ="97854.0" endX="34518.0" endY="0.0" endZ="24373.0" randomRange="5000" />
+    <create count="30" type="asteroids" startX="91175.0" startY="0.0" startZ="89230.0" endX="58446.0" endY="0.0" endZ="51093.0" randomRange="15000" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Grid 5 Transition Enabled" value="1.0" />
     <set_variable name="Grid 1 Transition Enabled" value="1.0" />
@@ -1421,16 +1427,10 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-    <create count="20" type="nebulas" startX="98991.0" startY="0.0" startZ="4439.0" endX="94448.0" endY="0.0" endZ="-526.0" randomRange="6000" randomSeed="3" />
-    <create count="15" type="nebulas" nebType="2" startX="1053.0" startY="0.0" startZ="44655.0" endX="12206.0" endY="0.0" endZ="32659.0" randomRange="6000" />
-    <create count="15" type="nebulas" nebType="2" startX="932.0" startY="0.0" startZ="44048.0" endX="21437.0" endY="0.0" endZ="22943.0" randomRange="3000" />
-    <create count="70" type="nebulas" startX="90324.0" startY="0.0" startZ="89473.0" endX="57595.0" endY="0.0" endZ="51336.0" randomRange="15000" />
-    <create count="70" type="nebulas" startX="96883.0" startY="0.0" startZ="97854.0" endX="34518.0" endY="0.0" endZ="24373.0" randomRange="5000" />
-    <create count="30" type="asteroids" startX="91175.0" startY="0.0" startZ="89230.0" endX="58446.0" endY="0.0" endZ="51093.0" randomRange="15000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
-  <folder_arme name="Navigation" id_arme="28bc7f8d-913a-4391-a505-418dc1a75e5f" parent_id_arme="40ba5c71-f009-4129-b46d-2391cbaee08c" />
-  <event name="Transition to Sector XI" id_arme="cf03e8f6-526d-40d0-a2a2-3bcdd84f5842" parent_id_arme="28bc7f8d-913a-4391-a505-418dc1a75e5f">
+  <folder_arme name="Navigation" id_arme="1a0b4eb2-1c1b-468f-bc47-6bf08de209ed" parent_id_arme="039e566e-993a-43ee-816f-0a49e9595594" />
+  <event name="Transition to Sector XI" id_arme="7fef43ca-d4e5-4be1-98c8-f22659ebff38" parent_id_arme="1a0b4eb2-1c1b-468f-bc47-6bf08de209ed">
     <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="10.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1441,7 +1441,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="11.0" integer="yes" />
   </event>
-  <event name="Transition to Sector IX" id_arme="380ac055-6baa-4607-8d4e-0d49b7389ba1" parent_id_arme="28bc7f8d-913a-4391-a505-418dc1a75e5f">
+  <event name="Transition to Sector IX" id_arme="47abd31e-6374-4851-bdea-4a6664df6aab" parent_id_arme="1a0b4eb2-1c1b-468f-bc47-6bf08de209ed">
     <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="10.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1452,7 +1452,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="9.0" integer="yes" />
   </event>
-  <event name="Transition to Sector VI" id_arme="5c72fb4c-182c-40a8-b75c-dc003e8ef2fc" parent_id_arme="28bc7f8d-913a-4391-a505-418dc1a75e5f">
+  <event name="Transition to Sector VI" id_arme="132a8d6b-1ef7-4660-a530-d6502b7d769c" parent_id_arme="1a0b4eb2-1c1b-468f-bc47-6bf08de209ed">
     <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="10.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1463,7 +1463,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="6.0" integer="yes" />
   </event>
-  <event name="Transition to (Top Right)" id_arme="e44255d6-bc63-4ced-81f2-141f0bcbd8b6" parent_id_arme="28bc7f8d-913a-4391-a505-418dc1a75e5f">
+  <event name="Transition to (Top Right)" id_arme="072101f8-957b-48cf-b0b9-50a4e7c88800" parent_id_arme="1a0b4eb2-1c1b-468f-bc47-6bf08de209ed">
     <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="10.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1474,7 +1474,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="7.0" integer="yes" />
   </event>
-  <event name="Transition to (Top Left)" id_arme="d8ac3934-8fb2-4208-b432-2e88bb787e5d" parent_id_arme="28bc7f8d-913a-4391-a505-418dc1a75e5f">
+  <event name="Transition to (Top Left)" id_arme="a73bc52e-2c81-4b29-99f7-7b762ae5b577" parent_id_arme="1a0b4eb2-1c1b-468f-bc47-6bf08de209ed">
     <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="10.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1485,8 +1485,8 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="5.0" integer="yes" />
   </event>
-  <folder_arme name="Sector Entities" id_arme="430d7057-3b21-44f6-92a2-1301cf09f329" parent_id_arme="40ba5c71-f009-4129-b46d-2391cbaee08c" />
-  <event name="Generate Sector Entities" id_arme="93d38855-9fba-41b5-81bb-37779c4474a3" parent_id_arme="430d7057-3b21-44f6-92a2-1301cf09f329">
+  <folder_arme name="Sector Entities" id_arme="cd2ed16d-abee-4b97-90a9-fcc979d44d7e" parent_id_arme="039e566e-993a-43ee-816f-0a49e9595594" />
+  <event name="Generate Sector Entities" id_arme="b3845691-69f5-4385-8c6b-6f484ddf7777" parent_id_arme="cd2ed16d-abee-4b97-90a9-fcc979d44d7e">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="10.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
@@ -1494,25 +1494,30 @@
     <create type="neutral" x="52430.0" y="0.0" z="64453.0" angle="0" name="I-566" hullID="1003" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
-  <event name="Settings" id_arme="ff540a73-ebdc-4d6c-afbb-6b40f7912798" parent_id_arme="430d7057-3b21-44f6-92a2-1301cf09f329">
+  <event name="Settings" id_arme="3e94c63a-1031-42dd-b427-5dfc81442988" parent_id_arme="cd2ed16d-abee-4b97-90a9-fcc979d44d7e">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="10.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
-  <event name="Destroy Sector Entities" id_arme="8b41991e-3af0-4061-a84d-7daa1dddeead" parent_id_arme="430d7057-3b21-44f6-92a2-1301cf09f329">
+  <event name="Destroy Sector Entities" id_arme="642c5db6-da85-4a7a-a8ae-c233a01c0838" parent_id_arme="cd2ed16d-abee-4b97-90a9-fcc979d44d7e">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
     <destroy name="Triton X" />
     <destroy name="I-566" />
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-  <folder_arme name="Triton Sector XI" id_arme="5847a4f2-57e0-476b-a7bd-118763d957c6" parent_id_arme="bca1b0f7-2803-4617-895d-5a2365355c91" />
-  <event name="Create Triton Sector XI" id_arme="ab3d53d6-684c-4cda-a53e-1b811fe6dee2" parent_id_arme="5847a4f2-57e0-476b-a7bd-118763d957c6">
+  <folder_arme name="Triton Sector XI" id_arme="20ccf47c-c46b-4ba0-aba1-244ced6cfd79" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector XI" id_arme="05237c5d-e79b-451d-8ada-bee15afa6404" parent_id_arme="20ccf47c-c46b-4ba0-aba1-244ced6cfd79">
     <if_timer_finished name="Transition" />
     <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="11.0" />
-    <set_skybox_index index="13" />
+    <set_skybox_index index="14" />
+    <create count="70" type="nebulas" nebType="2" startX="53401.0" startY="0.0" startZ="99433.0" endX="99612.0" endY="0.0" endZ="42712.0" randomRange="5000" />
+    <create count="70" type="nebulas" nebType="2" startX="55102.0" startY="0.0" startZ="99554.0" endX="77993.0" endY="0.0" endZ="71254.0" randomRange="10000" />
+    <create count="70" type="nebulas" nebType="2" startX="54616.0" startY="0.0" startZ="99554.0" endX="77507.0" endY="0.0" endZ="71254.0" randomRange="30000" />
+    <create count="20" type="mines" startAngle="160" endAngle="270" startX="10806.0" startY="0.0" startZ="26265.0" radius="15000" />
+    <create count="20" type="mines" startAngle="170" endAngle="280" startX="34818.0" startY="0.0" startZ="7489.0" radius="15000" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Grid 5 Transition Enabled" value="1.0" />
     <set_variable name="Grid 1 Transition Enabled" value="1.0" />
@@ -1522,15 +1527,10 @@
     <set_variable name="Corner A5 Transition Enabled" value="1.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-    <create count="70" type="nebulas" nebType="2" startX="53401.0" startY="0.0" startZ="99433.0" endX="99612.0" endY="0.0" endZ="42712.0" randomRange="5000" />
-    <create count="70" type="nebulas" nebType="2" startX="55102.0" startY="0.0" startZ="99554.0" endX="77993.0" endY="0.0" endZ="71254.0" randomRange="10000" />
-    <create count="70" type="nebulas" nebType="2" startX="54616.0" startY="0.0" startZ="99554.0" endX="77507.0" endY="0.0" endZ="71254.0" randomRange="30000" />
-    <create count="20" type="mines" startAngle="160" endAngle="270" startX="10806.0" startY="0.0" startZ="26265.0" radius="15000" />
-    <create count="20" type="mines" startAngle="170" endAngle="280" startX="34818.0" startY="0.0" startZ="7489.0" radius="15000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
-  <folder_arme name="Navigation" id_arme="2c8b7b00-3a8b-4400-85c9-3e825c13d2f3" parent_id_arme="5847a4f2-57e0-476b-a7bd-118763d957c6" />
-  <event name="Transition to Sector XII" id_arme="6a890c8d-af21-4e39-a40c-dc7372217e2d" parent_id_arme="2c8b7b00-3a8b-4400-85c9-3e825c13d2f3">
+  <folder_arme name="Navigation" id_arme="699fe939-1b3e-48a7-bcb9-a5d7c866ae97" parent_id_arme="20ccf47c-c46b-4ba0-aba1-244ced6cfd79" />
+  <event name="Transition to Sector XII" id_arme="f05f8293-10b3-40e9-bc34-a5d3764fb79c" parent_id_arme="699fe939-1b3e-48a7-bcb9-a5d7c866ae97">
     <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="11.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1541,7 +1541,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="12.0" integer="yes" />
   </event>
-  <event name="Transition to Sector X" id_arme="8a4606d9-f441-4cb9-9a27-c245881e5732" parent_id_arme="2c8b7b00-3a8b-4400-85c9-3e825c13d2f3">
+  <event name="Transition to Sector X" id_arme="d61c8906-2424-4940-96f1-e05504437a91" parent_id_arme="699fe939-1b3e-48a7-bcb9-a5d7c866ae97">
     <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="11.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1552,7 +1552,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="10.0" integer="yes" />
   </event>
-  <event name="Transition to Sector VII" id_arme="4bcdf065-c64e-404d-8044-b158c652f099" parent_id_arme="2c8b7b00-3a8b-4400-85c9-3e825c13d2f3">
+  <event name="Transition to Sector VII" id_arme="eebe0444-b293-451c-9df7-682b31fcabc4" parent_id_arme="699fe939-1b3e-48a7-bcb9-a5d7c866ae97">
     <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="11.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1563,7 +1563,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="7.0" integer="yes" />
   </event>
-  <event name="Transition to (Top Right)" id_arme="c9a5ba74-280d-478d-8635-ac7b2a084678" parent_id_arme="2c8b7b00-3a8b-4400-85c9-3e825c13d2f3">
+  <event name="Transition to (Top Right)" id_arme="c10260a4-7270-4c0e-83ae-bffc1d83c189" parent_id_arme="699fe939-1b3e-48a7-bcb9-a5d7c866ae97">
     <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="11.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1574,7 +1574,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="8.0" integer="yes" />
   </event>
-  <event name="Transition to (Top Left)" id_arme="f78a7260-1e6f-4877-8bd0-7d7912610076" parent_id_arme="2c8b7b00-3a8b-4400-85c9-3e825c13d2f3">
+  <event name="Transition to (Top Left)" id_arme="d782a021-9795-45a8-88c3-9260fdfb23e5" parent_id_arme="699fe939-1b3e-48a7-bcb9-a5d7c866ae97">
     <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="11.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1585,16 +1585,16 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="6.0" integer="yes" />
   </event>
-  <folder_arme name="System - Jump Gate Settings" id_arme="4363c0b7-7897-431c-a074-9f9b9fd9d9f9" parent_id_arme="2c8b7b00-3a8b-4400-85c9-3e825c13d2f3" />
-  <event name="Gate Offline" id_arme="683f41c9-1acf-4ba8-863e-e20479604f49" parent_id_arme="4363c0b7-7897-431c-a074-9f9b9fd9d9f9">
-    <if_variable name="Sector" comparator="EQUALS" value="9" />
+  <folder_arme name="System - Jump Gate Settings" id_arme="965576ff-a2f6-4f22-80b8-31d21edbbaf4" parent_id_arme="699fe939-1b3e-48a7-bcb9-a5d7c866ae97" />
+  <event name="Gate Offline" id_arme="53d96500-8364-4cb2-b49b-bc918aba3a69" parent_id_arme="965576ff-a2f6-4f22-80b8-31d21edbbaf4">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
     <set_object_property property="rollDelta" value="0.3" name="Charon Gate" />
   </event>
-  <folder_arme name="Tracking System" id_arme="4a975fda-47c8-4b18-af11-3e2e17dbc371" parent_id_arme="4363c0b7-7897-431c-a074-9f9b9fd9d9f9" expanded_arme="" />
-  <event name="Ship1 Activation Range" id_arme="3196669c-94d8-42cd-923b-d8ee66d2ac0c" parent_id_arme="4a975fda-47c8-4b18-af11-3e2e17dbc371">
-    <if_variable name="Sector" comparator="EQUALS" value="9" />
+  <folder_arme name="Tracking System" id_arme="ae8fe345-6584-424d-acfd-3720763c9647" parent_id_arme="965576ff-a2f6-4f22-80b8-31d21edbbaf4" />
+  <event name="Ship1 Activation Range" id_arme="dbf73942-2099-40f8-bff1-6ba7dbbdc69d" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
     <if_distance player_slot1="0" name2="Charon Gate" comparator="LESS" value="4000.0" />
@@ -1602,8 +1602,8 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship1" value="1.0" />
   </event>
-  <event name="Ship1 Out of Range" id_arme="9ecddaa8-f022-4796-96b0-f54b37b76260" parent_id_arme="4a975fda-47c8-4b18-af11-3e2e17dbc371">
-    <if_variable name="Sector" comparator="EQUALS" value="9" />
+  <event name="Ship1 Out of Range" id_arme="a90725bf-7b63-448b-b0c2-2931268f831c" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
     <if_distance player_slot1="0" name2="Charon Gate" comparator="GREATER" value="4000.0" />
@@ -1611,8 +1611,8 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship1" value="0.0" />
   </event>
-  <event name="Ship2 Activation Range" id_arme="26082da8-b9b7-4caf-b745-4fa9935c0847" parent_id_arme="4a975fda-47c8-4b18-af11-3e2e17dbc371">
-    <if_variable name="Sector" comparator="EQUALS" value="9" />
+  <event name="Ship2 Activation Range" id_arme="03242a90-3fee-4df7-b32a-f3a3d858a5ef" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
     <if_distance player_slot1="1" name2="Charon Gate" comparator="LESS" value="4000.0" />
@@ -1620,8 +1620,8 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship2" value="1.0" />
   </event>
-  <event name="Ship2 Out of Range" id_arme="8537a74e-ac82-44e5-9eef-49327fe79d05" parent_id_arme="4a975fda-47c8-4b18-af11-3e2e17dbc371">
-    <if_variable name="Sector" comparator="EQUALS" value="9" />
+  <event name="Ship2 Out of Range" id_arme="8a2ab080-646e-4940-8b65-7d7999eb2f19" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
     <if_distance player_slot1="1" name2="Charon Gate" comparator="GREATER" value="4000.0" />
@@ -1629,8 +1629,8 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship2" value="0.0" />
   </event>
-  <event name="Ship3 Activation Range" id_arme="d3d864c1-cd38-4c25-bd9b-a4f7bd1c3395" parent_id_arme="4a975fda-47c8-4b18-af11-3e2e17dbc371">
-    <if_variable name="Sector" comparator="EQUALS" value="9" />
+  <event name="Ship3 Activation Range" id_arme="b23faca5-57e1-4b2b-8a45-236e7b1f8076" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
     <if_distance player_slot1="2" name2="Charon Gate" comparator="LESS" value="4000.0" />
@@ -1638,8 +1638,8 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship3" value="1.0" />
   </event>
-  <event name="Ship3 Out of Range" id_arme="7c8cccb0-0a81-4774-93e4-2a9ecb9e1ac3" parent_id_arme="4a975fda-47c8-4b18-af11-3e2e17dbc371">
-    <if_variable name="Sector" comparator="EQUALS" value="9" />
+  <event name="Ship3 Out of Range" id_arme="9ad06dc9-1262-4709-a4d8-907c95fee041" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
     <if_distance player_slot1="2" name2="Charon Gate" comparator="GREATER" value="4000.0" />
@@ -1647,8 +1647,8 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship3" value="0.0" />
   </event>
-  <event name="Ship4 Activation Range" id_arme="e8310752-292a-43b0-acc0-99089b8a970f" parent_id_arme="4a975fda-47c8-4b18-af11-3e2e17dbc371">
-    <if_variable name="Sector" comparator="EQUALS" value="9" />
+  <event name="Ship4 Activation Range" id_arme="9ad7558d-b972-41a1-9135-3828c8934a46" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
     <if_distance player_slot1="3" name2="Charon Gate" comparator="LESS" value="4000.0" />
@@ -1656,8 +1656,8 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship4" value="1.0" />
   </event>
-  <event name="Ship4 Out of Range" id_arme="0ef4f429-d789-4689-920f-9136f15e4789" parent_id_arme="4a975fda-47c8-4b18-af11-3e2e17dbc371">
-    <if_variable name="Sector" comparator="EQUALS" value="9" />
+  <event name="Ship4 Out of Range" id_arme="1fdb972e-2fa7-4e7c-aafc-09e4bce6677b" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
     <if_distance player_slot1="3" name2="Charon Gate" comparator="GREATER" value="4000.0" />
@@ -1665,8 +1665,8 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship4" value="0.0" />
   </event>
-  <event name="Ship5 Activation Range" id_arme="d0e63e21-911c-47e5-87e0-c14fe5f4f0e6" parent_id_arme="4a975fda-47c8-4b18-af11-3e2e17dbc371">
-    <if_variable name="Sector" comparator="EQUALS" value="9" />
+  <event name="Ship5 Activation Range" id_arme="084d3784-19ec-40e5-be7f-29ffcfda63a5" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
     <if_distance player_slot1="4" name2="Charon Gate" comparator="LESS" value="4000.0" />
@@ -1674,8 +1674,8 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship5" value="1.0" />
   </event>
-  <event name="Ship5 Out of Range" id_arme="5c1445df-03ff-4dbb-84ae-79ee189da135" parent_id_arme="4a975fda-47c8-4b18-af11-3e2e17dbc371">
-    <if_variable name="Sector" comparator="EQUALS" value="9" />
+  <event name="Ship5 Out of Range" id_arme="cb173bc5-b5c9-47b7-9ea4-d533ae2f052f" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
     <if_distance player_slot1="4" name2="Charon Gate" comparator="GREATER" value="4000.0" />
@@ -1683,8 +1683,8 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship5" value="0.0" />
   </event>
-  <event name="Ship6 Activation Range" id_arme="76379d8d-d9a1-46ec-aada-603548d3a1e5" parent_id_arme="4a975fda-47c8-4b18-af11-3e2e17dbc371">
-    <if_variable name="Sector" comparator="EQUALS" value="9" />
+  <event name="Ship6 Activation Range" id_arme="6f9edd4d-580e-46b0-a271-e2e7f31d1530" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
     <if_distance player_slot1="5" name2="Charon Gate" comparator="LESS" value="4000.0" />
@@ -1692,8 +1692,8 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship6" value="1.0" />
   </event>
-  <event name="Ship6 Out of Range" id_arme="57d61d34-9821-4fc7-a1f2-938cce2d9eff" parent_id_arme="4a975fda-47c8-4b18-af11-3e2e17dbc371">
-    <if_variable name="Sector" comparator="EQUALS" value="9" />
+  <event name="Ship6 Out of Range" id_arme="99113fea-abd1-4fd9-b623-e02b2f05dc10" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
     <if_distance player_slot1="5" name2="Charon Gate" comparator="GREATER" value="4000.0" />
@@ -1701,8 +1701,8 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship6" value="0.0" />
   </event>
-  <event name="Ship7 Activation Range" id_arme="9cb1c6a3-19e8-4d7f-870f-8ad85ced3895" parent_id_arme="4a975fda-47c8-4b18-af11-3e2e17dbc371">
-    <if_variable name="Sector" comparator="EQUALS" value="9" />
+  <event name="Ship7 Activation Range" id_arme="a693a90e-f1c4-4602-bf97-e30f2bb9b53e" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
     <if_distance player_slot1="6" name2="Charon Gate" comparator="LESS" value="4000.0" />
@@ -1710,8 +1710,8 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship7" value="1.0" />
   </event>
-  <event name="Ship7 Out of Range" id_arme="6d71a0c5-07b4-4e7b-9970-5cb8bdb3d42e" parent_id_arme="4a975fda-47c8-4b18-af11-3e2e17dbc371">
-    <if_variable name="Sector" comparator="EQUALS" value="9" />
+  <event name="Ship7 Out of Range" id_arme="6ab7f460-a5b5-4836-96ca-0a9fcd0109ed" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
     <if_distance player_slot1="6" name2="Charon Gate" comparator="GREATER" value="4000.0" />
@@ -1719,8 +1719,8 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship7" value="0.0" />
   </event>
-  <event name="Ship8 Activation Range" id_arme="d330be45-8dbe-4a84-97c6-6771a54beae6" parent_id_arme="4a975fda-47c8-4b18-af11-3e2e17dbc371">
-    <if_variable name="Sector" comparator="EQUALS" value="9" />
+  <event name="Ship8 Activation Range" id_arme="978b05a8-a9bf-45b0-8aa3-9a9c8a9d090d" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
     <if_distance player_slot1="7" name2="Charon Gate" comparator="LESS" value="4000.0" />
@@ -1728,8 +1728,8 @@
     <set_variable name="shipsInrange" value="shipsInrange+1" />
     <set_variable name="Gate Tracking Ship8" value="1.0" />
   </event>
-  <event name="Ship8 Out of Range" id_arme="4aff08ad-36cd-4bdc-9f58-b54d518b4bde" parent_id_arme="4a975fda-47c8-4b18-af11-3e2e17dbc371">
-    <if_variable name="Sector" comparator="EQUALS" value="9" />
+  <event name="Ship8 Out of Range" id_arme="1d67b0bc-5970-4b86-aba7-51e64662fef9" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
     <if_distance player_slot1="7" name2="Charon Gate" comparator="GREATER" value="4000.0" />
@@ -1737,8 +1737,8 @@
     <set_variable name="shipsInrange" value="shipsInrange-1" />
     <set_variable name="Gate Tracking Ship8" value="0.0" />
   </event>
-  <event name="Gate Online" id_arme="98057c35-3cd7-4ab5-8b3c-45d315bcf4ea" parent_id_arme="4363c0b7-7897-431c-a074-9f9b9fd9d9f9">
-    <if_variable name="Sector" comparator="EQUALS" value="9" />
+  <event name="Gate Online" id_arme="ba900d71-6851-4a21-8240-c36677a560c2" parent_id_arme="965576ff-a2f6-4f22-80b8-31d21edbbaf4">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
     <if_comms_button text="Activate Gate" />
@@ -1749,8 +1749,8 @@
     <set_variable name="Gate System" value="2.0" />
     <clear_comms_button text="Activate Gate" sideValue="playerSide" />
   </event>
-  <event name="Jump Initiated" id_arme="583595fe-fea6-42f9-bb88-c439e30ec27b" parent_id_arme="4363c0b7-7897-431c-a074-9f9b9fd9d9f9">
-    <if_variable name="Sector" comparator="EQUALS" value="9" />
+  <event name="Jump Initiated" id_arme="6676a1e9-e3f7-4e78-8279-51cc3ddb5dd6" parent_id_arme="965576ff-a2f6-4f22-80b8-31d21edbbaf4">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_comms_button text="Jump" />
     <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
@@ -1766,8 +1766,8 @@
     <set_variable name="Gate System" value="0.0" />
     <set_variable name="ExitorRetreat" value="1.0" />
   </event>
-  <folder_arme name="Sector Entities" id_arme="37f194e5-27e1-4733-a304-b0e469942b56" parent_id_arme="5847a4f2-57e0-476b-a7bd-118763d957c6" />
-  <event name="Generate Sector Entities" id_arme="97c18248-2862-41c9-b8dc-631c25616ae9" parent_id_arme="37f194e5-27e1-4733-a304-b0e469942b56">
+  <folder_arme name="Sector Entities" id_arme="61219aab-db38-47d3-bd79-85a473a60e36" parent_id_arme="20ccf47c-c46b-4ba0-aba1-244ced6cfd79" />
+  <event name="Generate Sector Entities" id_arme="cc73848f-181d-41cf-8bf0-af2f761d3050" parent_id_arme="61219aab-db38-47d3-bd79-85a473a60e36">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="11.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
@@ -1777,18 +1777,18 @@
     <create type="neutral" x="13685.0" y="0.0" z="27165.0" angle="0" name="DS-62" hullID="1000" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
-  <event name="Settings" id_arme="7911335e-0b06-4a5d-b57c-9a57dbb5a498" parent_id_arme="37f194e5-27e1-4733-a304-b0e469942b56">
+  <event name="Settings" id_arme="ef4d666c-3c0f-4bcd-85b6-7fd3923aadfa" parent_id_arme="61219aab-db38-47d3-bd79-85a473a60e36">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="11.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
-    <set_object_property property="rollDelta" value="0.3" name="Charon Gate" />
-    <set_object_property property="angle" value="4.71238898" name="Charon Gate" />
-    <set_object_property property="pushRadius" value="0.0" name="Charon Gate" />
-    <set_object_property property="artScale" value="1.0" name="Charon Gate" />
     <set_ship_text name="DS-62" desc="USFP military deep space base monitoring Charon Gate." />
+    <set_object_property property="artScale" value="1.0" name="Charon Gate" />
+    <set_object_property property="pushRadius" value="0.0" name="Charon Gate" />
+    <set_object_property property="angle" value="4.71238898" name="Charon Gate" />
+    <set_object_property property="rollDelta" value="0.3" name="Charon Gate" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
-  <event name="Destroy Sector Entities" id_arme="dbb95aa9-a452-481b-97e3-b8e87c81b32f" parent_id_arme="37f194e5-27e1-4733-a304-b0e469942b56">
+  <event name="Destroy Sector Entities" id_arme="f66b7195-784d-4807-87ba-3104e3c0b14c" parent_id_arme="61219aab-db38-47d3-bd79-85a473a60e36">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
     <destroy name="Triton XI" />
     <destroy name="WP-062" />
@@ -1797,8 +1797,8 @@
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-  <event name="Arrival From Charon" id_arme="4208dab5-2b0e-4142-83fb-8c5a84caae78" parent_id_arme="5847a4f2-57e0-476b-a7bd-118763d957c6">
-    <if_variable name="Sector" comparator="EQUALS" value="9" />
+  <event name="Arrival From Charon" id_arme="697e6e93-ac0d-45a1-8776-f2366df0ccb9" parent_id_arme="20ccf47c-c46b-4ba0-aba1-244ced6cfd79">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Charon to Triton" comparator="EQUALS" value="1.0" />
     <if_timer_finished name="Transition" />
@@ -1820,12 +1820,15 @@
     <set_object_property property="angle" value="3.141592654" player_slot="7" />
     <set_variable name="Charon to Triton" value="0.0" />
   </event>
-  <folder_arme name="Triton Sector XII" id_arme="4ddd0e6b-8ddc-4fca-82e5-48b755d530e2" parent_id_arme="bca1b0f7-2803-4617-895d-5a2365355c91" />
-  <event name="Create Triton Sector XII" id_arme="583beb03-e257-4817-9f8a-1655f65c7618" parent_id_arme="4ddd0e6b-8ddc-4fca-82e5-48b755d530e2">
+  <folder_arme name="Triton Sector XII" id_arme="d5f194b8-8b40-4e61-95c3-4d1f8148e0ae" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector XII" id_arme="a24c6fa3-f106-4c0a-b80a-d7fad2399cc0" parent_id_arme="d5f194b8-8b40-4e61-95c3-4d1f8148e0ae">
     <if_timer_finished name="Transition" />
     <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="12.0" />
-    <set_skybox_index index="13" />
+    <set_skybox_index index="14" />
+    <create count="100" type="nebulas" startX="67855.0" startY="0.0" startZ="99554.0" endX="24767.0" endY="0.0" endZ="59595.0" randomRange="15000" />
+    <create count="50" type="nebulas" startX="62268.0" startY="0.0" startZ="98704.0" endX="6184.0" endY="0.0" endZ="41619.0" randomRange="5000" />
+    <create count="10" type="asteroids" startX="67976.0" startY="0.0" startZ="98947.0" endX="24888.0" endY="0.0" endZ="58988.0" randomRange="15000" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Grid 5 Transition Enabled" value="0.0" />
     <set_variable name="Grid 1 Transition Enabled" value="1.0" />
@@ -1835,13 +1838,10 @@
     <set_variable name="Corner A5 Transition Enabled" value="0.0" />
     <set_variable name="Corner E1 Transition Enabled" value="0.0" />
     <set_variable name="Corner E5 Transition Enabled" value="0.0" />
-    <create count="100" type="nebulas" startX="67855.0" startY="0.0" startZ="99554.0" endX="24767.0" endY="0.0" endZ="59595.0" randomRange="15000" />
-    <create count="50" type="nebulas" startX="62268.0" startY="0.0" startZ="98704.0" endX="6184.0" endY="0.0" endZ="41619.0" randomRange="5000" />
-    <create count="10" type="asteroids" startX="67976.0" startY="0.0" startZ="98947.0" endX="24888.0" endY="0.0" endZ="58988.0" randomRange="15000" />
     <set_variable name="Triton System" value="2.0" />
   </event>
-  <folder_arme name="Navigation" id_arme="ff688ea0-84b8-4563-abd8-7e5f1df5390f" parent_id_arme="4ddd0e6b-8ddc-4fca-82e5-48b755d530e2" />
-  <event name="Transition to Sector XI" id_arme="fe539db8-02bc-4f6c-bbab-8f07ea14406a" parent_id_arme="ff688ea0-84b8-4563-abd8-7e5f1df5390f">
+  <folder_arme name="Navigation" id_arme="fcc665cc-3b6c-4e40-ab5d-81f94bfe3aa7" parent_id_arme="d5f194b8-8b40-4e61-95c3-4d1f8148e0ae" />
+  <event name="Transition to Sector XI" id_arme="bf90d329-a7dd-4963-a2f0-d9bfa669b484" parent_id_arme="fcc665cc-3b6c-4e40-ab5d-81f94bfe3aa7">
     <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="12.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1852,7 +1852,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="11.0" integer="yes" />
   </event>
-  <event name="Transition to Sector VIII" id_arme="d7f8ccf4-4cd5-4044-a30b-1e8bbd39f784" parent_id_arme="ff688ea0-84b8-4563-abd8-7e5f1df5390f">
+  <event name="Transition to Sector VIII" id_arme="b00e34ed-c32d-49f9-8731-ef8591d95334" parent_id_arme="fcc665cc-3b6c-4e40-ab5d-81f94bfe3aa7">
     <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="12.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1863,7 +1863,7 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="8.0" integer="yes" />
   </event>
-  <event name="Transition to (Top Left)" id_arme="615ef5e4-f52f-4441-a7a0-f4862085f50f" parent_id_arme="ff688ea0-84b8-4563-abd8-7e5f1df5390f">
+  <event name="Transition to (Top Left)" id_arme="06e372d4-83bd-44cf-807f-99817173135b" parent_id_arme="fcc665cc-3b6c-4e40-ab5d-81f94bfe3aa7">
     <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="12.0" />
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
@@ -1874,21 +1874,21 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="7.0" integer="yes" />
   </event>
-  <folder_arme name="Sector Entities" id_arme="2ef7894a-72c8-458a-8d98-44e1c38b6453" parent_id_arme="4ddd0e6b-8ddc-4fca-82e5-48b755d530e2" />
-  <event name="Generate Sector Entities" id_arme="2a676a5a-a6d8-4053-bf12-8da5abf0b712" parent_id_arme="2ef7894a-72c8-458a-8d98-44e1c38b6453">
+  <folder_arme name="Sector Entities" id_arme="691e46e9-e217-497a-b9f6-462289aef5e3" parent_id_arme="d5f194b8-8b40-4e61-95c3-4d1f8148e0ae" />
+  <event name="Generate Sector Entities" id_arme="8226fc0b-e90a-49f0-87f2-deabad88f551" parent_id_arme="691e46e9-e217-497a-b9f6-462289aef5e3">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="12.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton XII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
-  <event name="Settings" id_arme="27096ec5-680a-4047-a71c-b4fdaf490dab" parent_id_arme="2ef7894a-72c8-458a-8d98-44e1c38b6453">
+  <event name="Settings" id_arme="0ba0ba5e-d3fe-43af-9387-72524e70c111" parent_id_arme="691e46e9-e217-497a-b9f6-462289aef5e3">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="12.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
-  <event name="Destroy Sector Entities" id_arme="758f4b1f-5f21-4d13-ae00-253ad31d2a05" parent_id_arme="2ef7894a-72c8-458a-8d98-44e1c38b6453">
+  <event name="Destroy Sector Entities" id_arme="eb5541c7-fbc8-48d5-9545-1ffeb84ac22b" parent_id_arme="691e46e9-e217-497a-b9f6-462289aef5e3">
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
     <destroy name="Triton XII" />
     <set_variable name="Triton System" value="System" integer="yes" />

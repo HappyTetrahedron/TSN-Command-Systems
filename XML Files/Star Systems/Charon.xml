@@ -1,0 +1,1606 @@
+<mission_data version="1.7" background_id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4" playerShipNames_arme="TSN Sabre\TSN Valiant\TSN Lancer\TSN Stalker\TSN Viper\TSN Horizon\TSN Necessity\TSN Hunter">
+  <start name="Start" id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4">
+    <set_variable name="Coordinate X" value="850.0" integer="yes" />
+    <set_variable name="Coordinate Y" value="525.0" integer="yes" />
+    <set_variable name="Alignment" value="USFP" integer="yes" />
+  </start>
+  <folder_arme name="Charon System" id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
+  <folder_arme name="Charon Settings" id_arme="6015d1ff-e9fa-487d-8d3b-9eed19300e12" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
+  <folder_arme name="Charon Menu" id_arme="fdd61fc0-8866-4474-96e2-f619715b8f31" parent_id_arme="6015d1ff-e9fa-487d-8d3b-9eed19300e12" />
+  <event name="Charon Active" id_arme="337134ea-f9d6-433b-9cce-8a40014d2f9b" parent_id_arme="fdd61fc0-8866-4474-96e2-f619715b8f31">
+    <if_variable name="Activation Menu" comparator="EQUALS" value="1.0" />
+    <set_gm_button text="Upper Arc/Charon System" />
+    <set_variable name="Charon Gate" value="1.0" integer="yes" />
+  </event>
+  <event name="Clear Menu Item" id_arme="a949a464-0553-4fa8-8644-0faeb49a723d" parent_id_arme="fdd61fc0-8866-4474-96e2-f619715b8f31">
+    <if_variable name="Activation Menu" comparator="EQUALS" value="0.0" />
+    <clear_gm_button text="Upper Arc/Charon System" />
+  </event>
+  <event name="Charon System" id_arme="574f28a8-7e17-4b5a-90c7-6c325f681710" parent_id_arme="fdd61fc0-8866-4474-96e2-f619715b8f31">
+    <if_gm_button text="Upper Arc/Charon System" />
+    <set_variable name="Sandbox Activation" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="102.0" integer="yes" />
+    <set_variable name="Charon System" value="1.0" integer="yes" />
+    <set_variable name="GM Mode" value="3.0" integer="yes" />
+  </event>
+  <event name="Default System Side" id_arme="6c13911f-0a70-4fe6-9625-86714d51a993" parent_id_arme="6015d1ff-e9fa-487d-8d3b-9eed19300e12">
+    <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="System" />
+    <if_variable name="systemSideOverride" comparator="LESS" value="1.0" />
+    <set_variable name="systemSide" value="2.0" integer="yes" />
+    <set_variable name="System Settings" value="2.0" integer="yes" />
+  </event>
+  <event name="System Side Override" id_arme="cd61a7d0-01a8-403b-8b23-8b0c34bdac65" parent_id_arme="6015d1ff-e9fa-487d-8d3b-9eed19300e12">
+    <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="System" />
+    <if_variable name="systemSideOverride" comparator="GREATER_EQUAL" value="1.0" />
+    <set_variable name="systemSide" value="systemSideOverride" integer="yes" />
+    <set_variable name="System Settings" value="2.0" integer="yes" />
+  </event>
+  <event name="Sector Side Override" id_arme="3f602d27-595b-43f1-8fdb-b80385a8ec79" parent_id_arme="6015d1ff-e9fa-487d-8d3b-9eed19300e12">
+    <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="System" />
+    <if_variable name="sectorSideOverride" comparator="GREATER_EQUAL" value="1.0" />
+    <set_variable name="sectorSide" value="sectorSideOverride" integer="yes" />
+    <set_variable name="System Settings" value="3.0" integer="yes" />
+  </event>
+  <event name="Sector Side Override (RESET)" id_arme="6e959c03-0cf4-4896-8370-708ee5d520b5" parent_id_arme="6015d1ff-e9fa-487d-8d3b-9eed19300e12">
+    <if_variable name="System Settings" comparator="EQUALS" value="3.0" />
+    <set_variable name="sectorSideOverride" value="0.0" integer="yes" />
+    <set_variable name="System Settings" value="0.0" integer="yes" />
+  </event>
+  <event name="Set Sector Side" id_arme="f729a094-5131-48f9-a880-07becef4410b" parent_id_arme="6015d1ff-e9fa-487d-8d3b-9eed19300e12">
+    <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="System" />
+    <if_variable name="sectorSideOverride" comparator="LESS" value="1.0" />
+    <set_variable name="sectorSide" value="systemSide" integer="yes" />
+    <set_variable name="System Settings" value="0.0" integer="yes" />
+  </event>
+  <folder_arme name="Charon Sector I" id_arme="bd8aa687-c8d9-4c5e-b303-244c1df64884" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
+  <event name="Create Charon Sector I" id_arme="32458fc2-4bb6-455e-8446-23f5e7574323" parent_id_arme="bd8aa687-c8d9-4c5e-b303-244c1df64884">
+    <if_variable name="Charon System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_skybox_index index="26" />
+    <create count="100" type="nebulas" nebType="2" startX="52794.0" startY="0.0" startZ="67125.0" endX="932.0" endY="0.0" endZ="27641.0" randomRange="40000" />
+    <create count="150" type="nebulas" nebType="2" startX="52430.0" startY="0.0" startZ="66761.0" endX="568.0" endY="0.0" endZ="27277.0" randomRange="20000" />
+    <create count="150" type="nebulas" nebType="2" startX="38583.0" startY="0.0" startZ="28259.0" endX="-13279.0" endY="0.0" endZ="-11225.0" randomRange="20000" />
+    <create count="50" type="asteroids" startX="53158.0" startY="0.0" startZ="57287.0" endX="1296.0" endY="0.0" endZ="17803.0" randomRange="20000" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Charon System" value="2.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="0.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="0.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="0449f601-eb0e-4282-9139-4ca2d9dc6708" parent_id_arme="bd8aa687-c8d9-4c5e-b303-244c1df64884" />
+  <event name="Transition to Sector II" id_arme="cd353cd3-19b5-488a-bb3f-194baaa92c23" parent_id_arme="0449f601-eb0e-4282-9139-4ca2d9dc6708">
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+    <set_variable name="Sector" value="2.0" integer="yes" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector IV" id_arme="78cb483e-97fc-4f7c-b074-bd20193f8c06" parent_id_arme="0449f601-eb0e-4282-9139-4ca2d9dc6708">
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Sector" value="4.0" integer="yes" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+  </event>
+  <event name="Transition to (Bottom Right)" id_arme="80151821-d320-45cd-b18b-e95ca32f19de" parent_id_arme="0449f601-eb0e-4282-9139-4ca2d9dc6708">
+    <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="5.0" integer="yes" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E5 Transition" value="0.0" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="94cae3cf-1a20-4ba3-8196-3294d979bf3f" parent_id_arme="bd8aa687-c8d9-4c5e-b303-244c1df64884" />
+  <event name="Generate Sector Entities" id_arme="fe466c71-0891-4ad8-a146-ad6799a384d3" parent_id_arme="94cae3cf-1a20-4ba3-8196-3294d979bf3f">
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Charon I" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="dc367b1e-af0c-4a70-b98e-49bca5b5f636" parent_id_arme="94cae3cf-1a20-4ba3-8196-3294d979bf3f">
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="847894ee-2de5-4481-b0ce-91f37357a3be" parent_id_arme="94cae3cf-1a20-4ba3-8196-3294d979bf3f">
+    <if_variable name="Charon System" comparator="EQUALS" value="3.0" />
+    <set_variable name="Charon System" value="System" integer="yes" />
+    <destroy name="Charon I" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <folder_arme name="Charon Sector II" id_arme="7bc1753c-21c1-4375-ae7b-58ae9fed048c" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
+  <event name="Create Charon Sector II" id_arme="e7ad10c8-ca65-468b-a021-fa8bd33414ea" parent_id_arme="7bc1753c-21c1-4375-ae7b-58ae9fed048c">
+    <if_variable name="Charon System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="Transition" />
+    <set_skybox_index index="26" />
+    <create count="50" type="nebulas" nebType="2" startX="93118.0" startY="0.0" startZ="22186.0" endX="74778.0" endY="0.0" endZ="9411.0" randomRange="10000" />
+    <create count="30" type="nebulas" nebType="2" startX="96640.0" startY="0.0" startZ="52672.0" endX="51822.0" endY="0.0" endZ="18034.0" randomRange="10000" />
+    <create count="30" type="mines" startX="60081.0" startY="0.0" startZ="31174.0" endX="60081.0" endY="0.0" endZ="51174.0" />
+    <create count="30" type="mines" startX="49636.0" startY="0.0" startZ="44291.0" endX="49636.0" endY="0.0" endZ="64291.0" />
+    <create count="57" type="mines" startX="49879.0" startY="0.0" startZ="69797.0" endX="14879.0" endY="0.0" endZ="69797.0" />
+    <create count="30" type="mines" startX="60081.0" startY="0.0" startZ="77813.0" endX="40081.0" endY="0.0" endZ="77813.0" />
+    <create count="30" type="mines" startX="23158.0" startY="0.0" startZ="77813.0" endX="3158.0" endY="0.0" endZ="77813.0" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Charon System" value="2.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="0.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="2e31124d-5303-4b44-ac43-ec4bc3e547ef" parent_id_arme="7bc1753c-21c1-4375-ae7b-58ae9fed048c" />
+  <event name="Transition to Sector III" id_arme="ca768fc3-842c-4862-b3ae-aeea7223db55" parent_id_arme="2e31124d-5303-4b44-ac43-ec4bc3e547ef">
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector I" id_arme="7d2b071a-4dd3-4d2d-b155-223be93e78b1" parent_id_arme="2e31124d-5303-4b44-ac43-ec4bc3e547ef">
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+    <set_variable name="Sector" value="1.0" integer="yes" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector V" id_arme="59332b5c-d800-4358-bd60-94566596d865" parent_id_arme="2e31124d-5303-4b44-ac43-ec4bc3e547ef">
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+    <set_variable name="Sector" value="5.0" integer="yes" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+  </event>
+  <event name="Transition to (Bottom Right)" id_arme="d7014516-1c8d-4586-8234-6173df1398a7" parent_id_arme="2e31124d-5303-4b44-ac43-ec4bc3e547ef">
+    <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E5 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="6.0" integer="yes" />
+  </event>
+  <event name="Transition to (Bottom Left)" id_arme="b30d564c-5bb2-4280-8aca-e6e04e0efc71" parent_id_arme="2e31124d-5303-4b44-ac43-ec4bc3e547ef">
+    <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E1 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="4.0" integer="yes" />
+  </event>
+  <folder_arme name="System - Jump Gate Settings" id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83" parent_id_arme="2e31124d-5303-4b44-ac43-ec4bc3e547ef" />
+  <event name="Gate Offline" id_arme="90d63b6d-4f3d-40bc-86f5-dfe24357a66a" parent_id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="Norayne Gate" />
+  </event>
+  <folder_arme name="Tracking System" id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247" parent_id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83" />
+  <event name="Ship1 Activation Range" id_arme="9ee3d7c6-fc41-4126-9f10-ff4740910803" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="0" name2="Norayne Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Norayne Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship1" value="1.0" />
+  </event>
+  <event name="Ship1 Out of Range" id_arme="a17eaf43-4ffc-4aab-8b15-1a3117b245d3" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="0" name2="Norayne Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Norayne Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship1" value="0.0" />
+  </event>
+  <event name="Ship2 Activation Range" id_arme="821c7eeb-4bda-470d-b813-db2f91f723f0" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="1" name2="Norayne Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Norayne Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship2" value="1.0" />
+  </event>
+  <event name="Ship2 Out of Range" id_arme="8538df1f-9f88-48bc-8fd3-25f196f7707d" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="1" name2="Norayne Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Norayne Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship2" value="0.0" />
+  </event>
+  <event name="Ship3 Activation Range" id_arme="487a4879-0868-4f63-8533-6213ba0d530f" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="2" name2="Norayne Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Norayne Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship3" value="1.0" />
+  </event>
+  <event name="Ship3 Out of Range" id_arme="cfecc391-c0f4-40c4-ac0c-262dce7f46bb" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="2" name2="Norayne Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Norayne Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship3" value="0.0" />
+  </event>
+  <event name="Ship4 Activation Range" id_arme="f6a229f0-ba8d-42f4-b3a7-e17f26ffaa78" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="3" name2="Norayne Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Norayne Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship4" value="1.0" />
+  </event>
+  <event name="Ship4 Out of Range" id_arme="6aefb361-f909-4601-b04d-64ee277ae1fa" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="3" name2="Norayne Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Norayne Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship4" value="0.0" />
+  </event>
+  <event name="Ship5 Activation Range" id_arme="ab17df6f-e69c-4bb7-88d2-466ab15382a3" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="4" name2="Norayne Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Norayne Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship5" value="1.0" />
+  </event>
+  <event name="Ship5 Out of Range" id_arme="305f2236-daf5-477e-a42f-c20a910ca54f" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="4" name2="Norayne Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Norayne Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship5" value="0.0" />
+  </event>
+  <event name="Ship6 Activation Range" id_arme="a06e393a-a845-4ac1-a474-f561bafe34cc" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="5" name2="Norayne Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Norayne Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship6" value="1.0" />
+  </event>
+  <event name="Ship6 Out of Range" id_arme="6f3cc0a7-9479-4ed6-8f08-1d2e8862b558" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="5" name2="Norayne Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Norayne Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship6" value="0.0" />
+  </event>
+  <event name="Ship7 Activation Range" id_arme="aa322b59-8748-4f26-a9ea-089be033b6fd" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="6" name2="Norayne Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Norayne Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship7" value="1.0" />
+  </event>
+  <event name="Ship7 Out of Range" id_arme="6605b477-d0b3-406f-98b2-d317c4c1f2b6" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="6" name2="Norayne Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Norayne Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship7" value="0.0" />
+  </event>
+  <event name="Ship8 Activation Range" id_arme="6d6d19a5-7e59-4609-a4d6-057b979f2dfe" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="7" name2="Norayne Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Norayne Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship8" value="1.0" />
+  </event>
+  <event name="Ship8 Out of Range" id_arme="e727d711-e221-4770-bdcf-0205f51d2e40" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="7" name2="Norayne Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Norayne Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship8" value="0.0" />
+  </event>
+  <event name="Gate Online" id_arme="e113c47c-ccd7-48c8-b520-4174a25a8a6a" parent_id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="Norayne Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="Norayne Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated" id_arme="cbb7a700-d872-4afe-97b3-23b096f478c8" parent_id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="Norayne Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Charon to Norayne" value="1.0" />
+    <set_variable name="Norayne System" value="1.0" />
+    <set_variable name="Sector" value="2" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="Gate System" value="0.0" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="563d3840-7948-40f0-9f73-888cbd14e85d" parent_id_arme="7bc1753c-21c1-4375-ae7b-58ae9fed048c" />
+  <event name="Generate Sector Entities" id_arme="552a1cad-d941-4984-be8b-7c58ce13ad61" parent_id_arme="563d3840-7948-40f0-9f73-888cbd14e85d">
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Charon II" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="29231.0" y="0.0" z="48542.0" name="Norayne Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="60081.0" y="0.0" z="63238.0" angle="0" name="WP-NA" hullID="1052" />
+    <create type="neutral" x="31175.0" y="0.0" z="77327.0" angle="0" name="WP-NC" hullID="1052" />
+    <create type="neutral" x="5426.0" y="0.0" z="69676.0" angle="0" name="WP-NB" hullID="1052" />
+    <create type="neutral" x="50122.0" y="0.0" z="30323.0" angle="0" name="WP-ND" hullID="1052" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="0c290b8f-0308-4c2f-bf13-0fde269827f7" parent_id_arme="563d3840-7948-40f0-9f73-888cbd14e85d">
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_object_property property="artScale" value="1.0" name="Norayne Gate" />
+    <set_object_property property="pushRadius" value="0.0" name="Norayne Gate" />
+    <set_object_property property="angle" value="4.71238898" name="Norayne Gate" />
+    <set_object_property property="rollDelta" value="0.3" name="Norayne Gate" />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="b7b599b2-886c-441b-a59b-ed08e98555a5" parent_id_arme="563d3840-7948-40f0-9f73-888cbd14e85d">
+    <if_variable name="Charon System" comparator="EQUALS" value="3.0" />
+    <destroy name="Charon II" />
+    <destroy name="Norayne Gate" />
+    <destroy name="WP-ND" />
+    <destroy name="WP-NB" />
+    <destroy name="WP-NC" />
+    <destroy name="WP-NA" />
+    <set_variable name="Charon System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <event name="Arrival From Norayne" id_arme="708fb0d4-2d70-4140-898b-8cb4cbc6d044" parent_id_arme="7bc1753c-21c1-4375-ae7b-58ae9fed048c">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Norayne to Charon" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="Norayne Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="Norayne Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="Norayne Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="Norayne Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="Norayne Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="Norayne Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="Norayne Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="Norayne Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="Norayne to Charon" value="0.0" />
+  </event>
+  <folder_arme name="Charon Sector III" id_arme="c0e96d96-c22b-47fd-8911-1f0071938b65" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
+  <event name="Create Charon Sector III" id_arme="1bd39347-45be-45ed-92ba-3c4ff16259fe" parent_id_arme="c0e96d96-c22b-47fd-8911-1f0071938b65">
+    <if_variable name="Charon System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_timer_finished name="Transition" />
+    <set_skybox_index index="26" />
+    <create count="30" type="mines" startX="88624.0" startY="0.0" startZ="74898.0" endX="88624.0" endY="0.0" endZ="54898.0" />
+    <create count="30" type="mines" startX="96519.0" startY="0.0" startZ="55465.0" endX="96519.0" endY="0.0" endZ="35465.0" />
+    <create count="100" type="nebulas" nebType="2" startX="70284.0" startY="0.0" startZ="24008.0" endX="36519.0" endY="0.0" endZ="8461.0" randomRange="20000" />
+    <create count="100" type="nebulas" nebType="2" startX="43928.0" startY="0.0" startZ="19271.0" endX="10163.0" endY="0.0" endZ="3724.0" randomRange="10000" />
+    <create count="70" type="nebulas" nebType="2" startX="30932.0" startY="0.0" startZ="99190.0" endX="-2833.0" endY="0.0" endZ="83643.0" randomRange="10000" />
+    <create count="50" type="asteroids" startX="42349.0" startY="0.0" startZ="19028.0" endX="8584.0" endY="0.0" endZ="3481.0" randomRange="10000" />
+    <create count="50" type="asteroids" startX="45871.0" startY="0.0" startZ="20485.0" endX="12106.0" endY="0.0" endZ="4938.0" randomRange="100000" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Charon System" value="2.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="0.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="0.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="4c4faf6e-c90d-4544-b4ee-615a239f6bce" parent_id_arme="c0e96d96-c22b-47fd-8911-1f0071938b65" />
+  <event name="Transition to Sector II" id_arme="94f9a07b-651d-442e-bcc6-c4a7de8521b2" parent_id_arme="4c4faf6e-c90d-4544-b4ee-615a239f6bce">
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="2.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector VI" id_arme="cbc65ba0-6189-4ec7-b425-491f6136a293" parent_id_arme="4c4faf6e-c90d-4544-b4ee-615a239f6bce">
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="6.0" integer="yes" />
+  </event>
+  <event name="Transition to (Bottom Left)" id_arme="08fb564b-6674-48b3-b4d0-d914da77d694" parent_id_arme="4c4faf6e-c90d-4544-b4ee-615a239f6bce">
+    <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E1 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="5.0" integer="yes" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="0ff74de6-d1c3-462a-b968-ac2b029aeb87" parent_id_arme="c0e96d96-c22b-47fd-8911-1f0071938b65" />
+  <event name="Generate Sector Entities" id_arme="874ee4b6-2c61-4a13-875d-3de2780a9020" parent_id_arme="0ff74de6-d1c3-462a-b968-ac2b029aeb87">
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Charon III" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="96397.0" y="0.0" z="73441.0" angle="0" name="WP-E" hullID="1052" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="71a32eaf-ef73-4630-b31a-522fdb1a44ee" parent_id_arme="0ff74de6-d1c3-462a-b968-ac2b029aeb87">
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="f6cb6274-798f-42f6-8d76-1c1cc456cfcf" parent_id_arme="0ff74de6-d1c3-462a-b968-ac2b029aeb87">
+    <if_variable name="Charon System" comparator="EQUALS" value="3.0" />
+    <destroy name="Charon III" />
+    <destroy name="WP-E" />
+    <set_variable name="Charon System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <folder_arme name="Charon Sector IV" id_arme="6797704b-85b6-463b-82c0-02e2e4dcf8f6" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
+  <event name="Create Charon Sector IV" id_arme="722c9594-7acc-4854-85eb-84bcb64ad6e8" parent_id_arme="6797704b-85b6-463b-82c0-02e2e4dcf8f6">
+    <if_variable name="Charon System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_timer_finished name="Transition" />
+    <set_skybox_index index="26" />
+    <create count="40" type="nebulas" nebType="2" startX="567.0" startY="0.0" startZ="88987.0" endX="17328.0" endY="0.0" endZ="99656.0" randomRange="10000" />
+    <create count="40" type="nebulas" nebType="2" startX="33968.0" startY="0.0" startZ="84858.0" endX="50729.0" endY="0.0" endZ="95527.0" randomRange="10000" />
+    <create count="40" type="nebulas" nebType="2" startX="97490.0" startY="0.0" startZ="53765.0" endX="57166.0" endY="0.0" endZ="29211.0" randomRange="30000" />
+    <create count="80" type="nebulas" nebType="2" startX="97247.0" startY="0.0" startZ="53886.0" endX="56923.0" endY="0.0" endZ="29332.0" randomRange="20000" />
+    <create count="80" type="nebulas" nebType="1" startX="94090.0" startY="0.0" startZ="59716.0" endX="53766.0" endY="0.0" endZ="35162.0" randomRange="10000" />
+    <create count="80" type="nebulas" nebType="2" startX="99312.0" startY="0.0" startZ="96153.0" endX="58988.0" endY="0.0" endZ="71599.0" randomRange="20000" />
+    <create count="20" type="asteroids" startX="96397.0" startY="0.0" startZ="98097.0" endX="56073.0" endY="0.0" endZ="73543.0" randomRange="20000" />
+    <create count="10" type="nebulas" nebType="1" startX="31175.0" startY="0.0" startZ="90445.0" endX="47936.0" endY="0.0" endZ="101114.0" randomRange="10000" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Charon System" value="2.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="0.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="4740f1ec-6ad6-4ada-93dc-c3f213dd9786" parent_id_arme="6797704b-85b6-463b-82c0-02e2e4dcf8f6" />
+  <event name="Transition to Sector V" id_arme="09537c50-674d-4412-b6cc-4efc93ce91ea" parent_id_arme="4740f1ec-6ad6-4ada-93dc-c3f213dd9786">
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="5.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector I" id_arme="d0c5b587-cb76-4c36-a704-4ef66a766dcf" parent_id_arme="4740f1ec-6ad6-4ada-93dc-c3f213dd9786">
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="1.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector VII" id_arme="4a12f9a1-58ae-4673-966a-fb8c9aea923d" parent_id_arme="4740f1ec-6ad6-4ada-93dc-c3f213dd9786">
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="7.0" integer="yes" />
+  </event>
+  <event name="Transition to (Bottom Right)" id_arme="fedf02ed-7197-48e1-90a8-3c9a4ba1825f" parent_id_arme="4740f1ec-6ad6-4ada-93dc-c3f213dd9786">
+    <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E5 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="8.0" integer="yes" />
+  </event>
+  <event name="Transition to (Top Right)" id_arme="01818fa6-fe5f-4310-b4f1-be50f76436e3" parent_id_arme="4740f1ec-6ad6-4ada-93dc-c3f213dd9786">
+    <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A5 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="2.0" integer="yes" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="cfde8ffc-b137-4ab5-8613-903a87490bd0" parent_id_arme="6797704b-85b6-463b-82c0-02e2e4dcf8f6" />
+  <event name="Generate Sector Entities" id_arme="02200c7f-ff9c-4e47-8ccb-6f907ebfcbeb" parent_id_arme="cfde8ffc-b137-4ab5-8613-903a87490bd0">
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Charon IV" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="26438.0" y="0.0" z="19028.0" angle="0" name="DS-76" hullID="1000" />
+    <create type="neutral" x="81094.0" y="0.0" z="31781.0" angle="0" name="DS-01" hullID="1000" />
+    <create type="neutral" x="71863.0" y="0.0" z="82793.0" angle="0" name="RS-9992" hullID="1004" />
+    <create type="neutral" x="28381.0" y="0.0" z="67004.0" angle="0" name="Harrling" hullID="1001" />
+    <create type="neutral" x="64211.0" y="0.0" z="50850.0" angle="0" name="Soulin" hullID="1001" />
+    <create type="neutral" x="74535.0" y="0.0" z="41376.0" angle="0" name="Serrin" hullID="1003" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="6fb89a0f-141c-4adf-8c9a-4bbec8071282" parent_id_arme="cfde8ffc-b137-4ab5-8613-903a87490bd0">
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_ship_text name="Serrin" desc="Independent nebula refinery founded by the Serrin family. Established 2126." />
+    <set_ship_text name="Soulin" desc="Civilian station and tourist destination. Popular despite its proximity to the Hegemony border thanks to the particularly spectacular nebulae nearby." />
+    <set_ship_text name="Harrling" desc="Civilian station in private ownership, established 2236 by Harold Harrling." />
+    <set_ship_text name="RS-9992" desc="Originally designated RS-92, but an unfortunate typo led to it being registered as RS-9992. The resident scientists consider this a charm of good fortune." />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="e26cfdd5-2be5-4e84-8f80-30c3446eb1ff" parent_id_arme="cfde8ffc-b137-4ab5-8613-903a87490bd0">
+    <if_variable name="Charon System" comparator="EQUALS" value="3.0" />
+    <destroy name="Charon IV" />
+    <destroy name="DS-76" />
+    <destroy name="DS-01" />
+    <destroy name="RS-9992" />
+    <destroy name="Harrling" />
+    <destroy name="Soulin" />
+    <destroy name="Serrin" />
+    <set_variable name="Charon System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <folder_arme name="Charon Sector V" id_arme="c1e6332c-5c64-4995-bf24-72a634605bda" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
+  <event name="Create Charon Sector V" id_arme="b712d4ae-1542-49c5-9122-35ba03f9d2de" parent_id_arme="c1e6332c-5c64-4995-bf24-72a634605bda">
+    <if_variable name="Charon System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_timer_finished name="Transition" />
+    <set_skybox_index index="26" />
+    <create count="45" type="mines" startX="80243.0" startY="0.0" startZ="18149.0" endX="80243.0" endY="0.0" endZ="48149.0" />
+    <create count="52" type="mines" startX="75142.0" startY="0.0" startZ="17570.0" endX="40142.0" endY="0.0" endZ="17570.0" />
+    <create count="30" type="mines" startX="45507.0" startY="0.0" startZ="21578.0" endX="45507.0" endY="0.0" endZ="41578.0" />
+    <create count="30" type="mines" startX="39798.0" startY="0.0" startZ="35425.0" endX="39798.0" endY="0.0" endZ="55425.0" />
+    <create count="22" type="mines" startX="80608.0" startY="0.0" startZ="54372.0" endX="65608.0" endY="0.0" endZ="54372.0" />
+    <create count="70" type="nebulas" nebType="2" startX="35911.0" startY="0.0" startZ="74534.0" endX="75264.0" endY="0.0" endZ="97654.0" randomRange="10000" />
+    <create count="70" type="nebulas" nebType="2" startX="63482.0" startY="0.0" startZ="71255.0" endX="102835.0" endY="0.0" endZ="94375.0" randomRange="15000" />
+    <create count="30" type="nebulas" startX="71863.0" startY="0.0" startZ="84493.0" endX="111216.0" endY="0.0" endZ="107613.0" randomRange="15000" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Charon System" value="2.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="e50ce6d7-14d6-4c88-8081-21a5979ef85f" parent_id_arme="c1e6332c-5c64-4995-bf24-72a634605bda" />
+  <event name="Transition to Sector VI" id_arme="9e190538-f04c-45b1-90b6-e5a6e088e125" parent_id_arme="e50ce6d7-14d6-4c88-8081-21a5979ef85f">
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="6.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector IV" id_arme="ad0b591c-f66b-47e9-96c9-7731720604d2" parent_id_arme="e50ce6d7-14d6-4c88-8081-21a5979ef85f">
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="4.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector II" id_arme="621bc65c-7920-43eb-9671-d607b0f3a1b5" parent_id_arme="e50ce6d7-14d6-4c88-8081-21a5979ef85f">
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="2.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector VIII" id_arme="71feee0b-6346-4b23-a10c-7e0da792de88" parent_id_arme="e50ce6d7-14d6-4c88-8081-21a5979ef85f">
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="8.0" integer="yes" />
+  </event>
+  <event name="Transition to (Bottom Right)" id_arme="36f260a3-0508-4dd8-8eb4-a96bb0298fcc" parent_id_arme="e50ce6d7-14d6-4c88-8081-21a5979ef85f">
+    <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E5 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="9.0" integer="yes" />
+  </event>
+  <event name="Transition to (Top Right)" id_arme="fc8b829e-c6eb-4a83-9428-55fd6f073eed" parent_id_arme="e50ce6d7-14d6-4c88-8081-21a5979ef85f">
+    <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A5 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="3.0" integer="yes" />
+  </event>
+  <event name="Transition to (Bottom Left)" id_arme="7d337b7b-5e08-4677-aeb4-3b601efa920a" parent_id_arme="e50ce6d7-14d6-4c88-8081-21a5979ef85f">
+    <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E1 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="7.0" integer="yes" />
+  </event>
+  <event name="Transition to (Top Left)" id_arme="da699863-e187-4089-a8a5-7194ecb803f9" parent_id_arme="e50ce6d7-14d6-4c88-8081-21a5979ef85f">
+    <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A1 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="33a17718-a44b-4a95-b2e8-8e8393e44137" parent_id_arme="c1e6332c-5c64-4995-bf24-72a634605bda" />
+  <event name="Generate Sector Entities" id_arme="ff2bc030-0dd5-457a-873d-fc1743ce9215" parent_id_arme="33a17718-a44b-4a95-b2e8-8e8393e44137">
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Charon V" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="62875.0" y="0.0" z="33967.0" angle="0" name="Charon Forward Command" hullID="1000" />
+    <create type="neutral" x="67369.0" y="0.0" z="46963.0" angle="0" name="SY-101" hullID="1053" />
+    <create type="neutral" x="40162.0" y="0.0" z="25829.0" angle="0" name="WP-101" hullID="1052" />
+    <create type="neutral" x="59717.0" y="0.0" z="54129.0" angle="0" name="WP-1011" hullID="1052" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="d6ae502d-8e85-47f7-ac11-f83475278ef3" parent_id_arme="33a17718-a44b-4a95-b2e8-8e8393e44137">
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_ship_text name="Charon Forward Command" desc="Military command post overseeing activity at the Charon-Norayne border." />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="7d746c8a-b005-4b7f-8b55-5feb42633c44" parent_id_arme="33a17718-a44b-4a95-b2e8-8e8393e44137">
+    <if_variable name="Charon System" comparator="EQUALS" value="3.0" />
+    <destroy name="Charon V" />
+    <destroy name="WP-1011" />
+    <destroy name="Charon Forward Command" />
+    <destroy name="SY-101" />
+    <destroy name="WP-101" />
+    <set_variable name="Charon System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <folder_arme name="Charon Sector VI" id_arme="c78971ed-58c2-4607-8f75-b07db6a40817" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
+  <event name="Create Charon Sector VI" id_arme="4e5c0731-175e-4d97-a8fb-9bfc7630ee55" parent_id_arme="c78971ed-58c2-4607-8f75-b07db6a40817">
+    <if_variable name="Charon System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_timer_finished name="Transition" />
+    <set_skybox_index index="26" />
+    <create count="30" type="nebulas" nebType="2" startX="2754.0" startY="0.0" startZ="1174.0" endX="19150.0" endY="0.0" endZ="13441.0" randomRange="10000" />
+    <create count="30" type="nebulas" nebType="2" startX="23644.0" startY="0.0" startZ="566.0" endX="40040.0" endY="0.0" endZ="12833.0" randomRange="10000" />
+    <create count="30" type="nebulas" nebType="2" startX="50608.0" startY="0.0" startZ="31174.0" endX="18300.0" endY="0.0" endZ="5547.0" randomRange="10000" />
+    <create count="30" type="nebulas" nebType="2" startX="34697.0" startY="0.0" startZ="99554.0" endX="2389.0" endY="0.0" endZ="73927.0" randomRange="10000" />
+    <create count="30" type="asteroids" startX="37490.0" startY="0.0" startZ="98582.0" endX="5182.0" endY="0.0" endZ="72955.0" randomRange="10000" />
+    <create count="20" type="asteroids" startX="50000.0" startY="0.0" startZ="98218.0" endX="17692.0" endY="0.0" endZ="72591.0" randomRange="5000" />
+    <create count="30" type="asteroids" startX="12227.0" startY="0.0" startZ="82429.0" endX="27166.0" endY="0.0" endZ="96155.0" randomRange="5000" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Charon System" value="2.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="f8cf7bc4-c925-47df-92a3-b47b272b320a" parent_id_arme="c78971ed-58c2-4607-8f75-b07db6a40817" />
+  <event name="Transition to Sector V" id_arme="73931322-b2da-434a-a455-a2dfffdc4bc5" parent_id_arme="f8cf7bc4-c925-47df-92a3-b47b272b320a">
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="5.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector III" id_arme="4f96ebc3-2f04-4f08-95f6-f3f19a1b8f49" parent_id_arme="f8cf7bc4-c925-47df-92a3-b47b272b320a">
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="3.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector IX" id_arme="a5ba2d26-19fe-4dd7-84e2-947d86b9ba12" parent_id_arme="f8cf7bc4-c925-47df-92a3-b47b272b320a">
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="9.0" integer="yes" />
+  </event>
+  <event name="Transition to (Bottom Left)" id_arme="a48086c0-0dcc-4ce4-856a-b51f53b1f8ae" parent_id_arme="f8cf7bc4-c925-47df-92a3-b47b272b320a">
+    <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E1 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="8.0" integer="yes" />
+  </event>
+  <event name="Transition to (Top Left)" id_arme="12de43d1-f43f-48fd-a038-c2927e3ccb95" parent_id_arme="f8cf7bc4-c925-47df-92a3-b47b272b320a">
+    <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A1 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="2.0" integer="yes" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="3fc0314a-bc58-4152-8eaa-8d46a2f7a0a5" parent_id_arme="c78971ed-58c2-4607-8f75-b07db6a40817" />
+  <event name="Generate Sector Entities" id_arme="b67f7793-8108-4e0f-9048-3fc833572fd3" parent_id_arme="3fc0314a-bc58-4152-8eaa-8d46a2f7a0a5">
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Charon VI" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="21944.0" y="0.0" z="77692.0" angle="0" name="I-474" hullID="1003" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="748927e6-6fb1-484b-b3a2-dd06ad6f7f02" parent_id_arme="3fc0314a-bc58-4152-8eaa-8d46a2f7a0a5">
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="3d56b2bf-b86c-448c-9ac6-65b24549da2c" parent_id_arme="3fc0314a-bc58-4152-8eaa-8d46a2f7a0a5">
+    <if_variable name="Charon System" comparator="EQUALS" value="3.0" />
+    <destroy name="Charon VI" />
+    <destroy name="I-474" />
+    <destroy name="Charon VI" />
+    <set_variable name="Charon System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <folder_arme name="Charon Sector VII" id_arme="e2d55524-a6bd-4018-9b07-688afae855de" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
+  <event name="Create Charon Sector VII" id_arme="1163159b-b277-4e16-b80e-a71d8360c29d" parent_id_arme="e2d55524-a6bd-4018-9b07-688afae855de">
+    <if_variable name="Charon System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_timer_finished name="Transition" />
+    <set_skybox_index index="26" />
+    <create count="100" type="nebulas" nebType="2" startX="94090.0" startY="0.0" startZ="52064.0" endX="39434.0" endY="0.0" endZ="4211.0" randomRange="10000" />
+    <create count="100" type="nebulas" nebType="2" startX="95061.0" startY="0.0" startZ="48178.0" endX="40405.0" endY="0.0" endZ="325.0" randomRange="20000" />
+    <create count="50" type="nebulas" nebType="1" startX="94818.0" startY="0.0" startZ="50364.0" endX="40162.0" endY="0.0" endZ="2511.0" randomRange="10000" />
+    <create count="100" type="nebulas" nebType="2" startX="93725.0" startY="0.0" startZ="95060.0" endX="39069.0" endY="0.0" endZ="47207.0" randomRange="20000" />
+    <create count="100" type="nebulas" nebType="2" startX="91175.0" startY="0.0" startZ="95425.0" endX="36519.0" endY="0.0" endZ="47572.0" randomRange="10000" />
+    <create count="10" type="asteroids" startX="94697.0" startY="0.0" startZ="96275.0" endX="40041.0" endY="0.0" endZ="48422.0" randomRange="20000" />
+    <create count="10" type="asteroids" startX="91175.0" startY="0.0" startZ="96396.0" endX="73564.0" endY="0.0" endZ="81215.0" randomRange="5000" />
+    <create count="30" type="mines" startX="77814.0" startY="0.0" startZ="38380.0" endX="57814.0" endY="0.0" endZ="38380.0" />
+    <create count="30" type="mines" startX="47814.0" startY="0.0" startZ="38380.0" endX="47814.0" endY="0.0" endZ="58380.0" />
+    <create count="100" type="nebulas" nebType="2" startX="24889.0" startY="0.0" startZ="31884.0" endX="-1972.0" endY="0.0" endZ="8952.0" randomRange="20000" />
+    <create count="35" type="nebulas" nebType="1" startX="21822.0" startY="0.0" startZ="31501.0" endX="-5039.0" endY="0.0" endZ="8569.0" randomRange="10000" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Charon System" value="2.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="0.0" />
+    <set_variable name="Grid E Transition Enabled" value="0.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="b0176281-1c2e-4951-a043-be63996a31a1" parent_id_arme="e2d55524-a6bd-4018-9b07-688afae855de" />
+  <event name="Transition to Sector VIII" id_arme="2199956d-bdfb-450b-9c4f-e46db380aed1" parent_id_arme="b0176281-1c2e-4951-a043-be63996a31a1">
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="8.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector IV" id_arme="259bada4-df67-456e-8d3c-2341c1877201" parent_id_arme="b0176281-1c2e-4951-a043-be63996a31a1">
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="4.0" integer="yes" />
+  </event>
+  <event name="Transition to (Top Right)" id_arme="775abecd-2c3d-45db-adfa-65a3622ac65d" parent_id_arme="b0176281-1c2e-4951-a043-be63996a31a1">
+    <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A5 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="5.0" integer="yes" />
+  </event>
+  <folder_arme name="System - Jump Gate Settings" id_arme="ed40d4ee-3c4d-423b-9747-f9e2ca4451d9" parent_id_arme="b0176281-1c2e-4951-a043-be63996a31a1" />
+  <event name="Gate Offline" id_arme="b7432927-121d-4291-9f94-ccfb3437b130" parent_id_arme="ed40d4ee-3c4d-423b-9747-f9e2ca4451d9">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="Triton Gate" />
+  </event>
+  <folder_arme name="Tracking System" id_arme="a383730a-cb7f-41bb-8d6c-9b9571db6b68" parent_id_arme="ed40d4ee-3c4d-423b-9747-f9e2ca4451d9" />
+  <event name="Ship1 Activation Range" id_arme="4a3a9d07-52f3-4810-ab38-1bf1599d7123" parent_id_arme="a383730a-cb7f-41bb-8d6c-9b9571db6b68">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="0" name2="Triton Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Triton Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship1" value="1.0" />
+  </event>
+  <event name="Ship1 Out of Range" id_arme="563d4b61-00d5-47d8-bf68-27d290629bfd" parent_id_arme="a383730a-cb7f-41bb-8d6c-9b9571db6b68">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="0" name2="Triton Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Triton Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship1" value="0.0" />
+  </event>
+  <event name="Ship2 Activation Range" id_arme="ee531b02-92f7-4082-8f3a-23890df05709" parent_id_arme="a383730a-cb7f-41bb-8d6c-9b9571db6b68">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="1" name2="Triton Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Triton Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship2" value="1.0" />
+  </event>
+  <event name="Ship2 Out of Range" id_arme="89b1f69d-5fa0-4e42-9547-2a92065ccf24" parent_id_arme="a383730a-cb7f-41bb-8d6c-9b9571db6b68">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="1" name2="Triton Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Triton Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship2" value="0.0" />
+  </event>
+  <event name="Ship3 Activation Range" id_arme="bab7726d-d0bb-4800-b420-36fcfa6f09d9" parent_id_arme="a383730a-cb7f-41bb-8d6c-9b9571db6b68">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="2" name2="Triton Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Triton Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship3" value="1.0" />
+  </event>
+  <event name="Ship3 Out of Range" id_arme="27bce184-7a97-4b78-8d0a-30096333b12b" parent_id_arme="a383730a-cb7f-41bb-8d6c-9b9571db6b68">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="2" name2="Triton Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Triton Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship3" value="0.0" />
+  </event>
+  <event name="Ship4 Activation Range" id_arme="17e78d3f-b7dd-4331-ba57-44a72c43c65e" parent_id_arme="a383730a-cb7f-41bb-8d6c-9b9571db6b68">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="3" name2="Triton Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Triton Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship4" value="1.0" />
+  </event>
+  <event name="Ship4 Out of Range" id_arme="a4d01cf2-dddb-458e-ac8b-52929d28be20" parent_id_arme="a383730a-cb7f-41bb-8d6c-9b9571db6b68">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="3" name2="Triton Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Triton Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship4" value="0.0" />
+  </event>
+  <event name="Ship5 Activation Range" id_arme="8ed586f5-2b34-46b3-aa5c-1da004d0b5dd" parent_id_arme="a383730a-cb7f-41bb-8d6c-9b9571db6b68">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="4" name2="Triton Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Triton Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship5" value="1.0" />
+  </event>
+  <event name="Ship5 Out of Range" id_arme="75531b5a-d721-4b56-9447-37fdb4ca16f5" parent_id_arme="a383730a-cb7f-41bb-8d6c-9b9571db6b68">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="4" name2="Triton Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Triton Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship5" value="0.0" />
+  </event>
+  <event name="Ship6 Activation Range" id_arme="9c587473-3fc2-41ec-8c4f-6ac81a937793" parent_id_arme="a383730a-cb7f-41bb-8d6c-9b9571db6b68">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="5" name2="Triton Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Triton Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship6" value="1.0" />
+  </event>
+  <event name="Ship6 Out of Range" id_arme="59dc3a63-44c8-45ca-b44f-1a95c9a4d008" parent_id_arme="a383730a-cb7f-41bb-8d6c-9b9571db6b68">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="5" name2="Triton Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Triton Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship6" value="0.0" />
+  </event>
+  <event name="Ship7 Activation Range" id_arme="97d61b7a-b873-40c7-a3ee-c269a915c671" parent_id_arme="a383730a-cb7f-41bb-8d6c-9b9571db6b68">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="6" name2="Triton Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Triton Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship7" value="1.0" />
+  </event>
+  <event name="Ship7 Out of Range" id_arme="e61ba370-4af0-41ab-801f-1628c7445d2b" parent_id_arme="a383730a-cb7f-41bb-8d6c-9b9571db6b68">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="6" name2="Triton Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Triton Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship7" value="0.0" />
+  </event>
+  <event name="Ship8 Activation Range" id_arme="5b1c4682-4bed-49bb-b374-52e58d7008a5" parent_id_arme="a383730a-cb7f-41bb-8d6c-9b9571db6b68">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="7" name2="Triton Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Triton Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship8" value="1.0" />
+  </event>
+  <event name="Ship8 Out of Range" id_arme="73172ffa-8675-429c-841d-4f504a4ab771" parent_id_arme="a383730a-cb7f-41bb-8d6c-9b9571db6b68">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="7" name2="Triton Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Triton Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship8" value="0.0" />
+  </event>
+  <event name="Gate Online" id_arme="a397969d-bac5-434c-9454-59a61f9f4543" parent_id_arme="ed40d4ee-3c4d-423b-9747-f9e2ca4451d9">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="Triton Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="Triton Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated" id_arme="9ccc1b47-7de4-4d56-8d25-e9b5b87c00f6" parent_id_arme="ed40d4ee-3c4d-423b-9747-f9e2ca4451d9">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="Triton Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Charon to Triton" value="1.0" />
+    <set_variable name="Triton System" value="1.0" />
+    <set_variable name="Sector" value="11.0" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="Gate System" value="0.0" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="37fdd8e3-6b43-4b84-9e9e-17572786b5cb" parent_id_arme="e2d55524-a6bd-4018-9b07-688afae855de" />
+  <event name="Generate Sector Entities" id_arme="f74ba783-829c-466f-afe5-820542c997a3" parent_id_arme="37fdd8e3-6b43-4b84-9e9e-17572786b5cb">
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Charon VII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="67976.0" y="0.0" z="48299.0" name="Triton Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="52673.0" y="0.0" z="38380.0" angle="0" name="WP-33" hullID="1052" />
+    <create type="neutral" x="18664.0" y="0.0" z="38097.0" angle="0" name="DS-30" hullID="1000" />
+    <create type="neutral" x="15507.0" y="0.0" z="52429.0" angle="0" name="DS-37" hullID="1000" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="f8b3994c-b0f9-445e-bf69-61dc478a9604" parent_id_arme="37fdd8e3-6b43-4b84-9e9e-17572786b5cb">
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_object_property property="artScale" value="1.0" name="Triton Gate" />
+    <set_object_property property="pushRadius" value="0.0" name="Triton Gate" />
+    <set_object_property property="angle" value="4.71238898" name="Triton Gate" />
+    <set_object_property property="rollDelta" value="0.3" name="Triton Gate" />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="4cbda876-7080-459a-ba22-9476790346de" parent_id_arme="37fdd8e3-6b43-4b84-9e9e-17572786b5cb">
+    <if_variable name="Charon System" comparator="EQUALS" value="3.0" />
+    <destroy name="Charon VII" />
+    <destroy name="DS-37" />
+    <destroy name="DS-30" />
+    <destroy name="WP-33" />
+    <destroy name="Triton Gate" />
+    <set_variable name="Charon System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <event name="Arrival From Triton" id_arme="8f74dc5f-5dd6-4731-8b28-5a269319227d" parent_id_arme="e2d55524-a6bd-4018-9b07-688afae855de">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Triton to Charon" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="Triton Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="Triton Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="Triton Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="Triton Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="Triton Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="Triton Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="Triton Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="Triton Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="Triton to Charon" value="0.0" />
+  </event>
+  <folder_arme name="Charon Sector VIII" id_arme="9016d9b0-12e6-4392-aa2e-3a0f091bc19c" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
+  <event name="Create Charon Sector VIII" id_arme="ba89a4e6-f595-4e57-8d0d-916ec5b940f1" parent_id_arme="9016d9b0-12e6-4392-aa2e-3a0f091bc19c">
+    <if_variable name="Charon System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_timer_finished name="Transition" />
+    <set_skybox_index index="26" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <create count="40" type="nebulas" nebType="2" startX="99798.0" startY="0.0" startZ="7489.0" endX="87531.0" endY="0.0" endZ="688.0" randomRange="15000" />
+    <create count="10" type="nebulas" nebType="1" startX="99920.0" startY="0.0" startZ="7004.0" endX="87653.0" endY="0.0" endZ="203.0" randomRange="5000" />
+    <create count="30" type="mines" startX="59353.0" startY="0.0" startZ="59716.0" endX="39353.0" endY="0.0" endZ="59716.0" />
+    <create count="30" type="mines" startX="74292.0" startY="0.0" startZ="52429.0" endX="54292.0" endY="0.0" endZ="52429.0" />
+    <create count="30" type="mines" startX="43077.0" startY="0.0" startZ="52429.0" endX="23077.0" endY="0.0" endZ="52429.0" />
+    <create count="15" type="mines" startX="23037.0" startY="0.0" startZ="59230.0" endX="23037.0" endY="0.0" endZ="69230.0" />
+    <create count="15" type="mines" startX="23034.0" startY="0.0" startZ="79757.0" endX="23034.0" endY="0.0" endZ="89757.0" />
+    <create count="15" type="mines" startX="74656.0" startY="0.0" startZ="59230.0" endX="74656.0" endY="0.0" endZ="69230.0" />
+    <create count="15" type="asteroids" startX="6883.0" startY="0.0" startZ="80971.0" endX="30689.0" endY="0.0" endZ="96553.0" randomRange="5000" />
+    <create count="40" type="nebulas" nebType="2" startX="90810.0" startY="0.0" startZ="97368.0" endX="78543.0" endY="0.0" endZ="90567.0" randomRange="15000" />
+    <create count="5" type="nebulas" nebType="3" startX="92025.0" startY="0.0" startZ="97611.0" endX="79758.0" endY="0.0" endZ="90810.0" randomRange="5000" />
+    <create count="10" type="nebulas" nebType="2" startX="99677.0" startY="0.0" startZ="29716.0" endX="87410.0" endY="0.0" endZ="22915.0" randomRange="15000" />
+    <set_variable name="Charon System" value="2.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="0.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="b4637506-9f1c-4490-b8bd-bd9685c50d14" parent_id_arme="9016d9b0-12e6-4392-aa2e-3a0f091bc19c" />
+  <event name="Transition to Sector IX" id_arme="034a76f5-8570-47a5-a237-5d8176bf7604" parent_id_arme="b4637506-9f1c-4490-b8bd-bd9685c50d14">
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="9.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector VII" id_arme="281a35b6-ee8f-42a6-90cb-ab7681c397e0" parent_id_arme="b4637506-9f1c-4490-b8bd-bd9685c50d14">
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="7.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector V" id_arme="7e3256ba-6bcf-4566-9ab0-ed438b9c02f7" parent_id_arme="b4637506-9f1c-4490-b8bd-bd9685c50d14">
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="5.0" integer="yes" />
+  </event>
+  <event name="Transition to (Top Right)" id_arme="1ae1fb82-e341-4e01-bc04-7c33a8e124ad" parent_id_arme="b4637506-9f1c-4490-b8bd-bd9685c50d14">
+    <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A5 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="6.0" integer="yes" />
+  </event>
+  <event name="Transition to (Top Left)" id_arme="cfa0be79-25c6-47b8-b0cd-41d262a4e327" parent_id_arme="b4637506-9f1c-4490-b8bd-bd9685c50d14">
+    <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A1 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="4.0" integer="yes" />
+  </event>
+  <folder_arme name="System - Jump Gate Settings" id_arme="11364ef0-e66e-40e0-8e2d-d40f7995c6a7" parent_id_arme="b4637506-9f1c-4490-b8bd-bd9685c50d14" />
+  <event name="Gate Offline" id_arme="1a3ab6cb-89a9-4e28-8fe1-d43524a4f776" parent_id_arme="11364ef0-e66e-40e0-8e2d-d40f7995c6a7">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="Waypoint 46 Gate" />
+  </event>
+  <folder_arme name="Tracking System" id_arme="45ec1db4-f446-4654-a8b0-3e3cc970234e" parent_id_arme="11364ef0-e66e-40e0-8e2d-d40f7995c6a7" />
+  <event name="Ship1 Activation Range" id_arme="4811350f-7759-4fcd-b5c2-11bf18a9f7e2" parent_id_arme="45ec1db4-f446-4654-a8b0-3e3cc970234e">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="0" name2="Waypoint 46 Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Waypoint 46 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship1" value="1.0" />
+  </event>
+  <event name="Ship1 Out of Range" id_arme="0957725e-9a8e-4c75-bbc5-68d4487c666c" parent_id_arme="45ec1db4-f446-4654-a8b0-3e3cc970234e">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="0" name2="Waypoint 46 Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Waypoint 46 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship1" value="0.0" />
+  </event>
+  <event name="Ship2 Activation Range" id_arme="4cbecb48-3788-4e62-ad70-11db1b00e9c7" parent_id_arme="45ec1db4-f446-4654-a8b0-3e3cc970234e">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="1" name2="Waypoint 46 Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Waypoint 46 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship2" value="1.0" />
+  </event>
+  <event name="Ship2 Out of Range" id_arme="1511fc27-45db-4740-b1a5-04ef69a810d6" parent_id_arme="45ec1db4-f446-4654-a8b0-3e3cc970234e">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="1" name2="Waypoint 46 Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Waypoint 46 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship2" value="0.0" />
+  </event>
+  <event name="Ship3 Activation Range" id_arme="179ad9ee-957d-4d7e-8c69-def266743ad1" parent_id_arme="45ec1db4-f446-4654-a8b0-3e3cc970234e">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="2" name2="Waypoint 46 Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Waypoint 46 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship3" value="1.0" />
+  </event>
+  <event name="Ship3 Out of Range" id_arme="6274240b-c56f-40b1-a9e2-1b7c54b17bc9" parent_id_arme="45ec1db4-f446-4654-a8b0-3e3cc970234e">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="2" name2="Waypoint 46 Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Waypoint 46 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship3" value="0.0" />
+  </event>
+  <event name="Ship4 Activation Range" id_arme="f1ef03a9-9f60-4244-ae29-84c09b4fbc22" parent_id_arme="45ec1db4-f446-4654-a8b0-3e3cc970234e">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="3" name2="Waypoint 46 Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Waypoint 46 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship4" value="1.0" />
+  </event>
+  <event name="Ship4 Out of Range" id_arme="a975e6e4-cf65-48a8-bfcb-f5b50f70d9c6" parent_id_arme="45ec1db4-f446-4654-a8b0-3e3cc970234e">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="3" name2="Waypoint 46 Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Waypoint 46 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship4" value="0.0" />
+  </event>
+  <event name="Ship5 Activation Range" id_arme="8c671576-1e19-4111-b734-a44ea099efdd" parent_id_arme="45ec1db4-f446-4654-a8b0-3e3cc970234e">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="4" name2="Waypoint 46 Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Waypoint 46 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship5" value="1.0" />
+  </event>
+  <event name="Ship5 Out of Range" id_arme="a79fc576-d4cc-4cfc-ae46-971bc935ce8b" parent_id_arme="45ec1db4-f446-4654-a8b0-3e3cc970234e">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="4" name2="Waypoint 46 Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Waypoint 46 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship5" value="0.0" />
+  </event>
+  <event name="Ship6 Activation Range" id_arme="f05e5c49-7e5d-4247-9abd-513389040fc4" parent_id_arme="45ec1db4-f446-4654-a8b0-3e3cc970234e">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="5" name2="Waypoint 46 Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Waypoint 46 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship6" value="1.0" />
+  </event>
+  <event name="Ship6 Out of Range" id_arme="2ca3e8df-bf84-48f2-8992-c4bd682a31d8" parent_id_arme="45ec1db4-f446-4654-a8b0-3e3cc970234e">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="5" name2="Waypoint 46 Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Waypoint 46 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship6" value="0.0" />
+  </event>
+  <event name="Ship7 Activation Range" id_arme="56cab369-7a55-4da6-8c54-cd3bc72ae685" parent_id_arme="45ec1db4-f446-4654-a8b0-3e3cc970234e">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="6" name2="Waypoint 46 Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Waypoint 46 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship7" value="1.0" />
+  </event>
+  <event name="Ship7 Out of Range" id_arme="e39d475a-cc71-4c50-a36e-3eb1ef42fcad" parent_id_arme="45ec1db4-f446-4654-a8b0-3e3cc970234e">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="6" name2="Waypoint 46 Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Waypoint 46 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship7" value="0.0" />
+  </event>
+  <event name="Ship8 Activation Range" id_arme="35bd0e35-226a-4abc-a7cb-8df63bffe103" parent_id_arme="45ec1db4-f446-4654-a8b0-3e3cc970234e">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="7" name2="Waypoint 46 Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Waypoint 46 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship8" value="1.0" />
+  </event>
+  <event name="Ship8 Out of Range" id_arme="8cc5195e-a324-43e4-9aa9-dcac04b6e1ce" parent_id_arme="45ec1db4-f446-4654-a8b0-3e3cc970234e">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="7" name2="Waypoint 46 Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Waypoint 46 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship8" value="0.0" />
+  </event>
+  <event name="Gate Online" id_arme="a0d6bc1b-d9e1-4f20-bd3f-208bcd8659c5" parent_id_arme="11364ef0-e66e-40e0-8e2d-d40f7995c6a7">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="Waypoint 46 Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="Waypoint 46 Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated" id_arme="b28b2c02-d03c-44ca-92a1-366c0c023469" parent_id_arme="11364ef0-e66e-40e0-8e2d-d40f7995c6a7">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="Waypoint 46 Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Charon to Waypoint 46" value="1.0" />
+    <set_variable name="Waypoint 46" value="1.0" />
+    <set_variable name="Sector" value="2" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="Gate System" value="0.0" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="e04eb7b3-de99-4b25-af6b-12a4c917fe93" parent_id_arme="9016d9b0-12e6-4392-aa2e-3a0f091bc19c" />
+  <event name="Generate Sector Entities" id_arme="0b0fb710-20f5-4955-b070-df626c08876b" parent_id_arme="e04eb7b3-de99-4b25-af6b-12a4c917fe93">
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Charon VIII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="50243.0" y="0.0" z="73927.0" name="Waypoint 46 Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="48786.0" y="0.0" z="52064.0" angle="0" name="WP-(-2)" hullID="1052" />
+    <create type="neutral" x="88138.0" y="0.0" z="79878.0" angle="0" name="DS-7" hullID="1000" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="5cdef4f7-f60f-4e79-b11c-01ec66abb68a" parent_id_arme="e04eb7b3-de99-4b25-af6b-12a4c917fe93">
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_object_property property="artScale" value="1.0" name="Waypoint 46 Gate" />
+    <set_object_property property="pushRadius" value="0.0" name="Waypoint 46 Gate" />
+    <set_object_property property="angle" value="4.71238898" name="Waypoint 46 Gate" />
+    <set_object_property property="rollDelta" value="0.3" name="Waypoint 46 Gate" />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="e9ceb032-3828-48b9-aed0-7ee3d78f791a" parent_id_arme="e04eb7b3-de99-4b25-af6b-12a4c917fe93">
+    <if_variable name="Charon System" comparator="EQUALS" value="3.0" />
+    <destroy name="Charon VIII" />
+    <destroy name="DS-7" />
+    <destroy name="WP-(-2)" />
+    <destroy name="Waypoint 46 Gate" />
+    <set_variable name="Charon System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <event name="Arrival From Waypoint 46" id_arme="e6643ab2-46be-429c-8a29-2231f34e364e" parent_id_arme="9016d9b0-12e6-4392-aa2e-3a0f091bc19c">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Waypoint 46 to Charon" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="Waypoint 46 Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="Waypoint 46 Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="Waypoint 46 Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="Waypoint 46 Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="Waypoint 46 Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="Waypoint 46 Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="Waypoint 46 Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="Waypoint 46 Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="Waypoint 46 to Charon" value="0.0" />
+  </event>
+  <folder_arme name="Charon Sector IX" id_arme="f3f7be47-f8e2-4d35-8535-d303ebb78736" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
+  <event name="Create Charon Sector IX" id_arme="a05a68ee-c3c8-422b-9e5c-886bb65cecad" parent_id_arme="f3f7be47-f8e2-4d35-8535-d303ebb78736">
+    <if_variable name="Charon System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="9.0" />
+    <if_timer_finished name="Transition" />
+    <set_skybox_index index="26" />
+    <create count="100" type="asteroids" startX="58381.0" startY="0.0" startZ="32874.0" endX="24252.0" endY="0.0" endZ="566.0" randomRange="15000" />
+    <create count="100" type="asteroids" startX="43806.0" startY="0.0" startZ="26801.0" endX="9677.0" endY="0.0" endZ="-5507.0" randomRange="5000" />
+    <create count="50" type="asteroids" startX="82551.0" startY="0.0" startZ="62995.0" endX="48422.0" endY="0.0" endZ="30687.0" randomRange="5000" />
+    <create count="50" type="nebulas" nebType="2" startX="44656.0" startY="0.0" startZ="12348.0" endX="10527.0" endY="0.0" endZ="-19960.0" randomRange="15000" />
+    <create count="100" type="asteroids" startX="46600.0" startY="0.0" startZ="94331.0" endX="12471.0" endY="0.0" endZ="62023.0" randomRange="15000" />
+    <create count="100" type="asteroids" startX="46721.0" startY="0.0" startZ="99068.0" endX="12592.0" endY="0.0" endZ="66760.0" randomRange="5000" />
+    <create count="100" type="asteroids" startX="34818.0" startY="0.0" startZ="84251.0" endX="689.0" endY="0.0" endZ="51943.0" randomRange="5000" />
+    <create count="100" type="asteroids" startX="36397.0" startY="0.0" startZ="89352.0" endX="2268.0" endY="0.0" endZ="57044.0" randomRange="5000" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Charon System" value="2.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="0.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="0.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="d82c3305-8a5d-4e39-b209-755970e3e258" parent_id_arme="f3f7be47-f8e2-4d35-8535-d303ebb78736" />
+  <event name="Transition to Sector VIII" id_arme="7899320b-decd-4cfa-a270-b2728f625593" parent_id_arme="d82c3305-8a5d-4e39-b209-755970e3e258">
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="9.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="8.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector VI" id_arme="40f1afc7-0d1c-44e6-8ee3-8562a5764a7a" parent_id_arme="d82c3305-8a5d-4e39-b209-755970e3e258">
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="9.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="6.0" integer="yes" />
+  </event>
+  <event name="Transition to (Top Left)" id_arme="df5d0024-bff1-498a-a0da-ee16885771c8" parent_id_arme="d82c3305-8a5d-4e39-b209-755970e3e258">
+    <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="9.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A1 Transition" value="0.0" />
+    <set_variable name="Charon System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="5.0" integer="yes" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="19016afb-8cf0-42f2-a4e2-7496d28f5ac6" parent_id_arme="f3f7be47-f8e2-4d35-8535-d303ebb78736" />
+  <event name="Generate Sector Entities" id_arme="14d46a11-8a2d-4af7-89e2-9afaabfa5957" parent_id_arme="19016afb-8cf0-42f2-a4e2-7496d28f5ac6">
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="9.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Charon IX" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="32268.0" y="0.0" z="71133.0" angle="0" name="I-410" hullID="1003" />
+    <create type="neutral" x="25952.0" y="0.0" z="19271.0" angle="0" name="I-465" hullID="1051" />
+    <create type="neutral" x="47328.0" y="0.0" z="86923.0" angle="0" name="I-442" hullID="1003" />
+    <create type="neutral" x="5183.0" y="0.0" z="71619.0" angle="0" name="I-407" hullID="1003" />
+    <create type="neutral" x="62268.0" y="0.0" z="45870.0" angle="0" name="SY-519" hullID="1053" />
+    <create type="neutral" x="73685.0" y="0.0" z="50242.0" angle="0" name="SY-520" hullID="1053" />
+    <create type="neutral" x="38219.0" y="0.0" z="28866.0" angle="0" name="Casarosso" hullID="1001" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="667fb717-ba4d-4c2b-99b6-118dfa59aaab" parent_id_arme="19016afb-8cf0-42f2-a4e2-7496d28f5ac6">
+    <if_variable name="Sector" comparator="EQUALS" value="9.0" />
+    <if_variable name="Charon System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_ship_text name="Casarosso" desc="Civilian station, drawn here by the market opportunities presented by the military industry in the sector." />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="f1bf1989-0925-406b-a7e4-6e589248a757" parent_id_arme="19016afb-8cf0-42f2-a4e2-7496d28f5ac6">
+    <if_variable name="Charon System" comparator="EQUALS" value="3.0" />
+    <destroy name="Charon IX" />
+    <destroy name="I-410" />
+    <destroy name="I-465" />
+    <destroy name="I-442" />
+    <destroy name="I-407" />
+    <destroy name="SY-519" />
+    <destroy name="SY-520" />
+    <destroy name="Casarosso" />
+    <set_variable name="Charon System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+</mission_data>

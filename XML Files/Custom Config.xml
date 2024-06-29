@@ -121,16 +121,16 @@
   </event>
   <event name="Cargo" id_arme="ed565860-810a-4932-b977-bb8bfdd04316" parent_id_arme="f9dc6a29-7d1b-4399-9daa-0d993badc837">
     <if_variable name="Custom Config" comparator="EQUALS" value="1.0" />
-    <set_variable name="Ship1MarineTeams" value="1" integer="yes" />
+    <set_variable name="Ship1MarineTeams" value="2" integer="yes" />
     <set_variable name="Ship1EngineerTeams" value="2" integer="yes" />
-    <set_variable name="Ship1MedicTeams" value="3" integer="yes" />
-    <set_variable name="Ship1Cargos" value="4" integer="yes" />
-    <set_variable name="Ship1CommsRelays" value="5" integer="yes" />
-    <set_variable name="Ship1SensorBuoys" value="6" integer="yes" />
+    <set_variable name="Ship1MedicTeams" value="2" integer="yes" />
+    <set_variable name="Ship1Cargos" value="3" integer="yes" />
+    <set_variable name="Ship1CommsRelays" value="1" integer="yes" />
+    <set_variable name="Ship1SensorBuoys" value="2" integer="yes" />
     <set_variable name="Ship1 Config" value="2" integer="yes" />
-    <set_variable name="Ship2MarineTeams" value="1" integer="yes" />
+    <set_variable name="Ship2MarineTeams" value="2" integer="yes" />
     <set_variable name="Ship2EngineerTeams" value="1" integer="yes" />
-    <set_variable name="Ship2MedicTeams" value="4" integer="yes" />
+    <set_variable name="Ship2MedicTeams" value="2" integer="yes" />
     <set_variable name="Ship2Cargos" value="1" integer="yes" />
     <set_variable name="Ship2CommsRelays" value="2" integer="yes" />
     <set_variable name="Ship2SensorBuoys" value="1" integer="yes" />
@@ -176,9 +176,9 @@
   <event name="Enable Modules" id_arme="2a1a89b3-96ff-4195-86bb-7fdc1814c997" parent_id_arme="2426f36e-da72-4835-9068-2067f83a12fa">
     <if_variable name="Custom Config" comparator="EQUALS" value="2.0" />
     <if_variable name="Modules" comparator="NOT" value="1.0" />
-    <set_variable name="Ship1ModuleType" value="1" integer="yes" />
-    <set_variable name="Ship2ModuleType" value="1" integer="yes" />
-    <set_variable name="Ship3ModuleType" value="0" integer="yes" />
+    <set_variable name="Ship1ModuleType" value="2" integer="yes" />
+    <set_variable name="Ship2ModuleType" value="2" integer="yes" />
+    <set_variable name="Ship3ModuleType" value="2" integer="yes" />
     <set_variable name="Ship4ModuleType" value="0" integer="yes" />
     <set_variable name="Ship5ModuleType" value="0" integer="yes" />
     <set_variable name="Ship6ModuleType" value="0" integer="yes" />
