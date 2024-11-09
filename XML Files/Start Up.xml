@@ -2,8 +2,8 @@
   <start name="Start" id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4">
     <!--Configurations-->
     <set_variable name="Clear" value="11.0" integer="yes" />
-    <set_difficulty_level value="10" />
-    <big_message title="The TSN Universe" subtitle1="Created by Xavier" subtitle2="Version 9.0" />
+    <set_difficulty_level value="5" />
+    <big_message title="The TSN Universe" subtitle1="Version 10.0" subtitle2="" />
     <warning_popup_message message="V.9.0" consoles="MHWESCO" player_slot="0" />
     <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="0" />
     <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="1" />

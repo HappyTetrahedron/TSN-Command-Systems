@@ -1,0 +1,14 @@
+<mission_data version="1.0" background_id_arme="77d373f9-ed2e-4726-a2b2-74bd775ac998" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <start id_arme="77d373f9-ed2e-4726-a2b2-74bd775ac998">
+    <!---->
+  </start>
+  <folder_arme name="Custom Special" id_arme="2f1f1ba7-9b26-4c15-9dea-f2e7c5906c01" expanded_arme="" />
+  <event name="One" id_arme="d46b75c9-5891-465e-a667-4390b2302d81" parent_id_arme="2f1f1ba7-9b26-4c15-9dea-f2e7c5906c01">
+    <if_variable name="Interspace System" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="InterspaceRefresh" />
+    <set_variable name="InterspaceSeed" randomIntLow="1" randomIntHigh="4000" integer="yes" />
+    <create count="30" type="nebulas" nebType="2" startX="59474.0" startY="0.0" startZ="35864.0" endX="59474.0" endY="0.0" endZ="35864.0" randomRange="50000" randomSeed="InterspaceSeed" />
+    <create count="30" type="nebulas" nebType="1" startX="23835.0" startY="0.0" startZ="61278.0" endX="23835.0" endY="0.0" endZ="61278.0" randomRange="50000" randomSeed="InterspaceSeed" />
+    <set_timer name="InterspaceRefresh" seconds="5" />
+  </event>
+</mission_data>

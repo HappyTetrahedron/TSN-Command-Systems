@@ -30,6 +30,9 @@
     <clear_gm_button text="DelShips" />
     <clear_gm_button text="LockSect" />
     <clear_gm_button text="UnlockSect" />
+    <clear_gm_button text="Explosion" />
+    <clear_gm_button text="Interspace" />
+    <clear_gm_button text="ToOnwia" />
     <clear_gm_button text="UP   /\" />
     <clear_gm_button text="RIGHT   &gt;&gt;" />
     <clear_gm_button text="DOWN    V" />
@@ -286,6 +289,9 @@
     <set_gm_button text="DelAllMines" x="195" y="130" h="28" w="90" />
     <set_gm_button text="DelSelected" x="195" y="160" h="28" w="90" />
     <set_gm_button text="SetPlyrSide" x="195" y="190" h="28" w="90" />
+    <set_gm_button text="Explosion" x="290" y="100" h="28" w="90" />
+    <set_gm_button text="Interspace" x="290" y="130" h="28" w="90" />
+    <set_gm_button text="ToOnwia" x="290" y="160" h="28" w="90" />
     <!---->
     <set_gm_button text="Transitions" x="100" y="220" h="28" w="90" />
     <set_gm_button text="UP   /\" x="130" y="250" h="25" w="30" />
@@ -321,6 +327,9 @@
     <clear_gm_button text="ClrMeshes" />
     <clear_gm_button text="LockSect" />
     <clear_gm_button text="UnlockSect" />
+    <clear_gm_button text="Explosion" />
+    <clear_gm_button text="Interspace" />
+    <clear_gm_button text="ToOnwia" />
     <clear_gm_button text="UP   /\" />
     <clear_gm_button text="RIGHT   &gt;&gt;" />
     <clear_gm_button text="DOWN    V" />
@@ -350,6 +359,36 @@
     <if_gm_button text="SlctdToGM" />
     <set_to_gm_position use_gm_selection=" " distance="0" angle="0.0" />
   </event>
+  <event name="Explosion" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
+    <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
+    <if_gm_button text="Explosion" />
+    <create type="enemy" use_gm_position="" name="E" hullID="1058" sideValue="1" fleetnumber="-1" />
+    <set_object_property name="E" shieldStateFront="0" />
+    <set_object_property name="E" shieldStateBack="0" />
+    <create count="1" type="mines" use_gm_position="" radius="10" randomRange="1" randomSeed="37303" />
+  </event>
+  <event name="Interspace" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
+    <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
+    <if_gm_button text="Interspace" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" integer="yes" />
+    <set_variable name="Interspace System" value="1.0" integer="yes" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <destroy name="Triton VI" />
+    <destroy name="Cassandra Observation" />
+    <destroy name="Cassandra Black Hole" />
+    <destroy name="Cassandra" />
+    <set_timer name="InterspaceRefresh" seconds="5" />
+  </event>
+  <event name="ToOnwia" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
+    <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
+    <if_gm_button text="ToOnwia" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Onwia System" value="1.0" />
+    <set_variable name="Interspace System" value="0.0" />
+    <set_variable name="Sector" value="7" />
+    <set_timer name="Transition" seconds="2" />
+  </event>
   <event name="Destroy Unnamed Object" id_arme="f00a0268-6a59-4e62-b59d-80c91fc0e6d1" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
     <if_gm_button text="DelTerrain" />
@@ -360,6 +399,8 @@
   <event name="Destroy All Named Ships" id_arme="01dca72d-82db-491b-a521-96e421b73098" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
     <if_gm_button text="DelShips" />
+    <destroy name="Grant" />
+    <destroy name="Grant Docking Tether" />
     <set_variable name="DestroyNamed" value="1.0" integer="yes" />
   </event>
   <event name="Destroy Entity" id_arme="970358da-12be-4de8-9d69-fbb8d0608b68" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
@@ -1138,6 +1179,7 @@
     <clear_gm_button text="Docking Port\Exploration" />
     <clear_gm_button text="Docking Port\Xeno Research" />
     <clear_gm_button text="Docking Port\(Standard)" />
+    <clear_gm_button text="Docking Port\Grant" />
     <clear_gm_button text="Other\Lifepod" />
     <clear_gm_button text="Other\Black Box" />
     <set_variable name="CycleSpawnMenu" value="0.0" integer="yes" />
@@ -2116,6 +2158,10 @@
     <create type="enemy" use_gm_position="" name="Grant" hullID="1605" sideValue="SideValue" fleetnumber="Fleetnumber" />
     <create type="enemy" use_gm_position="" name="--" hullID="1500" sideValue="SideValue" fleetnumber="Fleetnumber" />
     <create type="enemy" use_gm_position="" name="--" hullID="1500" sideValue="SideValue" fleetnumber="Fleetnumber" />
+    <set_object_property property="shieldMaxStateFront" value="2000" name="Grant" />
+    <set_object_property property="shieldMaxStateBack" value="2000" name="Grant" />
+    <set_object_property property="shieldStateFront" value="2000" name="Grant" />
+    <set_object_property property="shieldStateBack" value="2000" name="Grant" />
     <set_variable name="Fleet Settings" value="1.0" />
     <set_variable name="Auto AI Type" value="203.0" integer="yes" />
     <set_variable name="Random Direction" value="1.0" />
@@ -2406,6 +2452,20 @@
     <create type="station" use_gm_position="" name="--" hullID="1058" sideValue="SideValue" />
     <set_variable name="Auto AI Type" value="406.0" integer="yes" />
     <set_variable name="Name Assign" value="1.0" integer="yes" />
+  </event>
+  <event name="Grant Docking Tether" id_arme="d33707c6-0add-44de-951b-50fc30fbeb7f" parent_id_arme="ac45407a-2a1c-4937-a427-17c2bb86b312">
+    <if_gm_button text="Docking Port\Grant" />
+    <create type="station" use_gm_position="" name="Grant Docking Tether" hullID="1058" sideValue="2" />
+    <set_ship_text name="Grant Docking Tether" race="-" class="Tether" desc="Supplying energy and ordnance from the supply ship" scan_desc="Energy and supply transfer systems online." hailtext="Tether is online and ready for transfer operations. We have ordnance available for resupply." />
+    <set_object_property property="canBuild" value="1" name="Grant Docking Tether" />
+    <set_object_property property="missileStoresHoming" value="24" name="Grant Docking Tether" />
+    <set_object_property property="missileStoresNuke" value="15" name="Grant Docking Tether" />
+    <set_object_property property="missileStoresMine" value="13" name="Grant Docking Tether" />
+    <set_object_property property="missileStoresEMP" value="16" name="Grant Docking Tether" />
+    <set_object_property property="missileStoresPShock" value="32" name="Grant Docking Tether" />
+    <set_object_property property="missileStoresTag" value="11" name="Grant Docking Tether" />
+    <set_object_property property="missileStoresBeacon" value="9" name="Grant Docking Tether" />
+    <set_object_property property="missileStoresProbe" value="33" name="Grant Docking Tether" />
   </event>
   <event name="Create Sensor Buoy" id_arme="607ef78a-160e-467d-9658-1f829c02709a" parent_id_arme="ac45407a-2a1c-4937-a427-17c2bb86b312">
     <if_gm_button text="USFP Assets\Sensor Buoy" />
@@ -3860,6 +3920,7 @@
     <set_gm_button text="Docking Port\Exploration" />
     <set_gm_button text="Docking Port\Xeno Research" />
     <set_gm_button text="Docking Port\(Standard)" />
+    <set_gm_button text="Docking Port\Grant" />
     <set_gm_button text="Other\Lifepod" />
     <set_gm_button text="Other\Black Box" />
     <!--Change Default Side-->
