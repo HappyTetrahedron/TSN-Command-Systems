@@ -37,6 +37,8 @@
     <clear_gm_button text="D4" />
     <clear_gm_button text="D5" />
     <clear_gm_button text="D6" />
+    <clear_gm_button text="Incap" />
+    <clear_gm_button text="Recap" />
     <clear_gm_button text="UP   /\" />
     <clear_gm_button text="RIGHT   &gt;&gt;" />
     <clear_gm_button text="DOWN    V" />
@@ -300,6 +302,8 @@
     <set_gm_button text="D4" x="320" y="190" h="28" w="30" />
     <set_gm_button text="D5" x="350" y="190" h="28" w="30" />
     <set_gm_button text="D6" x="380" y="190" h="28" w="30" />
+    <set_gm_button text="Incap" x="290" y="220" h="28" w="45" />
+    <set_gm_button text="Recap" x="335" y="220" h="28" w="45" />
     <!---->
     <set_gm_button text="Transitions" x="100" y="220" h="28" w="90" />
     <set_gm_button text="UP   /\" x="130" y="250" h="25" w="30" />
@@ -342,6 +346,8 @@
     <clear_gm_button text="D4" />
     <clear_gm_button text="D5" />
     <clear_gm_button text="D6" />
+    <clear_gm_button text="Incap" />
+    <clear_gm_button text="Recap" />
     <clear_gm_button text="UP   /\" />
     <clear_gm_button text="RIGHT   &gt;&gt;" />
     <clear_gm_button text="DOWN    V" />
@@ -391,6 +397,13 @@
     <destroy name="Cassandra Black Hole" />
     <destroy name="Cassandra" />
     <set_timer name="InterspaceRefresh" seconds="5" />
+    <
+  </event>
+  <event name="InterspaceUpdate">
+    <if_timer_finished name="InterspaceRefresh" />
+    <if_variable name="Interspace System" comparator="EQUALS" value="1.0" />
+    <create count="10" type="nebulas" nebType="2" startX="51504.0" startY="0.0" startZ="49097.0" endX="51504.0" endY="0.0" endZ="49097.0" randomRange="100000" />
+    <set_timer name="InterspaceRefresh" seconds="5" />
   </event>
   <event name="ToOnwia" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
@@ -400,6 +413,32 @@
     <set_variable name="Interspace System" value="0.0" />
     <set_variable name="Sector" value="7" />
     <set_timer name="Transition" seconds="2" />
+  </event>
+  <event name="Incapacitate">
+    <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
+    <if_gm_button text="Incap" />
+    <set_damcon_members use_gm_selection="" team_index="0" value="0" />
+    <set_damcon_members use_gm_selection="" team_index="2" value="0" />
+    <set_damcon_members use_gm_selection="" team_index="1" value="0" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="1.0" countFrom="front" index="0" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="1.0" countFrom="front" index="1" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="1.0" countFrom="front" index="2" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="1.0" countFrom="front" index="3" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="1.0" countFrom="front" index="4" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="1.0" countFrom="front" index="5" />
+  </event>
+  <event name="Recapacitate">
+    <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
+    <if_gm_button text="Recap" />
+    <set_damcon_members use_gm_selection="" team_index="0" value="6" />
+    <set_damcon_members use_gm_selection="" team_index="2" value="6" />
+    <set_damcon_members use_gm_selection="" team_index="1" value="6" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="0.0" countFrom="front" index="0" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="0.0" countFrom="front" index="1" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="0.0" countFrom="front" index="2" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="0.0" countFrom="front" index="3" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="0.0" countFrom="front" index="4" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="0.0" countFrom="front" index="5" />
   </event>
   <event name="Diff3" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
@@ -2026,7 +2065,8 @@
     <if_gm_button text="TSN Ships\Mercury" />
     <create type="enemy" use_gm_position="" name="TSN Mercury" hullID="4" sideValue="SideValue" fleetnumber="-1" />
     <clear_ai name="TSN Mercury" />
-    <set_object_property property="surrenderChance" value="30" name="TSN Mercury" />
+    <set_ship_trext name="TSN Mercury" desc="TSN Experimental Technology Testbed" scan_desc="The ship is controlled entirely by the shipboard artificial intelligence." hailtext="The shipboard AI reports all systems nominal and go for test." />
+    <set_object_propety property="surrenderChance" value="30" name="TSN Mercury" />
     <add_ai type="SPCL_AI" name="TSN Mercury" />
     <add_ai type="TRY_TO_BECOME_LEADER" name="TSN Mercury" />
     <add_ai type="CHASE_PLAYER" name="TSN Mercury" />

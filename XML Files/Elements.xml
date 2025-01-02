@@ -1058,16 +1058,26 @@
     <set_variable name="Ship1CommsMenu" value="0.0" integer="yes" />
   </event>
   <folder_arme name="Shuttle Operations" id_arme="1ed0303e-04ee-4a56-b577-93cae953a603" parent_id_arme="11974bdf-b216-46f4-a7b9-5c50936650d3" />
+  <event name="Ship 1 Deploy Buoy Error" >
+    <if_exists player_slot="0" />
+    <if_comms_button text="-Deploy Buoy" />
+    <if_exists name="SB-F" />
+    <warning_popup_message message="Cannot deploy buoy: Sensor buoy already deployed." consoles="MC" player_slot="0" />
+  </event>
   <event name="Ship 1 Deploy Buoy" >
     <if_exists player_slot="0" />
     <if_comms_button text="-Deploy Buoy" />
-    <warning_popup_message message="Sensor buoy deployed" consoles="MCF" player_slot="0" />
+    <if_not_exists name="SB-F" />
+    <warning_popup_message message="Sensor buoy deployed" consoles="MC" player_slot="0" />
     <incoming_comms_text from="System" sideValue="playerSide" type="STATUS">Sensor buoy successfully deployed.</incoming_comms_text>
-    <create type="neutral" x="100.0" y="100.0" z="100.0" name="--" hullID="1054" />
-    <set_relative_position name2="--" distance="10" angle="180" player_slot1="0" />
-    <set_ship_text name="--" desc="TSN Sensor Buoy" scan_desc="Standard TSN Sensor Buoy" hailtext="Connections established. Data link enabled." />
-    <set_variable name="Auto AI Type" value="401.0" integer="yes" />
-    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <create type="neutral" x="100.0" y="100.0" z="100.0" name="SB-F" hullID="1054" />
+    <set_relative_position name2="SB-F" distance="10" angle="180" player_slot1="0" />
+    <set_ship_text name="SB-F" desc="TSN Sensor Buoy" scan_desc="Standard TSN Sensor Buoy" hailtext="Connections established. Data link enabled." />
+    <set_object_property property="surrenderChance" value="0" name="SB-F" />
+    <clear_ai name="SB-F" />
+    <set_object_property property="pitch" value="0.2" name="SB-F" />
+    <set_object_property property="angleDelta" value="0.1" name="SB-F" />
+    <addto_object_property value="3.0" property="positionY" name="SB-F" />
   </event>
   <event name="Shuttle Ops Menu" id_arme="4da74cba-84eb-443e-8a8c-a99ccb1c24b2" parent_id_arme="1ed0303e-04ee-4a56-b577-93cae953a603">
     <if_exists player_slot="0" />
@@ -1370,16 +1380,26 @@
     <set_variable name="Ship2CommsMenu" value="0.0" integer="yes" />
   </event>
   <folder_arme name="Shuttle Operations" id_arme="5aafdb42-2ec4-466f-8412-e654b58d1001" parent_id_arme="5bb8bb2b-3dbd-4dfd-949a-3cd406d51bae" />
+  <event name="Ship 2 Deploy Buoy Error" >
+    <if_exists player_slot="1" />
+    <if_comms_button text="*Deploy Buoy" />
+    <if_exists name="SB-C" />
+    <warning_popup_message message="Cannot deploy buoy: Sensor buoy already deployed." consoles="MC" player_slot="1" />
+  </event>
   <event name="Ship 2 Deploy Buoy" >
     <if_exists player_slot="1" />
     <if_comms_button text="*Deploy Buoy" />
-    <warning_popup_message message="Sensor buoy deployed" consoles="MCF" player_slot="1" />
+    <if_not_exists name="SB-C" />
+    <warning_popup_message message="Sensor buoy deployed" consoles="MC" player_slot="1" />
     <incoming_comms_text from="System" sideValue="playerSide" type="STATUS">Sensor buoy successfully deployed.</incoming_comms_text>
-    <create type="neutral" x="100.0" y="100.0" z="100.0" name="--" hullID="1054" />
-    <set_relative_position name2="--" distance="10" angle="180" player_slot1="1" />
-    <set_ship_text name="--" desc="TSN Sensor Buoy" scan_desc="Standard TSN Sensor Buoy" hailtext="Connections established. Data link enabled." />
-    <set_variable name="Auto AI Type" value="401.0" integer="yes" />
-    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <create type="neutral" x="100.0" y="100.0" z="100.0" name="SB-C" hullID="1054" />
+    <set_relative_position name2="SB-C" distance="10" angle="180" player_slot1="1" />
+    <set_ship_text name="SB-C" desc="TSN Sensor Buoy" scan_desc="Standard TSN Sensor Buoy" hailtext="Connections established. Data link enabled." />
+    <set_object_property property="surrenderChance" value="0" name="SB-C" />
+    <clear_ai name="SB-C" />
+    <set_object_property property="pitch" value="0.2" name="SB-C" />
+    <set_object_property property="angleDelta" value="0.1" name="SB-C" />
+    <addto_object_property value="3.0" property="positionY" name="SB-C" />
   </event>
   <event name="Shuttle Ops Menu" id_arme="51eef336-a7f1-4c1c-80d4-91eaf9396e04" parent_id_arme="5aafdb42-2ec4-466f-8412-e654b58d1001">
     <if_exists player_slot="1" />
@@ -1682,16 +1702,26 @@
     <set_variable name="Ship3CommsMenu" value="0.0" integer="yes" />
   </event>
   <folder_arme name="Shuttle Operations" id_arme="1105b70c-ad30-4074-9870-a32537c5be6e" parent_id_arme="2d9df97e-ffbc-4782-9594-4f80608a38f5" />
+  <event name="Ship 2 Deploy Buoy Error" >
+    <if_exists player_slot="2" />
+    <if_comms_button text="**Deploy Buoy" />
+    <if_exists name="SB-R" />
+    <warning_popup_message message="Cannot deploy buoy: Sensor buoy already deployed." consoles="MC" player_slot="2" />
+  </event>
   <event name="Ship 3 Deploy Buoy" >
     <if_exists player_slot="2" />
     <if_comms_button text="**Deploy Buoy" />
-    <warning_popup_message message="Sensor buoy deployed" consoles="MCF" player_slot="2" />
+    <if_not_exists name="SB-R" />
+    <warning_popup_message message="Sensor buoy deployed" consoles="MC" player_slot="2" />
     <incoming_comms_text from="System" sideValue="playerSide" type="STATUS">Sensor buoy successfully deployed.</incoming_comms_text>
-    <create type="neutral" x="100.0" y="100.0" z="100.0" name="--" hullID="1054" />
-    <set_relative_position name2="--" distance="10" angle="180" player_slot1="2" />
-    <set_ship_text name="--" desc="TSN Sensor Buoy" scan_desc="Standard TSN Sensor Buoy" hailtext="Connections established. Data link enabled." />
-    <set_variable name="Auto AI Type" value="401.0" integer="yes" />
-    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <create type="neutral" x="100.0" y="100.0" z="100.0" name="SB-R" hullID="1054" />
+    <set_relative_position name2="SB-R" distance="10" angle="180" player_slot1="2" />
+    <set_ship_text name="SB-R" desc="TSN Sensor Buoy" scan_desc="Standard TSN Sensor Buoy" hailtext="Connections established. Data link enabled." />
+    <set_object_property property="surrenderChance" value="0" name="SB-R" />
+    <clear_ai name="SB-R" />
+    <set_object_property property="pitch" value="0.2" name="SB-R" />
+    <set_object_property property="angleDelta" value="0.1" name="SB-R" />
+    <addto_object_property value="3.0" property="positionY" name="SB-R" />
   </event>
   <event name="Shuttle Ops Menu" id_arme="875e5098-b051-4164-98e2-ac583bbccd7b" parent_id_arme="1105b70c-ad30-4074-9870-a32537c5be6e">
     <if_exists player_slot="2" />
