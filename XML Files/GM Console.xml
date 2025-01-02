@@ -292,6 +292,10 @@
     <set_gm_button text="Explosion" x="290" y="100" h="28" w="90" />
     <set_gm_button text="Interspace" x="290" y="130" h="28" w="90" />
     <set_gm_button text="ToOnwia" x="290" y="160" h="28" w="90" />
+    <set_gm_button text="D3" x="290" y="190" h="28" w="30" />
+    <set_gm_button text="D4" x="320" y="190" h="28" w="30" />
+    <set_gm_button text="D5" x="350" y="190" h="28" w="30" />
+    <set_gm_button text="D6" x="380" y="190" h="28" w="30" />
     <!---->
     <set_gm_button text="Transitions" x="100" y="220" h="28" w="90" />
     <set_gm_button text="UP   /\" x="130" y="250" h="25" w="30" />
@@ -330,6 +334,10 @@
     <clear_gm_button text="Explosion" />
     <clear_gm_button text="Interspace" />
     <clear_gm_button text="ToOnwia" />
+    <clear_gm_button text="D3" />
+    <clear_gm_button text="D4" />
+    <clear_gm_button text="D5" />
+    <clear_gm_button text="D6" />
     <clear_gm_button text="UP   /\" />
     <clear_gm_button text="RIGHT   &gt;&gt;" />
     <clear_gm_button text="DOWN    V" />
@@ -388,6 +396,26 @@
     <set_variable name="Interspace System" value="0.0" />
     <set_variable name="Sector" value="7" />
     <set_timer name="Transition" seconds="2" />
+  </event>
+  <event name="Diff3" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
+    <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
+    <if_gm_button text="D3" />
+    <set_difficulty_level value="3" />
+  </event>
+  <event name="Diff4" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
+    <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
+    <if_gm_button text="D4" />
+    <set_difficulty_level value="4" />
+  </event>
+  <event name="Diff5" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
+    <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
+    <if_gm_button text="D5" />
+    <set_difficulty_level value="5" />
+  </event>
+  <event name="Diff6" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
+    <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
+    <if_gm_button text="D6" />
+    <set_difficulty_level value="6" />
   </event>
   <event name="Destroy Unnamed Object" id_arme="f00a0268-6a59-4e62-b59d-80c91fc0e6d1" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
@@ -1887,6 +1915,7 @@
     <if_variable name="Fleet Settings" comparator="EQUALS" value="1.0" />
     <set_fleet_property property="fleetSpacing" value="500.0" fleetIndex="Fleetnumber" />
     <set_fleet_property property="fleetMaxRadius" value="3000.0" fleetIndex="Fleetnumber" />
+    <addto_object_property name="--" property="topSpeed" value="4" />
     <set_variable name="Fleet Settings" value="2.0" />
   </event>
   <event name="Increment Fleet Number" id_arme="85906409-aa9b-4aa7-b958-c804106dff74" parent_id_arme="0e4d583e-5dea-4097-a675-97423f6f29e4">
