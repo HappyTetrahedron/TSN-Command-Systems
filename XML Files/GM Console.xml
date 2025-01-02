@@ -402,7 +402,8 @@
   <event name="InterspaceUpdate">
     <if_timer_finished name="InterspaceRefresh" />
     <if_variable name="Interspace System" comparator="EQUALS" value="1.0" />
-    <create count="10" type="nebulas" nebType="2" startX="51504.0" startY="0.0" startZ="49097.0" endX="51504.0" endY="0.0" endZ="49097.0" randomRange="100000" />
+    <set_variable name="nebseed" randomIntHigh="1000" randomIntLow="1"/>
+    <create count="10" type="nebulas" nebType="2" startX="51504.0" startY="0.0" startZ="49097.0" endX="51504.0" endY="0.0" endZ="49097.0" randomRange="100000" randomSeed="nebseed"/>
     <set_timer name="InterspaceRefresh" seconds="5" />
   </event>
   <event name="ToOnwia" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
@@ -2065,7 +2066,6 @@
     <if_gm_button text="TSN Ships\Mercury" />
     <create type="enemy" use_gm_position="" name="TSN Mercury" hullID="4" sideValue="SideValue" fleetnumber="-1" />
     <clear_ai name="TSN Mercury" />
-    <set_ship_trext name="TSN Mercury" desc="TSN Experimental Technology Testbed" scan_desc="The ship is controlled entirely by the shipboard artificial intelligence." hailtext="The shipboard AI reports all systems nominal and go for test." />
     <set_object_propety property="surrenderChance" value="30" name="TSN Mercury" />
     <add_ai type="SPCL_AI" name="TSN Mercury" />
     <add_ai type="TRY_TO_BECOME_LEADER" name="TSN Mercury" />
@@ -2084,6 +2084,7 @@
     <add_ai type="CHASE_AI_SHIP" value1="400" value2="100" name="TSN Mercury" />
     <add_ai type="LEADER_LEADS" name="TSN Mercury" />
     <add_ai type="FOLLOW_LEADER" name="TSN Mercury" />
+    <set_ship_text name="TSN Mercury" desc="TSN Experimental Technology Testbed" scan_desc="The ship is controlled entirely by the shipboard artificial intelligence." hailtext="The shipboard AI reports all systems nominal and go for test." />
   </event>
   <event name="Dreadnought" id_arme="350f20cc-7d18-4988-b7a5-c7ea09a05c7c" parent_id_arme="47e8e140-f232-41d0-a4d7-49c1994ff1a9">
     <if_gm_button text="TSN Ships\Dreadnought" />
