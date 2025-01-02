@@ -4,7 +4,7 @@
     <set_variable name="Coordinate Y" value="243.0" integer="yes" />
     <set_variable name="Alignment" value="Hegemony" integer="yes" />
   </start>
-  <folder_arme name="Ibroan System" id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
+  <folder_arme name="Ibroan System" id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" expanded_arme="" />
   <folder_arme name="Ibroan Settings" id_arme="6015d1ff-e9fa-487d-8d3b-9eed19300e12" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
   <folder_arme name="Ibroan Menu" id_arme="fdd61fc0-8866-4474-96e2-f619715b8f31" parent_id_arme="6015d1ff-e9fa-487d-8d3b-9eed19300e12" />
   <event name="Ibroan Active" id_arme="337134ea-f9d6-433b-9cce-8a40014d2f9b" parent_id_arme="fdd61fc0-8866-4474-96e2-f619715b8f31">
@@ -788,14 +788,14 @@
     <set_object_property property="angle" value="3.141592654" player_slot="7" />
     <set_variable name="Setmari to Ibroan" value="0.0" />
   </event>
-  <folder_arme name="Ibroan Sector VI" id_arme="c78971ed-58c2-4607-8f75-b07db6a40817" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" />
+  <folder_arme name="Ibroan Sector VI" id_arme="c78971ed-58c2-4607-8f75-b07db6a40817" parent_id_arme="17c7c253-d38b-45af-a02e-26971650d1d9" expanded_arme="" />
   <event name="Create Ibroan Sector VI" id_arme="4e5c0731-175e-4d97-a8fb-9bfc7630ee55" parent_id_arme="c78971ed-58c2-4607-8f75-b07db6a40817">
     <if_variable name="Ibroan System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_timer_finished name="Transition" />
-    <create count="1000" type="nebulas" nebType="2" startX="45763.0" startY="0.0" startZ="80408.0" endX="71831.0" endY="0.0" endZ="22946.0" randomRange="30000" />
-    <create count="500" type="asteroids" startX="49034.0" startY="-300.0" startZ="74312.0" endX="72367.0" endY="300.0" endZ="23348.0" randomRange="30000" />
-    <create count="500" type="asteroids" startX="52947.0" startY="300.0" startZ="79598.0" endX="68081.0" endY="-300.0" endZ="23080.0" randomRange="30000" />
+    <create count="100" type="nebulas" nebType="2" startX="45763.0" startY="0.0" startZ="80408.0" endX="71831.0" endY="0.0" endZ="22946.0" randomRange="30000" />
+    <create count="50" type="asteroids" startX="49034.0" startY="-300.0" startZ="74312.0" endX="72367.0" endY="300.0" endZ="23348.0" randomRange="30000" />
+    <create count="50" type="asteroids" startX="52947.0" startY="300.0" startZ="79598.0" endX="68081.0" endY="-300.0" endZ="23080.0" randomRange="30000" />
     <set_skybox_index index="26" />
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Ibroan System" value="2.0" />
