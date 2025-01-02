@@ -994,6 +994,7 @@
     <clear_gm_button text="TSN Ships\Battleship" />
     <clear_gm_button text="TSN Ships\Missile Cruiser" />
     <clear_gm_button text="TSN Ships\Dreadnought" />
+    <clear_gm_button text="TSN Ships\Mercury" />
     <clear_gm_button text="TSN Ships\Carrier" />
     <clear_gm_button text="TSN Ships\Minelayer" />
     <clear_gm_button text="TSN Ships\Juggernaut" />
@@ -1944,6 +1945,7 @@
     <set_gm_button text="TSN Ships\Battleship" />
     <set_gm_button text="TSN Ships\Missile Cruiser" />
     <set_gm_button text="TSN Ships\Dreadnought" />
+    <set_gm_button text="TSN Ships\Mercury" />
     <set_gm_button text="TSN Ships\Carrier" />
     <set_gm_button text="TSN Ships\Minelayer" />
     <set_gm_button text="TSN Ships\Juggernaut" />
@@ -2015,6 +2017,30 @@
     <set_variable name="Auto AI Type" value="1.0" integer="yes" />
     <set_variable name="Random Direction" value="1.0" />
     <set_variable name="Name Assign" value="1.0" integer="yes" />
+  </event>
+  <event name="TSN Mercury" id_arme="350f20cc-7d18-4988-b7a5-c7ea09a05c7c" parent_id_arme="47e8e140-f232-41d0-a4d7-49c1994ff1a9">
+    <if_gm_button text="TSN Ships\Mercury" />
+    <create type="enemy" use_gm_position="" name="TSN Mercury" hullID="4" sideValue="SideValue" fleetnumber="-1" />
+    <clear_ai name="TSN Mercury" />
+    <set_object_property property="surrenderChance" value="30" name="TSN Mercury" />
+    <add_ai type="SPCL_AI" name="TSN Mercury" />
+    <add_ai type="TRY_TO_BECOME_LEADER" name="TSN Mercury" />
+    <add_ai type="CHASE_PLAYER" name="TSN Mercury" />
+    <add_ai type="CHASE_AI_SHIP" name="TSN Mercury" />
+    <add_ai type="CHASE_STATION" name="TSN Mercury" />
+    <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="TSN Mercury" />
+    <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="TSN Mercury" />
+    <add_ai type="CHASE_STATION" value1="1000" name="TSN Mercury" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Mercury" />
+    <add_ai type="CHASE_PLAYER" value1="800" value2="100" name="TSN Mercury" />
+    <add_ai type="CHASE_AI_SHIP" value1="800" value2="100" name="TSN Mercury" />
+    <add_ai type="CHASE_STATION" value1="100" name="TSN Mercury" />
+    <add_ai type="CHASE_ANGER" name="TSN Mercury" />
+    <add_ai type="CHASE_PLAYER" value1="400" value2="100" name="TSN Mercury" />
+    <add_ai type="CHASE_AI_SHIP" value1="400" value2="100" name="TSN Mercury" />
+    <add_ai type="LEADER_LEADS" name="TSN Mercury" />
+    <add_ai type="FOLLOW_LEADER" name="TSN Mercury" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="8000" name="TSN Mercury" />
   </event>
   <event name="Dreadnought" id_arme="350f20cc-7d18-4988-b7a5-c7ea09a05c7c" parent_id_arme="47e8e140-f232-41d0-a4d7-49c1994ff1a9">
     <if_gm_button text="TSN Ships\Dreadnought" />

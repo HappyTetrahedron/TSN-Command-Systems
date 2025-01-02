@@ -384,10 +384,10 @@
     <if_variable name="Sector" comparator="EQUALS" value="4.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
     <create count="10" type="nebulas" nebType="3" startX="60226.0" startY="0.0" startZ="48195.0" endX="60226.0" endY="0.0" endZ="48195.0" randomRange="3000" />
-    <create type="genericMesh" x="60226.0" y="100.0" z="48796.0" name="TSN Mercury" meshFileName="dat\TSN\Player\missile-cruiser-mkII.dxs" textureFileName="dat\TSN\Player\artemis_diffuse_mkII.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
-    <set_ship_text name="TSN Mercury" race="TSN" class="Valkyrie Class" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <create type="genericMesh" x="60226.0" y="100.0" z="48796.0" name="TSN Mercury" meshFileName="dat\artemis-5.dxs" textureFileName="dat\artemis_diffuse.png" />
+    <set_ship_text name="TSN Mercury" race="TSN" class="Dreadnought Class" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
     <set_variable name="push" value="150.0" integer="yes" />
-    <set_variable name="scale" value="0.2" />
+    <set_variable name="scale" value="0.25" />
     <set_object_property property="pitchDelta" value="0.2" name="TSN Mercury" />
     <set_object_property property="angleDelta" value="0.1" name="TSN Mercury" />
     <addto_object_property value="10.1" property="positionY" name="TSN Mercury" />
