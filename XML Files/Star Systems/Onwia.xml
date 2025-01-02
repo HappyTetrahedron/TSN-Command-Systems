@@ -405,6 +405,7 @@
   </event>
   <event name="Destroy Sector Entities" id_arme="e26cfdd5-2be5-4e84-8f80-30c3446eb1ff" parent_id_arme="cfde8ffc-b137-4ab5-8613-903a87490bd0">
     <if_variable name="Onwia System" comparator="EQUALS" value="3.0" />
+    <destroy name="TSN Mercury" />
     <destroy name="Onwia IV" />
     <set_variable name="Onwia System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />

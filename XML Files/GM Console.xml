@@ -33,6 +33,10 @@
     <clear_gm_button text="Explosion" />
     <clear_gm_button text="Interspace" />
     <clear_gm_button text="ToOnwia" />
+    <clear_gm_button text="D3" />
+    <clear_gm_button text="D4" />
+    <clear_gm_button text="D5" />
+    <clear_gm_button text="D6" />
     <clear_gm_button text="UP   /\" />
     <clear_gm_button text="RIGHT   &gt;&gt;" />
     <clear_gm_button text="DOWN    V" />
@@ -1916,7 +1920,7 @@
     <if_variable name="Fleet Settings" comparator="EQUALS" value="1.0" />
     <set_fleet_property property="fleetSpacing" value="500.0" fleetIndex="Fleetnumber" />
     <set_fleet_property property="fleetMaxRadius" value="3000.0" fleetIndex="Fleetnumber" />
-    <addto_object_property name="--" property="topSpeed" value="4" />
+    <addto_object_property name="--" property="topSpeed" value="0.4" />
     <set_variable name="Fleet Settings" value="2.0" />
   </event>
   <event name="Increment Fleet Number" id_arme="85906409-aa9b-4aa7-b958-c804106dff74" parent_id_arme="0e4d583e-5dea-4097-a675-97423f6f29e4">
@@ -2040,7 +2044,6 @@
     <add_ai type="CHASE_AI_SHIP" value1="400" value2="100" name="TSN Mercury" />
     <add_ai type="LEADER_LEADS" name="TSN Mercury" />
     <add_ai type="FOLLOW_LEADER" name="TSN Mercury" />
-    <add_ai type="LAUNCH_FIGHTERS" value1="8000" name="TSN Mercury" />
   </event>
   <event name="Dreadnought" id_arme="350f20cc-7d18-4988-b7a5-c7ea09a05c7c" parent_id_arme="47e8e140-f232-41d0-a4d7-49c1994ff1a9">
     <if_gm_button text="TSN Ships\Dreadnought" />
