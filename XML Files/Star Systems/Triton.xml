@@ -4,7 +4,7 @@
     <set_variable name="Coordinate Y" value="490.0" integer="yes" />
     <set_variable name="Alignment" value="USFP" integer="yes" />
   </start>
-  <folder_arme name="Triton System" id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <folder_arme name="Triton System" id_arme="565015a3-d871-44d3-b771-2aa286eec214" expanded_arme="" />
   <folder_arme name="Triton Settings" id_arme="96f1c40c-0df2-4d1f-b7df-407c3ee2b7e2" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
   <folder_arme name="Triton Menu" id_arme="a680029d-40d7-4fe7-ac26-951602f65d78" parent_id_arme="96f1c40c-0df2-4d1f-b7df-407c3ee2b7e2" />
   <event name="Triton Active" id_arme="337134ea-f9d6-433b-9cce-8a40014d2f9b" parent_id_arme="a680029d-40d7-4fe7-ac26-951602f65d78">
@@ -634,7 +634,7 @@
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-  <folder_arme name="Triton Sector V" id_arme="1bd2ae32-eb2a-44c5-a373-54271c683e70" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <folder_arme name="Triton Sector V" id_arme="1bd2ae32-eb2a-44c5-a373-54271c683e70" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" expanded_arme="" />
   <event name="Create Triton Sector V" id_arme="58750c96-2d10-4a6f-9325-ddd393d15bb4" parent_id_arme="1bd2ae32-eb2a-44c5-a373-54271c683e70">
     <if_timer_finished name="Transition" />
     <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
@@ -710,13 +710,39 @@
     <set_variable name="Triton System" value="3.0" integer="yes" />
     <set_variable name="Sector" value="2.0" integer="yes" />
   </event>
-  <folder_arme name="Sector Entities" id_arme="379d893a-df52-4948-9e53-47728583800f" parent_id_arme="1bd2ae32-eb2a-44c5-a373-54271c683e70" />
+  <folder_arme name="Sector Entities" id_arme="379d893a-df52-4948-9e53-47728583800f" parent_id_arme="1bd2ae32-eb2a-44c5-a373-54271c683e70" expanded_arme="" />
   <event name="Generate Sector Entities" id_arme="71676cd5-c73a-41c2-964b-37785f107576" parent_id_arme="379d893a-df52-4948-9e53-47728583800f">
     <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton V" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
-    <create type="neutral" x="77450.0" y="0.0" z="39068.0" angle="0" name="Triton Refuge" hullID="1001" />
+    <create count="70" type="asteroids" startX="47294.0" startY="0.0" startZ="83834.0" endX="46993.0" endY="0.0" endZ="36564.0" randomRange="1000" />
+    <create count="300" type="nebulas" startX="30752.0" startY="0.0" startZ="95714.0" endX="31203.0" endY="0.0" endZ="26339.0" randomRange="5000" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" angle="0" name="Triton V" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="67594.0" y="0.0" z="22781.0" angle="0" name="Triton Refuge" hullID="1001" />
+    <create type="station" x="79925.0" y="0.0" z="39774.0" name="Training Station A" hullID="1002" sideValue="2" />
+    <create type="station" x="80076.0" y="0.0" z="59924.0" name="Training Station B" hullID="1002" sideValue="2" />
+    <create type="station" x="79925.0" y="0.0" z="79924.0" name="Training Station C" hullID="1002" sideValue="2" />
+    <create type="neutral" x="60376.0" y="0.0" z="59924.0" angle="0" name="Buoy 1" hullID="1054" />
+    <create type="neutral" x="59925.0" y="0.0" z="39924.0" angle="0" name="Buoy 1" hullID="1054" />
+    <create type="neutral" x="60076.0" y="0.0" z="79774.0" angle="0" name="Buoy 1" hullID="1054" />
+    <create type="neutral" x="53910.0" y="0.0" z="79473.0" angle="0" name="Buoy 2" hullID="1054" />
+    <create type="neutral" x="54512.0" y="0.0" z="59774.0" angle="0" name="Buoy 2" hullID="1054" />
+    <create type="neutral" x="54963.0" y="0.0" z="40075.0" angle="0" name="Buoy 2" hullID="1054" />
+    <create type="neutral" x="48948.0" y="0.0" z="40075.0" angle="0" name="Buoy 3" hullID="1054" />
+    <create type="neutral" x="48948.0" y="0.0" z="60075.0" angle="0" name="Buoy 3" hullID="1054" />
+    <create type="neutral" x="49399.0" y="0.0" z="79774.0" angle="0" name="Buoy 3" hullID="1054" />
+    <create type="neutral" x="43985.0" y="0.0" z="79624.0" angle="0" name="Buoy 4" hullID="1054" />
+    <create type="neutral" x="43985.0" y="0.0" z="60075.0" angle="0" name="Buoy 4" hullID="1054" />
+    <create type="neutral" x="44286.0" y="0.0" z="40225.0" angle="0" name="Buoy 4" hullID="1054" />
+    <create type="neutral" x="39625.0" y="0.0" z="40075.0" angle="0" name="Buoy 5" hullID="1054" />
+    <create type="neutral" x="39775.0" y="0.0" z="59774.0" angle="0" name="Buoy 5" hullID="1054" />
+    <create type="neutral" x="39173.0" y="0.0" z="79774.0" angle="0" name="Buoy 5" hullID="1054" />
+    <create type="neutral" x="35865.0" y="0.0" z="39774.0" angle="0" name="Buoy 6" hullID="1054" />
+    <create type="neutral" x="35865.0" y="0.0" z="59473.0" angle="0" name="Buoy 6" hullID="1054" />
+    <create type="neutral" x="35564.0" y="0.0" z="79774.0" angle="0" name="Buoy 6" hullID="1054" />
+    <create type="neutral" x="31204.0" y="0.0" z="79624.0" angle="0" name="Buoy 7" hullID="1054" />
+    <create type="neutral" x="31354.0" y="0.0" z="59924.0" angle="0" name="Buoy 7" hullID="1054" />
+    <create type="neutral" x="31955.0" y="0.0" z="39774.0" angle="0" name="Buoy 7" hullID="1054" />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
   <event name="Settings" id_arme="847a4ea1-8714-4890-a5fa-5c74054c0ad1" parent_id_arme="379d893a-df52-4948-9e53-47728583800f">
@@ -724,6 +750,46 @@
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
     <set_ship_text name="Triton Refuge" desc="Luxury refuge for wealthy USFP citizens looking to get away from everything. &quot;Care about nothing but the distant glimmering stars.&quot; 3 habitation units available." />
+    <set_object_property property="surrenderChance" value="0" name="Buoy 1" />
+    <clear_ai name="Buoy 1" />
+    <set_object_property property="pitch" value="0.2" name="Buoy 1" />
+    <set_object_property property="angleDelta" value="0.1" name="Buoy 1" />
+    <addto_object_property value="3.0" property="positionY" name="Buoy 1" />
+    <set_object_property property="surrenderChance" value="0" name="Buoy 1" />
+    <clear_ai name="Buoy 1" />
+    <set_object_property property="pitch" value="0.2" name="Buoy 1" />
+    <set_object_property property="angleDelta" value="0.1" name="Buoy 1" />
+    <addto_object_property value="3.0" property="positionY" name="Buoy 1" />
+    <set_object_property property="surrenderChance" value="0" name="Buoy 2" />
+    <clear_ai name="Buoy 2" />
+    <set_object_property property="pitch" value="0.2" name="Buoy 2" />
+    <set_object_property property="angleDelta" value="0.1" name="Buoy 2" />
+    <addto_object_property value="3.0" property="positionY" name="Buoy 2" />
+    <set_object_property property="surrenderChance" value="0" name="Buoy 3" />
+    <clear_ai name="Buoy 3" />
+    <set_object_property property="pitch" value="0.2" name="Buoy 3" />
+    <set_object_property property="angleDelta" value="0.1" name="Buoy 3" />
+    <addto_object_property value="3.0" property="positionY" name="Buoy 3" />
+    <set_object_property property="surrenderChance" value="0" name="Buoy 4" />
+    <clear_ai name="Buoy 4" />
+    <set_object_property property="pitch" value="0.2" name="Buoy 4" />
+    <set_object_property property="angleDelta" value="0.1" name="Buoy 4" />
+    <addto_object_property value="3.0" property="positionY" name="Buoy 4" />
+    <set_object_property property="surrenderChance" value="0" name="Buoy 5" />
+    <clear_ai name="Buoy 5" />
+    <set_object_property property="pitch" value="0.2" name="Buoy 5" />
+    <set_object_property property="angleDelta" value="0.1" name="Buoy 5" />
+    <addto_object_property value="3.0" property="positionY" name="Buoy 5" />
+    <set_object_property property="surrenderChance" value="0" name="Buoy 6" />
+    <clear_ai name="Buoy 6" />
+    <set_object_property property="pitch" value="0.2" name="Buoy 6" />
+    <set_object_property property="angleDelta" value="0.1" name="Buoy 6" />
+    <addto_object_property value="3.0" property="positionY" name="Buoy 6" />
+    <set_object_property property="surrenderChance" value="0" name="Buoy 7" />
+    <clear_ai name="Buoy 7" />
+    <set_object_property property="pitch" value="0.2" name="Buoy 7" />
+    <set_object_property property="angleDelta" value="0.1" name="Buoy 7" />
+    <addto_object_property value="3.0" property="positionY" name="Buoy 7" />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="548b1b9b-67fa-44c9-a43a-49bcfa7d4d29" parent_id_arme="379d893a-df52-4948-9e53-47728583800f">
