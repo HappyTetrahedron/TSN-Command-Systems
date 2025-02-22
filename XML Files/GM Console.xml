@@ -286,6 +286,11 @@
     <set_gm_button text="DelAllMines" x="195" y="130" h="28" w="90" />
     <set_gm_button text="DelSelected" x="195" y="160" h="28" w="90" />
     <set_gm_button text="SetPlyrSide" x="195" y="190" h="28" w="90" />
+    <set_gm_button text="Incap" x="290" y="220" h="28" w="45" />
+    <set_gm_button text="Recap" x="335" y="220" h="28" w="45" />
+    <set_gm_button text="Pro" x="290" y="250" h="28" w="35" />
+    <set_gm_button text="The" x="325" y="250" h="28" w="35" />
+    <set_gm_button text="Ody" x="360" y="250" h="28" w="35" />
     <!---->
     <set_gm_button text="Transitions" x="100" y="220" h="28" w="90" />
     <set_gm_button text="UP   /\" x="130" y="250" h="25" w="30" />
@@ -321,6 +326,11 @@
     <clear_gm_button text="ClrMeshes" />
     <clear_gm_button text="LockSect" />
     <clear_gm_button text="UnlockSect" />
+    <clear_gm_button text="Pro" />
+    <clear_gm_button text="The" />
+    <clear_gm_button text="Ody" />
+    <clear_gm_button text="Incap" />
+    <clear_gm_button text="Recap" />
     <clear_gm_button text="UP   /\" />
     <clear_gm_button text="RIGHT   &gt;&gt;" />
     <clear_gm_button text="DOWN    V" />
@@ -349,6 +359,50 @@
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
     <if_gm_button text="SlctdToGM" />
     <set_to_gm_position use_gm_selection=" " distance="0" angle="0.0" />
+  </event>
+  <event name="Incapacitate">
+    <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
+    <if_gm_button text="Incap" />
+    <set_damcon_members use_gm_selection="" team_index="0" value="0" />
+    <set_damcon_members use_gm_selection="" team_index="2" value="0" />
+    <set_damcon_members use_gm_selection="" team_index="1" value="0" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="1.0" countFrom="front" index="0" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="1.0" countFrom="front" index="1" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="1.0" countFrom="front" index="2" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="1.0" countFrom="front" index="3" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="1.0" countFrom="front" index="4" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="1.0" countFrom="front" index="5" />
+  </event>
+  <event name="Recapacitate">
+    <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
+    <if_gm_button text="Recap" />
+    <set_damcon_members use_gm_selection="" team_index="0" value="6" />
+    <set_damcon_members use_gm_selection="" team_index="2" value="6" />
+    <set_damcon_members use_gm_selection="" team_index="1" value="6" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="0.0" countFrom="front" index="0" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="0.0" countFrom="front" index="1" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="0.0" countFrom="front" index="2" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="0.0" countFrom="front" index="3" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="0.0" countFrom="front" index="4" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="0.0" countFrom="front" index="5" />
+  </event>
+  <event name="RestockProteus" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
+    <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
+    <if_gm_button text="Pro" />
+    <clear_player_station_carried name="Grant Docking Tether" />
+    <set_player_station_carried name="Grant Docking Tether" hullID="102" singleSeatName="Proteus" />
+  </event>
+  <event name="RestockTheseus" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
+    <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
+    <if_gm_button text="The" />
+    <clear_player_station_carried name="Grant Docking Tether" />
+    <set_player_station_carried name="Grant Docking Tether" hullID="102" singleSeatName="Theseus" />
+  </event>
+  <event name="RestockOdysseus" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
+    <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
+    <if_gm_button text="Ody" />
+    <clear_player_station_carried name="Grant Docking Tether" />
+    <set_player_station_carried name="Grant Docking Tether" hullID="102" singleSeatName="Odysseus" />
   </event>
   <event name="Destroy Unnamed Object" id_arme="f00a0268-6a59-4e62-b59d-80c91fc0e6d1" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
@@ -948,6 +1002,7 @@
     <clear_gm_button text="TSN Assets\Shipyard" />
     <clear_gm_button text="TSN Assets\Weapons Platform" />
     <clear_gm_button text="TSN Assets\Sensor Buoy" />
+    <clear_gm_button text="TSN Assets\Training Sensor Buoy" />
     <clear_gm_button text="TSN Assets\Comms Relay" />
     <!--USFP Menu-->
     <clear_gm_button text="Civilian USFP\Science Vessel" />
@@ -1893,6 +1948,7 @@
     <set_gm_button text="TSN Assets\Shipyard" />
     <set_gm_button text="TSN Assets\Weapons Platform" />
     <set_gm_button text="TSN Assets\Sensor Buoy" />
+    <set_gm_button text="TSN Assets\Training Sensor Buoy" />
     <set_gm_button text="TSN Assets\Comms Relay" />
     <!--Change Default Side-->
     <clear_gm_button text="Change" />
@@ -2163,6 +2219,13 @@
     <set_variable name="Auto AI Type" value="400.0" integer="yes" />
     <set_variable name="Name Assign" value="1.0" integer="yes" />
     <set_ship_text name="--" race="TSN" desc="Sensor Buoy" scan_desc="Standard Sensor Buoy" hailtext="Connections established. Data link enabled." />
+  </event>
+  <event name="T Sensor Buoy" id_arme="f00533bd-6bbc-43f6-95f2-4c8b541bcc5e" parent_id_arme="f17a05c9-38de-47f4-9dee-70f061acc78b">
+    <if_gm_button text="TSN Assets\Training Sensor Buoy" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1054" sideValue="2" />
+    <set_variable name="Auto AI Type" value="400.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_ship_text name="--" race="TSN" desc="Training Buoy - uses Hegemony IFF to train TSN officers on using their scanning equipment effectively." scan_desc="Deep Scan successful. This is where, on a real enemy vessel, you would see important intel." hailtext="Connections established. Data link enabled." />
   </event>
   <event name="Comms Relay" id_arme="b39fa713-0add-4326-bd59-290e23f5190c" parent_id_arme="f17a05c9-38de-47f4-9dee-70f061acc78b">
     <if_gm_button text="TSN Assets\Comms Relay" />
