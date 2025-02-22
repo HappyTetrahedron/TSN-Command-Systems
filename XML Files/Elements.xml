@@ -325,11 +325,16 @@
     <clear_ai name="--" />
     <add_ai type="SPCL_AI" name="--" />
     <add_ai type="DIR_THROTTLE" value1="Degrees" value2="1.0" name="--" />
+    <add_ai type="TRY_TO_BECOME_LEADER" name="--" />
     <add_ai type="CHASE_STATION" value1="20000" name="--" />
     <add_ai type="CHASE_AI_SHIP" value1="20000" value2="20000" name="--" />
+    <add_ai type="CHASE_PLAYER" name="--" value1="20000" value2="20000" />
     <add_ai type="CHASE_STATION" value1="3000" name="--" />
     <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="--" />
-    <add_ai type="FOLLOW_COMMS_ORDERS" name="--" />
+    <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="--" />
+    <add_ai type="CHASE_ANGER" name="--" />
+    <add_ai type="LEADER_LEADS" name="--" />
+    <add_ai type="FOLLOW_LEADER" name="--" />
     <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="--" />
   </event>
   <event name="103 - N'Tani AI" id_arme="08d7d3fe-15dd-4cc4-a088-6faf48e250df" parent_id_arme="1c478493-8c0e-45f5-ba6a-ecd2b4fbd624">

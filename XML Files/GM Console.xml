@@ -37,6 +37,9 @@
     <clear_gm_button text="D4" />
     <clear_gm_button text="D5" />
     <clear_gm_button text="D6" />
+    <clear_gm_button text="Pro" />
+    <clear_gm_button text="The" />
+    <clear_gm_button text="Ody" />
     <clear_gm_button text="Incap" />
     <clear_gm_button text="Recap" />
     <clear_gm_button text="UP   /\" />
@@ -433,6 +436,13 @@
     <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="1.0" countFrom="front" index="3" />
     <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="1.0" countFrom="front" index="4" />
     <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="1.0" countFrom="front" index="5" />
+
+    <set_player_grid_damage use_gm_selection="" systemType="systemWarp" value="1.0" countFrom="front" index="0" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemWarp" value="1.0" countFrom="front" index="1" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemWarp" value="1.0" countFrom="front" index="2" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemWarp" value="1.0" countFrom="front" index="3" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemWarp" value="1.0" countFrom="front" index="4" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemWarp" value="1.0" countFrom="front" index="5" />
   </event>
   <event name="Recapacitate">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
@@ -446,6 +456,13 @@
     <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="0.0" countFrom="front" index="3" />
     <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="0.0" countFrom="front" index="4" />
     <set_player_grid_damage use_gm_selection="" systemType="systemTactical" value="0.0" countFrom="front" index="5" />
+
+    <set_player_grid_damage use_gm_selection="" systemType="systemWarp" value="0.0" countFrom="front" index="0" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemWarp" value="0.0" countFrom="front" index="1" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemWarp" value="0.0" countFrom="front" index="2" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemWarp" value="0.0" countFrom="front" index="3" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemWarp" value="0.0" countFrom="front" index="4" />
+    <set_player_grid_damage use_gm_selection="" systemType="systemWarp" value="0.0" countFrom="front" index="5" />
   </event>
   <event name="Diff3" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
@@ -471,19 +488,18 @@
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
     <if_gm_button text="Pro" />
     <clear_player_station_carried name="Grant Docking Tether" />
-    <set_player_station_carried name="Grant Docking Tether" hullID="102" singleSeatName="Proteus" />
+    <set_player_station_carried name="Grant Docking Tether" hullID="102" singleSeatName="Replacius" />
   </event>
   <event name="RestockTheseus" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
     <if_gm_button text="The" />
-    <clear_player_station_carried name="Grant Docking Tether" />
-    <set_player_station_carried name="Grant Docking Tether" hullID="102" singleSeatName="Theseus" />
+    <set_player_station_carried name="Grant Docking Tether" hullID="102" />
   </event>
   <event name="RestockOdysseus" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
     <if_gm_button text="Ody" />
     <clear_player_station_carried name="Grant Docking Tether" />
-    <set_player_station_carried name="Grant Docking Tether" hullID="102" singleSeatName="Odysseus" />
+    <set_player_station_carried name="Grant Docking Tether" singleSeatName="Odysseus" />
   </event>
   <event name="Destroy Unnamed Object" id_arme="f00a0268-6a59-4e62-b59d-80c91fc0e6d1" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
@@ -1078,6 +1094,7 @@
     <clear_gm_button text="TSN Ships\LR Shuttle" />
     <clear_gm_button text="TSN Fleets\Devin Supply Fleet" />
     <clear_gm_button text="TSN Fleets\Grant Supply Fleet" />
+    <clear_gm_button text="TSN Fleets\Grant Solo" />
     <clear_gm_button text="TSN Fleets\Jinn Supply Fleet" />
     <clear_gm_button text="TSN Fleets\Goblin Supply Fleet" />
     <clear_gm_button text="TSN Fleets\Light Group" />
@@ -1141,6 +1158,7 @@
     <clear_gm_button text="Hegemony Fleets\Kralien Fleets\Light Fleet" />
     <clear_gm_button text="Hegemony Fleets\Kralien Fleets\Medium Fleet" />
     <clear_gm_button text="Hegemony Fleets\Kralien Fleets\Heavy Fleet" />
+    <clear_gm_button text="Hegemony Fleets\Kralien Fleets\Kalak Fleet" />
     <clear_gm_button text="Hegemony Fleets\Hegemony Mixed Fleets\Light Fleet" />
     <clear_gm_button text="Hegemony Fleets\Hegemony Mixed Fleets\Medium Fleet" />
     <clear_gm_button text="Hegemony Fleets\Hegemony Mixed Fleets\Heavy Fleet" />
@@ -2007,6 +2025,7 @@
     <if_timer_finished name="Ship Spawn Menu" />
     <set_gm_button text="TSN Fleets\Devin Supply Fleet" />
     <set_gm_button text="TSN Fleets\Grant Supply Fleet" />
+    <set_gm_button text="TSN Fleets\Grant Solo" />
     <set_gm_button text="TSN Fleets\Jinn Supply Fleet" />
     <set_gm_button text="TSN Fleets\Goblin Supply Fleet" />
     <set_gm_button text="TSN Ships\Scout" />
@@ -2291,6 +2310,14 @@
     <set_variable name="Random Direction" value="1.0" />
     <set_variable name="Name Assign" value="1.0" integer="yes" />
   </event>
+  <event name="Solo Grant" id_arme="4a103d8a-b7bb-474d-b14c-e59e7cf9fa98" parent_id_arme="a68cb140-7719-4e59-bb0b-49cf0b5b9ab0">
+    <if_gm_button text="TSN Fleets\Grant Solo" />
+    <create type="enemy" use_gm_position="" name="Grant" hullID="1605" sideValue="SideValue" fleetnumber="Fleetnumber" />
+    <set_object_property property="shieldMaxStateFront" value="2000" name="Grant" />
+    <set_object_property property="shieldMaxStateBack" value="2000" name="Grant" />
+    <set_object_property property="shieldStateFront" value="2000" name="Grant" />
+    <set_object_property property="shieldStateBack" value="2000" name="Grant" />
+  </event>
   <event name="Jinn Supply Fleet" id_arme="c25920f1-b54e-40d6-bb76-72cefa7fc16c" parent_id_arme="a68cb140-7719-4e59-bb0b-49cf0b5b9ab0">
     <if_gm_button text="TSN Fleets\Jinn Supply Fleet" />
     <create type="enemy" use_gm_position="" name="Jinn" hullID="1605" sideValue="SideValue" fleetnumber="Fleetnumber" />
@@ -2335,7 +2362,7 @@
   </event>
   <event name="T Sensor Buoy" id_arme="f00533bd-6bbc-43f6-95f2-4c8b541bcc5e" parent_id_arme="f17a05c9-38de-47f4-9dee-70f061acc78b">
     <if_gm_button text="TSN Assets\Training Sensor Buoy" />
-    <create type="neutral" use_gm_position="" name="--" hullID="1054" sideValue="2" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1054" sideValue="1" />
     <set_variable name="Auto AI Type" value="400.0" integer="yes" />
     <set_variable name="Name Assign" value="1.0" integer="yes" />
     <set_ship_text name="--" race="TSN" desc="Training Buoy - uses Hegemony IFF to train TSN officers on using their scanning equipment effectively." scan_desc="Deep Scan successful. This is where, on a real enemy vessel, you would see important intel." hailtext="Connections established. Data link enabled." />
@@ -2828,6 +2855,7 @@
     <set_gm_button text="Hegemony Fleets\Kralien Fleets\Light Fleet" />
     <set_gm_button text="Hegemony Fleets\Kralien Fleets\Medium Fleet" />
     <set_gm_button text="Hegemony Fleets\Kralien Fleets\Heavy Fleet" />
+    <set_gm_button text="Hegemony Fleets\Kralien Fleets\Kalak Fleet" />
     <set_gm_button text="Hegemony Fleets\Torgoth Fleets\Light Fleet" />
     <set_gm_button text="Hegemony Fleets\Torgoth Fleets\Medium Fleet" />
     <set_gm_button text="Hegemony Fleets\Torgoth Fleets\Heavy Fleet" />
@@ -3077,6 +3105,43 @@
     <set_variable name="Auto AI Type" value="1.0" integer="yes" />
     <set_variable name="Random Direction" value="1.0" />
     <set_variable name="Name Assign" value="1.0" integer="yes" />
+  </event>
+  <event name="Create Kalak Kralien Fleet" id_arme="99d48697-5846-40a3-b7cc-fffd28eb0976" parent_id_arme="73127ee1-df9c-482b-a96c-0ff036a54311">
+    <if_gm_button text="Hegemony Fleets\Kralien Fleets\Kalak Fleet" />
+    <create type="enemy" use_gm_position="" name="HS Elsa" raceKeys="enemy standard" hullKeys="Battleship Dreadnought" sideValue="SideValue" fleetnumber="88" />
+    <create type="enemy" use_gm_position="" name="--" raceKeys="enemy standard" hullKeys="Battleship Dreadnought" sideValue="SideValue" fleetnumber="88" />
+    <create type="enemy" use_gm_position="" name="--" raceKeys="enemy standard" hullKeys="Battleship Dreadnought" sideValue="SideValue" fleetnumber="88" />
+    <create type="enemy" use_gm_position="" name="--" raceKeys="enemy standard" hullKeys="Battleship Dreadnought Cruiser" sideValue="SideValue" fleetnumber="88" />
+    <create type="enemy" use_gm_position="" name="--" raceKeys="enemy standard" hullKeys="Battleship Dreadnought Cruiser" sideValue="SideValue" fleetnumber="88" />
+    <create type="enemy" use_gm_position="" name="--" raceKeys="enemy standard" hullKeys="Battleship Cruiser" sideValue="SideValue" fleetnumber="88" />
+    <create type="enemy" use_gm_position="" name="--" raceKeys="enemy standard" hullKeys="Battleship Cruiser" sideValue="SideValue" fleetnumber="88" />
+    <create type="enemy" use_gm_position="" name="--" raceKeys="enemy standard" hullKeys="Cruiser" sideValue="SideValue" fleetnumber="88" />
+    <create type="enemy" use_gm_position="" name="--" raceKeys="enemy standard" hullKeys="Cruiser" sideValue="SideValue" fleetnumber="88" />
+    <create type="enemy" use_gm_position="" name="--" raceKeys="enemy standard" hullKeys="Cruiser" sideValue="SideValue" fleetnumber="88" />
+    <set_variable name="Fleet Settings" value="1.0" />
+    <set_variable name="Auto AI Type" value="1.0" integer="yes" />
+    <set_variable name="Random Direction" value="1.0" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <clear_ai name="HS Elsa" />
+    <set_object_property property="surrenderChance" value="30" name="HS Elsa" />
+    <add_ai type="SPCL_AI" name="HS Elsa" />
+    <add_ai type="TRY_TO_BECOME_LEADER" name="HS Elsa" />
+    <add_ai type="CHASE_PLAYER" name="HS Elsa" />
+    <add_ai type="CHASE_AI_SHIP" name="HS Elsa" />
+    <add_ai type="CHASE_STATION" name="HS Elsa" />
+    <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="HS Elsa" />
+    <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="HS Elsa" />
+    <add_ai type="CHASE_STATION" value1="1000" name="HS Elsa" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="HS Elsa" />
+    <add_ai type="CHASE_PLAYER" value1="800" value2="100" name="HS Elsa" />
+    <add_ai type="CHASE_AI_SHIP" value1="800" value2="100" name="HS Elsa" />
+    <add_ai type="CHASE_STATION" value1="100" name="HS Elsa" />
+    <add_ai type="CHASE_ANGER" name="HS Elsa" />
+    <add_ai type="CHASE_PLAYER" value1="400" value2="100" name="HS Elsa" />
+    <add_ai type="CHASE_AI_SHIP" value1="400" value2="100" name="HS Elsa" />
+    <add_ai type="LEADER_LEADS" name="HS Elsa" />
+    <add_ai type="FOLLOW_LEADER" name="HS Elsa" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="8000" name="HS Elsa" />
   </event>
   <folder_arme name="Hegemony Fleets" id_arme="a8a1be15-1e40-441f-84cf-9d09cd6adead" parent_id_arme="c7990b33-1f5b-4913-9155-e131df5266a1" />
   <event name="Create Light Fleet" id_arme="0f638f62-be50-4df2-908d-74d03d2ce33a" parent_id_arme="a8a1be15-1e40-441f-84cf-9d09cd6adead">
