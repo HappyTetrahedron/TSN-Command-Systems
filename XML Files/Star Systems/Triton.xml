@@ -796,6 +796,16 @@
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
     <destroy name="Triton V" />
     <destroy name="Triton Refuge" />
+    <destroy name="Buoy 1" />
+    <destroy name="Buoy 2" />
+    <destroy name="Buoy 3" />
+    <destroy name="Buoy 4" />
+    <destroy name="Buoy 5" />
+    <destroy name="Buoy 6" />
+    <destroy name="Buoy 7" />
+    <destroy name="Training Station A" />
+    <destroy name="Training Station B" />
+    <destroy name="Training Station C" />
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
