@@ -409,18 +409,20 @@
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
     <if_gm_button text="Pro" />
     <clear_player_station_carried name="Grant Docking Tether" />
-    <set_player_station_carried name="Grant Docking Tether" hullID="102" singleSeatName="Replacius" />
+    <set_player_station_carried name="Grant Docking Tether" raceKeys="TSN" hullKeys="TSN Shuttle shuttle" singleSeatName="Proteus" />
   </event>
   <event name="RestockTheseus" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
     <if_gm_button text="The" />
-    <set_player_station_carried name="Grant Docking Tether" hullID="102" />
+    <clear_player_station_carried name="Grant Docking Tether" />
+    <set_player_station_carried name="Grant Docking Tether" raceKeys="TSN" hullKeys="TSN Shuttle shuttle" singleSeatName="Theseus" />
   </event>
   <event name="RestockOdysseus" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
     <if_gm_button text="Ody" />
     <clear_player_station_carried name="Grant Docking Tether" />
-    <set_player_station_carried name="Grant Docking Tether" singleSeatName="Odysseus" />
+    <clear_player_station_carried name="Grant Docking Tether" />
+    <set_player_station_carried name="Grant Docking Tether" raceKeys="TSN" hullKeys="TSN Shuttle shuttle" singleSeatName="Odysseus" />
   </event>
   <event name="Destroy Unnamed Object" id_arme="f00a0268-6a59-4e62-b59d-80c91fc0e6d1" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
