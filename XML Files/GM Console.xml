@@ -33,6 +33,7 @@
     <clear_gm_button text="Explosion" />
     <clear_gm_button text="Interspace" />
     <clear_gm_button text="ToOnwia" />
+    <clear_gm_button text="ToTriton" />
     <clear_gm_button text="D3" />
     <clear_gm_button text="D4" />
     <clear_gm_button text="D5" />
@@ -301,6 +302,7 @@
     <set_gm_button text="Explosion" x="290" y="100" h="28" w="90" />
     <set_gm_button text="Interspace" x="290" y="130" h="28" w="90" />
     <set_gm_button text="ToOnwia" x="290" y="160" h="28" w="90" />
+    <set_gm_button text="ToTriton" x="380" y="160" h="28" w="90" />
     <set_gm_button text="D3" x="290" y="190" h="28" w="30" />
     <set_gm_button text="D4" x="320" y="190" h="28" w="30" />
     <set_gm_button text="D5" x="350" y="190" h="28" w="30" />
@@ -398,6 +400,10 @@
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
     <if_gm_button text="Interspace" />
     <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Ibroan System" value="3.0" integer="yes" />
+    <set_variable name="Krellis System" value="3.0" integer="yes" />
+    <set_variable name="Erowis System" value="3.0" integer="yes" />
+    <set_variable name="Drenan System" value="3.0" integer="yes" />
     <set_variable name="System" value="0.0" integer="yes" />
     <set_variable name="Interspace System" value="1.0" integer="yes" />
     <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
@@ -422,6 +428,15 @@
     <set_variable name="Onwia System" value="1.0" />
     <set_variable name="Interspace System" value="0.0" />
     <set_variable name="Sector" value="7" />
+    <set_timer name="Transition" seconds="2" />
+  </event>
+  <event name="ToTriton" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
+    <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
+    <if_gm_button text="ToTriton" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Triton System" value="1.0" />
+    <set_variable name="Interspace System" value="0.0" />
+    <set_variable name="Sector" value="6" />
     <set_timer name="Transition" seconds="2" />
   </event>
   <event name="Incapacitate">
