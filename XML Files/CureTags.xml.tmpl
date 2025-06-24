@@ -1,0 +1,28 @@
+{% set letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
+{% set facings=["Front", "Back"] %}
+<mission_data version="1.0" background_id_arme="f1f9329a-5fb4-454b-b10b-8fca1bce67c4" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <start id_arme="f1f9329a-5fb4-454b-b10b-8fca1bce67c4">
+    <!---->
+  </start>
+  <folder_arme name="CureTags" id_arme="4ae5d7c7-a5e0-444a-b413-4de00dd0ffa6" expanded_arme="" />
+  {% for letter in letters %}
+    {% for i in range(0,100) %}
+      {% for facing in facings %}
+        <event name="CureTags Scan {{letter}}{{'%02d' % (i)}} {{facing}}" id_arme="9ecf706f-39d0-4ca4-b9f9-eb7a2385f9cc" parent_id_arme="4ae5d7c7-a5e0-444a-b413-4de00dd0ffa6">
+          <if_exists name="{{letter}}{{'%02d' % (i)}}" />
+          <if_object_property property="shieldState{{facing}}" name="{{letter}}{{'%02d' % (i)}}" comparator="LESS" value="1" />
+          <if_object_property property="isTagged" name="{{letter}}{{'%02d' % (i)}}" comparator="EQUALS" value="1.0" />
+          <set_side_value value="2" name="{{letter}}{{'%02d' % (i)}}" />
+          <set_named_object_tag_state name="{{letter}}{{'%02d' % (i)}}" tagged="0" />
+          <clear_ai name="{{letter}}{{'%02d' % (i)}}" />
+          <add_ai type="POINT_THROTTLE" value1="randX" value2="0.0" value3="randZ" value4="1.0" name="{{letter}}{{'%02d' % (i)}}" />
+          <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="{{letter}}{{'%02d' % (i)}}" />
+          <add_ai type="CHASE_STATION" value1="100000" name="{{letter}}{{'%02d' % (i)}}" />
+          <add_ai type="DEFEND" value1="3000" value2="1000" name="{{letter}}{{'%02d' % (i)}}" />
+          <add_ai type="CHASE_ANGER" name="{{letter}}{{'%02d' % (i)}}" />
+          <add_ai type="FOLLOW_COMMS_ORDERS" name="{{letter}}{{'%02d' % (i)}}" />
+        </event>
+      {% endfor %}
+    {% endfor %}
+  {% endfor %}
+</mission_data>

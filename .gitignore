@@ -7,4 +7,11 @@ XML Files/Star Systems/sys temp.xml
 
 XML Files/.gitignore.txt
 XML Files/.gitattributes.txt
-XML Files/README.md
+
+XML Files/Discarded Scripts
+
+
+test.xml
+.idea/
+
+MISS_TSN-Command_LOG.txt

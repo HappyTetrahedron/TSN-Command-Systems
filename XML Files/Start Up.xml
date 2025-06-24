@@ -3,7 +3,7 @@
     <!--Configurations-->
     <set_variable name="Clear" value="11.0" integer="yes" />
     <set_difficulty_level value="10" />
-    <big_message title="The TSN Universe" subtitle1="Created by Xavier" subtitle2="Version 9.0" />
+    <big_message title="The TSN Universe" subtitle1="Version 10.0.0" subtitle2="Tetra's Fork" />
     <warning_popup_message message="V.9.0" consoles="MHWESCO" player_slot="0" />
     <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="0" />
     <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="1" />

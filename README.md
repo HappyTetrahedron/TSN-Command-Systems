@@ -1,9 +1,10 @@
-# MISS_TSN-Command
-TSN RP Community Command Systems for building the TSN Sandbox
- 
+# TSN Command Systems - Tetra's Fork
+
 TSN Command Systems is a script that generates the TSN Sandbox.
 
 The TSN Sandbox is a mission script to be used in Artemis that enables fully Game Master-moderated missions.
+
+*This fork is maintained by Tetra. If you have questions about this fork, feel free to create an issue. If you have questions about the TSN Sandbox or Command Systems in general, I recommend you direct them to the TSN RP community.*
  
 ## Requirements
 The current version of TSN Command Systems and the TSN Sandbox require Artemis 2.8.1 with the TSN Mod installed. For the TSN Mod, see [here](https://github.com/tsnrp/mod).
