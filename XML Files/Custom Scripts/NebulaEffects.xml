@@ -1,0 +1,601 @@
+<mission_data version="1.0" background_id_arme="77d373f9-ed2e-4726-a2b2-74bd775ac998" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <start id_arme="77d373f9-ed2e-4726-a2b2-74bd775ac998">
+    <!---->
+  </start>
+ 
+  <event name="Sensor Range Menu" id_arme="4228976f-1254-4e75-8f35-f579bcaf5543" parent_id_arme="5281ed9f-faab-47da-981b-3aa5f38459a0">
+    <if_variable name="Interactions Menu" comparator="EQUALS" value="4.0" />
+    <!-- <if_timer_finished name="Interactions Menu" /> -->
+
+    <set_gm_button text="Corrosive effect/In green neb" />
+    <set_gm_button text="Corrosive effect/In blue neb" />
+    <set_gm_button text="Corrosive effect/In purple neb" />
+    <set_gm_button text="Corrosive effect/Outside any neb" />
+    <set_gm_button text="Corrosive effect/Disable" />
+
+    <set_gm_button text="Energydrain effect/In green neb" />
+    <set_gm_button text="Energydrain effect/In blue neb" />
+    <set_gm_button text="Energydrain effect/In purple neb" />
+    <set_gm_button text="Energydrain effect/Outside any neb" />
+    <set_gm_button text="Energydrain effect/Disable" />
+
+    <set_gm_button text="Hot effect/In green neb" />
+    <set_gm_button text="Hot effect/In blue neb" />
+    <set_gm_button text="Hot effect/In purple neb" />
+    <set_gm_button text="Hot effect/Outside any neb" />
+    <set_gm_button text="Hot effect/Disable" />
+  </event>
+  <event name="Clear" id_arme="5ede81c1-1602-4d8b-af08-030a88ea3f0c" parent_id_arme="ffcee071-4886-4503-ab58-aeb5501c8873">
+    <if_gm_button text="Clear" />
+
+    <clear_gm_button text="Corrosive effect/In green neb" />
+    <clear_gm_button text="Corrosive effect/In blue neb" />
+    <clear_gm_button text="Corrosive effect/In purple neb" />
+    <clear_gm_button text="Corrosive effect/Outside any neb" />
+    <clear_gm_button text="Corrosive effect/Disable" />
+
+    <clear_gm_button text="Energydrain effect/In green neb" />
+    <clear_gm_button text="Energydrain effect/In blue neb" />
+    <clear_gm_button text="Energydrain effect/In purple neb" />
+    <clear_gm_button text="Energydrain effect/Outside any neb" />
+    <clear_gm_button text="Energydrain effect/Disable" />
+
+    <clear_gm_button text="Hot effect/In green neb" />
+    <clear_gm_button text="Hot effect/In blue neb" />
+    <clear_gm_button text="Hot effect/In purple neb" />
+    <clear_gm_button text="Hot effect/Outside any neb" />
+    <clear_gm_button text="Hot effect/Disable" />
+  </event>
+
+  <event>
+    <if_gm_button text="Corrosive effect/Disable" />
+    <set_variable name="CorrosiveNebulaID" value="10" integer="yes" />
+    <warning_popup_message message="Acid concentration readings normalized" consoles="MHWESC" />
+    <set_variable name="CorrosiveEffectEnabled" value="0.0" integer="yes" />
+  </event>
+  <event>
+    <if_gm_button text="Corrosive effect/In green neb" />
+    <set_variable name="CorrosiveNebulaID" value="3" integer="yes" />
+    <warning_popup_message message="High acid concentration in nearby green nebulas" consoles="MHWESC" />
+    <set_variable name="CorrosiveEffectEnabled" value="1.0" integer="yes" />
+  </event>
+  <event>
+    <if_gm_button text="Corrosive effect/In blue neb" />
+    <set_variable name="CorrosiveNebulaID" value="2" integer="yes" />
+    <warning_popup_message message="High acid concentration in nearby blue nebulas" consoles="MHWESC" />
+    <set_variable name="CorrosiveEffectEnabled" value="1.0" integer="yes" />
+  </event>
+  <event>
+    <if_gm_button text="Corrosive effect/In purple neb" />
+    <set_variable name="CorrosiveNebulaID" value="1" integer="yes" />
+    <warning_popup_message message="High acid concentration in nearby purple nebulas" consoles="MHWESC" />
+    <set_variable name="CorrosiveEffectEnabled" value="1.0" integer="yes" />
+  </event>
+  <event>
+    <if_gm_button text="Corrosive effect/Outside any neb" />
+    <set_variable name="CorrosiveNebulaID" value="0" integer="yes" />
+    <warning_popup_message message="High acid concentration in space outside of nebulas" consoles="MHWESC" />
+    <set_variable name="CorrosiveEffectEnabled" value="1.0" integer="yes" />
+  </event>
+
+  <event>
+    <if_gm_button text="Energydrain effect/Disable" />
+    <set_variable name="EnergydrainNebulaID" value="10" integer="yes" />
+    <warning_popup_message message="Energy fluctuations normalized" consoles="MHWESC" />
+    <set_variable name="EnergydrainEffectEnabled" value="0.0" integer="yes" />
+  </event>
+  <event>
+    <if_gm_button text="Energydrain effect/In green neb" />
+    <set_variable name="EnergydrainNebulaID" value="3" integer="yes" />
+    <warning_popup_message message="High energy fluctuations detected in nearby green nebulas" consoles="MHWESC" />
+    <set_variable name="EnergydrainEffectEnabled" value="1.0" integer="yes" />
+  </event>
+  <event>
+    <if_gm_button text="Energydrain effect/In blue neb" />
+    <set_variable name="EnergydrainNebulaID" value="2" integer="yes" />
+    <warning_popup_message message="High energy fluctuations detected in nearby blue nebulas" consoles="MHWESC" />
+    <set_variable name="EnergydrainEffectEnabled" value="1.0" integer="yes" />
+  </event>
+  <event>
+    <if_gm_button text="Energydrain effect/In purple neb" />
+    <set_variable name="EnergydrainNebulaID" value="1" integer="yes" />
+    <warning_popup_message message="High energy fluctuations detected in nearby purple nebulas" consoles="MHWESC" />
+    <set_variable name="EnergydrainEffectEnabled" value="1.0" integer="yes" />
+  </event>
+  <event>
+    <if_gm_button text="Energydrain effect/Outside any neb" />
+    <set_variable name="EnergydrainNebulaID" value="0" integer="yes" />
+    <warning_popup_message message="High energy fluctuations detected in space outside of nebulas" consoles="MHWESC" />
+    <set_variable name="EnergydrainEffectEnabled" value="1.0" integer="yes" />
+  </event>
+
+  <event>
+    <if_gm_button text="Hot effect/Disable" />
+    <set_variable name="HotNebulaID" value="10" integer="yes" />
+    <warning_popup_message message="Temperature readings normalized" consoles="MHWESC" />
+    <set_variable name="HotEffectEnabled" value="0.0" integer="yes" />
+  </event>
+  <event>
+    <if_gm_button text="Hot effect/In green neb" />
+    <set_variable name="HotNebulaID" value="3" integer="yes" />
+    <warning_popup_message message="High temperature readings from nearby green nebulas" consoles="MHWESC" />
+    <set_variable name="HotEffectEnabled" value="1.0" integer="yes" />
+  </event>
+  <event>
+    <if_gm_button text="Hot effect/In blue neb" />
+    <set_variable name="HotNebulaID" value="2" integer="yes" />
+    <warning_popup_message message="High temperature readings from nearby blue nebulas" consoles="MHWESC" />
+    <set_variable name="HotEffectEnabled" value="1.0" integer="yes" />
+  </event>
+  <event>
+    <if_gm_button text="Hot effect/In purple neb" />
+    <set_variable name="HotNebulaID" value="1" integer="yes" />
+    <warning_popup_message message="High temperature readings from nearby purple nebulas" consoles="MHWESC" />
+    <set_variable name="HotEffectEnabled" value="1.0" integer="yes" />
+  </event>
+  <event>
+    <if_gm_button text="Hot effect/Outside any neb" />
+    <set_variable name="HotNebulaID" value="0" integer="yes" />
+    <warning_popup_message message="High temperature readings in space outside of nebulas" consoles="MHWESC" />
+    <set_variable name="HotEffectEnabled" value="1.0" integer="yes" />
+  </event>
+
+
+  <event name="Nebula effects init" >
+    <log text="Nebula effects init" />
+
+    <if_variable name="NebulaEffectsInited" comparator="LESS" value="1.0" />
+
+    <set_timer name="Player0CorrosiveNebulaTimer" seconds="1.0" />
+    <set_timer name="Player1CorrosiveNebulaTimer" seconds="1.0" />
+    <set_timer name="Player2CorrosiveNebulaTimer" seconds="1.0" />
+    <set_timer name="Player3CorrosiveNebulaTimer" seconds="1.0" />
+    <set_timer name="Player4CorrosiveNebulaTimer" seconds="1.0" />
+    <set_timer name="Player5CorrosiveNebulaTimer" seconds="1.0" />
+    <set_timer name="Player6CorrosiveNebulaTimer" seconds="1.0" />
+    <set_timer name="Player7CorrosiveNebulaTimer" seconds="1.0" />
+
+    <set_timer name="Player0EnergydrainNebulaTimer" seconds="1.0" />
+    <set_timer name="Player1EnergydrainNebulaTimer" seconds="1.0" />
+    <set_timer name="Player2EnergydrainNebulaTimer" seconds="1.0" />
+    <set_timer name="Player3EnergydrainNebulaTimer" seconds="1.0" />
+    <set_timer name="Player4EnergydrainNebulaTimer" seconds="1.0" />
+    <set_timer name="Player5EnergydrainNebulaTimer" seconds="1.0" />
+    <set_timer name="Player6EnergydrainNebulaTimer" seconds="1.0" />
+    <set_timer name="Player7EnergydrainNebulaTimer" seconds="1.0" />
+
+    <set_timer name="Player0HotNebulaTimer" seconds="1.0" />
+    <set_timer name="Player1HotNebulaTimer" seconds="1.0" />
+    <set_timer name="Player2HotNebulaTimer" seconds="1.0" />
+    <set_timer name="Player3HotNebulaTimer" seconds="1.0" />
+    <set_timer name="Player4HotNebulaTimer" seconds="1.0" />
+    <set_timer name="Player5HotNebulaTimer" seconds="1.0" />
+    <set_timer name="Player6HotNebulaTimer" seconds="1.0" />
+    <set_timer name="Player7HotNebulaTimer" seconds="1.0" />
+
+    <set_variable name="EnergyDrainPerTick" value="10.0" />
+    <set_variable name="HeatPerTick" value="0.02" />
+
+    <!-- Defaults -->
+    <set_variable name="HeatNebulaID" value="1" integer="yes" />
+    <set_variable name="EnergydrainNebulaID" value="2" integer="yes" />
+    <set_variable name="CorrosiveNebulaID" value="3" integer="yes" />
+    <!-- Disable all effects at start -->
+    <set_variable name="CorrosiveEffectEnabled" value="0.0" integer="yes" />
+    <set_variable name="EnergydrainEffectEnabled" value="0.0" integer="yes" />
+    <set_variable name="HotEffectEnabled" value="0.0" integer="yes" />
+
+    <set_variable name="NebulaEffectsInited" value="1.0" />
+  </event>
+
+
+  <event name="Player0Corrosive nebula tick" >
+    <if_timer_finished name="Player0CorrosiveNebulaTimer" />
+    <if_variable name="CorrosiveEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="0" compare="CorrosiveNebulaID" />
+
+    <set_variable name="DamageShip1" value="2.0" integer="yes" />
+    <set_variable name="Ship1DamageType" randomIntLow="0.0" randomIntHigh="7.0" integer="yes" />
+    <set_variable name="Ship1NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+    <set_timer name="Player0CorrosiveNebulaTimer" seconds="2.0" />
+  </event>
+  <event name="Player0Corrosive don't damage maneuver" >
+    <if_in_nebula player_slot="0" compare="CorrosiveNebulaID" />
+    <if_variable name="Ship1DamageType" comparator="EQUALS" value="5" />
+    <set_variable name="DamageShip1" value="0.0" integer="yes" />
+  </event>
+  <event name="Player0Corrosive don't damage warp" >
+    <if_in_nebula player_slot="0" compare="CorrosiveNebulaID" />
+    <if_variable name="Ship1DamageType" comparator="EQUALS" value="7" />
+    <set_variable name="DamageShip1" value="0.0" integer="yes" />
+  </event>
+  <event name="Player0Energydrain nebula tick" >
+    <if_timer_finished name="Player0EnergydrainNebulaTimer" />
+    <if_variable name="EnergydrainEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="0" compare="EnergydrainNebulaID" />
+    <if_object_property player_slot="0" property="energy" comparator="GREATER" value="50" />
+
+    <addto_object_property value="-EnergyDrainPerTick" property="energy" player_slot="0" />
+
+    <set_timer name="Player0EnergydrainNebulaTimer" seconds="2.0" />
+  </event>
+  <event name="Player0Hot nebula tick" >
+    <if_timer_finished name="Player0HotNebulaTimer" />
+    <if_variable name="HotEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="0" compare="HotNebulaID" />
+
+    <addto_object_property value="HeatPerTick" property="systemCurHeatBeam" player_slot="0" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTorpedo" player_slot="0" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTactical" player_slot="0" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTurning" player_slot="0" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatImpulse" player_slot="0" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatWarp" player_slot="0" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatFrontShield" player_slot="0" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatBackShield" player_slot="0" />
+
+    <set_timer name="Player0HotNebulaTimer" seconds="2.0" />
+  </event>
+
+
+  <event name="Player1Corrosive nebula tick" >
+    <if_timer_finished name="Player1CorrosiveNebulaTimer" />
+    <if_variable name="CorrosiveEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="1" compare="CorrosiveNebulaID" />
+
+    <set_variable name="DamageShip2" value="2.0" integer="yes" />
+    <set_variable name="Ship2DamageType" randomIntLow="0.0" randomIntHigh="7.0" integer="yes" />
+    <set_variable name="Ship2NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+    <set_timer name="Player1CorrosiveNebulaTimer" seconds="2.0" />
+  </event>
+  <event name="Player1Corrosive don't damage maneuver" >
+    <if_in_nebula player_slot="1" compare="CorrosiveNebulaID" />
+    <if_variable name="Ship2DamageType" comparator="EQUALS" value="5" />
+    <set_variable name="DamageShip2" value="0.0" integer="yes" />
+  </event>
+  <event name="Player1Corrosive don't damage warp" >
+    <if_in_nebula player_slot="1" compare="CorrosiveNebulaID" />
+    <if_variable name="Ship2DamageType" comparator="EQUALS" value="7" />
+    <set_variable name="DamageShip2" value="0.0" integer="yes" />
+  </event>
+  <event name="Player1Energydrain nebula tick" >
+    <if_timer_finished name="Player1EnergydrainNebulaTimer" />
+    <if_variable name="EnergydrainEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="1" compare="EnergydrainNebulaID" />
+    <if_object_property player_slot="1" property="energy" comparator="GREATER" value="50" />
+
+    <addto_object_property value="-EnergyDrainPerTick" property="energy" player_slot="1" />
+
+    <set_timer name="Player1EnergydrainNebulaTimer" seconds="2.0" />
+  </event>
+  <event name="Player1Hot nebula tick" >
+    <if_timer_finished name="Player1HotNebulaTimer" />
+    <if_variable name="HotEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="1" compare="HotNebulaID" />
+
+    <addto_object_property value="HeatPerTick" property="systemCurHeatBeam" player_slot="1" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTorpedo" player_slot="1" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTactical" player_slot="1" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTurning" player_slot="1" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatImpulse" player_slot="1" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatWarp" player_slot="1" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatFrontShield" player_slot="1" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatBackShield" player_slot="1" />
+
+    <set_timer name="Player1HotNebulaTimer" seconds="2.0" />
+  </event>
+
+  <event name="Player2Corrosive nebula tick" >
+    <if_timer_finished name="Player2CorrosiveNebulaTimer" />
+    <if_variable name="CorrosiveEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="2" compare="CorrosiveNebulaID" />
+
+    <set_variable name="DamageShip3" value="2.0" integer="yes" />
+    <set_variable name="Ship3DamageType" randomIntLow="0.0" randomIntHigh="7.0" integer="yes" />
+    <set_variable name="Ship3NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+    <set_timer name="Player2CorrosiveNebulaTimer" seconds="2.0" />
+  </event>
+  <event name="Player2Corrosive don't damage maneuver" >
+    <if_in_nebula player_slot="2" compare="CorrosiveNebulaID" />
+    <if_variable name="Ship3DamageType" comparator="EQUALS" value="5" />
+    <set_variable name="DamageShip3" value="0.0" integer="yes" />
+  </event>
+  <event name="Player2Corrosive don't damage warp" >
+    <if_in_nebula player_slot="2" compare="CorrosiveNebulaID" />
+    <if_variable name="Ship3DamageType" comparator="EQUALS" value="7" />
+    <set_variable name="DamageShip3" value="0.0" integer="yes" />
+  </event>
+  <event name="Player2Energydrain nebula tick" >
+    <if_timer_finished name="Player2EnergydrainNebulaTimer" />
+    <if_variable name="EnergydrainEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="2" compare="EnergydrainNebulaID" />
+    <if_object_property player_slot="2" property="energy" comparator="GREATER" value="50" />
+
+    <addto_object_property value="-EnergyDrainPerTick" property="energy" player_slot="2" />
+
+    <set_timer name="Player2EnergydrainNebulaTimer" seconds="2.0" />
+  </event>
+  <event name="Player2Hot nebula tick" >
+    <if_timer_finished name="Player2HotNebulaTimer" />
+    <if_variable name="HotEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="2" compare="HotNebulaID" />
+
+    <addto_object_property value="HeatPerTick" property="systemCurHeatBeam" player_slot="2" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTorpedo" player_slot="2" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTactical" player_slot="2" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTurning" player_slot="2" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatImpulse" player_slot="2" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatWarp" player_slot="2" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatFrontShield" player_slot="2" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatBackShield" player_slot="2" />
+
+    <set_timer name="Player2HotNebulaTimer" seconds="2.0" />
+  </event>
+
+  <event name="Player3Corrosive nebula tick" >
+    <if_timer_finished name="Player3CorrosiveNebulaTimer" />
+    <if_variable name="CorrosiveEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="3" compare="CorrosiveNebulaID" />
+
+    <set_variable name="DamageShip4" value="2.0" integer="yes" />
+    <set_variable name="Ship4DamageType" randomIntLow="0.0" randomIntHigh="7.0" integer="yes" />
+    <set_variable name="Ship4NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+    <set_timer name="Player3CorrosiveNebulaTimer" seconds="2.0" />
+  </event>
+  <event name="Player3Corrosive don't damage maneuver" >
+    <if_in_nebula player_slot="3" compare="CorrosiveNebulaID" />
+    <if_variable name="Ship4DamageType" comparator="EQUALS" value="5" />
+    <set_variable name="DamageShip4" value="0.0" integer="yes" />
+  </event>
+  <event name="Player3Corrosive don't damage warp" >
+    <if_in_nebula player_slot="3" compare="CorrosiveNebulaID" />
+    <if_variable name="Ship4DamageType" comparator="EQUALS" value="7" />
+    <set_variable name="DamageShip4" value="0.0" integer="yes" />
+  </event>
+  <event name="Player3Energydrain nebula tick" >
+    <if_timer_finished name="Player3EnergydrainNebulaTimer" />
+    <if_variable name="EnergydrainEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="3" compare="EnergydrainNebulaID" />
+    <if_object_property player_slot="3" property="energy" comparator="GREATER" value="50" />
+
+    <addto_object_property value="-EnergyDrainPerTick" property="energy" player_slot="3" />
+
+    <set_timer name="Player3EnergydrainNebulaTimer" seconds="2.0" />
+  </event>
+  <event name="Player3Hot nebula tick" >
+    <if_timer_finished name="Player3HotNebulaTimer" />
+    <if_variable name="HotEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="3" compare="HotNebulaID" />
+
+    <addto_object_property value="HeatPerTick" property="systemCurHeatBeam" player_slot="3" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTorpedo" player_slot="3" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTactical" player_slot="3" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTurning" player_slot="3" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatImpulse" player_slot="3" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatWarp" player_slot="3" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatFrontShield" player_slot="3" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatBackShield" player_slot="3" />
+
+    <set_timer name="Player3HotNebulaTimer" seconds="2.0" />
+  </event>
+
+  <event name="Player4Corrosive nebula tick" >
+    <if_timer_finished name="Player4CorrosiveNebulaTimer" />
+    <if_variable name="CorrosiveEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="4" compare="CorrosiveNebulaID" />
+
+    <set_variable name="DamageShip5" value="2.0" integer="yes" />
+    <set_variable name="Ship5DamageType" randomIntLow="0.0" randomIntHigh="7.0" integer="yes" />
+    <set_variable name="Ship5NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+    <set_timer name="Player4CorrosiveNebulaTimer" seconds="2.0" />
+  </event>
+  <event name="Player4Corrosive don't damage maneuver" >
+    <if_in_nebula player_slot="4" compare="CorrosiveNebulaID" />
+    <if_variable name="Ship5DamageType" comparator="EQUALS" value="5" />
+    <set_variable name="DamageShip5" value="0.0" integer="yes" />
+  </event>
+  <event name="Player4Corrosive don't damage warp" >
+    <if_in_nebula player_slot="4" compare="CorrosiveNebulaID" />
+    <if_variable name="Ship5DamageType" comparator="EQUALS" value="7" />
+    <set_variable name="DamageShip5" value="0.0" integer="yes" />
+  </event>
+  <event name="Player4Energydrain nebula tick" >
+    <if_timer_finished name="Player4EnergydrainNebulaTimer" />
+    <if_variable name="EnergydrainEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="4" compare="EnergydrainNebulaID" />
+    <if_object_property player_slot="4" property="energy" comparator="GREATER" value="50" />
+
+    <addto_object_property value="-EnergyDrainPerTick" property="energy" player_slot="4" />
+
+    <set_timer name="Player4EnergydrainNebulaTimer" seconds="2.0" />
+  </event>
+  <event name="Player4Hot nebula tick" >
+    <if_timer_finished name="Player4HotNebulaTimer" />
+    <if_variable name="HotEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="4" compare="HotNebulaID" />
+
+    <addto_object_property value="HeatPerTick" property="systemCurHeatBeam" player_slot="4" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTorpedo" player_slot="4" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTactical" player_slot="4" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTurning" player_slot="4" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatImpulse" player_slot="4" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatWarp" player_slot="4" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatFrontShield" player_slot="4" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatBackShield" player_slot="4" />
+
+    <set_timer name="Player4HotNebulaTimer" seconds="2.0" />
+  </event>
+
+  <event name="Player5Corrosive nebula tick" >
+    <if_timer_finished name="Player5CorrosiveNebulaTimer" />
+    <if_variable name="CorrosiveEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="5" compare="CorrosiveNebulaID" />
+
+    <set_variable name="DamageShip6" value="2.0" integer="yes" />
+    <set_variable name="Ship6DamageType" randomIntLow="0.0" randomIntHigh="7.0" integer="yes" />
+    <set_variable name="Ship6NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+    <set_timer name="Player5CorrosiveNebulaTimer" seconds="2.0" />
+  </event>
+  <event name="Player5Corrosive don't damage maneuver" >
+    <if_in_nebula player_slot="5" compare="CorrosiveNebulaID" />
+    <if_variable name="Ship6DamageType" comparator="EQUALS" value="5" />
+    <set_variable name="DamageShip6" value="0.0" integer="yes" />
+  </event>
+  <event name="Player5Corrosive don't damage warp" >
+    <if_in_nebula player_slot="5" compare="CorrosiveNebulaID" />
+    <if_variable name="Ship6DamageType" comparator="EQUALS" value="7" />
+    <set_variable name="DamageShip6" value="0.0" integer="yes" />
+  </event>
+  <event name="Player5Energydrain nebula tick" >
+    <if_timer_finished name="Player5EnergydrainNebulaTimer" />
+    <if_variable name="EnergydrainEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="5" compare="EnergydrainNebulaID" />
+    <if_object_property player_slot="5" property="energy" comparator="GREATER" value="50" />
+
+    <addto_object_property value="-EnergyDrainPerTick" property="energy" player_slot="5" />
+
+    <set_timer name="Player5EnergydrainNebulaTimer" seconds="2.0" />
+  </event>
+  <event name="Player5Hot nebula tick" >
+    <if_timer_finished name="Player5HotNebulaTimer" />
+    <if_variable name="HotEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="5" compare="HotNebulaID" />
+
+    <addto_object_property value="HeatPerTick" property="systemCurHeatBeam" player_slot="5" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTorpedo" player_slot="5" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTactical" player_slot="5" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTurning" player_slot="5" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatImpulse" player_slot="5" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatWarp" player_slot="5" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatFrontShield" player_slot="5" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatBackShield" player_slot="5" />
+
+    <set_timer name="Player5HotNebulaTimer" seconds="2.0" />
+  </event>
+
+  <event name="Player6Corrosive nebula tick" >
+    <if_timer_finished name="Player6CorrosiveNebulaTimer" />
+    <if_variable name="CorrosiveEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="6" compare="CorrosiveNebulaID" />
+
+    <set_variable name="DamageShip7" value="2.0" integer="yes" />
+    <set_variable name="Ship7DamageType" randomIntLow="0.0" randomIntHigh="7.0" integer="yes" />
+    <set_variable name="Ship7NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+    <set_timer name="Player6CorrosiveNebulaTimer" seconds="2.0" />
+  </event>
+  <event name="Player6Corrosive don't damage maneuver" >
+    <if_in_nebula player_slot="6" compare="CorrosiveNebulaID" />
+    <if_variable name="Ship7DamageType" comparator="EQUALS" value="5" />
+    <set_variable name="DamageShip7" value="0.0" integer="yes" />
+  </event>
+  <event name="Player6Corrosive don't damage warp" >
+    <if_in_nebula player_slot="6" compare="CorrosiveNebulaID" />
+    <if_variable name="Ship7DamageType" comparator="EQUALS" value="7" />
+    <set_variable name="DamageShip7" value="0.0" integer="yes" />
+  </event>
+  <event name="Player6Energydrain nebula tick" >
+    <if_timer_finished name="Player6EnergydrainNebulaTimer" />
+    <if_variable name="EnergydrainEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="6" compare="EnergydrainNebulaID" />
+    <if_object_property player_slot="6" property="energy" comparator="GREATER" value="50" />
+
+    <addto_object_property value="-EnergyDrainPerTick" property="energy" player_slot="6" />
+
+    <set_timer name="Player6EnergydrainNebulaTimer" seconds="2.0" />
+  </event>
+  <event name="Player6Hot nebula tick" >
+    <if_timer_finished name="Player6HotNebulaTimer" />
+    <if_variable name="HotEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="6" compare="HotNebulaID" />
+
+    <addto_object_property value="HeatPerTick" property="systemCurHeatBeam" player_slot="6" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTorpedo" player_slot="6" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTactical" player_slot="6" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTurning" player_slot="6" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatImpulse" player_slot="6" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatWarp" player_slot="6" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatFrontShield" player_slot="6" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatBackShield" player_slot="6" />
+
+    <set_timer name="Player6HotNebulaTimer" seconds="2.0" />
+  </event>
+
+  <event name="Player7Corrosive nebula tick" >
+    <if_timer_finished name="Player7CorrosiveNebulaTimer" />
+    <if_variable name="CorrosiveEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="7" compare="CorrosiveNebulaID" />
+
+    <set_variable name="DamageShip8" value="2.0" integer="yes" />
+    <set_variable name="Ship8DamageType" randomIntLow="0.0" randomIntHigh="7.0" integer="yes" />
+    <set_variable name="Ship8NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+    <set_timer name="Player7CorrosiveNebulaTimer" seconds="2.0" />
+  </event>
+  <event name="Player7Corrosive don't damage maneuver" >
+    <if_in_nebula player_slot="7" compare="CorrosiveNebulaID" />
+    <if_variable name="Ship8DamageType" comparator="EQUALS" value="5" />
+    <set_variable name="DamageShip8" value="0.0" integer="yes" />
+  </event>
+  <event name="Player7Corrosive don't damage warp" >
+    <if_in_nebula player_slot="7" compare="CorrosiveNebulaID" />
+    <if_variable name="Ship8DamageType" comparator="EQUALS" value="7" />
+    <set_variable name="DamageShip8" value="0.0" integer="yes" />
+  </event>
+  <event name="Player7Energydrain nebula tick" >
+    <if_timer_finished name="Player7EnergydrainNebulaTimer" />
+    <if_variable name="EnergydrainEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="7" compare="EnergydrainNebulaID" />
+    <if_object_property player_slot="7" property="energy" comparator="GREATER" value="50" />
+
+    <addto_object_property value="-EnergyDrainPerTick" property="energy" player_slot="7" />
+
+    <set_timer name="Player7EnergydrainNebulaTimer" seconds="2.0" />
+  </event>
+  <event name="Player7Hot nebula tick" >
+    <if_timer_finished name="Player7HotNebulaTimer" />
+    <if_variable name="HotEffectEnabled" comparator="EQUALS" value="1" />
+
+    <if_in_nebula player_slot="7" compare="HotNebulaID" />
+
+    <addto_object_property value="HeatPerTick" property="systemCurHeatBeam" player_slot="7" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTorpedo" player_slot="7" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTactical" player_slot="7" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatTurning" player_slot="7" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatImpulse" player_slot="7" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatWarp" player_slot="7" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatFrontShield" player_slot="7" />
+    <addto_object_property value="HeatPerTick" property="systemCurHeatBackShield" player_slot="7" />
+
+    <set_timer name="Player7HotNebulaTimer" seconds="2.0" />
+  </event>
+
+</mission_data>
