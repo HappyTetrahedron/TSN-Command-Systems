@@ -1313,6 +1313,7 @@
     <clear_gm_button text="Docking Port\Xeno Research" />
     <clear_gm_button text="Docking Port\(Standard)" />
     <clear_gm_button text="Docking Port\Grant" />
+    <clear_gm_button text="Docking Port\Grant Light" />
     <clear_gm_button text="Other\Lifepod" />
     <clear_gm_button text="Other\Black Box" />
     <set_variable name="CycleSpawnMenu" value="0.0" integer="yes" />
@@ -2637,6 +2638,20 @@
     <set_object_property property="missileStoresNuke" value="15" name="Grant Docking Tether" />
     <set_object_property property="missileStoresMine" value="13" name="Grant Docking Tether" />
     <set_object_property property="missileStoresEMP" value="16" name="Grant Docking Tether" />
+    <set_object_property property="missileStoresPShock" value="32" name="Grant Docking Tether" />
+    <set_object_property property="missileStoresTag" value="11" name="Grant Docking Tether" />
+    <set_object_property property="missileStoresBeacon" value="9" name="Grant Docking Tether" />
+    <set_object_property property="missileStoresProbe" value="33" name="Grant Docking Tether" />
+  </event>
+  <event name="Grant Docking Tether Light" id_arme="d33707c6-0add-44de-951b-50fc30fbeb7f" parent_id_arme="ac45407a-2a1c-4937-a427-17c2bb86b312">
+    <if_gm_button text="Docking Port\Grant Light" />
+    <create type="station" use_gm_position="" name="Grant Docking Tether" hullID="1058" sideValue="2" />
+    <set_ship_text name="Grant Docking Tether" race="-" class="Tether" desc="Supplying energy and ordnance from the supply ship" scan_desc="Energy and supply transfer systems online." hailtext="Tether is online and ready for transfer operations. We have ordnance available for resupply." />
+    <set_object_property property="canBuild" value="1" name="Grant Docking Tether" />
+    <set_object_property property="missileStoresHoming" value="24" name="Grant Docking Tether" />
+    <set_object_property property="missileStoresNuke" value="1" name="Grant Docking Tether" />
+    <set_object_property property="missileStoresMine" value="3" name="Grant Docking Tether" />
+    <set_object_property property="missileStoresEMP" value="6" name="Grant Docking Tether" />
     <set_object_property property="missileStoresPShock" value="32" name="Grant Docking Tether" />
     <set_object_property property="missileStoresTag" value="11" name="Grant Docking Tether" />
     <set_object_property property="missileStoresBeacon" value="9" name="Grant Docking Tether" />
@@ -4134,6 +4149,7 @@
     <set_gm_button text="Docking Port\Xeno Research" />
     <set_gm_button text="Docking Port\(Standard)" />
     <set_gm_button text="Docking Port\Grant" />
+    <set_gm_button text="Docking Port\Grant Light" />
     <set_gm_button text="Other\Lifepod" />
     <set_gm_button text="Other\Black Box" />
     <!--Change Default Side-->

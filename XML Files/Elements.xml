@@ -1022,7 +1022,6 @@
     <if_variable name="Ship1CommsMenu" comparator="EQUALS" value="0.0" />
     <set_comms_button text="-Cargo &amp; Personnel" player_slot="0" />
     <set_comms_button text="-Shuttle Operations" player_slot="0" />
-    <set_comms_button text="-Deploy Buoy" player_slot="0" />
     <set_variable name="Ship1CommsMenu" value="1.0" integer="yes" />
     <set_variable name="Ship1Modules" value="0.0" integer="yes" />
   </event>
@@ -1057,7 +1056,6 @@
     <if_comms_button text="-Cargo &amp; Personnel" />
     <clear_comms_button text="-Cargo &amp; Personnel" player_slot="0" />
     <clear_comms_button text="-Shuttle Operations" player_slot="0" />
-    <clear_comms_button text="-Deploy Buoy" player_slot="0" />
     <clear_comms_button text="-Resupply Operations" player_slot="0" />
     <incoming_comms_text from="CHANNEL 1" sideValue="playerSide" type="STATUS">We have |Ship1Marines| battle ready Marines.^There are |Ship1MarineTeams| marine teams ready to be deployed.^There are |Ship1Cargos| units of cargo.^There are |Ship1EngineerTeams| teams of engineers ready to be deployed.^There are |Ship1MedicTeams| medical teams ready to be deployed.^Aboard, we have supplies of |Ship1CommsRelays| Comms relays and |Ship1SensorBuoys| Sensor buoys equipped and ready to be deployed.</incoming_comms_text>
     <set_variable name="Ship1CommsMenu" value="0.0" integer="yes" />
@@ -1344,7 +1342,6 @@
     <if_variable name="Ship2CommsMenu" comparator="EQUALS" value="0.0" />
     <set_comms_button text="*Cargo &amp; Personnel" player_slot="1" />
     <set_comms_button text="*Shuttle Operations" player_slot="1" />
-    <set_comms_button text="*Deploy Buoy" player_slot="1" />
     <set_variable name="Ship2CommsMenu" value="1.0" integer="yes" />
     <set_variable name="Ship2Modules" value="0.0" integer="yes" />
   </event>
@@ -1379,7 +1376,6 @@
     <if_comms_button text="*Cargo &amp; Personnel" />
     <clear_comms_button text="*Cargo &amp; Personnel" player_slot="1" />
     <clear_comms_button text="*Shuttle Operations" player_slot="1" />
-    <clear_comms_button text="*Deploy Buoy" player_slot="1" />
     <clear_comms_button text="*Resupply Operations" player_slot="1" />
     <incoming_comms_text from="CHANNEL 2" sideValue="playerSide" type="STATUS">We have |Ship2Marines| battle ready Marines.^There are |Ship2MarineTeams| marine teams ready to be deployed.^There are |Ship2Cargos| units of cargo.^There are |Ship2EngineerTeams| teams of engineers ready to be deployed.^There are |Ship2MedicTeams| medical teams ready to be deployed.^Aboard, we have supplies of |Ship2CommsRelays| Comms relays and |Ship2SensorBuoys| Sensor buoys equipped and ready to be deployed.</incoming_comms_text>
     <set_variable name="Ship2CommsMenu" value="0.0" integer="yes" />
@@ -1666,7 +1662,6 @@
     <if_variable name="Ship3CommsMenu" comparator="EQUALS" value="0.0" />
     <set_comms_button text="**Cargo &amp; Personnel" player_slot="2" />
     <set_comms_button text="**Shuttle Operations" player_slot="2" />
-    <set_comms_button text="**Deploy Buoy" player_slot="2" />
     <set_variable name="Ship3CommsMenu" value="1.0" integer="yes" />
     <set_variable name="Ship3Modules" value="0.0" integer="yes" />
   </event>
@@ -1702,7 +1697,6 @@
     <clear_comms_button text="**Cargo &amp; Personnel" player_slot="2" />
     <clear_comms_button text="**Shuttle Operations" player_slot="2" />
     <clear_comms_button text="**Resupply Operations" player_slot="2" />
-    <clear_comms_button text="**Deploy Buoy" player_slot="2" />
     <incoming_comms_text from="CHANNEL 3" sideValue="playerSide" type="STATUS">We have |Ship3Marines| battle ready Marines.^There are |Ship3MarineTeams| marine teams ready to be deployed.^There are |Ship3Cargos| units of cargo.^There are |Ship3EngineerTeams| teams of engineers ready to be deployed.^There are |Ship3MedicTeams| medical teams ready to be deployed.^Aboard, we have supplies of |Ship3CommsRelays| Comms relays and |Ship3SensorBuoys| Sensor buoys equipped and ready to be deployed.</incoming_comms_text>
     <set_variable name="Ship3CommsMenu" value="0.0" integer="yes" />
   </event>

@@ -126,20 +126,20 @@
     <set_variable name="Ship1MedicTeams" value="2" integer="yes" />
     <set_variable name="Ship1Cargos" value="3" integer="yes" />
     <set_variable name="Ship1CommsRelays" value="1" integer="yes" />
-    <set_variable name="Ship1SensorBuoys" value="2" integer="yes" />
+    <set_variable name="Ship1SensorBuoys" value="12" integer="yes" />
     <set_variable name="Ship1 Config" value="2" integer="yes" />
     <set_variable name="Ship2MarineTeams" value="2" integer="yes" />
     <set_variable name="Ship2EngineerTeams" value="1" integer="yes" />
     <set_variable name="Ship2MedicTeams" value="2" integer="yes" />
     <set_variable name="Ship2Cargos" value="1" integer="yes" />
     <set_variable name="Ship2CommsRelays" value="2" integer="yes" />
-    <set_variable name="Ship2SensorBuoys" value="1" integer="yes" />
+    <set_variable name="Ship2SensorBuoys" value="11" integer="yes" />
     <set_variable name="Ship3MarineTeams" value="1" integer="yes" />
     <set_variable name="Ship3EngineerTeams" value="1" integer="yes" />
     <set_variable name="Ship3MedicTeams" value="1" integer="yes" />
     <set_variable name="Ship3Cargos" value="1" integer="yes" />
     <set_variable name="Ship3CommsRelays" value="1" integer="yes" />
-    <set_variable name="Ship3SensorBuoys" value="1" integer="yes" />
+    <set_variable name="Ship3SensorBuoys" value="11" integer="yes" />
     <set_variable name="Ship4MarineTeams" value="1" integer="yes" />
     <set_variable name="Ship4EngineerTeams" value="1" integer="yes" />
     <set_variable name="Ship4MedicTeams" value="1" integer="yes" />
