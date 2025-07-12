@@ -1,0 +1,1891 @@
+{# x=770.0 y=490.0 alignment=USFP #}
+  <folder_arme name="Triton System" id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <folder_arme name="Triton Settings" id_arme="96f1c40c-0df2-4d1f-b7df-407c3ee2b7e2" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <folder_arme name="Triton Menu" id_arme="a680029d-40d7-4fe7-ac26-951602f65d78" parent_id_arme="96f1c40c-0df2-4d1f-b7df-407c3ee2b7e2" />
+  <event name="Triton Active" id_arme="337134ea-f9d6-433b-9cce-8a40014d2f9b" parent_id_arme="a680029d-40d7-4fe7-ac26-951602f65d78">
+    <if_variable name="Activation Menu" comparator="EQUALS" value="1.0" />
+    <set_gm_button text="Upper Arc/Triton System" />
+    <set_variable name="Triton Gate" value="1.0" integer="yes" />
+  </event>
+  <event name="Clear Menu Item" id_arme="a949a464-0553-4fa8-8644-0faeb49a723d" parent_id_arme="a680029d-40d7-4fe7-ac26-951602f65d78">
+    <if_variable name="Activation Menu" comparator="EQUALS" value="0.0" />
+    <clear_gm_button text="Upper Arc/Triton System" />
+  </event>
+  <event name="Triton System" id_arme="574f28a8-7e17-4b5a-90c7-6c325f681710" parent_id_arme="a680029d-40d7-4fe7-ac26-951602f65d78">
+    <if_gm_button text="Upper Arc/Triton System" />
+    <set_variable name="Sandbox Activation" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="104.0" integer="yes" />
+    <set_variable name="Triton System" value="1.0" integer="yes" />
+    <set_variable name="GM Mode" value="3.0" integer="yes" />
+  </event>
+  <event name="Default System Side" id_arme="6c13911f-0a70-4fe6-9625-86714d51a993" parent_id_arme="96f1c40c-0df2-4d1f-b7df-407c3ee2b7e2">
+    <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="System" />
+    <if_variable name="systemSideOverride" comparator="LESS" value="1.0" />
+    <set_variable name="systemSide" value="2.0" integer="yes" />
+    <set_variable name="System Settings" value="2.0" integer="yes" />
+  </event>
+  <event name="System Side Override" id_arme="cd61a7d0-01a8-403b-8b23-8b0c34bdac65" parent_id_arme="96f1c40c-0df2-4d1f-b7df-407c3ee2b7e2">
+    <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="System" />
+    <if_variable name="systemSideOverride" comparator="GREATER_EQUAL" value="1.0" />
+    <set_variable name="systemSide" value="systemSideOverride" integer="yes" />
+    <set_variable name="System Settings" value="2.0" integer="yes" />
+  </event>
+  <event name="Sector Side Override" id_arme="3f602d27-595b-43f1-8fdb-b80385a8ec79" parent_id_arme="96f1c40c-0df2-4d1f-b7df-407c3ee2b7e2">
+    <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="System" />
+    <if_variable name="sectorSideOverride" comparator="GREATER_EQUAL" value="1.0" />
+    <set_variable name="sectorSide" value="sectorSideOverride" integer="yes" />
+    <set_variable name="System Settings" value="3.0" integer="yes" />
+  </event>
+  <event name="Sector Side Override (RESET)" id_arme="6e959c03-0cf4-4896-8370-708ee5d520b5" parent_id_arme="96f1c40c-0df2-4d1f-b7df-407c3ee2b7e2">
+    <if_variable name="System Settings" comparator="EQUALS" value="3.0" />
+    <set_variable name="sectorSideOverride" value="0.0" integer="yes" />
+    <set_variable name="System Settings" value="0.0" integer="yes" />
+  </event>
+  <event name="Set Sector Side" id_arme="f729a094-5131-48f9-a880-07becef4410b" parent_id_arme="96f1c40c-0df2-4d1f-b7df-407c3ee2b7e2">
+    <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="System" />
+    <if_variable name="sectorSideOverride" comparator="LESS" value="1.0" />
+    <set_variable name="sectorSide" value="systemSide" integer="yes" />
+    <set_variable name="System Settings" value="0.0" integer="yes" />
+  </event>
+  <folder_arme name="Triton Sector I" id_arme="28dd7353-94e4-45b3-9249-0ec42257871b" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector I" id_arme="c7184d3b-7f52-4991-abcd-99ee8482dd91" parent_id_arme="28dd7353-94e4-45b3-9249-0ec42257871b">
+    <if_timer_finished name="Transition" />
+    <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <set_skybox_index index="14" />
+    <create count="100" type="nebulas" nebType="2" startX="86300.0" startY="0.0" startZ="31174.0" endX="24943.0" endY="0.0" endZ="98947.0" randomRange="10000" />
+    <create count="100" type="nebulas" nebType="2" startX="54943.0" startY="0.0" startZ="65546.0" endX="-39693.0" endY="0.0" endZ="166598.0" randomRange="5000" />
+    <create count="100" type="nebulas" nebType="2" startX="88229.0" startY="0.0" startZ="28016.0" endX="60072.0" endY="0.0" endZ="61417.0" randomRange="30000" />
+    <create count="25" type="mines" startAngle="70" endAngle="200" startX="24573.0" startY="0.0" startZ="39240.0" radius="15000" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="0.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="0.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+    <set_variable name="Triton System" value="2.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="424bf7cb-fa09-4d83-a41a-61055bd6eb7e" parent_id_arme="28dd7353-94e4-45b3-9249-0ec42257871b" />
+  <event name="Transition to Sector II" id_arme="bcabeb66-9df3-482d-8f72-e6d42fbc9766" parent_id_arme="424bf7cb-fa09-4d83-a41a-61055bd6eb7e">
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="2.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector V" id_arme="c9924754-f975-4014-a447-9d1a91436a39" parent_id_arme="424bf7cb-fa09-4d83-a41a-61055bd6eb7e">
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="5.0" integer="yes" />
+  </event>
+  <event name="Transition to (Bottom Right)" id_arme="3af6d9fe-8cdc-4fe1-9b86-34431028618b" parent_id_arme="424bf7cb-fa09-4d83-a41a-61055bd6eb7e">
+    <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E5 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="6.0" integer="yes" />
+  </event>
+  <folder_arme name="System - Jump Gate Settings" id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83" parent_id_arme="424bf7cb-fa09-4d83-a41a-61055bd6eb7e" />
+  <event name="Gate Offline" id_arme="90d63b6d-4f3d-40bc-86f5-dfe24357a66a" parent_id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="Waypoint 89 Gate" />
+  </event>
+  <folder_arme name="Tracking System" id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247" parent_id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83" />
+  <event name="Ship1 Activation Range" id_arme="9ee3d7c6-fc41-4126-9f10-ff4740910803" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="0" name2="Waypoint 89 Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Waypoint 89 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship1" value="1.0" />
+  </event>
+  <event name="Ship1 Out of Range" id_arme="a17eaf43-4ffc-4aab-8b15-1a3117b245d3" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="0" name2="Waypoint 89 Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Waypoint 89 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship1" value="0.0" />
+  </event>
+  <event name="Ship2 Activation Range" id_arme="821c7eeb-4bda-470d-b813-db2f91f723f0" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="1" name2="Waypoint 89 Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Waypoint 89 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship2" value="1.0" />
+  </event>
+  <event name="Ship2 Out of Range" id_arme="8538df1f-9f88-48bc-8fd3-25f196f7707d" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="1" name2="Waypoint 89 Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Waypoint 89 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship2" value="0.0" />
+  </event>
+  <event name="Ship3 Activation Range" id_arme="487a4879-0868-4f63-8533-6213ba0d530f" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="2" name2="Waypoint 89 Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Waypoint 89 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship3" value="1.0" />
+  </event>
+  <event name="Ship3 Out of Range" id_arme="cfecc391-c0f4-40c4-ac0c-262dce7f46bb" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="2" name2="Waypoint 89 Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Waypoint 89 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship3" value="0.0" />
+  </event>
+  <event name="Ship4 Activation Range" id_arme="f6a229f0-ba8d-42f4-b3a7-e17f26ffaa78" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="3" name2="Waypoint 89 Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Waypoint 89 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship4" value="1.0" />
+  </event>
+  <event name="Ship4 Out of Range" id_arme="6aefb361-f909-4601-b04d-64ee277ae1fa" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="3" name2="Waypoint 89 Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Waypoint 89 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship4" value="0.0" />
+  </event>
+  <event name="Ship5 Activation Range" id_arme="ab17df6f-e69c-4bb7-88d2-466ab15382a3" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="4" name2="Waypoint 89 Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Waypoint 89 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship5" value="1.0" />
+  </event>
+  <event name="Ship5 Out of Range" id_arme="305f2236-daf5-477e-a42f-c20a910ca54f" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="4" name2="Waypoint 89 Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Waypoint 89 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship5" value="0.0" />
+  </event>
+  <event name="Ship6 Activation Range" id_arme="a06e393a-a845-4ac1-a474-f561bafe34cc" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="5" name2="Waypoint 89 Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Waypoint 89 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship6" value="1.0" />
+  </event>
+  <event name="Ship6 Out of Range" id_arme="6f3cc0a7-9479-4ed6-8f08-1d2e8862b558" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="5" name2="Waypoint 89 Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Waypoint 89 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship6" value="0.0" />
+  </event>
+  <event name="Ship7 Activation Range" id_arme="aa322b59-8748-4f26-a9ea-089be033b6fd" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="6" name2="Waypoint 89 Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Waypoint 89 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship7" value="1.0" />
+  </event>
+  <event name="Ship7 Out of Range" id_arme="6605b477-d0b3-406f-98b2-d317c4c1f2b6" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="6" name2="Waypoint 89 Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Waypoint 89 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship7" value="0.0" />
+  </event>
+  <event name="Ship8 Activation Range" id_arme="6d6d19a5-7e59-4609-a4d6-057b979f2dfe" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="7" name2="Waypoint 89 Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Waypoint 89 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship8" value="1.0" />
+  </event>
+  <event name="Ship8 Out of Range" id_arme="e727d711-e221-4770-bdcf-0205f51d2e40" parent_id_arme="bc8a1d78-1302-473a-af7c-f2dfd6fbe247">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="7" name2="Waypoint 89 Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Waypoint 89 Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship8" value="0.0" />
+  </event>
+  <event name="Gate Online" id_arme="e113c47c-ccd7-48c8-b520-4174a25a8a6a" parent_id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="Waypoint 89 Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="Waypoint 89 Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated" id_arme="cbb7a700-d872-4afe-97b3-23b096f478c8" parent_id_arme="b1e5404b-7945-4e81-852d-fad2496a4e83">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="Waypoint 89 Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Triton to Waypoint 89" value="1.0" />
+    <set_variable name="Waypoint 89" value="1.0" />
+    <set_variable name="Sector" value="2" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="Gate System" value="0.0" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="88c5bf62-190f-4f16-85d7-bd49548eddf2" parent_id_arme="28dd7353-94e4-45b3-9249-0ec42257871b" />
+  <event name="Generate Sector Entities" id_arme="193fdf29-4905-4ed2-a742-8095b701a1d1" parent_id_arme="88c5bf62-190f-4f16-85d7-bd49548eddf2">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton I" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="24567.0" y="0.0" z="39199.0" name="Waypoint 89 Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="12327.0" y="0.0" z="30909.0" angle="0" name="WP-89" hullID="1052" />
+    <create type="neutral" x="33361.0" y="0.0" z="51228.0" angle="0" name="WP-88" hullID="1052" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="8d96ed18-7954-425f-bf7a-7b3fbd9c29be" parent_id_arme="88c5bf62-190f-4f16-85d7-bd49548eddf2">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_object_property property="artScale" value="1.0" name="Waypoint 89 Gate" />
+    <set_object_property property="pushRadius" value="0.0" name="Waypoint 89 Gate" />
+    <set_object_property property="angle" value="4.71238898" name="Waypoint 89 Gate" />
+    <set_object_property property="rollDelta" value="0.3" name="Waypoint 89 Gate" />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="0d81f86d-6bfb-4ca3-8239-9d752c16a69a" parent_id_arme="88c5bf62-190f-4f16-85d7-bd49548eddf2">
+    <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton I" />
+    <destroy name="WP-88" />
+    <destroy name="Waypoint 89 Gate" />
+    <destroy name="WP-89" />
+    <set_variable name="Triton System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <event name="Arrival From Waypoint 89" id_arme="708fb0d4-2d70-4140-898b-8cb4cbc6d044" parent_id_arme="28dd7353-94e4-45b3-9249-0ec42257871b">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Waypoint 89 to Triton" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="Waypoint 89 Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="Waypoint 89 Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="Waypoint 89 Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="Waypoint 89 Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="Waypoint 89 Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="Waypoint 89 Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="Waypoint 89 Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="Waypoint 89 Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="Waypoint 89 to Triton" value="0.0" />
+  </event>
+  <folder_arme name="Triton Sector II" id_arme="2e07c0ef-76b9-430f-8f50-0fda8e47b471" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector II" id_arme="a809ba5b-a4de-453d-a686-511e5e880d0a" parent_id_arme="2e07c0ef-76b9-430f-8f50-0fda8e47b471">
+    <if_timer_finished name="Transition" />
+    <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <set_skybox_index index="14" />
+    <create count="100" type="nebulas" nebType="1" startX="51701.0" startY="0.0" startZ="52186.0" endX="26102.0" endY="0.0" endZ="23157.0" randomRange="14000" />
+    <create count="100" type="nebulas" nebType="1" startX="68948.0" startY="0.0" startZ="72105.0" endX="-11186.0" endY="0.0" endZ="-17896.0" randomRange="7000" />
+    <create count="50" type="asteroids" startX="57652.0" startY="0.0" startZ="79271.0" endX="38369.0" endY="0.0" endZ="53765.0" randomRange="3000" />
+    <create count="30" type="asteroids" startX="49150.0" startY="0.0" startZ="68097.0" endX="25616.0" endY="0.0" endZ="36761.0" randomRange="6000" />
+    <create count="10" type="nebulas" nebType="1" startX="2010.0" startY="0.0" startZ="98590.0" endX="2010.0" endY="0.0" endZ="98590.0" randomRange="5000" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="0.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+    <set_variable name="Triton System" value="2.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="f9a1e8c3-e8a7-4f25-83f3-06b21b03d75e" parent_id_arme="2e07c0ef-76b9-430f-8f50-0fda8e47b471" />
+  <event name="Transition to Sector III" id_arme="a3adbe75-527b-4693-bd45-83dad22af448" parent_id_arme="f9a1e8c3-e8a7-4f25-83f3-06b21b03d75e">
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="3.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector I" id_arme="4f9099f6-6ea6-49af-b5ba-87fae50ca815" parent_id_arme="f9a1e8c3-e8a7-4f25-83f3-06b21b03d75e">
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="1.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector VI" id_arme="b9e70cde-5226-48f6-8745-2c0ae32565fe" parent_id_arme="f9a1e8c3-e8a7-4f25-83f3-06b21b03d75e">
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="6.0" integer="yes" />
+  </event>
+  <event name="Transition to (Bottom Right)" id_arme="3224c18e-b2bc-4d83-9760-1680985ab27d" parent_id_arme="f9a1e8c3-e8a7-4f25-83f3-06b21b03d75e">
+    <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E5 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="7.0" integer="yes" />
+  </event>
+  <event name="Transition to (Bottom Left)" id_arme="a3367a1f-ac50-4006-b65d-f374608fa57b" parent_id_arme="f9a1e8c3-e8a7-4f25-83f3-06b21b03d75e">
+    <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="5.0" integer="yes" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="f327503d-6438-48ab-8a1d-d9db64972062" parent_id_arme="2e07c0ef-76b9-430f-8f50-0fda8e47b471" />
+  <event name="Generate Sector Entities" id_arme="351e8c78-00ed-4923-99be-5c92b087a3de" parent_id_arme="f327503d-6438-48ab-8a1d-d9db64972062">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton II" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="55952.0" y="0.0" z="64696.0" angle="0" name="I-601" hullID="1003" />
+    <create type="neutral" x="57652.0" y="0.0" z="30931.0" angle="0" name="SY-280" hullID="1053" />
+    <create type="neutral" x="24737.0" y="0.0" z="22120.0" angle="0" name="Tarnis Nebula Refinery" hullID="1051" />
+    <create type="neutral" x="32389.0" y="0.0" z="47813.0" angle="0" name="I-280" hullID="1051" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="4fdfaa34-e608-4fe7-b16d-4f1cd220b319" parent_id_arme="f327503d-6438-48ab-8a1d-d9db64972062">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_ship_text name="Tarnis Nebula Refinery" desc="The finest refinery for natural gases in Triton. Stop by for helium, helium-3, xenon, vaporized tobacco, many more!" />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="2c7e4c3f-da71-4639-9b0d-c7027b29d3c6" parent_id_arme="f327503d-6438-48ab-8a1d-d9db64972062">
+    <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton II" />
+    <destroy name="I-280" />
+    <destroy name="I-601" />
+    <destroy name="Tarnis Nebula Refinery" />
+    <destroy name="SY-280" />
+    <set_variable name="Triton System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <folder_arme name="Triton Sector III" id_arme="6906c031-0705-49d7-b06e-0b6d1d786498" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector III" id_arme="a4fc3ba1-4e8e-48ee-bcc6-797c3dfcaafd" parent_id_arme="6906c031-0705-49d7-b06e-0b6d1d786498">
+    <if_timer_finished name="Transition" />
+    <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <set_skybox_index index="14" />
+    <create count="100" type="nebulas" nebType="1" startX="30567.0" startY="0.0" startZ="31417.0" endX="99534.0" endY="0.0" endZ="98461.0" randomRange="7000" />
+    <create count="70" type="nebulas" startX="33118.0" startY="0.0" startZ="31781.0" endX="81865.0" endY="0.0" endZ="81155.0" randomRange="14000" />
+    <create count="30" type="nebulas" startX="76833.0" startY="0.0" startZ="76475.0" endX="99467.0" endY="0.0" endZ="99493.0" randomRange="4000" />
+    <create count="30" type="asteroids" startX="41498.0" startY="0.0" startZ="38825.0" endX="64132.0" endY="0.0" endZ="61843.0" randomRange="4000" />
+    <create count="30" type="nebulas" startX="2268.0" startY="0.0" startZ="84372.0" endX="24902.0" endY="0.0" endZ="107390.0" randomRange="14000" />
+    <create count="30" type="nebulas" startX="1296.0" startY="0.0" startZ="96639.0" endX="23930.0" endY="0.0" endZ="119657.0" randomRange="4000" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="0.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+    <set_variable name="Triton System" value="2.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="00a7a66b-e7a2-486b-b16f-262d703dbc91" parent_id_arme="6906c031-0705-49d7-b06e-0b6d1d786498" />
+  <event name="Transition to Sector IV" id_arme="57d8baa5-19a2-4e00-a989-f223339af5f9" parent_id_arme="00a7a66b-e7a2-486b-b16f-262d703dbc91">
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="4.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector II" id_arme="c7c3edc9-1a04-4ab2-ae8b-a9a0aad7e977" parent_id_arme="00a7a66b-e7a2-486b-b16f-262d703dbc91">
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="2.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector VII" id_arme="ce282d1b-f067-4391-8d79-107f9de5b79d" parent_id_arme="00a7a66b-e7a2-486b-b16f-262d703dbc91">
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="7.0" integer="yes" />
+  </event>
+  <event name="Transition to (Bottom Right)" id_arme="232096af-11f7-4f92-ac70-120be8e8f4bd" parent_id_arme="00a7a66b-e7a2-486b-b16f-262d703dbc91">
+    <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E5 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="8.0" integer="yes" />
+  </event>
+  <event name="Transition to (Bottom Left)" id_arme="fb68de04-80f0-4c85-a3fa-0f7e5e174f90" parent_id_arme="00a7a66b-e7a2-486b-b16f-262d703dbc91">
+    <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="6.0" integer="yes" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="5d72b334-8af7-4fb1-82ec-02f429fb34c5" parent_id_arme="6906c031-0705-49d7-b06e-0b6d1d786498" />
+  <event name="Generate Sector Entities" id_arme="883b850d-23ca-4adf-ba6d-4561dc95445a" parent_id_arme="5d72b334-8af7-4fb1-82ec-02f429fb34c5">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton III" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="29110.0" y="0.0" z="28137.0" angle="0" name="DS-20" hullID="1000" />
+    <create type="neutral" x="40770.0" y="0.0" z="70647.0" angle="0" name="Farosh" hullID="1001" />
+    <create type="neutral" x="47936.0" y="0.0" z="54493.0" angle="0" name="Farosh Denabite" hullID="1051" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="76dfc599-c9cd-4e18-8425-c793a8ebfa27" parent_id_arme="5d72b334-8af7-4fb1-82ec-02f429fb34c5">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_ship_text name="Farosh" desc="USFP civilian station operated by the Farosh family." />
+    <set_ship_text name="Farosh Denabite" desc="Denabite refinery operated by the Farosh family. Known system-wide for their highly refined products." />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="8469c1c9-73b0-4cfb-9242-099233659f19" parent_id_arme="5d72b334-8af7-4fb1-82ec-02f429fb34c5">
+    <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton III" />
+    <destroy name="Farosh Denabite" />
+    <destroy name="DS-20" />
+    <destroy name="Farosh" />
+    <set_variable name="Triton System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <folder_arme name="Triton Sector IV" id_arme="49e27b78-c734-4108-9f0f-b6ad8a9a3c0d" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector IV" id_arme="b8b5c2f3-b684-4b4e-8654-fd73eb0bdc76" parent_id_arme="49e27b78-c734-4108-9f0f-b6ad8a9a3c0d">
+    <if_timer_finished name="Transition" />
+    <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <set_skybox_index index="14" />
+    <create count="100" type="nebulas" startX="92947.0" startY="0.0" startZ="102353.0" endX="64586.0" endY="0.0" endZ="69924.0" randomRange="14000" />
+    <create count="70" type="nebulas" startX="76920.0" startY="0.0" startZ="85312.0" endX="21717.0" endY="0.0" endZ="23004.0" randomRange="10000" />
+    <create count="140" type="nebulas" startX="90689.0" startY="0.0" startZ="99190.0" endX="47702.0" endY="0.0" endZ="52977.0" randomRange="25000" />
+    <create count="30" type="asteroids" startX="37733.0" startY="0.0" startZ="55344.0" endX="19557.0" endY="0.0" endZ="35992.0" randomRange="7000" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="0.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="0.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+    <set_variable name="Triton System" value="2.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="7a6973e3-11fa-4a82-b396-83a3edccf737" parent_id_arme="49e27b78-c734-4108-9f0f-b6ad8a9a3c0d" />
+  <event name="Transition to Sector III" id_arme="7fcdadb7-e01f-4a6f-b436-be36ca9d83cc" parent_id_arme="7a6973e3-11fa-4a82-b396-83a3edccf737">
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="3.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector VIII" id_arme="fd569edc-0a5e-4226-8a2c-850ba9bf1761" parent_id_arme="7a6973e3-11fa-4a82-b396-83a3edccf737">
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="8.0" integer="yes" />
+  </event>
+  <event name="Transition to (Bottom Left)" id_arme="ab83c2f7-601a-453a-a90a-4a98db7eadeb" parent_id_arme="7a6973e3-11fa-4a82-b396-83a3edccf737">
+    <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="7.0" integer="yes" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="af47a8b7-d28d-43d6-9fee-cd8261cd4bb3" parent_id_arme="49e27b78-c734-4108-9f0f-b6ad8a9a3c0d" />
+  <event name="Generate Sector Entities" id_arme="0b5f65d4-e50d-45a1-afd2-7429c12bb472" parent_id_arme="af47a8b7-d28d-43d6-9fee-cd8261cd4bb3">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton IV" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="eb9221eb-0471-4a97-9a4a-2bf1abf5f1bb" parent_id_arme="af47a8b7-d28d-43d6-9fee-cd8261cd4bb3">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="1938269f-0405-410d-9f6a-a4a67a1755e9" parent_id_arme="af47a8b7-d28d-43d6-9fee-cd8261cd4bb3">
+    <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton IV" />
+    <set_variable name="Triton System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <folder_arme name="Triton Sector V" id_arme="1bd2ae32-eb2a-44c5-a373-54271c683e70" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector V" id_arme="58750c96-2d10-4a6f-9325-ddd393d15bb4" parent_id_arme="1bd2ae32-eb2a-44c5-a373-54271c683e70">
+    <if_timer_finished name="Transition" />
+    <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <set_skybox_index index="14" />
+    <create count="10" type="nebulas" nebType="2" startX="19903.0" startY="0.0" startZ="5423.0" endX="19903.0" endY="0.0" endZ="5423.0" randomRange="5000" />
+    <create count="15" type="nebulas" nebType="2" startX="25950.0" startY="0.0" startZ="931.0" endX="25950.0" endY="0.0" endZ="931.0" randomRange="7000" />
+    <create count="15" type="nebulas" nebType="1" startX="4618.0" startY="0.0" startZ="98376.0" endX="4618.0" endY="0.0" endZ="98376.0" randomRange="5000" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="0.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+    <set_variable name="Triton System" value="2.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="ebf0e097-14a2-4578-b134-a62f584db216" parent_id_arme="1bd2ae32-eb2a-44c5-a373-54271c683e70" />
+  <event name="Transition to Sector VI" id_arme="8f8fb367-3402-460f-80c5-a0164e47aeef" parent_id_arme="ebf0e097-14a2-4578-b134-a62f584db216">
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="6.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector I" id_arme="cd0ad1a5-6a0c-4da4-ac7f-1804af6c33e2" parent_id_arme="ebf0e097-14a2-4578-b134-a62f584db216">
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="1.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector IX" id_arme="3e4f1a5d-9518-4fb1-b606-275054180a63" parent_id_arme="ebf0e097-14a2-4578-b134-a62f584db216">
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="9.0" integer="yes" />
+  </event>
+  <event name="Transition to (Bottom Right)" id_arme="ff2b9451-d4e5-4077-a287-aec1ed801449" parent_id_arme="ebf0e097-14a2-4578-b134-a62f584db216">
+    <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E5 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="10.0" integer="yes" />
+  </event>
+  <event name="Transition to (Top Right)" id_arme="b76c2cfa-d8b9-48f5-baea-363d03340ebf" parent_id_arme="ebf0e097-14a2-4578-b134-a62f584db216">
+    <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A5 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="2.0" integer="yes" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="379d893a-df52-4948-9e53-47728583800f" parent_id_arme="1bd2ae32-eb2a-44c5-a373-54271c683e70" />
+  <event name="Generate Sector Entities" id_arme="71676cd5-c73a-41c2-964b-37785f107576" parent_id_arme="379d893a-df52-4948-9e53-47728583800f">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton V" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="77450.0" y="0.0" z="39068.0" angle="0" name="Triton Refuge" hullID="1001" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="847a4ea1-8714-4890-a5fa-5c74054c0ad1" parent_id_arme="379d893a-df52-4948-9e53-47728583800f">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_ship_text name="Triton Refuge" desc="Luxury refuge for wealthy USFP citizens looking to get away from everything. &quot;Care about nothing but the distant glimmering stars.&quot; 3 habitation units available." />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="548b1b9b-67fa-44c9-a43a-49bcfa7d4d29" parent_id_arme="379d893a-df52-4948-9e53-47728583800f">
+    <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton V" />
+    <destroy name="Triton Refuge" />
+    <set_variable name="Triton System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <folder_arme name="Triton Sector VI" id_arme="f806cbc0-4187-40fc-b1bc-12f24226032b" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector VI" id_arme="ab3896b3-05a7-4ad8-97fa-e2fead9c2506" parent_id_arme="f806cbc0-4187-40fc-b1bc-12f24226032b">
+    <if_timer_finished name="Transition" />
+    <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <set_skybox_index index="14" />
+    <create count="150" type="nebulas" nebType="1" startX="70527.0" startY="0.0" startZ="65425.0" radius="30000" randomRange="1000" />
+    <create count="200" type="nebulas" nebType="1" startX="70284.0" startY="0.0" startZ="65303.0" radius="33000" randomRange="3000" />
+    <create count="50" type="nebulas" nebType="1" startAngle="270" endAngle="330" startX="8299.0" startY="0.0" startZ="52946.0" radius="33000" randomRange="3000" />
+    <create count="50" type="nebulas" nebType="1" startAngle="120" endAngle="175" startX="59473.0" startY="0.0" startZ="5211.0" radius="33000" randomRange="3000" />
+    <create count="50" type="nebulas" nebType="1" startX="26073.0" startY="0.0" startZ="23036.0" endX="4427.0" endY="0.0" endZ="2268.0" randomRange="2000" />
+    <create count="50" type="nebulas" nebType="1" startX="44435.0" startY="0.0" startZ="40040.0" radius="10" randomRange="6000" randomSeed="2" />
+    <create count="90" type="nebulas" nebType="1" startX="95783.0" startY="0.0" startZ="94131.0" endX="95783.0" endY="0.0" endZ="94131.0" randomRange="7000" randomSeed="5" />
+    <create count="10" type="nebulas" nebType="1" startX="42470.0" startY="0.0" startZ="48906.0" endX="27509.0" endY="0.0" endZ="24251.0" randomRange="3000" />
+    <create count="20" type="nebulas" nebType="1" startX="27409.0" startY="0.0" startZ="23643.0" endX="2744.0" endY="0.0" endZ="688.0" randomRange="10000" randomSeed="1" />
+    <create count="10" type="nebulas" nebType="1" startX="86559.0" startY="0.0" startZ="95910.0" endX="86559.0" endY="0.0" endZ="95910.0" randomRange="3000" />
+    <create count="10" type="nebulas" nebType="1" startX="98583.0" startY="0.0" startZ="84251.0" endX="98583.0" endY="0.0" endZ="84251.0" randomRange="3000" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+    <set_variable name="Triton System" value="2.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="b4e95e77-c03c-46b9-bb1b-250ae92c8cf4" parent_id_arme="f806cbc0-4187-40fc-b1bc-12f24226032b" />
+  <event name="Transition to Sector VII" id_arme="08bb3e76-d107-4f90-b440-373a73882fe6" parent_id_arme="b4e95e77-c03c-46b9-bb1b-250ae92c8cf4">
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="7.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector V" id_arme="fb110a74-d0c1-4aad-9601-b5de3aa6110c" parent_id_arme="b4e95e77-c03c-46b9-bb1b-250ae92c8cf4">
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="5.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector II" id_arme="4cd53a67-89e6-45f4-a1be-8ac60e9337a7" parent_id_arme="b4e95e77-c03c-46b9-bb1b-250ae92c8cf4">
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="2.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector X" id_arme="29240600-5461-4c59-80a4-9bbba75699ee" parent_id_arme="b4e95e77-c03c-46b9-bb1b-250ae92c8cf4">
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="10.0" integer="yes" />
+  </event>
+  <event name="Transition to (Bottom Right)" id_arme="eda6cea8-c990-4ebc-968c-73911753e6d7" parent_id_arme="b4e95e77-c03c-46b9-bb1b-250ae92c8cf4">
+    <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E5 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="11.0" integer="yes" />
+  </event>
+  <event name="Transition to (Top Right)" id_arme="ce26424c-f90d-4315-b5d4-675c0e6fee10" parent_id_arme="b4e95e77-c03c-46b9-bb1b-250ae92c8cf4">
+    <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A5 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="3.0" integer="yes" />
+  </event>
+  <event name="Transition to (Bottom Left)" id_arme="27f179a4-ff8d-44ff-925e-d2c1bc5d5dff" parent_id_arme="b4e95e77-c03c-46b9-bb1b-250ae92c8cf4">
+    <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="9.0" integer="yes" />
+  </event>
+  <event name="Transition to (Top Left)" id_arme="e3443c0e-a92b-4c09-ad0e-2e3bf4d43c4f" parent_id_arme="b4e95e77-c03c-46b9-bb1b-250ae92c8cf4">
+    <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="4034ee67-c0fb-4f10-b747-1a6ed5015fd4" parent_id_arme="f806cbc0-4187-40fc-b1bc-12f24226032b" />
+  <event name="Generate Sector Entities" id_arme="b8313b11-d96e-454f-a2c5-873b1e438dfe" parent_id_arme="4034ee67-c0fb-4f10-b747-1a6ed5015fd4">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton VI" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="22500.0" y="0.0" z="53524.0" angle="0" name="Cassandra Observation" hullID="1004" />
+    <create type="blackHole" x="70527.0" y="0.0" z="65303.0" name="Cassandra Black Hole" />
+    <create type="genericMesh" x="70452.0" y="0.0" z="68646.0" name="Cassandra" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="0.0" colorBlue="1.0" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="66c45ac7-8cef-45dc-8ec7-4c62ad3d0664" parent_id_arme="4034ee67-c0fb-4f10-b747-1a6ed5015fd4">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_ship_text name="Cassandra Observation" desc="Observation and research post studying Schwarzschild phenomena on the rim of Cassandra. LOOKING FOR PhD/RESEARCH PROJECT? Contact us." />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="3649b11d-3b56-49ab-b2ed-932383e7ae75" parent_id_arme="4034ee67-c0fb-4f10-b747-1a6ed5015fd4">
+    <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton VI" />
+    <destroy name="Cassandra Observation" />
+    <destroy name="Cassandra Black Hole" />
+    <destroy name="Cassandra" />
+    <set_variable name="Triton System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <folder_arme name="Triton Sector VII" id_arme="cb405639-a64c-4f68-9dd8-56b91558e351" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector VII" id_arme="0e82ab1d-af45-412b-a825-b41a4d78269c" parent_id_arme="cb405639-a64c-4f68-9dd8-56b91558e351">
+    <if_timer_finished name="Transition" />
+    <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <set_skybox_index index="14" />
+    <create count="5" type="nebulas" nebType="1" startX="99177.0" startY="0.0" startZ="2266.0" endX="99177.0" endY="0.0" endZ="2266.0" randomRange="3000" />
+    <create count="50" type="nebulas" startX="78057.0" startY="0.0" startZ="76963.0" endX="7614.0" endY="0.0" endZ="2024.0" randomRange="5000" />
+    <create count="100" type="nebulas" startX="41863.0" startY="0.0" startZ="41619.0" endX="5428.0" endY="0.0" endZ="3360.0" randomRange="15000" />
+    <create count="100" type="nebulas" startX="28503.0" startY="0.0" startZ="26072.0" endX="5792.0" endY="0.0" endZ="4696.0" randomRange="20000" />
+    <create count="10" type="asteroids" startX="45110.0" startY="0.0" startZ="42834.0" endX="22399.0" endY="0.0" endZ="21458.0" randomRange="20000" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+    <set_variable name="Triton System" value="2.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="fa6edee0-b01a-438e-b69b-199da7cb16ce" parent_id_arme="cb405639-a64c-4f68-9dd8-56b91558e351" />
+  <event name="Transition to Sector VIII" id_arme="138ead23-dbfd-44aa-81d8-bd1ceff7ea12" parent_id_arme="fa6edee0-b01a-438e-b69b-199da7cb16ce">
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="8.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector VI" id_arme="e883319d-5329-4884-94b1-950c25c55d5f" parent_id_arme="fa6edee0-b01a-438e-b69b-199da7cb16ce">
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="6.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector III" id_arme="f1ff9eb0-c411-4d8c-93aa-968572f9730d" parent_id_arme="fa6edee0-b01a-438e-b69b-199da7cb16ce">
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="3.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector XI" id_arme="752aa281-c29f-4d42-ad4b-f005951ea124" parent_id_arme="fa6edee0-b01a-438e-b69b-199da7cb16ce">
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="11.0" integer="yes" />
+  </event>
+  <event name="Transition to (Bottom Right)" id_arme="de61506a-c0c4-47a7-b2b1-a57ee8cce468" parent_id_arme="fa6edee0-b01a-438e-b69b-199da7cb16ce">
+    <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E5 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="12.0" integer="yes" />
+  </event>
+  <event name="Transition to (Top Right)" id_arme="db71a496-f8cd-45f0-93fd-3459ab77f9a9" parent_id_arme="fa6edee0-b01a-438e-b69b-199da7cb16ce">
+    <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A5 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="4.0" integer="yes" />
+  </event>
+  <event name="Transition to (Bottom Left)" id_arme="840f44f0-b9b3-4f2e-8322-bb96cff3e996" parent_id_arme="fa6edee0-b01a-438e-b69b-199da7cb16ce">
+    <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="10.0" integer="yes" />
+  </event>
+  <event name="Transition to (Top Left)" id_arme="919f1fbe-b3b5-43fe-9ca9-a36fa1889deb" parent_id_arme="fa6edee0-b01a-438e-b69b-199da7cb16ce">
+    <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="2.0" integer="yes" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="2261acc7-879c-4520-b456-245d9af95c5f" parent_id_arme="cb405639-a64c-4f68-9dd8-56b91558e351" />
+  <event name="Generate Sector Entities" id_arme="9ed6791b-36f2-44b1-ad3d-c2131877d2ad" parent_id_arme="2261acc7-879c-4520-b456-245d9af95c5f">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton VII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="49272.0" y="0.0" z="31538.0" angle="0" name="I-402" hullID="1051" />
+    <create type="neutral" x="54859.0" y="0.0" z="36032.0" angle="0" name="SY-402" hullID="1053" />
+    <create type="neutral" x="17207.0" y="0.0" z="28016.0" angle="0" name="Denabite Derby" hullID="1051" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="c688f470-b862-40ab-ab0a-a54eada769aa" parent_id_arme="2261acc7-879c-4520-b456-245d9af95c5f">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_ship_text name="Denabite Derby" desc="USFP Denabite refinery, known system-wide for their unbeatable prices." />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="f39e4d7d-35fd-4fef-84e6-fd2cb785d57b" parent_id_arme="2261acc7-879c-4520-b456-245d9af95c5f">
+    <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton VII" />
+    <destroy name="SY-402" />
+    <destroy name="I-402" />
+    <destroy name="Denabite Derby" />
+    <set_variable name="Triton System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <folder_arme name="Triton Sector VIII" id_arme="d5e05fbf-f84c-4caf-a9dd-8c54abb264fd" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector VIII" id_arme="b3fc16b5-65ef-4c66-a800-96ba234de919" parent_id_arme="d5e05fbf-f84c-4caf-a9dd-8c54abb264fd">
+    <if_timer_finished name="Transition" />
+    <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <set_skybox_index index="14" />
+    <create count="20" type="nebulas" startX="99677.0" startY="0.0" startZ="19392.0" endX="84580.0" endY="0.0" endZ="323.0" randomRange="10000" />
+    <create count="10" type="nebulas" startX="99539.0" startY="0.0" startZ="9176.0" endX="92822.0" endY="0.0" endZ="860.0" randomRange="5000" />
+    <create count="20" type="nebulas" startX="100041.0" startY="0.0" startZ="36396.0" endX="70369.0" endY="0.0" endZ="931.0" randomRange="10000" />
+    <create count="10" type="mines" startAngle="280" endAngle="330" startX="38583.0" startY="0.0" startZ="39433.0" radius="15000" />
+    <create count="10" type="mines" startAngle="190" endAngle="240" startX="38462.0" startY="0.0" startZ="39433.0" radius="15000" />
+    <create count="10" type="mines" startAngle="100" endAngle="150" startX="38462.0" startY="0.0" startZ="39433.0" radius="15000" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="0.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+    <set_variable name="Triton System" value="2.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="309b29f6-5b48-4404-8c9f-e8b6a184736f" parent_id_arme="d5e05fbf-f84c-4caf-a9dd-8c54abb264fd" />
+  <event name="Transition to Sector VII" id_arme="86b927dc-6ee4-492e-b5e6-b96628ae5967" parent_id_arme="309b29f6-5b48-4404-8c9f-e8b6a184736f">
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="7.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector IV" id_arme="f38a8640-0755-43e3-a518-69bf1b992230" parent_id_arme="309b29f6-5b48-4404-8c9f-e8b6a184736f">
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="4.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector XII" id_arme="2b5611e9-59bb-45f3-9e0d-edc76c11c734" parent_id_arme="309b29f6-5b48-4404-8c9f-e8b6a184736f">
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="12.0" integer="yes" />
+  </event>
+  <event name="Transition to (Bottom Left)" id_arme="459edd50-3aec-4017-b523-82b86d8276bf" parent_id_arme="309b29f6-5b48-4404-8c9f-e8b6a184736f">
+    <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="11.0" integer="yes" />
+  </event>
+  <event name="Transition to (Top Left)" id_arme="d2fad3c0-13ee-417e-80ea-16c05a67fdc7" parent_id_arme="309b29f6-5b48-4404-8c9f-e8b6a184736f">
+    <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="3.0" integer="yes" />
+  </event>
+  <folder_arme name="System - Jump Gate Settings" id_arme="072cf1e2-28d0-4094-92e7-9cea022eab16" parent_id_arme="309b29f6-5b48-4404-8c9f-e8b6a184736f" />
+  <event name="Gate Offline" id_arme="1652d853-7292-46fd-9f88-d4d09c314aac" parent_id_arme="072cf1e2-28d0-4094-92e7-9cea022eab16">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="Tethys Gate" />
+  </event>
+  <folder_arme name="Tracking System" id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad" parent_id_arme="072cf1e2-28d0-4094-92e7-9cea022eab16" />
+  <event name="Ship1 Activation Range" id_arme="66608cee-ccb6-48cd-897c-4c625b370abe" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="0" name2="Tethys Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Tethys Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship1" value="1.0" />
+  </event>
+  <event name="Ship1 Out of Range" id_arme="5510e2a2-0ade-416e-936e-313a0706513c" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="0" name2="Tethys Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Tethys Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship1" value="0.0" />
+  </event>
+  <event name="Ship2 Activation Range" id_arme="a97791d1-430a-4833-9294-f3469f923c5d" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="1" name2="Tethys Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Tethys Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship2" value="1.0" />
+  </event>
+  <event name="Ship2 Out of Range" id_arme="f128f41c-c6b9-4bbe-9a91-4f3fccf9c015" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="1" name2="Tethys Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Tethys Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship2" value="0.0" />
+  </event>
+  <event name="Ship3 Activation Range" id_arme="99975acf-8a14-4ad3-b0eb-0ab207f3983d" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="2" name2="Tethys Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Tethys Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship3" value="1.0" />
+  </event>
+  <event name="Ship3 Out of Range" id_arme="4460caa9-d36c-4b30-a7a4-095f9a2d4aaa" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="2" name2="Tethys Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Tethys Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship3" value="0.0" />
+  </event>
+  <event name="Ship4 Activation Range" id_arme="05e8e911-6c1b-4883-be6f-3fc8fdd8bcae" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="3" name2="Tethys Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Tethys Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship4" value="1.0" />
+  </event>
+  <event name="Ship4 Out of Range" id_arme="59f8d112-cc81-4ce0-99ed-f9802b30bd7d" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="3" name2="Tethys Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Tethys Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship4" value="0.0" />
+  </event>
+  <event name="Ship5 Activation Range" id_arme="b30d20e9-5010-4382-9054-a3b65ee56c48" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="4" name2="Tethys Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Tethys Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship5" value="1.0" />
+  </event>
+  <event name="Ship5 Out of Range" id_arme="99b14762-46d4-46e8-a874-3deebdbf8995" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="4" name2="Tethys Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Tethys Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship5" value="0.0" />
+  </event>
+  <event name="Ship6 Activation Range" id_arme="74068124-8b02-4155-92ab-251e2e5bee0f" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="5" name2="Tethys Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Tethys Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship6" value="1.0" />
+  </event>
+  <event name="Ship6 Out of Range" id_arme="289071b1-a6dc-447b-a512-19f2db09a936" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="5" name2="Tethys Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Tethys Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship6" value="0.0" />
+  </event>
+  <event name="Ship7 Activation Range" id_arme="5e169572-9de6-4133-81f5-45d495960b11" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="6" name2="Tethys Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Tethys Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship7" value="1.0" />
+  </event>
+  <event name="Ship7 Out of Range" id_arme="0f889e11-1461-4102-b69a-5f1bb3f31de5" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="6" name2="Tethys Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Tethys Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship7" value="0.0" />
+  </event>
+  <event name="Ship8 Activation Range" id_arme="481da1b5-ed00-4bad-88fc-efb2067d3323" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="7" name2="Tethys Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Tethys Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship8" value="1.0" />
+  </event>
+  <event name="Ship8 Out of Range" id_arme="92f4edd7-7bb4-489a-b940-dfbe6f4e5c51" parent_id_arme="cb273904-0463-4351-9fb0-eea9b98bb3ad">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="7" name2="Tethys Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Tethys Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship8" value="0.0" />
+  </event>
+  <event name="Gate Online" id_arme="0878c4a8-01ef-44e7-a7bd-e4e22628c499" parent_id_arme="072cf1e2-28d0-4094-92e7-9cea022eab16">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="Tethys Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="Tethys Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated" id_arme="cf392582-51c5-43d2-9684-fd0c418517b0" parent_id_arme="072cf1e2-28d0-4094-92e7-9cea022eab16">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="Tethys Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Triton to Tethys" value="1.0" />
+    <set_variable name="Tethys System" value="1.0" />
+    <set_variable name="Sector" value="1" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="Gate System" value="0.0" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="33a6a376-1225-484c-a587-1b9c6f27706b" parent_id_arme="d5e05fbf-f84c-4caf-a9dd-8c54abb264fd" />
+  <event name="Generate Sector Entities" id_arme="7552481b-73fd-4f78-b9f6-9d8f7192e863" parent_id_arme="33a6a376-1225-484c-a587-1b9c6f27706b">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton VIII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="38219.0" y="0.0" z="39433.0" name="Tethys Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="35590.0" y="0.0" z="53822.0" angle="0" name="WP-43L" hullID="1052" />
+    <create type="neutral" x="53080.0" y="0.0" z="42662.0" angle="0" name="WP-43R" hullID="1052" />
+    <create type="neutral" x="25588.0" y="0.0" z="24129.0" angle="0" name="DS-44" hullID="1000" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="3c60ee25-edb3-403c-b63b-7a808f8d6983" parent_id_arme="33a6a376-1225-484c-a587-1b9c6f27706b">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_ship_text name="DS-44" desc="USFP Military deep space base overseeing traffic at Tethys Gate." />
+    <set_object_property property="artScale" value="1.0" name="Tethys Gate" />
+    <set_object_property property="pushRadius" value="0.0" name="Tethys Gate" />
+    <set_object_property property="angle" value="4.71238898" name="Tethys Gate" />
+    <set_object_property property="rollDelta" value="0.3" name="Tethys Gate" />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="52743fbc-e2be-45eb-a744-006f00813f78" parent_id_arme="33a6a376-1225-484c-a587-1b9c6f27706b">
+    <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton VIII" />
+    <destroy name="Tethys Gate" />
+    <destroy name="WP-43R" />
+    <destroy name="DS-44" />
+    <destroy name="WP-43L" />
+    <set_variable name="Triton System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <event name="Arrival From Tethys" id_arme="a2208fea-b4a0-4522-91ef-f90929d82a69" parent_id_arme="d5e05fbf-f84c-4caf-a9dd-8c54abb264fd">
+    <if_variable name="Sector" comparator="EQUALS" value="8" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Tethys to Triton" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="Tethys Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="Tethys Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="Tethys Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="Tethys Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="Tethys Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="Tethys Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="Tethys Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="Tethys Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="Tethys to Triton" value="0.0" />
+  </event>
+  <folder_arme name="Triton Sector IX" id_arme="b9bccd53-91cb-4a58-b1a0-e26f861313ef" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector IX" id_arme="244c2706-f827-4bf5-a231-fb7163dd8a79" parent_id_arme="b9bccd53-91cb-4a58-b1a0-e26f861313ef">
+    <if_timer_finished name="Transition" />
+    <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="9.0" />
+    <set_skybox_index index="14" />
+    <create count="50" type="nebulas" startX="59474.0" startY="0.0" startZ="58987.0" endX="1953.0" endY="0.0" endZ="80.0" randomRange="5000" />
+    <create count="30" type="nebulas" startX="31782.0" startY="0.0" startZ="28987.0" endX="2318.0" endY="0.0" endZ="-405.0" randomRange="2000" />
+    <create count="20" type="nebulas" startX="5004.0" startY="0.0" startZ="3209.0" endX="5004.0" endY="0.0" endZ="3209.0" randomRange="6000" />
+    <create count="50" type="nebulas" startX="91175.0" startY="0.0" startZ="91659.0" endX="61590.0" endY="0.0" endZ="63603.0" randomRange="15000" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="0.0" />
+    <set_variable name="Grid E Transition Enabled" value="0.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+    <set_variable name="Triton System" value="2.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="0300c42f-cf2b-4e48-8354-c934abe1ca5f" parent_id_arme="b9bccd53-91cb-4a58-b1a0-e26f861313ef" />
+  <event name="Transition to Sector X" id_arme="7c033215-cade-4ca2-9564-a08d57d75c43" parent_id_arme="0300c42f-cf2b-4e48-8354-c934abe1ca5f">
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="9.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="10.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector V" id_arme="269f0ee9-78e8-408c-bcac-00a3dfd02cf6" parent_id_arme="0300c42f-cf2b-4e48-8354-c934abe1ca5f">
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="9.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="5.0" integer="yes" />
+  </event>
+  <event name="Transition to (Top Right)" id_arme="a3e0156b-9772-4d39-9f91-cb1ea7792a57" parent_id_arme="0300c42f-cf2b-4e48-8354-c934abe1ca5f">
+    <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="9.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A5 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="6.0" integer="yes" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="9f34bc6f-af0e-4f4e-a3e1-21fca4c73b6b" parent_id_arme="b9bccd53-91cb-4a58-b1a0-e26f861313ef" />
+  <event name="Generate Sector Entities" id_arme="7d252bf1-3b50-443f-9f6e-f165f7579c4a" parent_id_arme="9f34bc6f-af0e-4f4e-a3e1-21fca4c73b6b">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="9.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton IX" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="f20f00c6-d98a-433f-870c-dbeb37ce4ecc" parent_id_arme="9f34bc6f-af0e-4f4e-a3e1-21fca4c73b6b">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="9.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="e96cc8f3-7f40-43fb-8177-f5a2cb0f8600" parent_id_arme="9f34bc6f-af0e-4f4e-a3e1-21fca4c73b6b">
+    <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton IX" />
+    <set_variable name="Triton System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <folder_arme name="Triton Sector X" id_arme="039e566e-993a-43ee-816f-0a49e9595594" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector X" id_arme="4204d83e-533f-4475-beb5-7818238ac615" parent_id_arme="039e566e-993a-43ee-816f-0a49e9595594">
+    <if_timer_finished name="Transition" />
+    <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="10.0" />
+    <set_skybox_index index="14" />
+    <create count="20" type="nebulas" startX="98991.0" startY="0.0" startZ="4439.0" endX="94448.0" endY="0.0" endZ="-526.0" randomRange="6000" randomSeed="3" />
+    <create count="15" type="nebulas" nebType="2" startX="1053.0" startY="0.0" startZ="44655.0" endX="12206.0" endY="0.0" endZ="32659.0" randomRange="6000" />
+    <create count="15" type="nebulas" nebType="2" startX="932.0" startY="0.0" startZ="44048.0" endX="21437.0" endY="0.0" endZ="22943.0" randomRange="3000" />
+    <create count="70" type="nebulas" startX="90324.0" startY="0.0" startZ="89473.0" endX="57595.0" endY="0.0" endZ="51336.0" randomRange="15000" />
+    <create count="70" type="nebulas" startX="96883.0" startY="0.0" startZ="97854.0" endX="34518.0" endY="0.0" endZ="24373.0" randomRange="5000" />
+    <create count="30" type="asteroids" startX="91175.0" startY="0.0" startZ="89230.0" endX="58446.0" endY="0.0" endZ="51093.0" randomRange="15000" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="0.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+    <set_variable name="Triton System" value="2.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="1a0b4eb2-1c1b-468f-bc47-6bf08de209ed" parent_id_arme="039e566e-993a-43ee-816f-0a49e9595594" />
+  <event name="Transition to Sector XI" id_arme="7fef43ca-d4e5-4be1-98c8-f22659ebff38" parent_id_arme="1a0b4eb2-1c1b-468f-bc47-6bf08de209ed">
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="10.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="11.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector IX" id_arme="47abd31e-6374-4851-bdea-4a6664df6aab" parent_id_arme="1a0b4eb2-1c1b-468f-bc47-6bf08de209ed">
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="10.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="9.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector VI" id_arme="132a8d6b-1ef7-4660-a530-d6502b7d769c" parent_id_arme="1a0b4eb2-1c1b-468f-bc47-6bf08de209ed">
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="10.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="6.0" integer="yes" />
+  </event>
+  <event name="Transition to (Top Right)" id_arme="072101f8-957b-48cf-b0b9-50a4e7c88800" parent_id_arme="1a0b4eb2-1c1b-468f-bc47-6bf08de209ed">
+    <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="10.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="7.0" integer="yes" />
+  </event>
+  <event name="Transition to (Top Left)" id_arme="a73bc52e-2c81-4b29-99f7-7b762ae5b577" parent_id_arme="1a0b4eb2-1c1b-468f-bc47-6bf08de209ed">
+    <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="10.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="5.0" integer="yes" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="cd2ed16d-abee-4b97-90a9-fcc979d44d7e" parent_id_arme="039e566e-993a-43ee-816f-0a49e9595594" />
+  <event name="Generate Sector Entities" id_arme="b3845691-69f5-4385-8c6b-6f484ddf7777" parent_id_arme="cd2ed16d-abee-4b97-90a9-fcc979d44d7e">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="10.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton X" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="52430.0" y="0.0" z="64453.0" angle="0" name="I-566" hullID="1003" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="3e94c63a-1031-42dd-b427-5dfc81442988" parent_id_arme="cd2ed16d-abee-4b97-90a9-fcc979d44d7e">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="10.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="642c5db6-da85-4a7a-a8ae-c233a01c0838" parent_id_arme="cd2ed16d-abee-4b97-90a9-fcc979d44d7e">
+    <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton X" />
+    <destroy name="I-566" />
+    <set_variable name="Triton System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <folder_arme name="Triton Sector XI" id_arme="20ccf47c-c46b-4ba0-aba1-244ced6cfd79" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector XI" id_arme="05237c5d-e79b-451d-8ada-bee15afa6404" parent_id_arme="20ccf47c-c46b-4ba0-aba1-244ced6cfd79">
+    <if_timer_finished name="Transition" />
+    <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="11.0" />
+    <set_skybox_index index="14" />
+    <create count="70" type="nebulas" nebType="2" startX="53401.0" startY="0.0" startZ="99433.0" endX="99612.0" endY="0.0" endZ="42712.0" randomRange="5000" />
+    <create count="70" type="nebulas" nebType="2" startX="55102.0" startY="0.0" startZ="99554.0" endX="77993.0" endY="0.0" endZ="71254.0" randomRange="10000" />
+    <create count="70" type="nebulas" nebType="2" startX="54616.0" startY="0.0" startZ="99554.0" endX="77507.0" endY="0.0" endZ="71254.0" randomRange="30000" />
+    <create count="20" type="mines" startAngle="160" endAngle="270" startX="10806.0" startY="0.0" startZ="26265.0" radius="15000" />
+    <create count="20" type="mines" startAngle="170" endAngle="280" startX="34818.0" startY="0.0" startZ="7489.0" radius="15000" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="0.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+    <set_variable name="Triton System" value="2.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="699fe939-1b3e-48a7-bcb9-a5d7c866ae97" parent_id_arme="20ccf47c-c46b-4ba0-aba1-244ced6cfd79" />
+  <event name="Transition to Sector XII" id_arme="f05f8293-10b3-40e9-bc34-a5d3764fb79c" parent_id_arme="699fe939-1b3e-48a7-bcb9-a5d7c866ae97">
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="11.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="12.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector X" id_arme="d61c8906-2424-4940-96f1-e05504437a91" parent_id_arme="699fe939-1b3e-48a7-bcb9-a5d7c866ae97">
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="11.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="10.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector VII" id_arme="eebe0444-b293-451c-9df7-682b31fcabc4" parent_id_arme="699fe939-1b3e-48a7-bcb9-a5d7c866ae97">
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="11.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="7.0" integer="yes" />
+  </event>
+  <event name="Transition to (Top Right)" id_arme="c10260a4-7270-4c0e-83ae-bffc1d83c189" parent_id_arme="699fe939-1b3e-48a7-bcb9-a5d7c866ae97">
+    <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="11.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A5 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="8.0" integer="yes" />
+  </event>
+  <event name="Transition to (Top Left)" id_arme="d782a021-9795-45a8-88c3-9260fdfb23e5" parent_id_arme="699fe939-1b3e-48a7-bcb9-a5d7c866ae97">
+    <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="11.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="6.0" integer="yes" />
+  </event>
+  <folder_arme name="System - Jump Gate Settings" id_arme="965576ff-a2f6-4f22-80b8-31d21edbbaf4" parent_id_arme="699fe939-1b3e-48a7-bcb9-a5d7c866ae97" />
+  <event name="Gate Offline" id_arme="53d96500-8364-4cb2-b49b-bc918aba3a69" parent_id_arme="965576ff-a2f6-4f22-80b8-31d21edbbaf4">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="Charon Gate" />
+  </event>
+  <folder_arme name="Tracking System" id_arme="ae8fe345-6584-424d-acfd-3720763c9647" parent_id_arme="965576ff-a2f6-4f22-80b8-31d21edbbaf4" />
+  <event name="Ship1 Activation Range" id_arme="dbf73942-2099-40f8-bff1-6ba7dbbdc69d" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="0" name2="Charon Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Charon Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship1" value="1.0" />
+  </event>
+  <event name="Ship1 Out of Range" id_arme="a90725bf-7b63-448b-b0c2-2931268f831c" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="0" name2="Charon Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Charon Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship1" value="0.0" />
+  </event>
+  <event name="Ship2 Activation Range" id_arme="03242a90-3fee-4df7-b32a-f3a3d858a5ef" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="1" name2="Charon Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Charon Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship2" value="1.0" />
+  </event>
+  <event name="Ship2 Out of Range" id_arme="8a2ab080-646e-4940-8b65-7d7999eb2f19" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="1" name2="Charon Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Charon Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship2" value="0.0" />
+  </event>
+  <event name="Ship3 Activation Range" id_arme="b23faca5-57e1-4b2b-8a45-236e7b1f8076" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="2" name2="Charon Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Charon Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship3" value="1.0" />
+  </event>
+  <event name="Ship3 Out of Range" id_arme="9ad06dc9-1262-4709-a4d8-907c95fee041" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="2" name2="Charon Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Charon Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship3" value="0.0" />
+  </event>
+  <event name="Ship4 Activation Range" id_arme="9ad7558d-b972-41a1-9135-3828c8934a46" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="3" name2="Charon Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Charon Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship4" value="1.0" />
+  </event>
+  <event name="Ship4 Out of Range" id_arme="1fdb972e-2fa7-4e7c-aafc-09e4bce6677b" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="3" name2="Charon Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Charon Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship4" value="0.0" />
+  </event>
+  <event name="Ship5 Activation Range" id_arme="084d3784-19ec-40e5-be7f-29ffcfda63a5" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="4" name2="Charon Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Charon Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship5" value="1.0" />
+  </event>
+  <event name="Ship5 Out of Range" id_arme="cb173bc5-b5c9-47b7-9ea4-d533ae2f052f" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="4" name2="Charon Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Charon Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship5" value="0.0" />
+  </event>
+  <event name="Ship6 Activation Range" id_arme="6f9edd4d-580e-46b0-a271-e2e7f31d1530" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="5" name2="Charon Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Charon Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship6" value="1.0" />
+  </event>
+  <event name="Ship6 Out of Range" id_arme="99113fea-abd1-4fd9-b623-e02b2f05dc10" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="5" name2="Charon Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Charon Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship6" value="0.0" />
+  </event>
+  <event name="Ship7 Activation Range" id_arme="a693a90e-f1c4-4602-bf97-e30f2bb9b53e" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="6" name2="Charon Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Charon Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship7" value="1.0" />
+  </event>
+  <event name="Ship7 Out of Range" id_arme="6ab7f460-a5b5-4836-96ca-0a9fcd0109ed" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="6" name2="Charon Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Charon Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship7" value="0.0" />
+  </event>
+  <event name="Ship8 Activation Range" id_arme="978b05a8-a9bf-45b0-8aa3-9a9c8a9d090d" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="7" name2="Charon Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Charon Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship8" value="1.0" />
+  </event>
+  <event name="Ship8 Out of Range" id_arme="1d67b0bc-5970-4b86-aba7-51e64662fef9" parent_id_arme="ae8fe345-6584-424d-acfd-3720763c9647">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="7" name2="Charon Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Charon Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship8" value="0.0" />
+  </event>
+  <event name="Gate Online" id_arme="ba900d71-6851-4a21-8240-c36677a560c2" parent_id_arme="965576ff-a2f6-4f22-80b8-31d21edbbaf4">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="Charon Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="Charon Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated" id_arme="6676a1e9-e3f7-4e78-8279-51cc3ddb5dd6" parent_id_arme="965576ff-a2f6-4f22-80b8-31d21edbbaf4">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="Charon Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Triton to Charon" value="1.0" />
+    <set_variable name="Charon System" value="1.0" />
+    <set_variable name="Sector" value="7" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="Gate System" value="0.0" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="61219aab-db38-47d3-bd79-85a473a60e36" parent_id_arme="20ccf47c-c46b-4ba0-aba1-244ced6cfd79" />
+  <event name="Generate Sector Entities" id_arme="cc73848f-181d-41cf-8bf0-af2f761d3050" parent_id_arme="61219aab-db38-47d3-bd79-85a473a60e36">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="11.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton XI" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="43806.0" y="0.0" z="42105.0" name="Charon Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="27916.0" y="0.0" z="22693.0" angle="0" name="WP-062" hullID="1052" />
+    <create type="neutral" x="13685.0" y="0.0" z="27165.0" angle="0" name="DS-62" hullID="1000" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="ef4d666c-3c0f-4bcd-85b6-7fd3923aadfa" parent_id_arme="61219aab-db38-47d3-bd79-85a473a60e36">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="11.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_ship_text name="DS-62" desc="USFP military deep space base monitoring Charon Gate." />
+    <set_object_property property="artScale" value="1.0" name="Charon Gate" />
+    <set_object_property property="pushRadius" value="0.0" name="Charon Gate" />
+    <set_object_property property="angle" value="4.71238898" name="Charon Gate" />
+    <set_object_property property="rollDelta" value="0.3" name="Charon Gate" />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="f66b7195-784d-4807-87ba-3104e3c0b14c" parent_id_arme="61219aab-db38-47d3-bd79-85a473a60e36">
+    <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton XI" />
+    <destroy name="WP-062" />
+    <destroy name="DS-62" />
+    <destroy name="Charon Gate" />
+    <set_variable name="Triton System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <event name="Arrival From Charon" id_arme="697e6e93-ac0d-45a1-8776-f2366df0ccb9" parent_id_arme="20ccf47c-c46b-4ba0-aba1-244ced6cfd79">
+    <if_variable name="Sector" comparator="EQUALS" value="11" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Charon to Triton" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="Charon Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="Charon Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="Charon Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="Charon Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="Charon Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="Charon Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="Charon Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="Charon Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="Charon to Triton" value="0.0" />
+  </event>
+  <folder_arme name="Triton Sector XII" id_arme="d5f194b8-8b40-4e61-95c3-4d1f8148e0ae" parent_id_arme="565015a3-d871-44d3-b771-2aa286eec214" />
+  <event name="Create Triton Sector XII" id_arme="a24c6fa3-f106-4c0a-b80a-d7fad2399cc0" parent_id_arme="d5f194b8-8b40-4e61-95c3-4d1f8148e0ae">
+    <if_timer_finished name="Transition" />
+    <if_variable name="Triton System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="12.0" />
+    <set_skybox_index index="14" />
+    <create count="100" type="nebulas" startX="67855.0" startY="0.0" startZ="99554.0" endX="24767.0" endY="0.0" endZ="59595.0" randomRange="15000" />
+    <create count="50" type="nebulas" startX="62268.0" startY="0.0" startZ="98704.0" endX="6184.0" endY="0.0" endZ="41619.0" randomRange="5000" />
+    <create count="10" type="asteroids" startX="67976.0" startY="0.0" startZ="98947.0" endX="24888.0" endY="0.0" endZ="58988.0" randomRange="15000" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="0.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="0.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+    <set_variable name="Triton System" value="2.0" />
+  </event>
+  <folder_arme name="Navigation" id_arme="fcc665cc-3b6c-4e40-ab5d-81f94bfe3aa7" parent_id_arme="d5f194b8-8b40-4e61-95c3-4d1f8148e0ae" />
+  <event name="Transition to Sector XI" id_arme="bf90d329-a7dd-4963-a2f0-d9bfa669b484" parent_id_arme="fcc665cc-3b6c-4e40-ab5d-81f94bfe3aa7">
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="12.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="11.0" integer="yes" />
+  </event>
+  <event name="Transition to Sector VIII" id_arme="b00e34ed-c32d-49f9-8731-ef8591d95334" parent_id_arme="fcc665cc-3b6c-4e40-ab5d-81f94bfe3aa7">
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="12.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="8.0" integer="yes" />
+  </event>
+  <event name="Transition to (Top Left)" id_arme="06e372d4-83bd-44cf-807f-99817173135b" parent_id_arme="fcc665cc-3b6c-4e40-ab5d-81f94bfe3aa7">
+    <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="12.0" />
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A1 Transition" value="0.0" />
+    <set_variable name="Triton System" value="3.0" integer="yes" />
+    <set_variable name="Sector" value="7.0" integer="yes" />
+  </event>
+  <folder_arme name="Sector Entities" id_arme="691e46e9-e217-497a-b9f6-462289aef5e3" parent_id_arme="d5f194b8-8b40-4e61-95c3-4d1f8148e0ae" />
+  <event name="Generate Sector Entities" id_arme="8226fc0b-e90a-49f0-87f2-deabad88f551" parent_id_arme="691e46e9-e217-497a-b9f6-462289aef5e3">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="12.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton XII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="0ba0ba5e-d3fe-43af-9387-72524e70c111" parent_id_arme="691e46e9-e217-497a-b9f6-462289aef5e3">
+    <if_variable name="Triton System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="12.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="eb5541c7-fbc8-48d5-9545-1ffeb84ac22b" parent_id_arme="691e46e9-e217-497a-b9f6-462289aef5e3">
+    <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
+    <destroy name="Triton XII" />
+    <set_variable name="Triton System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
