@@ -10,6 +10,11 @@ app = Blueprint('app', __name__)
 
 MAIN_TMPL='main.xml'
 
+SCRIPT_FOLDER="Custom Scripts"
+SYSTEM_FOLDER="Systems (Generated)"
+
+XML_EXT = ".xml"
+
 def sanitize(filename):
     return filename.replace('.', '').lstrip('/')
 
@@ -17,13 +22,171 @@ def sanitize(filename):
 def render():
     data = request.json
     g.data = data
-    print(g.data)
 
     return stream_template(MAIN_TMPL)
+
+@app.route("/systems")
+def get_star_systems():
+    mypath = current_app.config['datadir']
+    scripts_path = os.path.join(mypath, SYSTEM_FOLDER)
+    found = []
+    files = [f for f in os.listdir(scripts_path) if f.endswith(XML_EXT) and os.path.isfile(os.path.join(scripts_path, f))]
+    for file in files:
+        metaParsed = False
+        data = {
+            "name": os.path.splitext(file)[0]
+        }
+        print("Parsing " + file)
+        with open(os.path.join(scripts_path, file)) as content:
+            l = "\n"
+            while not metaParsed:
+                l = content.readline()
+                if l.strip().startswith('{#'):
+                    metaParsed = True
+                    s = l.strip('{#-}').strip()
+                    for kv in s.split():
+                        parts = kv.split('=')
+                        if len(parts) == 2:
+                            data[parts[0]] = parts[1]
+                
+        found.append(data)
+    return found
+
+@app.route("/scripts")
+def get_systems():
+    mypath = current_app.config['datadir']
+    scripts_path = os.path.join(mypath, SCRIPT_FOLDER)
+    found = []
+    files = [f for f in os.listdir(scripts_path) if f.endswith(XML_EXT) and os.path.isfile(os.path.join(scripts_path, f))]
+    for file in files:
+        metaParsed = False
+        data = {
+            "name": os.path.splitext(file)[0]
+        }
+        print("Parsing " + file)
+        with open(os.path.join(scripts_path, file)) as content:
+            l = "\n"
+            c = 0
+            while c < 6 and not metaParsed:
+                l = content.readline()
+                c += 1
+                if l.strip().startswith('{#') and l.strip().endswith('#}'):
+                    metaParsed = True
+                    s = l.strip().strip('{#-}').strip()
+                    data["comment"] = s
+                
+        found.append(data)
+    return found
+
+@app.route("/ship_configs")
+def get_config_options():
+    return {
+        "ordnance": {
+            "friendly_name": "Ordnance",
+            "type": "property-dict",
+            "options": [
+                {
+                    "name": "torpedo",
+                    "friendly_name": "Torp count",
+                    "type": "integer",
+                },
+                {
+                    "name": "nuke",
+                    "friendly_name": "Nuke count",
+                    "type": "integer",
+                },
+                {
+                    "name": "mine",
+                    "friendly_name": "Mine count",
+                    "type": "integer",
+                },
+                {
+                    "name": "emp",
+                    "friendly_name": "EMP count",
+                    "type": "integer",
+                },
+                {
+                    "name": "pshock",
+                    "friendly_name": "P-Shock count",
+                    "type": "integer",
+                },
+                {
+                    "name": "probe",
+                    "friendly_name": "Probe count",
+                    "type": "integer",
+                },
+                {
+                    "name": "tag",
+                    "friendly_name": "Tag count",
+                    "type": "integer",
+                },
+                {
+                    "name": "beacon",
+                    "friendly_name": "Beacon count",
+                    "type": "integer",
+                },
+            ]
+        },
+        "cargo": {
+            "friendly_name": "Shuttle cargo",
+            "type": "property-dict",
+            "options": [
+                {
+                    "name": "marines",
+                    "friendly_name": "Marine teams",
+                    "type": "integer",
+                },
+                {
+                    "name": "engineers",
+                    "friendly_name": "Engineer teams",
+                    "type": "integer",
+                },
+                {
+                    "name": "medics",
+                    "friendly_name": "Medic teams",
+                    "type": "integer",
+                },
+                {
+                    "name": "cargos",
+                    "friendly_name": "Cargo units",
+                    "type": "integer",
+                },
+                {
+                    "name": "commsrelays",
+                    "friendly_name": "Comms Relays",
+                    "type": "integer",
+                },
+                {
+                    "name": "sensorbuoys",
+                    "friendly_name": "Sensor BOIS",
+                    "type": "integer",
+                },
+            ]
+        },
+        "modules": {
+            "friendly_name": "Ship modules",
+            "type": "select",
+            "options": [
+                {
+                    "name": "cluster",
+                    "friendly_name": "Cluster mines",
+                },
+                {
+                    "name": "decoy",
+                    "friendly_name": "Decoy buoys",
+                },
+                {
+                    "name": "shieldenhancer",
+                    "friendly_name": "Shield enhancers",
+                },
+            ]
+        }
+    }
 
 
 def create_app(datadir):
     myapp = Flask(__name__, template_folder=datadir)
+    myapp.config['datadir'] = datadir
     myapp.jinja_env.lstrip_blocks = True
     myapp.jinja_env.trim_blocks = True
     myapp.register_blueprint(app)

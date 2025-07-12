@@ -1,3 +1,4 @@
+{# CureTags module - automatically converts any ship to Player side if they a) are tagged and b) have at least one shield facing completely down. #}
 {% set letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
 {% set facings=["Front", "Back"] %}
   <folder_arme name="CureTags" id_arme="4ae5d7c7-a5e0-444a-b413-4de00dd0ffa6" expanded_arme="" />
