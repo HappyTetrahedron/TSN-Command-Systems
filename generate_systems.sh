@@ -37,3 +37,5 @@ do
         fi
     done < "$file"  > "XML Files/Systems (Generated)/$of"
 done
+
+git add "XML Files/Systems (Generated)/"*

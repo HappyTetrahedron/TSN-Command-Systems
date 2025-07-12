@@ -1,12 +1,3 @@
-<mission_data version="1.7" background_id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4" playerShipNames_arme="TSN Sabre\TSN Valiant\TSN Lancer\TSN Stalker\TSN Viper\TSN Horizon\TSN Necessity\TSN Hunter">
-  <start name="Start" id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4">
-    <set_variable name="Coordinate X" value="392.0" integer="yes" />
-    <set_variable name="Coordinate Y" value="356.0" integer="yes" />
-    <set_variable name="Alignment" value="USFP" integer="yes" />
-  </start>
-
-
-
   <event name="RemoveCustomShips create" id_arme="acca2d78-a30b-4570-96d4-2b1356a27f4d" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
     <if_variable name="Shortcut Keys" comparator="EQUALS" value="1.0" />
 
@@ -5772,4 +5763,3 @@
     <set_variable name="SPECIAL System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
-</mission_data>

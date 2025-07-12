@@ -1,8 +1,3 @@
-<mission_data version="1.0" background_id_arme="77d33364-111d-408c-87ea-b78e62ba418c" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
-  <start id_arme="77d33364-111d-408c-87ea-b78e62ba418c">
-    <!---->
-  </start>
-
   <!-- Special initialization of hazard painter menu variables on sandbox activation -->
 
   <event name="Initialize internal GUI variables" id_arme="f5e2173a-06b4-41ce-82c2-ab99fad3d3fc" parent_id_arme="77d33364-111d-408c-87ea-b78e62ba418c">
@@ -769,5 +764,3 @@
     <if_variable name="sqrt_calc" comparator="EQUALS" value="2.0" />
     <set_variable name="sqrt_calc" value="4.0" integer="yes" />
   </event>
-
-</mission_data>

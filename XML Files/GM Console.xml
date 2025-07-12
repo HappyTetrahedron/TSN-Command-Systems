@@ -1,7 +1,3 @@
-<mission_data version="1.7" background_id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4" playerShipNames_arme="TSN Sabre\TSN Valiant\TSN Lancer\TSN Stalker\TSN Viper\TSN Horizon\TSN Necessity\TSN Hunter">
-  <start name="Start" id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4">
-    <!---->
-  </start>
   <folder_arme name="GM Keys" id_arme="a63d8b7a-dd61-481e-b818-314ef7f7af5f" />
   <event name="GM Main Menu" id_arme="605a7c3f-76b5-4953-bb43-aa50abc3f88b" parent_id_arme="a63d8b7a-dd61-481e-b818-314ef7f7af5f">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
@@ -47770,4 +47766,3 @@
     <warning_popup_message message="Sensors Restored" consoles="MHWESC" />
     <clear_gm_button text="Rst Snr Rng" />
   </event>
-</mission_data>
