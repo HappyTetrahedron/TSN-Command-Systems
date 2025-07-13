@@ -1,4 +1,4 @@
-{% module clearSidePicker() %}
+{% macro clearSidePicker() %}
     <clear_gm_button text="Change" />
     <clear_gm_button text="1" />
     <clear_gm_button text="2 (PLYR)" />
@@ -12,7 +12,7 @@
     <clear_gm_button text="10" />
     <clear_gm_button text="11" />
     <clear_gm_button text="12" />
-{% endmodule %}
+{% endmacro %}
 {% for side in range(1, 13) %}
 {% set btntx = "2 (PLYR)" if side == 2 else side %}
   <event name="Update_Side_{{ side }}">
@@ -48,4 +48,3 @@
   <set_gm_button text="12" x="515" y="100" h="30" w="30" />
   <set_variable name="SidePickerOpen" value="1.0" />
 </event>
-
