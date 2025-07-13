@@ -1360,7 +1360,7 @@
     <set_gm_button text="Terrain\Asteroids\Small Field" />
     <set_gm_button text="Terrain\Asteroids\Medium Field" />
     <set_gm_button text="Terrain\Asteroids\Large Field" />
-    <set_gm_button text="Terrain\Dismiss" />
+    <set_gm_button text="Terrain\_Dismiss" />
   </event>
   {{ destroySubMenu("HazardTerrain") }}
     <clear_gm_button text="Terrain\Blackhole" />
