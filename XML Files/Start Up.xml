@@ -3,7 +3,7 @@
     <set_variable name="Clear" value="11.0" integer="yes" />
     <set_difficulty_level value="10" />
     <big_message title="The TSN Universe" subtitle1="Tetra's Fork Version {{ g.version }}" subtitle2="Systems:{% for system in g.data.get("systems", []) %} {{ system }}{% endfor %} - Scripts:{% for script in g.data.get("scripts", []) %} {{ script }}{% endfor %}" />
-    <warning_popup_message message="V.9.0" consoles="MHWESCO" player_slot="0" />
+    <warning_popup_message message="Version {{ g.version }}" consoles="MHWESCO" player_slot="0" />
     <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="0" />
     <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="1" />
     <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="2" />
@@ -251,7 +251,7 @@
     <if_timer_finished name="Sandbox Activation" />
     <if_variable name="GM Mode" comparator="LESS_EQUAL" value="1.0" />
     <set_gm_button text="Activate GM Mode" x="90" y="100" h="50" w="200" />
-    <set_gm_button text="V.9.0" x="115" y="38" h="25" w="100" />
+    <set_gm_button text="{{ g.version }}" x="115" y="38" h="25" w="100" />
     <set_timer name="Sandbox Activation" seconds="20" />
     <set_variable name="Sandbox Activation" value="2.0" integer="yes" />
   </event>
@@ -260,7 +260,7 @@
     <if_timer_finished name="Sandbox Activation" />
     <if_variable name="GM Mode" comparator="LESS" value="1.0" />
     <clear_gm_button text="Activate GM Mode" />
-    <clear_gm_button text="V.9.0" />
+    <clear_gm_button text="{{ g.version }}" />
     <set_timer name="Sandbox Activation" seconds="1" />
     <set_variable name="Sandbox Activation" value="1.0" integer="yes" />
   </event>
