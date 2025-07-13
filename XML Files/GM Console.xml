@@ -1,3 +1,4 @@
+  {% include 'GM Menus.xml' %}
   <folder_arme name="GM Keys" id_arme="a63d8b7a-dd61-481e-b818-314ef7f7af5f" />
   <event name="GM Main Menu" id_arme="605a7c3f-76b5-4953-bb43-aa50abc3f88b" parent_id_arme="a63d8b7a-dd61-481e-b818-314ef7f7af5f">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
@@ -210,20 +211,6 @@
     <clear_gm_button text="Menu 4\Custom 4F" />
     <set_variable name="GMmenuSelect" value="0.0" />
   </event>
-  <event name="Activate Basic" id_arme="b5b591ae-cca2-4bd6-adc3-025fe1d5d92f" parent_id_arme="a63d8b7a-dd61-481e-b818-314ef7f7af5f">
-    <if_variable name="GM Menu" comparator="EQUALS" value="2.0" />
-    <if_gm_button text="Bas." />
-    <set_variable name="GMmenuSelect" value="1.0" />
-    <set_variable name="GM Menu" value="3.0" />
-    <set_timer name="GM Menu" seconds="1" />
-  </event>
-  <event name="Activate Spawn Object" id_arme="16c71ccc-5e37-451c-849d-d79e8770ddcc" parent_id_arme="a63d8b7a-dd61-481e-b818-314ef7f7af5f">
-    <if_variable name="GM Menu" comparator="EQUALS" value="2.0" />
-    <if_gm_button text="SPWN." />
-    <set_variable name="GMmenuSelect" value="1.0" />
-    <set_variable name="GM Menu" value="4.0" />
-    <set_timer name="GM Menu" seconds="1" />
-  </event>
   <event name="Activate AI" id_arme="25149fcc-80aa-498e-ab73-bb61edcb98f2" parent_id_arme="a63d8b7a-dd61-481e-b818-314ef7f7af5f">
     <if_variable name="GM Menu" comparator="EQUALS" value="2.0" />
     <if_gm_button text="AI Off" />
@@ -238,27 +225,6 @@
     <set_gm_button text="AI Off" x="40" y="380" h="30" w="50" />
     <set_variable name="AI Menu" value="10.0" integer="yes" />
   </event>
-  <event name="Activate POI" id_arme="70d233c5-164a-47e2-abef-c650280ba2ff" parent_id_arme="a63d8b7a-dd61-481e-b818-314ef7f7af5f">
-    <if_variable name="GM Menu" comparator="EQUALS" value="2.0" />
-    <if_gm_button text="POI" />
-    <set_variable name="GMmenuSelect" value="1.0" />
-    <set_variable name="GM Menu" value="7.0" />
-    <set_timer name="GM Menu" seconds="1" />
-  </event>
-  <event name="Activate Hazards" id_arme="065eed6e-a446-49c7-8dcb-e71ad6066957" parent_id_arme="a63d8b7a-dd61-481e-b818-314ef7f7af5f">
-    <if_variable name="GM Menu" comparator="EQUALS" value="2.0" />
-    <if_gm_button text="Haz." />
-    <set_variable name="GMmenuSelect" value="1.0" />
-    <set_variable name="GM Menu" value="8.0" />
-    <set_timer name="GM Menu" seconds="1" />
-  </event>
-  <event name="Activate Interactions" id_arme="2b7b3bb3-2d41-4b6e-8f20-ce5410bb78c0" parent_id_arme="a63d8b7a-dd61-481e-b818-314ef7f7af5f">
-    <if_variable name="GM Menu" comparator="EQUALS" value="2.0" />
-    <if_gm_button text="Int." />
-    <set_variable name="GMmenuSelect" value="1.0" />
-    <set_variable name="GM Menu" value="10.0" />
-    <set_timer name="GM Menu" seconds="1" />
-  </event>
   <event name="Activate Waypoints" id_arme="f78bb407-9825-40c0-8d14-e00490d7f62e" parent_id_arme="a63d8b7a-dd61-481e-b818-314ef7f7af5f">
     <if_variable name="GM Menu" comparator="EQUALS" value="2.0" />
     <if_gm_button text="WPs." />
@@ -266,96 +232,7 @@
     <set_variable name="GM Menu" value="11.0" />
     <set_timer name="GM Menu" seconds="1" />
   </event>
-  <event name="Activate Custom" id_arme="3ad6ec71-5813-4b3e-81d9-f778294eac0c" parent_id_arme="a63d8b7a-dd61-481e-b818-314ef7f7af5f">
-    <if_variable name="GM Menu" comparator="EQUALS" value="2.0" />
-    <if_gm_button text="CSTM" />
-    <set_variable name="GMmenuSelect" value="1.0" />
-    <set_variable name="GM Menu" value="12.0" />
-    <set_timer name="GM Menu" seconds="1" />
-  </event>
   <folder_arme name="Bas. Keys" id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e" parent_id_arme="a63d8b7a-dd61-481e-b818-314ef7f7af5f" />
-  <event name="Bas. Key Menu" id_arme="7ae597ca-9166-4e2e-af7f-7a820dc1f151" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
-    <if_variable name="GM Menu" comparator="EQUALS" value="3.0" />
-    <if_timer_finished name="GM Menu" />
-    <set_gm_button text="Clear" x="120" y="60" h="30" w="60" />
-    <!---->
-    <set_gm_button text="SlctdToGM" x="100" y="100" h="28" w="90" />
-    <set_gm_button text="DelTerrain" x="100" y="130" h="28" w="90" />
-    <set_gm_button text="DelShips" x="100" y="160" h="28" w="90" />
-    <set_gm_button text="LockSect" x="100" y="190" h="28" w="90" />
-    <set_gm_button text="PlyrToGM" x="195" y="100" h="28" w="90" />
-    <set_gm_button text="DelAllMines" x="195" y="130" h="28" w="90" />
-    <set_gm_button text="DelSelected" x="195" y="160" h="28" w="90" />
-    <set_gm_button text="SetPlyrSide" x="195" y="190" h="28" w="90" />
-    <set_gm_button text="Incap" x="290" y="220" h="28" w="45" />
-    <set_gm_button text="Recap" x="335" y="220" h="28" w="45" />
-    <set_gm_button text="Pro" x="290" y="250" h="28" w="35" />
-    <set_gm_button text="The" x="325" y="250" h="28" w="35" />
-    <set_gm_button text="Ody" x="360" y="250" h="28" w="35" />
-    <!---->
-    <set_gm_button text="Transitions" x="100" y="220" h="28" w="90" />
-    <set_gm_button text="UP   /\" x="130" y="250" h="25" w="30" />
-    <set_gm_button text="RIGHT   &gt;&gt;" x="160" y="280" h="25" w="30" />
-    <set_gm_button text="LEFT   &lt;&lt;" x="100" y="280" h="25" w="30" />
-    <set_gm_button text="DOWN    V" x="130" y="310" h="25" w="30" />
-    <!---->
-    <set_gm_button text="Configure System Side\Default Side" />
-    <set_gm_button text="Configure System Side\Hegemony (Side 1)" />
-    <set_gm_button text="Configure System Side\USFP (Side 2 Player)" />
-    <set_gm_button text="Configure System Side\USF (Side 3)" />
-    <set_gm_button text="Configure System Side\N'Tani (Side 4)" />
-    <set_gm_button text="Configure System Side\Pirate (Side 5)" />
-    <set_gm_button text="Configure System Side\Caltron (Side 6)" />
-    <set_gm_button text="Configure Sector Side\Default Side" />
-    <set_gm_button text="Configure Sector Side\Hegemony (Side 1)" />
-    <set_gm_button text="Configure Sector Side\USFP (Side 2 Player)" />
-    <set_gm_button text="Configure Sector Side\USF (Side 3)" />
-    <set_gm_button text="Configure Sector Side\N'Tani (Side 4)" />
-    <set_gm_button text="Configure Sector Side\Pirate (Side 5)" />
-    <set_gm_button text="Configure Sector Side\Caltron (Side 6)" />
-    <set_variable name="Shortcut Keys" value="1.0" integer="yes" />
-    <set_variable name="GM Menu" value="2.0" integer="yes" />
-  </event>
-  <event name="Clear" id_arme="e6af0d6d-91fe-41b6-b873-66bf22975aa1" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
-    <if_variable name="GM Menu" comparator="EQUALS" value="2.0" />
-    <if_gm_button text="Clear" />
-    <clear_gm_button text="Clear" />
-    <clear_gm_button text="SlctdToGM" />
-    <clear_gm_button text="DelAllMines" />
-    <clear_gm_button text="DelTerrain" />
-    <clear_gm_button text="DelSelected" />
-    <clear_gm_button text="ClrMeshes" />
-    <clear_gm_button text="LockSect" />
-    <clear_gm_button text="UnlockSect" />
-    <clear_gm_button text="Pro" />
-    <clear_gm_button text="The" />
-    <clear_gm_button text="Ody" />
-    <clear_gm_button text="Incap" />
-    <clear_gm_button text="Recap" />
-    <clear_gm_button text="UP   /\" />
-    <clear_gm_button text="RIGHT   &gt;&gt;" />
-    <clear_gm_button text="DOWN    V" />
-    <clear_gm_button text="LEFT   &lt;&lt;" />
-    <clear_gm_button text="Transitions" />
-    <clear_gm_button text="PlyrToGM" />
-    <clear_gm_button text="DelShips" />
-    <clear_gm_button text="SetPlyrSide" />
-    <clear_gm_button text="Configure System Side\Default Side" />
-    <clear_gm_button text="Configure System Side\Hegemony (Side 1)" />
-    <clear_gm_button text="Configure System Side\USFP (Side 2 Player)" />
-    <clear_gm_button text="Configure System Side\USF (Side 3)" />
-    <clear_gm_button text="Configure System Side\N'Tani (Side 4)" />
-    <clear_gm_button text="Configure System Side\Pirate (Side 5)" />
-    <clear_gm_button text="Configure System Side\Caltron (Side 6)" />
-    <clear_gm_button text="Configure Sector Side\Default Side" />
-    <clear_gm_button text="Configure Sector Side\Hegemony (Side 1)" />
-    <clear_gm_button text="Configure Sector Side\USFP (Side 2 Player)" />
-    <clear_gm_button text="Configure Sector Side\USF (Side 3)" />
-    <clear_gm_button text="Configure Sector Side\N'Tani (Side 4)" />
-    <clear_gm_button text="Configure Sector Side\Pirate (Side 5)" />
-    <clear_gm_button text="Configure Sector Side\Caltron (Side 6)" />
-    <set_variable name="Shortcut Keys" value="0.0" />
-  </event>
   <event name="Move Entity" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
     <if_gm_button text="SlctdToGM" />
@@ -847,728 +724,7 @@
     <set_variable name="System Settings" value="2.0" integer="yes" />
   </event>
   <folder_arme name="Spawn Keys" id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5" parent_id_arme="a63d8b7a-dd61-481e-b818-314ef7f7af5f" />
-  <event name="Ships Keys Menu" id_arme="0f9f65b3-02dc-4e16-ad4e-64dc97c5731a" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5">
-    <if_variable name="GM Menu" comparator="EQUALS" value="4.0" />
-    <if_timer_finished name="GM Menu" />
-    <set_gm_button text="Clear" x="120" y="60" h="30" w="60" />
-    <set_gm_button text="Side Value:" x="95" y="100" h="30" w="80" />
-    <set_gm_button text="1" x="180" y="100" h="30" w="20" />
-    <set_gm_button text="Change" x="205" y="100" h="30" w="60" />
-    <set_gm_button text="AI Setting:" x="95" y="135" h="30" w="80" />
-    <set_gm_button text="Default" x="175" y="135" h="30" w="120" />
-    <set_gm_button text="TSN" x="100" y="170" h="30" w="70" />
-    <set_gm_button text="USFP" x="175" y="170" h="30" w="70" />
-    <set_gm_button text="Ximni" x="100" y="205" h="30" w="70" />
-    <set_gm_button text="Hjorden" x="175" y="205" h="30" w="70" />
-    <set_gm_button text="Hegemony" x="100" y="240" h="30" w="70" />
-    <set_gm_button text="USF" x="175" y="240" h="30" w="70" />
-    <set_gm_button text="N'Tani" x="100" y="275" h="30" w="70" />
-    <set_gm_button text="Pirate" x="175" y="275" h="30" w="70" />
-    <set_gm_button text="Caltron" x="100" y="310" h="30" w="70" />
-    <set_gm_button text="Biomech" x="175" y="310" h="30" w="70" />
-    <set_gm_button text="Neutrals" x="100" y="345" h="30" w="70" />
-    <set_gm_button text="Static Objects" x="100" y="380" h="30" w="145" />
-    <!--AI Menu-->
-    <set_gm_button text="Set AI Type\Default" menu_w="150" />
-    <set_gm_button text="Set AI Type\Hunt Enemies" menu_w="150" />
-    <set_gm_button text="Set AI Type\Hunt Stations" menu_w="150" />
-    <set_gm_button text="Set AI Type\Hunt(Follow)Players" menu_w="150" />
-    <set_gm_button text="Set AI Type\Guard Stations" menu_w="150" />
-    <set_gm_button text="Set AI Type\Patrol" menu_w="150" />
-    <set_gm_button text="Set AI Type\Convoy AI\Heading 0" />
-    <set_gm_button text="Set AI Type\Convoy AI\Heading 45" />
-    <set_gm_button text="Set AI Type\Convoy AI\Heading 90" />
-    <set_gm_button text="Set AI Type\Convoy AI\Heading 135" />
-    <set_gm_button text="Set AI Type\Convoy AI\Heading 180" />
-    <set_gm_button text="Set AI Type\Convoy AI\Heading 225" />
-    <set_gm_button text="Set AI Type\Convoy AI\Heading 270" />
-    <set_gm_button text="Set AI Type\Convoy AI\Heading 315" />
-    <set_variable name="AI Override" value="0.0" integer="yes" />
-    <set_variable name="SideValue" value="1.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" integer="yes" />
-    <set_variable name="GM Menu" value="2.0" />
-  </event>
-  <event name="Back to Main Menu" id_arme="e5a3255d-1932-4457-bb41-944b446583ba" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="1.0" />
-    <if_variable name="GM Menu" comparator="EQUALS" value="2.0" />
-    <if_gm_button text="Clear" />
-    <!---->
-    <clear_gm_button text="Set AI Type\Default" />
-    <clear_gm_button text="Set AI Type\Hunt Enemies" />
-    <clear_gm_button text="Set AI Type\Hunt Stations" />
-    <clear_gm_button text="Set AI Type\Hunt(Follow)Players" />
-    <clear_gm_button text="Set AI Type\Guard Stations" />
-    <clear_gm_button text="Set AI Type\Patrol" />
-    <clear_gm_button text="Set AI Type\Convoy AI\Heading 0" />
-    <clear_gm_button text="Set AI Type\Convoy AI\Heading 45" />
-    <clear_gm_button text="Set AI Type\Convoy AI\Heading 90" />
-    <clear_gm_button text="Set AI Type\Convoy AI\Heading 135" />
-    <clear_gm_button text="Set AI Type\Convoy AI\Heading 180" />
-    <clear_gm_button text="Set AI Type\Convoy AI\Heading 225" />
-    <clear_gm_button text="Set AI Type\Convoy AI\Heading 270" />
-    <clear_gm_button text="Set AI Type\Convoy AI\Heading 315" />
-    <clear_gm_button text="AI Setting:" />
-    <clear_gm_button text="Default" />
-    <clear_gm_button text="Patrol" />
-    <clear_gm_button text="Hunt Enemy" />
-    <clear_gm_button text="Hunt Station" />
-    <clear_gm_button text="Hunt-Follow Plyr" />
-    <clear_gm_button text="Guard Station" />
-    <clear_gm_button text="Cnvy Heading 0" />
-    <clear_gm_button text="Cnvy Heading 45" />
-    <clear_gm_button text="Cnvy Heading 180" />
-    <clear_gm_button text="Cnvy Heading 270" />
-    <clear_gm_button text="Cnvy Heading 225" />
-    <clear_gm_button text="Cnvy Heading 315" />
-    <clear_gm_button text="Cnvy Heading 90" />
-    <clear_gm_button text="Cnvy Heading 135" />
-    <!---->
-    <clear_gm_button text="Clear" />
-    <clear_gm_button text="Side Value:" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <clear_gm_button text="Change" />
-    <clear_gm_button text="TSN" />
-    <clear_gm_button text="USFP" />
-    <clear_gm_button text="Ximni" />
-    <clear_gm_button text="Hjorden" />
-    <clear_gm_button text="Hegemony" />
-    <clear_gm_button text="USF" />
-    <clear_gm_button text="N'Tani" />
-    <clear_gm_button text="Pirate" />
-    <clear_gm_button text="Caltron" />
-    <clear_gm_button text="Biomech" />
-    <clear_gm_button text="Static Objects" />
-    <clear_gm_button text="Neutrals" />
-    <!--Ship Spawn Keys - AI Settings-->
-    <clear_gm_button text="Set AI Type\Default" />
-    <clear_gm_button text="Set AI Type\Hunt Enemies" />
-    <clear_gm_button text="Set AI Type\Hunt Stations" />
-    <clear_gm_button text="Set AI Type\Hunt(Follow)Players" />
-    <clear_gm_button text="Set AI Type\Guard Stations" />
-    <clear_gm_button text="Set AI Type\Patrol" />
-    <clear_gm_button text="Set AI Type\Convoy AI\Heading 0" />
-    <clear_gm_button text="Set AI Type\Convoy AI\Heading 45" />
-    <clear_gm_button text="Set AI Type\Convoy AI\Heading 90" />
-    <clear_gm_button text="Set AI Type\Convoy AI\Heading 135" />
-    <clear_gm_button text="Set AI Type\Convoy AI\Heading 180" />
-    <clear_gm_button text="Set AI Type\Convoy AI\Heading 225" />
-    <clear_gm_button text="Set AI Type\Convoy AI\Heading 270" />
-    <clear_gm_button text="Set AI Type\Convoy AI\Heading 315" />
-    <clear_gm_button text="Patrol Cancel" />
-    <clear_gm_button text="AI Setting:" />
-    <clear_gm_button text="Default" />
-    <clear_gm_button text="Hunt Enemy" />
-    <clear_gm_button text="Hunt Station" />
-    <clear_gm_button text="Hunt-Follow Plyr" />
-    <clear_gm_button text="Guard Station" />
-    <clear_gm_button text="Patrol" />
-    <clear_gm_button text="Patrol Ready" />
-    <clear_gm_button text="Patrol Cancel" />
-    <clear_gm_button text="Cnvy Heading 0" />
-    <clear_gm_button text="Cnvy Heading 45" />
-    <clear_gm_button text="Cnvy Heading 180" />
-    <clear_gm_button text="Cnvy Heading 270" />
-    <clear_gm_button text="Cnvy Heading 225" />
-    <clear_gm_button text="Cnvy Heading 315" />
-    <clear_gm_button text="Cnvy Heading 90" />
-    <clear_gm_button text="Cnvy Heading 135" />
-    <set_variable name="Ship Spawn Menu" value="0.0" integer="yes" />
-    <set_variable name="CycleSpawnMenu" value="1.0" integer="yes" />
-  </event>
-  <event name="Cycle Menu" id_arme="d56408ab-7a16-4972-9697-86d374a0742d" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5">
-    <if_variable name="CycleSpawnMenu" comparator="EQUALS" value="1.0" />
-    <!--AI Menu-->
-    <!--TSN Menu-->
-    <clear_gm_button text="TSN Ships\Scout" />
-    <clear_gm_button text="TSN Ships\Light Cruiser" />
-    <clear_gm_button text="TSN Ships\Battleship" />
-    <clear_gm_button text="TSN Ships\Missile Cruiser" />
-    <clear_gm_button text="TSN Ships\Dreadnought" />
-    <clear_gm_button text="TSN Ships\Carrier" />
-    <clear_gm_button text="TSN Ships\Minelayer" />
-    <clear_gm_button text="TSN Ships\Juggernaut" />
-    <clear_gm_button text="TSN Ships\Allegiance Class" />
-    <clear_gm_button text="TSN Ships\Chimera Class" />
-    <clear_gm_button text="TSN Ships\Ares Class" />
-    <clear_gm_button text="TSN Ships\Valkyrie Class" />
-    <clear_gm_button text="TSN Ships\Apollo Class" />
-    <clear_gm_button text="TSN Ships\Nemesis Class" />
-    <clear_gm_button text="TSN Ships\Fighter" />
-    <clear_gm_button text="TSN Ships\Bomber" />
-    <clear_gm_button text="TSN Ships\Shuttle" />
-    <clear_gm_button text="TSN Ships\LR Shuttle" />
-    <clear_gm_button text="TSN Fleets\Devin Supply Fleet" />
-    <clear_gm_button text="TSN Fleets\Grant Supply Fleet" />
-    <clear_gm_button text="TSN Fleets\Grant Solo" />
-    <clear_gm_button text="TSN Fleets\Jinn Supply Fleet" />
-    <clear_gm_button text="TSN Fleets\Goblin Supply Fleet" />
-    <clear_gm_button text="TSN Fleets\Light Group" />
-    <clear_gm_button text="TSN Fleets\Medium Group" />
-    <clear_gm_button text="TSN Fleets\Heavy Group" />
-    <clear_gm_button text="TSN Assets\Shipyard" />
-    <clear_gm_button text="TSN Assets\Weapons Platform" />
-    <clear_gm_button text="TSN Assets\Sensor Buoy" />
-    <clear_gm_button text="TSN Assets\Comms Relay" />
-    <!--USFP Menu-->
-    <clear_gm_button text="Civilian USFP\Science Vessel" />
-    <clear_gm_button text="Civilian USFP\Bulk Cargo" />
-    <clear_gm_button text="Civilian USFP\Luxury Liner" />
-    <clear_gm_button text="Civilian USFP\Transport" />
-    <clear_gm_button text="Civilian USFP\Transport Mk II" />
-    <clear_gm_button text="Civilian USFP\Gaspode" />
-    <clear_gm_button text="Civilian USFP\Scow" />
-    <clear_gm_button text="Military USFP\Patrol Boat" />
-    <clear_gm_button text="Military USFP\Corvette" />
-    <clear_gm_button text="Military USFP\Escort" />
-    <clear_gm_button text="Military USFP\Destroyer" />
-    <clear_gm_button text="USFP Fleet\Mining Convoy" />
-    <clear_gm_button text="USFP Fleet\Cargo Convoy" />
-    <clear_gm_button text="USFP Fleet\Transport Convoy" />
-    <clear_gm_button text="USFP Fleet\LR Cargo Convoy" />
-    <clear_gm_button text="USFP Fleet\Research Convoy" />
-    <clear_gm_button text="USFP Assets\Deep Space Base" />
-    <clear_gm_button text="USFP Assets\Command Base" />
-    <clear_gm_button text="USFP Assets\Shipyard" />
-    <clear_gm_button text="USFP Assets\Civilian Base" />
-    <clear_gm_button text="USFP Assets\Industrial Base" />
-    <clear_gm_button text="USFP Assets\Science Base" />
-    <clear_gm_button text="USFP Assets\Factory" />
-    <clear_gm_button text="USFP Assets\Denabite Refinary" />
-    <clear_gm_button text="USFP Assets\Weapons Platform" />
-    <clear_gm_button text="USFP Assets\Sensor Buoy" />
-    <clear_gm_button text="USFP Assets\Comms Relay" />
-    <clear_gm_button text="USFP Assets\Docking Port" />
-    <!--Ximni Menu-->
-    <clear_gm_button text="Single Ximni\Light Cruiser" />
-    <clear_gm_button text="Single Ximni\Scout" />
-    <clear_gm_button text="Single Ximni\Missile Cruiser" />
-    <clear_gm_button text="Single Ximni\Battleship" />
-    <clear_gm_button text="Single Ximni\Carrier" />
-    <clear_gm_button text="Single Ximni\Dreadnought" />
-    <clear_gm_button text="Single Ximni\Fighter" />
-    <clear_gm_button text="Single Ximni\Bomber" />
-    <clear_gm_button text="Single Ximni\Shuttle" />
-    <clear_gm_button text="Single Ximni\LR Shuttle" />
-    <clear_gm_button text="Ximni Fleet\Light Group" />
-    <clear_gm_button text="Ximni Fleet\Medium Group" />
-    <clear_gm_button text="Ximni Fleet\Heavy Group" />
-    <!--Hjorden Menu-->
-    <clear_gm_button text="Single Hjorden\Cruiser" />
-    <clear_gm_button text="Single Hjorden\Cruise Liner" />
-    <clear_gm_button text="Single Hjorden\Transport" />
-    <clear_gm_button text="Hjorden Fleets\Cruiser Fleet" />
-    <clear_gm_button text="Hjorden Assets\Hjorden Base" />
-    <!--Hegemony Menu-->
-    <clear_gm_button text="Hegemony Fleets\Kralien Fleets\Light Fleet" />
-    <clear_gm_button text="Hegemony Fleets\Kralien Fleets\Medium Fleet" />
-    <clear_gm_button text="Hegemony Fleets\Kralien Fleets\Heavy Fleet" />
-    <clear_gm_button text="Hegemony Fleets\Hegemony Mixed Fleets\Light Fleet" />
-    <clear_gm_button text="Hegemony Fleets\Hegemony Mixed Fleets\Medium Fleet" />
-    <clear_gm_button text="Hegemony Fleets\Hegemony Mixed Fleets\Heavy Fleet" />
-    <clear_gm_button text="Hegemony Fleets\Torgoth Fleets\Light Fleet" />
-    <clear_gm_button text="Hegemony Fleets\Torgoth Fleets\Medium Fleet" />
-    <clear_gm_button text="Hegemony Fleets\Torgoth Fleets\Heavy Fleet" />
-    <clear_gm_button text="Hegemony Fleets\Arvonian Fleets\Light Fleet" />
-    <clear_gm_button text="Hegemony Fleets\Arvonian Fleets\Medium Fleet" />
-    <clear_gm_button text="Hegemony Fleets\Arvonian Fleets\Heavy Fleet" />
-    <clear_gm_button text="Hegemony Fleets\Skaraan Fleets\Light Fleet" />
-    <clear_gm_button text="Hegemony Fleets\Skaraan Fleets\Medium Fleet" />
-    <clear_gm_button text="Hegemony Fleets\Skaraan Fleets\Heavy Fleet" />
-    <clear_gm_button text="Hegemony Fleets\Carrier Fleets\Light Fleet" />
-    <clear_gm_button text="Hegemony Fleets\Carrier Fleets\Medium Fleet" />
-    <clear_gm_button text="Hegemony Fleets\Carrier Fleets\Heavy Fleet" />
-    <clear_gm_button text="Hegemony Fleets\Command Fleets\Arvonian Command" />
-    <clear_gm_button text="Hegemony Fleets\Command Fleets\Hvy Arvonian Command" />
-    <clear_gm_button text="Hegemony Fleets\Command Fleets\Torgoth Command" />
-    <clear_gm_button text="Hegemony Fleets\Command Fleets\Hvy Torgoth Command" />
-    <clear_gm_button text="Hegemony Fleets\Convoys\Light Convoy" />
-    <clear_gm_button text="Hegemony Fleets\Convoys\Medium Convoy" />
-    <clear_gm_button text="Hegemony Fleets\Convoys\Heavy Convoy" />
-    <clear_gm_button text="Single Hegemony\Kralien Light" />
-    <clear_gm_button text="Single Hegemony\Kralien Drone" />
-    <clear_gm_button text="Single Hegemony\Kralien Medium" />
-    <clear_gm_button text="Single Hegemony\Kralien Heavy" />
-    <clear_gm_button text="Single Hegemony\Torgoth Light" />
-    <clear_gm_button text="Single Hegemony\Torgoth Medium" />
-    <clear_gm_button text="Single Hegemony\Torgoth Heavy" />
-    <clear_gm_button text="Single Hegemony\Torgoth MineSweeper" />
-    <clear_gm_button text="Single Hegemony\Torgoth Command" />
-    <clear_gm_button text="Single Hegemony\Skaraan Light" />
-    <clear_gm_button text="Single Hegemony\Skaraan Medium" />
-    <clear_gm_button text="Single Hegemony\Skaraan Heavy" />
-    <clear_gm_button text="Single Hegemony\Arvonian Fighter" />
-    <clear_gm_button text="Single Hegemony\Arvonian Light" />
-    <clear_gm_button text="Single Hegemony\Arvonian Heavy" />
-    <clear_gm_button text="Single Hegemony\Arvonian Command" />
-    <clear_gm_button text="Single Hegemony\Transport" />
-    <clear_gm_button text="Hegemony Assets\Kralien Base" />
-    <clear_gm_button text="Hegemony Assets\Arvonian Base" />
-    <clear_gm_button text="Hegemony Assets\Torgoth Base" />
-    <clear_gm_button text="Hegemony Assets\Skaraan Base" />
-    <clear_gm_button text="Hegemony Assets\Civilian Bio Base" />
-    <clear_gm_button text="Hegemony Assets\Fighter Defense Platform" />
-    <clear_gm_button text="Hegemony Assets\Hegemony Defense Platform" />
-    <clear_gm_button text="Hegemony Assets\Sensor Buoy (Active)" />
-    <clear_gm_button text="Hegemony Assets\Sensor Buoy (Inactive)" />
-    <clear_gm_button text="Hegemony Assets\Slingshot Platform" />
-    <clear_gm_button text="Hegemony Assets\Slingshot Power" />
-    <clear_gm_button text="Hegemony Assets\Slingshot Antenna" />
-    <clear_gm_button text="Hegemony Assets\Slingshot Array" />
-    <!--USF Menu-->
-    <clear_gm_button text="Single USF\Xenophobe" />
-    <clear_gm_button text="Single USF\Emu" />
-    <clear_gm_button text="Single USF\Gallu" />
-    <clear_gm_button text="Single USF\Gladiator" />
-    <clear_gm_button text="Single USF\Nightmare" />
-    <clear_gm_button text="Single USF\Griffzungenschwert" />
-    <clear_gm_button text="USF Fleet\Light Fleet" />
-    <clear_gm_button text="USF Fleet\Medium Fleet" />
-    <clear_gm_button text="USF Fleet\Heavy Fleet" />
-    <!--N'Tani Menu-->
-    <clear_gm_button text="Single N'tani\Skavanger" />
-    <clear_gm_button text="Single N'tani\Frigate" />
-    <clear_gm_button text="Single N'tani\Cargo Pod Ship" />
-    <clear_gm_button text="Single N'tani\Battlecruiser" />
-    <clear_gm_button text="Single N'tani\Ranger" />
-    <clear_gm_button text="N'Tani Fleets\Light Fleet" />
-    <clear_gm_button text="N'Tani Fleets\Medium Fleet" />
-    <clear_gm_button text="N'Tani Fleets\Heavy Fleet" />
-    <clear_gm_button text="N'Tani Assets\N'Tani Base" />
-    <!--Pirate Menu-->
-    <clear_gm_button text="Skull Pirates\Strongbow" />
-    <clear_gm_button text="Skull Pirates\Longbow" />
-    <clear_gm_button text="Skull Pirates\Brigantine" />
-    <clear_gm_button text="Skull Pirates\Adventure" />
-    <clear_gm_button text="Skull Pirates\Avenger" />
-    <clear_gm_button text="Euphini Pirates\Arrow" />
-    <clear_gm_button text="Euphini Pirates\Axe" />
-    <clear_gm_button text="Euphini Pirates\Transport" />
-    <clear_gm_button text="Pirate Assets\Asteroid Base" />
-    <clear_gm_button text="Skull Pirates\Light Fleet" />
-    <clear_gm_button text="Skull Pirates\Medium Fleet" />
-    <clear_gm_button text="Skull Pirates\Heavy Fleet" />
-    <clear_gm_button text="Euphini Pirates\Light Fleet" />
-    <clear_gm_button text="Euphini Pirates\Medium Fleet" />
-    <clear_gm_button text="Euphini Pirates\Heavy Fleet" />
-    <!--Caltron Menu-->
-    <clear_gm_button text="Single Caltron\Primary" />
-    <clear_gm_button text="Single Caltron\Tertiary" />
-    <clear_gm_button text="Single Caltron\Senary" />
-    <clear_gm_button text="Single Caltron\Duodenary" />
-    <clear_gm_button text="Single Caltron\Swarm" />
-    <clear_gm_button text="Single Caltron\Super Swarm" />
-    <clear_gm_button text="Single Caltron\Primary (Var. B)" />
-    <clear_gm_button text="Caltron Fleets\Scout Group" />
-    <clear_gm_button text="Caltron Fleets\Battle Group" />
-    <clear_gm_button text="Caltron Fleets\Invasion Fleet" />
-    <!--Neutral Menu-->
-    <clear_gm_button text="Dinkuno\Warbird" />
-    <clear_gm_button text="Dinkuno\Transport" />
-    <clear_gm_button text="Budron\Destruction" />
-    <clear_gm_button text="Budron\Devastator" />
-    <clear_gm_button text="Budron\Light Fleet" />
-    <clear_gm_button text="Budron\Medium Fleet" />
-    <clear_gm_button text="Budron\Heavy Fleet" />
-    <clear_gm_button text="Budron\Trap Carrier Convoy" />
-    <clear_gm_button text="Budron\Carrier Convoy" />
-    <clear_gm_button text="Budron\Cargo Convoy" />
-    <clear_gm_button text="Budron\Reaper" />
-    <clear_gm_button text="Budron\Havoc" />
-    <clear_gm_button text="Budron\Desolation" />
-    <clear_gm_button text="Budron\Demolition" />
-    <clear_gm_button text="Budron\Cargo" />
-    <clear_gm_button text="Budron\Q-Ship" />
-    <clear_gm_button text="Budron\Platform" />
-    <clear_gm_button text="Sechatzal\Spectre" />
-    <clear_gm_button text="Sechatzal\Ghost" />
-    <clear_gm_button text="Sechatzal\Wraith" />
-    <!--Change Default Side-->
-    <!--Biomech Menu-->
-    <clear_gm_button text="Biomechs\Stage 1" />
-    <clear_gm_button text="Biomechs\Stage 2" />
-    <clear_gm_button text="Biomechs\Stage 3" />
-    <clear_gm_button text="Biomechs\Stage 4" />
-    <!--Bases Menu-->
-    <clear_gm_button text="Military Base\N'Tani Base" />
-    <clear_gm_button text="Military Base\Hjorden Base" />
-    <!--Static Objects Menu-->
-    <clear_gm_button text="Docking Port\Energy Only" />
-    <clear_gm_button text="Docking Port\Light Ordnance" />
-    <clear_gm_button text="Docking Port\Heavy Ordnance" />
-    <clear_gm_button text="Docking Port\Mining" />
-    <clear_gm_button text="Docking Port\Exploration" />
-    <clear_gm_button text="Docking Port\Xeno Research" />
-    <clear_gm_button text="Docking Port\(Standard)" />
-    <clear_gm_button text="Other\Lifepod" />
-    <clear_gm_button text="Other\Black Box" />
-    <set_variable name="CycleSpawnMenu" value="0.0" integer="yes" />
-  </event>
-  <event name="Activate TSN" id_arme="41a94040-0a77-4447-95b4-8b5ea01edbd7" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="TSN" />
-    <set_variable name="CycleSpawnMenu" value="1.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="3.0" integer="yes" />
-    <set_timer name="Ship Spawn Menu" seconds="1" />
-  </event>
-  <event name="Activate USFP" id_arme="33f46b27-f603-47ee-bb60-234a16678446" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="USFP" />
-    <set_variable name="CycleSpawnMenu" value="1.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="4.0" integer="yes" />
-    <set_timer name="Ship Spawn Menu" seconds="1" />
-  </event>
-  <event name="Activate Ximni" id_arme="8550ae38-c8ce-4e42-b954-fec8c96d13c5" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="Ximni" />
-    <set_variable name="CycleSpawnMenu" value="1.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="5.0" integer="yes" />
-    <set_timer name="Ship Spawn Menu" seconds="1" />
-  </event>
-  <event name="Activate Hjorden" id_arme="49d68c49-a965-4936-b969-ed30576e51c1" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="Hjorden" />
-    <set_variable name="CycleSpawnMenu" value="1.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="6.0" integer="yes" />
-    <set_timer name="Ship Spawn Menu" seconds="1" />
-  </event>
-  <event name="Activate Hegemony" id_arme="f041617f-b25a-4a85-9867-f72967646d9f" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="Hegemony" />
-    <set_variable name="CycleSpawnMenu" value="1.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="7.0" integer="yes" />
-    <set_timer name="Ship Spawn Menu" seconds="1" />
-  </event>
-  <event name="Activate USF" id_arme="20b0d73b-a508-407c-bbd9-49a003cfd7b8" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="USF" />
-    <set_variable name="CycleSpawnMenu" value="1.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="8.0" integer="yes" />
-    <set_timer name="Ship Spawn Menu" seconds="1" />
-  </event>
-  <event name="Activate N'Tani" id_arme="af80745c-712a-4046-8db9-afa3b64467ab" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="N'Tani" />
-    <set_variable name="CycleSpawnMenu" value="1.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="9.0" integer="yes" />
-    <set_timer name="Ship Spawn Menu" seconds="1" />
-  </event>
-  <event name="Activate Pirate" id_arme="0a509ff8-4fe2-4b53-ba26-3c47fabaeb15" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="Pirate" />
-    <set_variable name="CycleSpawnMenu" value="1.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="10.0" integer="yes" />
-    <set_timer name="Ship Spawn Menu" seconds="1" />
-  </event>
-  <event name="Activate Neutrals" id_arme="64fca172-ed79-45e3-b645-d30c774d6405" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="Neutrals" />
-    <set_variable name="CycleSpawnMenu" value="1.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="25.0" integer="yes" />
-    <set_timer name="Ship Spawn Menu" seconds="1" />
-  </event>
-  <event name="Activate Caltron" id_arme="47ce4eed-5eee-4829-9217-9a08c96c6291" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="Caltron" />
-    <set_variable name="CycleSpawnMenu" value="1.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="11.0" integer="yes" />
-    <set_timer name="Ship Spawn Menu" seconds="1" />
-  </event>
-  <event name="Activate Biomech" id_arme="9dd58c66-7124-45ef-a495-740cd2235329" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="Biomech" />
-    <set_variable name="CycleSpawnMenu" value="1.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="12.0" integer="yes" />
-    <set_timer name="Ship Spawn Menu" seconds="1" />
-  </event>
-  <event name="Activate Static Objects" id_arme="e441fa20-6bf5-4bfb-9cf9-e4b63dfe2eb2" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="Static Objects" />
-    <set_variable name="CycleSpawnMenu" value="1.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="14.0" integer="yes" />
-    <set_timer name="Ship Spawn Menu" seconds="1" />
-  </event>
-  <folder_arme name="Side Setting" id_arme="79d8693a-635d-4c71-a5ef-f75bcd96efff" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5" />
-  <event name="Select Side Menu" id_arme="1c3c6fce-7745-4494-968a-fad7c31bca62" parent_id_arme="79d8693a-635d-4c71-a5ef-f75bcd96efff">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="Change" />
-    <clear_gm_button text="Change" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="1" x="180" y="100" h="30" w="20" />
-    <set_gm_button text="2 (PLYR)" x="205" y="100" h="30" w="60" />
-    <set_gm_button text="3" x="270" y="100" h="30" w="20" />
-    <set_gm_button text="4" x="295" y="100" h="30" w="20" />
-    <set_gm_button text="5" x="320" y="100" h="30" w="20" />
-    <set_gm_button text="6" x="345" y="100" h="30" w="20" />
-    <set_gm_button text="7" x="370" y="100" h="30" w="20" />
-    <set_gm_button text="8" x="395" y="100" h="30" w="20" />
-    <set_gm_button text="9" x="420" y="100" h="30" w="20" />
-    <set_gm_button text="10" x="445" y="100" h="30" w="30" />
-    <set_gm_button text="11" x="480" y="100" h="30" w="30" />
-    <set_gm_button text="12" x="515" y="100" h="30" w="30" />
-    <set_variable name="Ship Spawn Menu" value="2.0" />
-  </event>
-  <event name="Side 1" id_arme="3b236ef6-6803-415a-ae7b-b1b40176bf2b" parent_id_arme="79d8693a-635d-4c71-a5ef-f75bcd96efff">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="2.0" />
-    <if_gm_button text="1" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="205" y="100" h="30" w="60" />
-    <set_gm_button text="1" x="180" y="100" h="30" w="20" />
-    <set_variable name="SideValue" value="1.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
-  <event name="Side 2" id_arme="fc74c87e-5580-4d52-b4bc-9dbee78cf443" parent_id_arme="79d8693a-635d-4c71-a5ef-f75bcd96efff">
-    <if_gm_button text="2 (PLYR)" />
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="2.0" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="245" y="100" h="30" w="60" />
-    <set_gm_button text="2 (PLYR)" x="180" y="100" h="30" w="60" />
-    <set_variable name="SideValue" value="2.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
-  <event name="Side 3" id_arme="03b1e402-5b0b-463f-8148-cb747f27b042" parent_id_arme="79d8693a-635d-4c71-a5ef-f75bcd96efff">
-    <if_gm_button text="3" />
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="2.0" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="205" y="100" h="30" w="60" />
-    <set_gm_button text="3" x="180" y="100" h="30" w="20" />
-    <set_variable name="SideValue" value="3.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
-  <event name="Side 4" id_arme="b53c4a9e-896e-4e68-9329-ee3b428d9251" parent_id_arme="79d8693a-635d-4c71-a5ef-f75bcd96efff">
-    <if_gm_button text="4" />
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="2.0" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="205" y="100" h="30" w="60" />
-    <set_gm_button text="4" x="180" y="100" h="30" w="20" />
-    <set_variable name="SideValue" value="4.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
-  <event name="Side 5" id_arme="7a6f6183-6152-4bf2-828b-cfc84869cba3" parent_id_arme="79d8693a-635d-4c71-a5ef-f75bcd96efff">
-    <if_gm_button text="5" />
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="2.0" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="205" y="100" h="30" w="60" />
-    <set_gm_button text="5" x="180" y="100" h="30" w="20" />
-    <set_variable name="SideValue" value="5.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
-  <event name="Side 6" id_arme="b0fba586-c4ec-4bef-a612-77dcb91e18e1" parent_id_arme="79d8693a-635d-4c71-a5ef-f75bcd96efff">
-    <if_gm_button text="6" />
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="2.0" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="205" y="100" h="30" w="60" />
-    <set_gm_button text="6" x="180" y="100" h="30" w="20" />
-    <set_variable name="SideValue" value="6.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
-  <event name="Side 7" id_arme="1ad55c45-0664-468a-afd9-a35c3f631d33" parent_id_arme="79d8693a-635d-4c71-a5ef-f75bcd96efff">
-    <if_gm_button text="7" />
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="2.0" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="205" y="100" h="30" w="60" />
-    <set_gm_button text="7" x="180" y="100" h="30" w="20" />
-    <set_variable name="SideValue" value="7.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
-  <event name="Side 8" id_arme="1bf1f797-53f6-4c8e-9c92-87f320b35fdf" parent_id_arme="79d8693a-635d-4c71-a5ef-f75bcd96efff">
-    <if_gm_button text="8" />
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="2.0" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="205" y="100" h="30" w="60" />
-    <set_gm_button text="8" x="180" y="100" h="30" w="20" />
-    <set_variable name="SideValue" value="8.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
-  <event name="Side 9" id_arme="784abfaa-c829-4eda-8acc-0c7bc333fd1d" parent_id_arme="79d8693a-635d-4c71-a5ef-f75bcd96efff">
-    <if_gm_button text="9" />
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="2.0" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="205" y="100" h="30" w="60" />
-    <set_gm_button text="9" x="180" y="100" h="30" w="20" />
-    <set_variable name="SideValue" value="9.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
-  <event name="Side 10" id_arme="253a5cb9-9429-4428-b0ae-fab2a195cc9d" parent_id_arme="79d8693a-635d-4c71-a5ef-f75bcd96efff">
-    <if_gm_button text="10" />
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="2.0" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="215" y="100" h="30" w="60" />
-    <set_gm_button text="10" x="180" y="100" h="30" w="30" />
-    <set_variable name="SideValue" value="10.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
-  <event name="Side 11" id_arme="ff1caf7a-5713-4b2b-b93e-9abfb6451813" parent_id_arme="79d8693a-635d-4c71-a5ef-f75bcd96efff">
-    <if_gm_button text="11" />
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="2.0" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="215" y="100" h="30" w="60" />
-    <set_gm_button text="11" x="180" y="100" h="30" w="30" />
-    <set_variable name="SideValue" value="11.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
-  <event name="Side 12" id_arme="a6ccaff4-0ecd-4b3e-9f39-72e570825222" parent_id_arme="79d8693a-635d-4c71-a5ef-f75bcd96efff">
-    <if_gm_button text="12" />
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="2.0" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="215" y="100" h="30" w="60" />
-    <set_gm_button text="12" x="180" y="100" h="30" w="30" />
-    <set_variable name="SideValue" value="12.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
+  {% include 'SidePicker.xml' %}
   <folder_arme name="AI Setting" id_arme="64bab513-59a8-4578-af89-ddd5431a0131" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5" />
   <event name="Default" id_arme="07782f17-f917-413c-93f6-69f5f0fce737" parent_id_arme="64bab513-59a8-4578-af89-ddd5431a0131">
     <if_gm_button text="Set AI Type\Default" />
@@ -1933,58 +1089,6 @@
     <set_variable name="Fleet Settings" value="0.0" />
   </event>
   <folder_arme name="TSN Menu" id_arme="666c7e74-c45b-4032-9472-629e090f8e41" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5" />
-  <event name="TSN Menu" id_arme="d2669643-9363-4037-b082-a89e8763b218" parent_id_arme="666c7e74-c45b-4032-9472-629e090f8e41">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="3.0" />
-    <if_timer_finished name="Ship Spawn Menu" />
-    <set_gm_button text="TSN Fleets\Devin Supply Fleet" />
-    <set_gm_button text="TSN Fleets\Grant Supply Fleet" />
-    <set_gm_button text="TSN Fleets\Grant Solo" />
-    <set_gm_button text="TSN Fleets\Jinn Supply Fleet" />
-    <set_gm_button text="TSN Fleets\Goblin Supply Fleet" />
-    <set_gm_button text="TSN Ships\Scout" />
-    <set_gm_button text="TSN Ships\Light Cruiser" />
-    <set_gm_button text="TSN Ships\Battleship" />
-    <set_gm_button text="TSN Ships\Missile Cruiser" />
-    <set_gm_button text="TSN Ships\Dreadnought" />
-    <set_gm_button text="TSN Ships\Carrier" />
-    <set_gm_button text="TSN Ships\Minelayer" />
-    <set_gm_button text="TSN Ships\Juggernaut" />
-    <set_gm_button text="TSN Ships\Allegiance Class" />
-    <set_gm_button text="TSN Ships\Chimera Class" />
-    <set_gm_button text="TSN Ships\Ares Class" />
-    <set_gm_button text="TSN Ships\Valkyrie Class" />
-    <set_gm_button text="TSN Ships\Apollo Class" />
-    <set_gm_button text="TSN Ships\Nemesis Class" />
-    <set_gm_button text="TSN Ships\Fighter" />
-    <set_gm_button text="TSN Ships\Bomber" />
-    <set_gm_button text="TSN Ships\Shuttle" />
-    <set_gm_button text="TSN Ships\LR Shuttle" />
-    <set_gm_button text="TSN Fleets\Light Group" />
-    <set_gm_button text="TSN Fleets\Medium Group" />
-    <set_gm_button text="TSN Fleets\Heavy Group" />
-    <set_gm_button text="TSN Assets\Shipyard" />
-    <set_gm_button text="TSN Assets\Weapons Platform" />
-    <set_gm_button text="TSN Assets\Sensor Buoy" />
-    <set_gm_button text="TSN Assets\Comms Relay" />
-    <!--Change Default Side-->
-    <clear_gm_button text="Change" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="245" y="100" h="30" w="60" />
-    <set_gm_button text="2 (PLYR)" x="180" y="100" h="30" w="60" />
-    <set_variable name="SideValue" value="2.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
   <folder_arme name="Single Ships" id_arme="397952e7-1f09-4545-a228-0b60422d75cb" parent_id_arme="666c7e74-c45b-4032-9472-629e090f8e41" />
   <folder_arme name="TSN Ships" id_arme="47e8e140-f232-41d0-a4d7-49c1994ff1a9" parent_id_arme="397952e7-1f09-4545-a228-0b60422d75cb" />
   <event name="Scout" id_arme="3add22fa-7a82-46cc-bcbf-b320c867cd63" parent_id_arme="47e8e140-f232-41d0-a4d7-49c1994ff1a9">
@@ -2252,56 +1356,6 @@
     <set_ship_text name="--" race="TSN" desc="Comms Relay" scan_desc="Standard Communications Relay" hailtext="Signal relay established. Communications link active." />
   </event>
   <folder_arme name="USFP Menu" id_arme="67dc9987-89db-4149-b710-b762ea0c87f2" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5" />
-  <event name="USFP Menu" id_arme="fb2880c6-d19d-4edd-9ec5-ca7232dcf63b" parent_id_arme="67dc9987-89db-4149-b710-b762ea0c87f2">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="4.0" />
-    <if_timer_finished name="Ship Spawn Menu" />
-    <set_gm_button text="Civilian USFP\Science Vessel" />
-    <set_gm_button text="Civilian USFP\Bulk Cargo" />
-    <set_gm_button text="Civilian USFP\Luxury Liner" />
-    <set_gm_button text="Civilian USFP\Transport" />
-    <set_gm_button text="Civilian USFP\Transport Mk II" />
-    <set_gm_button text="Civilian USFP\Gaspode" />
-    <set_gm_button text="Civilian USFP\Scow" />
-    <set_gm_button text="Military USFP\Patrol Boat" />
-    <set_gm_button text="Military USFP\Corvette" />
-    <set_gm_button text="Military USFP\Escort" />
-    <set_gm_button text="Military USFP\Destroyer" />
-    <set_gm_button text="USFP Fleet\Mining Convoy" />
-    <set_gm_button text="USFP Fleet\LR Cargo Convoy" />
-    <set_gm_button text="USFP Fleet\Research Convoy" />
-    <set_gm_button text="USFP Fleet\Cargo Convoy" />
-    <set_gm_button text="USFP Fleet\Transport Convoy" />
-    <set_gm_button text="USFP Assets\Deep Space Base" />
-    <set_gm_button text="USFP Assets\Command Base" />
-    <set_gm_button text="USFP Assets\Shipyard" />
-    <set_gm_button text="USFP Assets\Civilian Base" />
-    <set_gm_button text="USFP Assets\Industrial Base" />
-    <set_gm_button text="USFP Assets\Science Base" />
-    <set_gm_button text="USFP Assets\Factory" />
-    <set_gm_button text="USFP Assets\Denabite Refinary" />
-    <set_gm_button text="USFP Assets\Weapons Platform" />
-    <set_gm_button text="USFP Assets\Docking Port" />
-    <set_gm_button text="USFP Assets\Sensor Buoy" />
-    <set_gm_button text="USFP Assets\Comms Relay" />
-    <!--Change Default Side-->
-    <clear_gm_button text="Change" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="245" y="100" h="30" w="60" />
-    <set_gm_button text="2 (PLYR)" x="180" y="100" h="30" w="60" />
-    <set_variable name="SideValue" value="2.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
   <folder_arme name="Military Ships" id_arme="6384cb7d-f47d-4131-a3d6-0577f508f4eb" parent_id_arme="67dc9987-89db-4149-b710-b762ea0c87f2" />
   <event name="Patrol Boat" id_arme="412e9e4f-8b10-4508-9215-e76eaf5f2ff0" parent_id_arme="6384cb7d-f47d-4131-a3d6-0577f508f4eb">
     <if_gm_button text="Military USFP\Patrol Boat" />
@@ -2503,42 +1557,6 @@
     <set_ship_text name="--" desc="Comms Relay" scan_desc="Standard Communications Relay" hailtext="Signal relay established. Communications link active." />
   </event>
   <folder_arme name="Ximni Menu" id_arme="4dbde460-7816-4bce-a918-6fed43d54922" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5" />
-  <event name="Ximni Menu" id_arme="04793626-5d1d-4f06-8eb9-f53d6f357165" parent_id_arme="4dbde460-7816-4bce-a918-6fed43d54922">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="5.0" />
-    <if_timer_finished name="Ship Spawn Menu" />
-    <set_gm_button text="Single Ximni\Light Cruiser" />
-    <set_gm_button text="Single Ximni\Scout" />
-    <set_gm_button text="Single Ximni\Missile Cruiser" />
-    <set_gm_button text="Single Ximni\Battleship" />
-    <set_gm_button text="Single Ximni\Carrier" />
-    <set_gm_button text="Single Ximni\Dreadnought" />
-    <set_gm_button text="Single Ximni\Fighter" />
-    <set_gm_button text="Single Ximni\Bomber" />
-    <set_gm_button text="Single Ximni\Shuttle" />
-    <set_gm_button text="Single Ximni\LR Shuttle" />
-    <set_gm_button text="Ximni Fleet\Light Group" />
-    <set_gm_button text="Ximni Fleet\Medium Group" />
-    <set_gm_button text="Ximni Fleet\Heavy Group" />
-    <clear_gm_button text="1" />
-    <!--Change Default Side-->
-    <clear_gm_button text="Change" />
-    <clear_comms_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="245" y="100" h="30" w="60" />
-    <set_gm_button text="1" x="180" y="100" h="30" w="20" />
-    <set_variable name="SideValue" value="1.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
   <folder_arme name="Single Ships" id_arme="155d2109-0dd7-499a-855d-479432af65d7" parent_id_arme="4dbde460-7816-4bce-a918-6fed43d54922" />
   <event name="Light Cruiser" id_arme="5dfe8437-d205-42d2-9fd4-a82050dd6cb5" parent_id_arme="155d2109-0dd7-499a-855d-479432af65d7">
     <if_gm_button text="Single Ximni\Light Cruiser" />
@@ -2645,33 +1663,6 @@
     <set_variable name="Name Assign" value="1.0" integer="yes" />
   </event>
   <folder_arme name="Hjorden Menu" id_arme="1a638766-60a3-4f47-88ca-66e3843e82cd" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5" />
-  <event name="Hjorden Menu" id_arme="3c6a3930-8f59-443d-9237-37f40d08d2dc" parent_id_arme="1a638766-60a3-4f47-88ca-66e3843e82cd">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="6.0" />
-    <if_timer_finished name="Ship Spawn Menu" />
-    <set_gm_button text="Single Hjorden\Cruiser" />
-    <set_gm_button text="Single Hjorden\Cruise Liner" />
-    <set_gm_button text="Single Hjorden\Transport" />
-    <set_gm_button text="Hjorden Fleets\Cruiser Fleet" />
-    <set_gm_button text="Hjorden Assets\Hjorden Base" />
-    <!--Change Default Side-->
-    <clear_gm_button text="Change" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="245" y="100" h="30" w="60" />
-    <set_gm_button text="2 (PLYR)" x="180" y="100" h="30" w="60" />
-    <set_variable name="SideValue" value="2.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
   <folder_arme name="Single Ships" id_arme="c152545b-0543-46c7-ac59-8c8e0225fcac" parent_id_arme="1a638766-60a3-4f47-88ca-66e3843e82cd" />
   <event name="Cruiser" id_arme="85f6b0ae-5827-4788-9f47-541f5c5333d2" parent_id_arme="c152545b-0543-46c7-ac59-8c8e0225fcac">
     <if_gm_button text="Single Hjorden\Cruiser" />
@@ -2712,83 +1703,6 @@
     <set_variable name="Name Assign" value="1.0" integer="yes" />
   </event>
   <folder_arme name="Hegemony Menu" id_arme="c7990b33-1f5b-4913-9155-e131df5266a1" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5" />
-  <event name="Hegemony Menu" id_arme="7ddac279-fa73-4076-b3b7-156d6ee3b796" parent_id_arme="c7990b33-1f5b-4913-9155-e131df5266a1">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="7.0" />
-    <if_timer_finished name="Ship Spawn Menu" />
-    <set_gm_button text="Hegemony Fleets\Kralien Fleets\Light Fleet" />
-    <set_gm_button text="Hegemony Fleets\Kralien Fleets\Medium Fleet" />
-    <set_gm_button text="Hegemony Fleets\Kralien Fleets\Heavy Fleet" />
-    <set_gm_button text="Hegemony Fleets\Torgoth Fleets\Light Fleet" />
-    <set_gm_button text="Hegemony Fleets\Torgoth Fleets\Medium Fleet" />
-    <set_gm_button text="Hegemony Fleets\Torgoth Fleets\Heavy Fleet" />
-    <set_gm_button text="Hegemony Fleets\Arvonian Fleets\Light Fleet" />
-    <set_gm_button text="Hegemony Fleets\Arvonian Fleets\Medium Fleet" />
-    <set_gm_button text="Hegemony Fleets\Arvonian Fleets\Heavy Fleet" />
-    <set_gm_button text="Hegemony Fleets\Skaraan Fleets\Light Fleet" />
-    <set_gm_button text="Hegemony Fleets\Skaraan Fleets\Medium Fleet" />
-    <set_gm_button text="Hegemony Fleets\Skaraan Fleets\Heavy Fleet" />
-    <set_gm_button text="Hegemony Fleets\Hegemony Mixed Fleets\Light Fleet" />
-    <set_gm_button text="Hegemony Fleets\Hegemony Mixed Fleets\Medium Fleet" />
-    <set_gm_button text="Hegemony Fleets\Hegemony Mixed Fleets\Heavy Fleet" />
-    <set_gm_button text="Hegemony Fleets\Carrier Fleets\Light Fleet" />
-    <set_gm_button text="Hegemony Fleets\Carrier Fleets\Medium Fleet" />
-    <set_gm_button text="Hegemony Fleets\Carrier Fleets\Heavy Fleet" />
-    <set_gm_button text="Hegemony Fleets\Command Fleets\Arvonian Command" />
-    <set_gm_button text="Hegemony Fleets\Command Fleets\Hvy Arvonian Command" />
-    <set_gm_button text="Hegemony Fleets\Command Fleets\Torgoth Command" />
-    <set_gm_button text="Hegemony Fleets\Command Fleets\Hvy Torgoth Command" />
-    <set_gm_button text="Hegemony Fleets\Convoys\Light Convoy" />
-    <set_gm_button text="Hegemony Fleets\Convoys\Medium Convoy" />
-    <set_gm_button text="Hegemony Fleets\Convoys\Heavy Convoy" />
-    <set_gm_button text="Single Hegemony\Kralien Light" />
-    <set_gm_button text="Single Hegemony\Kralien Drone" />
-    <set_gm_button text="Single Hegemony\Kralien Medium" />
-    <set_gm_button text="Single Hegemony\Kralien Heavy" />
-    <set_gm_button text="Single Hegemony\Torgoth Light" />
-    <set_gm_button text="Single Hegemony\Torgoth Medium" />
-    <set_gm_button text="Single Hegemony\Torgoth Heavy" />
-    <set_gm_button text="Single Hegemony\Torgoth MineSweeper" />
-    <set_gm_button text="Single Hegemony\Torgoth Command" />
-    <set_gm_button text="Single Hegemony\Skaraan Light" />
-    <set_gm_button text="Single Hegemony\Skaraan Medium" />
-    <set_gm_button text="Single Hegemony\Skaraan Heavy" />
-    <set_gm_button text="Single Hegemony\Arvonian Fighter" />
-    <set_gm_button text="Single Hegemony\Arvonian Light" />
-    <set_gm_button text="Single Hegemony\Arvonian Heavy" />
-    <set_gm_button text="Single Hegemony\Arvonian Command" />
-    <set_gm_button text="Single Hegemony\Transport" />
-    <set_gm_button text="Hegemony Assets\Kralien Base" />
-    <set_gm_button text="Hegemony Assets\Arvonian Base" />
-    <set_gm_button text="Hegemony Assets\Torgoth Base" />
-    <set_gm_button text="Hegemony Assets\Skaraan Base" />
-    <set_gm_button text="Hegemony Assets\Civilian Bio Base" />
-    <set_gm_button text="Hegemony Assets\Fighter Defense Platform" />
-    <set_gm_button text="Hegemony Assets\Hegemony Defense Platform" />
-    <set_gm_button text="Hegemony Assets\Sensor Buoy (Active)" />
-    <set_gm_button text="Hegemony Assets\Sensor Buoy (Inactive)" />
-    <set_gm_button text="Hegemony Assets\Slingshot Platform" />
-    <set_gm_button text="Hegemony Assets\Slingshot Power" />
-    <set_gm_button text="Hegemony Assets\Slingshot Antenna" />
-    <set_gm_button text="Hegemony Assets\Slingshot Array" />
-    <!--Change Default Side-->
-    <clear_gm_button text="Change" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="205" y="100" h="30" w="60" />
-    <set_gm_button text="1" x="180" y="100" h="30" w="20" />
-    <set_variable name="SideValue" value="1.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
   <folder_arme name="Single Enemies" id_arme="0f85b8a1-88d8-4aa9-95d6-fd632ddf16a9" parent_id_arme="c7990b33-1f5b-4913-9155-e131df5266a1" />
   <event name="Create Kralian Light Cruiser" id_arme="b7f464d1-5908-47a9-8429-343f770511bf" parent_id_arme="0f85b8a1-88d8-4aa9-95d6-fd632ddf16a9">
     <if_gm_button text="Single Hegemony\Kralien Light" />
@@ -3360,37 +2274,6 @@
     <set_variable name="Name Assign" value="1.0" integer="yes" />
   </event>
   <folder_arme name="USF Menu" id_arme="9e1440ca-e9f5-4b7a-828f-0688aeafff2f" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5" />
-  <event name="USF Menu" id_arme="32d247dc-229a-4285-9a81-2654eb3d05d6" parent_id_arme="9e1440ca-e9f5-4b7a-828f-0688aeafff2f">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="8.0" />
-    <if_timer_finished name="Ship Spawn Menu" />
-    <set_gm_button text="Single USF\Xenophobe" />
-    <set_gm_button text="Single USF\Emu" />
-    <set_gm_button text="Single USF\Gallu" />
-    <set_gm_button text="Single USF\Gladiator" />
-    <set_gm_button text="Single USF\Nightmare" />
-    <set_gm_button text="Single USF\Griffzungenschwert" />
-    <set_gm_button text="USF Fleet\Light Fleet" />
-    <set_gm_button text="USF Fleet\Medium Fleet" />
-    <set_gm_button text="USF Fleet\Heavy Fleet" />
-    <!--Change Default Side-->
-    <clear_gm_button text="Change" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="205" y="100" h="30" w="60" />
-    <set_gm_button text="3" x="180" y="100" h="30" w="20" />
-    <set_variable name="SideValue" value="3.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
   <folder_arme name="Single Ships" id_arme="ca5baf13-de02-4a8c-8631-75fce9ca67a4" parent_id_arme="9e1440ca-e9f5-4b7a-828f-0688aeafff2f" />
   <event name="Xenophobe" id_arme="25ec0294-fe5f-49e2-b706-b152fcc6f571" parent_id_arme="ca5baf13-de02-4a8c-8631-75fce9ca67a4">
     <if_gm_button text="Single USF\Xenophobe" />
@@ -3474,37 +2357,6 @@
     <set_variable name="Name Assign" value="1.0" integer="yes" />
   </event>
   <folder_arme name="N'Tani Menu" id_arme="b6516723-4b88-4102-80a2-0105c53801ff" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5" />
-  <event name="N'Tani Menu" id_arme="966e183e-a2b1-4d1b-9032-b8a2d36f1930" parent_id_arme="b6516723-4b88-4102-80a2-0105c53801ff">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="9.0" />
-    <if_timer_finished name="Ship Spawn Menu" />
-    <set_gm_button text="Single N'tani\Skavanger" />
-    <set_gm_button text="Single N'tani\Frigate" />
-    <set_gm_button text="Single N'tani\Cargo Pod Ship" />
-    <set_gm_button text="Single N'tani\Battlecruiser" />
-    <set_gm_button text="Single N'tani\Ranger" />
-    <set_gm_button text="N'Tani Fleets\Light Fleet" />
-    <set_gm_button text="N'Tani Fleets\Medium Fleet" />
-    <set_gm_button text="N'Tani Fleets\Heavy Fleet" />
-    <set_gm_button text="N'Tani Assets\N'Tani Base" />
-    <!--Change Default Side-->
-    <clear_gm_button text="Change" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="205" y="100" h="30" w="60" />
-    <set_gm_button text="4" x="180" y="100" h="30" w="20" />
-    <set_variable name="SideValue" value="4.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
   <folder_arme name="Single Ships" id_arme="a26983b8-4637-4da8-b01e-4a57cae1cd46" parent_id_arme="b6516723-4b88-4102-80a2-0105c53801ff" />
   <event name="Skavanger" id_arme="9c45b6a8-d958-4fcd-a1d3-686b35097f74" parent_id_arme="a26983b8-4637-4da8-b01e-4a57cae1cd46">
     <if_gm_button text="Single N'tani\Skavanger" />
@@ -3583,43 +2435,6 @@
     <set_variable name="Name Assign" value="1.0" integer="yes" />
   </event>
   <folder_arme name="Pirate Menu" id_arme="21ec6630-49d0-4164-8c46-f274e4b62b72" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5" />
-  <event name="Pirate Menu" id_arme="4bb860d2-0ea8-41c6-9e66-587d1e07cc06" parent_id_arme="21ec6630-49d0-4164-8c46-f274e4b62b72">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="10.0" />
-    <if_timer_finished name="Ship Spawn Menu" />
-    <set_gm_button text="Skull Pirates\Strongbow" />
-    <set_gm_button text="Skull Pirates\Longbow" />
-    <set_gm_button text="Skull Pirates\Brigantine" />
-    <set_gm_button text="Skull Pirates\Adventure" />
-    <set_gm_button text="Skull Pirates\Avenger" />
-    <set_gm_button text="Skull Pirates\Light Fleet" />
-    <set_gm_button text="Skull Pirates\Medium Fleet" />
-    <set_gm_button text="Skull Pirates\Heavy Fleet" />
-    <set_gm_button text="Euphini Pirates\Arrow" />
-    <set_gm_button text="Euphini Pirates\Axe" />
-    <set_gm_button text="Euphini Pirates\Transport" />
-    <set_gm_button text="Euphini Pirates\Light Fleet" />
-    <set_gm_button text="Euphini Pirates\Medium Fleet" />
-    <set_gm_button text="Euphini Pirates\Heavy Fleet" />
-    <set_gm_button text="Pirate Assets\Asteroid Base" />
-    <!--Change Default Side-->
-    <clear_gm_button text="Change" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="205" y="100" h="30" w="60" />
-    <set_gm_button text="5" x="180" y="100" h="30" w="20" />
-    <set_variable name="SideValue" value="5.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
   <folder_arme name="Euphini Pirates" id_arme="b0bebfa5-1a24-45fc-9f49-b3bf8a4be1b2" parent_id_arme="21ec6630-49d0-4164-8c46-f274e4b62b72" />
   <event name="Arrow" id_arme="32e9b770-4891-43c2-a92d-582bb5a901c8" parent_id_arme="b0bebfa5-1a24-45fc-9f49-b3bf8a4be1b2">
     <if_gm_button text="Euphini Pirates\Arrow" />
@@ -3756,38 +2571,6 @@
     <set_variable name="Name Assign" value="1.0" integer="yes" />
   </event>
   <folder_arme name="Caltron Menu" id_arme="b918f5da-38a1-4af7-b47c-b42b6ae71aa8" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5" />
-  <event name="Caltron Menu" id_arme="dfeb2f6b-6c32-4385-8b33-010ac81509e0" parent_id_arme="b918f5da-38a1-4af7-b47c-b42b6ae71aa8">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="11.0" />
-    <if_timer_finished name="Ship Spawn Menu" />
-    <set_gm_button text="Single Caltron\Primary" />
-    <set_gm_button text="Single Caltron\Tertiary" />
-    <set_gm_button text="Single Caltron\Senary" />
-    <set_gm_button text="Single Caltron\Duodenary" />
-    <set_gm_button text="Single Caltron\Swarm" />
-    <set_gm_button text="Single Caltron\Super Swarm" />
-    <set_gm_button text="Single Caltron\Primary (Var. B)" />
-    <set_gm_button text="Caltron Fleets\Scout Group" />
-    <set_gm_button text="Caltron Fleets\Battle Group" />
-    <set_gm_button text="Caltron Fleets\Invasion Fleet" />
-    <!--Change Default Side-->
-    <clear_gm_button text="Change" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="205" y="100" h="30" w="60" />
-    <set_gm_button text="6" x="180" y="100" h="30" w="20" />
-    <set_variable name="SideValue" value="6.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
   <folder_arme name="Single Ships" id_arme="a60361b7-bfe5-4835-a716-7af8ef745a4c" parent_id_arme="b918f5da-38a1-4af7-b47c-b42b6ae71aa8" />
   <event name="Primary" id_arme="54fc5888-1284-4e1d-86fa-2cb00c044c99" parent_id_arme="a60361b7-bfe5-4835-a716-7af8ef745a4c">
     <if_gm_button text="Single Caltron\Primary" />
@@ -3876,32 +2659,6 @@
     <set_variable name="Name Assign" value="1.0" integer="yes" />
   </event>
   <folder_arme name="Biomech Menu" id_arme="b18780b2-a91c-414f-9d41-ebff66704c12" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5" />
-  <event name="Biomech Menu" id_arme="6196573d-9860-4622-9ac6-b0b874bbe5ee" parent_id_arme="b18780b2-a91c-414f-9d41-ebff66704c12">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="12.0" />
-    <if_timer_finished name="Ship Spawn Menu" />
-    <set_gm_button text="Biomechs\Stage 1" />
-    <set_gm_button text="Biomechs\Stage 2" />
-    <set_gm_button text="Biomechs\Stage 3" />
-    <set_gm_button text="Biomechs\Stage 4" />
-    <!--Change Default Side-->
-    <clear_gm_button text="Change" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="205" y="100" h="30" w="60" />
-    <set_gm_button text="7" x="180" y="100" h="30" w="20" />
-    <set_variable name="SideValue" value="7.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
   <event name="Stage 1" id_arme="c426cfd6-a957-4423-829b-e207d8c75900" parent_id_arme="b18780b2-a91c-414f-9d41-ebff66704c12">
     <if_gm_button text="Biomechs\Stage 1" />
     <create type="enemy" use_gm_position="" name="--" hullID="6000" sideValue="SideValue" fleetnumber="-1" />
@@ -3931,37 +2688,6 @@
     <set_variable name="Name Assign" value="1.0" integer="yes" />
   </event>
   <folder_arme name="Static Objects" id_arme="e68b43cd-1ae4-49d6-ae8b-19f9bfeefa38" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5" />
-  <event name="Static Objects Menu" id_arme="77bf8b71-b09b-4680-b75d-fa67419810af" parent_id_arme="e68b43cd-1ae4-49d6-ae8b-19f9bfeefa38">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="14.0" />
-    <if_timer_finished name="Ship Spawn Menu" />
-    <set_gm_button text="Docking Port\Energy Only" />
-    <set_gm_button text="Docking Port\Light Ordnance" />
-    <set_gm_button text="Docking Port\Heavy Ordnance" />
-    <set_gm_button text="Docking Port\Mining" />
-    <set_gm_button text="Docking Port\Exploration" />
-    <set_gm_button text="Docking Port\Xeno Research" />
-    <set_gm_button text="Docking Port\(Standard)" />
-    <set_gm_button text="Other\Lifepod" />
-    <set_gm_button text="Other\Black Box" />
-    <!--Change Default Side-->
-    <clear_gm_button text="Change" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="205" y="100" h="30" w="60" />
-    <set_gm_button text="1" x="180" y="100" h="30" w="20" />
-    <set_variable name="SideValue" value="1.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
   <folder_arme name="Other Objects" id_arme="89c68d9f-7426-4dff-8b4a-141dcf140bd7" parent_id_arme="e68b43cd-1ae4-49d6-ae8b-19f9bfeefa38" />
   <folder_arme name="Black Box" id_arme="696b1277-1b00-494a-9960-70a1a8dc3516" parent_id_arme="89c68d9f-7426-4dff-8b4a-141dcf140bd7" />
   <event name="Activate Black Box" id_arme="4dc56fd9-f81f-4bb6-ae2a-3ca278c5f85d" parent_id_arme="696b1277-1b00-494a-9960-70a1a8dc3516">
@@ -4982,48 +3708,6 @@
     <set_variable name="Auto AI Type" value="AISetting" integer="yes" />
   </event>
   <folder_arme name="Neutral Menu" id_arme="575c1af4-cfa8-4d0c-9490-88dcedd93e96" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5" />
-  <event name="Neutral Menu" id_arme="3bcbbe10-f94d-4317-8353-821bb452c432" parent_id_arme="575c1af4-cfa8-4d0c-9490-88dcedd93e96">
-    <if_variable name="Ship Spawn Menu" comparator="EQUALS" value="25.0" />
-    <if_timer_finished name="Ship Spawn Menu" />
-    <set_gm_button text="Dinkuno\Warbird" />
-    <set_gm_button text="Dinkuno\Transport" />
-    <set_gm_button text="Budron\Destruction" />
-    <set_gm_button text="Budron\Devastator" />
-    <set_gm_button text="Budron\Light Fleet" />
-    <set_gm_button text="Budron\Medium Fleet" />
-    <set_gm_button text="Budron\Heavy Fleet" />
-    <set_gm_button text="Budron\Trap Carrier Convoy" />
-    <set_gm_button text="Budron\Carrier Convoy" />
-    <set_gm_button text="Budron\Cargo Convoy" />
-    <set_gm_button text="Budron\Reaper" />
-    <set_gm_button text="Budron\Havoc" />
-    <set_gm_button text="Budron\Desolation" />
-    <set_gm_button text="Budron\Demolition" />
-    <set_gm_button text="Budron\Cargo" />
-    <set_gm_button text="Budron\Q-Ship" />
-    <set_gm_button text="Budron\Platform" />
-    <set_gm_button text="Sechatzal\Spectre" />
-    <set_gm_button text="Sechatzal\Ghost" />
-    <set_gm_button text="Sechatzal\Wraith" />
-    <!--Change Default Side-->
-    <clear_gm_button text="Change" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <set_gm_button text="Change" x="205" y="100" h="30" w="60" />
-    <set_gm_button text="5" x="180" y="100" h="30" w="20" />
-    <set_variable name="SideValue" value="5.0" integer="yes" />
-    <set_variable name="Ship Spawn Menu" value="1.0" />
-  </event>
   <folder_arme name="Budron" id_arme="b29555a5-21d6-468d-8466-ce9d72dbd6bd" parent_id_arme="575c1af4-cfa8-4d0c-9490-88dcedd93e96" />
   <event name="Devastator" id_arme="98035107-b765-42da-af0c-ab8d1a377137" parent_id_arme="b29555a5-21d6-468d-8466-ce9d72dbd6bd">
     <if_gm_button text="Budron\Devastator" />
@@ -38849,25 +37533,12 @@
   <event name="POI Keys Menu" id_arme="b9e08eca-2cd2-43e7-9b80-2d3551940165" parent_id_arme="16ea2536-7911-4199-bcd8-d74f63c6379b">
     <if_timer_finished name="GM Menu" />
     <if_variable name="GM Menu" comparator="EQUALS" value="7.0" />
-    <set_gm_button text="Clear" x="120" y="60" h="30" w="60" />
-    <set_gm_button text="Waypnts" x="100" y="100" h="30" w="80" />
-    <set_gm_button text="Scan Pts" x="100" y="135" h="30" w="80" />
-    <set_gm_button text="Debris" x="100" y="170" h="30" w="80" />
-    <set_gm_button text="Rndz. Pts" x="100" y="205" h="30" w="80" />
-    <set_gm_button text="Anomalies" x="100" y="240" h="30" w="80" />
     <set_variable name="POI Menu" value="1.0" integer="yes" />
     <set_variable name="GM Menu" value="2.0" integer="yes" />
   </event>
   <event name="Back to Main Menu" id_arme="5a6af33f-5dbe-47a1-bbc6-7f8571766eb4" parent_id_arme="16ea2536-7911-4199-bcd8-d74f63c6379b">
     <if_variable name="GM Menu" comparator="EQUALS" value="2.0" />
     <if_gm_button text="Clear" />
-    <clear_gm_button text="Clear" />
-    <clear_gm_button text="Waypnts" />
-    <clear_gm_button text="Rndz. Pts" />
-    <clear_gm_button text="Anomalies" />
-    <clear_gm_button text="Artefacts" />
-    <clear_gm_button text="Debris" />
-    <clear_gm_button text="Scan Pts" />
     <set_variable name="CyclePOIMenu" value="1.0" integer="yes" />
     <set_variable name="POI Menu" value="0.0" integer="yes" />
   </event>
@@ -38875,86 +37546,6 @@
     <if_variable name="CyclePOIMenu" comparator="EQUALS" value="1.0" />
     <set_variable name="CyclePOIMenu" value="0.0" integer="yes" />
     <set_variable name="CycleDebrisMenu" value="1.0" integer="yes" />
-    <!--Waypnts-->
-    <clear_gm_button text="Waypoint SPAWN" />
-    <!--Rendezvous Points-->
-    <clear_gm_button text="Marine Actions" />
-    <clear_gm_button text="Cargo Ops" />
-    <clear_gm_button text="Medic Actions" />
-    <clear_gm_button text="Engineer Actions" />
-    <clear_gm_button text="Relay Actions" />
-    <clear_gm_button text="Deployment" />
-    <clear_gm_button text="Extraction" />
-    <clear_gm_button text="Cargo Drop" />
-    <clear_gm_button text="Cargo Pick up" />
-    <clear_gm_button text="Medic Drop" />
-    <clear_gm_button text="Medic Pick up" />
-    <clear_gm_button text="Engineer Drop" />
-    <clear_gm_button text="Engineer Pick up" />
-    <clear_gm_button text="C. Relay Drop" />
-    <clear_gm_button text="C. Relay Pick up" />
-    <clear_gm_button text="S. Buoy Drop" />
-    <clear_gm_button text="S. Buoy Pick up" />
-    <clear_gm_button text="Cancel" />
-    <!--Debris-->
-    <clear_gm_button text="Wrecks:" />
-    <clear_gm_button text="TSN" />
-    <clear_gm_button text="USFP" />
-    <clear_gm_button text="Ximni" />
-    <clear_gm_button text="Hjorden" />
-    <clear_gm_button text="Hegemony" />
-    <clear_gm_button text="USF" />
-    <clear_gm_button text="N'Tani" />
-    <clear_gm_button text="Pirate" />
-    <clear_gm_button text="Caltron" />
-    <clear_gm_button text="Biomech" />
-    <clear_gm_button text="Bases" />
-    <!--Scan Points-->
-    <clear_gm_button text="Allies\TSN Signatures\Energy Signatures" />
-    <clear_gm_button text="Allies\TSN Signatures\Weapons Signatures" />
-    <clear_gm_button text="Allies\TSN Signatures\Warp Signatures" />
-    <clear_gm_button text="Enemy Signature\Slingshot Signature" />
-    <clear_gm_button text="Enemy Signature\Kraliens\Energy Signatures" />
-    <clear_gm_button text="Enemy Signature\Kraliens\Weapons Signatures" />
-    <clear_gm_button text="Enemy Signature\Kraliens\Comms Signatures" />
-    <clear_gm_button text="Enemy Signature\Kraliens\Hull Signatures" />
-    <clear_gm_button text="Enemy Signature\Torgoth\Energy Signatures" />
-    <clear_gm_button text="Enemy Signature\Torgoth\Weapons Signatures" />
-    <clear_gm_button text="Enemy Signature\Torgoth\Hull Signatures" />
-    <clear_gm_button text="Enemy Signature\Torgoth\Comms Signatures" />
-    <clear_gm_button text="Enemy Signature\Arvonian\Energy Signatures" />
-    <clear_gm_button text="Enemy Signature\Arvonian\Weapons Signatures" />
-    <clear_gm_button text="Enemy Signature\Arvonian\Slingshot Signatures" />
-    <clear_gm_button text="Enemy Signature\Pirates\Energy Signatures" />
-    <clear_gm_button text="Enemy Signature\Pirates\Weapons Signatures" />
-    <clear_gm_button text="Enemy Signature\Pirates\Warp Signatures" />
-    <clear_gm_button text="Enemy Signature\Skaraan\Jump Signatures" />
-    <clear_gm_button text="Enemy Signature\Skaraan\Weapons Signatures" />
-    <clear_gm_button text="Enemy Signature\Skaraan\Warp Signatures" />
-    <clear_gm_button text="Enemy Signature\Skaraan\Comms Signatures" />
-    <clear_gm_button text="Enemy Signature\Skaraan\Cloak Signatures" />
-    <clear_gm_button text="Mobile Signature\Skaraan\Heading 0" />
-    <clear_gm_button text="Mobile Signature\Skaraan\Heading 45" />
-    <clear_gm_button text="Mobile Signature\Skaraan\Heading 90" />
-    <clear_gm_button text="Mobile Signature\Skaraan\Heading 135" />
-    <clear_gm_button text="Mobile Signature\Skaraan\Heading 180" />
-    <clear_gm_button text="Mobile Signature\Skaraan\Heading 225" />
-    <clear_gm_button text="Mobile Signature\Skaraan\Heading 270" />
-    <clear_gm_button text="Mobile Signature\Skaraan\Heading 315" />
-    <!--Anomalies-->
-    <clear_gm_button text="Spawn Anomaly\Energy" />
-    <clear_gm_button text="Spawn Anomaly\DamCons" />
-    <clear_gm_button text="Spawn Anomaly\Heat" />
-    <clear_gm_button text="Spawn Anomaly\Scan" />
-    <clear_gm_button text="Spawn Anomaly\Beam" />
-    <clear_gm_button text="Spawn Anomaly\Speed" />
-    <clear_gm_button text="Spawn Anomaly\Shield" />
-    <clear_gm_button text="Spawn Anomaly\Code Case" />
-    <set_variable name="Lifepod Menu" value="0.0" integer="yes" />
-    <set_variable name="Blackbox Menu" value="0.0" integer="yes" />
-    <set_variable name="Artefact Menu" value="0.0" integer="yes" />
-    <set_variable name="Artefact Menu" value="0.0" integer="yes" />
-    <set_variable name="Debris Menu" value="0.0" integer="yes" />
   </event>
   <event name="Activate Waypoints" id_arme="b9949be3-e2dd-44ef-933f-735a11a649a8" parent_id_arme="16ea2536-7911-4199-bcd8-d74f63c6379b">
     <if_variable name="POI Menu" comparator="EQUALS" value="1.0" />
@@ -41081,78 +39672,12 @@
     <if_timer_finished name="GM Menu" />
     <if_variable name="GM Menu" comparator="EQUALS" value="8.0" />
     <set_gm_button text="Clear" x="120" y="60" h="30" w="60" />
-    <set_gm_button text="Terrain\Blackhole" />
-    <set_gm_button text="Terrain\Radiation Point" />
-    <set_gm_button text="Terrain\Nebulae\Single Nebula (Purple)" />
-    <set_gm_button text="Terrain\Nebulae\Sml Nebula Cluster (Purple)" />
-    <set_gm_button text="Terrain\Nebulae\Med Nebula Cluster (Purple)" />
-    <set_gm_button text="Terrain\Nebulae\Lrg Nebula Cluster (Purple)" />
-    <set_gm_button text="Terrain\Nebulae\Single Nebula (Yellow)" />
-    <set_gm_button text="Terrain\Nebulae\Sml Nebula Cluster (Yellow)" />
-    <set_gm_button text="Terrain\Nebulae\Med Nebula Cluster (Yellow)" />
-    <set_gm_button text="Terrain\Nebulae\Lrg Nebula Cluster (Yellow)" />
-    <set_gm_button text="Terrain\Nebulae\Single Nebula (Blue)" />
-    <set_gm_button text="Terrain\Nebulae\Sml Nebula Cluster (Blue)" />
-    <set_gm_button text="Terrain\Nebulae\Med Nebula Cluster (Blue)" />
-    <set_gm_button text="Terrain\Nebulae\Lrg Nebula Cluster (Blue)" />
-    <set_gm_button text="Terrain\Asteroids\Single Asteroid" />
-    <set_gm_button text="Terrain\Asteroids\Small Field" />
-    <set_gm_button text="Terrain\Asteroids\Medium Field" />
-    <set_gm_button text="Terrain\Asteroids\Large Field" />
-    <set_gm_button text="Creatures\Shark" />
-    <set_gm_button text="Creatures\Bug" />
-    <set_gm_button text="Creatures\Charybdis" />
-    <set_gm_button text="Creatures\Space Monster" />
-    <set_gm_button text="Creatures\Pirahna Swarm" />
-    <set_gm_button text="Creatures\Dragon" />
-    <set_gm_button text="Creatures\Whale Pod" />
-    <set_gm_button text="Mines\Large Minefield (Circ.)" />
-    <set_gm_button text="Mines\Medium Minefield (Circ.)" />
-    <set_gm_button text="Mines\Small Minefield (Circ.)" />
-    <set_gm_button text="Mines\Single Mine" />
-    <!--<set_gm_button text="Asteroid\Moving 0 Degrees" />-->
-    <!--<set_gm_button text="Asteroid\Moving 45 Degrees" />-->
-    <!--<set_gm_button text="Asteroid\Moving 90 Degrees" />-->
-    <!--<set_gm_button text="Asteroid\Moving 135 Degrees" />-->
-    <!--<set_gm_button text="Asteroid\Moving 180 Degrees" />-->
-    <!--<set_gm_button text="Asteroid\Moving 225 Degrees" />-->
-    <!--<set_gm_button text="Asteroid\Moving 270 Degrees" />-->
-    <!--<set_gm_button text="Asteroid\Moving 315 Degrees" />-->
     <set_variable name="GM Menu" value="2.0" />
   </event>
   <event name="Clear" id_arme="9c7c3447-31ea-48f3-96cf-cb99c9ac5364" parent_id_arme="043c9bdc-8549-4b00-ab76-1d191d309472">
     <if_variable name="GM Menu" comparator="EQUALS" value="2.0" />
     <if_gm_button text="Clear" />
     <clear_gm_button text="Clear" />
-    <clear_gm_button text="Terrain\Blackhole" />
-    <clear_gm_button text="Terrain\Radiation Point" />
-    <clear_gm_button text="Terrain\Nebulae\Single Nebula (Purple)" />
-    <clear_gm_button text="Terrain\Nebulae\Sml Nebula Cluster (Purple)" />
-    <clear_gm_button text="Terrain\Nebulae\Med Nebula Cluster (Purple)" />
-    <clear_gm_button text="Terrain\Nebulae\Lrg Nebula Cluster (Purple)" />
-    <clear_gm_button text="Terrain\Nebulae\Single Nebula (Yellow)" />
-    <clear_gm_button text="Terrain\Nebulae\Sml Nebula Cluster (Yellow)" />
-    <clear_gm_button text="Terrain\Nebulae\Med Nebula Cluster (Yellow)" />
-    <clear_gm_button text="Terrain\Nebulae\Lrg Nebula Cluster (Yellow)" />
-    <clear_gm_button text="Terrain\Nebulae\Single Nebula (Blue)" />
-    <clear_gm_button text="Terrain\Nebulae\Sml Nebula Cluster (Blue)" />
-    <clear_gm_button text="Terrain\Nebulae\Med Nebula Cluster (Blue)" />
-    <clear_gm_button text="Terrain\Nebulae\Lrg Nebula Cluster (Blue)" />
-    <clear_gm_button text="Terrain\Asteroids\Single Asteroid" />
-    <clear_gm_button text="Terrain\Asteroids\Small Field" />
-    <clear_gm_button text="Terrain\Asteroids\Medium Field" />
-    <clear_gm_button text="Terrain\Asteroids\Large Field" />
-    <clear_gm_button text="Creatures\Shark" />
-    <clear_gm_button text="Creatures\Bug" />
-    <clear_gm_button text="Creatures\Charybdis" />
-    <clear_gm_button text="Creatures\Space Monster" />
-    <clear_gm_button text="Creatures\Pirahna Swarm" />
-    <clear_gm_button text="Creatures\Dragon" />
-    <clear_gm_button text="Creatures\Whale Pod" />
-    <clear_gm_button text="Mines\Large Minefield (Circ.)" />
-    <clear_gm_button text="Mines\Medium Minefield (Circ.)" />
-    <clear_gm_button text="Mines\Small Minefield (Circ.)" />
-    <clear_gm_button text="Mines\Single Mine" />
   </event>
   <folder_arme name="Minefields" id_arme="db3263b3-984a-48c5-b0c0-b1233fae129e" parent_id_arme="043c9bdc-8549-4b00-ab76-1d191d309472" />
   <event name="Single Mine" id_arme="c56d9e38-89c9-4c2f-9822-6a8b31544054" parent_id_arme="db3263b3-984a-48c5-b0c0-b1233fae129e">
@@ -41364,13 +39889,6 @@
     <if_timer_finished name="GM Menu" />
     <if_variable name="GM Menu" comparator="EQUALS" value="10.0" />
     <set_gm_button text="Clear" x="120" y="60" h="30" w="60" />
-    <set_gm_button text="Messages" x="100" y="100" h="30" w="90" />
-    <set_gm_button text="Supplies" x="100" y="135" h="30" w="90" />
-    <set_gm_button text="Rprs/Dmge" x="100" y="170" h="30" w="90" />
-    <set_gm_button text="Sensors" x="100" y="205" h="30" w="90" />
-    <set_gm_button text="Brd Act." x="100" y="240" h="30" w="90" />
-    <set_gm_button text="Scan Text" x="100" y="275" h="30" w="90" />
-    <set_gm_button text="Reset Comms" x="100" y="310" h="30" w="90" />
     <set_variable name="Interactions Menu" value="1.0" integer="yes" />
     <set_variable name="GM Menu" value="2.0" integer="yes" />
   </event>
@@ -41378,13 +39896,6 @@
     <if_variable name="GM Menu" comparator="EQUALS" value="2.0" />
     <if_gm_button text="Clear" />
     <clear_gm_button text="Clear" />
-    <clear_gm_button text="Messages" />
-    <clear_gm_button text="Supplies" />
-    <clear_gm_button text="Rprs/Dmge" />
-    <clear_gm_button text="Sensors" />
-    <clear_gm_button text="Scan Text" />
-    <clear_gm_button text="Brd Act." />
-    <clear_gm_button text="Reset Comms" />
     <set_variable name="CycleInteractionsMenu" value="1.0" integer="yes" />
   </event>
   <event name="Cycle Menu" id_arme="4929d044-3a92-4bac-93e8-3b0aed2b6ac9" parent_id_arme="c3aaadcc-fe4b-4a02-8f3a-f263ccfd6c99">
@@ -47421,60 +45932,12 @@
     <if_timer_finished name="GM Menu" />
     <if_variable name="GM Menu" comparator="EQUALS" value="12.0" />
     <set_gm_button text="Clear" x="120" y="60" h="30" w="60" />
-    <set_gm_button text="Menu 1\Custom 1A" />
-    <set_gm_button text="Menu 1\Custom 1B" />
-    <!--<set_gm_button text="Menu 1\Custom 1C" />-->
-    <!--<set_gm_button text="Menu 1\Custom 1D" />-->
-    <!--<set_gm_button text="Menu 1\Custom 1E" />-->
-    <!--<set_gm_button text="Menu 1\Custom 1F" />-->
-    <!--<set_gm_button text="Menu 2\Custom 2A" />-->
-    <!--<set_gm_button text="Menu 2\Custom 2B" />-->
-    <!--<set_gm_button text="Menu 2\Custom 2C" />-->
-    <!--<set_gm_button text="Menu 2\Custom 2D" />-->
-    <!--<set_gm_button text="Menu 2\Custom 2E" />-->
-    <!--<set_gm_button text="Menu 2\Custom 2F" />-->
-    <!--<set_gm_button text="Menu 3\Custom 3A" />-->
-    <!--<set_gm_button text="Menu 3\Custom 3B" />-->
-    <!--<set_gm_button text="Menu 3\Custom 3C" />-->
-    <!--<set_gm_button text="Menu 3\Custom 3D" />-->
-    <!--<set_gm_button text="Menu 3\Custom 3E" />-->
-    <!--<set_gm_button text="Menu 3\Custom 3F" />-->
-    <!--<set_gm_button text="Menu 4\Custom 4A" />-->
-    <!--<set_gm_button text="Menu 4\Custom 4B" />-->
-    <!--<set_gm_button text="Menu 4\Custom 4C" />-->
-    <!--<set_gm_button text="Menu 4\Custom 4D" />-->
-    <!--<set_gm_button text="Menu 4\Custom 4E" />-->
-    <!--<set_gm_button text="Menu 4\Custom 4F" />-->
     <set_variable name="GM Menu" value="2.0" />
   </event>
   <event name="Clear" id_arme="1941c4f9-f813-4ff0-a319-26aec489d539" parent_id_arme="a4eb80ae-97a6-49ea-8d5c-aab308c0ea87">
     <if_variable name="GM Menu" comparator="EQUALS" value="2.0" />
     <if_gm_button text="Clear" />
     <clear_gm_button text="Clear" />
-    <clear_gm_button text="Menu 4\Custom 4F" />
-    <clear_gm_button text="Menu 4\Custom 4E" />
-    <clear_gm_button text="Menu 4\Custom 4D" />
-    <clear_gm_button text="Menu 4\Custom 4C" />
-    <clear_gm_button text="Menu 4\Custom 4B" />
-    <clear_gm_button text="Menu 4\Custom 4A" />
-    <clear_gm_button text="Menu 3\Custom 3F" />
-    <clear_gm_button text="Menu 3\Custom 3E" />
-    <clear_gm_button text="Menu 3\Custom 3D" />
-    <clear_gm_button text="Menu 3\Custom 3C" />
-    <clear_gm_button text="Menu 3\Custom 3B" />
-    <clear_gm_button text="Menu 3\Custom 3A" />
-    <clear_gm_button text="Menu 2\Custom 2F" />
-    <clear_gm_button text="Menu 2\Custom 2E" />
-    <clear_gm_button text="Menu 2\Custom 2D" />
-    <clear_gm_button text="Menu 2\Custom 2C" />
-    <clear_gm_button text="Menu 2\Custom 2B" />
-    <clear_gm_button text="Menu 2\Custom 2A" />
-    <clear_gm_button text="Menu 1\Custom 1F" />
-    <clear_gm_button text="Menu 1\Custom 1E" />
-    <clear_gm_button text="Menu 1\Custom 1D" />
-    <clear_gm_button text="Menu 1\Custom 1C" />
-    <clear_gm_button text="Menu 1\Custom 1B" />
-    <clear_gm_button text="Menu 1\Custom 1A" />
   </event>
   <folder_arme name="Menu 1" id_arme="0fc9dd71-2783-4713-a773-bca1116e079d" parent_id_arme="a4eb80ae-97a6-49ea-8d5c-aab308c0ea87" />
   <event name="Custom 1A" id_arme="7cbbe37d-6ec1-46fe-808c-f304306ad0a4" parent_id_arme="0fc9dd71-2783-4713-a773-bca1116e079d">

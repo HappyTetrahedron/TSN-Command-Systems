@@ -1,0 +1,1013 @@
+  <folder_arme name="GM Menus" id_arme="a63d8b7a-dd61-481e-b818-312ef7f7af5f" />
+  {% macro createMenu(name, id) %}
+  <event name="Menu Create {{ name }}">
+    <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ id }}.0" />
+    <if_variable name="GM_Menu_{{ name }}_Active" comparator="NOT" value="1.0" />
+    <set_variable name="GM_Menu_{{ name }}_Active" value="1.0" integer="yes" />
+  {% endmacro %}
+  {% macro destroyMenu(name, id) %}
+  <event name="Menu Destroy {{ name }}">
+    <if_variable name="GM_Menu_Selector" comparator="NOT" value="{{ id }}.0" />
+    <if_variable name="GM_Menu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
+    <set_variable name="GM_Menu_{{ name }}_Active" value="0.0" integer="yes" />
+    {% endmacro %}
+  {% macro menuEvent(name, id, triggerButton) %}
+  <event name="Menu Activate {{ name }}">
+    <if_gm_button text="{{triggerButton}}" />
+    <set_variable name="GM_Menu_Selector" value="{{ id }}.0" integer="yes" />
+  </event>
+  {% endmacro %}
+  {% macro createSpawnMenu(name, id) %}
+  <event name="Spawn Menu Create {{ name }}">
+    <if_variable name="GM_SpawnMenu_Selector" comparator="EQUALS" value="{{ id }}.0" />
+    <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="2.0" />
+    <if_variable name="GM_SpawnMenu_{{ name }}_Active" comparator="NOT" value="1.0" />
+    <set_variable name="GM_SpawnMenu_{{ name }}_Active" value="1.0" integer="yes" />
+  {% endmacro %}
+  {% macro spawnmenuEvent(name, triggerButton, id) %}
+  <event name="SpawnMenu Activate {{ name }}">
+    <if_gm_button text="{{triggerButton}}" />
+    <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="2.0" />
+    {% endif %}
+    <set_variable name="GM_SpawnMenuu_Selector" value="{{ id }}.0" integer="yes" />
+  </event>
+  {% endmacro %}
+  {% macro destroySpawnMenu(name, id) %}
+  <event name="Spawn Menu Destroy {{ name }}">
+    <if_variable name="GM_SpawnMenu_Selector" comparator="NOT" value="{{ id }}.0" />
+    <if_variable name="GM_SpawnMenu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
+    <set_variable name="GM_SpawnMenu_{{ name }}_Active" value="0.0" integer="yes" />
+  {% endmacro %}
+  {% macro createSubMenu(name) %}
+  <event name="SubMenu Create {{ name }}">
+    <if_variable name="GM_Submenu_{{ name }}_ShouldShow" comparator="EQUALS" value="1.0" />
+    <if_variable name="GM_Submenu_{{ name }}_Active" comparator="NOT" value="1.0" />
+    <set_variable name="GM_Submenu_{{ name }}_Active" value="1.0" integer="yes" />
+  {% endmacro %}
+  {% macro destroySubMenu(name) %}
+    <event name="SubMenu Destroy {{ name }}">
+      <if_variable name="GM_Submenu_{{ name }}_ShouldShow" comparator="NOT" value="1.0" />
+      <if_variable name="GM_Submenu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
+      <set_variable name="GM_Submenu_{{ name }}_Active" value="0.0" integer="yes" />
+  {% endmacro %}
+  {% macro dismissEvent(name, buttonPath) %}
+  <event name="SubMenu Dismiss {{ name }}">
+    <if_gm_button text="{{buttonPath}}" />
+    <set_variable name="GM_Submenu_{{ name }}_ShouldShow" value="0.0" integer="yes" />
+  </event>
+  {% endmacro %}
+  {% macro submenuEvent(name, triggerButton, guard=0) %}
+  <event name="SubMenu Activate {{ name }}">
+    <if_gm_button text="{{triggerButton}}" />
+    {% if guard > 0 %}
+      <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ guard }}.0" />
+    {% endif %}
+    <set_variable name="GM_Submenu_{{ name }}_ShouldShow" value="1.0" integer="yes" />
+  </event>
+  {% endmacro %}
+  {{ createMenu("Base", 1) }}
+    <!---->
+    <set_gm_button text="SlctdToGM" x="100" y="100" h="28" w="90" />
+    <set_gm_button text="DelTerrain" x="100" y="130" h="28" w="90" />
+    <set_gm_button text="DelShips" x="100" y="160" h="28" w="90" />
+    <set_gm_button text="LockSect" x="100" y="190" h="28" w="90" />
+    <set_gm_button text="PlyrToGM" x="195" y="100" h="28" w="90" />
+    <set_gm_button text="DelAllMines" x="195" y="130" h="28" w="90" />
+    <set_gm_button text="DelSelected" x="195" y="160" h="28" w="90" />
+    <set_gm_button text="SetPlyrSide" x="195" y="190" h="28" w="90" />
+    <set_gm_button text="Incap" x="290" y="220" h="28" w="45" />
+    <set_gm_button text="Recap" x="335" y="220" h="28" w="45" />
+    <set_gm_button text="Pro" x="290" y="250" h="28" w="35" />
+    <set_gm_button text="The" x="325" y="250" h="28" w="35" />
+    <set_gm_button text="Ody" x="360" y="250" h="28" w="35" />
+    <!---->
+    <set_gm_button text="Transitions" x="100" y="220" h="28" w="90" />
+    <set_gm_button text="UP   /\" x="130" y="250" h="25" w="30" />
+    <set_gm_button text="RIGHT   &gt;&gt;" x="160" y="280" h="25" w="30" />
+    <set_gm_button text="LEFT   &lt;&lt;" x="100" y="280" h="25" w="30" />
+    <set_gm_button text="DOWN    V" x="130" y="310" h="25" w="30" />
+    <!---->
+    <set_gm_button text="Configure System Side\Default Side" />
+    <set_gm_button text="Configure System Side\Hegemony (Side 1)" />
+    <set_gm_button text="Configure System Side\USFP (Side 2 Player)" />
+    <set_gm_button text="Configure System Side\USF (Side 3)" />
+    <set_gm_button text="Configure System Side\N'Tani (Side 4)" />
+    <set_gm_button text="Configure System Side\Pirate (Side 5)" />
+    <set_gm_button text="Configure System Side\Caltron (Side 6)" />
+    <set_gm_button text="Configure Sector Side\Default Side" />
+    <set_gm_button text="Configure Sector Side\Hegemony (Side 1)" />
+    <set_gm_button text="Configure Sector Side\USFP (Side 2 Player)" />
+    <set_gm_button text="Configure Sector Side\USF (Side 3)" />
+    <set_gm_button text="Configure Sector Side\N'Tani (Side 4)" />
+    <set_gm_button text="Configure Sector Side\Pirate (Side 5)" />
+    <set_gm_button text="Configure Sector Side\Caltron (Side 6)" />
+    <set_variable name="Shortcut Keys" value="1.0" />
+  </event>
+  {{ destroyMenu("Base", 1) }}
+    <!--Basic Keys-->
+    <clear_gm_button text="SlctdToGM" />
+    <clear_gm_button text="DelTerrain" />
+    <clear_gm_button text="DelAllMines" />
+    <clear_gm_button text="DelSelected" />
+    <clear_gm_button text="ClrMeshes" />
+    <clear_gm_button text="DelShips" />
+    <clear_gm_button text="LockSect" />
+    <clear_gm_button text="UnlockSect" />
+    <clear_gm_button text="Pro" />
+    <clear_gm_button text="The" />
+    <clear_gm_button text="Ody" />
+    <clear_gm_button text="Incap" />
+    <clear_gm_button text="Recap" />
+    <clear_gm_button text="UP   /\" />
+    <clear_gm_button text="RIGHT   &gt;&gt;" />
+    <clear_gm_button text="DOWN    V" />
+    <clear_gm_button text="LEFT   &lt;&lt;" />
+    <clear_gm_button text="Transitions" />
+    <clear_gm_button text="PlyrToGM" />
+    <clear_gm_button text="SetPlyrSide" />
+    <clear_gm_button text="Configure System Side\Default Side" />
+    <clear_gm_button text="Configure System Side\Hegemony (Side 1)" />
+    <clear_gm_button text="Configure System Side\USFP (Side 2 Player)" />
+    <clear_gm_button text="Configure System Side\USF (Side 3)" />
+    <clear_gm_button text="Configure System Side\N'Tani (Side 4)" />
+    <clear_gm_button text="Configure System Side\Pirate (Side 5)" />
+    <clear_gm_button text="Configure System Side\Caltron (Side 6)" />
+    <clear_gm_button text="Configure Sector Side\Default Side" />
+    <clear_gm_button text="Configure Sector Side\Hegemony (Side 1)" />
+    <clear_gm_button text="Configure Sector Side\USFP (Side 2 Player)" />
+    <clear_gm_button text="Configure Sector Side\USF (Side 3)" />
+    <clear_gm_button text="Configure Sector Side\N'Tani (Side 4)" />
+    <clear_gm_button text="Configure Sector Side\Pirate (Side 5)" />
+    <clear_gm_button text="Configure Sector Side\Caltron (Side 6)" />
+    <set_variable name="Shortcut Keys" value="0.0" />
+  </event>
+  {{ menuEvent("Basic", 1, "Bas.") }}
+  {{ createMenu("Spawn", 2) }}
+    <set_variable name="GM_SpawnMenu_Selector" value="GM_SpawnMenu_Selector_Stored" integer="yes" />
+    <set_gm_button text="Side Value:" x="95" y="100" h="30" w="80" />
+    <set_gm_button text="1" x="180" y="100" h="30" w="20" />
+    <set_gm_button text="Change" x="205" y="100" h="30" w="60" />
+    <set_gm_button text="AI Setting:" x="95" y="135" h="30" w="80" />
+    <set_gm_button text="Default" x="175" y="135" h="30" w="120" />
+    <set_gm_button text="TSN" x="100" y="170" h="30" w="70" />
+    <set_gm_button text="USFP" x="175" y="170" h="30" w="70" />
+    <set_gm_button text="Ximni" x="100" y="205" h="30" w="70" />
+    <set_gm_button text="Hjorden" x="175" y="205" h="30" w="70" />
+    <set_gm_button text="Hegemony" x="100" y="240" h="30" w="70" />
+    <set_gm_button text="USF" x="175" y="240" h="30" w="70" />
+    <set_gm_button text="N'Tani" x="100" y="275" h="30" w="70" />
+    <set_gm_button text="Pirate" x="175" y="275" h="30" w="70" />
+    <set_gm_button text="Caltron" x="100" y="310" h="30" w="70" />
+    <set_gm_button text="Biomech" x="175" y="310" h="30" w="70" />
+    <set_gm_button text="Neutrals" x="100" y="345" h="30" w="70" />
+    <set_gm_button text="Static Objects" x="100" y="380" h="30" w="145" />
+    <!--AI Menu-->
+    <set_gm_button text="Set AI Type\Default" menu_w="150" />
+    <set_gm_button text="Set AI Type\Hunt Enemies" menu_w="150" />
+    <set_gm_button text="Set AI Type\Hunt Stations" menu_w="150" />
+    <set_gm_button text="Set AI Type\Hunt(Follow)Players" menu_w="150" />
+    <set_gm_button text="Set AI Type\Guard Stations" menu_w="150" />
+    <set_gm_button text="Set AI Type\Patrol" menu_w="150" />
+    <set_gm_button text="Set AI Type\Convoy AI\Heading 0" />
+    <set_gm_button text="Set AI Type\Convoy AI\Heading 45" />
+    <set_gm_button text="Set AI Type\Convoy AI\Heading 90" />
+    <set_gm_button text="Set AI Type\Convoy AI\Heading 135" />
+    <set_gm_button text="Set AI Type\Convoy AI\Heading 180" />
+    <set_gm_button text="Set AI Type\Convoy AI\Heading 225" />
+    <set_gm_button text="Set AI Type\Convoy AI\Heading 270" />
+    <set_gm_button text="Set AI Type\Convoy AI\Heading 315" />
+    <set_variable name="AI Override" value="0.0" integer="yes" />
+    <set_variable name="SideValue" value="1.0" integer="yes" />
+  </event>
+  {{ destroyMenu("Spawn", 2) }}
+    <set_variable name="GM_SpawnMenu_Selector_Stored" value="GM_SpawnMenu_Selector" integer="yes" />
+    <set_variable name="GM_SpawnMenu_Selector" value="0.0" integer="yes" />
+    <clear_gm_button text="Set AI Type\Default" />
+    <clear_gm_button text="Set AI Type\Hunt Enemies" />
+    <clear_gm_button text="Set AI Type\Hunt Stations" />
+    <clear_gm_button text="Set AI Type\Hunt(Follow)Players" />
+    <clear_gm_button text="Set AI Type\Guard Stations" />
+    <clear_gm_button text="Set AI Type\Patrol" />
+    <clear_gm_button text="Set AI Type\Convoy AI\Heading 0" />
+    <clear_gm_button text="Set AI Type\Convoy AI\Heading 45" />
+    <clear_gm_button text="Set AI Type\Convoy AI\Heading 90" />
+    <clear_gm_button text="Set AI Type\Convoy AI\Heading 135" />
+    <clear_gm_button text="Set AI Type\Convoy AI\Heading 180" />
+    <clear_gm_button text="Set AI Type\Convoy AI\Heading 225" />
+    <clear_gm_button text="Set AI Type\Convoy AI\Heading 270" />
+    <clear_gm_button text="Set AI Type\Convoy AI\Heading 315" />
+    <clear_gm_button text="AI Setting:" />
+    <clear_gm_button text="Default" />
+    <clear_gm_button text="Patrol" />
+    <clear_gm_button text="Hunt Enemy" />
+    <clear_gm_button text="Hunt Station" />
+    <clear_gm_button text="Hunt-Follow Plyr" />
+    <clear_gm_button text="Guard Station" />
+    <clear_gm_button text="Cnvy Heading 0" />
+    <clear_gm_button text="Cnvy Heading 45" />
+    <clear_gm_button text="Cnvy Heading 180" />
+    <clear_gm_button text="Cnvy Heading 270" />
+    <clear_gm_button text="Cnvy Heading 225" />
+    <clear_gm_button text="Cnvy Heading 315" />
+    <clear_gm_button text="Cnvy Heading 90" />
+    <clear_gm_button text="Cnvy Heading 135" />
+    <!---->
+    <clear_gm_button text="Clear" />
+    <clear_gm_button text="Side Value:" />
+    <clear_gm_button text="1" />
+    <clear_gm_button text="2 (PLYR)" />
+    <clear_gm_button text="3" />
+    <clear_gm_button text="4" />
+    <clear_gm_button text="5" />
+    <clear_gm_button text="6" />
+    <clear_gm_button text="7" />
+    <clear_gm_button text="8" />
+    <clear_gm_button text="9" />
+    <clear_gm_button text="10" />
+    <clear_gm_button text="11" />
+    <clear_gm_button text="12" />
+    <clear_gm_button text="Change" />
+    <clear_gm_button text="TSN" />
+    <clear_gm_button text="USFP" />
+    <clear_gm_button text="Ximni" />
+    <clear_gm_button text="Hjorden" />
+    <clear_gm_button text="Hegemony" />
+    <clear_gm_button text="USF" />
+    <clear_gm_button text="N'Tani" />
+    <clear_gm_button text="Pirate" />
+    <clear_gm_button text="Caltron" />
+    <clear_gm_button text="Biomech" />
+    <clear_gm_button text="Static Objects" />
+    <clear_gm_button text="Neutrals" />
+    <!--Ship Spawn Keys - AI Settings-->
+    <clear_gm_button text="Set AI Type\Default" />
+    <clear_gm_button text="Set AI Type\Hunt Enemies" />
+    <clear_gm_button text="Set AI Type\Hunt Stations" />
+    <clear_gm_button text="Set AI Type\Hunt(Follow)Players" />
+    <clear_gm_button text="Set AI Type\Guard Stations" />
+    <clear_gm_button text="Set AI Type\Patrol" />
+    <clear_gm_button text="Set AI Type\Convoy AI\Heading 0" />
+    <clear_gm_button text="Set AI Type\Convoy AI\Heading 45" />
+    <clear_gm_button text="Set AI Type\Convoy AI\Heading 90" />
+    <clear_gm_button text="Set AI Type\Convoy AI\Heading 135" />
+    <clear_gm_button text="Set AI Type\Convoy AI\Heading 180" />
+    <clear_gm_button text="Set AI Type\Convoy AI\Heading 225" />
+    <clear_gm_button text="Set AI Type\Convoy AI\Heading 270" />
+    <clear_gm_button text="Set AI Type\Convoy AI\Heading 315" />
+    <clear_gm_button text="Patrol Cancel" />
+    <clear_gm_button text="AI Setting:" />
+    <clear_gm_button text="Default" />
+    <clear_gm_button text="Hunt Enemy" />
+    <clear_gm_button text="Hunt Station" />
+    <clear_gm_button text="Hunt-Follow Plyr" />
+    <clear_gm_button text="Guard Station" />
+    <clear_gm_button text="Patrol" />
+    <clear_gm_button text="Patrol Ready" />
+    <clear_gm_button text="Patrol Cancel" />
+    <clear_gm_button text="Cnvy Heading 0" />
+    <clear_gm_button text="Cnvy Heading 45" />
+    <clear_gm_button text="Cnvy Heading 180" />
+    <clear_gm_button text="Cnvy Heading 270" />
+    <clear_gm_button text="Cnvy Heading 225" />
+    <clear_gm_button text="Cnvy Heading 315" />
+    <clear_gm_button text="Cnvy Heading 90" />
+    <clear_gm_button text="Cnvy Heading 135" />
+  </event>
+  {{ menuEvent("Spawn", 2, "SPWN.") }}
+  {{ createMenu("POI", 3) }}
+    <set_gm_button text="Clear" x="120" y="60" h="30" w="60" />
+    <set_gm_button text="Waypnts" x="100" y="100" h="30" w="80" />
+    <set_gm_button text="Scan Pts" x="100" y="135" h="30" w="80" />
+    <set_gm_button text="Debris" x="100" y="170" h="30" w="80" />
+    <set_gm_button text="Rndz. Pts" x="100" y="205" h="30" w="80" />
+    <set_gm_button text="Anomalies" x="100" y="240" h="30" w="80" />
+  </event>
+  {{ destroyMenu("POI", 3) }}
+  <clear_gm_button text="Clear" />
+  <clear_gm_button text="Waypnts" />
+  <clear_gm_button text="Rndz. Pts" />
+  <clear_gm_button text="Anomalies" />
+  <clear_gm_button text="Artefacts" />
+  <clear_gm_button text="Debris" />
+  <clear_gm_button text="Scan Pts" />
+  <!--Waypnts-->
+  <clear_gm_button text="Waypoint SPAWN" />
+  <!--Rendezvous Points-->
+  <clear_gm_button text="Marine Actions" />
+  <clear_gm_button text="Cargo Ops" />
+  <clear_gm_button text="Medic Actions" />
+  <clear_gm_button text="Engineer Actions" />
+  <clear_gm_button text="Relay Actions" />
+  <clear_gm_button text="Deployment" />
+  <clear_gm_button text="Extraction" />
+  <clear_gm_button text="Cargo Drop" />
+  <clear_gm_button text="Cargo Pick up" />
+  <clear_gm_button text="Medic Drop" />
+  <clear_gm_button text="Medic Pick up" />
+  <clear_gm_button text="Engineer Drop" />
+  <clear_gm_button text="Engineer Pick up" />
+  <clear_gm_button text="C. Relay Drop" />
+  <clear_gm_button text="C. Relay Pick up" />
+  <clear_gm_button text="S. Buoy Drop" />
+  <clear_gm_button text="S. Buoy Pick up" />
+  <clear_gm_button text="Cancel" />
+  <!--Debris-->
+  <clear_gm_button text="Wrecks:" />
+  <clear_gm_button text="TSN" />
+  <clear_gm_button text="USFP" />
+  <clear_gm_button text="Ximni" />
+  <clear_gm_button text="Hjorden" />
+  <clear_gm_button text="Hegemony" />
+  <clear_gm_button text="USF" />
+  <clear_gm_button text="N'Tani" />
+  <clear_gm_button text="Pirate" />
+  <clear_gm_button text="Caltron" />
+  <clear_gm_button text="Biomech" />
+  <clear_gm_button text="Bases" />
+  <!--Scan Points-->
+  <clear_gm_button text="Allies\TSN Signatures\Energy Signatures" />
+  <clear_gm_button text="Allies\TSN Signatures\Weapons Signatures" />
+  <clear_gm_button text="Allies\TSN Signatures\Warp Signatures" />
+  <clear_gm_button text="Enemy Signature\Slingshot Signature" />
+  <clear_gm_button text="Enemy Signature\Kraliens\Energy Signatures" />
+  <clear_gm_button text="Enemy Signature\Kraliens\Weapons Signatures" />
+  <clear_gm_button text="Enemy Signature\Kraliens\Comms Signatures" />
+  <clear_gm_button text="Enemy Signature\Kraliens\Hull Signatures" />
+  <clear_gm_button text="Enemy Signature\Torgoth\Energy Signatures" />
+  <clear_gm_button text="Enemy Signature\Torgoth\Weapons Signatures" />
+  <clear_gm_button text="Enemy Signature\Torgoth\Hull Signatures" />
+  <clear_gm_button text="Enemy Signature\Torgoth\Comms Signatures" />
+  <clear_gm_button text="Enemy Signature\Arvonian\Energy Signatures" />
+  <clear_gm_button text="Enemy Signature\Arvonian\Weapons Signatures" />
+  <clear_gm_button text="Enemy Signature\Arvonian\Slingshot Signatures" />
+  <clear_gm_button text="Enemy Signature\Pirates\Energy Signatures" />
+  <clear_gm_button text="Enemy Signature\Pirates\Weapons Signatures" />
+  <clear_gm_button text="Enemy Signature\Pirates\Warp Signatures" />
+  <clear_gm_button text="Enemy Signature\Skaraan\Jump Signatures" />
+  <clear_gm_button text="Enemy Signature\Skaraan\Weapons Signatures" />
+  <clear_gm_button text="Enemy Signature\Skaraan\Warp Signatures" />
+  <clear_gm_button text="Enemy Signature\Skaraan\Comms Signatures" />
+  <clear_gm_button text="Enemy Signature\Skaraan\Cloak Signatures" />
+  <clear_gm_button text="Mobile Signature\Skaraan\Heading 0" />
+  <clear_gm_button text="Mobile Signature\Skaraan\Heading 45" />
+  <clear_gm_button text="Mobile Signature\Skaraan\Heading 90" />
+  <clear_gm_button text="Mobile Signature\Skaraan\Heading 135" />
+  <clear_gm_button text="Mobile Signature\Skaraan\Heading 180" />
+  <clear_gm_button text="Mobile Signature\Skaraan\Heading 225" />
+  <clear_gm_button text="Mobile Signature\Skaraan\Heading 270" />
+  <clear_gm_button text="Mobile Signature\Skaraan\Heading 315" />
+  <!--Anomalies-->
+  <clear_gm_button text="Spawn Anomaly\Energy" />
+  <clear_gm_button text="Spawn Anomaly\DamCons" />
+  <clear_gm_button text="Spawn Anomaly\Heat" />
+  <clear_gm_button text="Spawn Anomaly\Scan" />
+  <clear_gm_button text="Spawn Anomaly\Beam" />
+  <clear_gm_button text="Spawn Anomaly\Speed" />
+  <clear_gm_button text="Spawn Anomaly\Shield" />
+  <clear_gm_button text="Spawn Anomaly\Code Case" />
+  <set_variable name="Lifepod Menu" value="0.0" integer="yes" />
+  <set_variable name="Blackbox Menu" value="0.0" integer="yes" />
+  <set_variable name="Artefact Menu" value="0.0" integer="yes" />
+  <set_variable name="Artefact Menu" value="0.0" integer="yes" />
+  <set_variable name="Debris Menu" value="0.0" integer="yes" />
+  </event>
+  {{ menuEvent("POI", 3, "POI") }}
+  {{ createMenu("Hazard", 4) }}
+    <set_gm_button text="Terrain" x="100" y="100" h="30" w="80" />
+    <set_gm_button text="Creatures" x="100" y="135" h="30" w="80" />
+    <set_gm_button text="Mines" x="100" y="170" h="30" w="80" />
+  </event>
+  {{ destroyMenu("Hazard", 4) }}
+    <clear_gm_button text="Terrain" />
+    <clear_gm_button text="Creatures" />
+    <clear_gm_button text="Mines" />
+  </event>
+  {{ menuEvent("Hazard", 4, "Haz.") }}
+  {{ createMenu("Interaction", 5) }}
+    <set_gm_button text="Messages" x="100" y="100" h="30" w="90" />
+    <set_gm_button text="Supplies" x="100" y="135" h="30" w="90" />
+    <set_gm_button text="Rprs/Dmge" x="100" y="170" h="30" w="90" />
+    <set_gm_button text="Sensors" x="100" y="205" h="30" w="90" />
+    <set_gm_button text="Brd Act." x="100" y="240" h="30" w="90" />
+    <set_gm_button text="Scan Text" x="100" y="275" h="30" w="90" />
+    <set_gm_button text="Reset Comms" x="100" y="310" h="30" w="90" />
+  </event>
+  {{ destroyMenu("Interaction", 5) }}
+    <clear_gm_button text="Clear" />
+    <clear_gm_button text="Messages" />
+    <clear_gm_button text="Supplies" />
+    <clear_gm_button text="Rprs/Dmge" />
+    <clear_gm_button text="Sensors" />
+    <clear_gm_button text="Scan Text" />
+    <clear_gm_button text="Brd Act." />
+    <clear_gm_button text="Reset Comms" />
+  </event>
+  {{ menuEvent("Interaction", 5, "Int.") }}
+  {{ createMenu("Custom", 6) }}
+  </event>
+  {{ destroyMenu("Custom", 6) }}
+  </event>
+  {{ menuEvent("Custom", 6, "CSTM") }}
+
+  {{ spawnmenuEvent("SpawnTSN", "TSN", 1) }}
+  {{ spawnmenuEvent("SpawnUSFP", "USFP", 2) }}
+  {{ spawnmenuEvent("SpawnXimni", "Ximni", 3) }}
+  {{ spawnmenuEvent("SpawnHjorden", "Hjorden", 4) }}
+  {{ spawnmenuEvent("SpawnHegemony", "Hegemony", 5) }}
+  {{ spawnmenuEvent("SpawnUSF", "USF", 6) }}
+  {{ spawnmenuEvent("SpawnNtani", "N'Tani", 7) }}
+  {{ spawnmenuEvent("SpawnPirate", "Pirate", 8) }}
+  {{ spawnmenuEvent("SpawnNeutrals", "Neutrals", 9) }}
+  {{ spawnmenuEvent("SpawnCaltron", "Caltron", 10) }}
+  {{ spawnmenuEvent("SpawnBiomech", "Biomech", 11) }}
+  {{ spawnmenuEvent("SpawnStatic", "Static Objects", 12) }}
+
+  {{ createSpawnMenu("SpawnTSN", 1) }}
+    <set_gm_button text="TSN Fleets\Devin Supply Fleet" />
+    <set_gm_button text="TSN Fleets\Grant Supply Fleet" />
+    <set_gm_button text="TSN Fleets\Grant Solo" />
+    <set_gm_button text="TSN Fleets\Jinn Supply Fleet" />
+    <set_gm_button text="TSN Fleets\Goblin Supply Fleet" />
+    <set_gm_button text="TSN Ships\Scout" />
+    <set_gm_button text="TSN Ships\Light Cruiser" />
+    <set_gm_button text="TSN Ships\Battleship" />
+    <set_gm_button text="TSN Ships\Missile Cruiser" />
+    <set_gm_button text="TSN Ships\Dreadnought" />
+    <set_gm_button text="TSN Ships\Carrier" />
+    <set_gm_button text="TSN Ships\Minelayer" />
+    <set_gm_button text="TSN Ships\Juggernaut" />
+    <set_gm_button text="TSN Ships\Allegiance Class" />
+    <set_gm_button text="TSN Ships\Chimera Class" />
+    <set_gm_button text="TSN Ships\Ares Class" />
+    <set_gm_button text="TSN Ships\Valkyrie Class" />
+    <set_gm_button text="TSN Ships\Apollo Class" />
+    <set_gm_button text="TSN Ships\Nemesis Class" />
+    <set_gm_button text="TSN Ships\Fighter" />
+    <set_gm_button text="TSN Ships\Bomber" />
+    <set_gm_button text="TSN Ships\Shuttle" />
+    <set_gm_button text="TSN Ships\LR Shuttle" />
+    <set_gm_button text="TSN Fleets\Light Group" />
+    <set_gm_button text="TSN Fleets\Medium Group" />
+    <set_gm_button text="TSN Fleets\Heavy Group" />
+    <set_gm_button text="TSN Assets\Shipyard" />
+    <set_gm_button text="TSN Assets\Weapons Platform" />
+    <set_gm_button text="TSN Assets\Sensor Buoy" />
+    <set_gm_button text="TSN Assets\Comms Relay" />
+    <set_variable name="SideValue" value="2.0" integer="yes" />
+  </event>
+  {{ destroySpawnMenu("SpawnTSN", 1) }}
+    <!--TSN Menu-->
+    <clear_gm_button text="TSN Ships\Scout" />
+    <clear_gm_button text="TSN Ships\Light Cruiser" />
+    <clear_gm_button text="TSN Ships\Battleship" />
+    <clear_gm_button text="TSN Ships\Missile Cruiser" />
+    <clear_gm_button text="TSN Ships\Dreadnought" />
+    <clear_gm_button text="TSN Ships\Carrier" />
+    <clear_gm_button text="TSN Ships\Minelayer" />
+    <clear_gm_button text="TSN Ships\Juggernaut" />
+    <clear_gm_button text="TSN Ships\Allegiance Class" />
+    <clear_gm_button text="TSN Ships\Chimera Class" />
+    <clear_gm_button text="TSN Ships\Ares Class" />
+    <clear_gm_button text="TSN Ships\Valkyrie Class" />
+    <clear_gm_button text="TSN Ships\Apollo Class" />
+    <clear_gm_button text="TSN Ships\Nemesis Class" />
+    <clear_gm_button text="TSN Ships\Fighter" />
+    <clear_gm_button text="TSN Ships\Bomber" />
+    <clear_gm_button text="TSN Ships\Shuttle" />
+    <clear_gm_button text="TSN Ships\LR Shuttle" />
+    <clear_gm_button text="TSN Fleets\Devin Supply Fleet" />
+    <clear_gm_button text="TSN Fleets\Grant Supply Fleet" />
+    <clear_gm_button text="TSN Fleets\Grant Solo" />
+    <clear_gm_button text="TSN Fleets\Jinn Supply Fleet" />
+    <clear_gm_button text="TSN Fleets\Goblin Supply Fleet" />
+    <clear_gm_button text="TSN Fleets\Light Group" />
+    <clear_gm_button text="TSN Fleets\Medium Group" />
+    <clear_gm_button text="TSN Fleets\Heavy Group" />
+    <clear_gm_button text="TSN Assets\Shipyard" />
+    <clear_gm_button text="TSN Assets\Weapons Platform" />
+    <clear_gm_button text="TSN Assets\Sensor Buoy" />
+    <clear_gm_button text="TSN Assets\Comms Relay" />
+  </event>
+
+  {{ createSpawnMenu("SpawnUSFP", 2) }}
+    <set_gm_button text="Civilian USFP\Science Vessel" />
+    <set_gm_button text="Civilian USFP\Bulk Cargo" />
+    <set_gm_button text="Civilian USFP\Luxury Liner" />
+    <set_gm_button text="Civilian USFP\Transport" />
+    <set_gm_button text="Civilian USFP\Transport Mk II" />
+    <set_gm_button text="Civilian USFP\Gaspode" />
+    <set_gm_button text="Civilian USFP\Scow" />
+    <set_gm_button text="Military USFP\Patrol Boat" />
+    <set_gm_button text="Military USFP\Corvette" />
+    <set_gm_button text="Military USFP\Escort" />
+    <set_gm_button text="Military USFP\Destroyer" />
+    <set_gm_button text="USFP Fleet\Mining Convoy" />
+    <set_gm_button text="USFP Fleet\LR Cargo Convoy" />
+    <set_gm_button text="USFP Fleet\Research Convoy" />
+    <set_gm_button text="USFP Fleet\Cargo Convoy" />
+    <set_gm_button text="USFP Fleet\Transport Convoy" />
+    <set_gm_button text="USFP Assets\Deep Space Base" />
+    <set_gm_button text="USFP Assets\Command Base" />
+    <set_gm_button text="USFP Assets\Shipyard" />
+    <set_gm_button text="USFP Assets\Civilian Base" />
+    <set_gm_button text="USFP Assets\Industrial Base" />
+    <set_gm_button text="USFP Assets\Science Base" />
+    <set_gm_button text="USFP Assets\Factory" />
+    <set_gm_button text="USFP Assets\Denabite Refinary" />
+    <set_gm_button text="USFP Assets\Weapons Platform" />
+    <set_gm_button text="USFP Assets\Docking Port" />
+    <set_gm_button text="USFP Assets\Sensor Buoy" />
+    <set_gm_button text="USFP Assets\Comms Relay" />
+    <set_variable name="SideValue" value="2.0" integer="yes" />
+  </event>
+
+  {{ destroySpawnMenu("SpawnUSFP", 2) }}
+    <!--USFP Menu-->
+    <clear_gm_button text="Civilian USFP\Science Vessel" />
+    <clear_gm_button text="Civilian USFP\Bulk Cargo" />
+    <clear_gm_button text="Civilian USFP\Luxury Liner" />
+    <clear_gm_button text="Civilian USFP\Transport" />
+    <clear_gm_button text="Civilian USFP\Transport Mk II" />
+    <clear_gm_button text="Civilian USFP\Gaspode" />
+    <clear_gm_button text="Civilian USFP\Scow" />
+    <clear_gm_button text="Military USFP\Patrol Boat" />
+    <clear_gm_button text="Military USFP\Corvette" />
+    <clear_gm_button text="Military USFP\Escort" />
+    <clear_gm_button text="Military USFP\Destroyer" />
+    <clear_gm_button text="USFP Fleet\Mining Convoy" />
+    <clear_gm_button text="USFP Fleet\Cargo Convoy" />
+    <clear_gm_button text="USFP Fleet\Transport Convoy" />
+    <clear_gm_button text="USFP Fleet\LR Cargo Convoy" />
+    <clear_gm_button text="USFP Fleet\Research Convoy" />
+    <clear_gm_button text="USFP Assets\Deep Space Base" />
+    <clear_gm_button text="USFP Assets\Command Base" />
+    <clear_gm_button text="USFP Assets\Shipyard" />
+    <clear_gm_button text="USFP Assets\Civilian Base" />
+    <clear_gm_button text="USFP Assets\Industrial Base" />
+    <clear_gm_button text="USFP Assets\Science Base" />
+    <clear_gm_button text="USFP Assets\Factory" />
+    <clear_gm_button text="USFP Assets\Denabite Refinary" />
+    <clear_gm_button text="USFP Assets\Weapons Platform" />
+    <clear_gm_button text="USFP Assets\Sensor Buoy" />
+    <clear_gm_button text="USFP Assets\Comms Relay" />
+    <clear_gm_button text="USFP Assets\Docking Port" />
+  </event>
+
+  {{ createSpawnMenu("SpawnXimni", 3) }}
+    <set_gm_button text="Single Ximni\Light Cruiser" />
+    <set_gm_button text="Single Ximni\Scout" />
+    <set_gm_button text="Single Ximni\Missile Cruiser" />
+    <set_gm_button text="Single Ximni\Battleship" />
+    <set_gm_button text="Single Ximni\Carrier" />
+    <set_gm_button text="Single Ximni\Dreadnought" />
+    <set_gm_button text="Single Ximni\Fighter" />
+    <set_gm_button text="Single Ximni\Bomber" />
+    <set_gm_button text="Single Ximni\Shuttle" />
+    <set_gm_button text="Single Ximni\LR Shuttle" />
+    <set_gm_button text="Ximni Fleet\Light Group" />
+    <set_gm_button text="Ximni Fleet\Medium Group" />
+    <set_gm_button text="Ximni Fleet\Heavy Group" />
+    <set_variable name="SideValue" value="1.0" integer="yes" />
+  </event>
+
+  {{ destroySpawnMenu("SpawnXimni", 3) }}
+    <!--Ximni Menu-->
+    <clear_gm_button text="Single Ximni\Light Cruiser" />
+    <clear_gm_button text="Single Ximni\Scout" />
+    <clear_gm_button text="Single Ximni\Missile Cruiser" />
+    <clear_gm_button text="Single Ximni\Battleship" />
+    <clear_gm_button text="Single Ximni\Carrier" />
+    <clear_gm_button text="Single Ximni\Dreadnought" />
+    <clear_gm_button text="Single Ximni\Fighter" />
+    <clear_gm_button text="Single Ximni\Bomber" />
+    <clear_gm_button text="Single Ximni\Shuttle" />
+    <clear_gm_button text="Single Ximni\LR Shuttle" />
+    <clear_gm_button text="Ximni Fleet\Light Group" />
+    <clear_gm_button text="Ximni Fleet\Medium Group" />
+    <clear_gm_button text="Ximni Fleet\Heavy Group" />
+  </event>
+
+  {{ createSpawnMenu("SpawnHjorden", 4) }}
+    <set_gm_button text="Single Hjorden\Cruiser" />
+    <set_gm_button text="Single Hjorden\Cruise Liner" />
+    <set_gm_button text="Single Hjorden\Transport" />
+    <set_gm_button text="Hjorden Fleets\Cruiser Fleet" />
+    <set_gm_button text="Hjorden Assets\Hjorden Base" />
+    <set_variable name="SideValue" value="2.0" integer="yes" />
+  </event>
+
+  {{ destroySpawnMenu("SpawnHjorden", 4) }}
+    <!--Hjorden Menu-->
+    <clear_gm_button text="Single Hjorden\Cruiser" />
+    <clear_gm_button text="Single Hjorden\Cruise Liner" />
+    <clear_gm_button text="Single Hjorden\Transport" />
+    <clear_gm_button text="Hjorden Fleets\Cruiser Fleet" />
+    <clear_gm_button text="Hjorden Assets\Hjorden Base" />
+  </event>
+
+  {{ createSpawnMenu("SpawnHegemony", 5) }}
+    <set_gm_button text="Hegemony Fleets\Kralien Fleets\Light Fleet" />
+    <set_gm_button text="Hegemony Fleets\Kralien Fleets\Medium Fleet" />
+    <set_gm_button text="Hegemony Fleets\Kralien Fleets\Heavy Fleet" />
+    <set_gm_button text="Hegemony Fleets\Torgoth Fleets\Light Fleet" />
+    <set_gm_button text="Hegemony Fleets\Torgoth Fleets\Medium Fleet" />
+    <set_gm_button text="Hegemony Fleets\Torgoth Fleets\Heavy Fleet" />
+    <set_gm_button text="Hegemony Fleets\Arvonian Fleets\Light Fleet" />
+    <set_gm_button text="Hegemony Fleets\Arvonian Fleets\Medium Fleet" />
+    <set_gm_button text="Hegemony Fleets\Arvonian Fleets\Heavy Fleet" />
+    <set_gm_button text="Hegemony Fleets\Skaraan Fleets\Light Fleet" />
+    <set_gm_button text="Hegemony Fleets\Skaraan Fleets\Medium Fleet" />
+    <set_gm_button text="Hegemony Fleets\Skaraan Fleets\Heavy Fleet" />
+    <set_gm_button text="Hegemony Fleets\Hegemony Mixed Fleets\Light Fleet" />
+    <set_gm_button text="Hegemony Fleets\Hegemony Mixed Fleets\Medium Fleet" />
+    <set_gm_button text="Hegemony Fleets\Hegemony Mixed Fleets\Heavy Fleet" />
+    <set_gm_button text="Hegemony Fleets\Carrier Fleets\Light Fleet" />
+    <set_gm_button text="Hegemony Fleets\Carrier Fleets\Medium Fleet" />
+    <set_gm_button text="Hegemony Fleets\Carrier Fleets\Heavy Fleet" />
+    <set_gm_button text="Hegemony Fleets\Command Fleets\Arvonian Command" />
+    <set_gm_button text="Hegemony Fleets\Command Fleets\Hvy Arvonian Command" />
+    <set_gm_button text="Hegemony Fleets\Command Fleets\Torgoth Command" />
+    <set_gm_button text="Hegemony Fleets\Command Fleets\Hvy Torgoth Command" />
+    <set_gm_button text="Hegemony Fleets\Convoys\Light Convoy" />
+    <set_gm_button text="Hegemony Fleets\Convoys\Medium Convoy" />
+    <set_gm_button text="Hegemony Fleets\Convoys\Heavy Convoy" />
+    <set_gm_button text="Single Hegemony\Kralien Light" />
+    <set_gm_button text="Single Hegemony\Kralien Drone" />
+    <set_gm_button text="Single Hegemony\Kralien Medium" />
+    <set_gm_button text="Single Hegemony\Kralien Heavy" />
+    <set_gm_button text="Single Hegemony\Torgoth Light" />
+    <set_gm_button text="Single Hegemony\Torgoth Medium" />
+    <set_gm_button text="Single Hegemony\Torgoth Heavy" />
+    <set_gm_button text="Single Hegemony\Torgoth MineSweeper" />
+    <set_gm_button text="Single Hegemony\Torgoth Command" />
+    <set_gm_button text="Single Hegemony\Skaraan Light" />
+    <set_gm_button text="Single Hegemony\Skaraan Medium" />
+    <set_gm_button text="Single Hegemony\Skaraan Heavy" />
+    <set_gm_button text="Single Hegemony\Arvonian Fighter" />
+    <set_gm_button text="Single Hegemony\Arvonian Light" />
+    <set_gm_button text="Single Hegemony\Arvonian Heavy" />
+    <set_gm_button text="Single Hegemony\Arvonian Command" />
+    <set_gm_button text="Single Hegemony\Transport" />
+    <set_gm_button text="Hegemony Assets\Kralien Base" />
+    <set_gm_button text="Hegemony Assets\Arvonian Base" />
+    <set_gm_button text="Hegemony Assets\Torgoth Base" />
+    <set_gm_button text="Hegemony Assets\Skaraan Base" />
+    <set_gm_button text="Hegemony Assets\Civilian Bio Base" />
+    <set_gm_button text="Hegemony Assets\Fighter Defense Platform" />
+    <set_gm_button text="Hegemony Assets\Hegemony Defense Platform" />
+    <set_gm_button text="Hegemony Assets\Sensor Buoy (Active)" />
+    <set_gm_button text="Hegemony Assets\Sensor Buoy (Inactive)" />
+    <set_gm_button text="Hegemony Assets\Slingshot Platform" />
+    <set_gm_button text="Hegemony Assets\Slingshot Power" />
+    <set_gm_button text="Hegemony Assets\Slingshot Antenna" />
+    <set_gm_button text="Hegemony Assets\Slingshot Array" />
+    <set_variable name="SideValue" value="1.0" integer="yes" />
+  </event>
+
+  {{ destroySpawnMenu("SpawnHegemony", 5) }}
+    <!--Hegemony Menu-->
+    <clear_gm_button text="Hegemony Fleets\Kralien Fleets\Light Fleet" />
+    <clear_gm_button text="Hegemony Fleets\Kralien Fleets\Medium Fleet" />
+    <clear_gm_button text="Hegemony Fleets\Kralien Fleets\Heavy Fleet" />
+    <clear_gm_button text="Hegemony Fleets\Hegemony Mixed Fleets\Light Fleet" />
+    <clear_gm_button text="Hegemony Fleets\Hegemony Mixed Fleets\Medium Fleet" />
+    <clear_gm_button text="Hegemony Fleets\Hegemony Mixed Fleets\Heavy Fleet" />
+    <clear_gm_button text="Hegemony Fleets\Torgoth Fleets\Light Fleet" />
+    <clear_gm_button text="Hegemony Fleets\Torgoth Fleets\Medium Fleet" />
+    <clear_gm_button text="Hegemony Fleets\Torgoth Fleets\Heavy Fleet" />
+    <clear_gm_button text="Hegemony Fleets\Arvonian Fleets\Light Fleet" />
+    <clear_gm_button text="Hegemony Fleets\Arvonian Fleets\Medium Fleet" />
+    <clear_gm_button text="Hegemony Fleets\Arvonian Fleets\Heavy Fleet" />
+    <clear_gm_button text="Hegemony Fleets\Skaraan Fleets\Light Fleet" />
+    <clear_gm_button text="Hegemony Fleets\Skaraan Fleets\Medium Fleet" />
+    <clear_gm_button text="Hegemony Fleets\Skaraan Fleets\Heavy Fleet" />
+    <clear_gm_button text="Hegemony Fleets\Carrier Fleets\Light Fleet" />
+    <clear_gm_button text="Hegemony Fleets\Carrier Fleets\Medium Fleet" />
+    <clear_gm_button text="Hegemony Fleets\Carrier Fleets\Heavy Fleet" />
+    <clear_gm_button text="Hegemony Fleets\Command Fleets\Arvonian Command" />
+    <clear_gm_button text="Hegemony Fleets\Command Fleets\Hvy Arvonian Command" />
+    <clear_gm_button text="Hegemony Fleets\Command Fleets\Torgoth Command" />
+    <clear_gm_button text="Hegemony Fleets\Command Fleets\Hvy Torgoth Command" />
+    <clear_gm_button text="Hegemony Fleets\Convoys\Light Convoy" />
+    <clear_gm_button text="Hegemony Fleets\Convoys\Medium Convoy" />
+    <clear_gm_button text="Hegemony Fleets\Convoys\Heavy Convoy" />
+    <clear_gm_button text="Single Hegemony\Kralien Light" />
+    <clear_gm_button text="Single Hegemony\Kralien Drone" />
+    <clear_gm_button text="Single Hegemony\Kralien Medium" />
+    <clear_gm_button text="Single Hegemony\Kralien Heavy" />
+    <clear_gm_button text="Single Hegemony\Torgoth Light" />
+    <clear_gm_button text="Single Hegemony\Torgoth Medium" />
+    <clear_gm_button text="Single Hegemony\Torgoth Heavy" />
+    <clear_gm_button text="Single Hegemony\Torgoth MineSweeper" />
+    <clear_gm_button text="Single Hegemony\Torgoth Command" />
+    <clear_gm_button text="Single Hegemony\Skaraan Light" />
+    <clear_gm_button text="Single Hegemony\Skaraan Medium" />
+    <clear_gm_button text="Single Hegemony\Skaraan Heavy" />
+    <clear_gm_button text="Single Hegemony\Arvonian Fighter" />
+    <clear_gm_button text="Single Hegemony\Arvonian Light" />
+    <clear_gm_button text="Single Hegemony\Arvonian Heavy" />
+    <clear_gm_button text="Single Hegemony\Arvonian Command" />
+    <clear_gm_button text="Single Hegemony\Transport" />
+    <clear_gm_button text="Hegemony Assets\Kralien Base" />
+    <clear_gm_button text="Hegemony Assets\Arvonian Base" />
+    <clear_gm_button text="Hegemony Assets\Torgoth Base" />
+    <clear_gm_button text="Hegemony Assets\Skaraan Base" />
+    <clear_gm_button text="Hegemony Assets\Civilian Bio Base" />
+    <clear_gm_button text="Hegemony Assets\Fighter Defense Platform" />
+    <clear_gm_button text="Hegemony Assets\Hegemony Defense Platform" />
+    <clear_gm_button text="Hegemony Assets\Sensor Buoy (Active)" />
+    <clear_gm_button text="Hegemony Assets\Sensor Buoy (Inactive)" />
+    <clear_gm_button text="Hegemony Assets\Slingshot Platform" />
+    <clear_gm_button text="Hegemony Assets\Slingshot Power" />
+    <clear_gm_button text="Hegemony Assets\Slingshot Antenna" />
+    <clear_gm_button text="Hegemony Assets\Slingshot Array" />
+  </event>
+
+  {{ createSpawnMenu("SpawnUSF", 6) }}
+    <set_gm_button text="Single USF\Xenophobe" />
+    <set_gm_button text="Single USF\Emu" />
+    <set_gm_button text="Single USF\Gallu" />
+    <set_gm_button text="Single USF\Gladiator" />
+    <set_gm_button text="Single USF\Nightmare" />
+    <set_gm_button text="Single USF\Griffzungenschwert" />
+    <set_gm_button text="USF Fleet\Light Fleet" />
+    <set_gm_button text="USF Fleet\Medium Fleet" />
+    <set_gm_button text="USF Fleet\Heavy Fleet" />
+    <set_variable name="SideValue" value="3.0" integer="yes" />
+  </event>
+
+  {{ destroySpawnMenu("SpawnUSF", 6) }}
+    <!--USF Menu-->
+    <clear_gm_button text="Single USF\Xenophobe" />
+    <clear_gm_button text="Single USF\Emu" />
+    <clear_gm_button text="Single USF\Gallu" />
+    <clear_gm_button text="Single USF\Gladiator" />
+    <clear_gm_button text="Single USF\Nightmare" />
+    <clear_gm_button text="Single USF\Griffzungenschwert" />
+    <clear_gm_button text="USF Fleet\Light Fleet" />
+    <clear_gm_button text="USF Fleet\Medium Fleet" />
+    <clear_gm_button text="USF Fleet\Heavy Fleet" />
+  </event>
+
+  {{ createSpawnMenu("SpawnNtani", 7) }}
+    <set_gm_button text="Single N'tani\Skavanger" />
+    <set_gm_button text="Single N'tani\Frigate" />
+    <set_gm_button text="Single N'tani\Cargo Pod Ship" />
+    <set_gm_button text="Single N'tani\Battlecruiser" />
+    <set_gm_button text="Single N'tani\Ranger" />
+    <set_gm_button text="N'Tani Fleets\Light Fleet" />
+    <set_gm_button text="N'Tani Fleets\Medium Fleet" />
+    <set_gm_button text="N'Tani Fleets\Heavy Fleet" />
+    <set_gm_button text="N'Tani Assets\N'Tani Base" />
+    <set_variable name="SideValue" value="4.0" integer="yes" />
+  </event>
+
+  {{ destroySpawnMenu("SpawnNtani", 7) }}
+  <!--N'Tani Menu-->
+    <clear_gm_button text="Single N'tani\Skavanger" />
+    <clear_gm_button text="Single N'tani\Frigate" />
+    <clear_gm_button text="Single N'tani\Cargo Pod Ship" />
+    <clear_gm_button text="Single N'tani\Battlecruiser" />
+    <clear_gm_button text="Single N'tani\Ranger" />
+    <clear_gm_button text="N'Tani Fleets\Light Fleet" />
+    <clear_gm_button text="N'Tani Fleets\Medium Fleet" />
+    <clear_gm_button text="N'Tani Fleets\Heavy Fleet" />
+    <clear_gm_button text="N'Tani Assets\N'Tani Base" />
+  </event>
+
+  {{ createSpawnMenu("SpawnPirate", 8) }}
+    <set_gm_button text="Skull Pirates\Strongbow" />
+    <set_gm_button text="Skull Pirates\Longbow" />
+    <set_gm_button text="Skull Pirates\Brigantine" />
+    <set_gm_button text="Skull Pirates\Adventure" />
+    <set_gm_button text="Skull Pirates\Avenger" />
+    <set_gm_button text="Skull Pirates\Light Fleet" />
+    <set_gm_button text="Skull Pirates\Medium Fleet" />
+    <set_gm_button text="Skull Pirates\Heavy Fleet" />
+    <set_gm_button text="Euphini Pirates\Arrow" />
+    <set_gm_button text="Euphini Pirates\Axe" />
+    <set_gm_button text="Euphini Pirates\Transport" />
+    <set_gm_button text="Euphini Pirates\Light Fleet" />
+    <set_gm_button text="Euphini Pirates\Medium Fleet" />
+    <set_gm_button text="Euphini Pirates\Heavy Fleet" />
+    <set_gm_button text="Pirate Assets\Asteroid Base" />
+    <set_variable name="SideValue" value="5.0" integer="yes" />
+  </event>
+
+  {{ destroySpawnMenu("SpawnPirate", 8) }}
+    <!--Pirate Menu-->
+    <clear_gm_button text="Skull Pirates\Strongbow" />
+    <clear_gm_button text="Skull Pirates\Longbow" />
+    <clear_gm_button text="Skull Pirates\Brigantine" />
+    <clear_gm_button text="Skull Pirates\Adventure" />
+    <clear_gm_button text="Skull Pirates\Avenger" />
+    <clear_gm_button text="Euphini Pirates\Arrow" />
+    <clear_gm_button text="Euphini Pirates\Axe" />
+    <clear_gm_button text="Euphini Pirates\Transport" />
+    <clear_gm_button text="Pirate Assets\Asteroid Base" />
+    <clear_gm_button text="Skull Pirates\Light Fleet" />
+    <clear_gm_button text="Skull Pirates\Medium Fleet" />
+    <clear_gm_button text="Skull Pirates\Heavy Fleet" />
+    <clear_gm_button text="Euphini Pirates\Light Fleet" />
+    <clear_gm_button text="Euphini Pirates\Medium Fleet" />
+    <clear_gm_button text="Euphini Pirates\Heavy Fleet" />
+  </event>
+
+  {{ createSpawnMenu("SpawnCaltron", 10) }}
+    <set_gm_button text="Single Caltron\Primary" />
+    <set_gm_button text="Single Caltron\Tertiary" />
+    <set_gm_button text="Single Caltron\Senary" />
+    <set_gm_button text="Single Caltron\Duodenary" />
+    <set_gm_button text="Single Caltron\Swarm" />
+    <set_gm_button text="Single Caltron\Super Swarm" />
+    <set_gm_button text="Single Caltron\Primary (Var. B)" />
+    <set_gm_button text="Caltron Fleets\Scout Group" />
+    <set_gm_button text="Caltron Fleets\Battle Group" />
+    <set_gm_button text="Caltron Fleets\Invasion Fleet" />
+    <set_variable name="SideValue" value="6.0" integer="yes" />
+  </event>
+
+  {{ destroySpawnMenu("SpawnCaltron", 10) }}
+    <!--Caltron Menu-->
+    <clear_gm_button text="Single Caltron\Primary" />
+    <clear_gm_button text="Single Caltron\Tertiary" />
+    <clear_gm_button text="Single Caltron\Senary" />
+    <clear_gm_button text="Single Caltron\Duodenary" />
+    <clear_gm_button text="Single Caltron\Swarm" />
+    <clear_gm_button text="Single Caltron\Super Swarm" />
+    <clear_gm_button text="Single Caltron\Primary (Var. B)" />
+    <clear_gm_button text="Caltron Fleets\Scout Group" />
+    <clear_gm_button text="Caltron Fleets\Battle Group" />
+    <clear_gm_button text="Caltron Fleets\Invasion Fleet" />
+  </event>
+
+  {{ createSpawnMenu("SpawnNeutrals", 9) }}
+    <set_gm_button text="Dinkuno\Warbird" />
+    <set_gm_button text="Dinkuno\Transport" />
+    <set_gm_button text="Budron\Destruction" />
+    <set_gm_button text="Budron\Devastator" />
+    <set_gm_button text="Budron\Light Fleet" />
+    <set_gm_button text="Budron\Medium Fleet" />
+    <set_gm_button text="Budron\Heavy Fleet" />
+    <set_gm_button text="Budron\Trap Carrier Convoy" />
+    <set_gm_button text="Budron\Carrier Convoy" />
+    <set_gm_button text="Budron\Cargo Convoy" />
+    <set_gm_button text="Budron\Reaper" />
+    <set_gm_button text="Budron\Havoc" />
+    <set_gm_button text="Budron\Desolation" />
+    <set_gm_button text="Budron\Demolition" />
+    <set_gm_button text="Budron\Cargo" />
+    <set_gm_button text="Budron\Q-Ship" />
+    <set_gm_button text="Budron\Platform" />
+    <set_gm_button text="Sechatzal\Spectre" />
+    <set_gm_button text="Sechatzal\Ghost" />
+    <set_gm_button text="Sechatzal\Wraith" />
+    <set_variable name="SideValue" value="5.0" integer="yes" />
+  </event>
+
+  {{ destroySpawnMenu("SpawnNeutrals", 9) }}
+    <clear_gm_button text="Dinkuno\Warbird" />
+    <clear_gm_button text="Dinkuno\Transport" />
+    <clear_gm_button text="Budron\Destruction" />
+    <clear_gm_button text="Budron\Devastator" />
+    <clear_gm_button text="Budron\Light Fleet" />
+    <clear_gm_button text="Budron\Medium Fleet" />
+    <clear_gm_button text="Budron\Heavy Fleet" />
+    <clear_gm_button text="Budron\Trap Carrier Convoy" />
+    <clear_gm_button text="Budron\Carrier Convoy" />
+    <clear_gm_button text="Budron\Cargo Convoy" />
+    <clear_gm_button text="Budron\Reaper" />
+    <clear_gm_button text="Budron\Havoc" />
+    <clear_gm_button text="Budron\Desolation" />
+    <clear_gm_button text="Budron\Demolition" />
+    <clear_gm_button text="Budron\Cargo" />
+    <clear_gm_button text="Budron\Q-Ship" />
+    <clear_gm_button text="Budron\Platform" />
+    <clear_gm_button text="Sechatzal\Spectre" />
+    <clear_gm_button text="Sechatzal\Ghost" />
+    <clear_gm_button text="Sechatzal\Wraith" />
+  </event>
+
+  {{ createSpawnMenu("SpawnBiomech", 11) }}
+    <set_gm_button text="Biomechs\Stage 1" />
+    <set_gm_button text="Biomechs\Stage 2" />
+    <set_gm_button text="Biomechs\Stage 3" />
+    <set_gm_button text="Biomechs\Stage 4" />
+    <set_variable name="SideValue" value="7.0" integer="yes" />
+  </event>
+
+  {{ destroySpawnMenu("SpawnBiomech", 11) }}
+    <!--Biomech Menu-->
+    <clear_gm_button text="Biomechs\Stage 1" />
+    <clear_gm_button text="Biomechs\Stage 2" />
+    <clear_gm_button text="Biomechs\Stage 3" />
+    <clear_gm_button text="Biomechs\Stage 4" />
+  </event>
+
+  {{ createSpawnMenu("SpawnStatic", 12) }}
+    <set_gm_button text="Docking Port\Energy Only" />
+    <set_gm_button text="Docking Port\Light Ordnance" />
+    <set_gm_button text="Docking Port\Heavy Ordnance" />
+    <set_gm_button text="Docking Port\Mining" />
+    <set_gm_button text="Docking Port\Exploration" />
+    <set_gm_button text="Docking Port\Xeno Research" />
+    <set_gm_button text="Docking Port\(Standard)" />
+    <set_gm_button text="Other\Lifepod" />
+    <set_gm_button text="Other\Black Box" />
+    <set_variable name="SideValue" value="2.0" integer="yes" />
+  </event>
+
+  {{ destroySpawnMenu("SpawnStatic", 12) }}
+    <clear_gm_button text="Docking Port\Energy Only" />
+    <clear_gm_button text="Docking Port\Light Ordnance" />
+    <clear_gm_button text="Docking Port\Heavy Ordnance" />
+    <clear_gm_button text="Docking Port\Mining" />
+    <clear_gm_button text="Docking Port\Exploration" />
+    <clear_gm_button text="Docking Port\Xeno Research" />
+    <clear_gm_button text="Docking Port\(Standard)" />
+    <clear_gm_button text="Other\Lifepod" />
+    <clear_gm_button text="Other\Black Box" />
+  </event>
+
+  {{ createSubmenu("HazardTerrain") }}
+    <set_gm_button text="Terrain\Blackhole" />
+    <set_gm_button text="Terrain\Radiation Point" />
+    <set_gm_button text="Terrain\Nebulae\Single Nebula (Purple)" />
+    <set_gm_button text="Terrain\Nebulae\Sml Nebula Cluster (Purple)" />
+    <set_gm_button text="Terrain\Nebulae\Med Nebula Cluster (Purple)" />
+    <set_gm_button text="Terrain\Nebulae\Lrg Nebula Cluster (Purple)" />
+    <set_gm_button text="Terrain\Nebulae\Single Nebula (Yellow)" />
+    <set_gm_button text="Terrain\Nebulae\Sml Nebula Cluster (Yellow)" />
+    <set_gm_button text="Terrain\Nebulae\Med Nebula Cluster (Yellow)" />
+    <set_gm_button text="Terrain\Nebulae\Lrg Nebula Cluster (Yellow)" />
+    <set_gm_button text="Terrain\Nebulae\Single Nebula (Blue)" />
+    <set_gm_button text="Terrain\Nebulae\Sml Nebula Cluster (Blue)" />
+    <set_gm_button text="Terrain\Nebulae\Med Nebula Cluster (Blue)" />
+    <set_gm_button text="Terrain\Nebulae\Lrg Nebula Cluster (Blue)" />
+    <set_gm_button text="Terrain\Asteroids\Single Asteroid" />
+    <set_gm_button text="Terrain\Asteroids\Small Field" />
+    <set_gm_button text="Terrain\Asteroids\Medium Field" />
+    <set_gm_button text="Terrain\Asteroids\Large Field" />
+    <set_gm_button text="Terrain\Dismiss" />
+  </event>
+  {{ destroySubmenu("HazardTerrain") }}
+    <clear_gm_button text="Terrain\Blackhole" />
+    <clear_gm_button text="Terrain\Radiation Point" />
+    <clear_gm_button text="Terrain\Nebulae\Single Nebula (Purple)" />
+    <clear_gm_button text="Terrain\Nebulae\Sml Nebula Cluster (Purple)" />
+    <clear_gm_button text="Terrain\Nebulae\Med Nebula Cluster (Purple)" />
+    <clear_gm_button text="Terrain\Nebulae\Lrg Nebula Cluster (Purple)" />
+    <clear_gm_button text="Terrain\Nebulae\Single Nebula (Yellow)" />
+    <clear_gm_button text="Terrain\Nebulae\Sml Nebula Cluster (Yellow)" />
+    <clear_gm_button text="Terrain\Nebulae\Med Nebula Cluster (Yellow)" />
+    <clear_gm_button text="Terrain\Nebulae\Lrg Nebula Cluster (Yellow)" />
+    <clear_gm_button text="Terrain\Nebulae\Single Nebula (Blue)" />
+    <clear_gm_button text="Terrain\Nebulae\Sml Nebula Cluster (Blue)" />
+    <clear_gm_button text="Terrain\Nebulae\Med Nebula Cluster (Blue)" />
+    <clear_gm_button text="Terrain\Nebulae\Lrg Nebula Cluster (Blue)" />
+    <clear_gm_button text="Terrain\Asteroids\Single Asteroid" />
+    <clear_gm_button text="Terrain\Asteroids\Small Field" />
+    <clear_gm_button text="Terrain\Asteroids\Medium Field" />
+    <clear_gm_button text="Terrain\Asteroids\Large Field" />
+    <clear_gm_button text="Terrain\_Dismiss" />
+  </event>
+  {{ submenuEvent("HazardTerrain", "Terrain") }}
+  {{ dismissEvent("HazardTerrain", "Terrain\_Dismiss") }}
+  {{ createSubmenu("HazardCreatures") }}
+    <set_gm_button text="Creatures\Shark" />
+    <set_gm_button text="Creatures\Bug" />
+    <set_gm_button text="Creatures\Charybdis" />
+    <set_gm_button text="Creatures\Space Monster" />
+    <set_gm_button text="Creatures\Pirahna Swarm" />
+    <set_gm_button text="Creatures\Dragon" />
+    <set_gm_button text="Creatures\Whale Pod" />
+    <set_gm_button text="Creatures\_Dismiss" />
+  </event>
+  {{ destroySubmenu("HazardCreatures") }}
+    <clear_gm_button text="Creatures\Shark" />
+    <clear_gm_button text="Creatures\Bug" />
+    <clear_gm_button text="Creatures\Charybdis" />
+    <clear_gm_button text="Creatures\Space Monster" />
+    <clear_gm_button text="Creatures\Pirahna Swarm" />
+    <clear_gm_button text="Creatures\Dragon" />
+    <clear_gm_button text="Creatures\Whale Pod" />
+    <clear_gm_button text="Creatures\_Dismiss" />
+  </event>
+  {{ submenuEvent("HazardCreatures", "Creatures") }}
+  {{ dismissEvent("HazardCreatures", "Creatures\_Dismiss") }}
+  {{ createSubmenu("HazardMines") }}
+    <set_gm_button text="Mines\Large Minefield (Circ.)" />
+    <set_gm_button text="Mines\Medium Minefield (Circ.)" />
+    <set_gm_button text="Mines\Small Minefield (Circ.)" />
+    <set_gm_button text="Mines\Single Mine" />
+    <set_gm_button text="Mines\_Dismiss" />
+  </event>
+  {{ destroySubmenu("HazardMines") }}
+    <clear_gm_button text="Mines\Large Minefield (Circ.)" />
+    <clear_gm_button text="Mines\Medium Minefield (Circ.)" />
+    <clear_gm_button text="Mines\Small Minefield (Circ.)" />
+    <clear_gm_button text="Mines\Single Mine" />
+    <clear_gm_button text="Mines\_Dismiss" />
+  </event>
+  {{ submenuEvent("HazardMines", "Mines") }}
+  {{ dismissEvent("HazardMines", "Mines\_Dismiss") }}
