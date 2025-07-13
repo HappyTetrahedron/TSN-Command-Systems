@@ -13,6 +13,8 @@ MAIN_TMPL='main.xml'
 SCRIPT_FOLDER="Custom Scripts"
 SYSTEM_FOLDER="Systems (Generated)"
 
+VERSION_FILE="../version"
+
 XML_EXT = ".xml"
 
 def sanitize(filename):
@@ -22,6 +24,7 @@ def sanitize(filename):
 def render():
     data = request.json
     g.data = data
+    g.version = current_app.config['version']
 
     return stream_template(MAIN_TMPL)
 
@@ -186,6 +189,13 @@ def get_config_options():
 
 def create_app(datadir):
     myapp = Flask(__name__, template_folder=datadir)
+
+    myapp.config['version'] = "unknown"
+    if os.path.isfile(os.path.join(datadir, VERSION_FILE)):
+        with open(os.path.join(datadir, VERSION_FILE)) as vfile:
+            version = vfile.readline()
+            myapp.config['version'] = version.strip()
+
     myapp.config['datadir'] = datadir
     myapp.jinja_env.lstrip_blocks = True
     myapp.jinja_env.trim_blocks = True

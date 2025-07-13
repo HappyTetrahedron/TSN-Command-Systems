@@ -25,4 +25,4 @@ TMPL_FNAME = 'main.xml'
 OUT_FNAME = '../MISS_TSN-Command.xml'
 
 with open(OUT_FNAME, 'w') as f:
-    f.write(template_env.get_template(TMPL_FNAME).render(g={"data": env}))
+    f.write(template_env.get_template(TMPL_FNAME).render(g={"data": env, "version": "local"}))

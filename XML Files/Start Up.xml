@@ -2,7 +2,7 @@
     <!--Configurations-->
     <set_variable name="Clear" value="11.0" integer="yes" />
     <set_difficulty_level value="10" />
-    <big_message title="The TSN Universe" subtitle1="Version 10.0.0" subtitle2="Tetra's Fork" />
+    <big_message title="The TSN Universe" subtitle1="Tetra's Fork Version {{ g.version }}" subtitle2="Systems:{% for system in g.data.get("systems", []) %} {{ system }}{% endfor %} - Scripts:{% for script in g.data.get("scripts", []) %} {{ script }}{% endfor %}" />
     <warning_popup_message message="V.9.0" consoles="MHWESCO" player_slot="0" />
     <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="0" />
     <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="1" />
