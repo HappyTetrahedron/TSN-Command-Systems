@@ -26,7 +26,7 @@ def render():
     data = request.json
     g.data = data
     g.version = current_app.config['version']
-    g.time = datetime.datetime.now(datetime.UTC).isoformat()
+    g.time = datetime.datetime.now().isoformat()
 
     return stream_template(MAIN_TMPL)
 
