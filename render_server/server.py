@@ -13,7 +13,7 @@ MAIN_TMPL='main.xml'
 SCRIPT_FOLDER="Custom Scripts"
 SYSTEM_FOLDER="Systems (Generated)"
 
-VERSION_FILE="../version"
+VERSION_FILE="../.version"
 
 XML_EXT = ".xml"
 
