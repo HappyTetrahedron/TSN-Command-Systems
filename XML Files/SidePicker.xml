@@ -1,5 +1,6 @@
 {% macro clearSidePicker() %}
     <clear_gm_button text="Change" />
+    <clear_gm_button text="Side Value:" />
     <clear_gm_button text="1" />
     <clear_gm_button text="2 (PLYR)" />
     <clear_gm_button text="3" />
@@ -20,6 +21,7 @@
     <if_variable name="SidePicker_Side_Shown" comparator="NOT" value="{{ side }}.0" />
     <if_variable name="SidePicker_Should_Show" comparator="EQUALS" value="1.0" />
     {{ clearSidePicker() }}
+    <set_gm_button text="Side Value:" x="95" y="100" h="30" w="80" />
     <set_gm_button text="Change" x="245" y="100" h="30" w="60" />
     <set_gm_button text="{{ btntx }}" x="180" y="100" h="30" w="60" />
     <set_variable name="SidePickerOpen" value="0.0" integer="yes" />

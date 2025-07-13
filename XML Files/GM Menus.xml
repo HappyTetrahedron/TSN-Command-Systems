@@ -201,6 +201,7 @@
     <set_gm_button text="Set AI Type\Convoy AI\Heading 315" />
     <set_variable name="AI Override" value="0.0" integer="yes" />
     <set_variable name="SidePicker_Should_Show" value="1.0" integer="yes" />
+    <set_variable name="SidePicker_Side_Shown" value="0.0" integer="yes" />
   </event>
   {{ destroyMenu("Spawn", 2) }}
     {{ storeAndSet("GM_SpawnMenu_Selector") }}
@@ -234,20 +235,6 @@
     <clear_gm_button text="Cnvy Heading 90" />
     <clear_gm_button text="Cnvy Heading 135" />
     <!---->
-    <clear_gm_button text="Side Value:" />
-    <clear_gm_button text="1" />
-    <clear_gm_button text="2 (PLYR)" />
-    <clear_gm_button text="3" />
-    <clear_gm_button text="4" />
-    <clear_gm_button text="5" />
-    <clear_gm_button text="6" />
-    <clear_gm_button text="7" />
-    <clear_gm_button text="8" />
-    <clear_gm_button text="9" />
-    <clear_gm_button text="10" />
-    <clear_gm_button text="11" />
-    <clear_gm_button text="12" />
-    <clear_gm_button text="Change" />
     <clear_gm_button text="TSN" />
     <clear_gm_button text="USFP" />
     <clear_gm_button text="Ximni" />
@@ -1625,8 +1612,6 @@
   </event>
   {{ submenuEvent("IntRepairDamage", "Rprs/Dmge") }}
   {{ dismissEvent("IntRepairDamage", "Repair Ship/_Dismiss") }}
-  {{ dismissEvent("IntRepairDamage", "Damage Ship/_Dismiss") }}
-  {{ dismissEvent("IntRepairDamage", "Random Damage/_Dismiss") }}
 
   {{ createSubMenu("IntSupplies") }}
     <set_variable name="Ordnance" value="1.0" integer="yes" />
@@ -1641,7 +1626,7 @@
     <set_gm_button text="Probe" x="200" y="380" h="30" w="100" />
     <set_gm_button text="100 Enrgy" x="200" y="415" h="30" w="100" />
     <set_gm_button text="Coolant" x="200" y="450" h="30" w="100" />
-    <set_gm_button text="Close Supplies Menu" x="200" y="485" h="30" w="100" />
+    <set_gm_button text="Supplies Menu    Close" x="200" y="485" h="30" w="100" />
   </event>
   {{ destroySubMenu("IntSupplies") }}
     <!--Supplies Menu-->
@@ -1657,10 +1642,10 @@
     <clear_gm_button text="Probe" />
     <clear_gm_button text="100 Enrgy" />
     <clear_gm_button text="Coolant" />
-    <clear_gm_button text="Close Supplies Menu" />
+    <clear_gm_button text="Supplies Menu    Close" />
   </event>
   {{ submenuEvent("IntSupplies", "Supplies", 5) }}
-  {{ dismissEvent("IntSupplies", "Close Supplies Menu") }}
+  {{ dismissEvent("IntSupplies", "Supplies Menu    Close") }}
 
   <event name="Clear All Menus">
     <if_gm_button text="Clear" />
