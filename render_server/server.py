@@ -5,6 +5,7 @@ from flask import request
 from flask import stream_template
 from flask import g
 import os
+import datetime
 
 app = Blueprint('app', __name__)
 
@@ -25,6 +26,7 @@ def render():
     data = request.json
     g.data = data
     g.version = current_app.config['version']
+    g.time = datetime.datetime.now(datetime.UTC).isoformat()
 
     return stream_template(MAIN_TMPL)
 
@@ -199,6 +201,7 @@ def create_app(datadir):
     myapp.config['datadir'] = datadir
     myapp.jinja_env.lstrip_blocks = True
     myapp.jinja_env.trim_blocks = True
+    myapp.jinja_env.add_extension('jinja2.ext.do')
     myapp.register_blueprint(app)
 
     return myapp

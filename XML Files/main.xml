@@ -1,4 +1,5 @@
 <mission_data version="1.7" background_id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4" playerShipNames_arme="TSN Sabre\TSN Valiant\TSN Lancer\TSN Stalker\TSN Scorpion\TSN Horizon\TSN Necessity\TSN Hunter">
+  <mission_description>TSN Command Systems Version {{ g.version }}, compiled at {{ g.time }}. Systems:{% for system in g.data.get("systems", []) %} {{ system }}{% endfor %} - Scripts:{% for script in g.data.get("scripts", []) %} {{ script }}{% endfor %}</mission_description>
 {% include 'Start Up.xml' %}
 {% include 'Elements.xml' %}
 {% include 'Custom Config.xml' %}

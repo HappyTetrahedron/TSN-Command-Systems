@@ -1,4 +1,5 @@
   <folder_arme name="GM Menus" id_arme="a63d8b7a-dd61-481e-b818-312ef7f7af5f" />
+  {% set allSubmenus = [] %}
   {% macro createMenu(name, id) %}
   <event name="Menu Create {{ name }}">
     <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ id }}.0" />
@@ -57,6 +58,7 @@
   {% endmacro %}
   {% macro createSubMenu(name) %}
   <event name="SubMenu Create {{ name }}">
+    {% do allSubmenus.append(name) %}
     <if_variable name="GM_Submenu_{{ name }}_ShouldShow" comparator="EQUALS" value="1.0" />
     <if_variable name="GM_Submenu_{{ name }}_Active" comparator="NOT" value="1.0" />
     <set_variable name="GM_Submenu_{{ name }}_Active" value="1.0" integer="yes" />
@@ -68,7 +70,7 @@
       <set_variable name="GM_Submenu_{{ name }}_Active" value="0.0" integer="yes" />
   {% endmacro %}
   {% macro dismissEvent(name, buttonPath) %}
-  <event name="SubMenu Dismiss {{ name }}">
+  <event name="SubMenu Dismiss {{ name }} ({{ buttonPath }})">
     <if_gm_button text="{{buttonPath}}" />
     <set_variable name="GM_Submenu_{{ name }}_ShouldShow" value="0.0" integer="yes" />
   </event>
@@ -80,24 +82,6 @@
       <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ guard }}.0" />
     {% endif %}
     <set_variable name="GM_Submenu_{{ name }}_ShouldShow" value="1.0" integer="yes" />
-  </event>
-  {% endmacro %}
-  {% macro submenuToggle(name, triggerButton, guard=0) %}
-  <event name="SubMenu Activate {{ name }}">
-    <if_gm_button text="{{triggerButton}}" />
-    <if_variable name="GM_Submenu_{{ name }}_ShouldShow" comparator="NOT" value="1.0" />
-    {% if guard > 0 %}
-      <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ guard }}.0" />
-    {% endif %}
-    <set_variable name="GM_Submenu_{{ name }}_ShouldShow" value="1.0" integer="yes" />
-  </event>
-  <event name="SubMenu Toggle Deactivate {{ name }}">
-    <if_gm_button text="{{triggerButton}}" />
-    <if_variable name="GM_Submenu_{{ name }}_ShouldShow" comparator="EQUALS" value="1.0" />
-    {% if guard > 0 %}
-      <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ guard }}.0" />
-    {% endif %}
-    <set_variable name="GM_Submenu_{{ name }}_ShouldShow" value="0.0" integer="yes" />
   </event>
   {% endmacro %}
   {% macro storeAndSet(variable, value=0) %}
@@ -186,9 +170,6 @@
   {{ menuEvent("Basic", 1, "Bas.") }}
   {{ createMenu("Spawn", 2) }}
     {{ restore("GM_SpawnMenu_Selector") }}
-    <set_gm_button text="Side Value:" x="95" y="100" h="30" w="80" />
-    <set_gm_button text="1" x="180" y="100" h="30" w="20" />
-    <set_gm_button text="Change" x="205" y="100" h="30" w="60" />
     <set_gm_button text="AI Setting:" x="95" y="135" h="30" w="80" />
     <set_gm_button text="Default" x="175" y="135" h="30" w="120" />
     <set_gm_button text="TSN" x="100" y="170" h="30" w="70" />
@@ -219,6 +200,7 @@
     <set_gm_button text="Set AI Type\Convoy AI\Heading 270" />
     <set_gm_button text="Set AI Type\Convoy AI\Heading 315" />
     <set_variable name="AI Override" value="0.0" integer="yes" />
+    <set_variable name="SidePicker_Should_Show" value="1.0" integer="yes" />
   </event>
   {{ destroyMenu("Spawn", 2) }}
     {{ storeAndSet("GM_SpawnMenu_Selector") }}
@@ -252,7 +234,6 @@
     <clear_gm_button text="Cnvy Heading 90" />
     <clear_gm_button text="Cnvy Heading 135" />
     <!---->
-    <clear_gm_button text="Clear" />
     <clear_gm_button text="Side Value:" />
     <clear_gm_button text="1" />
     <clear_gm_button text="2 (PLYR)" />
@@ -312,11 +293,11 @@
     <clear_gm_button text="Cnvy Heading 315" />
     <clear_gm_button text="Cnvy Heading 90" />
     <clear_gm_button text="Cnvy Heading 135" />
+    <set_variable name="SidePicker_Should_Show" value="0.0" integer="yes" />
   </event>
   {{ menuEvent("Spawn", 2, "SPWN.") }}
   {{ createMenu("POI", 3) }}
     {{ restore("GM_WreckMenu_Selector") }}
-    <set_gm_button text="Clear" x="120" y="60" h="30" w="60" />
     <set_gm_button text="Waypoint SPAWN" x="100" y="100" h="30" w="80" />
     <set_gm_button text="Scan Pts" x="100" y="135" h="30" w="80" />
     <set_gm_button text="Debris" x="100" y="170" h="30" w="80" />
@@ -324,7 +305,6 @@
     <set_gm_button text="Anomalies" x="100" y="240" h="30" w="80" />
   </event>
   {{ destroyMenu("POI", 3) }}
-    <clear_gm_button text="Clear" />
     <clear_gm_button text="Waypoint SPAWN" />
     <clear_gm_button text="Rndz. Pts" />
     <clear_gm_button text="Anomalies" />
@@ -356,7 +336,6 @@
     {{ restore("GM_Submenu_IntSupplies_ShouldShow") }}
   </event>
   {{ destroyMenu("Interaction", 5) }}
-    <clear_gm_button text="Clear" />
     <clear_gm_button text="Messages" />
     <clear_gm_button text="Supplies" />
     <clear_gm_button text="Rprs/Dmge" />
@@ -1052,11 +1031,12 @@
     <clear_gm_button text="Bases" />
     <clear_gm_button text="Dismiss" />
   </event>
-  {{ submenuToggle("POIWreckSelect", "Debris", 3) }}
+  {{ submenuEvent("POIWreckSelect", "Debris") }}
   <event name="Dismiss Wreck Menu">
     <if_gm_button text="Dismiss" />
     <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="3.0" />
     <set_variable name="GM_WreckMenu_Selector" value="0.0" integer="yes" />
+    <set_variable name="GM_Submenu_POIWreckSelect_ShouldShow" value="0.0" integer="yes" />
   </event>
 
   {{ wreckmenuEvent("WreckTSN", "TSN", 1) }}
@@ -1475,10 +1455,10 @@
     <set_gm_button text="NPC Descriptions\Unusual EM readings" />
     <set_gm_button text="NPC Descriptions\Unusual Shielding" />
     <set_gm_button text="NPC Descriptions\Hospital Ship" />
-    <set_gm_button text="NPC Descriptions\_Dismiss" />
     <set_gm_button text="NPC Descriptions\Stations\Denabite Refinary" />
     <set_gm_button text="NPC Descriptions\Stations\Metal Refinary" />
     <set_gm_button text="NPC Descriptions\Stations\Mineral Refinary" />
+    <set_gm_button text="NPC Descriptions\_Dismiss" />
   </event>
   {{ destroySubMenu("IntScantext") }}
     <clear_gm_button text="NPC Descriptions\Refugee Marker" />
@@ -1569,7 +1549,7 @@
     <clear_gm_button text="Command Messages\_Dismiss" />
   </event>
   {{ submenuEvent("IntComms", "Messages") }}
-  {{ dismissEvent("IntSensor", "Command Messages\_Dismiss") }}
+  {{ dismissEvent("IntComms", "Command Messages\_Dismiss") }}
 
   {{ createSubMenu("IntRepairDamage") }}
     <set_gm_button text="Repair Ship\Repair Beams" />
@@ -1661,6 +1641,7 @@
     <set_gm_button text="Probe" x="200" y="380" h="30" w="100" />
     <set_gm_button text="100 Enrgy" x="200" y="415" h="30" w="100" />
     <set_gm_button text="Coolant" x="200" y="450" h="30" w="100" />
+    <set_gm_button text="Close Supplies Menu" x="200" y="485" h="30" w="100" />
   </event>
   {{ destroySubMenu("IntSupplies") }}
     <!--Supplies Menu-->
@@ -1676,5 +1657,17 @@
     <clear_gm_button text="Probe" />
     <clear_gm_button text="100 Enrgy" />
     <clear_gm_button text="Coolant" />
+    <clear_gm_button text="Close Supplies Menu" />
   </event>
-  {{ submenuToggle("IntSupplies", "Supplies", 5) }}
+  {{ submenuEvent("IntSupplies", "Supplies", 5) }}
+  {{ dismissEvent("IntSupplies", "Close Supplies Menu") }}
+
+  <event name="Clear All Menus">
+    <if_gm_button text="Clear" />
+    <set_variable name="GM_Menu_Selector" value="0.0" integer="yes" />
+    <set_variable name="GM_SpawnMenu_Selector" value="0.0" integer="yes" />
+    <set_variable name="GM_WreckMenu_Selector" value="0.0" integer="yes" />
+    {% for submenu in allSubmenus %}
+      <set_variable name="GM_Submenu_{{ submenu }}_ShouldShow" value="0.0" integer="yes" />
+    {% endfor %}
+  </event>

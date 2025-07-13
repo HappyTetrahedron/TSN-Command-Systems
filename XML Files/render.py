@@ -2,6 +2,7 @@
 import faulthandler
 faulthandler.enable()
 from jinja2 import Environment, FileSystemLoader
+import datetime
 
 env = {
     "scripts": [
@@ -21,8 +22,15 @@ env = {
 template_env = Environment(loader=FileSystemLoader('.'))
 template_env.lstrip_blocks = True
 template_env.trim_blocks = True
+template_env.add_extension('jinja2.ext.do')
 TMPL_FNAME = 'main.xml'
 OUT_FNAME = '../MISS_TSN-Command.xml'
 
+context = {
+    "data": env,
+    "version": "local",
+    "time": datetime.datetime.now(datetime.UTC).isoformat()
+}
+
 with open(OUT_FNAME, 'w') as f:
-    f.write(template_env.get_template(TMPL_FNAME).render(g={"data": env, "version": "local"}))
+    f.write(template_env.get_template(TMPL_FNAME).render(g=context))
