@@ -1,7 +1,7 @@
   <start name="Start" id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4">
     <!--Configurations-->
     <set_variable name="Clear" value="11.0" integer="yes" />
-    <set_difficulty_level value="10" />
+    <set_difficulty_level value="{{ g.data.difficulty or 10 }}" />
     <big_message title="The TSN Universe" subtitle1="Tetra's Fork Version {{ g.version }}" subtitle2="Systems:{% for system in g.data.get("systems", []) %} {{ system }}{% endfor %} - Scripts:{% for script in g.data.get("scripts", []) %} {{ script }}{% endfor %}" />
     <warning_popup_message message="Version {{ g.version }}" consoles="MHWESCO" player_slot="0" />
     <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="0" />

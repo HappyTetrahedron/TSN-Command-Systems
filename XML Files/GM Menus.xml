@@ -101,11 +101,6 @@
     <set_gm_button text="DelAllMines" x="195" y="130" h="28" w="90" />
     <set_gm_button text="DelSelected" x="195" y="160" h="28" w="90" />
     <set_gm_button text="SetPlyrSide" x="195" y="190" h="28" w="90" />
-    <set_gm_button text="Incap" x="290" y="220" h="28" w="45" />
-    <set_gm_button text="Recap" x="335" y="220" h="28" w="45" />
-    <set_gm_button text="Pro" x="290" y="250" h="28" w="35" />
-    <set_gm_button text="The" x="325" y="250" h="28" w="35" />
-    <set_gm_button text="Ody" x="360" y="250" h="28" w="35" />
     <!---->
     <set_gm_button text="Transitions" x="100" y="220" h="28" w="90" />
     <set_gm_button text="UP   /\" x="130" y="250" h="25" w="30" />
@@ -139,11 +134,6 @@
     <clear_gm_button text="DelShips" />
     <clear_gm_button text="LockSect" />
     <clear_gm_button text="UnlockSect" />
-    <clear_gm_button text="Pro" />
-    <clear_gm_button text="The" />
-    <clear_gm_button text="Ody" />
-    <clear_gm_button text="Incap" />
-    <clear_gm_button text="Recap" />
     <clear_gm_button text="UP   /\" />
     <clear_gm_button text="RIGHT   &gt;&gt;" />
     <clear_gm_button text="DOWN    V" />
@@ -319,7 +309,8 @@
     <set_gm_button text="Sensors" x="100" y="205" h="30" w="90" />
     <set_gm_button text="Brd Act." x="100" y="240" h="30" w="90" />
     <set_gm_button text="Scan Text" x="100" y="275" h="30" w="90" />
-    <set_gm_button text="Reset Comms" x="100" y="310" h="30" w="90" />
+    <set_gm_button text="Shuttle Resup" x="100" y="310" h="30" w="90" />
+    <set_gm_button text="Reset Comms" x="100" y="345" h="30" w="90" />
     {{ restore("GM_Submenu_IntSupplies_ShouldShow") }}
   </event>
   {{ destroyMenu("Interaction", 5) }}
@@ -329,6 +320,7 @@
     <clear_gm_button text="Sensors" />
     <clear_gm_button text="Scan Text" />
     <clear_gm_button text="Brd Act." />
+    <clear_gm_button text="Shuttle Resup" />
     <clear_gm_button text="Reset Comms" />
     {{ storeAndSet("GM_Submenu_IntSupplies_ShouldShow") }}
   </event>
@@ -1539,79 +1531,79 @@
   {{ dismissEvent("IntComms", "Command Messages\_Dismiss") }}
 
   {{ createSubMenu("IntRepairDamage") }}
-    <set_gm_button text="Repair Ship\Repair Beams" />
-    <set_gm_button text="Repair Ship\Repair Torpedoes" />
-    <set_gm_button text="Repair Ship\Repair Sensors" />
-    <set_gm_button text="Repair Ship\Repair Maneouvre" />
-    <set_gm_button text="Repair Ship\Repair Impulse" />
-    <set_gm_button text="Repair Ship\Repair Warp" />
-    <set_gm_button text="Repair Ship\Repair F. Shields" />
-    <set_gm_button text="Repair Ship\Repair R. Shields" />
-    <set_gm_button text="Repair Ship\Heal DamCon 0" />
-    <set_gm_button text="Repair Ship\Heal DamCon 1" />
-    <set_gm_button text="Repair Ship\Heal DamCon 2" />
-    <set_gm_button text="Damage Ship\Damage Beams" />
-    <set_gm_button text="Damage Ship\Damage Torpedoes" />
-    <set_gm_button text="Damage Ship\Damage Sensors" />
-    <set_gm_button text="Damage Ship\Damage Maneouvre" />
-    <set_gm_button text="Damage Ship\Damage Impulse" />
-    <set_gm_button text="Damage Ship\Damage Warp" />
-    <set_gm_button text="Damage Ship\Damage F. Shields" />
-    <set_gm_button text="Damage Ship\Damage R. Shields" />
-    <set_gm_button text="Damage Ship\Wound DamCon 0" />
-    <set_gm_button text="Damage Ship\Wound DamCon 1" />
-    <set_gm_button text="Damage Ship\Wound DamCon 2" />
-    <set_gm_button text="Damage Ship\_Dismiss" />
-    <set_gm_button text="Repair Ship\_Dismiss" />
-    <set_gm_button text="Random Damage\Set Ship1 On-" />
-    <set_gm_button text="Random Damage\Set Ship2 On-" />
-    <set_gm_button text="Random Damage\Set Ship3 On-" />
-    <set_gm_button text="Random Damage\Set Ship4 On-" />
-    <set_gm_button text="Random Damage\Set Ship5 On-" />
-    <set_gm_button text="Random Damage\Set Ship6 On-" />
-    <set_gm_button text="Random Damage\Set Ship7 On-" />
-    <set_gm_button text="Random Damage\Set Ship8 On-" />
-    <set_gm_button text="Random Damage\Set All On-" />
-    <set_gm_button text="Random Damage\_Dismiss" />
+    <set_gm_button text="RepairDamage\Repair Ship\Repair Beams" />
+    <set_gm_button text="RepairDamage\Repair Ship\Repair Torpedoes" />
+    <set_gm_button text="RepairDamage\Repair Ship\Repair Sensors" />
+    <set_gm_button text="RepairDamage\Repair Ship\Repair Maneouvre" />
+    <set_gm_button text="RepairDamage\Repair Ship\Repair Impulse" />
+    <set_gm_button text="RepairDamage\Repair Ship\Repair Warp" />
+    <set_gm_button text="RepairDamage\Repair Ship\Repair F. Shields" />
+    <set_gm_button text="RepairDamage\Repair Ship\Repair R. Shields" />
+    <set_gm_button text="RepairDamage\Repair Ship\Heal DamCon 0" />
+    <set_gm_button text="RepairDamage\Repair Ship\Heal DamCon 1" />
+    <set_gm_button text="RepairDamage\Repair Ship\Heal DamCon 2" />
+    <set_gm_button text="RepairDamage\Damage Ship\Damage Beams" />
+    <set_gm_button text="RepairDamage\Damage Ship\Damage Torpedoes" />
+    <set_gm_button text="RepairDamage\Damage Ship\Damage Sensors" />
+    <set_gm_button text="RepairDamage\Damage Ship\Damage Maneouvre" />
+    <set_gm_button text="RepairDamage\Damage Ship\Damage Impulse" />
+    <set_gm_button text="RepairDamage\Damage Ship\Damage Warp" />
+    <set_gm_button text="RepairDamage\Damage Ship\Damage F. Shields" />
+    <set_gm_button text="RepairDamage\Damage Ship\Damage R. Shields" />
+    <set_gm_button text="RepairDamage\Damage Ship\Wound DamCon 0" />
+    <set_gm_button text="RepairDamage\Damage Ship\Wound DamCon 1" />
+    <set_gm_button text="RepairDamage\Damage Ship\Wound DamCon 2" />
+    <set_gm_button text="RepairDamage\Random Damage\Set Ship1 On-" />
+    <set_gm_button text="RepairDamage\Random Damage\Set Ship2 On-" />
+    <set_gm_button text="RepairDamage\Random Damage\Set Ship3 On-" />
+    <set_gm_button text="RepairDamage\Random Damage\Set Ship4 On-" />
+    <set_gm_button text="RepairDamage\Random Damage\Set Ship5 On-" />
+    <set_gm_button text="RepairDamage\Random Damage\Set Ship6 On-" />
+    <set_gm_button text="RepairDamage\Random Damage\Set Ship7 On-" />
+    <set_gm_button text="RepairDamage\Random Damage\Set Ship8 On-" />
+    <set_gm_button text="RepairDamage\Random Damage\Set All On-" />
+    <set_gm_button text="RepairDamage\Incapacitate" />
+    <set_gm_button text="RepairDamage\Reinstate" />
+    <set_gm_button text="RepairDamage\_Dismiss" />
   </event>
   {{ destroySubMenu("IntRepairDamage") }}
-    <clear_gm_button text="Repair Ship\Repair Beams" />
-    <clear_gm_button text="Repair Ship\Repair Torpedoes" />
-    <clear_gm_button text="Repair Ship\Repair Sensors" />
-    <clear_gm_button text="Repair Ship\Repair Maneouvre" />
-    <clear_gm_button text="Repair Ship\Repair Impulse" />
-    <clear_gm_button text="Repair Ship\Repair Warp" />
-    <clear_gm_button text="Repair Ship\Repair F. Shields" />
-    <clear_gm_button text="Repair Ship\Repair R. Shields" />
-    <clear_gm_button text="Repair Ship\Heal DamCon 0" />
-    <clear_gm_button text="Repair Ship\Heal DamCon 1" />
-    <clear_gm_button text="Repair Ship\Heal DamCon 2" />
-    <clear_gm_button text="Damage Ship\Damage Beams" />
-    <clear_gm_button text="Damage Ship\Damage Torpedoes" />
-    <clear_gm_button text="Damage Ship\Damage Sensors" />
-    <clear_gm_button text="Damage Ship\Damage Maneouvre" />
-    <clear_gm_button text="Damage Ship\Damage Impulse" />
-    <clear_gm_button text="Damage Ship\Damage Warp" />
-    <clear_gm_button text="Damage Ship\Damage F. Shields" />
-    <clear_gm_button text="Damage Ship\Damage R. Shields" />
-    <clear_gm_button text="Damage Ship\Wound DamCon 0" />
-    <clear_gm_button text="Damage Ship\Wound DamCon 1" />
-    <clear_gm_button text="Damage Ship\Wound DamCon 2" />
-    <clear_gm_button text="Damage Ship\_Dismiss" />
-    <clear_gm_button text="Repair Ship\_Dismiss" />
-    <clear_gm_button text="Random Damage\Set Ship1 On-" />
-    <clear_gm_button text="Random Damage\Set Ship2 On-" />
-    <clear_gm_button text="Random Damage\Set Ship3 On-" />
-    <clear_gm_button text="Random Damage\Set Ship4 On-" />
-    <clear_gm_button text="Random Damage\Set Ship5 On-" />
-    <clear_gm_button text="Random Damage\Set Ship6 On-" />
-    <clear_gm_button text="Random Damage\Set Ship7 On-" />
-    <clear_gm_button text="Random Damage\Set Ship8 On-" />
-    <clear_gm_button text="Random Damage\Set All On-" />
-    <clear_gm_button text="Random Damage\_Dismiss" />
+    <clear_gm_button text="RepairDamage\Repair Ship\Repair Beams" />
+    <clear_gm_button text="RepairDamage\Repair Ship\Repair Torpedoes" />
+    <clear_gm_button text="RepairDamage\Repair Ship\Repair Sensors" />
+    <clear_gm_button text="RepairDamage\Repair Ship\Repair Maneouvre" />
+    <clear_gm_button text="RepairDamage\Repair Ship\Repair Impulse" />
+    <clear_gm_button text="RepairDamage\Repair Ship\Repair Warp" />
+    <clear_gm_button text="RepairDamage\Repair Ship\Repair F. Shields" />
+    <clear_gm_button text="RepairDamage\Repair Ship\Repair R. Shields" />
+    <clear_gm_button text="RepairDamage\Repair Ship\Heal DamCon 0" />
+    <clear_gm_button text="RepairDamage\Repair Ship\Heal DamCon 1" />
+    <clear_gm_button text="RepairDamage\Repair Ship\Heal DamCon 2" />
+    <clear_gm_button text="RepairDamage\Damage Ship\Damage Beams" />
+    <clear_gm_button text="RepairDamage\Damage Ship\Damage Torpedoes" />
+    <clear_gm_button text="RepairDamage\Damage Ship\Damage Sensors" />
+    <clear_gm_button text="RepairDamage\Damage Ship\Damage Maneouvre" />
+    <clear_gm_button text="RepairDamage\Damage Ship\Damage Impulse" />
+    <clear_gm_button text="RepairDamage\Damage Ship\Damage Warp" />
+    <clear_gm_button text="RepairDamage\Damage Ship\Damage F. Shields" />
+    <clear_gm_button text="RepairDamage\Damage Ship\Damage R. Shields" />
+    <clear_gm_button text="RepairDamage\Damage Ship\Wound DamCon 0" />
+    <clear_gm_button text="RepairDamage\Damage Ship\Wound DamCon 1" />
+    <clear_gm_button text="RepairDamage\Damage Ship\Wound DamCon 2" />
+    <clear_gm_button text="RepairDamage\Random Damage\Set Ship1 On-" />
+    <clear_gm_button text="RepairDamage\Random Damage\Set Ship2 On-" />
+    <clear_gm_button text="RepairDamage\Random Damage\Set Ship3 On-" />
+    <clear_gm_button text="RepairDamage\Random Damage\Set Ship4 On-" />
+    <clear_gm_button text="RepairDamage\Random Damage\Set Ship5 On-" />
+    <clear_gm_button text="RepairDamage\Random Damage\Set Ship6 On-" />
+    <clear_gm_button text="RepairDamage\Random Damage\Set Ship7 On-" />
+    <clear_gm_button text="RepairDamage\Random Damage\Set Ship8 On-" />
+    <clear_gm_button text="RepairDamage\Random Damage\Set All On-" />
+    <clear_gm_button text="RepairDamage\Incapacitate" />
+    <clear_gm_button text="RepairDamage\Reinstate" />
+    <clear_gm_button text="RepairDamage\_Dismiss" />
   </event>
   {{ submenuEvent("IntRepairDamage", "Rprs/Dmge") }}
-  {{ dismissEvent("IntRepairDamage", "Repair Ship/_Dismiss") }}
+  {{ dismissEvent("IntRepairDamage", "RepairDamage\_Dismiss") }}
 
   {{ createSubMenu("IntSupplies") }}
     <set_variable name="Ordnance" value="1.0" integer="yes" />
@@ -1646,6 +1638,21 @@
   </event>
   {{ submenuEvent("IntSupplies", "Supplies", 5) }}
   {{ dismissEvent("IntSupplies", "Supplies Menu    Close") }}
+
+  {{ createSubMenu("IntShuttleResupply") }}
+    {% for shuttle in ShuttleList %}
+      <set_gm_button text="Shuttles/{{ shuttle }}" />
+    {% endfor %}
+    <set_gm_button text="Shuttles/_Dismiss"/>
+  </event>
+  {{ destroySubMenu("IntShuttleResupply") }}
+    {% for shuttle in ShuttleList %}
+      <clear_gm_button text="Shuttles/{{ shuttle }}" />
+    {% endfor %}
+    <clear_gm_button text="Shuttles/_Dismiss"/>
+  </event>
+  {{ submenuEvent("IntShuttleResupply", "Shuttle Resup", 5) }}
+  {{ dismissEvent("IntShuttleResupply", "Shuttles/_Dismiss") }}
 
   <event name="Clear All Menus">
     <if_gm_button text="Clear" />

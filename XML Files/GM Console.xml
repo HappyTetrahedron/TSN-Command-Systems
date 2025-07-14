@@ -38,7 +38,7 @@
   </event>
   <event name="Incapacitate">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="Incap" />
+    <if_gm_button text="RepairDamage/Incapacitate" />
     <set_damcon_members use_gm_selection="" team_index="0" value="0" />
     <set_damcon_members use_gm_selection="" team_index="2" value="0" />
     <set_damcon_members use_gm_selection="" team_index="1" value="0" />
@@ -58,7 +58,7 @@
   </event>
   <event name="Recapacitate">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="Recap" />
+    <if_gm_button text="RepairDamage/Reinstate" />
     <set_damcon_members use_gm_selection="" team_index="0" value="6" />
     <set_damcon_members use_gm_selection="" team_index="2" value="6" />
     <set_damcon_members use_gm_selection="" team_index="1" value="6" />
@@ -76,25 +76,22 @@
     <set_player_grid_damage use_gm_selection="" systemType="systemWarp" value="0.0" countFrom="front" index="4" />
     <set_player_grid_damage use_gm_selection="" systemType="systemWarp" value="0.0" countFrom="front" index="5" />
   </event>
-  <event name="RestockProteus" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
-    <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="Pro" />
-    <clear_player_station_carried name="Grant Docking Tether" />
-    <set_player_station_carried name="Grant Docking Tether" raceKeys="TSN" hullKeys="TSN Shuttle shuttle" singleSeatName="Proteus" />
+  {% for shuttle in ShuttleList %}
+  <event name="Restock{{ shuttle }}" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
+    <if_gm_button text="Shuttles/{{ shuttle }}" />
+    <create type="station" use_gm_position="" name="{{ shuttlle }} Pickup" hullID="1058" sideValue="2" />
+    <set_object_property property="canBuild" value="0" name="{{ shuttle }} Pickup" />
+    <set_object_property property="missileStoresHoming" value="0" name="{{ shuttle }} Pickup" />
+    <set_object_property property="missileStoresNuke" value="0" name="{{ shuttle }} Pickup" />
+    <set_object_property property="missileStoresMine" value="0" name="{{ shuttle }} Pickup" />
+    <set_object_property property="missileStoresEMP" value="0" name="{{ shuttle }} Pickup" />
+    <set_object_property property="missileStoresPShock" value="0" name="{{ shuttle }} Pickup" />
+    <set_object_property property="missileStoresTag" value="0" name="{{ shuttle }} Pickup" />
+    <set_object_property property="missileStoresBeacon" value="0" name="{{ shuttle }} Pickup" />
+    <set_object_property property="missileStoresProbe" value="0" name="{{ shuttle }} Pickup" />
+    <set_player_station_carried name="{{ shuttle }} Pickup" raceKeys="TSN" hullKeys="TSN Shuttle shuttle" singleSeatName="{{ shuttle }}" />
   </event>
-  <event name="RestockTheseus" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
-    <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="The" />
-    <clear_player_station_carried name="Grant Docking Tether" />
-    <set_player_station_carried name="Grant Docking Tether" raceKeys="TSN" hullKeys="TSN Shuttle shuttle" singleSeatName="Theseus" />
-  </event>
-  <event name="RestockOdysseus" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
-    <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="Ody" />
-    <clear_player_station_carried name="Grant Docking Tether" />
-    <clear_player_station_carried name="Grant Docking Tether" />
-    <set_player_station_carried name="Grant Docking Tether" raceKeys="TSN" hullKeys="TSN Shuttle shuttle" singleSeatName="Odysseus" />
-  </event>
+  {% endfor %}
   <event name="Destroy Unnamed Object" id_arme="f00a0268-6a59-4e62-b59d-80c91fc0e6d1" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
     <if_gm_button text="DelTerrain" />
