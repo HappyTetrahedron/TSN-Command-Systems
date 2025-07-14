@@ -1,0 +1,153 @@
+{% 
+  set availableAIs = {
+    "Default": {
+      "macro": ConfigureDefaultAI,
+      "id": 2
+    }
+  }
+%}
+
+{% macro ConfigureDefaultAI(names) %}
+  {% for name in names %}
+    <clear_ai name="{{ name }}" />
+    <add_ai type="TRY_TO_BECOME_LEADER" name="{{ name }}" />
+    <add_ai type="CHASE_PLAYER" name="{{ name }}" />
+    <add_ai type="CHASE_STATION" value1="1000" name="{{ name }}" />
+    <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="{{ name }}" />
+    <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="{{ name }}" />
+    <add_ai type="CHASE_ANGER" name="{{ name }}" />
+    <add_ai type="LEADER_LEADS" name="{{ name }}" />
+    <add_ai type="FOLLOW_LEADER" name="{{ name }}" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="8000" name="{{ name }}" />
+  {% endfor %}
+{% endmacro %}
+
+
+{% macro ReassignAI() %}
+  {% for name, ai in availableAIs.items %}
+    {% for i, letter in enumerate(FleetLetters) %}
+      <event name="{{ name }} Reassign {{ letter }}">
+        <if_variable name="ReassignLetter" comparator="EQUALS" value="{{ i }}" />
+        <if_variable name="ReassignAI" comparator="EQUALS" value="{{ ai.id }}.0" />
+        <if_variable name="ReassignDigits" comparator="NOT" value="1.0" />
+        {{ ai.macro([
+          letter + "0|reassignNumber0|",
+          letter + "|reassignNumber2|",
+          letter + "|reassignNumber4|",
+          letter + "|reassignNumber8|",
+          letter + "|reassignNumber6|",
+        ]) }
+        <set_gm_button text="Reassigning AI" x="230" y="415" h="60" w="150" />
+        <set_variable name="ReassignDigits" value="1.0" integer="yes" />}
+      </event>
+    {% endfor %}
+  {% endfor %}
+{% endmacro %}
+
+
+{# Information on AI IDs
+Reassign:
+Default: 2
+Surrender: 1
+Unsurrender: 7
+Elite: 3
+Hunt Players: 4
+Hunt Bases: 5
+Hunt Neutral: 6
+Side 1: 80
+Side 2: 81
+Side 3: 82
+Side 4: 83
+Side 5: 84
+Side 6: 85
+Side 7: 86
+Side 8: 87
+Side 9: 88
+Side 10: 89
+Side 11: 90
+Side 12: 91
+Full Stop: 100
+Dir 0: 101
+Dir 45: 102
+Dir 90: 103
+Dir 135: 104
+Dir 180: 105
+Dir 225: 106
+Dir 270: 107
+Dir 315: 108
+Speed Increase: 109
+Speed Decrease: 110
+Move To GM: 111
+Neutral Default NC: 20
+Neutral Follow Player NC: 21
+Neutral Default C: 22
+Neutral Follow Player C: 23
+Ally Default NC: 30
+Ally Hunt Base NC: 31
+Ally Hunt Enemy NC: 32
+Ally Guard Base NC: 33
+Ally Default C: 34
+Ally Hunt Base C: 35
+Ally Hunt Enemy C: 36
+Ally Guard Base C: 37
+Delete: 200
+
+
+Spawn:
+Standard Attack: 1
+Hunt/Follow Player: 2
+Hunt Bases: 3
+Guard Bases: 4
+Escort: 5
+Standard Elite: 6
+Command Group: 7
+Torgoth Hunter: 8
+Arvonian WP: 9
+Hegemony WP: 10
+Skaraan Base: 11
+Hegemony Base: 12
+
+Noncombat Standard: 50
+Go To Nearest Station: 51
+Supply Escort Jinn: 52
+Supply Escort Grant: 53
+Supply Escort Goblin: 54
+
+Ximni: 100
+Pirate: 101
+Caltron: 102
+N'Tani: 103
+Biomech Aggro: 104
+Sechateal: 105
+Budron: 106
+
+Patrol: 150 # defined in GM buttons but no AI with this value exists
+
+Convoy: 200
+
+Buoy/Relay: 400
+ShuttleOps Buoy/Relay: 401
+Wreck: 402
+Artefact: 403 # unused I believe
+Caltron Base: 404
+Shipyard: 405
+Docking Port: 406
+Civ Base: 407
+Enemy Wreck: 408
+Active SenBuoy: 409
+Slingshot Platform: 410
+Slingshot Power: 411
+Slingshot Antenna: 412
+Slingshot Antenna: 413 # Misnamed??
+
+Energy Docking Port: 500
+Light Docking Port: 501
+Heavy Docking Port: 502
+Mining Docking Port: 503
+Explo Docking Port: 504
+Xeno Research Docking Port: 505
+Normal Docking Port: 506 # Does not override spawn defaults
+
+Fleeing L: 900
+Fleeing TL: 901
+#}
