@@ -27622,7 +27622,6 @@
   <event name="Clear Menu" id_arme="d018f99c-ea99-45a3-a06f-f875ceaa885b" parent_id_arme="c6b5e50e-c4ae-4222-a318-f7fb7c467250">
     <if_variable name="GM Backup" comparator="GREATER_EQUAL" value="1.0" />
     <if_gm_button text="Reboot" />
-    <set_variable name="CycleAIMenu" value="1.0" integer="yes" />
     <clear_gm_button text="DelOff" />
     <clear_gm_button text="AI Off" />
     <clear_gm_button text="DelOn" />
@@ -27634,19 +27633,16 @@
     <clear_gm_button text="End" />
     <clear_gm_button text="Bas." />
     <clear_gm_button text="SPWN." />
-    <clear_gm_button text="AI" />
     <clear_gm_button text="POI" />
     <clear_gm_button text="Haz." />
     <clear_gm_button text="Int." />
-    <clear_gm_button text="WPs." />
     <clear_gm_button text="CSTM" />
     <clear_gm_button text="Spwn Dsbld" />
     <clear_gm_button text="Delete Dsble" />
     <clear_gm_button text="Spwn Enbld" />
     <clear_gm_button text="Delete Enbld" />
+    <set_variable name="GM_Menu_Clear_All" value="1.0" />
     <set_variable name="GM Controls" value="0.0" />
-    <set_variable name="CycleAIMenu" value="1.0" integer="yes" />
-    <set_variable name="CycleAISide" value="2.0" integer="yes" />
     <set_variable name="GM Menu" value="0.0" />
     <set_variable name="GMmenuSelect" value="0.0" />
     <set_timer name="GM Backup" seconds="2" />

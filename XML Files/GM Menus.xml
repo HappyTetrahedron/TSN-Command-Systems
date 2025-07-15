@@ -1652,9 +1652,219 @@
     <clear_gm_button text="Shuttles\_Dismiss"/>
   </event>
   {{ submenuEvent("IntShuttleResupply", "Shuttle Resup", 5) }}
-  {{ dismissEvent("IntShuttleResupply", "Shuttles/_Dismiss") }}
+  {{ dismissEvent("IntShuttleResupply", "Shuttles\_Dismiss") }}
 
-  <event name="Clear All Menus">
+  {{ createSubMenu("AICommands") }}
+    <set_gm_button text="AI Cmds On" x="140" y="480" h="28" w="90" />
+    <clear_gm_button text="AI Cmds Off" />
+    <set_gm_button text="DefaultAI" x="140" y="510" h="28" w="90" />
+    <set_gm_button text="EliteAI" x="140" y="540" h="28" w="90" />
+    <set_gm_button text="Hunt Plyr" x="140" y="570" h="28" w="90" />
+    <set_gm_button text="Hunt Bse" x="140" y="600" h="28" w="90" />
+    <set_gm_button text="Hunt Ntrl" x="140" y="630" h="28" w="90" />
+    <set_gm_button text="PirateAI" x="140" y="660" h="28" w="90" />
+    <set_gm_button text="AllyAI" x="230" y="510" h="28" w="90" />
+    <set_gm_button text="Guard Bse" x="230" y="540" h="28" w="90" />
+    <set_gm_button text="GoToBase" x="230" y="570" h="28" w="90" />
+    <set_gm_button text="Noncombat" x="230" y="600" h="28" w="90" />
+    <set_gm_button text="Unsurrender" x="230" y="630" h="28" w="90" />
+    <set_gm_button text="Surrender" x="230" y="660" h="28" w="90" />
+    <set_gm_button text="Specials" x="320" y="510" h="28" w="90" />
+  </event>
+  {{ destroySubMenu("AICommands") }}
+    <clear_gm_button text="AI Cmds On" />
+    <set_gm_button text="AI Cmds Off" x="140" y="480" h="28" w="90" />
+    <clear_gm_button text="DefaultAI" />
+    <clear_gm_button text="EliteAI" />
+    <clear_gm_button text="Hunt Plyr" />
+    <clear_gm_button text="Hunt Bse" />
+    <clear_gm_button text="Hunt Ntrl" />
+    <clear_gm_button text="PirateAI" />
+    <clear_gm_button text="AllyAI" />
+    <clear_gm_button text="Guard Bse" />
+    <clear_gm_button text="GoToBase" />
+    <clear_gm_button text="Noncombat"/>
+    <clear_gm_button text="Unsurrender" />
+    <clear_gm_button text="Surrender" />
+    <clear_gm_button text="Specials" />
+  </event>
+  {{ submenuEvent("AICommands", "AI Cmds On") }}
+  {{ dismissEvent("AICommands", "AI Cmds Off") }}
+
+  {{ createSubMenu("AIMenu") }}
+    <clear_gm_button text="AI Off" />
+    <set_gm_button text="AI On" x="40" y="380" h="30" w="50" />
+    <!--Group Selection Menu-->
+    <set_gm_button text="Target:" x="40" y="415" h="28" w="60" />
+    <set_gm_button text="Grp     GM" x="100" y="415" h="28" w="50" />
+    <set_gm_button text="Target SWCH" x="155" y="415" h="28" w="50" />
+    <!--Direction Menu-->
+    <set_gm_button text="0   /\" x="70" y="510" h="28" w="28" />
+    <set_gm_button text="45   //" x="100" y="510" h="28" w="28" />
+    <set_gm_button text="90   &gt;&gt;" x="100" y="540" h="28" w="28" />
+    <set_gm_button text="135   \\" x="100" y="570" h="28" w="28" />
+    <set_gm_button text="180   V" x="70" y="570" h="28" w="28" />
+    <set_gm_button text="225   //" x="40" y="570" h="28" w="28" />
+    <set_gm_button text="270   &lt;&lt;" x="40" y="540" h="28" w="28" />
+    <set_gm_button text="315   \\" x="40" y="510" h="28" w="28" />
+    <set_gm_button text="STOP    O" x="70" y="540" h="28" w="28" />
+    <set_gm_button text="Speed +0.6" x="88" y="600" h="28" w="40" />
+    <set_gm_button text="Speed -0.6" x="40" y="600" h="28" w="40" />
+    <set_gm_button text="GrpToGM" x="40" y="480" h="28" w="88" />
+    <set_gm_button text="Del Grp" x="40" y="630" h="28" w="88" />
+    <set_gm_button text="Switch Side" x="40" y="660" h="28" w="88" />
+    <set_gm_button text="AI Cmds Off" x="140" y="480" h="28" w="90" />
+    <set_variable name="AIMenu_Button_Shown" value="1.0" integer="yes" />
+    <!--Set Key Variables-->
+    <set_variable name="ReassignLetter" value="30.0" integer="yes" />
+    <set_variable name="reassignNumber0" value="0.0" integer="yes" />
+    <set_variable name="reassignNumber2" value="10.0" integer="yes" />
+    <set_variable name="reassignNumber4" value="35.0" integer="yes" />
+    <set_variable name="reassignNumber6" value="60.0" integer="yes" />
+    <set_variable name="reassignNumber8" value="80.0" integer="yes" />
+    <set_variable name="ReassignDigits" value="0.0" integer="yes" />
+  </event>
+  {{ destroySubMenu("AIMenu") }}
+    <!--Target Select Buttons-->
+    <set_variable name="GM_Submenu_AICommands_ShouldShow" value="0.0" integer="yes" />
+    <!-- Remove legacy side picker and group letter picker -->
+    <set_variable name="CycleAISide" value="2.0" integer="yes" />
+    <set_variable name="CycleAIMenu" value="2.0" integer="yes" />
+    <clear_gm_button text="AI On" />
+    <set_gm_button text="AI Off" x="40" y="380" h="30" w="50" />
+    <clear_gm_button text="Target:" />
+    <clear_gm_button text="Target SWCH" />
+    <clear_gm_button text="Grp     GM" />
+    <clear_gm_button text="Grp A" />
+    <clear_gm_button text="Grp B" />
+    <clear_gm_button text="Grp C" />
+    <clear_gm_button text="Grp D" />
+    <clear_gm_button text="Grp E" />
+    <clear_gm_button text="Grp F" />
+    <clear_gm_button text="Grp G" />
+    <clear_gm_button text="Grp H" />
+    <clear_gm_button text="Grp I" />
+    <clear_gm_button text="Grp J" />
+    <clear_gm_button text="Grp K" />
+    <clear_gm_button text="Grp L" />
+    <clear_gm_button text="Grp M" />
+    <clear_gm_button text="Grp N" />
+    <clear_gm_button text="Grp O" />
+    <clear_gm_button text="Grp P" />
+    <clear_gm_button text="Grp Q" />
+    <clear_gm_button text="Grp R" />
+    <clear_gm_button text="Grp S" />
+    <clear_gm_button text="Grp T" />
+    <clear_gm_button text="Grp U" />
+    <clear_gm_button text="Grp V" />
+    <clear_gm_button text="Grp W" />
+    <clear_gm_button text="Grp X" />
+    <clear_gm_button text="Grp Y" />
+    <clear_gm_button text="Grp Z" />
+    <!--General Buttons-->
+    <clear_gm_button text="0   /\" />
+    <clear_gm_button text="315   \\" />
+    <clear_gm_button text="270   &lt;&lt;" />
+    <clear_gm_button text="225   //" />
+    <clear_gm_button text="180   V" />
+    <clear_gm_button text="135   \\" />
+    <clear_gm_button text="90   &gt;&gt;" />
+    <clear_gm_button text="45   //" />
+    <clear_gm_button text="STOP    O" />
+    <clear_gm_button text="Speed +0.6" />
+    <clear_gm_button text="Speed -0.6" />
+    <clear_gm_button text="GrpToGM" />
+    <clear_gm_button text="Del Grp" />
+    <clear_gm_button text="Switch Side" />
+    <clear_gm_button text="AI Cmds On" />
+    <clear_gm_button text="AI Cmds Off" />
+  </event>
+  <event name="AI Commands Button Cleanup">
+    <if_variable name="GM_Submenu_AIMenu_Active" comparator="NOT" value="1.0" />
+    <if_variable name="AIMenu_Button_Shown" comparator="EQUALS" value="1.0" />
+    <clear_gm_button text="AI Cmds On" />
+    <clear_gm_button text="AI Cmds Off" />
+    <set_variable name="AIMenu_Button_Shown" value="0.0" integer="yes" />
+  </event>
+  {{ submenuEvent("AIMenu", "AI On") }}
+  {{ dismissEvent("AIMenu", "AI Off") }}
+
+  {{ createSubMenu("AISpecials") }}
+    <set_gm_button text="Assign Specials\Add\Normal" />
+    <set_gm_button text="Assign Specials\Add\Upgraded" />
+    <set_gm_button text="Assign Specials\Add\Overpowered" />
+    <set_gm_button text="Assign Specials\Add\Underpowered" />
+    <set_gm_button text="Assign Specials\Add\Stealth" />
+    <set_gm_button text="Assign Specials\Add\Shield Drain" />
+    <set_gm_button text="Assign Specials\Add\Tractor" />
+    <set_gm_button text="Assign Specials\Add\Shield Reset" />
+    <set_gm_button text="Assign Specials\Add\Teleback" />
+    <set_gm_button text="Assign Specials\Add\Warp" />
+    <set_gm_button text="Assign Specials\Add\HET" />
+    <set_gm_button text="Assign Specials\Add\Anti-Torp" />
+    <set_gm_button text="Assign Specials\Add\Anti-Mine" />
+    <set_gm_button text="Assign Specials\Add\Cloak" />
+    <set_gm_button text="Assign Specials\Add\Low Vis" />
+    <set_gm_button text="Assign Specials\Add\Teleport" />
+    <set_gm_button text="Assign Specials\Add\Drones" />
+    <set_gm_button text="Assign Specials\Add\Shield Vamp" />
+    <set_gm_button text="Assign Specials\Clear\Stealth" />
+    <set_gm_button text="Assign Specials\Clear\Shield Drain" />
+    <set_gm_button text="Assign Specials\Clear\Tractor" />
+    <set_gm_button text="Assign Specials\Clear\Shield Reset" />
+    <set_gm_button text="Assign Specials\Clear\Teleback" />
+    <set_gm_button text="Assign Specials\Clear\Warp" />
+    <set_gm_button text="Assign Specials\Clear\HET" />
+    <set_gm_button text="Assign Specials\Clear\Anti-Torp" />
+    <set_gm_button text="Assign Specials\Clear\Anti-Mine" />
+    <set_gm_button text="Assign Specials\Clear\Cloak" />
+    <set_gm_button text="Assign Specials\Clear\Low Vis" />
+    <set_gm_button text="Assign Specials\Clear\Teleport" />
+    <set_gm_button text="Assign Specials\Clear\Drones" />
+    <set_gm_button text="Assign Specials\Clear\Shield Vamp" />
+    <set_gm_button text="Assign Specials\Clear\Clear All" />
+    <set_gm_button text="Assign Specials\_Dismiss" />
+  </event>
+  {{ destroySubMenu("AISpecials") }}
+    <clear_gm_button text="Assign Specials\Add\Normal" />
+    <clear_gm_button text="Assign Specials\Add\Upgraded" />
+    <clear_gm_button text="Assign Specials\Add\Overpowered" />
+    <clear_gm_button text="Assign Specials\Add\Underpowered" />
+    <clear_gm_button text="Assign Specials\Add\Stealth" />
+    <clear_gm_button text="Assign Specials\Add\Shield Drain" />
+    <clear_gm_button text="Assign Specials\Add\Tractor" />
+    <clear_gm_button text="Assign Specials\Add\Shield Reset" />
+    <clear_gm_button text="Assign Specials\Add\Teleback" />
+    <clear_gm_button text="Assign Specials\Add\Warp" />
+    <clear_gm_button text="Assign Specials\Add\HET" />
+    <clear_gm_button text="Assign Specials\Add\Anti-Torp" />
+    <clear_gm_button text="Assign Specials\Add\Anti-Mine" />
+    <clear_gm_button text="Assign Specials\Add\Cloak" />
+    <clear_gm_button text="Assign Specials\Add\Low Vis" />
+    <clear_gm_button text="Assign Specials\Add\Teleport" />
+    <clear_gm_button text="Assign Specials\Add\Drones" />
+    <clear_gm_button text="Assign Specials\Add\Shield Vamp" />
+    <clear_gm_button text="Assign Specials\Clear\Stealth" />
+    <clear_gm_button text="Assign Specials\Clear\Shield Drain" />
+    <clear_gm_button text="Assign Specials\Clear\Tractor" />
+    <clear_gm_button text="Assign Specials\Clear\Shield Reset" />
+    <clear_gm_button text="Assign Specials\Clear\Teleback" />
+    <clear_gm_button text="Assign Specials\Clear\Warp" />
+    <clear_gm_button text="Assign Specials\Clear\HET" />
+    <clear_gm_button text="Assign Specials\Clear\Anti-Torp" />
+    <clear_gm_button text="Assign Specials\Clear\Anti-Mine" />
+    <clear_gm_button text="Assign Specials\Clear\Cloak" />
+    <clear_gm_button text="Assign Specials\Clear\Low Vis" />
+    <clear_gm_button text="Assign Specials\Clear\Teleport" />
+    <clear_gm_button text="Assign Specials\Clear\Drones" />
+    <clear_gm_button text="Assign Specials\Clear\Shield Vamp" />
+    <clear_gm_button text="Assign Specials\Clear\Clear All" />
+    <clear_gm_button text="Assign Specials\_Dismiss" />
+  </event>
+  {{ submenuEvent("AISpecials", "Specials") }}
+  {{ dismissEvent("AISpecials", "Assign Specials\_Dismiss") }}
+
+  <event name="Clear All Menus (Button Trigger)">
     <if_gm_button text="Clear" />
     <set_variable name="GM_Menu_Selector" value="0.0" integer="yes" />
     <set_variable name="GM_SpawnMenu_Selector" value="0.0" integer="yes" />
@@ -1662,4 +1872,15 @@
     {% for submenu in allSubmenus %}
       <set_variable name="GM_Submenu_{{ submenu }}_ShouldShow" value="0.0" integer="yes" />
     {% endfor %}
+  </event>
+
+  <event name="Clear All Menus (Flag Trigger)">
+    <if_variable name="GM_Menu_Clear_All" comparator="GREATER_EQUAL" value="1.0" />
+    <set_variable name="GM_Menu_Selector" value="0.0" integer="yes" />
+    <set_variable name="GM_SpawnMenu_Selector" value="0.0" integer="yes" />
+    <set_variable name="GM_WreckMenu_Selector" value="0.0" integer="yes" />
+    {% for submenu in allSubmenus %}
+      <set_variable name="GM_Submenu_{{ submenu }}_ShouldShow" value="0.0" integer="yes" />
+    {% endfor %}
+    <set_variable name="GM_Menu_Clear_All" value="0.0" integer="yes" />
   </event>

@@ -1,5 +1,5 @@
 
-{% set FleetLetters = ["A","B","C","D"] %}
+{% set FleetLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
 
 {%- macro nn(name) -%}{% if name == "GM" %}use_gm_selection=""{% else %}name="{{ name }}"{% endif %}{%- endmacro -%}
 
@@ -16,6 +16,7 @@
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" {{ nn(name) }} />
     <add_ai type="CHASE_STATION" value1="1000" {{ nn(name) }} />
     <add_ai type="FOLLOW_COMMS_ORDERS" {{ nn(name) }} />
+    <add_ai type="DEFEND" value1="3000" value2="5000" {{ nn(name) }} />
     <add_ai type="CHASE_PLAYER" value1="800" value2="100" {{ nn(name) }} />
     <add_ai type="CHASE_AI_SHIP" value1="800" value2="100" {{ nn(name) }} />
     <add_ai type="CHASE_STATION" value1="100" {{ nn(name) }} />
@@ -216,7 +217,7 @@
 
 {% macro AI_ChangeSide(names) %}
   {% for name in names %}
-    <set_side_value value="|AI_Reassign_ChangeToSide|" {{ nn(name) }} />
+    <set_side_value value="AI_Reassign_ChangeToSide" {{ nn(name) }} />
   {% endfor %}
 {% endmacro %}
 
@@ -241,6 +242,7 @@
 
 {% macro AI_FullStop(names) %}
   {% for name in names %}
+    <set_object_property property="topSpeed" value="0.0" {{ nn(name) }} />
     <clear_ai {{ nn(name) }} />
     <add_ai type="CHASE_STATION" value1="500" {{ nn(name) }} />
     <add_ai type="CHASE_AI_SHIP" value1="1000" value2="500" {{ nn(name) }} />
@@ -251,7 +253,7 @@
 {% macro AI_MoveDirection(names) %}
   {% for name in names %}
     <clear_ai {{ nn(name) }} />
-    <add_ai type="DIR_THROTTLE" value1="|AI_Reassign_ThrottleDir|" value2="4.0" {{ nn(name) }} />
+    <add_ai type="DIR_THROTTLE" value1="AI_Reassign_ThrottleDir" value2="4.0" {{ nn(name) }} />
     <add_ai type="CHASE_STATION" value1="500" {{ nn(name) }} />
     <add_ai type="CHASE_AI_SHIP" value1="500" value2="500" {{ nn(name) }} />
     <add_ai type="CHASE_PLAYER" value1="3000" value2="500" {{ nn(name) }} />
@@ -261,10 +263,16 @@
 {% macro AI_StrikeDirection(names) %}
   {% for name in names %}
     <clear_ai {{ nn(name) }} />
-    <add_ai type="DIR_THROTTLE" value1="|AI_Reassign_ThrottleDir|" value2="4.0" {{ nn(name) }} />
+    <add_ai type="SPCL_AI" {{ nn(name) }} />
+    <add_ai type="TRY_TO_BECOME_LEADER" {{ nn(name) }} />
+    <add_ai type="DIR_THROTTLE" value1="AI_Reassign_ThrottleDir" value2="4.0" {{ nn(name) }} />
     <add_ai type="CHASE_STATION" value1="5000" {{ nn(name) }} />
     <add_ai type="CHASE_AI_SHIP" value1="5000" value2="2500" {{ nn(name) }} />
     <add_ai type="CHASE_PLAYER" value1="5000" value2="2500" {{ nn(name) }} />
+    <add_ai type="CHASE_ANGER" {{ nn(name) }} />
+    <add_ai type="LEADER_LEADS" {{ nn(name) }} />
+    <add_ai type="FOLLOW_LEADER" {{ nn(name) }} />
+    <add_ai type="LAUNCH_FIGHTERS" value1="6000" {{ nn(name) }} />
   {% endfor %}
 {% endmacro %}
 
@@ -379,7 +387,7 @@
     1032: {
       "macro": AI_StrikeDirection,
       "name": "StrikeDirection",
-      "description": "Ship will go towards `AI_Reassign_ThrottleDir` and react to moderate proximity. No taunts."
+      "description": "Ship will go towards `AI_Reassign_ThrottleDir` and react to moderate proximity. Fleet behaviour, specials, fighters, taunts."
     },
     1040: {
       "macro": AI_IncreaseSpeed,
@@ -413,7 +421,7 @@
       <if_variable name="ReassignLetter" comparator="EQUALS" value="30" />
       <if_variable name="ReassignAI" comparator="EQUALS" value="{{ id }}.0" />
       <if_variable name="ReassignDigits" comparator="NOT" value="1.0" />
-      {{ ai.macro(["GM"]) }}
+{{    ai.macro(["GM"]) | indent(2, True) }}
       <set_gm_button text="Reassigning AI" x="230" y="415" h="60" w="150" />
       <set_variable name="ReassignDigits" value="1.0" integer="yes" />
     </event>
@@ -422,13 +430,13 @@
         <if_variable name="ReassignLetter" comparator="EQUALS" value="{{ loop.index }}" />
         <if_variable name="ReassignAI" comparator="EQUALS" value="{{ id }}.0" />
         <if_variable name="ReassignDigits" comparator="NOT" value="1.0" />
-        {{ ai.macro([
+{{      ai.macro([
           letter + "0|reassignNumber0|",
           letter + "|reassignNumber2|",
           letter + "|reassignNumber4|",
           letter + "|reassignNumber8|",
           letter + "|reassignNumber6|",
-        ]) }}
+        ]) | indent(4, True) }}
         <set_gm_button text="Reassigning AI" x="230" y="415" h="60" w="150" />
         <set_variable name="ReassignDigits" value="1.0" integer="yes" />
       </event>
