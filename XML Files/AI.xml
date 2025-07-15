@@ -326,6 +326,7 @@
     5: {
       "macro": AI_Escort,
       "name": "Escort",
+      "skipInReassign": True,
       "description": "ALLIES ONLY - Prioritizes the Defend action, which must be coordinated via Comms order. Falls back to chasing AI ships. Fleet behaviour, follow taunts, follow comms, use specials, launch fighters."
     },
     6: {
@@ -333,9 +334,10 @@
       "name": "Elite",
       "description": "Prioritizes players, attacks stations and AI ships only at proximity. Fleet behaviour, follow taunts, do NOT follow comms, use specials (duh). do NOT launch fighters."
     },
-    6: {
+    7: {
       "macro": AI_CommandGroup,
       "name": "CommandGroup",
+      "skipInReassign": True,
       "description": "Prioritizes players, attacks stations and AI ships only at proximity. Fleet behaviour, follow taunts, do NOT follow comms, use specials, launch fighters."
     },
     50: {
@@ -406,17 +408,15 @@
 
 {% macro AutoAIEvents() %}
   {% for id, ai in availableAIs.items() if id < 1000 %}
-    {% for i, letter in enumerate(FleetLetters) %}
-      <event name="{{ id }} - {{ ai.name }} AI">
-        <if_variable name="Auto AI Type" comparator="EQUALS" value="{{ id }}.0" />
-        {{ ai.macro(["--"]) }}
-      </event>
-    {% endfor %}
+    <event name="{{ id }} - {{ ai.name }} AI">
+      <if_variable name="Auto AI Type" comparator="EQUALS" value="{{ id }}.0" />
+{{      ai.macro(["--"]) | indent(2, True) }}
+    </event>
   {% endfor %}
 {% endmacro %}
 
 {% macro ReassignAIEvents() %}
-  {% for id, ai in availableAIs.items() %}
+  {% for id, ai in availableAIs.items() if not ai.get("skipInReassign", False) %}
     <event name="Reassign {{ ai.name }} AI GM">
       <if_variable name="ReassignLetter" comparator="EQUALS" value="30" />
       <if_variable name="ReassignAI" comparator="EQUALS" value="{{ id }}.0" />
@@ -445,55 +445,10 @@
 {% endmacro %}
 
 
-{# Information on AI IDs
-Reassign:
-Default: 2
-Surrender: 1
-Unsurrender: 7
-Elite: 3
-Hunt Players: 4
-Hunt Bases: 5
-Hunt Neutral: 6
-Side 1: 80
-Side 2: 81
-Side 3: 82
-Side 4: 83
-Side 5: 84
-Side 6: 85
-Side 7: 86
-Side 8: 87
-Side 9: 88
-Side 10: 89
-Side 11: 90
-Side 12: 91
-Full Stop: 100
-Dir 0: 101
-Dir 45: 102
-Dir 90: 103
-Dir 135: 104
-Dir 180: 105
-Dir 225: 106
-Dir 270: 107
-Dir 315: 108
-Speed Increase: 109
-Speed Decrease: 110
-Move To GM: 111
-Neutral Default NC: 20
-Neutral Follow Player NC: 21
-Neutral Default C: 22
-Neutral Follow Player C: 23
-Ally Default NC: 30
-Ally Hunt Base NC: 31
-Ally Hunt Enemy NC: 32
-Ally Guard Base NC: 33
-Ally Default C: 34
-Ally Hunt Base C: 35
-Ally Hunt Enemy C: 36
-Ally Guard Base C: 37
-Delete: 200
+{# Information on AI IDs as used by the spawn logic
 
+Not all of these are defined here. It only makes sense to define an AI here once it's used outside of the spawn logic as well.
 
-Spawn:
 Standard Attack: 1
 Hunt/Follow Player: 2
 Hunt Bases: 3
@@ -525,7 +480,7 @@ Budron: 106
 
 Patrol: 150 # defined in GM buttons but no AI with this value exists
 
-Convoy: 200
+Convoy: 200 # uses convoyExitX/convoyExitZ as well as convoyDirection, looks broken?
 
 Buoy/Relay: 400
 ShuttleOps Buoy/Relay: 401
@@ -540,7 +495,7 @@ Active SenBuoy: 409
 Slingshot Platform: 410
 Slingshot Power: 411
 Slingshot Antenna: 412
-Slingshot Antenna: 413 # Misnamed??
+Slingshot Antenna: 413 # Misnamed?? Certainly does something else from 410-412.
 
 Energy Docking Port: 500
 Light Docking Port: 501

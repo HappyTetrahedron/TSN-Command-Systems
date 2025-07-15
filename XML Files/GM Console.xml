@@ -4389,70 +4389,49 @@
   <folder_arme name="Enemy Commands" id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9" parent_id_arme="7ef9ad11-aebe-4397-aa87-16d7e5aa88a2" />
   <event name="Unsurrender" id_arme="5ad2f952-0539-4a8b-b2ba-850bc1e61ac9" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
     <if_gm_button text="Unsurrender" />
-    <if_variable name="AI Type" comparator="EQUALS" value="1.0" />
     <set_variable name="ReassignAI" value="1022.0" integer="yes" />
   </event>
   <event name="Surrender" id_arme="3b3d74c4-8de4-4d7a-bc9e-d51741cf671a" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
-    <if_gm_button text="Surrender" />
-    <if_variable name="AI Type" comparator="EQUALS" value="1.0" />
-    <set_variable name="ReassignAI" value="1021.0" integer="yes" />
   </event>
   <event name="Default AI" id_arme="ef738414-bfe4-4eb2-be08-bd1978d45fa9" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
     <if_gm_button text="DefaultAI" />
-    <if_variable name="AI Type" comparator="EQUALS" value="1.0" />
     <set_variable name="ReassignAI" value="1.0" integer="yes" />
   </event>
   <event name="Elite AI" id_arme="5b14f567-7b28-41d2-a9c7-a902137663ec" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
     <if_gm_button text="EliteAI" />
-    <if_variable name="AI Type" comparator="EQUALS" value="1.0" />
     <set_variable name="ReassignAI" value="6.0" integer="yes" />
   </event>
   <event name="Hunt Players" id_arme="85039ea1-9651-4149-a716-9a0ada50e5ec" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
     <if_gm_button text="Hunt Plyr" />
-    <if_variable name="AI Type" comparator="EQUALS" value="1.0" />
     <set_variable name="ReassignAI" value="2.0" integer="yes" />
   </event>
   <event name="Hunt Bases" id_arme="daa46aeb-497a-4967-9ab3-6fddc7dabf49" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
     <if_gm_button text="Hunt Bse" />
-    <if_variable name="AI Type" comparator="EQUALS" value="1.0" />
     <set_variable name="ReassignAI" value="3.0" integer="yes" />
   </event>
   <event name="Hunt Neutral" id_arme="46dda40a-24f1-4dca-8b11-fb5a5e570eec" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
     <if_gm_button text="Hunt Ntrl" />
-    <if_variable name="AI Type" comparator="EQUALS" value="1.0" />
     <set_variable name="ReassignAI" value="13.0" integer="yes" />
   </event>
-  <folder_arme name="Neutral Controls (4)" id_arme="62788a0a-5b87-48c1-b5aa-1b21bc9e3c2d" parent_id_arme="7ef9ad11-aebe-4397-aa87-16d7e5aa88a2" />
-  <event name="Neu Defaul" id_arme="021b0045-ba77-4000-a3b7-bcc097286479" parent_id_arme="62788a0a-5b87-48c1-b5aa-1b21bc9e3c2d">
-    <if_gm_button text="DefaultAI" />
-    <if_variable name="AI Type" comparator="EQUALS" value="2.0" />
-    <set_variable name="ReassignAI" value="1.0" integer="yes" />
+  <event name="PirateAI" id_arme="46dda40a-24f1-4dca-8b11-fb5a5e570efc" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
+    <if_gm_button text="PirateAI" />
+    <set_variable name="ReassignAI" value="101.0" integer="yes" />
   </event>
-  <event name="Neu Follow Player" id_arme="9b7e9b6c-df5d-4822-9fcd-f1acbe62238b" parent_id_arme="62788a0a-5b87-48c1-b5aa-1b21bc9e3c2d">
-    <if_gm_button text="Follow Plyr" />
-    <if_variable name="AI Type" comparator="EQUALS" value="2.0" />
-    <set_variable name="ReassignAI" value="2.0" integer="yes" />
-  </event>
-  <folder_arme name="Ally Controls (5)" id_arme="cf9f5045-3af9-4bf2-bb06-b7ff5d2b6220" parent_id_arme="7ef9ad11-aebe-4397-aa87-16d7e5aa88a2" />
-  <event name="Default AI" id_arme="7c96174c-6372-44ed-988b-e96800e182b6" parent_id_arme="cf9f5045-3af9-4bf2-bb06-b7ff5d2b6220">
-    <if_gm_button text="DefaultAI" />
-    <if_variable name="AI Type" comparator="EQUALS" value="3.0" />
+  <event name="AllyAI" id_arme="46dda40a-24f1-4dca-8b11-fb5a5e570eef" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
+    <if_gm_button text="AllyAI" />
     <set_variable name="ReassignAI" value="60.0" integer="yes" />
   </event>
-  <event name="Hunt Base" id_arme="385da647-ab3d-4264-82d3-a8a407b5d7ff" parent_id_arme="cf9f5045-3af9-4bf2-bb06-b7ff5d2b6220">
-    <if_gm_button text="Hunt Bse" />
-    <if_variable name="AI Type" comparator="EQUALS" value="3.0" />
-    <set_variable name="ReassignAI" value="3.0" integer="yes" />
-  </event>
-  <event name="Hunt Enemy" id_arme="a153c8bc-23b6-429f-9cf7-a11e8b5f7205" parent_id_arme="cf9f5045-3af9-4bf2-bb06-b7ff5d2b6220">
-    <if_gm_button text="Hunt Enmy" />
-    <if_variable name="AI Type" comparator="EQUALS" value="3.0" />
-    <set_variable name="ReassignAI" value="13.0" integer="yes" />
-  </event>
-  <event name="Guard Base" id_arme="3075e6d4-e6e7-4671-a1c0-d19941a38ef5" parent_id_arme="cf9f5045-3af9-4bf2-bb06-b7ff5d2b6220">
+  <event name="Guard Bse" id_arme="46dda40a-24f1-4dca-8b11-fb5a5e570eed" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
     <if_gm_button text="Guard Bse" />
-    <if_variable name="AI Type" comparator="EQUALS" value="3.0" />
     <set_variable name="ReassignAI" value="4.0" integer="yes" />
+  </event>
+  <event name="GoToBase" id_arme="46dda40a-24f1-4dca-8b11-fb5a5e570eed" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
+    <if_gm_button text="GoToBase" />
+    <set_variable name="ReassignAI" value="51.0" integer="yes" />
+  </event>
+  <event name="Noncombat" id_arme="46dda40a-24f1-4dca-8b11-fb5a5e570eed" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
+    <if_gm_button text="Noncombat" />
+    <set_variable name="ReassignAI" value="50.0" integer="yes" />
   </event>
   <folder_arme name="GM ONLY" id_arme="43ef2b27-bcec-412e-8846-742120a2d1aa" parent_id_arme="7ef9ad11-aebe-4397-aa87-16d7e5aa88a2" />
   <folder_arme name="AI Specials" id_arme="8b2a6ca1-caf3-4f27-bd34-4ec5e4d13b49" parent_id_arme="846725f1-9752-4065-a2a1-9f52b9a4a32b" />
