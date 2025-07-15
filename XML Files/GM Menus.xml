@@ -1641,15 +1641,15 @@
 
   {{ createSubMenu("IntShuttleResupply") }}
     {% for shuttle in ShuttleList %}
-      <set_gm_button text="Shuttles/{{ shuttle }}" />
+      <set_gm_button text="Shuttles\{{ shuttle }}" />
     {% endfor %}
-    <set_gm_button text="Shuttles/_Dismiss"/>
+    <set_gm_button text="Shuttles\_Dismiss"/>
   </event>
   {{ destroySubMenu("IntShuttleResupply") }}
     {% for shuttle in ShuttleList %}
-      <clear_gm_button text="Shuttles/{{ shuttle }}" />
+      <clear_gm_button text="Shuttles\{{ shuttle }}" />
     {% endfor %}
-    <clear_gm_button text="Shuttles/_Dismiss"/>
+    <clear_gm_button text="Shuttles\_Dismiss"/>
   </event>
   {{ submenuEvent("IntShuttleResupply", "Shuttle Resup", 5) }}
   {{ dismissEvent("IntShuttleResupply", "Shuttles/_Dismiss") }}
