@@ -1688,8 +1688,8 @@
     <clear_gm_button text="Surrender" />
     <clear_gm_button text="Specials" />
   </event>
-  {{ submenuEvent("AICommands", "AI Cmds On") }}
-  {{ dismissEvent("AICommands", "AI Cmds Off") }}
+  {{ submenuEvent("AICommands", "AI Cmds Off") }}
+  {{ dismissEvent("AICommands", "AI Cmds On") }}
 
   {{ createSubMenu("AIMenu") }}
     <clear_gm_button text="AI Off" />
@@ -1786,8 +1786,8 @@
     <clear_gm_button text="AI Cmds Off" />
     <set_variable name="AIMenu_Button_Shown" value="0.0" integer="yes" />
   </event>
-  {{ submenuEvent("AIMenu", "AI On") }}
-  {{ dismissEvent("AIMenu", "AI Off") }}
+  {{ submenuEvent("AIMenu", "AI Off") }}
+  {{ dismissEvent("AIMenu", "AI On") }}
 
   {{ createSubMenu("AISpecials") }}
     <set_gm_button text="Assign Specials\Add\Normal" />
