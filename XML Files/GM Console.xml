@@ -25,7 +25,7 @@
   </event>
   <event name="Incapacitate">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="RepairDamage/Incapacitate" />
+    <if_gm_button text="RepairDamage\Incapacitate" />
     <set_damcon_members use_gm_selection="" team_index="0" value="0" />
     <set_damcon_members use_gm_selection="" team_index="2" value="0" />
     <set_damcon_members use_gm_selection="" team_index="1" value="0" />
@@ -45,7 +45,7 @@
   </event>
   <event name="Recapacitate">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="RepairDamage/Reinstate" />
+    <if_gm_button text="RepairDamage\Reinstate" />
     <set_damcon_members use_gm_selection="" team_index="0" value="6" />
     <set_damcon_members use_gm_selection="" team_index="2" value="6" />
     <set_damcon_members use_gm_selection="" team_index="1" value="6" />
@@ -66,7 +66,7 @@
   {% for shuttle in ShuttleList %}
   <event name="Restock{{ shuttle }}" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
     <if_gm_button text="Shuttles\{{ shuttle }}" />
-    <create type="station" use_gm_position="" name="{{ shuttlle }} Pickup" hullID="1058" sideValue="2" />
+    <create type="station" use_gm_position="" name="{{ shuttle }} Pickup" hullID="1058" sideValue="2" />
     <set_object_property property="canBuild" value="0" name="{{ shuttle }} Pickup" />
     <set_object_property property="missileStoresHoming" value="0" name="{{ shuttle }} Pickup" />
     <set_object_property property="missileStoresNuke" value="0" name="{{ shuttle }} Pickup" />
@@ -6534,7 +6534,7 @@
   <folder_arme name="Repair And Damage" id_arme="209dd9dc-863e-4c29-a1e2-64950acc992e" parent_id_arme="c3aaadcc-fe4b-4a02-8f3a-f263ccfd6c99" />
   <folder_arme name="Repair Damage" id_arme="9eead1e0-2012-4d71-8af1-17f9ac9fab25" parent_id_arme="209dd9dc-863e-4c29-a1e2-64950acc992e" />
   <event name="Repair Beams" id_arme="f57817ed-001b-4aef-aec5-c53e8d4d6d42" parent_id_arme="9eead1e0-2012-4d71-8af1-17f9ac9fab25">
-    <if_gm_button text="Repair Ship\Repair Beams" />
+    <if_gm_button text="RepairDamage\RepairDamage\Repair Ship\Repair Beams" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="0" systemType="systemBeam" countFrom="front" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="1" systemType="systemBeam" countFrom="front" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="2" systemType="systemBeam" countFrom="front" />
@@ -6544,7 +6544,7 @@
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="6" systemType="systemBeam" countFrom="front" />
   </event>
   <event name="Repair Torpedo" id_arme="894b3d49-ca84-406f-a431-884bd7f1d76a" parent_id_arme="9eead1e0-2012-4d71-8af1-17f9ac9fab25">
-    <if_gm_button text="Repair Ship\Repair Torpedoes" />
+    <if_gm_button text="RepairDamage\Repair Ship\Repair Torpedoes" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="0" systemType="systemTorpedo" countFrom="front" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="1" systemType="systemTorpedo" countFrom="front" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="2" systemType="systemTorpedo" countFrom="front" />
@@ -6554,7 +6554,7 @@
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="6" systemType="systemTorpedo" countFrom="front" />
   </event>
   <event name="Repair Sensors" id_arme="bcd9e6d9-0dbf-4e44-bdca-3c132cc30bcd" parent_id_arme="9eead1e0-2012-4d71-8af1-17f9ac9fab25">
-    <if_gm_button text="Repair Ship\Repair Sensors" />
+    <if_gm_button text="RepairDamage\Repair Ship\Repair Sensors" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="0" systemType="systemTactical" countFrom="front" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="1" systemType="systemTactical" countFrom="front" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="2" systemType="systemTactical" countFrom="front" />
@@ -6564,7 +6564,7 @@
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="6" systemType="systemTactical" countFrom="front" />
   </event>
   <event name="Repair Maneouvre" id_arme="0a71da78-f086-49d1-86b1-e8ce2eaf4949" parent_id_arme="9eead1e0-2012-4d71-8af1-17f9ac9fab25">
-    <if_gm_button text="Repair Ship\Repair Maneouvre" />
+    <if_gm_button text="RepairDamage\Repair Ship\Repair Maneouvre" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="0" systemType="systemTurning" countFrom="front" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="1" systemType="systemTurning" countFrom="front" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="2" systemType="systemTurning" countFrom="front" />
@@ -6574,7 +6574,7 @@
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="6" systemType="systemTurning" countFrom="front" />
   </event>
   <event name="Repair Impulse" id_arme="7cf348bc-dd92-4d3a-afcf-74112314c5ff" parent_id_arme="9eead1e0-2012-4d71-8af1-17f9ac9fab25">
-    <if_gm_button text="Repair Ship\Repair Impulse" />
+    <if_gm_button text="RepairDamage\Repair Ship\Repair Impulse" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="0" systemType="systemImpulse" countFrom="front" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="1" systemType="systemImpulse" countFrom="front" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="2" systemType="systemImpulse" countFrom="front" />
@@ -6584,7 +6584,7 @@
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="6" systemType="systemImpulse" countFrom="front" />
   </event>
   <event name="Repair Warp" id_arme="44e38556-a315-48a3-8ced-7a8899c6b70f" parent_id_arme="9eead1e0-2012-4d71-8af1-17f9ac9fab25">
-    <if_gm_button text="Repair Ship\Repair Warp" />
+    <if_gm_button text="RepairDamage\Repair Ship\Repair Warp" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="0" systemType="systemWarp" countFrom="front" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="1" systemType="systemWarp" countFrom="front" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="2" systemType="systemWarp" countFrom="front" />
@@ -6594,7 +6594,7 @@
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="6" systemType="systemWarp" countFrom="front" />
   </event>
   <event name="Repair F. Shield" id_arme="648d2dd8-8fcb-456a-948e-f710c3f3f548" parent_id_arme="9eead1e0-2012-4d71-8af1-17f9ac9fab25">
-    <if_gm_button text="Repair Ship\Repair F. Shields" />
+    <if_gm_button text="RepairDamage\Repair Ship\Repair F. Shields" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="0" systemType="systemFrontShield" countFrom="front" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="1" systemType="systemFrontShield" countFrom="front" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="2" systemType="systemFrontShield" countFrom="front" />
@@ -6604,7 +6604,7 @@
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="6" systemType="systemFrontShield" countFrom="front" />
   </event>
   <event name="Repair R. Shield" id_arme="39a0693b-5874-4a84-af02-749bf83fb7d0" parent_id_arme="9eead1e0-2012-4d71-8af1-17f9ac9fab25">
-    <if_gm_button text="Repair Ship\Repair R. Shields" />
+    <if_gm_button text="RepairDamage\Repair Ship\Repair R. Shields" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="0" systemType="systemBackShield" countFrom="front" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="1" systemType="systemBackShield" countFrom="front" />
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="2" systemType="systemBackShield" countFrom="front" />
@@ -6614,20 +6614,20 @@
     <set_player_grid_damage value="0.0" use_gm_selection=" " index="6" systemType="systemBackShield" countFrom="front" />
   </event>
   <event name="DamCon Team 0" id_arme="03096882-bc89-454e-bf18-bbe4b84049d2" parent_id_arme="9eead1e0-2012-4d71-8af1-17f9ac9fab25">
-    <if_gm_button text="Repair Ship\Heal DamCon 0" />
+    <if_gm_button text="RepairDamage\Repair Ship\Heal DamCon 0" />
     <set_damcon_members value="6" team_index="0" use_gm_selection=" " />
   </event>
   <event name="DamCon Team 1" id_arme="8fe8cc54-5792-4685-9150-42211d8073ee" parent_id_arme="9eead1e0-2012-4d71-8af1-17f9ac9fab25">
-    <if_gm_button text="Repair Ship\Heal DamCon 1" />
+    <if_gm_button text="RepairDamage\Repair Ship\Heal DamCon 1" />
     <set_damcon_members value="6" team_index="1" use_gm_selection=" " />
   </event>
   <event name="DamCon Team 2" id_arme="b70be650-db43-4709-a945-29c7690ab2ae" parent_id_arme="9eead1e0-2012-4d71-8af1-17f9ac9fab25">
-    <if_gm_button text="Repair Ship\Heal DamCon 2" />
+    <if_gm_button text="RepairDamage\Repair Ship\Heal DamCon 2" />
     <set_damcon_members value="6" team_index="2" use_gm_selection=" " />
   </event>
   <folder_arme name="Give Damage" id_arme="f6f72731-834e-4195-8981-59ddeb5f7f85" parent_id_arme="209dd9dc-863e-4c29-a1e2-64950acc992e" />
   <event name="Damage Beams" id_arme="0439df48-f868-44cf-a998-83e754e13d1f" parent_id_arme="f6f72731-834e-4195-8981-59ddeb5f7f85">
-    <if_gm_button text="Damage Ship\Damage Beams" />
+    <if_gm_button text="RepairDamage\Damage Ship\Damage Beams" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="0" systemType="systemBeam" countFrom="front" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="1" systemType="systemBeam" countFrom="front" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="2" systemType="systemBeam" countFrom="front" />
@@ -6637,7 +6637,7 @@
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="6" systemType="systemBeam" countFrom="front" />
   </event>
   <event name="Damage Torpedo" id_arme="41cd2cb8-ef3e-4d97-8528-8b9f261c5fb0" parent_id_arme="f6f72731-834e-4195-8981-59ddeb5f7f85">
-    <if_gm_button text="Damage Ship\Damage Torpedoes" />
+    <if_gm_button text="RepairDamage\Damage Ship\Damage Torpedoes" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="0" systemType="systemTorpedo" countFrom="front" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="1" systemType="systemTorpedo" countFrom="front" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="2" systemType="systemTorpedo" countFrom="front" />
@@ -6647,7 +6647,7 @@
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="6" systemType="systemTorpedo" countFrom="front" />
   </event>
   <event name="Damage Sensors" id_arme="47eeb2a0-691b-4203-b591-4b719c4fde93" parent_id_arme="f6f72731-834e-4195-8981-59ddeb5f7f85">
-    <if_gm_button text="Damage Ship\Damage Sensors" />
+    <if_gm_button text="RepairDamage\Damage Ship\Damage Sensors" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="0" systemType="systemTactical" countFrom="front" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="1" systemType="systemTactical" countFrom="front" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="2" systemType="systemTactical" countFrom="front" />
@@ -6657,7 +6657,7 @@
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="6" systemType="systemTactical" countFrom="front" />
   </event>
   <event name="Damage Maneouvre" id_arme="a3b642cd-bd2f-4c88-8e60-3f0a4fd26d77" parent_id_arme="f6f72731-834e-4195-8981-59ddeb5f7f85">
-    <if_gm_button text="Damage Ship\Damage Maneouvre" />
+    <if_gm_button text="RepairDamage\Damage Ship\Damage Maneouvre" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="0" systemType="systemTurning" countFrom="front" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="1" systemType="systemTurning" countFrom="front" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="2" systemType="systemTurning" countFrom="front" />
@@ -6667,7 +6667,7 @@
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="6" systemType="systemTurning" countFrom="front" />
   </event>
   <event name="Damage Impulse" id_arme="d6bf9eb2-5911-4642-a312-aac82e89331f" parent_id_arme="f6f72731-834e-4195-8981-59ddeb5f7f85">
-    <if_gm_button text="Damage Ship\Damage Impulse" />
+    <if_gm_button text="RepairDamage\Damage Ship\Damage Impulse" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="0" systemType="systemImpulse" countFrom="front" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="1" systemType="systemImpulse" countFrom="front" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="2" systemType="systemImpulse" countFrom="front" />
@@ -6677,7 +6677,7 @@
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="6" systemType="systemImpulse" countFrom="front" />
   </event>
   <event name="Damage Warp" id_arme="ee0170c1-bcde-40b0-84a3-dfb139f11dcc" parent_id_arme="f6f72731-834e-4195-8981-59ddeb5f7f85">
-    <if_gm_button text="Damage Ship\Damage Warp" />
+    <if_gm_button text="RepairDamage\Damage Ship\Damage Warp" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="0" systemType="systemWarp" countFrom="front" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="1" systemType="systemWarp" countFrom="front" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="2" systemType="systemWarp" countFrom="front" />
@@ -6687,7 +6687,7 @@
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="6" systemType="systemWarp" countFrom="front" />
   </event>
   <event name="Damage F. Shield" id_arme="135773b3-7bed-45bb-a4e2-8bf15d7cf891" parent_id_arme="f6f72731-834e-4195-8981-59ddeb5f7f85">
-    <if_gm_button text="Damage Ship\Damage F. Shields" />
+    <if_gm_button text="RepairDamage\Damage Ship\Damage F. Shields" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="0" systemType="systemFrontShield" countFrom="front" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="1" systemType="systemFrontShield" countFrom="front" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="2" systemType="systemFrontShield" countFrom="front" />
@@ -6697,7 +6697,7 @@
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="6" systemType="systemFrontShield" countFrom="front" />
   </event>
   <event name="Damage R. Shield" id_arme="a5a29d86-c523-411b-934d-4a2adf6b084a" parent_id_arme="f6f72731-834e-4195-8981-59ddeb5f7f85">
-    <if_gm_button text="Damage Ship\Damage R. Shields" />
+    <if_gm_button text="RepairDamage\Damage Ship\Damage R. Shields" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="0" systemType="systemBackShield" countFrom="front" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="1" systemType="systemBackShield" countFrom="front" />
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="2" systemType="systemBackShield" countFrom="front" />
@@ -6707,20 +6707,20 @@
     <set_player_grid_damage value="1.0" use_gm_selection=" " index="6" systemType="systemBackShield" countFrom="front" />
   </event>
   <event name="DamCon Team 0" id_arme="883dbd68-cb71-4769-8421-2ef9860eab4a" parent_id_arme="f6f72731-834e-4195-8981-59ddeb5f7f85">
-    <if_gm_button text="Damage Ship\Wound DamCon 0" />
+    <if_gm_button text="RepairDamage\Damage Ship\Wound DamCon 0" />
     <set_damcon_members value="0" team_index="0" use_gm_selection=" " />
   </event>
   <event name="DamCon Team 1" id_arme="a53af727-0000-4270-98a8-be585871b5ec" parent_id_arme="f6f72731-834e-4195-8981-59ddeb5f7f85">
-    <if_gm_button text="Damage Ship\Wound DamCon 1" />
+    <if_gm_button text="RepairDamage\Damage Ship\Wound DamCon 1" />
     <set_damcon_members value="0" team_index="1" use_gm_selection=" " />
   </event>
   <event name="DamCon Team 2" id_arme="2a1a1c45-a6e3-447b-934f-78d9d737fd43" parent_id_arme="f6f72731-834e-4195-8981-59ddeb5f7f85">
-    <if_gm_button text="Damage Ship\Wound DamCon 2" />
+    <if_gm_button text="RepairDamage\Damage Ship\Wound DamCon 2" />
     <set_damcon_members value="0" team_index="2" use_gm_selection=" " />
   </event>
   <folder_arme name="Random Damage" id_arme="70872167-ce82-4f20-ac96-dd1c15746700" parent_id_arme="209dd9dc-863e-4c29-a1e2-64950acc992e" />
   <event name="Ship1 On" id_arme="add5b322-8e3d-4dbc-9ee1-5251dff72b69" parent_id_arme="70872167-ce82-4f20-ac96-dd1c15746700">
-    <if_gm_button text="Random Damage\Set Ship1 On-" />
+    <if_gm_button text="RepairDamage\Random Damage\Set Ship1 On-" />
     <set_gm_button text="Dmg Ship1" x="630" y="60" h="30" w="90" />
     <set_variable name="RandomDamageShip1" value="1.0" integer="yes" />
     <set_variable name="RandomDamage" value="RandomDamage+1" integer="yes" />
@@ -6732,7 +6732,7 @@
     <set_variable name="RandomDamage" value="RandomDamage-1" integer="yes" />
   </event>
   <event name="Ship2 On" id_arme="d4f4324a-c3fc-4761-86af-aec28502828f" parent_id_arme="70872167-ce82-4f20-ac96-dd1c15746700">
-    <if_gm_button text="Random Damage\Set Ship2 On-" />
+    <if_gm_button text="RepairDamage\Random Damage\Set Ship2 On-" />
     <set_gm_button text="Dmg Ship2" x="720" y="60" h="30" w="90" />
     <set_variable name="RandomDamageShip2" value="1.0" integer="yes" />
     <set_variable name="RandomDamage" value="RandomDamage+1" integer="yes" />
@@ -6744,7 +6744,7 @@
     <set_variable name="RandomDamage" value="RandomDamage-1" integer="yes" />
   </event>
   <event name="Ship3 On" id_arme="dbd065b4-97d3-4eab-8fed-f7dbe820b0cc" parent_id_arme="70872167-ce82-4f20-ac96-dd1c15746700">
-    <if_gm_button text="Random Damage\Set Ship3 On-" />
+    <if_gm_button text="RepairDamage\Random Damage\Set Ship3 On-" />
     <set_gm_button text="Dmg Ship3" x="630" y="90" h="30" w="90" />
     <set_variable name="RandomDamageShip3" value="1.0" integer="yes" />
     <set_variable name="RandomDamage" value="RandomDamage+1" integer="yes" />
@@ -6756,7 +6756,7 @@
     <set_variable name="RandomDamage" value="RandomDamage-1" integer="yes" />
   </event>
   <event name="Ship4 On" id_arme="0d518956-f367-42ef-a280-e002a0ba409f" parent_id_arme="70872167-ce82-4f20-ac96-dd1c15746700">
-    <if_gm_button text="Random Damage\Set Ship4 On-" />
+    <if_gm_button text="RepairDamage\Random Damage\Set Ship4 On-" />
     <set_gm_button text="Dmg Ship4" x="720" y="90" h="30" w="90" />
     <set_variable name="RandomDamageShip4" value="1.0" integer="yes" />
     <set_variable name="RandomDamage" value="RandomDamage+1" integer="yes" />
@@ -6768,7 +6768,7 @@
     <set_variable name="RandomDamage" value="RandomDamage-1" integer="yes" />
   </event>
   <event name="Ship5 On" id_arme="42b8e08a-724d-4aff-9a89-86e55b00fce3" parent_id_arme="70872167-ce82-4f20-ac96-dd1c15746700">
-    <if_gm_button text="Random Damage\Set Ship5 On-" />
+    <if_gm_button text="RepairDamage\Random Damage\Set Ship5 On-" />
     <set_gm_button text="Dmg Ship5" x="630" y="120" h="30" w="90" />
     <set_variable name="RandomDamageShip5" value="1.0" integer="yes" />
     <set_variable name="RandomDamage" value="RandomDamage+1" integer="yes" />
@@ -6780,7 +6780,7 @@
     <set_variable name="RandomDamage" value="RandomDamage-1" integer="yes" />
   </event>
   <event name="Ship6 On" id_arme="88439e66-49c9-44ca-ae2a-75dd61283f95" parent_id_arme="70872167-ce82-4f20-ac96-dd1c15746700">
-    <if_gm_button text="Random Damage\Set Ship6 On-" />
+    <if_gm_button text="RepairDamage\Random Damage\Set Ship6 On-" />
     <set_gm_button text="Dmg Ship6" x="720" y="120" h="30" w="90" />
     <set_variable name="RandomDamageShip6" value="1.0" integer="yes" />
     <set_variable name="RandomDamage" value="RandomDamage+1" integer="yes" />
@@ -6792,7 +6792,7 @@
     <set_variable name="RandomDamage" value="RandomDamage-1" integer="yes" />
   </event>
   <event name="Ship7 On" id_arme="c8c3540c-f5f2-440f-b801-7480b798fbbe" parent_id_arme="70872167-ce82-4f20-ac96-dd1c15746700">
-    <if_gm_button text="Random Damage\Set Ship7 On-" />
+    <if_gm_button text="RepairDamage\Random Damage\Set Ship7 On-" />
     <set_gm_button text="Dmg Ship7" x="630" y="150" h="30" w="90" />
     <set_variable name="RandomDamageShip7" value="1.0" integer="yes" />
     <set_variable name="RandomDamage" value="RandomDamage+1" integer="yes" />
@@ -6804,7 +6804,7 @@
     <set_variable name="RandomDamage" value="RandomDamage-1" integer="yes" />
   </event>
   <event name="Ship8 On" id_arme="f4b97305-dfb7-4037-bdef-e3ecccde2b8d" parent_id_arme="70872167-ce82-4f20-ac96-dd1c15746700">
-    <if_gm_button text="Random Damage\Set Ship8 On-" />
+    <if_gm_button text="RepairDamage\Random Damage\Set Ship8 On-" />
     <set_gm_button text="Dmg Ship8" x="720" y="150" h="30" w="90" />
     <set_variable name="RandomDamageShip8" value="1.0" integer="yes" />
     <set_variable name="RandomDamage" value="RandomDamage+1" integer="yes" />
@@ -6816,7 +6816,7 @@
     <set_variable name="RandomDamage" value="RandomDamage-1" integer="yes" />
   </event>
   <event name="All On" id_arme="4d445958-0fb5-493e-b0fe-f783faf686bf" parent_id_arme="70872167-ce82-4f20-ac96-dd1c15746700">
-    <if_gm_button text="Random Damage\Set All On-" />
+    <if_gm_button text="RepairDamage\Random Damage\Set All On-" />
     <set_gm_button text="Dmg Ship1" x="630" y="60" h="30" w="90" />
     <set_variable name="RandomDamageShip1" value="1.0" integer="yes" />
     <set_gm_button text="Dmg Ship2" x="720" y="60" h="30" w="90" />
@@ -6836,7 +6836,7 @@
     <set_variable name="RandomDamage" value="8.0" integer="yes" />
   </event>
   <disabled_event name="All Off" id_arme="59383ad9-f051-4199-91d0-3afc87a69a11" parent_id_arme="70872167-ce82-4f20-ac96-dd1c15746700">
-    <if_gm_button text="Random Damage\Set All On-" />
+    <if_gm_button text="RepairDamage\Random Damage\Set All On-" />
     <clear_gm_button text="Dmg Ship1" />
     <set_variable name="RandomDamageShip1" value="0.0" integer="yes" />
     <clear_gm_button text="Dmg Ship2" />
