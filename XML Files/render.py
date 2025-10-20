@@ -10,7 +10,13 @@ env = {
     ],
     "systems": [
         "Krellis",
-        "Acantha"
+        "Acantha",
+        "Volantis",
+        "Sierra",
+        "Eulis",
+        "Jhohara",
+        "Cronus",
+        "Erebus",
     ],
     "cargo": {
         "ship1": {
