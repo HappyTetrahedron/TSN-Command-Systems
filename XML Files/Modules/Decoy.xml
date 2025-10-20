@@ -1,0 +1,58 @@
+{# Decoy module - add a deployable drone defense / decoy buoy to a ship. #}
+
+{% set moduleName = "Decoy" %}
+
+{% macro render(ship, util) %}
+  {% set marker = "D." + ship.id + "0" %}
+
+  {# Menu Lifecycle #}
+  {% call() util.createConditionalModuleButtons(ship, moduleName + "Decoy") %}
+    {{ util.ifCommsMenuState(ship, 3) }}
+    <if_not_exists name="{{ marker }}" />
+    <if_variable name="Module_Decoy_{{ marker }}_Used" comparator="NOT" value="1.0" />
+    {{ util.sendCommsButton("Deploy Decoy", ship) }}
+  {% endcall %}
+
+  {% call() util.destroyConditionalModuleButtons(ship, moduleName + "Decoy") %}
+    {{ util.ifCommsMenuState(ship, 3, "NOT") }}
+    {{ util.clearCommsButton("Deploy Decoy", ship) }}
+  {% endcall %}
+
+  {% call util.destroyConditionalModuleButtons(ship, moduleName + "Decoy") %}
+    <if_exists name="{{ marker }}" />
+    {{ util.clearCommsButton("Deploy Decoy", ship) }}
+  {% endcall %}
+
+  {% call util.destroyConditionalModuleButtons(ship, moduleName + "Decoy") %}
+    <if_variable name="Module_Decoy_{{ marker }}_Used" comparator="EQUALS" value="1.0" />
+    {{ util.clearCommsButton("Deploy Decoy", ship) }}
+  {% endcall %}
+
+  {# Button Handling #}
+
+  {% call util.onModuleButtonPressed("Deploy Decoy", ship) %}
+    <create type="neutral" x="10.0" y="20.0" z="10.0" name="{{ marker }}" hullID="1054" sideValue="playerSide" />
+    <set_relative_position name2="{{ marker }}" distance="100" angle="180" player_slot1="{{ ship.slot }}" />
+    <set_ship_text name="{{ marker }}" race="TSN" class="Decoy" desc="TSN Decoy" scan_desc="Status: Active" hailtext="&amp;SH&amp;&quot;P)D_AH77" />
+    <set_object_property property="shieldMaxStateBack" value="100" name="{{ marker }}" />
+    <set_object_property property="shieldMaxStateFront" value="100" name="{{ marker }}" />
+    <set_object_property property="shieldStateBack" value="100" name="{{ marker }}" />
+    <set_object_property property="shieldStateFront" value="100" name="{{ marker }}" />
+    <set_variable name="Module_Decoy_{{ marker }}_Used" value="1.0" integer="yes" />
+    <set_timer name="Module_Decoy_Ship{{ ship.id }}_Burn" seconds="30" />
+    <set_timer name="Module_Decoy_Ship{{ ship.id }}_Cooldown" seconds="60" />
+  {% endcall %}
+
+  <event name="Module Decoy Burn Out Ship {{ ship.id }}" >
+    <if_timer_finished name="Module_Decoy_Ship{{ ship.id }}_Burn" />
+    <if_exists name="{{ marker }}" />
+    <destroy name="{{ marker }}" />
+  </event>
+
+  <event name="Module Decoy Cooldown Ship {{ ship.id }}" >
+    <if_timer_finished name="Module_Decoy_Ship{{ ship.id }}_Cooldown" />
+    <if_variable name="Module_Decoy_{{ marker }}_Used" comparator="EQUALS" value="1.0" />
+    <set_variable name="Module_Decoy_{{ marker }}_Used" value="0.0" integer="yes" />
+  </event>
+
+{% endmacro %}

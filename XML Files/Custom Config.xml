@@ -66,11 +66,13 @@
   <event name="Enable Modules" id_arme="2a1a89b3-96ff-4195-86bb-7fdc1814c997" parent_id_arme="2426f36e-da72-4835-9068-2067f83a12fa">
     <if_variable name="Custom Config" comparator="EQUALS" value="2.0" />
     <if_variable name="Modules" comparator="NOT" value="1.0" />
+  {#
   {% for ship in util.shipConfigs %}
     <set_variable name="Ship{{ ship.id }}ModuleType" value="{{ moduleIdentifiers.get(g.data.get("modules", {}).get("ship" + ship.id, "NONE"), "0") }}" integer="yes" />
     <get_object_property property="shieldMaxStateFront" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}MaxShieldLevelFront" />
     <get_object_property property="shieldMaxStateBack" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}MaxShieldLevelBack" />
   {% endfor %}
+  #}
     <set_variable name="Modules" value="1.0" integer="yes" />
   </event>
   <folder_arme name="Ship1 Modules" id_arme="463d9c6e-0f0b-40f3-a5f3-145abb201089" parent_id_arme="2426f36e-da72-4835-9068-2067f83a12fa" />

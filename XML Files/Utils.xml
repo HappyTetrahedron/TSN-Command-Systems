@@ -144,6 +144,13 @@
         <set_variable name="ConditionalMenu_{{ name }}_Active" value="0.0" integer="yes" />
     </event>
     {% endfor %}
+    {% if not conditions %}
+        <event name="Conditional Menu {{ name }} destroy">
+            <if_variable name="ConditionalMenu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
+            {{ caller() }}
+            <set_variable name="ConditionalMenu_{{ name }}_Active" value="0.0" integer="yes" />
+        </event>
+    {% endif %}
 {% endmacro %}
 
 {% macro createConditionalMenuPerShip(name) %}

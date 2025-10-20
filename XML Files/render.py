@@ -22,6 +22,12 @@ env = {
         "ship1": {
             "marines": 5
         }
+    },
+    "modules": {
+        "ship1": [
+            "ClusterMine",
+            "Decoy",
+        ]
     }
 }
 

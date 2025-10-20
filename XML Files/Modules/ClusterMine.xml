@@ -1,0 +1,61 @@
+{# ClusterMine module - add a deployable cluster mine to a ship. #}
+
+{% set moduleName = "ClusterMine" %}
+
+{% macro render(ship, util) %}
+  {% set marker = "CL." + ship.id + "0" %}
+
+  {# Menu Lifecycle #}
+  {% call() util.createConditionalModuleButtons(ship, moduleName + "ClusterDeploy") %}
+    {{ util.ifCommsMenuState(ship, 3) }}
+    <if_not_exists name="{{ marker }}" />
+    <if_variable name="Module_Cluster_{{ marker }}_Used" comparator="NOT" value="1.0" />
+    {{ util.sendCommsButton("Deploy Cluster", ship) }}
+  {% endcall %}
+
+  {% call() util.destroyConditionalModuleButtons(ship, moduleName + "ClusterDeploy") %}
+    {{ util.ifCommsMenuState(ship, 3, "NOT") }}
+    {{ util.clearCommsButton("Deploy Cluster", ship) }}
+  {% endcall %}
+
+  {% call util.destroyConditionalModuleButtons(ship, moduleName + "ClusterDeploy") %}
+    <if_exists name="{{ marker }}" />
+    {{ util.clearCommsButton("Deploy Cluster", ship) }}
+  {% endcall %}
+
+  {% call util.createConditionalModuleButtons(ship, moduleName + "ClusterActivate") %}
+    {{ util.ifCommsMenuState(ship, 3) }}
+    <if_exists name="{{ marker }}" />
+    {{ util.sendCommsButton("Activate Cluster", ship) }}
+  {% endcall %}
+
+  {% call util.destroyConditionalModuleButtons(ship, moduleName + "ClusterActivate") %}
+    {{ util.ifCommsMenuState(ship, 3, "NOT") }}
+    {{ util.clearCommsButton("Activate Cluster", ship) }}
+  {% endcall %}
+
+  {% call util.destroyConditionalModuleButtons(ship, moduleName + "ClusterActivate") %}
+    <if_not_exists name="{{ marker }}" />
+    {{ util.clearCommsButton("Activate Cluster", ship) }}
+  {% endcall %}
+
+
+
+  {# Button Handling #}
+
+  {% call util.onModuleButtonPressed("Deploy Cluster", ship) %}
+    <create type="genericMesh" x="10.0" y="20.0" z="10.0" name="{{ marker }}" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    <set_relative_position name2="{{ marker }}" distance="100" angle="180" player_slot1="{{ ship.slot }}" />
+    <set_object_property property="angleDelta" value="0.6" name="{{ marker }}" />
+  {% endcall %}
+
+  {% call util.onModuleButtonPressed("Activate Cluster", ship) %}
+    <get_object_property property="positionX" name="{{ marker }}" variable="Module_Cluster_{{ marker }}_X" />
+    <get_object_property property="positionZ" name="{{ marker }}" variable="Module_Cluster_{{ marker }}_Z" />
+    <create count="1" type="mines" startX="Module_Cluster_{{ marker }}_X" startY="0.0" startZ="Module_Cluster_{{ marker }}_Z" radius="1" />
+    <create count="8" type="mines" startX="Module_Cluster_{{ marker }}_X" startY="0.0" startZ="Module_Cluster_{{ marker }}_Z" radius="500" />
+    <destroy name="{{ marker }}" />
+    <set_variable name="Module_Cluster_{{ marker }}_Used" value="1.0" integer="yes" />
+  {% endcall %}
+
+{% endmacro %}

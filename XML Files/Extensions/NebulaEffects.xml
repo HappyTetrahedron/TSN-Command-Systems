@@ -1,3 +1,4 @@
+{# NebulaEffects extension - nebulae have configurable effect on ships within them. Drain energy, corrode (damage) ship, or add heat.#}
   <event name="Sensor Range Menu" id_arme="4228976f-1254-4e75-8f35-f579bcaf5543" parent_id_arme="5281ed9f-faab-47da-981b-3aa5f38459a0">
     <if_variable name="Interactions Menu" comparator="EQUALS" value="4.0" />
     <!-- <if_timer_finished name="Interactions Menu" /> -->

@@ -1,3 +1,4 @@
+{# HazardPainter extension - GM tool to dynamically generate rings or lines of mines/nebulae/asteroids. #}
   <!-- Special initialization of hazard painter menu variables on sandbox activation -->
 
   <event name="Initialize internal GUI variables" id_arme="f5e2173a-06b4-41ce-82c2-ab99fad3d3fc" parent_id_arme="77d33364-111d-408c-87ea-b78e62ba418c">
