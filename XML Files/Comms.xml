@@ -1,0 +1,186 @@
+{% import 'Utils.xml' as util %}
+
+{% macro createMenu(name, id ) %}
+  {% for ship in util.shipConfigs %}
+    <event name="Comms Menu Create {{ name }} - ship{{ ship.id }}">
+        <if_variable name="Comms_Menu_Ship{{ ship.id }}" comparator="EQUALS" value="{{ id }}.0" />
+        <if_variable name="Comms_Menu_Ship{{ ship.id }}_{{ name }}_Active" comparator="NOT" value="1.0" />
+        <set_variable name="Comms_Menu_Ship{{ ship.id }}_{{ name }}_Active" value="1.0" integer="yes" />
+        {{ caller(ship) }}
+    </event>
+  {% endfor %}
+{% endmacro %}
+
+{% macro destroyMenu(name, id) %}
+  {% for ship in util.shipConfigs %}
+    <event name="Comms Menu Destroy {{ name }} - ship{{ ship.id }}">
+        <if_variable name="Comms_Menu_Ship{{ ship.id }}" comparator="NOT" value="{{ id }}.0" />
+        <if_variable name="Comms_Menu_Ship{{ ship.id }}_{{ name }}_Active" comparator="EQUALS" value="1.0" />
+        <set_variable name="Comms_Menu_Ship{{ ship.id }}_{{ name }}_Active" value="0.0" integer="yes" />
+        {{ caller(ship) }}
+    </event>
+  {% endfor %}
+{% endmacro %}
+
+{% macro onButtonPress(text) %}
+  {% for ship in util.shipConfigs %}
+    <event name="Comms Menu Button {{ name }} pressed - ship{{ ship.id }}">
+        <if_comms_button text="{{ ship.commPrefix }}{{ text }}" />
+        {{ caller(ship) }}
+    </event>
+  {% endfor %}
+{% endmacro %}
+
+{% macro button(text, ship) %}
+    <set_comms_button text="{{ ship.commPrefix }}{{ text }}" player_slot="{{ ship.slot }}" />
+{% endmacro %}
+{% macro destroybutton(text, ship) %}
+    <clear_comms_button text="{{ ship.commPrefix }}{{ text }}" player_slot="{{ ship.slot }}" />
+{% endmacro %}
+{% macro setMenuVariable(ship, value) %}
+        <set_variable name="Comms_Menu_Ship{{ ship.id }}" value="{{ value }}.0" integer="yes" />
+{% endmacro %}
+{% macro ifMenuVariable(ship, value) %}
+        <if_variable name="Comms_Menu_Ship{{ ship.id }}" comparator="EQUALS" value="{{ value }}.0"/>
+{% endmacro %}
+
+{######################
+   Menu Definitions 
+   #####################}
+
+{% call(ship) createMenu("Main", 1) %}
+    {{ button("Request Cargo &amp; Personnel Status", ship) }}
+    {{ button("Shuttle Bay", ship) }}
+    {{ button("Ship Modules", ship) }}
+    {{ button("Resupply Operations", ship) }}
+{% endcall %}
+{% call(ship) destroyMenu("Main", 1) %}
+    {{ destroybutton("Request Cargo &amp; Personnel Status", ship) }}
+    {{ destroybutton("Shuttle Bay", ship) }}
+    {{ destroybutton("Ship Modules", ship) }}
+    {{ destroybutton("Resupply Operations", ship) }}
+{% endcall %}
+
+{% call(ship) createMenu("ShuttleOps", 2) %}
+    {{ button("Back to Main Menu", ship) }}
+    {{ button("Shuttle Status", ship) }}
+    {{ button("Unload Shuttle", ship) }}
+    {% for cargo in util.cargoTypes if not cargo.is_nothing %}
+        {{ button("Load " + cargo["name"], ship) }}
+        {{ cargo.name }}
+    {% endfor %}
+{% endcall %}
+{% call(ship) destroyMenu("ShuttleOps", 2) %}
+    {{ destroybutton("Back to Main Menu", ship) }}
+    {{ destroybutton("Shuttle Status", ship) }}
+    {{ destroybutton("Unload Shuttle", ship) }}
+    {% for cargo in util.cargoTypes if not cargo.is_nothing %}
+        {{ destroybutton("Load " + cargo["name"], ship) }}
+    {% endfor %}
+{% endcall %}
+
+{% call(ship) createMenu("ShipModules", 3) %}
+    {{ button("Return to Main Menu", ship) }}
+{% endcall %}
+{% call(ship) destroyMenu("ShipModules", 3) %}
+    {{ destroybutton("Return to Main Menu", ship) }}
+{% endcall %}
+
+{% call(ship) createMenu("Resupply", 4) %}
+    {{ button("Go to Main Menu", ship) }}
+{% endcall %}
+{% call(ship) destroyMenu("Resupply", 4) %}
+    {{ destroybutton("Go to Main Menu", ship) }}
+{% endcall %}
+
+{% call(ship) onButtonPress("Shuttle Bay") %}
+  {{ setMenuVariable(ship, 2) }}
+{% endcall %}
+
+{% call(ship) onButtonPress("Ship Modules") %}
+  {{ setMenuVariable(ship, 3) }}
+{% endcall %}
+
+{% call(ship) onButtonPress("Resupply Operations") %}
+  {{ setMenuVariable(ship, 4) }}
+{% endcall %}
+
+{% call(ship) onButtonPress("Back to Main Menu") %}
+  {{ setMenuVariable(ship, 1) }}
+{% endcall %}
+{% call(ship) onButtonPress("Return to Main Menu") %}
+  {{ setMenuVariable(ship, 1) }}
+{% endcall %}
+{% call(ship) onButtonPress("Go to Main Menu") %}
+  {{ setMenuVariable(ship, 1) }}
+{% endcall %}
+
+{########################
+      Bootstrapping 
+   ########################}
+{% for ship in util.shipConfigs %}
+  <event name="Ship {{ ship.id }} Comms Init">
+    <if_exists player_slot="{{ ship.slot }}" />
+    {{ ifMenuVariable(ship, 0) }}
+    {{ setMenuVariable(ship, 1) }}
+  </event>
+{% endfor %}
+<event name="Full Comms Reset">
+  <if_gm_button text="Reset Comms" />
+{% for ship in util.shipConfigs %}
+  {{ setMenuVariable(ship, 0) }}
+{% endfor %}
+</event>
+
+
+{########################
+   Shuttle Cargo Handling
+   ########################}
+
+{% call(ship) onButtonPress("Request Cargo &amp; Personnel Status") %}
+    <if_exists player_slot="{{ ship.slot }}" />
+    <incoming_comms_text from="CHANNEL {{ ship.id }}" sideValue="playerSide" type="STATUS">We have |Ship{{ ship.id }}Marines| battle ready Marines.^There are |Ship{{ ship.id }}MarineTeams| marine teams ready to be deployed.^There are |Ship{{ ship.id }}Cargos| units of cargo.^There are |Ship{{ ship.id }}EngineerTeams| teams of engineers ready to be deployed.^There are |Ship{{ ship.id }}MedicTeams| medical teams ready to be deployed.^Aboard, we have supplies of |Ship{{ ship.id }}CommsRelays| Comms relays and |Ship{{ ship.id }}SensorBuoys| Sensor buoys equipped and ready to be deployed.</incoming_comms_text>
+{% endcall %}
+
+{% for cargo in util.cargoTypes %}
+    {% call(ship) onButtonPress("Shuttle Status") %}
+      <if_variable name="{{ ship.shuttle }}CargoType" comparator="EQUALS" value="{{ cargo.id }}" />
+        <incoming_comms_text from="CHANNEL {{ ship.id }}" sideValue="playerSide" type="STATUS">{{ ship.shuttle }} has {{ cargo.name | lower }} loaded.</incoming_comms_text>
+    {% endcall %}
+
+    {% call(ship) onButtonPress("Load " + cargo.name if not cargo.is_nothing else "Unload Shuttle") %}
+        <if_exists player_slot="{{ ship.slot }}" />
+        <incoming_comms_text from="CHANNEL {{ ship.id }}" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure {{ ship.shuttle }} as requested.</incoming_comms_text>
+        <warning_popup_message message="Loading {{ ship.shuttle }}" consoles="MC" player_slot="{{ ship.slot }}" />
+        <set_variable name="ShuttleSelect" value="{{ ship.id }}" integer="yes" />
+        <set_timer name="ShuttleOps" seconds="2" />
+        <set_variable name="OperationType" value="{{ cargo.loadOp }}.0" integer="yes" />
+    {% endcall %}
+
+{% endfor %}
+
+{########################
+   Resupply Handling
+   ########################}
+
+
+{% for sup in util.supplyShips %}
+  {% call(ship) util.createConditionalMenuPerShip("Resupply" + sup.name) %}
+    <if_exists player_slot="{{ ship.slot }}" />
+    <if_variable name="{{ sup.name }}toShip{{ ship.id }}Resupply" comparator="EQUALS" value="2.0" />
+    {{ button("Resupply from " + sup.name, ship) }}
+  {% endcall %}
+
+  {% call(ship) util.destroyConditionalMenuPerShip("Resupply" + sup.name) %}
+    <if_variable name="{{ sup.name }}toShip{{ ship.id }}Resupply" comparator="NOT" value="2.0" />
+    {{ destroybutton("Resupply from " + sup.name, ship) }}
+  {% endcall %}
+
+  {% call(ship) onButtonPress("Resupply from " + sup.name) %}
+      <if_exists player_slot="{{ ship.slot }}" />
+      <if_variable name="{{ sup.name }}toShip{{ ship.id }}Resupply" comparator="EQUALS" value="2.0" />
+      <incoming_comms_text from="{{ sup.name }}" sideValue="playerSide" type="FRIEND">Request Received - beginning resupply.^Maintain distance 1000 from {{ sup.name }}, with shields offline.</incoming_comms_text>
+      <set_variable name="{{ sup.name }}toShip{{ ship.id }}Resupply" value="3.0" integer="yes" />
+  {% endcall %}
+
+{% endfor %}

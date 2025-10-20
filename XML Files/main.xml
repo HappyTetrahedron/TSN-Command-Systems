@@ -3,6 +3,7 @@
 {% set ShuttleList = ["Proteus", "Theseus", "Odysseus", "Perseus", "Dionysus", "Icarus", "Adonis", "Invention"] %}
 {% include 'Start Up.xml' %}
 {% include 'Elements.xml' %}
+{% include 'Comms.xml' %}
 {% include 'Custom Config.xml' %}
 {% for system in g.data.get("systems", []) %}
   {% include 'Systems (Generated)/' + system + '.xml' %}

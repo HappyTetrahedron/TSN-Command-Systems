@@ -849,6 +849,7 @@
     <set_variable name="Sector Locked" value="1.0" integer="yes" />
     <set_variable name="Sandbox Activation" value="100.0" integer="yes" />
   </event>
+  {# 
   <folder_arme name="Comms Controls" id_arme="80a1374f-673f-4705-b885-2cd2598e2f02" parent_id_arme="da1f4d06-129f-463c-a1e6-d7a4eae746b1" />
   <folder_arme name="Ship 1 Comms Menu" id_arme="11974bdf-b216-46f4-a7b9-5c50936650d3" parent_id_arme="80a1374f-673f-4705-b885-2cd2598e2f02" />
   <event name="Create Menu" id_arme="879a2eb2-2514-4461-a948-a66bb5c2c9a5" parent_id_arme="11974bdf-b216-46f4-a7b9-5c50936650d3">
@@ -887,7 +888,6 @@
   <folder_arme name="Cargo and Personnel" id_arme="8f8b7441-2bd4-4d47-91bf-956b4cc82963" parent_id_arme="11974bdf-b216-46f4-a7b9-5c50936650d3" />
   <event name="Inventory Status Request" id_arme="adaf418e-b4ab-4df1-92cd-01f375f8e390" parent_id_arme="8f8b7441-2bd4-4d47-91bf-956b4cc82963">
     <if_exists player_slot="0" />
-    <if_variable name="Ship1CommsMenu" comparator="EQUALS" value="1.0" />
     <if_comms_button text="-Cargo &amp; Personnel" />
     <clear_comms_button text="-Cargo &amp; Personnel" player_slot="0" />
     <clear_comms_button text="-Shuttle Operations" player_slot="0" />
@@ -898,7 +898,6 @@
   <folder_arme name="Shuttle Operations" id_arme="1ed0303e-04ee-4a56-b577-93cae953a603" parent_id_arme="11974bdf-b216-46f4-a7b9-5c50936650d3" />
   <event name="Shuttle Ops Menu" id_arme="4da74cba-84eb-443e-8a8c-a99ccb1c24b2" parent_id_arme="1ed0303e-04ee-4a56-b577-93cae953a603">
     <if_exists player_slot="0" />
-    <if_variable name="Ship1CommsMenu" comparator="EQUALS" value="1.0" />
     <if_comms_button text="-Shuttle Operations" />
     <clear_comms_button text="-Cargo &amp; Personnel" player_slot="0" />
     <clear_comms_button text="-Shuttle Operations" player_slot="0" />
@@ -911,49 +910,42 @@
   <folder_arme name="Shuttle Status" id_arme="7e06bd20-9200-499c-8a7d-d0e042cc426f" parent_id_arme="1ed0303e-04ee-4a56-b577-93cae953a603" />
   <event name="No Cargo" id_arme="3e7f2b8d-4ced-4452-9362-7b63547537fb" parent_id_arme="7e06bd20-9200-499c-8a7d-d0e042cc426f">
     <if_exists player_slot="0" />
-    <if_variable name="Ship1CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="-Shuttle Status" />
     <if_variable name="ProteusCargoType" comparator="EQUALS" value="0.0" />
     <incoming_comms_text from="CHANNEL 1" sideValue="playerSide" type="STATUS">Proteus has no cargo aboard.</incoming_comms_text>
   </event>
   <event name="Marines" id_arme="6b6e01fc-d300-4d05-9569-50e6f46ec330" parent_id_arme="7e06bd20-9200-499c-8a7d-d0e042cc426f">
     <if_exists player_slot="0" />
-    <if_variable name="Ship1CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="-Shuttle Status" />
     <if_variable name="ProteusCargoType" comparator="EQUALS" value="1.0" />
     <incoming_comms_text from="CHANNEL 1" sideValue="playerSide" type="STATUS">Proteus is loaded with a marine team.</incoming_comms_text>
   </event>
   <event name="General Cargo" id_arme="b2a7e1ce-d574-4393-9883-4021ddcbad70" parent_id_arme="7e06bd20-9200-499c-8a7d-d0e042cc426f">
     <if_exists player_slot="0" />
-    <if_variable name="Ship1CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="-Shuttle Status" />
     <if_variable name="ProteusCargoType" comparator="EQUALS" value="2.0" />
     <incoming_comms_text from="CHANNEL 1" sideValue="playerSide" type="STATUS">Proteus has cargo loaded.</incoming_comms_text>
   </event>
   <event name="Medics" id_arme="1dec7b11-f7b0-408d-b2a3-eb5837cecda5" parent_id_arme="7e06bd20-9200-499c-8a7d-d0e042cc426f">
     <if_exists player_slot="0" />
-    <if_variable name="Ship1CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="-Shuttle Status" />
     <if_variable name="ProteusCargoType" comparator="EQUALS" value="3.0" />
     <incoming_comms_text from="CHANNEL 1" sideValue="playerSide" type="STATUS">Proteus is loaded with a medic team.</incoming_comms_text>
   </event>
   <event name="Engineers" id_arme="4b1aa988-b336-4940-8376-deda7a30ea97" parent_id_arme="7e06bd20-9200-499c-8a7d-d0e042cc426f">
     <if_exists player_slot="0" />
-    <if_variable name="Ship1CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="-Shuttle Status" />
     <if_variable name="ProteusCargoType" comparator="EQUALS" value="4.0" />
     <incoming_comms_text from="CHANNEL 1" sideValue="playerSide" type="STATUS">Proteus is loaded with an engineering team.</incoming_comms_text>
   </event>
   <event name="Comms Relay" id_arme="0ac53e55-a660-480b-8583-3493b1e9ef81" parent_id_arme="7e06bd20-9200-499c-8a7d-d0e042cc426f">
     <if_exists player_slot="0" />
-    <if_variable name="Ship1CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="-Shuttle Status" />
     <if_variable name="ProteusCargoType" comparator="EQUALS" value="5.0" />
     <incoming_comms_text from="CHANNEL 1" sideValue="playerSide" type="STATUS">Proteus has a comms relay aboard.</incoming_comms_text>
   </event>
   <event name="Sensor Buoy" id_arme="c01e1642-3dba-4be7-bf5d-35c74e5a9cd6" parent_id_arme="7e06bd20-9200-499c-8a7d-d0e042cc426f">
     <if_exists player_slot="0" />
-    <if_variable name="Ship1CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="-Shuttle Status" />
     <if_variable name="ProteusCargoType" comparator="EQUALS" value="6.0" />
     <incoming_comms_text from="CHANNEL 1" sideValue="playerSide" type="STATUS">Proteus has a sensor buoy aboard.</incoming_comms_text>
@@ -961,7 +953,6 @@
   <folder_arme name="Operations" id_arme="d11361a6-070c-4d97-a36e-e96833c2be25" parent_id_arme="1ed0303e-04ee-4a56-b577-93cae953a603" />
   <event name="Operations Menu" id_arme="3d4ae3d8-7c0e-4f4a-999d-bc8e97d4f60e" parent_id_arme="d11361a6-070c-4d97-a36e-e96833c2be25">
     <if_exists player_slot="0" />
-    <if_variable name="Ship1CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="-Operations" />
     <clear_comms_button text="-Shuttle Status" player_slot="0" />
     <clear_comms_button text="-Operations" player_slot="0" />
@@ -993,7 +984,6 @@
   </event>
   <event name="Unload Shuttle" id_arme="6e194d76-e4e7-457f-98ff-7a80526c4cc4" parent_id_arme="d11361a6-070c-4d97-a36e-e96833c2be25">
     <if_exists player_slot="0" />
-    <if_variable name="Ship1CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="-Unload Shuttle" />
     <incoming_comms_text from="CHANNEL 1" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Proteus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Proteus" consoles="MC" player_slot="0" />
@@ -1003,7 +993,6 @@
   </event>
   <event name="Load Marines" id_arme="f0360c9e-db91-43a6-8fda-97308f9ae028" parent_id_arme="d11361a6-070c-4d97-a36e-e96833c2be25">
     <if_exists player_slot="0" />
-    <if_variable name="Ship1CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="-Load Marines" />
     <incoming_comms_text from="CHANNEL 1" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Proteus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Proteus" consoles="MC" player_slot="0" />
@@ -1013,7 +1002,6 @@
   </event>
   <event name="Load Cargo" id_arme="24e1d790-8578-4836-bd39-4db3e8d3bd1f" parent_id_arme="d11361a6-070c-4d97-a36e-e96833c2be25">
     <if_exists player_slot="0" />
-    <if_variable name="Ship1CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="-Load Cargo" />
     <incoming_comms_text from="CHANNEL 1" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Proteus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Proteus" consoles="MC" player_slot="0" />
@@ -1023,7 +1011,6 @@
   </event>
   <event name="Load Medics" id_arme="cc989061-af32-403a-9d46-85d0b78ab0e7" parent_id_arme="d11361a6-070c-4d97-a36e-e96833c2be25">
     <if_exists player_slot="0" />
-    <if_variable name="Ship1CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="-Load Medical Team" />
     <incoming_comms_text from="CHANNEL 1" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Proteus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Proteus" consoles="MC" player_slot="0" />
@@ -1033,7 +1020,6 @@
   </event>
   <event name="Load Engineers" id_arme="34ed76bb-1a88-44e2-abb1-b7ce6a054ce4" parent_id_arme="d11361a6-070c-4d97-a36e-e96833c2be25">
     <if_exists player_slot="0" />
-    <if_variable name="Ship1CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="-Load Engineering Team" />
     <incoming_comms_text from="CHANNEL 1" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Proteus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Proteus" consoles="MC" player_slot="0" />
@@ -1043,7 +1029,6 @@
   </event>
   <event name="Load Relay" id_arme="1bc1c995-9ef9-4d63-9117-ebc3ecfcba35" parent_id_arme="d11361a6-070c-4d97-a36e-e96833c2be25">
     <if_exists player_slot="0" />
-    <if_variable name="Ship1CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="-Load Comms Relay" />
     <incoming_comms_text from="CHANNEL 1" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Proteus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Proteus" consoles="MC" player_slot="0" />
@@ -1053,7 +1038,6 @@
   </event>
   <event name="Load Sensor" id_arme="cb238bf0-b38d-4569-8700-8db52c77da4b" parent_id_arme="d11361a6-070c-4d97-a36e-e96833c2be25">
     <if_exists player_slot="0" />
-    <if_variable name="Ship1CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="-Load Sensor Buoy" />
     <incoming_comms_text from="CHANNEL 1" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Proteus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Proteus" consoles="MC" player_slot="0" />
@@ -1064,7 +1048,6 @@
   <folder_arme name="Resupply" id_arme="13549d8b-d5fd-4368-b1d5-b945162201a9" parent_id_arme="11974bdf-b216-46f4-a7b9-5c50936650d3" />
   <event name="Resupply Menu" id_arme="10a7710f-5537-41df-8891-3fee6d956084" parent_id_arme="13549d8b-d5fd-4368-b1d5-b945162201a9">
     <if_exists player_slot="0" />
-    <if_variable name="Ship1CommsMenu" comparator="EQUALS" value="1.0" />
     <if_comms_button text="-Resupply Operations" />
     <clear_comms_button text="-Cargo &amp; Personnel" player_slot="0" />
     <clear_comms_button text="-Shuttle Operations" player_slot="0" />
@@ -1187,7 +1170,6 @@
   <folder_arme name="Cargo and Personnel" id_arme="93d43161-228a-48fe-a4e6-d03e20a5c6f7" parent_id_arme="5bb8bb2b-3dbd-4dfd-949a-3cd406d51bae" />
   <event name="Inventory Status Request" id_arme="43b9f285-bb10-43e8-a0b7-08646f08d06f" parent_id_arme="93d43161-228a-48fe-a4e6-d03e20a5c6f7">
     <if_exists player_slot="1" />
-    <if_variable name="Ship2CommsMenu" comparator="EQUALS" value="1.0" />
     <if_comms_button text="*Cargo &amp; Personnel" />
     <clear_comms_button text="*Cargo &amp; Personnel" player_slot="1" />
     <clear_comms_button text="*Shuttle Operations" player_slot="1" />
@@ -1198,7 +1180,6 @@
   <folder_arme name="Shuttle Operations" id_arme="5aafdb42-2ec4-466f-8412-e654b58d1001" parent_id_arme="5bb8bb2b-3dbd-4dfd-949a-3cd406d51bae" />
   <event name="Shuttle Ops Menu" id_arme="51eef336-a7f1-4c1c-80d4-91eaf9396e04" parent_id_arme="5aafdb42-2ec4-466f-8412-e654b58d1001">
     <if_exists player_slot="1" />
-    <if_variable name="Ship2CommsMenu" comparator="EQUALS" value="1.0" />
     <if_comms_button text="*Shuttle Operations" />
     <clear_comms_button text="*Cargo &amp; Personnel" player_slot="1" />
     <clear_comms_button text="*Shuttle Operations" player_slot="1" />
@@ -1211,49 +1192,42 @@
   <folder_arme name="Shuttle Status" id_arme="7f1a2e07-52e4-4ee2-bcde-78066f8bd2cb" parent_id_arme="5aafdb42-2ec4-466f-8412-e654b58d1001" />
   <event name="No Cargo" id_arme="e81777d6-bd62-4aba-93e1-ebcfbf9bf38e" parent_id_arme="7f1a2e07-52e4-4ee2-bcde-78066f8bd2cb">
     <if_exists player_slot="1" />
-    <if_variable name="Ship2CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="*Shuttle Status" />
     <if_variable name="TheseusCargoType" comparator="EQUALS" value="0.0" />
     <incoming_comms_text from="CHANNEL 2" sideValue="playerSide" type="STATUS">Theseus has no cargo aboard.</incoming_comms_text>
   </event>
   <event name="Marines" id_arme="23cb4808-a33b-4954-90b4-9c35e1867230" parent_id_arme="7f1a2e07-52e4-4ee2-bcde-78066f8bd2cb">
     <if_exists player_slot="1" />
-    <if_variable name="Ship2CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="*Shuttle Status" />
     <if_variable name="TheseusCargoType" comparator="EQUALS" value="1.0" />
     <incoming_comms_text from="CHANNEL 2" sideValue="playerSide" type="STATUS">Theseus is loaded with a marine team.</incoming_comms_text>
   </event>
   <event name="General Cargo" id_arme="0f489cb1-2b77-495f-a8d7-6d7a17003f82" parent_id_arme="7f1a2e07-52e4-4ee2-bcde-78066f8bd2cb">
     <if_exists player_slot="1" />
-    <if_variable name="Ship2CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="*Shuttle Status" />
     <if_variable name="TheseusCargoType" comparator="EQUALS" value="2.0" />
     <incoming_comms_text from="CHANNEL 2" sideValue="playerSide" type="STATUS">Theseus has cargo loaded.</incoming_comms_text>
   </event>
   <event name="Medics" id_arme="fe2ec01a-7041-484f-b467-fb848c14457f" parent_id_arme="7f1a2e07-52e4-4ee2-bcde-78066f8bd2cb">
     <if_exists player_slot="1" />
-    <if_variable name="Ship2CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="*Shuttle Status" />
     <if_variable name="TheseusCargoType" comparator="EQUALS" value="3.0" />
     <incoming_comms_text from="CHANNEL 2" sideValue="playerSide" type="STATUS">Theseus is loaded with a medic team.</incoming_comms_text>
   </event>
   <event name="Engineers" id_arme="6db1a0c2-98fc-4b7a-9419-a9bf475931e4" parent_id_arme="7f1a2e07-52e4-4ee2-bcde-78066f8bd2cb">
     <if_exists player_slot="1" />
-    <if_variable name="Ship2CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="*Shuttle Status" />
     <if_variable name="TheseusCargoType" comparator="EQUALS" value="4.0" />
     <incoming_comms_text from="CHANNEL 2" sideValue="playerSide" type="STATUS">Theseus is loaded with an engineering team.</incoming_comms_text>
   </event>
   <event name="Comms Relay" id_arme="8b63d7ed-965e-4ecb-8888-d3a4be844f30" parent_id_arme="7f1a2e07-52e4-4ee2-bcde-78066f8bd2cb">
     <if_exists player_slot="1" />
-    <if_variable name="Ship2CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="*Shuttle Status" />
     <if_variable name="TheseusCargoType" comparator="EQUALS" value="5.0" />
     <incoming_comms_text from="CHANNEL 2" sideValue="playerSide" type="STATUS">Theseus has a comms relay aboard.</incoming_comms_text>
   </event>
   <event name="Sensor Buoy" id_arme="0e07f0e6-4e64-4ab4-8c9c-29acf1e608bf" parent_id_arme="7f1a2e07-52e4-4ee2-bcde-78066f8bd2cb">
     <if_exists player_slot="1" />
-    <if_variable name="Ship2CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="*Shuttle Status" />
     <if_variable name="TheseusCargoType" comparator="EQUALS" value="6.0" />
     <incoming_comms_text from="CHANNEL 2" sideValue="playerSide" type="STATUS">Theseus has a sensor buoy aboard.</incoming_comms_text>
@@ -1261,7 +1235,6 @@
   <folder_arme name="Operations" id_arme="2be9458e-00ba-42f9-8d4d-cd8dbb883055" parent_id_arme="5aafdb42-2ec4-466f-8412-e654b58d1001" />
   <event name="Operations Menu" id_arme="07fe8bfc-5ae5-40d5-9a2a-e4932bf432cb" parent_id_arme="2be9458e-00ba-42f9-8d4d-cd8dbb883055">
     <if_exists player_slot="1" />
-    <if_variable name="Ship2CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="*Operations" />
     <clear_comms_button text="*Shuttle Status" player_slot="1" />
     <clear_comms_button text="*Operations" player_slot="1" />
@@ -1293,7 +1266,6 @@
   </event>
   <event name="Unload Shuttle" id_arme="463ea43b-6a78-468e-a762-6df71d5d90b5" parent_id_arme="2be9458e-00ba-42f9-8d4d-cd8dbb883055">
     <if_exists player_slot="1" />
-    <if_variable name="Ship2CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="*Unload Shuttle" />
     <incoming_comms_text from="CHANNEL 2" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Theseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Theseus" consoles="MC" player_slot="1" />
@@ -1303,7 +1275,6 @@
   </event>
   <event name="Load Marines" id_arme="08bf61f0-a290-4a14-a74d-80802e564736" parent_id_arme="2be9458e-00ba-42f9-8d4d-cd8dbb883055">
     <if_exists player_slot="1" />
-    <if_variable name="Ship2CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="*Load Marines" />
     <incoming_comms_text from="CHANNEL 2" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Theseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Theseus" consoles="MC" player_slot="1" />
@@ -1313,7 +1284,6 @@
   </event>
   <event name="Load Cargo" id_arme="fba8ea70-2b5a-4ea3-81b2-fda593355e01" parent_id_arme="2be9458e-00ba-42f9-8d4d-cd8dbb883055">
     <if_exists player_slot="1" />
-    <if_variable name="Ship2CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="*Load Cargo" />
     <incoming_comms_text from="CHANNEL 2" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Theseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Theseus" consoles="MC" player_slot="1" />
@@ -1323,7 +1293,6 @@
   </event>
   <event name="Load Medics" id_arme="8b8511f5-f706-49fd-8981-20ddec2082bf" parent_id_arme="2be9458e-00ba-42f9-8d4d-cd8dbb883055">
     <if_exists player_slot="1" />
-    <if_variable name="Ship2CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="*Load Medical Team" />
     <incoming_comms_text from="CHANNEL 2" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Theseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Theseus" consoles="MC" player_slot="1" />
@@ -1333,7 +1302,6 @@
   </event>
   <event name="Load Engineers" id_arme="fef03095-2350-478d-aa11-4d0e4b9c25d5" parent_id_arme="2be9458e-00ba-42f9-8d4d-cd8dbb883055">
     <if_exists player_slot="1" />
-    <if_variable name="Ship2CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="*Load Engineering Team" />
     <incoming_comms_text from="CHANNEL 2" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Theseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Theseus" consoles="MC" player_slot="1" />
@@ -1343,7 +1311,6 @@
   </event>
   <event name="Load Relay" id_arme="5bc67cd3-d3c6-453f-8503-c16cc064aaa6" parent_id_arme="2be9458e-00ba-42f9-8d4d-cd8dbb883055">
     <if_exists player_slot="1" />
-    <if_variable name="Ship2CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="*Load Comms Relay" />
     <incoming_comms_text from="CHANNEL 2" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Theseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Theseus" consoles="MC" player_slot="1" />
@@ -1353,7 +1320,6 @@
   </event>
   <event name="Load Sensor" id_arme="1ba52d63-3fd2-4332-832c-b1beee458da0" parent_id_arme="2be9458e-00ba-42f9-8d4d-cd8dbb883055">
     <if_exists player_slot="1" />
-    <if_variable name="Ship2CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="*Load Sensor Buoy" />
     <incoming_comms_text from="CHANNEL 2" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Theseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Theseus" consoles="MC" player_slot="1" />
@@ -1364,7 +1330,6 @@
   <folder_arme name="Resupply" id_arme="83f7a9a5-506c-404d-95f7-7ee5df7e2c8d" parent_id_arme="5bb8bb2b-3dbd-4dfd-949a-3cd406d51bae" />
   <event name="Resupply Menu" id_arme="ba79bc0e-4b6d-4a16-976d-a88da19002b4" parent_id_arme="83f7a9a5-506c-404d-95f7-7ee5df7e2c8d">
     <if_exists player_slot="1" />
-    <if_variable name="Ship2CommsMenu" comparator="EQUALS" value="1.0" />
     <if_comms_button text="*Resupply Operations" />
     <clear_comms_button text="*Cargo &amp; Personnel" player_slot="1" />
     <clear_comms_button text="*Shuttle Operations" player_slot="1" />
@@ -1487,7 +1452,6 @@
   <folder_arme name="Cargo and Personnel" id_arme="506ea0ab-a872-45ff-98fe-5045d9e4c736" parent_id_arme="2d9df97e-ffbc-4782-9594-4f80608a38f5" />
   <event name="Inventory Status Request" id_arme="8046a3c2-38b5-4a42-bab2-932cd8f93f0e" parent_id_arme="506ea0ab-a872-45ff-98fe-5045d9e4c736">
     <if_exists player_slot="2" />
-    <if_variable name="Ship3CommsMenu" comparator="EQUALS" value="1.0" />
     <if_comms_button text="**Cargo &amp; Personnel" />
     <clear_comms_button text="**Cargo &amp; Personnel" player_slot="2" />
     <clear_comms_button text="**Shuttle Operations" player_slot="2" />
@@ -1498,7 +1462,6 @@
   <folder_arme name="Shuttle Operations" id_arme="1105b70c-ad30-4074-9870-a32537c5be6e" parent_id_arme="2d9df97e-ffbc-4782-9594-4f80608a38f5" />
   <event name="Shuttle Ops Menu" id_arme="875e5098-b051-4164-98e2-ac583bbccd7b" parent_id_arme="1105b70c-ad30-4074-9870-a32537c5be6e">
     <if_exists player_slot="2" />
-    <if_variable name="Ship3CommsMenu" comparator="EQUALS" value="1.0" />
     <if_comms_button text="**Shuttle Operations" />
     <clear_comms_button text="**Cargo &amp; Personnel" player_slot="2" />
     <clear_comms_button text="**Shuttle Operations" player_slot="2" />
@@ -1511,49 +1474,42 @@
   <folder_arme name="Shuttle Status" id_arme="5572545d-bb6a-4198-9bc2-08256017a8ec" parent_id_arme="1105b70c-ad30-4074-9870-a32537c5be6e" />
   <event name="No Cargo" id_arme="45b1d710-37c5-4d86-83e5-7c92eb8f73e7" parent_id_arme="5572545d-bb6a-4198-9bc2-08256017a8ec">
     <if_exists player_slot="2" />
-    <if_variable name="Ship3CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="**Shuttle Status" />
     <if_variable name="OdysseusCargoType" comparator="EQUALS" value="0.0" />
     <incoming_comms_text from="CHANNEL 3" sideValue="playerSide" type="STATUS">Odysseus has no cargo aboard.</incoming_comms_text>
   </event>
   <event name="Marines" id_arme="f2ed1393-d2ca-4a7a-b4ae-e9776475ef79" parent_id_arme="5572545d-bb6a-4198-9bc2-08256017a8ec">
     <if_exists player_slot="2" />
-    <if_variable name="Ship3CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="**Shuttle Status" />
     <if_variable name="OdysseusCargoType" comparator="EQUALS" value="1.0" />
     <incoming_comms_text from="CHANNEL 3" sideValue="playerSide" type="STATUS">Odysseus is loaded with a marine team.</incoming_comms_text>
   </event>
   <event name="General Cargo" id_arme="45eac23f-c6d3-4955-b17f-c7ec17410b14" parent_id_arme="5572545d-bb6a-4198-9bc2-08256017a8ec">
     <if_exists player_slot="2" />
-    <if_variable name="Ship3CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="**Shuttle Status" />
     <if_variable name="OdysseusCargoType" comparator="EQUALS" value="2.0" />
     <incoming_comms_text from="CHANNEL 3" sideValue="playerSide" type="STATUS">Odysseus has cargo loaded.</incoming_comms_text>
   </event>
   <event name="Medics" id_arme="8abedf4c-4c27-43b0-a725-e4fd6117e999" parent_id_arme="5572545d-bb6a-4198-9bc2-08256017a8ec">
     <if_exists player_slot="2" />
-    <if_variable name="Ship3CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="**Shuttle Status" />
     <if_variable name="OdysseusCargoType" comparator="EQUALS" value="3.0" />
     <incoming_comms_text from="CHANNEL 3" sideValue="playerSide" type="STATUS">Odysseus is loaded with a medic team.</incoming_comms_text>
   </event>
   <event name="Engineers" id_arme="ed31c0ce-2c86-4280-950f-5648d2c92351" parent_id_arme="5572545d-bb6a-4198-9bc2-08256017a8ec">
     <if_exists player_slot="2" />
-    <if_variable name="Ship3CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="**Shuttle Status" />
     <if_variable name="OdysseusCargoType" comparator="EQUALS" value="4.0" />
     <incoming_comms_text from="CHANNEL 3" sideValue="playerSide" type="STATUS">Odysseus is loaded with an engineering team.</incoming_comms_text>
   </event>
   <event name="Comms Relay" id_arme="a9e7b923-8553-4ec8-9462-bb1e15e36925" parent_id_arme="5572545d-bb6a-4198-9bc2-08256017a8ec">
     <if_exists player_slot="2" />
-    <if_variable name="Ship3CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="**Shuttle Status" />
     <if_variable name="OdysseusCargoType" comparator="EQUALS" value="5.0" />
     <incoming_comms_text from="CHANNEL 3" sideValue="playerSide" type="STATUS">Odysseus has a comms relay aboard.</incoming_comms_text>
   </event>
   <event name="Sensor Buoy" id_arme="4472cbbd-c840-47c4-9379-c62353392344" parent_id_arme="5572545d-bb6a-4198-9bc2-08256017a8ec">
     <if_exists player_slot="2" />
-    <if_variable name="Ship3CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="**Shuttle Status" />
     <if_variable name="OdysseusCargoType" comparator="EQUALS" value="6.0" />
     <incoming_comms_text from="CHANNEL 3" sideValue="playerSide" type="STATUS">Odysseus has a sensor buoy aboard.</incoming_comms_text>
@@ -1561,7 +1517,6 @@
   <folder_arme name="Operations" id_arme="f256538f-0d0d-4012-95a6-28b43ba0a0a4" parent_id_arme="1105b70c-ad30-4074-9870-a32537c5be6e" />
   <event name="Operations Menu" id_arme="94f16200-986d-4152-9b7c-6b2ef24b20f4" parent_id_arme="f256538f-0d0d-4012-95a6-28b43ba0a0a4">
     <if_exists player_slot="2" />
-    <if_variable name="Ship3CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="**Operations" />
     <clear_comms_button text="**Shuttle Status" player_slot="2" />
     <clear_comms_button text="**Operations" player_slot="2" />
@@ -1593,7 +1548,6 @@
   </event>
   <event name="Unload Shuttle" id_arme="60c6521e-716a-4b25-b657-45ae50f9fd9f" parent_id_arme="f256538f-0d0d-4012-95a6-28b43ba0a0a4">
     <if_exists player_slot="2" />
-    <if_variable name="Ship3CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="**Unload Shuttle" />
     <incoming_comms_text from="CHANNEL 3" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Odysseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Odysseus" consoles="MC" player_slot="2" />
@@ -1603,7 +1557,6 @@
   </event>
   <event name="Load Marines" id_arme="a71a2507-8db3-4c7d-aaa3-a06904e955c4" parent_id_arme="f256538f-0d0d-4012-95a6-28b43ba0a0a4">
     <if_exists player_slot="2" />
-    <if_variable name="Ship3CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="**Load Marines" />
     <incoming_comms_text from="CHANNEL 3" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Odysseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Odysseus" consoles="MC" player_slot="2" />
@@ -1613,7 +1566,6 @@
   </event>
   <event name="Load Cargo" id_arme="d43b677b-da22-4b07-84b4-366691876959" parent_id_arme="f256538f-0d0d-4012-95a6-28b43ba0a0a4">
     <if_exists player_slot="2" />
-    <if_variable name="Ship3CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="**Load Cargo" />
     <incoming_comms_text from="CHANNEL 3" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Odysseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Odysseus" consoles="MC" player_slot="2" />
@@ -1623,7 +1575,6 @@
   </event>
   <event name="Load Medics" id_arme="905314da-dc95-4cc5-8852-2bf877015a4b" parent_id_arme="f256538f-0d0d-4012-95a6-28b43ba0a0a4">
     <if_exists player_slot="2" />
-    <if_variable name="Ship3CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="**Load Medical Team" />
     <incoming_comms_text from="CHANNEL 3" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Odysseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Odysseus" consoles="MC" player_slot="2" />
@@ -1633,7 +1584,6 @@
   </event>
   <event name="Load Engineers" id_arme="f1169002-d80f-46cd-ab8f-3248d8cee58c" parent_id_arme="f256538f-0d0d-4012-95a6-28b43ba0a0a4">
     <if_exists player_slot="2" />
-    <if_variable name="Ship3CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="**Load Engineering Team" />
     <incoming_comms_text from="CHANNEL 3" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Odysseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Odysseus" consoles="MC" player_slot="2" />
@@ -1643,7 +1593,6 @@
   </event>
   <event name="Load Relay" id_arme="dc6a36b3-91f3-45a7-b5d0-e230c911c76e" parent_id_arme="f256538f-0d0d-4012-95a6-28b43ba0a0a4">
     <if_exists player_slot="2" />
-    <if_variable name="Ship3CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="**Load Comms Relay" />
     <incoming_comms_text from="CHANNEL 3" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Odysseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Odysseus" consoles="MC" player_slot="2" />
@@ -1653,7 +1602,6 @@
   </event>
   <event name="Load Sensor" id_arme="8a4f196a-03ae-4b10-a392-b1894cb56f54" parent_id_arme="f256538f-0d0d-4012-95a6-28b43ba0a0a4">
     <if_exists player_slot="2" />
-    <if_variable name="Ship3CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="**Load Sensor Buoy" />
     <incoming_comms_text from="CHANNEL 3" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Odysseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Odysseus" consoles="MC" player_slot="2" />
@@ -1664,7 +1612,6 @@
   <folder_arme name="Resupply" id_arme="49f77c85-cfa3-4fd9-94a8-cfdf78a3b0d0" parent_id_arme="2d9df97e-ffbc-4782-9594-4f80608a38f5" />
   <event name="Resupply Menu" id_arme="46863893-e372-43ad-bf41-91c671d4633b" parent_id_arme="49f77c85-cfa3-4fd9-94a8-cfdf78a3b0d0">
     <if_exists player_slot="2" />
-    <if_variable name="Ship3CommsMenu" comparator="EQUALS" value="1.0" />
     <if_comms_button text="**Resupply Operations" />
     <clear_comms_button text="**Cargo &amp; Personnel" player_slot="2" />
     <clear_comms_button text="**Shuttle Operations" player_slot="2" />
@@ -1787,7 +1734,6 @@
   <folder_arme name="Cargo and Personnel" id_arme="75a3aa64-e844-4b59-a028-fc97e3b22fe5" parent_id_arme="3e34f8c7-7750-4a1d-bee5-0e96e4e39a46" />
   <event name="Inventory Status Request" id_arme="2c57ee97-a516-4d19-a446-837ea9bb5ac5" parent_id_arme="75a3aa64-e844-4b59-a028-fc97e3b22fe5">
     <if_exists player_slot="3" />
-    <if_variable name="Ship4CommsMenu" comparator="EQUALS" value="1.0" />
     <if_comms_button text="--Cargo &amp; Personnel" />
     <clear_comms_button text="--Cargo &amp; Personnel" player_slot="3" />
     <clear_comms_button text="--Shuttle Operations" player_slot="3" />
@@ -1798,7 +1744,6 @@
   <folder_arme name="Shuttle Operations" id_arme="05b1df94-1627-4ab8-b42b-09d96ae50a70" parent_id_arme="3e34f8c7-7750-4a1d-bee5-0e96e4e39a46" />
   <event name="Shuttle Ops Menu" id_arme="4622ca40-5a38-42e4-92f9-d5b825fc8f0b" parent_id_arme="05b1df94-1627-4ab8-b42b-09d96ae50a70">
     <if_exists player_slot="3" />
-    <if_variable name="Ship4CommsMenu" comparator="EQUALS" value="1.0" />
     <if_comms_button text="--Shuttle Operations" />
     <clear_comms_button text="--Cargo &amp; Personnel" player_slot="3" />
     <clear_comms_button text="--Shuttle Operations" player_slot="3" />
@@ -1811,49 +1756,42 @@
   <folder_arme name="Shuttle Status" id_arme="021c559a-c35d-4d2c-8992-5180320eda74" parent_id_arme="05b1df94-1627-4ab8-b42b-09d96ae50a70" />
   <event name="No Cargo" id_arme="517a6998-2e47-44b1-bbd8-6386562e5f35" parent_id_arme="021c559a-c35d-4d2c-8992-5180320eda74">
     <if_exists player_slot="3" />
-    <if_variable name="Ship4CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="--Shuttle Status" />
     <if_variable name="PerseusCargoType" comparator="EQUALS" value="0.0" />
     <incoming_comms_text from="CHANNEL 4" sideValue="playerSide" type="STATUS">Perseus has no cargo aboard.</incoming_comms_text>
   </event>
   <event name="Marines" id_arme="5b2d7851-9262-4f08-8c2b-e19649017e34" parent_id_arme="021c559a-c35d-4d2c-8992-5180320eda74">
     <if_exists player_slot="3" />
-    <if_variable name="Ship4CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="--Shuttle Status" />
     <if_variable name="PerseusCargoType" comparator="EQUALS" value="1.0" />
     <incoming_comms_text from="CHANNEL 4" sideValue="playerSide" type="STATUS">Perseus is loaded with a marine team.</incoming_comms_text>
   </event>
   <event name="General Cargo" id_arme="18e0e173-b7e8-4139-8941-70342607c2fe" parent_id_arme="021c559a-c35d-4d2c-8992-5180320eda74">
     <if_exists player_slot="3" />
-    <if_variable name="Ship4CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="--Shuttle Status" />
     <if_variable name="PerseusCargoType" comparator="EQUALS" value="2.0" />
     <incoming_comms_text from="CHANNEL 4" sideValue="playerSide" type="STATUS">Perseus has cargo loaded.</incoming_comms_text>
   </event>
   <event name="Medics" id_arme="9f32ca89-3cb4-46b4-8ddf-68ab35b94126" parent_id_arme="021c559a-c35d-4d2c-8992-5180320eda74">
     <if_exists player_slot="3" />
-    <if_variable name="Ship4CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="--Shuttle Status" />
     <if_variable name="PerseusCargoType" comparator="EQUALS" value="3.0" />
     <incoming_comms_text from="CHANNEL 4" sideValue="playerSide" type="STATUS">Perseus is loaded with a medic team.</incoming_comms_text>
   </event>
   <event name="Engineers" id_arme="8c0bdb56-1e3f-4988-97da-837bd6f88213" parent_id_arme="021c559a-c35d-4d2c-8992-5180320eda74">
     <if_exists player_slot="3" />
-    <if_variable name="Ship4CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="--Shuttle Status" />
     <if_variable name="PerseusCargoType" comparator="EQUALS" value="4.0" />
     <incoming_comms_text from="CHANNEL 4" sideValue="playerSide" type="STATUS">Perseus is loaded with an engineering team.</incoming_comms_text>
   </event>
   <event name="Comms Relay" id_arme="4e8c6614-7288-49d9-ac29-738dfd32137b" parent_id_arme="021c559a-c35d-4d2c-8992-5180320eda74">
     <if_exists player_slot="3" />
-    <if_variable name="Ship4CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="--Shuttle Status" />
     <if_variable name="PerseusCargoType" comparator="EQUALS" value="5.0" />
     <incoming_comms_text from="CHANNEL 4" sideValue="playerSide" type="STATUS">Perseus has a comms relay aboard.</incoming_comms_text>
   </event>
   <event name="Sensor Buoy" id_arme="350e7321-c083-4043-82a5-8d387c0a9dba" parent_id_arme="021c559a-c35d-4d2c-8992-5180320eda74">
     <if_exists player_slot="3" />
-    <if_variable name="Ship4CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="--Shuttle Status" />
     <if_variable name="PerseusCargoType" comparator="EQUALS" value="6.0" />
     <incoming_comms_text from="CHANNEL 4" sideValue="playerSide" type="STATUS">Perseus has a sensor buoy aboard.</incoming_comms_text>
@@ -1861,7 +1799,6 @@
   <folder_arme name="Operations" id_arme="fb24ae0e-61c4-44de-917a-4db772b565e0" parent_id_arme="05b1df94-1627-4ab8-b42b-09d96ae50a70" />
   <event name="Operations Menu" id_arme="bb1d3ac9-8c35-44d3-9861-c7bf485a7552" parent_id_arme="fb24ae0e-61c4-44de-917a-4db772b565e0">
     <if_exists player_slot="3" />
-    <if_variable name="Ship4CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="--Operations" />
     <clear_comms_button text="--Shuttle Status" player_slot="3" />
     <clear_comms_button text="--Operations" player_slot="3" />
@@ -1893,7 +1830,6 @@
   </event>
   <event name="Unload Shuttle" id_arme="75ded9bc-8256-453a-b2e8-f94486a273e1" parent_id_arme="fb24ae0e-61c4-44de-917a-4db772b565e0">
     <if_exists player_slot="3" />
-    <if_variable name="Ship4CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="--Unload Shuttle" />
     <incoming_comms_text from="CHANNEL 4" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Perseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Perseus" consoles="MC" player_slot="3" />
@@ -1903,7 +1839,6 @@
   </event>
   <event name="Load Marines" id_arme="07ec6950-63f1-42d2-b2f7-d873b8e9baf3" parent_id_arme="fb24ae0e-61c4-44de-917a-4db772b565e0">
     <if_exists player_slot="3" />
-    <if_variable name="Ship4CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="--Load Marines" />
     <incoming_comms_text from="CHANNEL 4" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Perseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Perseus" consoles="MC" player_slot="3" />
@@ -1913,7 +1848,6 @@
   </event>
   <event name="Load Cargo" id_arme="3f92ebcb-9429-40db-9194-e5438bc90f2f" parent_id_arme="fb24ae0e-61c4-44de-917a-4db772b565e0">
     <if_exists player_slot="3" />
-    <if_variable name="Ship4CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="--Load Cargo" />
     <incoming_comms_text from="CHANNEL 4" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Perseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Perseus" consoles="MC" player_slot="3" />
@@ -1923,7 +1857,6 @@
   </event>
   <event name="Load Medics" id_arme="a4f99181-981d-43bd-90df-41907d21f444" parent_id_arme="fb24ae0e-61c4-44de-917a-4db772b565e0">
     <if_exists player_slot="3" />
-    <if_variable name="Ship4CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="--Load Medical Team" />
     <incoming_comms_text from="CHANNEL 4" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Perseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Perseus" consoles="MC" player_slot="3" />
@@ -1933,7 +1866,6 @@
   </event>
   <event name="Load Engineers" id_arme="9ce8e240-d291-4cbc-b820-3803b19cabf6" parent_id_arme="fb24ae0e-61c4-44de-917a-4db772b565e0">
     <if_exists player_slot="3" />
-    <if_variable name="Ship4CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="--Load Engineering Team" />
     <incoming_comms_text from="CHANNEL 4" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Perseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Perseus" consoles="MC" player_slot="3" />
@@ -1943,7 +1875,6 @@
   </event>
   <event name="Load Relay" id_arme="e3a3a660-edbc-4cb1-9232-200ec973b9ad" parent_id_arme="fb24ae0e-61c4-44de-917a-4db772b565e0">
     <if_exists player_slot="3" />
-    <if_variable name="Ship4CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="--Load Comms Relay" />
     <incoming_comms_text from="CHANNEL 4" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Perseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Perseus" consoles="MC" player_slot="3" />
@@ -1953,7 +1884,6 @@
   </event>
   <event name="Load Sensor" id_arme="7a45f8b4-e08e-4165-88ff-218b06de2168" parent_id_arme="fb24ae0e-61c4-44de-917a-4db772b565e0">
     <if_exists player_slot="3" />
-    <if_variable name="Ship4CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="--Load Sensor Buoy" />
     <incoming_comms_text from="CHANNEL 4" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Perseus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Perseus" consoles="MC" player_slot="3" />
@@ -1964,7 +1894,6 @@
   <folder_arme name="Resupply" id_arme="fdb01230-320a-4fb7-a0c1-d87d5dadba5f" parent_id_arme="3e34f8c7-7750-4a1d-bee5-0e96e4e39a46" />
   <event name="Resupply Menu" id_arme="9a491f57-44fc-49ec-9026-4e87338700d0" parent_id_arme="fdb01230-320a-4fb7-a0c1-d87d5dadba5f">
     <if_exists player_slot="3" />
-    <if_variable name="Ship4CommsMenu" comparator="EQUALS" value="1.0" />
     <if_comms_button text="--Resupply Operations" />
     <clear_comms_button text="--Cargo &amp; Personnel" player_slot="3" />
     <clear_comms_button text="--Shuttle Operations" player_slot="3" />
@@ -2086,7 +2015,6 @@
   <folder_arme name="Cargo and Personnel" id_arme="9f6f7ca3-8605-4eb8-815f-0fe422d21307" parent_id_arme="fb034650-149b-4f8a-a6b8-34a43ff377f5" />
   <event name="Inventory Status Request" id_arme="14db95cb-a317-48fa-925d-72ab3a8aa6d5" parent_id_arme="9f6f7ca3-8605-4eb8-815f-0fe422d21307">
     <if_exists player_slot="4" />
-    <if_variable name="Ship5CommsMenu" comparator="EQUALS" value="1.0" />
     <if_comms_button text="*-Cargo &amp; Personnel" />
     <clear_comms_button text="*-Cargo &amp; Personnel" player_slot="4" />
     <clear_comms_button text="*-Shuttle Operations" player_slot="4" />
@@ -2097,7 +2025,6 @@
   <folder_arme name="Shuttle Operations" id_arme="4816ad84-5898-4e08-ae4d-e7d1abc3898e" parent_id_arme="fb034650-149b-4f8a-a6b8-34a43ff377f5" />
   <event name="Shuttle Ops Menu" id_arme="d20e5d4b-09a4-4f1b-a5e3-68bfac9af2b0" parent_id_arme="4816ad84-5898-4e08-ae4d-e7d1abc3898e">
     <if_exists player_slot="4" />
-    <if_variable name="Ship5CommsMenu" comparator="EQUALS" value="1.0" />
     <if_comms_button text="*-Shuttle Operations" />
     <clear_comms_button text="*-Cargo &amp; Personnel" player_slot="4" />
     <clear_comms_button text="*-Shuttle Operations" player_slot="4" />
@@ -2110,49 +2037,42 @@
   <folder_arme name="Shuttle Status" id_arme="5bdef3db-6dc6-4872-857e-323a3d685527" parent_id_arme="4816ad84-5898-4e08-ae4d-e7d1abc3898e" />
   <event name="No Cargo" id_arme="6f8cf820-919d-4233-8d1a-f2622e0dd0f4" parent_id_arme="5bdef3db-6dc6-4872-857e-323a3d685527">
     <if_exists player_slot="4" />
-    <if_variable name="Ship5CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="*-Shuttle Status" />
     <if_variable name="DionysusCargoType" comparator="EQUALS" value="0.0" />
     <incoming_comms_text from="CHANNEL 5" sideValue="playerSide" type="STATUS">Dionysus has no cargo aboard.</incoming_comms_text>
   </event>
   <event name="Marines" id_arme="24bdb580-9275-43ba-b09c-b7b835fa6122" parent_id_arme="5bdef3db-6dc6-4872-857e-323a3d685527">
     <if_exists player_slot="4" />
-    <if_variable name="Ship5CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="*-Shuttle Status" />
     <if_variable name="DionysusCargoType" comparator="EQUALS" value="1.0" />
     <incoming_comms_text from="CHANNEL 5" sideValue="playerSide" type="STATUS">Dionysus is loaded with a marine team.</incoming_comms_text>
   </event>
   <event name="General Cargo" id_arme="757c265b-d4b7-45cb-b6ba-9f0858abe016" parent_id_arme="5bdef3db-6dc6-4872-857e-323a3d685527">
     <if_exists player_slot="4" />
-    <if_variable name="Ship5CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="*-Shuttle Status" />
     <if_variable name="DionysusCargoType" comparator="EQUALS" value="2.0" />
     <incoming_comms_text from="CHANNEL 5" sideValue="playerSide" type="STATUS">Dionysus has cargo loaded.</incoming_comms_text>
   </event>
   <event name="Medics" id_arme="73480639-0dc5-4ca1-94cd-f2072d42624f" parent_id_arme="5bdef3db-6dc6-4872-857e-323a3d685527">
     <if_exists player_slot="4" />
-    <if_variable name="Ship5CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="*-Shuttle Status" />
     <if_variable name="DionysusCargoType" comparator="EQUALS" value="3.0" />
     <incoming_comms_text from="CHANNEL 5" sideValue="playerSide" type="STATUS">Dionysus is loaded with a medic team.</incoming_comms_text>
   </event>
   <event name="Engineers" id_arme="ef317b51-31a3-4fed-b96e-1ab0e3337021" parent_id_arme="5bdef3db-6dc6-4872-857e-323a3d685527">
     <if_exists player_slot="4" />
-    <if_variable name="Ship5CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="*-Shuttle Status" />
     <if_variable name="DionysusCargoType" comparator="EQUALS" value="4.0" />
     <incoming_comms_text from="CHANNEL 5" sideValue="playerSide" type="STATUS">Dionysus is loaded with an engineering team.</incoming_comms_text>
   </event>
   <event name="Comms Relay" id_arme="75b78975-05b4-4c87-95ca-9eba70ebcd58" parent_id_arme="5bdef3db-6dc6-4872-857e-323a3d685527">
     <if_exists player_slot="4" />
-    <if_variable name="Ship5CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="*-Shuttle Status" />
     <if_variable name="DionysusCargoType" comparator="EQUALS" value="5.0" />
     <incoming_comms_text from="CHANNEL 5" sideValue="playerSide" type="STATUS">Dionysus has a comms relay aboard.</incoming_comms_text>
   </event>
   <event name="Sensor Buoy" id_arme="ec74cf74-a420-4437-8a38-c0fef46c5769" parent_id_arme="5bdef3db-6dc6-4872-857e-323a3d685527">
     <if_exists player_slot="4" />
-    <if_variable name="Ship5CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="*-Shuttle Status" />
     <if_variable name="DionysusCargoType" comparator="EQUALS" value="6.0" />
     <incoming_comms_text from="CHANNEL 5" sideValue="playerSide" type="STATUS">Dionysus has a sensor buoy aboard.</incoming_comms_text>
@@ -2160,7 +2080,6 @@
   <folder_arme name="Operations" id_arme="f9f4b9ac-759d-453d-881f-da6d9a3ad2bd" parent_id_arme="4816ad84-5898-4e08-ae4d-e7d1abc3898e" />
   <event name="Operations Menu" id_arme="35178f70-9f9a-4a2d-9654-a858690dd046" parent_id_arme="f9f4b9ac-759d-453d-881f-da6d9a3ad2bd">
     <if_exists player_slot="4" />
-    <if_variable name="Ship5CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="*-Operations" />
     <clear_comms_button text="*-Shuttle Status" player_slot="4" />
     <clear_comms_button text="*-Operations" player_slot="4" />
@@ -2192,7 +2111,6 @@
   </event>
   <event name="Unload Shuttle" id_arme="bc7af6e7-dfa0-4018-a899-d306fbe601de" parent_id_arme="f9f4b9ac-759d-453d-881f-da6d9a3ad2bd">
     <if_exists player_slot="4" />
-    <if_variable name="Ship5CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="*-Unload Shuttle" />
     <incoming_comms_text from="CHANNEL 5" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Dionysus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Dionysus" consoles="MC" player_slot="4" />
@@ -2202,7 +2120,6 @@
   </event>
   <event name="Load Marines" id_arme="e395a90e-dfcb-40cf-b5e2-6a9923572431" parent_id_arme="f9f4b9ac-759d-453d-881f-da6d9a3ad2bd">
     <if_exists player_slot="4" />
-    <if_variable name="Ship5CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="*-Load Marines" />
     <incoming_comms_text from="CHANNEL 5" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Dionysus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Dionysus" consoles="MC" player_slot="4" />
@@ -2212,7 +2129,6 @@
   </event>
   <event name="Load Cargo" id_arme="2a83aedc-e803-4d7c-ba98-c71beef46ecf" parent_id_arme="f9f4b9ac-759d-453d-881f-da6d9a3ad2bd">
     <if_exists player_slot="4" />
-    <if_variable name="Ship5CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="*-Load Cargo" />
     <incoming_comms_text from="CHANNEL 5" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Dionysus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Dionysus" consoles="MC" player_slot="4" />
@@ -2222,7 +2138,6 @@
   </event>
   <event name="Load Medics" id_arme="92b9fee6-0050-4ab7-bcfd-16c316b8c44f" parent_id_arme="f9f4b9ac-759d-453d-881f-da6d9a3ad2bd">
     <if_exists player_slot="4" />
-    <if_variable name="Ship5CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="*-Load Medical Team" />
     <incoming_comms_text from="CHANNEL 5" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Dionysus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Dionysus" consoles="MC" player_slot="4" />
@@ -2232,7 +2147,6 @@
   </event>
   <event name="Load Engineers" id_arme="043719a0-f5c6-4f05-acf6-33b2ed2cb4e1" parent_id_arme="f9f4b9ac-759d-453d-881f-da6d9a3ad2bd">
     <if_exists player_slot="4" />
-    <if_variable name="Ship5CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="*-Load Engineering Team" />
     <incoming_comms_text from="CHANNEL 5" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Dionysus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Dionysus" consoles="MC" player_slot="4" />
@@ -2242,7 +2156,6 @@
   </event>
   <event name="Load Relay" id_arme="90ed9b3b-3d6f-4b6c-b5dc-de2f55e624c5" parent_id_arme="f9f4b9ac-759d-453d-881f-da6d9a3ad2bd">
     <if_exists player_slot="4" />
-    <if_variable name="Ship5CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="*-Load Comms Relay" />
     <incoming_comms_text from="CHANNEL 5" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Dionysus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Dionysus" consoles="MC" player_slot="4" />
@@ -2252,7 +2165,6 @@
   </event>
   <event name="Load Sensor" id_arme="e543ae5d-28aa-48d5-8e83-9e384f6500c8" parent_id_arme="f9f4b9ac-759d-453d-881f-da6d9a3ad2bd">
     <if_exists player_slot="4" />
-    <if_variable name="Ship5CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="*-Load Sensor Buoy" />
     <incoming_comms_text from="CHANNEL 5" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Dionysus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Dionysus" consoles="MC" player_slot="4" />
@@ -2263,7 +2175,6 @@
   <folder_arme name="Resupply" id_arme="770200be-4b01-45a1-b61d-3d99844cda1b" parent_id_arme="fb034650-149b-4f8a-a6b8-34a43ff377f5" />
   <event name="Resupply Menu" id_arme="28a3650a-7fbe-4587-accc-989137d18bb7" parent_id_arme="770200be-4b01-45a1-b61d-3d99844cda1b">
     <if_exists player_slot="4" />
-    <if_variable name="Ship5CommsMenu" comparator="EQUALS" value="1.0" />
     <if_comms_button text="*-Resupply Operations" />
     <clear_comms_button text="*-Cargo &amp; Personnel" player_slot="4" />
     <clear_comms_button text="*-Shuttle Operations" player_slot="4" />
@@ -2386,7 +2297,6 @@
   <folder_arme name="Cargo and Personnel" id_arme="611e1b96-8be5-440a-8f66-eb54526a10f5" parent_id_arme="9af40a39-82e7-46b8-8029-d42f3a9362cb" />
   <event name="Inventory Status Request" id_arme="35985e6e-35bf-4896-8c94-274036a560c1" parent_id_arme="611e1b96-8be5-440a-8f66-eb54526a10f5">
     <if_exists player_slot="5" />
-    <if_variable name="Ship6CommsMenu" comparator="EQUALS" value="1.0" />
     <if_comms_button text="-*Cargo &amp; Personnel" />
     <clear_comms_button text="-*Cargo &amp; Personnel" player_slot="5" />
     <clear_comms_button text="-*Shuttle Operations" player_slot="5" />
@@ -2397,7 +2307,6 @@
   <folder_arme name="Shuttle Operations" id_arme="3c30ac97-8c2e-45a9-8fde-30b8b7b44c18" parent_id_arme="9af40a39-82e7-46b8-8029-d42f3a9362cb" />
   <event name="Shuttle Ops Menu" id_arme="22f88547-61be-4e4f-b64b-7489680ab983" parent_id_arme="3c30ac97-8c2e-45a9-8fde-30b8b7b44c18">
     <if_exists player_slot="5" />
-    <if_variable name="Ship6CommsMenu" comparator="EQUALS" value="1.0" />
     <if_comms_button text="-*Shuttle Operations" />
     <clear_comms_button text="-*Cargo &amp; Personnel" player_slot="5" />
     <clear_comms_button text="-*Shuttle Operations" player_slot="5" />
@@ -2410,49 +2319,42 @@
   <folder_arme name="Shuttle Status" id_arme="fde09b74-c1e4-42a0-b59d-f385bb43be4c" parent_id_arme="3c30ac97-8c2e-45a9-8fde-30b8b7b44c18" />
   <event name="No Cargo" id_arme="cbd9dfe3-bad9-492a-886c-251f96bc964b" parent_id_arme="fde09b74-c1e4-42a0-b59d-f385bb43be4c">
     <if_exists player_slot="5" />
-    <if_variable name="Ship6CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="-*Shuttle Status" />
     <if_variable name="IcarusCargoType" comparator="EQUALS" value="0.0" />
     <incoming_comms_text from="CHANNEL 6" sideValue="playerSide" type="STATUS">Icarus has no cargo aboard.</incoming_comms_text>
   </event>
   <event name="Marines" id_arme="575a05e4-a9c8-4b41-8724-984782be4c9c" parent_id_arme="fde09b74-c1e4-42a0-b59d-f385bb43be4c">
     <if_exists player_slot="5" />
-    <if_variable name="Ship6CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="-*Shuttle Status" />
     <if_variable name="IcarusCargoType" comparator="EQUALS" value="1.0" />
     <incoming_comms_text from="CHANNEL 6" sideValue="playerSide" type="STATUS">Icarus is loaded with a marine team.</incoming_comms_text>
   </event>
   <event name="General Cargo" id_arme="69ce7181-f711-439d-a388-0c625f8a954a" parent_id_arme="fde09b74-c1e4-42a0-b59d-f385bb43be4c">
     <if_exists player_slot="5" />
-    <if_variable name="Ship6CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="-*Shuttle Status" />
     <if_variable name="IcarusCargoType" comparator="EQUALS" value="2.0" />
     <incoming_comms_text from="CHANNEL 6" sideValue="playerSide" type="STATUS">Icarus has cargo loaded.</incoming_comms_text>
   </event>
   <event name="Medics" id_arme="a1d2a967-680f-4822-b810-eb4bfa6a76ea" parent_id_arme="fde09b74-c1e4-42a0-b59d-f385bb43be4c">
     <if_exists player_slot="5" />
-    <if_variable name="Ship6CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="-*Shuttle Status" />
     <if_variable name="IcarusCargoType" comparator="EQUALS" value="3.0" />
     <incoming_comms_text from="CHANNEL 6" sideValue="playerSide" type="STATUS">Icarus is loaded with a medic team.</incoming_comms_text>
   </event>
   <event name="Engineers" id_arme="87301520-65a6-4224-a99b-9c8ebe43178e" parent_id_arme="fde09b74-c1e4-42a0-b59d-f385bb43be4c">
     <if_exists player_slot="5" />
-    <if_variable name="Ship6CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="-*Shuttle Status" />
     <if_variable name="IcarusCargoType" comparator="EQUALS" value="4.0" />
     <incoming_comms_text from="CHANNEL 6" sideValue="playerSide" type="STATUS">Icarus is loaded with an engineering team.</incoming_comms_text>
   </event>
   <event name="Comms Relay" id_arme="9d556793-f2d6-497b-abf9-6cd5472c8c6c" parent_id_arme="fde09b74-c1e4-42a0-b59d-f385bb43be4c">
     <if_exists player_slot="5" />
-    <if_variable name="Ship6CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="-*Shuttle Status" />
     <if_variable name="IcarusCargoType" comparator="EQUALS" value="5.0" />
     <incoming_comms_text from="CHANNEL 6" sideValue="playerSide" type="STATUS">Icarus has a comms relay aboard.</incoming_comms_text>
   </event>
   <event name="Sensor Buoy" id_arme="ef4f9245-4960-4999-be52-07087b9d4608" parent_id_arme="fde09b74-c1e4-42a0-b59d-f385bb43be4c">
     <if_exists player_slot="5" />
-    <if_variable name="Ship6CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="-*Shuttle Status" />
     <if_variable name="IcarusCargoType" comparator="EQUALS" value="6.0" />
     <incoming_comms_text from="CHANNEL 6" sideValue="playerSide" type="STATUS">Icarus has a sensor buoy aboard.</incoming_comms_text>
@@ -2460,7 +2362,6 @@
   <folder_arme name="Operations" id_arme="7c9decad-55ec-4f50-b09b-830c5e624067" parent_id_arme="3c30ac97-8c2e-45a9-8fde-30b8b7b44c18" />
   <event name="Operations Menu" id_arme="2487d8b7-102d-4a5a-8a80-7cc6d0286eeb" parent_id_arme="7c9decad-55ec-4f50-b09b-830c5e624067">
     <if_exists player_slot="5" />
-    <if_variable name="Ship6CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="-*Operations" />
     <clear_comms_button text="-*Shuttle Status" player_slot="5" />
     <clear_comms_button text="-*Operations" player_slot="5" />
@@ -2492,7 +2393,6 @@
   </event>
   <event name="Unload Shuttle" id_arme="3ce7cd69-f4eb-403b-91e5-65492fa5e9e8" parent_id_arme="7c9decad-55ec-4f50-b09b-830c5e624067">
     <if_exists player_slot="5" />
-    <if_variable name="Ship6CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="-*Unload Shuttle" />
     <incoming_comms_text from="CHANNEL 6" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Icarus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Icarus" consoles="MC" player_slot="5" />
@@ -2502,7 +2402,6 @@
   </event>
   <event name="Load Marines" id_arme="e92524bc-fa53-4b7a-838d-b9235cf6a203" parent_id_arme="7c9decad-55ec-4f50-b09b-830c5e624067">
     <if_exists player_slot="5" />
-    <if_variable name="Ship6CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="-*Load Marines" />
     <incoming_comms_text from="CHANNEL 6" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Icarus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Icarus" consoles="MC" player_slot="5" />
@@ -2512,7 +2411,6 @@
   </event>
   <event name="Load Cargo" id_arme="be6b6e40-d57f-4927-b1b9-535d13b4fb88" parent_id_arme="7c9decad-55ec-4f50-b09b-830c5e624067">
     <if_exists player_slot="5" />
-    <if_variable name="Ship6CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="-*Load Cargo" />
     <incoming_comms_text from="CHANNEL 6" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Icarus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Icarus" consoles="MC" player_slot="5" />
@@ -2522,7 +2420,6 @@
   </event>
   <event name="Load Medics" id_arme="2f315d64-c7ad-4d36-9d98-0c353ede9df0" parent_id_arme="7c9decad-55ec-4f50-b09b-830c5e624067">
     <if_exists player_slot="5" />
-    <if_variable name="Ship6CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="-*Load Medical Team" />
     <incoming_comms_text from="CHANNEL 6" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Icarus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Icarus" consoles="MC" player_slot="5" />
@@ -2532,7 +2429,6 @@
   </event>
   <event name="Load Engineers" id_arme="d86e8445-8db3-4f67-b662-372dacc8c96a" parent_id_arme="7c9decad-55ec-4f50-b09b-830c5e624067">
     <if_exists player_slot="5" />
-    <if_variable name="Ship6CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="-*Load Engineering Team" />
     <incoming_comms_text from="CHANNEL 6" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Icarus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Icarus" consoles="MC" player_slot="5" />
@@ -2542,7 +2438,6 @@
   </event>
   <event name="Load Relay" id_arme="b7ba655d-2c1d-48b3-b502-ac6b202b640d" parent_id_arme="7c9decad-55ec-4f50-b09b-830c5e624067">
     <if_exists player_slot="5" />
-    <if_variable name="Ship6CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="-*Load Comms Relay" />
     <incoming_comms_text from="CHANNEL 6" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Icarus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Icarus" consoles="MC" player_slot="5" />
@@ -2552,7 +2447,6 @@
   </event>
   <event name="Load Sensor" id_arme="e0eaa219-0c7e-4576-b2ea-3ae7d1ee9ba4" parent_id_arme="7c9decad-55ec-4f50-b09b-830c5e624067">
     <if_exists player_slot="5" />
-    <if_variable name="Ship6CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="-*Load Sensor Buoy" />
     <incoming_comms_text from="CHANNEL 6" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Icarus as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Icarus" consoles="MC" player_slot="5" />
@@ -2563,7 +2457,6 @@
   <folder_arme name="Resupply" id_arme="5f6c3cbf-6bef-4e29-8122-202fa135df38" parent_id_arme="9af40a39-82e7-46b8-8029-d42f3a9362cb" />
   <event name="Resupply Menu" id_arme="bda381b9-f33e-4114-9654-029c0452aea0" parent_id_arme="5f6c3cbf-6bef-4e29-8122-202fa135df38">
     <if_exists player_slot="5" />
-    <if_variable name="Ship6CommsMenu" comparator="EQUALS" value="1.0" />
     <if_comms_button text="-*Resupply Operations" />
     <clear_comms_button text="-*Cargo &amp; Personnel" player_slot="5" />
     <clear_comms_button text="-*Shuttle Operations" player_slot="5" />
@@ -2710,49 +2603,42 @@
   <folder_arme name="Shuttle Status" id_arme="511e5557-a615-4dd3-b071-451ee84298ac" parent_id_arme="63f180d0-b8a8-4a25-979e-ba7bbfc662f0" />
   <event name="No Cargo" id_arme="64171950-ead7-43ec-9f12-d3a61211b0a8" parent_id_arme="511e5557-a615-4dd3-b071-451ee84298ac">
     <if_exists player_slot="6" />
-    <if_variable name="Ship7CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="_Shuttle Status" />
     <if_variable name="AdonisCargoType" comparator="EQUALS" value="0.0" />
     <incoming_comms_text from="CHANNEL 7" sideValue="playerSide" type="STATUS">Adonis has no cargo aboard.</incoming_comms_text>
   </event>
   <event name="Marines" id_arme="6d10eb86-e211-4c50-b4e6-53190605cfff" parent_id_arme="511e5557-a615-4dd3-b071-451ee84298ac">
     <if_exists player_slot="6" />
-    <if_variable name="Ship7CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="_Shuttle Status" />
     <if_variable name="AdonisCargoType" comparator="EQUALS" value="1.0" />
     <incoming_comms_text from="CHANNEL 7" sideValue="playerSide" type="STATUS">Adonis is loaded with a marine team.</incoming_comms_text>
   </event>
   <event name="General Cargo" id_arme="78ef5faa-577c-4368-8cc6-fd099132bf54" parent_id_arme="511e5557-a615-4dd3-b071-451ee84298ac">
     <if_exists player_slot="6" />
-    <if_variable name="Ship7CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="_Shuttle Status" />
     <if_variable name="AdonisCargoType" comparator="EQUALS" value="2.0" />
     <incoming_comms_text from="CHANNEL 7" sideValue="playerSide" type="STATUS">Adonis has cargo loaded.</incoming_comms_text>
   </event>
   <event name="Medics" id_arme="8400589e-4186-4c2c-997b-52bf350d2350" parent_id_arme="511e5557-a615-4dd3-b071-451ee84298ac">
     <if_exists player_slot="6" />
-    <if_variable name="Ship7CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="_Shuttle Status" />
     <if_variable name="AdonisCargoType" comparator="EQUALS" value="3.0" />
     <incoming_comms_text from="CHANNEL 7" sideValue="playerSide" type="STATUS">Adonis is loaded with a medic team.</incoming_comms_text>
   </event>
   <event name="Engineers" id_arme="552f90a7-1b89-4214-a002-65ca9d83ca5f" parent_id_arme="511e5557-a615-4dd3-b071-451ee84298ac">
     <if_exists player_slot="6" />
-    <if_variable name="Ship7CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="_Shuttle Status" />
     <if_variable name="AdonisCargoType" comparator="EQUALS" value="4.0" />
     <incoming_comms_text from="CHANNEL 7" sideValue="playerSide" type="STATUS">Adonis is loaded with an engineering team.</incoming_comms_text>
   </event>
   <event name="Comms Relay" id_arme="e8a9640d-52b0-48dc-a9e3-72a37796853b" parent_id_arme="511e5557-a615-4dd3-b071-451ee84298ac">
     <if_exists player_slot="6" />
-    <if_variable name="Ship7CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="_Shuttle Status" />
     <if_variable name="AdonisCargoType" comparator="EQUALS" value="5.0" />
     <incoming_comms_text from="CHANNEL 7" sideValue="playerSide" type="STATUS">Adonis has a comms relay aboard.</incoming_comms_text>
   </event>
   <event name="Sensor Buoy" id_arme="8603c195-32c9-40c8-9cbb-7103259b7c1c" parent_id_arme="511e5557-a615-4dd3-b071-451ee84298ac">
     <if_exists player_slot="6" />
-    <if_variable name="Ship7CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="_Shuttle Status" />
     <if_variable name="AdonisCargoType" comparator="EQUALS" value="6.0" />
     <incoming_comms_text from="CHANNEL 7" sideValue="playerSide" type="STATUS">Adonis has a sensor buoy aboard.</incoming_comms_text>
@@ -2760,7 +2646,6 @@
   <folder_arme name="Operations" id_arme="39db2473-cac3-4b52-9e98-e265ff4677e7" parent_id_arme="63f180d0-b8a8-4a25-979e-ba7bbfc662f0" />
   <event name="Operations Menu" id_arme="55e4c6f6-cefc-4ebf-8386-e71d877ed243" parent_id_arme="39db2473-cac3-4b52-9e98-e265ff4677e7">
     <if_exists player_slot="6" />
-    <if_variable name="Ship7CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="_Operations" />
     <clear_comms_button text="_Shuttle Status" player_slot="6" />
     <clear_comms_button text="_Operations" player_slot="6" />
@@ -2792,7 +2677,6 @@
   </event>
   <event name="Unload Shuttle" id_arme="56f69ff3-01a5-4683-9312-538b33a3fb1a" parent_id_arme="39db2473-cac3-4b52-9e98-e265ff4677e7">
     <if_exists player_slot="6" />
-    <if_variable name="Ship7CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="_Unload Shuttle" />
     <incoming_comms_text from="CHANNEL 7" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Adonis as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Adonis" consoles="MC" player_slot="6" />
@@ -2802,7 +2686,6 @@
   </event>
   <event name="Load Marines" id_arme="0399b5a1-bf13-488c-96aa-dcb539c7ed5e" parent_id_arme="39db2473-cac3-4b52-9e98-e265ff4677e7">
     <if_exists player_slot="6" />
-    <if_variable name="Ship7CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="_Load Marines" />
     <incoming_comms_text from="CHANNEL 7" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Adonis as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Adonis" consoles="MC" player_slot="6" />
@@ -2812,7 +2695,6 @@
   </event>
   <event name="Load Cargo" id_arme="9146d8d7-cc98-4c8c-95ca-df8e405a29aa" parent_id_arme="39db2473-cac3-4b52-9e98-e265ff4677e7">
     <if_exists player_slot="6" />
-    <if_variable name="Ship7CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="_Load Cargo" />
     <incoming_comms_text from="CHANNEL 7" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Adonis as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Adonis" consoles="MC" player_slot="6" />
@@ -2822,7 +2704,6 @@
   </event>
   <event name="Load Medics" id_arme="0eefb786-e8a6-40b3-95b2-6c5fa8e0e0a4" parent_id_arme="39db2473-cac3-4b52-9e98-e265ff4677e7">
     <if_exists player_slot="6" />
-    <if_variable name="Ship7CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="_Load Medical Team" />
     <incoming_comms_text from="CHANNEL 7" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Adonis as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Adonis" consoles="MC" player_slot="6" />
@@ -2832,7 +2713,6 @@
   </event>
   <event name="Load Engineers" id_arme="cb5d449a-9be0-46f8-9144-87303b22979d" parent_id_arme="39db2473-cac3-4b52-9e98-e265ff4677e7">
     <if_exists player_slot="6" />
-    <if_variable name="Ship7CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="_Load Engineering Team" />
     <incoming_comms_text from="CHANNEL 7" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Adonis as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Adonis" consoles="MC" player_slot="6" />
@@ -2842,7 +2722,6 @@
   </event>
   <event name="Load Relay" id_arme="8c41f920-a050-4ffd-951f-f59df73c49e6" parent_id_arme="39db2473-cac3-4b52-9e98-e265ff4677e7">
     <if_exists player_slot="6" />
-    <if_variable name="Ship7CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="_Load Comms Relay" />
     <incoming_comms_text from="CHANNEL 7" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Adonis as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Adonis" consoles="MC" player_slot="6" />
@@ -2852,7 +2731,6 @@
   </event>
   <event name="Load Sensor" id_arme="a9ef9c61-5a44-4e29-a673-9893a78985e4" parent_id_arme="39db2473-cac3-4b52-9e98-e265ff4677e7">
     <if_exists player_slot="6" />
-    <if_variable name="Ship7CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="_Load Sensor Buoy" />
     <incoming_comms_text from="CHANNEL 7" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Adonis as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Adonis" consoles="MC" player_slot="6" />
@@ -2863,7 +2741,6 @@
   <folder_arme name="Resupply" id_arme="5a3087fd-5319-41e5-8be1-c066efd87908" parent_id_arme="443153c2-8211-4887-a857-f6afbe7d8d8d" />
   <event name="Resupply Menu" id_arme="ba19ee5e-3db4-4da0-b9eb-f209c706d8be" parent_id_arme="5a3087fd-5319-41e5-8be1-c066efd87908">
     <if_exists player_slot="6" />
-    <if_variable name="Ship7CommsMenu" comparator="EQUALS" value="1.0" />
     <if_comms_button text="_Resupply Operations" />
     <clear_comms_button text="_Cargo &amp; Personnel" player_slot="6" />
     <clear_comms_button text="_Shuttle Operations" player_slot="6" />
@@ -3009,49 +2886,42 @@
   <folder_arme name="Shuttle Status" id_arme="e8802006-4437-401f-b47e-e01d8701ff25" parent_id_arme="86cd59c6-076a-4c4a-a793-89ac7629c304" />
   <event name="No Cargo" id_arme="1469472a-0020-4af4-8507-f9532c23ac19" parent_id_arme="e8802006-4437-401f-b47e-e01d8701ff25">
     <if_exists player_slot="7" />
-    <if_variable name="Ship8CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="__Shuttle Status" />
     <if_variable name="InventionCargoType" comparator="EQUALS" value="0.0" />
     <incoming_comms_text from="CHANNEL 8" sideValue="playerSide" type="STATUS">Invention has no cargo aboard.</incoming_comms_text>
   </event>
   <event name="Marines" id_arme="328356bd-d8b6-401b-9f45-4930ee006962" parent_id_arme="e8802006-4437-401f-b47e-e01d8701ff25">
     <if_exists player_slot="7" />
-    <if_variable name="Ship8CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="__Shuttle Status" />
     <if_variable name="InventionCargoType" comparator="EQUALS" value="1.0" />
     <incoming_comms_text from="CHANNEL 8" sideValue="playerSide" type="STATUS">Invention is loaded with a marine team.</incoming_comms_text>
   </event>
   <event name="General Cargo" id_arme="aa8c4aed-b586-44ba-9dcc-69b6200f2c66" parent_id_arme="e8802006-4437-401f-b47e-e01d8701ff25">
     <if_exists player_slot="7" />
-    <if_variable name="Ship8CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="__Shuttle Status" />
     <if_variable name="InventionCargoType" comparator="EQUALS" value="2.0" />
     <incoming_comms_text from="CHANNEL 8" sideValue="playerSide" type="STATUS">Invention has cargo loaded.</incoming_comms_text>
   </event>
   <event name="Medics" id_arme="0d962730-4fc9-4a73-bfa9-f7b880d1b583" parent_id_arme="e8802006-4437-401f-b47e-e01d8701ff25">
     <if_exists player_slot="7" />
-    <if_variable name="Ship8CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="__Shuttle Status" />
     <if_variable name="InventionCargoType" comparator="EQUALS" value="3.0" />
     <incoming_comms_text from="CHANNEL 8" sideValue="playerSide" type="STATUS">Invention is loaded with a medic team.</incoming_comms_text>
   </event>
   <event name="Engineers" id_arme="91184b97-08b0-4058-8fde-adc9148b715b" parent_id_arme="e8802006-4437-401f-b47e-e01d8701ff25">
     <if_exists player_slot="7" />
-    <if_variable name="Ship8CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="__Shuttle Status" />
     <if_variable name="InventionCargoType" comparator="EQUALS" value="4.0" />
     <incoming_comms_text from="CHANNEL 8" sideValue="playerSide" type="STATUS">Invention is loaded with an engineering team.</incoming_comms_text>
   </event>
   <event name="Comms Relay" id_arme="f34a2e54-4e96-4cdf-804f-dec6ec836b3a" parent_id_arme="e8802006-4437-401f-b47e-e01d8701ff25">
     <if_exists player_slot="7" />
-    <if_variable name="Ship8CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="__Shuttle Status" />
     <if_variable name="InventionCargoType" comparator="EQUALS" value="5.0" />
     <incoming_comms_text from="CHANNEL 8" sideValue="playerSide" type="STATUS">Invention has a comms relay aboard.</incoming_comms_text>
   </event>
   <event name="Sensor Buoy" id_arme="27669bba-969e-4e33-aeee-1079e6fedaf1" parent_id_arme="e8802006-4437-401f-b47e-e01d8701ff25">
     <if_exists player_slot="7" />
-    <if_variable name="Ship8CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="__Shuttle Status" />
     <if_variable name="InventionCargoType" comparator="EQUALS" value="6.0" />
     <incoming_comms_text from="CHANNEL 8" sideValue="playerSide" type="STATUS">Invention has a sensor buoy aboard.</incoming_comms_text>
@@ -3059,7 +2929,6 @@
   <folder_arme name="Operations" id_arme="3800377e-98ca-4b4d-90e2-52648f699837" parent_id_arme="86cd59c6-076a-4c4a-a793-89ac7629c304" />
   <event name="Operations Menu" id_arme="67117b85-2d4e-4eaa-9a37-f9ba401d5f33" parent_id_arme="3800377e-98ca-4b4d-90e2-52648f699837">
     <if_exists player_slot="7" />
-    <if_variable name="Ship8CommsMenu" comparator="EQUALS" value="2.0" />
     <if_comms_button text="__Operations" />
     <clear_comms_button text="__Shuttle Status" player_slot="7" />
     <clear_comms_button text="__Operations" player_slot="7" />
@@ -3091,7 +2960,6 @@
   </event>
   <event name="Unload Shuttle" id_arme="199bd676-007a-452f-9cb3-a0cc687ab5a9" parent_id_arme="3800377e-98ca-4b4d-90e2-52648f699837">
     <if_exists player_slot="7" />
-    <if_variable name="Ship8CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="__Unload Shuttle" />
     <incoming_comms_text from="CHANNEL 8" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Invention as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Invention" consoles="MC" player_slot="7" />
@@ -3101,7 +2969,6 @@
   </event>
   <event name="Load Marines" id_arme="fb19ef78-08ac-4c94-badc-a7e24507f59f" parent_id_arme="3800377e-98ca-4b4d-90e2-52648f699837">
     <if_exists player_slot="7" />
-    <if_variable name="Ship8CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="__Load Marines" />
     <incoming_comms_text from="CHANNEL 8" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Invention as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Invention" consoles="MC" player_slot="7" />
@@ -3111,7 +2978,6 @@
   </event>
   <event name="Load Cargo" id_arme="fe855201-7ecc-4852-98e5-728f6e955c02" parent_id_arme="3800377e-98ca-4b4d-90e2-52648f699837">
     <if_exists player_slot="7" />
-    <if_variable name="Ship8CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="__Load Cargo" />
     <incoming_comms_text from="CHANNEL 8" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Invention as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Invention" consoles="MC" player_slot="7" />
@@ -3121,7 +2987,6 @@
   </event>
   <event name="Load Medics" id_arme="ea4530c0-2f7c-4f00-8e67-88a38b248068" parent_id_arme="3800377e-98ca-4b4d-90e2-52648f699837">
     <if_exists player_slot="7" />
-    <if_variable name="Ship8CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="__Load Medical Team" />
     <incoming_comms_text from="CHANNEL 8" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Invention as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Invention" consoles="MC" player_slot="7" />
@@ -3131,7 +2996,6 @@
   </event>
   <event name="Load Engineers" id_arme="93381c1b-8c2a-47d5-91b2-9c849e671a48" parent_id_arme="3800377e-98ca-4b4d-90e2-52648f699837">
     <if_exists player_slot="7" />
-    <if_variable name="Ship8CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="__Load Engineering Team" />
     <incoming_comms_text from="CHANNEL 8" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Invention as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Invention" consoles="MC" player_slot="7" />
@@ -3141,7 +3005,6 @@
   </event>
   <event name="Load Relay" id_arme="4dfa234d-1c86-45a7-87f9-0d43616972cd" parent_id_arme="3800377e-98ca-4b4d-90e2-52648f699837">
     <if_exists player_slot="7" />
-    <if_variable name="Ship8CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="__Load Comms Relay" />
     <incoming_comms_text from="CHANNEL 8" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Invention as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Invention" consoles="MC" player_slot="7" />
@@ -3151,7 +3014,6 @@
   </event>
   <event name="Load Sensor" id_arme="f76b5709-5229-492c-bfcb-e818160bd0cc" parent_id_arme="3800377e-98ca-4b4d-90e2-52648f699837">
     <if_exists player_slot="7" />
-    <if_variable name="Ship8CommsMenu" comparator="EQUALS" value="3.0" />
     <if_comms_button text="__Load Sensor Buoy" />
     <incoming_comms_text from="CHANNEL 8" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure Invention as requested.</incoming_comms_text>
     <warning_popup_message message="Loading Invention" consoles="MC" player_slot="7" />
@@ -3162,7 +3024,6 @@
   <folder_arme name="Resupply" id_arme="f3bc9407-d42b-4304-b10d-3a920f7c1cc5" parent_id_arme="f693b0b1-adc0-47b6-b056-6b67750fd563" />
   <event name="Resupply Menu" id_arme="0923d91e-e219-4fa0-82d0-39bb72f9b182" parent_id_arme="f3bc9407-d42b-4304-b10d-3a920f7c1cc5">
     <if_exists player_slot="7" />
-    <if_variable name="Ship8CommsMenu" comparator="EQUALS" value="1.0" />
     <if_comms_button text="__Resupply Operations" />
     <clear_comms_button text="__Cargo &amp; Personnel" player_slot="7" />
     <clear_comms_button text="__Shuttle Operations" player_slot="7" />
@@ -3248,6 +3109,7 @@
     <incoming_comms_text from="Goblin" sideValue="playerSide" type="FRIEND">Request Received - beginning resupply.^Maintain distance 1000 from Goblin, with shields offline.</incoming_comms_text>
     <set_variable name="GoblintoShip8Resupply" value="3.0" integer="yes" />
   </event>
+  #}
   <folder_arme name="Ship (SHIPNUMBER) Comms Menu" id_arme="5b63e8df-a5cd-439c-9d32-a0bff91c6e28" parent_id_arme="80a1374f-673f-4705-b885-2cd2598e2f02" />
   <disabled_event name="Create Menu" id_arme="2bd924f2-3cf8-49d3-b8a2-84c89d66262d" parent_id_arme="5b63e8df-a5cd-439c-9d32-a0bff91c6e28">
     <if_exists player_slot="(PLAYERSLOT)" />
