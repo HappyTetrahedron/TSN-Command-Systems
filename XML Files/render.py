@@ -27,6 +27,8 @@ env = {
         "ship1": [
             "ClusterMine",
             "Decoy",
+            "ShieldEnhancer",
+            "KamikazeMine",
         ]
     }
 }

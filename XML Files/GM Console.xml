@@ -77,6 +77,7 @@
     <set_object_property property="missileStoresBeacon" value="0" name="{{ shuttle }} Pickup" />
     <set_object_property property="missileStoresProbe" value="0" name="{{ shuttle }} Pickup" />
     <set_player_station_carried name="{{ shuttle }} Pickup" raceKeys="TSN" hullKeys="TSN Shuttle shuttle" singleSeatName="{{ shuttle }}" />
+    <set_variable name="{{ shuttle }} Status" value="1.0" integer="yes" />
   </event>
   {% endfor %}
   <event name="Destroy Unnamed Object" id_arme="f00a0268-6a59-4e62-b59d-80c91fc0e6d1" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">

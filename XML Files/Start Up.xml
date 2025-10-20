@@ -16,10 +16,9 @@
     <set_variable name="tagShipNumber" value="0.0" integer="yes" />
     <set_variable name="CurrentLetter" value="1.0" integer="yes" />
     <!--Test Variables (not required in start block)-->
-    <!--Test Variables-->
-    <set_variable name="sectorSideOverride" value="0.0" integer="yes" />
+    <!--End of Test Variables-->
+    <!--Suspicious Variables - maybe not needed here but haven't dared to delete.-->
     <set_variable name="System" value="1.0" integer="yes" />
-    <set_variable name="systemSideOverride" value="0.0" integer="yes" />
     <!--Random Elements-->
     <set_variable name="Name Assign" value="0.0" integer="yes" />
     <set_variable name="LetterPrefix" value="1.0" integer="yes" />
@@ -74,25 +73,6 @@
     <set_variable name="Sector Type" value="0.0" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" integer="yes" />
     <set_variable name="ExitorRetreat" value="0.0" integer="yes" />
-    <!--Specialist Ops Specific-->
-    <set_variable name="Ship1MaxShieldLevelBack" value="0.0" integer="yes" />
-    <set_variable name="Ship1MaxShieldLevelFront" value="0.0" integer="yes" />
-    <set_variable name="CL.10MinePositionX" value="0.0" />
-    <set_variable name="CL.10MinePositionZ" value="0.0" />
-    <set_variable name="CL.20MinePositionX" value="0.0" />
-    <set_variable name="CL.20MinePositionZ" value="0.0" />
-    <set_variable name="CL.30MinePositionX" value="0.0" />
-    <set_variable name="CL.30MinePositionZ" value="0.0" />
-    <set_variable name="CL.40MinePositionX" value="0.0" />
-    <set_variable name="CL.40MinePositionZ" value="0.0" />
-    <set_variable name="CL.50MinePositionX" value="0.0" />
-    <set_variable name="CL.50MinePositionZ" value="0.0" />
-    <set_variable name="CL.60MinePositionX" value="0.0" />
-    <set_variable name="CL.60MinePositionZ" value="0.0" />
-    <set_variable name="CL.70MinePositionX" value="0.0" />
-    <set_variable name="CL.70MinePositionZ" value="0.0" />
-    <set_variable name="CL.80MinePositionX" value="0.0" />
-    <set_variable name="CL.80MinePositionZ" value="0.0" />
     <!--GM Specific-->
     <set_variable name="RVAngle" value="0.0" integer="yes" />
     <set_variable name="ScanPointNumber" value="1.0" integer="yes" />

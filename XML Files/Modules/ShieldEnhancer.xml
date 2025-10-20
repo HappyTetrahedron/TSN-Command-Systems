@@ -1,0 +1,103 @@
+{# Shield Enhancer module - add a temporary shield boost to a ship. #}
+{# TODO this is basically a carapaction coil - rethink how this works. #}
+
+{% set moduleName = "ShieldEnhancer" %}
+
+{% macro render(ship, util) %}
+  {% set marker = "D." + ship.id + "0" %}
+
+  {# Menu Lifecycle #}
+  {% call() util.createConditionalModuleButtons(ship, moduleName + "Activate") %}
+    {{ util.ifCommsMenuState(ship, 3) }}
+    <if_variable name="Module_Shield_Ship{{ ship.id }}_Active" comparator="NOT" value="1.0" />
+    {{ util.sendCommsButton("Activate Shields", ship) }}
+  {% endcall %}
+  {% call() util.destroyConditionalModuleButtons(ship, moduleName + "Activate") %}
+    {{ util.ifCommsMenuState(ship, 3, "NOT") }}
+    {{ util.clearCommsButton("Activate Shields", ship) }}
+  {% endcall %}
+  {% call util.destroyConditionalModuleButtons(ship, moduleName + "Activate") %}
+    <if_variable name="Module_Shield_Ship{{ ship.id }}_Active" comparator="EQUALS" value="1.0" />
+    {{ util.clearCommsButton("Activate Shields", ship) }}
+  {% endcall %}
+
+  {% call() util.createConditionalModuleButtons(ship, moduleName + "Deactivate") %}
+    {{ util.ifCommsMenuState(ship, 3) }}
+    <if_variable name="Module_Shield_Ship{{ ship.id }}_Active" comparator="EQUALS" value="1.0" />
+    {{ util.sendCommsButton("Deactivate Shields", ship) }}
+  {% endcall %}
+  {% call() util.destroyConditionalModuleButtons(ship, moduleName + "Deactivate") %}
+    {{ util.ifCommsMenuState(ship, 3, "NOT") }}
+    {{ util.clearCommsButton("Deactivate Shields", ship) }}
+  {% endcall %}
+  {% call util.destroyConditionalModuleButtons(ship, moduleName + "Deactivate") %}
+    <if_variable name="Module_Shield_Ship{{ ship.id }}_Active" comparator="NOT" value="1.0" />
+    {{ util.clearCommsButton("Deactivate Shields", ship) }}
+  {% endcall %}
+
+
+  {# Initialization  #}
+
+  <event name="Module ShieldEnhancer Init {{ ship.id }}" >
+    <if_exists player_slot="{{ ship.slot }}" />
+    <if_variable name="Module_Shield_Ship{{ ship.id }}_Initialized" comparator="NOT" value="1.0" />
+    <get_object_property property="shieldMaxStateFront" player_slot="{{ ship.slot }}" variable="Module_Shield_Ship{{ ship.id }}MaxShieldLevelFront" />
+    <get_object_property property="shieldMaxStateBack" player_slot="{{ ship.slot }}" variable="Module_Shield_Ship{{ ship.id }}MaxShieldLevelBack" />
+    <set_variable name="Module_Shield_Ship{{ ship.id }}_Initialized" value="1.0" integer="yes" />
+  </event>
+
+
+  {# Button Handling #}
+
+  {% call util.onModuleButtonPressed("Activate Shields", ship) %}
+    <set_variable name="Module_Shield_Ship{{ ship.id }}_Alternate" value="0.0" integer="yes" />
+    <set_variable name="Module_Shield_Ship{{ ship.id }}_Active" value="1.0" integer="yes" />
+    <get_object_property property="shieldMaxStateFront" player_slot="{{ ship.slot }}" variable="Module_Shield_Ship{{ ship.id }}MaxShieldLevelFront" />
+    <get_object_property property="shieldMaxStateBack" player_slot="{{ ship.slot }}" variable="Module_Shield_Ship{{ ship.id }}MaxShieldLevelBack" />
+    <set_timer name="Module_Shields_Ship{{ ship.id }}" seconds="5" />
+    <warning_popup_message message="Shield Enhancer Online" consoles="MHWESCF" player_slot="{{ ship.slot }}" />
+  {% endcall %}
+
+  {% call util.onModuleButtonPressed("Deactivate Shields", ship) %}
+    <set_variable name="Module_Shield_Ship{{ ship.id }}_Active" value="0.0" integer="yes" />
+    <set_variable name="Module_Shield_Ship{{ ship.id }}_Alternate" value="0.0" integer="yes" />
+    <warning_popup_message message="Shield Enhancer Offline" consoles="MHWESCF" player_slot="{{ ship.slot }}" />
+  {% endcall %}
+
+  <event name="Module Shields Enhance Front for Ship{{ ship.id }}" >
+    <if_variable name="Module_Shield_Ship{{ ship.id }}_Active" comparator="EQUALS" value="1.0" />
+    <if_variable name="Module_Shield_Ship{{ ship.id }}_Alternate" comparator="EQUALS" value="1.0" />
+    <if_object_property property="shieldStateFront" player_slot="{{ ship.slot }}" comparator="LESS" value="Module_Shield_Ship{{ ship.id }}MaxShieldLevelFront" />
+    <addto_object_property value="2.0" property="shieldStateFront" player_slot="{{ ship.slot }}" />
+    <warning_popup_message message="Front Shield Boosted" consoles="MHWESCF" player_slot="{{ ship.slot }}" />
+    <set_variable name="Module_Shield_Ship{{ ship.id }}_Alternate" value="0.0" integer="yes" />
+    <set_timer name="Module_Shields_Ship{{ ship.id }}" seconds="5" />
+  </event>
+
+  <event name="Module Shields Skip Front for Ship{{ ship.id }}" >
+    <if_variable name="Module_Shield_Ship{{ ship.id }}_Active" comparator="EQUALS" value="1.0" />
+    <if_variable name="Module_Shield_Ship{{ ship.id }}_Alternate" comparator="EQUALS" value="1.0" />
+    <if_object_property property="shieldStateBack" player_slot="{{ ship.slot }}" comparator="GREATER_EQUAL" value="Module_Shield_Ship{{ ship.id }}MaxShieldLevelBack" />
+    <set_variable name="Module_Shield_Ship{{ ship.id }}_Alternate" value="0.0" integer="yes" />
+    <set_timer name="Module_Shields_Ship{{ ship.id }}" seconds="5" />
+  </event>
+
+  <event name="Module Shields Enhance Rear for Ship{{ ship.id }}" >
+    <if_timer_finished name="Module_Shields_Ship{{ ship.id }}" />
+    <if_variable name="Module_Shield_Ship{{ ship.id }}_Active" comparator="EQUALS" value="1.0" />
+    <if_variable name="Module_Shield_Ship{{ ship.id }}_Alternate" comparator="NOT" value="1.0" />
+    <if_object_property property="shieldStateBack" player_slot="{{ ship.slot }}" comparator="LESS" value="Module_Shield_Ship{{ ship.id }}MaxShieldLevelBack" />
+    <addto_object_property value="2.0" property="shieldStateBack" player_slot="{{ ship.slot }}" />
+    <set_variable name="Module_Shield_Ship{{ ship.id }}_Alternate" value="1.0" integer="yes" />
+    <warning_popup_message message="Rear Shield Boosted" consoles="MHWESCF" player_slot="{{ ship.slot }}" />
+  </event>
+
+  <event name="Module Shields Skip Rear for Ship{{ ship.id }}" >
+    <if_timer_finished name="Module_Shields_Ship{{ ship.id }}" />
+    <if_variable name="Module_Shield_Ship{{ ship.id }}_Active" comparator="EQUALS" value="1.0" />
+    <if_variable name="Module_Shield_Ship{{ ship.id }}_Alternate" comparator="NOT" value="1.0" />
+    <if_object_property property="shieldStateBack" player_slot="{{ ship.slot }}" comparator="GREATER_EQUAL" value="Module_Shield_Ship{{ ship.id }}MaxShieldLevelBack" />
+    <set_variable name="Module_Shield_Ship{{ ship.id }}_Alternate" value="1.0" integer="yes" />
+  </event>
+
+{% endmacro %}
