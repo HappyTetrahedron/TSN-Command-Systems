@@ -4338,46 +4338,42 @@
     <if_gm_button text="STOP    O" />
     <set_variable name="ReassignAI" value="1030.0" integer="yes" />
   </event>
-  <event name="0 degrees" id_arme="07509f0e-5c9b-4a08-97f9-169664290201" parent_id_arme="db6a0663-4c0e-4b4c-9baf-e203cf72afaf">
-    <if_gm_button text="0   /\" />
-    <set_variable name="AI_Reassign_ThrottleDir" value="0.0" integer="yes" />
-    <set_variable name="ReassignAI" value="1031.0" integer="yes" />
+  <event name="EnableDirMoveAI">
+      <if_gm_button text="Dir Move" />
+      <set_variable name="DirectionalStrikeEnabled" value="0.0" integer="yes" />
   </event>
-  <event name="45 degrees" id_arme="b1757433-7d4a-4683-ad80-15ec788ff1ec" parent_id_arme="db6a0663-4c0e-4b4c-9baf-e203cf72afaf">
-    <if_gm_button text="45   //" />
-    <set_variable name="AI_Reassign_ThrottleDir" value="45.0" integer="yes" />
-    <set_variable name="ReassignAI" value="1031.0" integer="yes" />
+  <event name="EnableDirStrikeAI">
+      <if_gm_button text="Dir Strike" />
+      <set_variable name="DirectionalStrikeEnabled" value="1.0" integer="yes" />
   </event>
-  <event name="90 degrees" id_arme="3c5a4e68-5f58-4d5c-a87f-c19c67071baf" parent_id_arme="db6a0663-4c0e-4b4c-9baf-e203cf72afaf">
-    <if_gm_button text="90   &gt;&gt;" />
-    <set_variable name="AI_Reassign_ThrottleDir" value="90.0" integer="yes" />
-    <set_variable name="ReassignAI" value="1031.0" integer="yes" />
-  </event>
-  <event name="135 degrees" id_arme="8980106a-4381-4114-a3ce-73ef6400a280" parent_id_arme="db6a0663-4c0e-4b4c-9baf-e203cf72afaf">
-    <if_gm_button text="135   \\" />
-    <set_variable name="AI_Reassign_ThrottleDir" value="135.0" integer="yes" />
-    <set_variable name="ReassignAI" value="1031.0" integer="yes" />
-  </event>
-  <event name="180 degrees" id_arme="5af7cc89-d774-4539-b7e1-74f5caee894e" parent_id_arme="db6a0663-4c0e-4b4c-9baf-e203cf72afaf">
-    <if_gm_button text="180   V" />
-    <set_variable name="AI_Reassign_ThrottleDir" value="180.0" integer="yes" />
-    <set_variable name="ReassignAI" value="1031.0" integer="yes" />
-  </event>
-  <event name="225 degrees" id_arme="a791fe51-d9bf-4a0a-822f-f961450fbaf4" parent_id_arme="db6a0663-4c0e-4b4c-9baf-e203cf72afaf">
-    <if_gm_button text="225   //" />
-    <set_variable name="AI_Reassign_ThrottleDir" value="225.0" integer="yes" />
-    <set_variable name="ReassignAI" value="1031.0" integer="yes" />
-  </event>
-  <event name="270 degrees" id_arme="efdd7fb9-cd98-4d14-aed8-f08b177179cc" parent_id_arme="db6a0663-4c0e-4b4c-9baf-e203cf72afaf">
-    <if_gm_button text="270   &lt;&lt;" />
-    <set_variable name="AI_Reassign_ThrottleDir" value="270.0" integer="yes" />
-    <set_variable name="ReassignAI" value="1031.0" integer="yes" />
-  </event>
-  <event name="315 degrees" id_arme="b21f4e38-49e7-4780-a7b8-a6aeff42edfc" parent_id_arme="db6a0663-4c0e-4b4c-9baf-e203cf72afaf">
-    <if_gm_button text="315   \\" />
-    <set_variable name="AI_Reassign_ThrottleDir" value="315.0" integer="yes" />
-    <set_variable name="ReassignAI" value="1031.0" integer="yes" />
-  </event>
+  {% for ai_code, props in {
+    "1031.0": {
+      "name": "move",
+      "condition": "0.0",
+    },
+    "1032.0": {
+      "name": "strike",
+      "condition": "1.0",
+    },
+  }.items() %}
+    {% for dir, text in {
+      0: "0   /\\",
+      45: "45   //",
+      90: "90   &gt;&gt;",
+      135: "135   \\\\",
+      180: "180   V",
+      225: "225   //",
+      270: "270   &lt;&lt;",
+      315: "315   \\\\",
+    }.items() %}
+    <event name="{{ dir }} degrees {{ props.name }}" id_arme="07509f0e-5c9b-4a08-97f9-169664290201" parent_id_arme="db6a0663-4c0e-4b4c-9baf-e203cf72afaf">
+      <if_gm_button text="{{ text }}" />
+      <if_variable name="DirectionalStrikeEnabled" comparator="EQUALS" value="{{ props.condition }}" />
+      <set_variable name="AI_Reassign_ThrottleDir" value="{{ dir }}.0" integer="yes" />
+      <set_variable name="ReassignAI" value="{{ ai_code }}" integer="yes" />
+    </event>
+    {% endfor %}
+  {% endfor %}
   <event name="Increase Speed" id_arme="bfebddcb-b230-4c94-98bd-5717a686ecdc" parent_id_arme="db6a0663-4c0e-4b4c-9baf-e203cf72afaf">
     <if_gm_button text="Speed +0.6" />
     <set_variable name="ReassignAI" value="1040.0" integer="yes" />
@@ -12037,7 +12033,6 @@
     <set_ship_text use_gm_selection=" " desc="Mineral Deposits detected" scan_desc="Intel - Mineral refinary operations active." />
   </event>
   <event name="Reset Comms Buttons" id_arme="2f450435-1b0e-4cbd-9cde-dab0400027e2" parent_id_arme="c3aaadcc-fe4b-4a02-8f3a-f263ccfd6c99">
-    <if_variable name="Interactions Menu" comparator="EQUALS" value="1.0" />
     <if_gm_button text="Reset Comms" />
     <set_variable name="Ship1CommsMenu" value="0.0" integer="yes" />
     <set_variable name="Ship2CommsMenu" value="0.0" integer="yes" />

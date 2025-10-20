@@ -1687,9 +1687,31 @@
     <clear_gm_button text="Unsurrender" />
     <clear_gm_button text="Surrender" />
     <clear_gm_button text="Specials" />
+    <clear_gm_button text="Dir Strike" />
+    <clear_gm_button text="Dir Move" />
+    <set_variable name="GM_AICommands_DirStrikeBtn_Shown" value="0.0" integer="yes" />
+    <set_variable name="GM_AICommands_DirMoveBtn_Shown" value="0.0" integer="yes" />
   </event>
   {{ submenuEvent("AICommands", "AI Cmds Off") }}
   {{ dismissEvent("AICommands", "AI Cmds On") }}
+  <event name="AICommands Directional Move Button">
+    <if_variable name="GM_Submenu_AICommands_ShouldShow" comparator="EQUALS" value="1.0" />
+    <if_variable name="DirectionalStrikeEnabled" comparator="EQUALS" value="1.0" />
+    <if_variable name="GM_AICommands_DirMoveBtn_Shown" comparator="EQUALS" value="0.0" />
+    <clear_gm_button text="Dir Strike" />
+    <set_gm_button text="Dir Move" x="320" y="540" h="28" w="90" />
+    <set_variable name="GM_AICommands_DirMoveBtn_Shown" value="1.0" integer="yes" />
+    <set_variable name="GM_AICommands_DirStrikeBtn_Shown" value="0.0" integer="yes" />
+  </event>
+  <event name="AICommands Directional Strike Button">
+    <if_variable name="GM_Submenu_AICommands_ShouldShow" comparator="EQUALS" value="1.0" />
+    <if_variable name="DirectionalStrikeEnabled" comparator="EQUALS" value="0.0" />
+    <if_variable name="GM_AICommands_DirStrikeBtn_Shown" comparator="EQUALS" value="0.0" />
+    <clear_gm_button text="Dir Move" />
+    <set_gm_button text="Dir Strike" x="320" y="540" h="28" w="90" />
+    <set_variable name="GM_AICommands_DirStrikeBtn_Shown" value="1.0" integer="yes" />
+    <set_variable name="GM_AICommands_DirMoveBtn_Shown" value="0.0" integer="yes" />
+  </event>
 
   {{ createSubMenu("AIMenu") }}
     <clear_gm_button text="AI Off" />
@@ -1707,7 +1729,6 @@
     <set_gm_button text="225   //" x="40" y="570" h="28" w="28" />
     <set_gm_button text="270   &lt;&lt;" x="40" y="540" h="28" w="28" />
     <set_gm_button text="315   \\" x="40" y="510" h="28" w="28" />
-    <set_gm_button text="STOP    O" x="70" y="540" h="28" w="28" />
     <set_gm_button text="Speed +0.6" x="88" y="600" h="28" w="40" />
     <set_gm_button text="Speed -0.6" x="40" y="600" h="28" w="40" />
     <set_gm_button text="GrpToGM" x="40" y="480" h="28" w="88" />
@@ -1723,6 +1744,24 @@
     <set_variable name="reassignNumber6" value="60.0" integer="yes" />
     <set_variable name="reassignNumber8" value="80.0" integer="yes" />
     <set_variable name="ReassignDigits" value="0.0" integer="yes" />
+  </event>
+  <event name="AIMenu Directional Move Button">
+    <if_variable name="GM_Submenu_AIMenu_ShouldShow" comparator="EQUALS" value="1.0" />
+    <if_variable name="DirectionalStrikeEnabled" comparator="EQUALS" value="0.0" />
+    <if_variable name="GM_AIMenu_DirMoveBtn_Shown" comparator="EQUALS" value="0.0" />
+    <clear_gm_button text="STOP    X" />
+    <set_gm_button text="STOP    O" x="70" y="540" h="28" w="28" />
+    <set_variable name="GM_AIMenu_DirMoveBtn_Shown" value="1.0" integer="yes" />
+    <set_variable name="GM_AIMenu_DirStrikeBtn_Shown" value="0.0" integer="yes" />
+  </event>
+  <event name="AIMenu Directional Strike Button">
+    <if_variable name="GM_Submenu_AIMenu_ShouldShow" comparator="EQUALS" value="1.0" />
+    <if_variable name="DirectionalStrikeEnabled" comparator="EQUALS" value="1.0" />
+    <if_variable name="GM_AIMenu_DirStrikeBtn_Shown" comparator="EQUALS" value="0.0" />
+    <clear_gm_button text="STOP    O" />
+    <set_gm_button text="STOP    X" x="70" y="540" h="28" w="28" />
+    <set_variable name="GM_AIMenu_DirStrikeBtn_Shown" value="1.0" integer="yes" />
+    <set_variable name="GM_AIMenu_DirMoveBtn_Shown" value="0.0" integer="yes" />
   </event>
   {{ destroySubMenu("AIMenu") }}
     <!--Target Select Buttons-->
@@ -1778,6 +1817,8 @@
     <clear_gm_button text="Switch Side" />
     <clear_gm_button text="AI Cmds On" />
     <clear_gm_button text="AI Cmds Off" />
+    <set_variable name="GM_AIMenu_DirStrikeBtn_Shown" value="0.0" integer="yes" />
+    <set_variable name="GM_AIMenu_DirMoveBtn_Shown" value="0.0" integer="yes" />
   </event>
   <event name="AI Commands Button Cleanup">
     <if_variable name="GM_Submenu_AIMenu_Active" comparator="NOT" value="1.0" />

@@ -9,8 +9,8 @@ env = {
         "NebulaEffects"
     ],
     "systems": [
-        "Acantha",
-        "Ashia"
+        "Krellis",
+        "Acantha"
     ],
     "cargo": {
         "ship1": {
