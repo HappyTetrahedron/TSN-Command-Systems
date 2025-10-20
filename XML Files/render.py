@@ -5,7 +5,7 @@ from jinja2 import Environment, FileSystemLoader
 import datetime
 
 env = {
-    "scripts": [
+    "extensions": [
         "NebulaEffects"
     ],
     "systems": [

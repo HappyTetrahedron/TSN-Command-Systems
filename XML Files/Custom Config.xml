@@ -1,3 +1,5 @@
+  {% import 'Utils.xml' as util %}
+
   <folder_arme name="Custom Config" id_arme="f9dc6a29-7d1b-4399-9daa-0d993badc837" />
   {%- set defaultOrdnance = {
     "torpedo": 10,
@@ -40,24 +42,22 @@
     "decoy": "2",
     "shieldenhancer": "3",
   } -%}
-  {% for shipId in [0, 1, 2, 3, 4, 5, 6, 7] %}
-  {%- set sc = shipId + 1 %}
-  <event name="Ship{{ shipId + 1 }} Configuration" id_arme="56643add-a468-4dc1-9549-d6ed1e6757ad" parent_id_arme="f9dc6a29-7d1b-4399-9daa-0d993badc837">
+  {% for ship in util.shipConfigs %}
+  <event name="Ship{{ ship.id }} Configuration" id_arme="56643add-a468-4dc1-9549-d6ed1e6757ad" parent_id_arme="f9dc6a29-7d1b-4399-9daa-0d993badc837">
     <if_variable name="Custom Config" comparator="EQUALS" value="1.0" />
-    <if_variable name="Ship{{ sc }} Config" comparator="EQUALS" value="1.0" />
-    <if_exists player_slot="{{ shipId }}" />
-    {% for type, count in g.data.get("ordnance", {}).get("ship" + sc|string, {}).items() %}
-      <set_object_property property="{{ ordnanceIdentifiers[type] }}" value="{{ count }}" player_slot="{{ shipId }}" />
+    <if_variable name="Ship{{ ship.id }} Config" comparator="EQUALS" value="1.0" />
+    <if_exists player_slot="{{ ship.slot }}" />
+    {% for type, count in g.data.get("ordnance", {}).get("ship" + ship.slot, {}).items() %}
+      <set_object_property property="{{ ordnanceIdentifiers[type] }}" value="{{ count }}" player_slot="{{ ship.slot }}" />
     {% endfor %}
-    <set_variable name="Ship{{ shipId + 1 }} Config" value="0.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }} Config" value="0.0" integer="yes" />
   </event>
 {% endfor %}
   <event name="Cargo" id_arme="ed565860-810a-4932-b977-bb8bfdd04316" parent_id_arme="f9dc6a29-7d1b-4399-9daa-0d993badc837">
     <if_variable name="Custom Config" comparator="EQUALS" value="1.0" />
-  {% for shipId in [0, 1, 2, 3, 4, 5, 6, 7] %}
-  {%- set sc = shipId + 1 -%}
-    {% for type, idx in cargoIdentifiers.items() %}
-    <set_variable name="Ship{{ sc }}{{ idx }}" value="{{ g.data.get("cargo", {}).get("ship" + sc|string, defaultCargo).get(type, defaultCargo[type]) }}" integer="yes" />
+  {% for ship in util.shipConfigs %}
+    {% for cargo in util.cargoTypes if not cargo.is_nothing %}
+    <set_variable name="Ship{{ ship.id }}{{ cargo.variable }}" value="{{ g.data.get("cargo", {}).get("ship" + ship.id, defaultCargo).get(cargo.api_name, defaultCargo[cargo.api_name]) }}" integer="yes" />
     {% endfor %}
   {% endfor %}
     <set_variable name="Custom Config" value="2.0" integer="yes" />
@@ -66,25 +66,11 @@
   <event name="Enable Modules" id_arme="2a1a89b3-96ff-4195-86bb-7fdc1814c997" parent_id_arme="2426f36e-da72-4835-9068-2067f83a12fa">
     <if_variable name="Custom Config" comparator="EQUALS" value="2.0" />
     <if_variable name="Modules" comparator="NOT" value="1.0" />
-  {% for shipId in [1, 2, 3, 4, 5, 6, 7, 8] %}
-    <set_variable name="Ship{{ shipId }}ModuleType" value="{{ moduleIdentifiers.get(g.data.get("modules", {}).get("ship" + shipId|string, "NONE"), "0") }}" integer="yes" />
+  {% for ship in util.shipConfigs %}
+    <set_variable name="Ship{{ ship.id }}ModuleType" value="{{ moduleIdentifiers.get(g.data.get("modules", {}).get("ship" + ship.id, "NONE"), "0") }}" integer="yes" />
+    <get_object_property property="shieldMaxStateFront" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}MaxShieldLevelFront" />
+    <get_object_property property="shieldMaxStateBack" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}MaxShieldLevelBack" />
   {% endfor %}
-    <get_object_property property="shieldMaxStateFront" player_slot="0" variable="Ship1MaxShieldLevelFront" />
-    <get_object_property property="shieldMaxStateBack" player_slot="0" variable="Ship1MaxShieldLevelBack" />
-    <get_object_property property="shieldMaxStateFront" player_slot="1" variable="Ship2MaxShieldLevelFront" />
-    <get_object_property property="shieldMaxStateBack" player_slot="1" variable="Ship2MaxShieldLevelBack" />
-    <get_object_property property="shieldMaxStateFront" player_slot="2" variable="Ship3MaxShieldLevelFront" />
-    <get_object_property property="shieldMaxStateBack" player_slot="2" variable="Ship3MaxShieldLevelBack" />
-    <get_object_property property="shieldMaxStateFront" player_slot="3" variable="Ship4MaxShieldLevelFront" />
-    <get_object_property property="shieldMaxStateBack" player_slot="3" variable="Ship4MaxShieldLevelBack" />
-    <get_object_property property="shieldMaxStateFront" player_slot="4" variable="Ship5MaxShieldLevelFront" />
-    <get_object_property property="shieldMaxStateBack" player_slot="4" variable="Ship5MaxShieldLevelBack" />
-    <get_object_property property="shieldMaxStateFront" player_slot="5" variable="Ship6MaxShieldLevelFront" />
-    <get_object_property property="shieldMaxStateBack" player_slot="5" variable="Ship6MaxShieldLevelBack" />
-    <get_object_property property="shieldMaxStateFront" player_slot="6" variable="Ship7MaxShieldLevelFront" />
-    <get_object_property property="shieldMaxStateBack" player_slot="6" variable="Ship7MaxShieldLevelBack" />
-    <get_object_property property="shieldMaxStateFront" player_slot="7" variable="Ship8MaxShieldLevelFront" />
-    <get_object_property property="shieldMaxStateBack" player_slot="7" variable="Ship8MaxShieldLevelBack" />
     <set_variable name="Modules" value="1.0" integer="yes" />
   </event>
   <folder_arme name="Ship1 Modules" id_arme="463d9c6e-0f0b-40f3-a5f3-145abb201089" parent_id_arme="2426f36e-da72-4835-9068-2067f83a12fa" />

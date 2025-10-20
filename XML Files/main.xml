@@ -8,8 +8,8 @@
 {% for system in g.data.get("systems", []) %}
   {% include 'Systems (Generated)/' + system + '.xml' %}
 {% endfor %}
-{% for module in g.data.get("scripts", []) %}
-  {% include 'Custom Scripts/' + module + '.xml' %}
+{% for module in g.data.get("extensions", []) %}
+  {% include 'Extensions/' + module + '.xml' %}
 {% endfor %}
 {% include 'GM Console.xml' %}
 </mission_data>

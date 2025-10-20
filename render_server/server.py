@@ -11,7 +11,7 @@ app = Blueprint('app', __name__)
 
 MAIN_TMPL='main.xml'
 
-SCRIPT_FOLDER="Custom Scripts"
+SCRIPT_FOLDER="Extensions"
 SYSTEM_FOLDER="Systems (Generated)"
 
 VERSION_FILE="../.version"
@@ -57,7 +57,7 @@ def get_star_systems():
         found.append(data)
     return found
 
-@app.route("/scripts")
+@app.route("/extensions")
 def get_systems():
     mypath = current_app.config['datadir']
     scripts_path = os.path.join(mypath, SCRIPT_FOLDER)
