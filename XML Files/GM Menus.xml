@@ -91,6 +91,9 @@
   {% macro restore(variable) %}
     <set_variable name="{{ variable }}" value="{{ variable }}_Stored" integer="yes" />
   {% endmacro %}
+
+
+
   {{ createMenu("Base", 1) }}
     <!---->
     <set_gm_button text="SlctdToGM" x="100" y="100" h="28" w="90" />

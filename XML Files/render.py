@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+
+# Quick script to render the sandbox locally; used for development
+
 import faulthandler
 faulthandler.enable()
 from jinja2 import Environment, FileSystemLoader
@@ -6,16 +9,12 @@ import datetime
 
 env = {
     "extensions": [
-        "NebulaEffects"
+        "NebulaEffects",
+        "HazardPainter",
     ],
     "systems": [
         "Krellis",
         "Acantha",
-        "Volantis",
-        "Sierra",
-        "Eulis",
-        "Jhohara",
-        "Cronus",
         "Erebus",
     ],
     "ordnance": {

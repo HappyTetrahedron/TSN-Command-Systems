@@ -1,7 +1,8 @@
 {# NebulaEffects extension - nebulae have configurable effect on ships within them. Drain energy, corrode (damage) ship, or add heat.#}
-  <event name="Sensor Range Menu" id_arme="4228976f-1254-4e75-8f35-f579bcaf5543" parent_id_arme="5281ed9f-faab-47da-981b-3aa5f38459a0">
-    <if_variable name="Interactions Menu" comparator="EQUALS" value="4.0" />
-    <!-- <if_timer_finished name="Interactions Menu" /> -->
+  <event name="NebulaFX menu" id_arme="4228976f-1254-4e75-8f35-f579bcaf5543" parent_id_arme="5281ed9f-faab-47da-981b-3aa5f38459a0">
+    <!-- Custom Menu -->
+    <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="6.0" />
+    <if_variable name="NebulaFX_Menu_Shown" comparator="NOT" value="1.0" />
 
     <set_gm_button text="Corrosive effect/In green neb" />
     <set_gm_button text="Corrosive effect/In blue neb" />
@@ -20,9 +21,13 @@
     <set_gm_button text="Hot effect/In purple neb" />
     <set_gm_button text="Hot effect/Outside any neb" />
     <set_gm_button text="Hot effect/Disable" />
+
+    <set_variable name="NebulaFX_Menu_Shown" value="1.0" integer="yes" />
   </event>
+
   <event name="Clear" id_arme="5ede81c1-1602-4d8b-af08-030a88ea3f0c" parent_id_arme="ffcee071-4886-4503-ab58-aeb5501c8873">
-    <if_gm_button text="Clear" />
+    <if_variable name="GM_Menu_Selector" comparator="NOT" value="6.0" />
+    <if_variable name="NebulaFX_Menu_Shown" comparator="EQUALS" value="1.0" />
 
     <clear_gm_button text="Corrosive effect/In green neb" />
     <clear_gm_button text="Corrosive effect/In blue neb" />
@@ -41,6 +46,7 @@
     <clear_gm_button text="Hot effect/In purple neb" />
     <clear_gm_button text="Hot effect/Outside any neb" />
     <clear_gm_button text="Hot effect/Disable" />
+    <set_variable name="NebulaFX_Menu_Shown" value="0.0" integer="yes" />
   </event>
 
   <event>
