@@ -143,6 +143,25 @@
   }
 -%}
 
+{%
+  set transitionTypes = [
+    "Grid 1",
+    "Grid A",
+    "Grid 5",
+    "Grid E",
+    "Corner A1",
+    "Corner A5",
+    "Corner E1",
+    "Corner E5",
+  ]
+%}
+
+{%
+  set romanNumerals = [
+  "0", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII", "XXIII", "XXIV", "XXV"
+  ]
+%}
+
 {% macro createConditionalMenu(name, conditions={}) %}
     <event name="Conditional Menu {{ name }} setup">
         {% for var, val in conditions.items() %}

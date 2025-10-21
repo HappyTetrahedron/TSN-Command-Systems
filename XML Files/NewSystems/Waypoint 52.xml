@@ -1,0 +1,31 @@
+
+<mission_data version="1.0" background_id_arme="4076349e-e1c0-4950-8e05-27c894bfaff8" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <start id_arme="4076349e-e1c0-4950-8e05-27c894bfaff8">
+    <set_variable name="Coordinate X" value="561.0" />
+    <set_variable name="Coordinate Y" value="438.0" />
+    <set_variable name="Width" value="1.0" />
+    <set_variable name="Height" value="2.0" />
+    <set_variable name="Alignment" value="USFP" />
+  </start>
+  <event name="Sector 1" id_arme="02aeca3b-08b2-45b0-80a6-20d69f7ef2b4">
+    <create count="170" type="nebulas" startX="78834.0" startY="0.0" startZ="12132.0" endX="32761.0" endY="0.0" endZ="44203.0" randomRange="10723" />
+    <create count="20" type="nebulas" startX="30352.0" startY="0.0" startZ="42396.0" endX="30352.0" endY="0.0" endZ="42396.0" randomRange="7449" />
+    <create count="60" type="asteroids" startX="89825.0" startY="0.0" startZ="11380.0" endX="76123.0" endY="0.0" endZ="30953.0" randomRange="5941" />
+    <create count="30" type="asteroids" startX="75822.0" startY="0.0" startZ="28845.0" endX="61067.0" endY="0.0" endZ="38180.0" randomRange="4153" />
+    <create count="10" type="asteroids" startX="61368.0" startY="0.0" startZ="36373.0" endX="57002.0" endY="0.0" endZ="39234.0" randomRange="2381" />
+    <create count="30" type="asteroids" startX="93137.0" startY="0.0" startZ="9422.0" endX="96149.0" endY="0.0" endZ="3099.0" randomRange="2989" />
+    <create count="24" type="asteroids" startX="95396.0" startY="0.0" startZ="12735.0" endX="86964.0" endY="0.0" endZ="16951.0" randomRange="3011" />
+    <create count="52" type="asteroids" startX="70101.0" startY="0.0" startZ="81693.0" endX="65283.0" endY="0.0" endZ="85156.0" randomRange="6858" />
+    <create count="50" type="nebulas" startX="88018.0" startY="0.0" startZ="79585.0" endX="76274.0" endY="0.0" endZ="80338.0" randomRange="5347" />
+    <create count="30" type="asteroids" startX="87265.0" startY="0.0" startZ="76273.0" endX="76575.0" endY="0.0" endZ="81392.0" randomRange="3089" />
+    <create count="60" type="nebulas" startX="11381.0" startY="0.0" startZ="94341.0" endX="16952.0" endY="0.0" endZ="63776.0" randomRange="6057" />
+    <create type="genericMesh" x="17393.0" y="14.0" z="23172.0" name="Atlantis Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+  </event>
+  <event name="Sector 2" id_arme="3c2b6789-3294-4150-8a91-a3d623b8995d">
+    <create count="80" type="nebulas" startX="61364.0" startY="0.0" startZ="68166.0" endX="15477.0" endY="0.0" endZ="87563.0" randomRange="10723" />
+    <create count="60" type="asteroids" startX="17069.0" startY="0.0" startZ="71930.0" endX="57021.0" endY="0.0" endZ="56875.0" randomRange="5941" />
+    <create count="52" type="asteroids" startX="29663.0" startY="0.0" startZ="20542.0" endX="69180.0" endY="0.0" endZ="30965.0" randomRange="6858" />
+    <create count="203" type="nebulas" startX="15477.0" startY="0.0" startZ="3462.0" endX="15766.0" endY="0.0" endZ="36899.0" randomRange="7027" />
+    <create type="genericMesh" x="74970.0" y="7.0" z="74680.0" name="Volantis Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+  </event>
+</mission_data>

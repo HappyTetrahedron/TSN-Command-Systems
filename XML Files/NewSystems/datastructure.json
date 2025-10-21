@@ -1,0 +1,24 @@
+{
+    "width": 2,
+    "height": 2,
+    "x": 120,
+    "y": 112,
+    "alignment": "USFP",
+    "name": "Test",
+    "sectors": [
+        {
+            "gateTarget": {
+                "system": "Krellis",
+                "sector": 3
+            },
+            "createdEntities": ["Krellis Gate"],
+            "terrainStatements": "string of xml for nebulae etc",
+            "statements": "long string of xml",
+            "transitions": [
+                "Grid 5",
+                "Grid E",
+                "Corner E5"
+            ]
+        }
+    ]
+}

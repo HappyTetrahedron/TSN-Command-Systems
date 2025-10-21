@@ -1413,7 +1413,7 @@
     <set_variable name="System" value="0.0" />
     <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
     <set_variable name="Volantis to Waypoint 52" value="1.0" />
-    <set_variable name="Waypoint 52" value="1.0" />
+    <set_variable name="Waypoint 52 System" value="1.0" />
     <set_variable name="shipsInrange" value="0.0" integer="yes" />
     <set_variable name="Sector" value="2" />
     <set_timer name="Transition" seconds="2" />
