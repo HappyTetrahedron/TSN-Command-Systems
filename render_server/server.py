@@ -30,6 +30,10 @@ def render():
 
     return stream_template(MAIN_TMPL)
 
+@app.route("/version")
+def get_version():
+    return current_app.config['version']
+
 @app.route("/systems")
 def get_star_systems():
     mypath = current_app.config['datadir']
