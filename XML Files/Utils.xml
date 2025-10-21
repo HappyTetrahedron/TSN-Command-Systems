@@ -60,6 +60,7 @@
       "loadOp": "1",
       "id": "0",
       "is_nothing": "true",
+      "default_count": 0,
     },
     {
       "name": "Marines",
@@ -67,6 +68,7 @@
       "variable": "MarineTeams",
       "loadOp": "2",
       "id": "1",
+      "default_count": 3,
     },
     {
       "name": "Medics",
@@ -74,6 +76,7 @@
       "variable": "MedicTeams",
       "loadOp": "4",
       "id": "3",
+      "default_count": 2,
     },
     {
       "name": "Engineers",
@@ -81,6 +84,7 @@
       "variable": "EngineerTeams",
       "loadOp": "5",
       "id": "4",
+      "default_count": 1,
     },
     {
       "name": "Cargo",
@@ -88,6 +92,7 @@
       "variable": "Cargos",
       "loadOp": "3",
       "id": "2",
+      "default_count": 0,
     },
     {
       "name": "Comms Relay",
@@ -95,6 +100,7 @@
       "variable": "CommsRelays",
       "loadOp": "6",
       "id": "5",
+      "default_count": 1,
     },
     {
       "name": "Sensor Buoy",
@@ -102,6 +108,7 @@
       "variable": "SensorBuoys",
       "loadOp": "7",
       "id": "6",
+      "default_count": 1,
     },
   ]
 %}
@@ -123,6 +130,18 @@
   ]
 %}
 
+{%-
+  set ordnanceIdentifiers = {
+    "torpedo": "countHoming",
+    "mine": "countMine",
+    "nuke": "countNuke",
+    "emp": "countEMP",
+    "pshock": "countShk",
+    "probe": "countPro",
+    "tag": "countTag",
+    "beacon": "countBea",
+  }
+-%}
 
 {% macro createConditionalMenu(name, conditions={}) %}
     <event name="Conditional Menu {{ name }} setup">

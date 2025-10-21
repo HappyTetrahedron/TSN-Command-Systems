@@ -18,6 +18,17 @@ env = {
         "Cronus",
         "Erebus",
     ],
+    "ordnance": {
+        "ship1": {
+            "torpedo": 10,
+            "pshock": 10,
+        },
+        "ship2": {
+            "torpedo": 10,
+            "emp": 0,
+            "nuke": -1,
+        },
+    },
     "cargo": {
         "ship1": {
             "marines": 5
