@@ -1,5 +1,9 @@
   {% include 'GM Menus.xml' %}
   {% import 'AI.xml' as ai %}
+  <event name="DelMines">
+    <if_gm_button text="DelAllMines" />
+    <destroy_near type="mines" radius="80000" centerX="50000" centerY="0" centerZ="50000" />
+  </event>
   <folder_arme name="GM Keys" id_arme="a63d8b7a-dd61-481e-b818-314ef7f7af5f" />
   <event name="GM Main Menu" id_arme="605a7c3f-76b5-4953-bb43-aa50abc3f88b" parent_id_arme="a63d8b7a-dd61-481e-b818-314ef7f7af5f">
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
@@ -1164,6 +1168,33 @@
   <event name="Destroyer" id_arme="c74b76ed-d331-453e-b780-4267ce3a5054" parent_id_arme="6384cb7d-f47d-4131-a3d6-0577f508f4eb">
     <if_gm_button text="Military USFP\Destroyer" />
     <create type="enemy" use_gm_position="" name="--" hullID="1501" sideValue="SideValue" fleetnumber="-1" />
+    <set_variable name="Auto AI Type" value="1.0" integer="yes" />
+    <set_variable name="Random Direction" value="1.0" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+  </event>
+  <event name="Fleet small" id_arme="c74b76ed-d331-453e-b780-4267ce3a5052" parent_id_arme="6384cb7d-f47d-4131-a3d6-0577f508f4eb">
+    <if_gm_button text="Military USFP\Fleet small" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1603" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1603" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1500" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1501" sideValue="SideValue" fleetnumber="-1" />
+    <set_variable name="Fleet Settings" value="1.0" />
+    <set_variable name="Auto AI Type" value="1.0" integer="yes" />
+    <set_variable name="Random Direction" value="1.0" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+  </event>
+  <event name="Fleet large" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
+    <if_gm_button text="Military USFP\Fleet large" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1603" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1603" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1603" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1603" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1500" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1500" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1500" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1501" sideValue="SideValue" fleetnumber="-1" />
+    <create type="neutral" use_gm_position="" name="--" hullID="1501" sideValue="SideValue" fleetnumber="-1" />
+    <set_variable name="Fleet Settings" value="1.0" />
     <set_variable name="Auto AI Type" value="1.0" integer="yes" />
     <set_variable name="Random Direction" value="1.0" />
     <set_variable name="Name Assign" value="1.0" integer="yes" />

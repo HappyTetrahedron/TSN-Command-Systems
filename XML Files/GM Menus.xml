@@ -426,6 +426,8 @@
     <set_gm_button text="Military USFP\Corvette" />
     <set_gm_button text="Military USFP\Escort" />
     <set_gm_button text="Military USFP\Destroyer" />
+    <set_gm_button text="Military USFP\Fleet small" />
+    <set_gm_button text="Military USFP\Fleet large" />
     <set_gm_button text="USFP Fleet\Mining Convoy" />
     <set_gm_button text="USFP Fleet\LR Cargo Convoy" />
     <set_gm_button text="USFP Fleet\Research Convoy" />
@@ -459,6 +461,8 @@
     <clear_gm_button text="Military USFP\Corvette" />
     <clear_gm_button text="Military USFP\Escort" />
     <clear_gm_button text="Military USFP\Destroyer" />
+    <clear_gm_button text="Military USFP\Fleet small" />
+    <clear_gm_button text="Military USFP\Fleet large" />
     <clear_gm_button text="USFP Fleet\Mining Convoy" />
     <clear_gm_button text="USFP Fleet\Cargo Convoy" />
     <clear_gm_button text="USFP Fleet\Transport Convoy" />

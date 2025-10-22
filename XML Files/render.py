@@ -9,11 +9,11 @@ import datetime
 
 env = {
     "extensions": [
-        "NebulaEffects",
-        "HazardPainter",
+        "S21",
+        "VerdantFleet",
     ],
     "systems": [
-        "Krellis",
+        "Waypoint 52",
         "Acantha",
         "Erebus",
     ],
