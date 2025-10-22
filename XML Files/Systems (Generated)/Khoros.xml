@@ -4,16 +4,16 @@
   <folder_arme name="Khoros Menu" id_arme="79d22e84-3434-4247-9c4a-4deaf0802676" parent_id_arme="bbd1585e-667a-4151-a42c-1b0ed5f22a81" />
   <event name="Khoros Active" id_arme="337134ea-f9d6-433b-9cce-8a40014d2f9b" parent_id_arme="79d22e84-3434-4247-9c4a-4deaf0802676">
     <if_variable name="Activation Menu" comparator="EQUALS" value="1.0" />
-    <set_gm_button text="Lower Arc/Khoros System" />
+    <set_gm_button text="Systems/Khoros System" />
     <set_variable name="Khoros Gate" value="1.0" integer="yes" />
     <!--542,321-->
   </event>
   <event name="Clear Menu Item" id_arme="a949a464-0553-4fa8-8644-0faeb49a723d" parent_id_arme="79d22e84-3434-4247-9c4a-4deaf0802676">
     <if_variable name="Activation Menu" comparator="EQUALS" value="0.0" />
-    <clear_gm_button text="Lower Arc/Khoros System" />
+    <clear_gm_button text="Systems/Khoros System" />
   </event>
   <event name="Khoros System" id_arme="574f28a8-7e17-4b5a-90c7-6c325f681710" parent_id_arme="79d22e84-3434-4247-9c4a-4deaf0802676">
-    <if_gm_button text="Lower Arc/Khoros System" />
+    <if_gm_button text="Systems/Khoros System" />
     <set_variable name="Sandbox Activation" value="3.0" integer="yes" />
     <set_variable name="Sector" value="102.0" integer="yes" />
     <set_variable name="Khoros System" value="1.0" integer="yes" />

@@ -4,16 +4,16 @@
   <folder_arme name="Waypoint 89 Menu" id_arme="81f50b97-d671-4dcb-91d6-366ec01ceedf" parent_id_arme="508ec18b-d47d-47c0-8d35-4d31205d3c12" />
   <event name="Waypoint 89 Active" id_arme="337134ea-f9d6-433b-9cce-8a40014d2f9b" parent_id_arme="81f50b97-d671-4dcb-91d6-366ec01ceedf">
     <if_variable name="Activation Menu" comparator="EQUALS" value="1.0" />
-    <set_gm_button text="Upper Arc/Waypoint 89" />
+    <set_gm_button text="Systems/Waypoint 89" />
     <set_variable name="Waypoint 89 Gate" value="1.0" integer="yes" />
     <!--320,272-->
   </event>
   <event name="Clear Menu Item" id_arme="a949a464-0553-4fa8-8644-0faeb49a723d" parent_id_arme="81f50b97-d671-4dcb-91d6-366ec01ceedf">
     <if_variable name="Activation Menu" comparator="EQUALS" value="0.0" />
-    <clear_gm_button text="Upper Arc/Waypoint 89" />
+    <clear_gm_button text="Systems/Waypoint 89" />
   </event>
   <event name="Waypoint 89" id_arme="574f28a8-7e17-4b5a-90c7-6c325f681710" parent_id_arme="81f50b97-d671-4dcb-91d6-366ec01ceedf">
-    <if_gm_button text="Upper Arc/Waypoint 89" />
+    <if_gm_button text="Systems/Waypoint 89" />
     <set_variable name="Sandbox Activation" value="3.0" integer="yes" />
     <set_variable name="Sector" value="108.0" integer="yes" />
     <set_variable name="Waypoint 89" value="1.0" integer="yes" />

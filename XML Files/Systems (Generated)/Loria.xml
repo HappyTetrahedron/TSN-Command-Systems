@@ -4,16 +4,16 @@
   <folder_arme name="Loria Menu" id_arme="22a66b71-1df2-45ee-8eda-9da6108be998" parent_id_arme="ffcf1a16-893d-4a3b-b006-403b3374067c" />
   <event name="Loria Active" id_arme="337134ea-f9d6-433b-9cce-8a40014d2f9b" parent_id_arme="22a66b71-1df2-45ee-8eda-9da6108be998">
     <if_variable name="Activation Menu" comparator="EQUALS" value="1.0" />
-    <set_gm_button text="Lower Arc/Loria System" />
+    <set_gm_button text="Systems/Loria System" />
     <set_variable name="Loria Gate" value="1.0" integer="yes" />
     <!--348,562-->
   </event>
   <event name="Clear Menu Item" id_arme="a949a464-0553-4fa8-8644-0faeb49a723d" parent_id_arme="22a66b71-1df2-45ee-8eda-9da6108be998">
     <if_variable name="Activation Menu" comparator="EQUALS" value="0.0" />
-    <clear_gm_button text="Lower Arc/Loria System" />
+    <clear_gm_button text="Systems/Loria System" />
   </event>
   <event name="Loria System" id_arme="574f28a8-7e17-4b5a-90c7-6c325f681710" parent_id_arme="22a66b71-1df2-45ee-8eda-9da6108be998">
-    <if_gm_button text="Lower Arc/Loria System" />
+    <if_gm_button text="Systems/Loria System" />
     <set_variable name="Sandbox Activation" value="3.0" integer="yes" />
     <set_variable name="Sector" value="105.0" integer="yes" />
     <set_variable name="Loria System" value="1.0" integer="yes" />

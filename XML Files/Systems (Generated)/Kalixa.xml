@@ -4,16 +4,16 @@
   <folder_arme name="Kalixa Menu" id_arme="d7d247b9-3c21-4341-92ef-8c5aba2f0ec8" parent_id_arme="c103dc34-f8dd-4df7-a165-38a2a51d7fc2" />
   <event name="Kalixa Active" id_arme="337134ea-f9d6-433b-9cce-8a40014d2f9b" parent_id_arme="d7d247b9-3c21-4341-92ef-8c5aba2f0ec8">
     <if_variable name="Activation Menu" comparator="EQUALS" value="1.0" />
-    <set_gm_button text="Lower Arc/Kalixa System" />
+    <set_gm_button text="Systems/Kalixa System" />
     <set_variable name="Kalixa Gate" value="1.0" integer="yes" />
     <!--320,272-->
   </event>
   <event name="Clear Menu Item" id_arme="a949a464-0553-4fa8-8644-0faeb49a723d" parent_id_arme="d7d247b9-3c21-4341-92ef-8c5aba2f0ec8">
     <if_variable name="Activation Menu" comparator="EQUALS" value="0.0" />
-    <clear_gm_button text="Lower Arc/Kalixa System" />
+    <clear_gm_button text="Systems/Kalixa System" />
   </event>
   <event name="Kalixa System" id_arme="574f28a8-7e17-4b5a-90c7-6c325f681710" parent_id_arme="d7d247b9-3c21-4341-92ef-8c5aba2f0ec8">
-    <if_gm_button text="Lower Arc/Kalixa System" />
+    <if_gm_button text="Systems/Kalixa System" />
     <set_variable name="Sandbox Activation" value="3.0" integer="yes" />
     <set_variable name="Sector" value="104.0" integer="yes" />
     <set_variable name="Kalixa System" value="1.0" integer="yes" />

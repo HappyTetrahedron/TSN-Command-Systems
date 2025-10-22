@@ -9,15 +9,15 @@
   <folder_arme name="Drenan Menu" id_arme="d40267b7-73d1-459b-ba36-e8fe13883e8c" parent_id_arme="971f6410-0bc3-41db-bb50-0bf7545c65f5" />
   <event name="Drenan Active" id_arme="337134ea-f9d6-433b-9cce-8a40014d2f9b" parent_id_arme="d40267b7-73d1-459b-ba36-e8fe13883e8c">
     <if_variable name="Activation Menu" comparator="EQUALS" value="1.0" />
-    <set_gm_button text="Lower Arc/Drenan System" />
+    <set_gm_button text="Systems/Drenan System" />
     <set_variable name="Drenan Gate" value="1.0" integer="yes" />
   </event>
   <event name="Clear Menu Item" id_arme="a949a464-0553-4fa8-8644-0faeb49a723d" parent_id_arme="d40267b7-73d1-459b-ba36-e8fe13883e8c">
     <if_variable name="Activation Menu" comparator="EQUALS" value="0.0" />
-    <clear_gm_button text="Lower Arc/Drenan System" />
+    <clear_gm_button text="Systems/Drenan System" />
   </event>
   <event name="Drenan System" id_arme="574f28a8-7e17-4b5a-90c7-6c325f681710" parent_id_arme="d40267b7-73d1-459b-ba36-e8fe13883e8c">
-    <if_gm_button text="Lower Arc/Drenan System" />
+    <if_gm_button text="Systems/Drenan System" />
     <set_variable name="Sandbox Activation" value="3.0" integer="yes" />
     <set_variable name="Sector" value="105.0" integer="yes" />
     <set_variable name="Drenan System" value="1.0" integer="yes" />

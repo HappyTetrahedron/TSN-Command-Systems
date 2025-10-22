@@ -9,15 +9,15 @@
   <folder_arme name="Reema Menu" id_arme="2a2a31ba-1318-476f-995f-85c78b7eeb5d" parent_id_arme="c082e930-00ee-4467-9c7a-713f2c4c5359" />
   <event name="Reema Active" id_arme="337134ea-f9d6-433b-9cce-8a40014d2f9b" parent_id_arme="2a2a31ba-1318-476f-995f-85c78b7eeb5d">
     <if_variable name="Activation Menu" comparator="EQUALS" value="1.0" />
-    <set_gm_button text="Lower Arc/Reema System" />
+    <set_gm_button text="Systems/Reema System" />
     <set_variable name="Reema Gate" value="1.0" integer="yes" />
   </event>
   <event name="Clear Menu Item" id_arme="a949a464-0553-4fa8-8644-0faeb49a723d" parent_id_arme="2a2a31ba-1318-476f-995f-85c78b7eeb5d">
     <if_variable name="Activation Menu" comparator="EQUALS" value="0.0" />
-    <clear_gm_button text="Lower Arc/Reema System" />
+    <clear_gm_button text="Systems/Reema System" />
   </event>
   <event name="Reema System" id_arme="574f28a8-7e17-4b5a-90c7-6c325f681710" parent_id_arme="2a2a31ba-1318-476f-995f-85c78b7eeb5d">
-    <if_gm_button text="Lower Arc/Reema System" />
+    <if_gm_button text="Systems/Reema System" />
     <set_variable name="Sandbox Activation" value="3.0" integer="yes" />
     <set_variable name="Sector" value="110.0" integer="yes" />
     <set_variable name="Reema System" value="1.0" integer="yes" />

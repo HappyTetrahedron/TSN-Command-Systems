@@ -4,15 +4,15 @@
   <folder_arme name="Ashia Menu" id_arme="b26b22e8-d915-4e87-b174-46aae791c78f" parent_id_arme="11e9ee7d-f5ac-403b-be11-c1aff306d2e6" />
   <event name="Ashia Active" id_arme="337134ea-f9d6-433b-9cce-8a40014d2f9b" parent_id_arme="b26b22e8-d915-4e87-b174-46aae791c78f">
     <if_variable name="Activation Menu" comparator="EQUALS" value="1.0" />
-    <set_gm_button text="Lower Arc/Ashia System" />
+    <set_gm_button text="Systems/Ashia System" />
     <set_variable name="Ashia Gate" value="1.0" integer="yes" />
   </event>
   <event name="Clear Menu Item" id_arme="a949a464-0553-4fa8-8644-0faeb49a723d" parent_id_arme="b26b22e8-d915-4e87-b174-46aae791c78f">
     <if_variable name="Activation Menu" comparator="EQUALS" value="0.0" />
-    <clear_gm_button text="Lower Arc/Ashia System" />
+    <clear_gm_button text="Systems/Ashia System" />
   </event>
   <event name="Ashia System" id_arme="574f28a8-7e17-4b5a-90c7-6c325f681710" parent_id_arme="b26b22e8-d915-4e87-b174-46aae791c78f">
-    <if_gm_button text="Lower Arc/Ashia System" />
+    <if_gm_button text="Systems/Ashia System" />
     <set_variable name="Sandbox Activation" value="3.0" integer="yes" />
     <set_variable name="Sector" value="102.0" integer="yes" />
     <set_variable name="Ashia System" value="1.0" integer="yes" />

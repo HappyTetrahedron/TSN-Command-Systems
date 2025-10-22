@@ -4,16 +4,16 @@
   <folder_arme name="Erebus Menu" id_arme="80da5600-2f4d-4d45-bc35-17fb592be1b2" parent_id_arme="12aa1282-8949-4c44-84e0-264d16ea10f1" />
   <event name="Erebus Active" id_arme="337134ea-f9d6-433b-9cce-8a40014d2f9b" parent_id_arme="80da5600-2f4d-4d45-bc35-17fb592be1b2">
     <if_variable name="Activation Menu" comparator="EQUALS" value="1.0" />
-    <set_gm_button text="Lower Arc/Erebus System" />
+    <set_gm_button text="Systems/Erebus System" />
     <set_variable name="Erebus Gate" value="1.0" integer="yes" />
     <!--320,272-->
   </event>
   <event name="Clear Menu Item" id_arme="a949a464-0553-4fa8-8644-0faeb49a723d" parent_id_arme="80da5600-2f4d-4d45-bc35-17fb592be1b2">
     <if_variable name="Activation Menu" comparator="EQUALS" value="0.0" />
-    <clear_gm_button text="Lower Arc/Erebus System" />
+    <clear_gm_button text="Systems/Erebus System" />
   </event>
   <event name="Erebus System" id_arme="574f28a8-7e17-4b5a-90c7-6c325f681710" parent_id_arme="80da5600-2f4d-4d45-bc35-17fb592be1b2">
-    <if_gm_button text="Lower Arc/Erebus System" />
+    <if_gm_button text="Systems/Erebus System" />
     <set_variable name="Sandbox Activation" value="3.0" integer="yes" />
     <set_variable name="Sector" value="104.0" integer="yes" />
     <set_variable name="Erebus System" value="1.0" integer="yes" />
