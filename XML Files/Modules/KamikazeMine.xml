@@ -11,17 +11,17 @@
   {% call() util.createConditionalModuleButtons(ship, moduleName + "ClusterDeploy") %}
     {{ util.ifCommsMenuState(ship, 2) }}
     <if_variable name="Module_{{ moduleName }}_Ship{{ ship.id }}_Used" comparator="NOT" value="1.0" />
-    {{ util.sendCommsButton("Load Mines", ship) }}
+    {{ util.sendCommsButton("Load Bombs", ship) }}
   {% endcall %}
 
   {% call() util.destroyConditionalModuleButtons(ship, moduleName + "ClusterDeploy") %}
     {{ util.ifCommsMenuState(ship, 2, "NOT") }}
-    {{ util.clearCommsButton("Load Mines", ship) }}
+    {{ util.clearCommsButton("Load Bombs", ship) }}
   {% endcall %}
 
   {% call() util.destroyConditionalModuleButtons(ship, moduleName + "ClusterDeploy") %}
     <if_variable name="Module_{{ moduleName }}_Ship{{ ship.id }}_Used" comparator="EQUALS" value="1.0" />
-    {{ util.clearCommsButton("Load Mines", ship) }}
+    {{ util.clearCommsButton("Load Bombs", ship) }}
   {% endcall %}
 
   {% call util.destroyConditionalModuleButtons(ship, moduleName + "ClusterDeploy") %}
@@ -47,7 +47,7 @@
 
   {# Button Handling #}
 
-  {% call util.onModuleButtonPressed("Load Mines", ship) %}
+  {% call util.onModuleButtonPressed("Load Bombs", ship) %}
     <if_exists player_slot="{{ ship.slot }}" />
     <incoming_comms_text from="CHANNEL {{ ship.id }}" sideValue="playerSide" type="STATUS">Orders received. Stand by whilst we configure {{ ship.shuttle }} as requested.</incoming_comms_text>
     <warning_popup_message message="Loading {{ ship.shuttle }}" consoles="MC" player_slot="{{ ship.slot }}" />
@@ -58,7 +58,7 @@
 
 
   {# Loading and Unloading #}
-  <event name="Ship {{ ship.id }} Load Mines">
+  <event name="Ship {{ ship.id }} Load Bombs">
     <if_variable name="ShuttleSelect" comparator="EQUALS" value="1" />
     <if_variable name="OperationType" comparator="EQUALS" value="{{ mineCargo }}.0" />
     <if_timer_finished name="ShuttleOps" />

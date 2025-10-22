@@ -15,9 +15,15 @@
   <event name="{{ sys.name }} System">
     <if_gm_button text="Systems/{{ sys.name }} System" />
     <set_variable name="Sandbox Activation" value="3.0" integer="yes" />
-    <set_variable name="Sector" value="102.0" integer="yes" /> {# TODO what's this do #}
     <set_variable name="{{ sys.name }} System" value="1.0" integer="yes" />
-    <set_variable name="GM Mode" value="3.0" integer="yes" />
+    <set_gm_button text="Select Sector" x="90" y="100" h="30" w="200" />
+    {% for row in range(sys.height) %}
+      {% for col in range(sys.width) %}
+        {% set i = row * sys.width + col %}
+        <set_gm_button text="Sector {{ i+1 }}" x="{{ 170 + 65 * col }}" y="{{ 190 + 65 * row }}" h="60" w="60" />
+      {% endfor %}
+    {% endfor %}
+    <set_variable name="GM Mode" value="4.0" integer="yes" />
   </event>
   <event name="Default System Side">
     <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
@@ -67,14 +73,15 @@
       {{ macros.transitionEvent(t, i+1, sys.name, sys.width, sys.height) }}
     {% endfor %}
 
-    {% if sec.get("gateTarget", {}).get("system") %}
-      {{ macros.jumpGateEvents(sys.name, sec.gateTarget.system, i+1, sec.gateTarget.sector) }}
-    {% endif %}
-
     {% call macros.entitiesEvent(sys.name, i+1, sec.get("gateTarget", {}).get("system", ""), "Planet" in sec.createdEntities) %}
       {{ sec.statements }}
     {% endcall %}
 
     {{ macros.destroyEvent(sys.name, i+1, sec.createdEntities) }}
+
+    {# Careful: order matters! The gate stuff (specifically the "Arrival from XY" event therein) must come after the sector entities, since the Arrival event tries to refer to the position of the gate entity in the same tick said entity gets created. #}
+    {% if sec.get("gateTarget", {}).get("system") %}
+      {{ macros.jumpGateEvents(sys.name, sec.gateTarget.system, i+1, sec.gateTarget.sector) }}
+    {% endif %}
 
   {% endfor %}

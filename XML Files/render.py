@@ -14,6 +14,8 @@ env = {
     ],
     "systems": [
         "Waypoint 52",
+        "Atlantis",
+        "Volantis",
         "Acantha",
         "Erebus",
     ],
@@ -53,7 +55,7 @@ OUT_FNAME = '../MISS_TSN-Command.xml'
 context = {
     "data": env,
     "version": "local",
-    "time": datetime.datetime.now(datetime.UTC).isoformat()
+    "time": datetime.datetime.now().isoformat()
 }
 
 with open(OUT_FNAME, 'w') as f:

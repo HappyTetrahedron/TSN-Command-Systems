@@ -13,8 +13,11 @@
   <event name="Waypoint 52 System">
     <if_gm_button text="Systems/Waypoint 52 System" />
     <set_variable name="Sandbox Activation" value="3.0" integer="yes" />
-    <set_variable name="Sector" value="102.0" integer="yes" />     <set_variable name="Waypoint 52 System" value="1.0" integer="yes" />
-    <set_variable name="GM Mode" value="3.0" integer="yes" />
+    <set_variable name="Waypoint 52 System" value="1.0" integer="yes" />
+    <set_gm_button text="Select Sector" x="90" y="100" h="30" w="200" />
+        <set_gm_button text="Sector 1" x="170" y="190" h="60" w="60" />
+        <set_gm_button text="Sector 2" x="170" y="255" h="60" w="60" />
+    <set_variable name="GM Mode" value="4.0" integer="yes" />
   </event>
   <event name="Default System Side">
     <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
@@ -104,6 +107,30 @@
     <set_variable name="Waypoint 52 System" value="3.0" integer="yes" />
   </event>
 
+
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Waypoint 52 System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          <create type="genericMesh" x="17393.0" y="14.0" z="23172.0" name="Atlantis Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+  
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Waypoint 52 I" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+      <set_object_property property="artScale" value="1.0" name="Atlantis Gate" />
+      <set_object_property property="pushRadius" value="0.0" name="Atlantis Gate" />
+      <set_object_property property="angle" value="4.71238898" name="Atlantis Gate" />
+      <set_object_property property="rollDelta" value="0.3" name="Atlantis Gate" />
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" />   </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Waypoint 52 System" comparator="EQUALS" value="3.0" />
+    <destroy name="Atlantis Gate" />
+    <destroy name="Waypoint 52 I" />
+    <set_variable name="Waypoint 52 System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
 
 
         <event name="Gate Offline" id_arme="4d2d3b10-fd64-4dd6-9e8d-b12ce7eb58a3" parent_id_arme="008d9df1-aa8c-4295-82ac-1fd4d150cb77">
@@ -314,30 +341,6 @@
 
 
 
-  <event name="Generate Sector Entities">
-    <if_variable name="Waypoint 52 System" comparator="EQUALS" value="2.0" />
-    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
-    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-          <create type="genericMesh" x="17393.0" y="14.0" z="23172.0" name="Atlantis Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
-  
-
-    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Waypoint 52 I" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
-      <set_object_property property="artScale" value="1.0" name="Atlantis Gate" />
-      <set_object_property property="pushRadius" value="0.0" name="Atlantis Gate" />
-      <set_object_property property="angle" value="4.71238898" name="Atlantis Gate" />
-      <set_object_property property="rollDelta" value="0.3" name="Atlantis Gate" />
-    <set_variable name="ExitorRetreat" value="0.0" />
-    <set_variable name="Sector Entities" value="3.0" />   </event>
-
-      <event name="Destroy Sector Entities">
-    <if_variable name="Waypoint 52 System" comparator="EQUALS" value="3.0" />
-    <destroy name="Atlantis Gate" />
-    <destroy name="Waypoint 52 I" />
-    <set_variable name="Waypoint 52 System" value="System" integer="yes" />
-    <set_variable name="Sector Entities" value="0.0" />
-  </event>
-
-
   <event name="Create Waypoint 52 Sector 2">
     <if_variable name="Waypoint 52 System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
@@ -377,6 +380,30 @@
     <set_variable name="Waypoint 52 System" value="3.0" integer="yes" />
   </event>
 
+
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Waypoint 52 System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          <create type="genericMesh" x="74970.0" y="7.0" z="74680.0" name="Volantis Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+  
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Waypoint 52 II" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+      <set_object_property property="artScale" value="1.0" name="Volantis Gate" />
+      <set_object_property property="pushRadius" value="0.0" name="Volantis Gate" />
+      <set_object_property property="angle" value="4.71238898" name="Volantis Gate" />
+      <set_object_property property="rollDelta" value="0.3" name="Volantis Gate" />
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" />   </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Waypoint 52 System" comparator="EQUALS" value="3.0" />
+    <destroy name="Volantis Gate" />
+    <destroy name="Waypoint 52 II" />
+    <set_variable name="Waypoint 52 System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
 
 
         <event name="Gate Offline" id_arme="4d2d3b10-fd64-4dd6-9e8d-b12ce7eb58a3" parent_id_arme="008d9df1-aa8c-4295-82ac-1fd4d150cb77">
@@ -585,29 +612,5 @@
     <set_variable name="Volantis to Waypoint 52" value="0.0" />
   </event>
 
-
-
-  <event name="Generate Sector Entities">
-    <if_variable name="Waypoint 52 System" comparator="EQUALS" value="2.0" />
-    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
-    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-          <create type="genericMesh" x="74970.0" y="7.0" z="74680.0" name="Volantis Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
-  
-
-    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Waypoint 52 II" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
-      <set_object_property property="artScale" value="1.0" name="Volantis Gate" />
-      <set_object_property property="pushRadius" value="0.0" name="Volantis Gate" />
-      <set_object_property property="angle" value="4.71238898" name="Volantis Gate" />
-      <set_object_property property="rollDelta" value="0.3" name="Volantis Gate" />
-    <set_variable name="ExitorRetreat" value="0.0" />
-    <set_variable name="Sector Entities" value="3.0" />   </event>
-
-      <event name="Destroy Sector Entities">
-    <if_variable name="Waypoint 52 System" comparator="EQUALS" value="3.0" />
-    <destroy name="Volantis Gate" />
-    <destroy name="Waypoint 52 II" />
-    <set_variable name="Waypoint 52 System" value="System" integer="yes" />
-    <set_variable name="Sector Entities" value="0.0" />
-  </event>
 
 
