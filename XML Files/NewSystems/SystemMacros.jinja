@@ -127,7 +127,7 @@
   </event>
 {% endmacro %}
 
-{% macro entitiesEvent(system, sector, gateTarget) %}
+{% macro entitiesEvent(system, sector, gateTarget, hasPlanet) %}
   <event name="Generate Sector Entities">
     <if_variable name="{{ system }} System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="{{ sector }}.0" />
@@ -140,6 +140,9 @@
       <set_object_property property="angle" value="4.71238898" name="{{ gateTarget }} Gate" />
       <set_object_property property="rollDelta" value="0.3" name="{{ gateTarget }} Gate" />
     {% endif %}
+    {% if hasPlanet %}
+    <set_variable name="CustomPlanet" value="1.0" integer="yes" />
+    {% endif %}
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="3.0" /> {# I *think* we can get away with skipping the "sector settings" step here. #}
   </event>
@@ -151,6 +154,9 @@
     {% for entity in entityList %}
     <destroy name="{{ entity }}" />
     {% endfor %}
+    {% if "Planet" in entityList %}
+    <set_variable name="DestroyPlanet" value="1.0" integer="yes" />
+    {% endif %}
     <destroy name="{{ system }} {{ util.romanNumerals[sector]}}" />
     <set_variable name="{{ system }} System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
