@@ -16,9 +16,6 @@
     <set_variable name="tagShipNumber" value="0.0" integer="yes" />
     <set_variable name="CurrentLetter" value="1.0" integer="yes" />
     <!--Test Variables (not required in start block)-->
-    <set_variable name="Waypoint 52 System" value="0.0" integer="yes" />
-    <set_variable name="Atlantis to Waypoint 52" value="0.0" integer="yes" />
-    <set_variable name="Sector" value="0.0" integer="yes" />
     <!--End of Test Variables-->
     <!--Suspicious Variables - maybe not needed here but haven't dared to delete.-->
     <set_variable name="System" value="1.0" integer="yes" />
