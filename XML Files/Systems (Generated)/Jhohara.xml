@@ -527,7 +527,7 @@
   <event name="Destroy Sector Entities" id_arme="8469c1c9-73b0-4cfb-9242-099233659f19" parent_id_arme="5d72b334-8af7-4fb1-82ec-02f429fb34c5">
     <if_variable name="Jhohara System" comparator="EQUALS" value="3.0" />
     <destroy name="Jhohara III" />
-    <destroy name="Manori Station" />
+    <destroy name="Manori" />
     <set_variable name="Jhohara System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>
@@ -1146,7 +1146,7 @@
     <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
     <set_variable name="Jhohara to Vrae" value="1.0" />
     <set_variable name="Vrae System" value="1.0" />
-    <set_variable name="Sector" value="targetSector" />
+    <set_variable name="Sector" value="1" />
     <set_variable name="shipsInrange" value="0.0" integer="yes" />
     <set_timer name="Transition" seconds="2" />
     <set_variable name="Gate System" value="0.0" />

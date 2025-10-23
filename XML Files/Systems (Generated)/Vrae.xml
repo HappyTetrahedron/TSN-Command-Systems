@@ -1,0 +1,2832 @@
+{# x=1454.0 y=210.0 alignment=Hegemony #}
+
+
+  <event name="Vrae Active">
+    <if_variable name="Activation Menu" comparator="EQUALS" value="1.0" />
+    <set_gm_button text="Systems/Vrae System" />
+    <set_variable name="Vrae Gate" value="1.0" integer="yes" />
+  </event>
+  <event name="Clear Menu Item">
+    <if_variable name="Activation Menu" comparator="EQUALS" value="0.0" />
+    <clear_gm_button text="Systems/Vrae System" />
+  </event>
+  <event name="Vrae System">
+    <if_gm_button text="Systems/Vrae System" />
+    <set_variable name="Sandbox Activation" value="3.0" integer="yes" />
+    <set_variable name="Vrae System" value="1.0" integer="yes" />
+    <set_gm_button text="Select Sector" x="90" y="100" h="30" w="200" />
+        <set_gm_button text="Sector 1" x="170" y="190" h="60" w="60" />
+        <set_gm_button text="Sector 2" x="235" y="190" h="60" w="60" />
+        <set_gm_button text="Sector 3" x="300" y="190" h="60" w="60" />
+        <set_gm_button text="Sector 4" x="365" y="190" h="60" w="60" />
+        <set_gm_button text="Sector 5" x="170" y="255" h="60" w="60" />
+        <set_gm_button text="Sector 6" x="235" y="255" h="60" w="60" />
+        <set_gm_button text="Sector 7" x="300" y="255" h="60" w="60" />
+        <set_gm_button text="Sector 8" x="365" y="255" h="60" w="60" />
+        <set_gm_button text="Sector 9" x="170" y="320" h="60" w="60" />
+        <set_gm_button text="Sector 10" x="235" y="320" h="60" w="60" />
+        <set_gm_button text="Sector 11" x="300" y="320" h="60" w="60" />
+        <set_gm_button text="Sector 12" x="365" y="320" h="60" w="60" />
+    <set_variable name="GM Mode" value="4.0" integer="yes" />
+  </event>
+  <event name="Default System Side">
+    <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="System" />
+    <if_variable name="systemSideOverride" comparator="LESS" value="1.0" />
+    <set_variable name="systemSide" value="1.0" integer="yes" />
+    <set_variable name="System Settings" value="2.0" integer="yes" />
+  </event>
+  <event name="System Side Override">
+    <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="System" />
+    <if_variable name="systemSideOverride" comparator="GREATER_EQUAL" value="1.0" />
+    <set_variable name="systemSide" value="systemSideOverride" integer="yes" />
+    <set_variable name="System Settings" value="2.0" integer="yes" />
+  </event>
+  <event name="Sector Side Override" id_arme="3f602d27-595b-43f1-8fdb-b80385a8ec79" parent_id_arme="e12965cc-4adf-447b-9c58-37de11bbe78f">
+    <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="System" />
+    <if_variable name="sectorSideOverride" comparator="GREATER_EQUAL" value="1.0" />
+    <set_variable name="sectorSide" value="sectorSideOverride" integer="yes" />
+    <set_variable name="System Settings" value="3.0" integer="yes" />
+  </event>
+  <event name="Sector Side Override (RESET)" id_arme="6e959c03-0cf4-4896-8370-708ee5d520b5" parent_id_arme="e12965cc-4adf-447b-9c58-37de11bbe78f">
+    <if_variable name="System Settings" comparator="EQUALS" value="3.0" />
+    <set_variable name="sectorSideOverride" value="0.0" integer="yes" />
+    <set_variable name="System Settings" value="0.0" integer="yes" />
+  </event>
+  <event name="Set Sector Side" id_arme="f729a094-5131-48f9-a880-07becef4410b" parent_id_arme="e12965cc-4adf-447b-9c58-37de11bbe78f">
+    <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="System" />
+    <if_variable name="sectorSideOverride" comparator="LESS" value="1.0" />
+    <set_variable name="sectorSide" value="systemSide" integer="yes" />
+    <set_variable name="System Settings" value="0.0" integer="yes" />
+  </event>
+
+
+  <event name="Create Vrae Sector 1">
+    <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+          <create count="500" type="nebulas" startX="60751.0" startY="0.0" startZ="2639.0" endX="95618.0" endY="0.0" endZ="46949.0" randomRange="30000" />
+    
+<create count="200" type="nebulas" startX="27337.0" startY="0.0" startZ="2784.0" endX="94165.0" endY="0.0" endZ="92130.0" randomRange="30000" />
+    
+<create count="10" type="asteroids" startX="23560.0" startY="0.0" startZ="12518.0" endX="34601.0" endY="0.0" endZ="26319.0" randomRange="10000" />
+    
+<create count="60" type="mines" startX="16296.0" startY="0.0" startZ="94019.0" endX="16151.0" endY="0.0" endZ="42881.0" />
+    
+
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Vrae System" value="2.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="0.0" />
+    <set_variable name="Grid A Transition Enabled" value="0.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+  </event>
+
+      
+  <event name="Grid E Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+
+    <set_variable name="Sector" value="5.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="2.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner E5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="6.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+    
+        <event name="Gate Offline" id_arme="4d2d3b10-fd64-4dd6-9e8d-b12ce7eb58a3" parent_id_arme="008d9df1-aa8c-4295-82ac-1fd4d150cb77">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="Jhohara Gate" />
+  </event>
+
+  <event name="Ship1 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="0" name2="Jhohara Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Jhohara Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship1" value="1.0" />
+  </event>
+  <event name="Ship1 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="0" name2="Jhohara Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Jhohara Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship1" value="0.0" />
+  </event> 
+  <event name="Ship2 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="1" name2="Jhohara Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Jhohara Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship2" value="1.0" />
+  </event>
+  <event name="Ship2 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="1" name2="Jhohara Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Jhohara Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship2" value="0.0" />
+  </event> 
+  <event name="Ship3 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="2" name2="Jhohara Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Jhohara Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship3" value="1.0" />
+  </event>
+  <event name="Ship3 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="2" name2="Jhohara Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Jhohara Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship3" value="0.0" />
+  </event> 
+  <event name="Ship4 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="3" name2="Jhohara Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Jhohara Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship4" value="1.0" />
+  </event>
+  <event name="Ship4 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="3" name2="Jhohara Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Jhohara Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship4" value="0.0" />
+  </event> 
+  <event name="Ship5 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="4" name2="Jhohara Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Jhohara Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship5" value="1.0" />
+  </event>
+  <event name="Ship5 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="4" name2="Jhohara Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Jhohara Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship5" value="0.0" />
+  </event> 
+  <event name="Ship6 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="5" name2="Jhohara Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Jhohara Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship6" value="1.0" />
+  </event>
+  <event name="Ship6 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="5" name2="Jhohara Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Jhohara Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship6" value="0.0" />
+  </event> 
+  <event name="Ship7 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="6" name2="Jhohara Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Jhohara Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship7" value="1.0" />
+  </event>
+  <event name="Ship7 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="6" name2="Jhohara Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Jhohara Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship7" value="0.0" />
+  </event> 
+  <event name="Ship8 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="7" name2="Jhohara Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Jhohara Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship8" value="1.0" />
+  </event>
+  <event name="Ship8 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="7" name2="Jhohara Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Jhohara Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship8" value="0.0" />
+  </event> 
+
+  <event name="Gate Online">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="Jhohara Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="Jhohara Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="Jhohara Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Vrae to Jhohara" value="1.0" />
+    <set_variable name="Jhohara System" value="1.0" />
+    <set_variable name="Sector" value="7" />
+    <set_variable name="shipsInrange" value="0.0" integer="yes" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+    <set_variable name="Gate System" value="0.0" />
+  </event>
+
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          <create type="neutral" x="30824.0" y="0.0" z="26900.0" angle="0" name="Gilmik Mining" hullID="1355" sideValue="sectorSide" />
+    
+<create type="neutral" x="63511.0" y="0.0" z="78910.0" angle="0" name="Routing Office" hullID="1357" sideValue="sectorSide" />
+    
+<create type="genericMesh" x="74843.0" y="7.0" z="63075.0" name="Jhohara Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+  
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Vrae I" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+      <set_object_property property="artScale" value="1.0" name="Jhohara Gate" />
+      <set_object_property property="pushRadius" value="0.0" name="Jhohara Gate" />
+      <set_object_property property="angle" value="4.71238898" name="Jhohara Gate" />
+      <set_object_property property="rollDelta" value="0.3" name="Jhohara Gate" />
+
+      
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> 
+  </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="3.0" />
+          <destroy name="Gilmik Mining" />
+    <destroy name="Routing Office" />
+    <destroy name="Jhohara Gate" />
+    <destroy name="Vrae I" />
+    <set_variable name="Vrae System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+
+
+        <event name="Arrival From Jhohara">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Jhohara to Vrae" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="Jhohara Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="Jhohara Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="Jhohara Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="Jhohara Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="Jhohara Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="Jhohara Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="Jhohara Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="Jhohara Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="Jhohara to Vrae" value="0.0" />
+  </event>
+
+
+  <event name="Create Vrae Sector 2">
+    <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="Transition" />
+          <create count="40" type="nebulas" nebType="2" startX="5109.0" startY="0.0" startZ="27191.0" endX="4528.0" endY="0.0" endZ="83849.0" randomRange="7000" />
+    
+<create count="40" type="nebulas" nebType="2" startX="3076.0" startY="0.0" startZ="97941.0" endX="16586.0" endY="0.0" endZ="39830.0" randomRange="7000" />
+    
+<create count="30" type="nebulas" startX="59734.0" startY="0.0" startZ="96053.0" endX="19637.0" endY="0.0" endZ="97215.0" randomRange="7000" />
+    
+<create count="30" type="nebulas" startX="48693.0" startY="0.0" startZ="85157.0" endX="23415.0" endY="0.0" endZ="93438.0" randomRange="7000" />
+    
+<create count="30" type="asteroids" startX="10485.0" startY="0.0" startZ="93728.0" endX="1913.0" endY="0.0" endZ="97506.0" randomRange="15000" />
+    
+<create count="40" type="mines" startX="60170.0" startY="0.0" startZ="17167.0" endX="60315.0" endY="0.0" endZ="42300.0" />
+    
+<create count="40" type="mines" startX="71211.0" startY="0.0" startZ="40556.0" endX="71356.0" endY="0.0" endZ="65689.0" />
+    
+<create count="15" type="asteroids" startX="97071.0" startY="0.0" startZ="4092.0" endX="97071.0" endY="0.0" endZ="4092.0" randomRange="10000" />
+    
+
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Vrae System" value="2.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="0.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+  </event>
+
+      
+  <event name="Grid E Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+
+    <set_variable name="Sector" value="6.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="1.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner E1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="5.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner E5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="7.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+    
+        <event name="Gate Offline" id_arme="4d2d3b10-fd64-4dd6-9e8d-b12ce7eb58a3" parent_id_arme="008d9df1-aa8c-4295-82ac-1fd4d150cb77">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="Il'Is'Kar Gate" />
+  </event>
+
+  <event name="Ship1 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="0" name2="Il'Is'Kar Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Il'Is'Kar Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship1" value="1.0" />
+  </event>
+  <event name="Ship1 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="0" name2="Il'Is'Kar Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Il'Is'Kar Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship1" value="0.0" />
+  </event> 
+  <event name="Ship2 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="1" name2="Il'Is'Kar Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Il'Is'Kar Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship2" value="1.0" />
+  </event>
+  <event name="Ship2 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="1" name2="Il'Is'Kar Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Il'Is'Kar Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship2" value="0.0" />
+  </event> 
+  <event name="Ship3 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="2" name2="Il'Is'Kar Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Il'Is'Kar Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship3" value="1.0" />
+  </event>
+  <event name="Ship3 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="2" name2="Il'Is'Kar Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Il'Is'Kar Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship3" value="0.0" />
+  </event> 
+  <event name="Ship4 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="3" name2="Il'Is'Kar Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Il'Is'Kar Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship4" value="1.0" />
+  </event>
+  <event name="Ship4 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="3" name2="Il'Is'Kar Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Il'Is'Kar Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship4" value="0.0" />
+  </event> 
+  <event name="Ship5 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="4" name2="Il'Is'Kar Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Il'Is'Kar Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship5" value="1.0" />
+  </event>
+  <event name="Ship5 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="4" name2="Il'Is'Kar Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Il'Is'Kar Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship5" value="0.0" />
+  </event> 
+  <event name="Ship6 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="5" name2="Il'Is'Kar Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Il'Is'Kar Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship6" value="1.0" />
+  </event>
+  <event name="Ship6 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="5" name2="Il'Is'Kar Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Il'Is'Kar Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship6" value="0.0" />
+  </event> 
+  <event name="Ship7 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="6" name2="Il'Is'Kar Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Il'Is'Kar Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship7" value="1.0" />
+  </event>
+  <event name="Ship7 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="6" name2="Il'Is'Kar Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Il'Is'Kar Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship7" value="0.0" />
+  </event> 
+  <event name="Ship8 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="7" name2="Il'Is'Kar Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Il'Is'Kar Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship8" value="1.0" />
+  </event>
+  <event name="Ship8 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="7" name2="Il'Is'Kar Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Il'Is'Kar Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship8" value="0.0" />
+  </event> 
+
+  <event name="Gate Online">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="Il'Is'Kar Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="Il'Is'Kar Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="Il'Is'Kar Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Vrae to Il'Is'Kar" value="1.0" />
+    <set_variable name="Il'Is'Kar System" value="1.0" />
+    <set_variable name="Sector" value="8" />
+    <set_variable name="shipsInrange" value="0.0" integer="yes" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+    <set_variable name="Gate System" value="0.0" />
+  </event>
+
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          <create type="enemy" x="65836.0" y="0.0" z="40847.0" angle="0" name="Defense Grid C" hullID="1005" sideValue="sectorSide" fleetnumber="-1" />
+    
+<create type="genericMesh" x="71502.0" y="8.0" z="29806.0" name="Il'Is'Kar Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+  
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Vrae II" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+      <set_object_property property="artScale" value="1.0" name="Il'Is'Kar Gate" />
+      <set_object_property property="pushRadius" value="0.0" name="Il'Is'Kar Gate" />
+      <set_object_property property="angle" value="4.71238898" name="Il'Is'Kar Gate" />
+      <set_object_property property="rollDelta" value="0.3" name="Il'Is'Kar Gate" />
+
+    
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> 
+  </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="3.0" />
+        <destroy name="Defense Grid C" />
+    <destroy name="Il'Is'Kar Gate" />
+    <destroy name="Vrae II" />
+    <set_variable name="Vrae System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+
+
+        <event name="Arrival From Il'Is'Kar">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Il'Is'Kar to Vrae" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="Il'Is'Kar Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="Il'Is'Kar Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="Il'Is'Kar Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="Il'Is'Kar Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="Il'Is'Kar Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="Il'Is'Kar Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="Il'Is'Kar Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="Il'Is'Kar Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="Il'Is'Kar to Vrae" value="0.0" />
+  </event>
+
+
+  <event name="Create Vrae Sector 3">
+    <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_timer_finished name="Transition" />
+          <create count="100" type="nebulas" startX="20800.0" startY="0.0" startZ="39539.0" endX="43899.0" endY="0.0" endZ="95762.0" randomRange="20000" />
+    
+<create count="100" type="nebulas" startX="94165.0" startY="0.0" startZ="51598.0" endX="20073.0" endY="0.0" endZ="35326.0" randomRange="20000" />
+    
+<create count="70" type="nebulas" startX="85884.0" startY="0.0" startZ="67723.0" endX="72083.0" endY="0.0" endZ="94019.0" randomRange="15000" />
+    
+<create count="100" type="nebulas" startX="52906.0" startY="0.0" startZ="93728.0" endX="55085.0" endY="0.0" endZ="48983.0" randomRange="20000" />
+    
+<create count="30" type="nebulas" nebType="2" startX="50436.0" startY="0.0" startZ="21234.0" endX="98959.0" endY="0.0" endZ="21089.0" randomRange="7000" />
+    
+<create count="15" type="nebulas" nebType="2" startX="83705.0" startY="0.0" startZ="24721.0" endX="100122.0" endY="0.0" endZ="33728.0" randomRange="7000" />
+    
+<create count="15" type="nebulas" nebType="2" startX="99105.0" startY="0.0" startZ="55811.0" endX="96054.0" endY="0.0" endZ="30968.0" randomRange="7000" />
+    
+<create count="10" type="nebulas" nebType="2" startX="97942.0" startY="0.0" startZ="97651.0" endX="102446.0" endY="0.0" endZ="89370.0" randomRange="6000" />
+    
+<create count="100" type="asteroids" startX="62640.0" startY="0.0" startZ="42445.0" endX="38959.0" endY="0.0" endZ="1041.0" randomRange="20000" />
+    
+<create count="100" type="asteroids" startX="86756.0" startY="0.0" startZ="97360.0" endX="67579.0" endY="0.0" endZ="54067.0" randomRange="20000" />
+  
+
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Vrae System" value="2.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="0.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+  </event>
+
+      
+  <event name="Grid E Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+
+    <set_variable name="Sector" value="7.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="2.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="4.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner E1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="6.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner E5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="8.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+    
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Vrae III" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+
+
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> 
+  </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="3.0" />
+    <destroy name="Vrae III" />
+    <set_variable name="Vrae System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+
+
+
+  <event name="Create Vrae Sector 4">
+    <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_timer_finished name="Transition" />
+          <create count="200" type="nebulas" startX="94165.0" startY="0.0" startZ="87481.0" endX="39105.0" endY="0.0" endZ="81234.0" randomRange="20000" />
+    
+<create count="40" type="nebulas" startX="4238.0" startY="0.0" startZ="96343.0" endX="34310.0" endY="0.0" endZ="72082.0" randomRange="10000" />
+    
+<create count="30" type="nebulas" nebType="2" startX="29080.0" startY="0.0" startZ="57118.0" endX="80218.0" endY="0.0" endZ="56682.0" randomRange="7000" />
+    
+<create count="10" type="nebulas" nebType="2" startX="57410.0" startY="0.0" startZ="54794.0" endX="39105.0" endY="0.0" endZ="54503.0" randomRange="10000" />
+    
+<create count="10" type="nebulas" startX="11211.0" startY="0.0" startZ="71646.0" endX="31114.0" endY="0.0" endZ="97941.0" randomRange="10000" />
+    
+<create count="20" type="nebulas" startX="97507.0" startY="0.0" startZ="18038.0" endX="99250.0" endY="0.0" endZ="38668.0" randomRange="7000" />
+    
+<create count="20" type="nebulas" startX="99831.0" startY="0.0" startZ="55956.0" endX="97797.0" endY="0.0" endZ="20653.0" randomRange="3000" />
+  
+
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Vrae System" value="2.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="0.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="0.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+  </event>
+
+      
+  <event name="Grid E Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+
+    <set_variable name="Sector" value="8.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner E1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="7.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+    
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Vrae IV" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+
+
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> 
+  </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="3.0" />
+    <destroy name="Vrae IV" />
+    <set_variable name="Vrae System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+
+
+
+  <event name="Create Vrae Sector 5">
+    <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_timer_finished name="Transition" />
+          <create count="60" type="nebulas" startX="79928.0" startY="0.0" startZ="1476.0" endX="92277.0" endY="0.0" endZ="52615.0" randomRange="10000" />
+    
+<create count="70" type="nebulas" startX="94165.0" startY="0.0" startZ="94745.0" endX="94746.0" endY="0.0" endZ="4092.0" randomRange="10000" />
+    
+<create count="30" type="asteroids" startX="82107.0" startY="0.0" startZ="59878.0" endX="80654.0" endY="0.0" endZ="41573.0" randomRange="10000" />
+    
+<create count="30" type="asteroids" startX="69758.0" startY="0.0" startZ="9176.0" endX="78330.0" endY="0.0" endZ="37215.0" randomRange="10000" />
+    
+
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Vrae System" value="2.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="0.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+  </event>
+
+      
+  <event name="Grid A Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+
+    <set_variable name="Sector" value="1.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid E Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+
+    <set_variable name="Sector" value="9.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="6.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner A5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="2.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner E5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="10.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+    
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          <create type="neutral" x="31986.0" y="0.0" z="27772.0" angle="0" name="Golgagi" hullID="1358" sideValue="sectorSide" />
+    
+<create type="neutral" x="82688.0" y="0.0" z="55956.0" angle="0" name="Inzisda Nebula Refinery" hullID="1356" sideValue="sectorSide" />
+  
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Vrae V" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+
+    
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> 
+  </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="3.0" />
+        <destroy name="Golgagi" />
+    <destroy name="Inzisda Nebula Refinery" />
+    <destroy name="Vrae V" />
+    <set_variable name="Vrae System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+
+
+
+  <event name="Create Vrae Sector 6">
+    <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_timer_finished name="Transition" />
+          <create count="150" type="nebulas" startX="19056.0" startY="0.0" startZ="65980.0" endX="93293.0" endY="0.0" endZ="90823.0" randomRange="25000" />
+    
+<create count="150" type="nebulas" startX="83415.0" startY="0.0" startZ="82978.0" endX="45061.0" endY="0.0" endZ="13244.0" randomRange="25000" />
+    
+<create count="150" type="nebulas" startX="50000.0" startY="0.0" startZ="11501.0" endX="8015.0" endY="0.0" endZ="78329.0" randomRange="25000" />
+    
+<create count="70" type="nebulas" startX="80654.0" startY="0.0" startZ="35472.0" endX="87337.0" endY="0.0" endZ="29806.0" randomRange="15000" />
+    
+<create count="20" type="nebulas" nebType="2" startX="-702.0" startY="0.0" startZ="92421.0" endX="30097.0" endY="0.0" endZ="98813.0" randomRange="5000" />
+    
+<create count="20" type="nebulas" startX="5400.0" startY="0.0" startZ="84721.0" endX="51163.0" endY="0.0" endZ="95762.0" randomRange="5000" />
+    
+<create count="20" type="nebulas" startX="896.0" startY="0.0" startZ="37360.0" endX="29952.0" endY="0.0" endZ="2348.0" randomRange="5000" />
+    
+<create count="20" type="nebulas" startX="92131.0" startY="0.0" startZ="94164.0" endX="92712.0" endY="0.0" endZ="65254.0" randomRange="10000" />
+    
+<create count="100" type="asteroids" startX="33003.0" startY="0.0" startZ="43462.0" endX="13390.0" endY="0.0" endZ="1912.0" randomRange="20000" />
+    
+<create count="100" type="asteroids" startX="40848.0" startY="0.0" startZ="98668.0" endX="32131.0" endY="0.0" endZ="52760.0" randomRange="20000" />
+  
+
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Vrae System" value="2.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+  </event>
+
+      
+  <event name="Grid A Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+
+    <set_variable name="Sector" value="2.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid E Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+
+    <set_variable name="Sector" value="10.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="5.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="7.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner A1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="1.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner A5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner E1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="9.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner E5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="11.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+    
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Vrae VI" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+
+
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> 
+  </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="3.0" />
+    <destroy name="Vrae VI" />
+    <set_variable name="Vrae System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+
+
+
+  <event name="Create Vrae Sector 7">
+    <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_timer_finished name="Transition" />
+          <create count="10" type="nebulas" startX="88790.0" startY="0.0" startZ="314.0" endX="67289.0" endY="0.0" endZ="39975.0" randomRange="1000" randomSeed="1000" />
+    
+<create count="10" type="nebulas" startX="44189.0" startY="0.0" startZ="38087.0" endX="20509.0" endY="0.0" endZ="314.0" randomRange="1000" />
+    
+<create count="10" type="nebulas" startX="39105.0" startY="0.0" startZ="43462.0" endX="3802.0" endY="0.0" endZ="1331.0" randomRange="1000" />
+    
+<create count="10" type="nebulas" startX="34892.0" startY="0.0" startZ="55520.0" endX="1332.0" endY="0.0" endZ="53486.0" randomRange="1000" />
+    
+<create count="10" type="nebulas" startX="35473.0" startY="0.0" startZ="63220.0" endX="751.0" endY="0.0" endZ="65254.0" randomRange="1000" />
+    
+<create count="10" type="nebulas" startX="44770.0" startY="0.0" startZ="78329.0" endX="34165.0" endY="0.0" endZ="97506.0" randomRange="1000" />
+    
+<create count="10" type="nebulas" startX="53778.0" startY="0.0" startZ="80653.0" endX="48984.0" endY="0.0" endZ="98668.0" randomRange="1000" />
+    
+<create count="10" type="nebulas" startX="73536.0" startY="0.0" startZ="74842.0" endX="93584.0" endY="0.0" endZ="98523.0" randomRange="1000" />
+    
+<create count="10" type="nebulas" startX="77168.0" startY="0.0" startZ="66707.0" endX="99395.0" endY="0.0" endZ="81234.0" randomRange="1000" />
+    
+<create count="10" type="nebulas" startX="73971.0" startY="0.0" startZ="45496.0" endX="99831.0" endY="0.0" endZ="14406.0" randomRange="1000" randomSeed="1000" />
+    
+<create count="100" type="nebulas" startX="64674.0" startY="0.0" startZ="27917.0" endX="76005.0" endY="0.0" endZ="895.0" randomRange="10000" randomSeed="5000" />
+    
+<create count="100" type="nebulas" startX="51599.0" startY="0.0" startZ="2058.0" endX="54359.0" endY="0.0" endZ="29370.0" randomRange="10000" randomSeed="5000" />
+    
+<create count="100" type="nebulas" startX="50582.0" startY="0.0" startZ="31985.0" endX="36344.0" endY="0.0" endZ="2639.0" randomRange="10000" randomSeed="5000" />
+    
+<create count="100" type="nebulas" startX="1477.0" startY="0.0" startZ="10774.0" endX="32277.0" endY="0.0" endZ="47966.0" randomRange="10000" randomSeed="5000" />
+    
+<create count="100" type="nebulas" startX="32858.0" startY="0.0" startZ="46658.0" endX="751.0" endY="0.0" endZ="36924.0" randomRange="10000" randomSeed="5000" />
+    
+<create count="100" type="nebulas" startX="37361.0" startY="0.0" startZ="73535.0" endX="1042.0" endY="0.0" endZ="75423.0" randomRange="10000" randomSeed="5000" />
+    
+<create count="100" type="nebulas" startX="34456.0" startY="0.0" startZ="83849.0" endX="4093.0" endY="0.0" endZ="96924.0" randomRange="10000" randomSeed="5000" />
+    
+<create count="100" type="nebulas" startX="58717.0" startY="0.0" startZ="87917.0" endX="82979.0" endY="0.0" endZ="96634.0" randomRange="10000" randomSeed="5000" />
+    
+<create count="100" type="nebulas" startX="82107.0" startY="0.0" startZ="47966.0" endX="100122.0" endY="0.0" endZ="73244.0" randomRange="10000" randomSeed="5000" />
+    
+<create count="100" type="nebulas" startX="104335.0" startY="0.0" startZ="25883.0" endX="85448.0" endY="0.0" endZ="50000.0" randomRange="10000" randomSeed="5000" />
+    
+<create count="60" type="nebulas" startX="2494.0" startY="0.0" startZ="16295.0" endX="3657.0" endY="0.0" endZ="44334.0" randomRange="10000" randomSeed="5000" />
+    
+<create count="20" type="nebulas" startX="96780.0" startY="0.0" startZ="54648.0" endX="96199.0" endY="0.0" endZ="49273.0" randomRange="10000" randomSeed="5000" />
+    
+<create count="20" type="nebulas" startX="31841.0" startY="0.0" startZ="78038.0" endX="31260.0" endY="0.0" endZ="72663.0" randomRange="10000" randomSeed="5000" />
+    
+<create count="20" type="nebulas" startX="61042.0" startY="0.0" startZ="90677.0" endX="72373.0" endY="0.0" endZ="88353.0" randomRange="10000" randomSeed="5000" />
+    
+<create count="20" type="nebulas" startX="4964.0" startY="0.0" startZ="45205.0" endX="23269.0" endY="0.0" endZ="47530.0" randomRange="10000" randomSeed="5000" />
+    
+<create count="20" type="nebulas" startX="62494.0" startY="0.0" startZ="34600.0" endX="64238.0" endY="0.0" endZ="29661.0" randomRange="10000" randomSeed="5000" />
+    
+<create count="5" type="nebulas" nebType="2" startX="9613.0" startY="0.0" startZ="91840.0" endX="11357.0" endY="0.0" endZ="86901.0" randomRange="10000" randomSeed="5000" />
+    
+<create count="5" type="nebulas" nebType="2" startX="65836.0" startY="0.0" startZ="2929.0" endX="50146.0" endY="0.0" endZ="2784.0" randomRange="10000" randomSeed="5000" />
+    
+<create count="7" type="nebulas" nebType="2" startX="6562.0" startY="0.0" startZ="31985.0" endX="1913.0" endY="0.0" endZ="26029.0" randomRange="10000" randomSeed="5000" />
+    
+<create count="10" type="asteroids" startX="98814.0" startY="0.0" startZ="2639.0" endX="98814.0" endY="0.0" endZ="2639.0" randomRange="10000" />
+    
+<create count="10" type="nebulas" nebType="2" startX="75570.0" startY="0.0" startZ="30677.0" endX="91841.0" endY="0.0" endZ="460.0" randomRange="1000" randomSeed="1000" />
+    
+<create count="10" type="nebulas" nebType="2" startX="78475.0" startY="0.0" startZ="70193.0" endX="99105.0" endY="0.0" endZ="84866.0" randomRange="1000" randomSeed="1000" />
+    
+
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Vrae System" value="2.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+  </event>
+
+      
+  <event name="Grid A Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid E Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+
+    <set_variable name="Sector" value="11.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="6.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="8.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner A1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="2.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner A5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="4.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner E1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="10.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner E5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="12.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+    
+        <event name="Gate Offline" id_arme="4d2d3b10-fd64-4dd6-9e8d-b12ce7eb58a3" parent_id_arme="008d9df1-aa8c-4295-82ac-1fd4d150cb77">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="Khoros Gate" />
+  </event>
+
+  <event name="Ship1 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="0" name2="Khoros Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Khoros Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship1" value="1.0" />
+  </event>
+  <event name="Ship1 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="0" name2="Khoros Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Khoros Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship1" value="0.0" />
+  </event> 
+  <event name="Ship2 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="1" name2="Khoros Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Khoros Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship2" value="1.0" />
+  </event>
+  <event name="Ship2 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="1" name2="Khoros Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Khoros Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship2" value="0.0" />
+  </event> 
+  <event name="Ship3 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="2" name2="Khoros Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Khoros Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship3" value="1.0" />
+  </event>
+  <event name="Ship3 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="2" name2="Khoros Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Khoros Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship3" value="0.0" />
+  </event> 
+  <event name="Ship4 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="3" name2="Khoros Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Khoros Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship4" value="1.0" />
+  </event>
+  <event name="Ship4 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="3" name2="Khoros Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Khoros Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship4" value="0.0" />
+  </event> 
+  <event name="Ship5 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="4" name2="Khoros Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Khoros Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship5" value="1.0" />
+  </event>
+  <event name="Ship5 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="4" name2="Khoros Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Khoros Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship5" value="0.0" />
+  </event> 
+  <event name="Ship6 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="5" name2="Khoros Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Khoros Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship6" value="1.0" />
+  </event>
+  <event name="Ship6 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="5" name2="Khoros Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Khoros Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship6" value="0.0" />
+  </event> 
+  <event name="Ship7 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="6" name2="Khoros Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Khoros Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship7" value="1.0" />
+  </event>
+  <event name="Ship7 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="6" name2="Khoros Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Khoros Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship7" value="0.0" />
+  </event> 
+  <event name="Ship8 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="7" name2="Khoros Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Khoros Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship8" value="1.0" />
+  </event>
+  <event name="Ship8 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="7" name2="Khoros Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Khoros Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship8" value="0.0" />
+  </event> 
+
+  <event name="Gate Online">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="Khoros Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="Khoros Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="Khoros Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Vrae to Khoros" value="1.0" />
+    <set_variable name="Khoros System" value="1.0" />
+    <set_variable name="Sector" value="8" />
+    <set_variable name="shipsInrange" value="0.0" integer="yes" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+    <set_variable name="Gate System" value="0.0" />
+  </event>
+
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="7.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          <create type="genericMesh" x="61332.0" y="0.0" z="60895.0" angle="0" name="PULSARVrae Pulsar" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    
+<create type="genericMesh" x="26320.0" y="8.0" z="67578.0" name="Khoros Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+  
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Vrae VII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+      <set_object_property property="artScale" value="1.0" name="Khoros Gate" />
+      <set_object_property property="pushRadius" value="0.0" name="Khoros Gate" />
+      <set_object_property property="angle" value="4.71238898" name="Khoros Gate" />
+      <set_object_property property="rollDelta" value="0.3" name="Khoros Gate" />
+
+                 <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P0" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Neutrals\Dhvarahn_Spec.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="1.0" name="P0" />
+        <set_object_property property="artScale" value="8.0" name="P0" />
+        <set_relative_position name2="P0" distance="2000" angle="0.0" name1="PULSARVrae Pulsar" />
+        <set_object_property property="positionY" value="0.0" name="P0" />
+        <set_object_property property="angle" value="0.0" name="P0" />
+        <set_ship_text name="P0" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P1" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Neutrals\Dhvarahn_Spec.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="1.0" name="P1" />
+        <set_object_property property="artScale" value="8.0" name="P1" />
+        <set_relative_position name2="P1" distance="2000" angle="45.0" name1="PULSARVrae Pulsar" />
+        <set_object_property property="positionY" value="0.0" name="P1" />
+        <set_object_property property="angle" value="0.78539816339" name="P1" />
+        <set_ship_text name="P1" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P2" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Neutrals\Dhvarahn_Spec.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="1.0" name="P2" />
+        <set_object_property property="artScale" value="8.0" name="P2" />
+        <set_relative_position name2="P2" distance="2000" angle="90.0" name1="PULSARVrae Pulsar" />
+        <set_object_property property="positionY" value="0.0" name="P2" />
+        <set_object_property property="angle" value="1.57079632678" name="P2" />
+        <set_ship_text name="P2" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P3" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Neutrals\Dhvarahn_Spec.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="1.0" name="P3" />
+        <set_object_property property="artScale" value="8.0" name="P3" />
+        <set_relative_position name2="P3" distance="2000" angle="135.0" name1="PULSARVrae Pulsar" />
+        <set_object_property property="positionY" value="0.0" name="P3" />
+        <set_object_property property="angle" value="2.35619449017" name="P3" />
+        <set_ship_text name="P3" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P4" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Neutrals\Dhvarahn_Spec.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="1.0" name="P4" />
+        <set_object_property property="artScale" value="8.0" name="P4" />
+        <set_relative_position name2="P4" distance="2000" angle="180.0" name1="PULSARVrae Pulsar" />
+        <set_object_property property="positionY" value="0.0" name="P4" />
+        <set_object_property property="angle" value="3.14159265356" name="P4" />
+        <set_ship_text name="P4" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P5" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Neutrals\Dhvarahn_Spec.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="1.0" name="P5" />
+        <set_object_property property="artScale" value="8.0" name="P5" />
+        <set_relative_position name2="P5" distance="2000" angle="225.0" name1="PULSARVrae Pulsar" />
+        <set_object_property property="positionY" value="0.0" name="P5" />
+        <set_object_property property="angle" value="3.92699081695" name="P5" />
+        <set_ship_text name="P5" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P6" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Neutrals\Dhvarahn_Spec.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="1.0" name="P6" />
+        <set_object_property property="artScale" value="8.0" name="P6" />
+        <set_relative_position name2="P6" distance="2000" angle="270.0" name1="PULSARVrae Pulsar" />
+        <set_object_property property="positionY" value="0.0" name="P6" />
+        <set_object_property property="angle" value="4.71238898034" name="P6" />
+        <set_ship_text name="P6" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P7" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Neutrals\Dhvarahn_Spec.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="1.0" name="P7" />
+        <set_object_property property="artScale" value="8.0" name="P7" />
+        <set_relative_position name2="P7" distance="2000" angle="315.0" name1="PULSARVrae Pulsar" />
+        <set_object_property property="positionY" value="0.0" name="P7" />
+        <set_object_property property="angle" value="5.49778714373" name="P7" />
+        <set_ship_text name="P7" newname=" " />
+    <set_object_property property="angleDelta" value="0.004" name="PULSARVrae Pulsar" />
+    <set_ship_text name="PULSARVrae Pulsar" newname="Vrae Pulsar" />
+
+   
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> 
+  </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="3.0" />
+             <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+
+        <destroy name="Vrae Pulsar" />
+       <destroy name="PULSARVrae Pulsar" />
+    <destroy name="Khoros Gate" />
+    <destroy name="Vrae VII" />
+    <set_variable name="Vrae System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+
+
+        <event name="Arrival From Khoros">
+    <if_variable name="Sector" comparator="EQUALS" value="7" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Khoros to Vrae" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="Khoros Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="Khoros Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="Khoros Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="Khoros Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="Khoros Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="Khoros Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="Khoros Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="Khoros Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="Khoros to Vrae" value="0.0" />
+  </event>
+
+
+  <event name="Create Vrae Sector 8">
+    <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_timer_finished name="Transition" />
+          <create count="50" type="nebulas" startX="101284.0" startY="0.0" startZ="75569.0" endX="45933.0" endY="0.0" endZ="79200.0" randomRange="10000" />
+    
+<create count="50" type="nebulas" startX="27482.0" startY="0.0" startZ="92130.0" endX="96780.0" endY="0.0" endZ="91840.0" randomRange="10000" />
+    
+<create count="10" type="nebulas" nebType="2" startX="25158.0" startY="0.0" startZ="79200.0" endX="25158.0" endY="0.0" endZ="79200.0" randomRange="10000" />
+    
+<create count="10" type="nebulas" nebType="2" startAngle="0" endAngle="90" startX="41720.0" startY="0.0" startZ="97651.0" radius="25507" randomRange="10000" />
+    
+<create count="10" type="nebulas" nebType="2" startX="25884.0" startY="0.0" startZ="66997.0" endX="58572.0" endY="0.0" endZ="65690.0" randomRange="5000" />
+    
+<create count="10" type="nebulas" startX="86901.0" startY="0.0" startZ="65835.0" endX="60461.0" endY="0.0" endZ="66852.0" randomRange="5000" />
+    
+<create count="200" type="nebulas" startX="96054.0" startY="0.0" startZ="19636.0" endX="25594.0" endY="0.0" endZ="19636.0" randomRange="25000" />
+    
+<create count="10" type="nebulas" startX="99540.0" startY="0.0" startZ="46368.0" endX="77168.0" endY="0.0" endZ="42154.0" randomRange="5000" />
+    
+<create count="10" type="nebulas" startX="43899.0" startY="0.0" startZ="44043.0" endX="21381.0" endY="0.0" endZ="44043.0" randomRange="5000" />
+  
+
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Vrae System" value="2.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="0.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+  </event>
+
+      
+  <event name="Grid A Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+
+    <set_variable name="Sector" value="4.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid E Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+
+    <set_variable name="Sector" value="12.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="7.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner A1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner E1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="11.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+    
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="8.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Vrae VIII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+
+
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> 
+  </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="3.0" />
+    <destroy name="Vrae VIII" />
+    <set_variable name="Vrae System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+
+
+
+  <event name="Create Vrae Sector 9">
+    <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="9.0" />
+    <if_timer_finished name="Transition" />
+          <create count="30" type="nebulas" nebType="2" startX="20654.0" startY="0.0" startZ="9903.0" radius="8179" randomRange="5000" />
+    
+<create count="60" type="nebulas" nebType="2" startX="13100.0" startY="0.0" startZ="3365.0" endX="4528.0" endY="0.0" endZ="42590.0" randomRange="10000" />
+    
+<create count="60" type="nebulas" nebType="2" startX="93293.0" startY="0.0" startZ="58426.0" endX="84721.0" endY="0.0" endZ="97651.0" randomRange="30000" />
+    
+<create count="40" type="nebulas" nebType="2" startX="78620.0" startY="0.0" startZ="66125.0" endX="98814.0" endY="0.0" endZ="2203.0" randomRange="10000" />
+    
+<create count="10" type="nebulas" nebType="2" startX="40848.0" startY="0.0" startZ="97070.0" endX="64383.0" endY="0.0" endZ="86029.0" randomRange="5000" />
+    
+<create count="60" type="mines" startX="18475.0" startY="0.0" startZ="11791.0" endX="18620.0" endY="0.0" endZ="58135.0" />
+    
+
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Vrae System" value="2.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="0.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="0.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+  </event>
+
+      
+  <event name="Grid A Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="9.0" />
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+
+    <set_variable name="Sector" value="5.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="9.0" />
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="10.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner A5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="9.0" />
+    <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="6.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+    
+        <event name="Gate Offline" id_arme="4d2d3b10-fd64-4dd6-9e8d-b12ce7eb58a3" parent_id_arme="008d9df1-aa8c-4295-82ac-1fd4d150cb77">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="Ka'Morlin Gate" />
+  </event>
+
+  <event name="Ship1 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="0" name2="Ka'Morlin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Ka'Morlin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship1" value="1.0" />
+  </event>
+  <event name="Ship1 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="0" name2="Ka'Morlin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Ka'Morlin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship1" value="0.0" />
+  </event> 
+  <event name="Ship2 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="1" name2="Ka'Morlin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Ka'Morlin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship2" value="1.0" />
+  </event>
+  <event name="Ship2 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="1" name2="Ka'Morlin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Ka'Morlin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship2" value="0.0" />
+  </event> 
+  <event name="Ship3 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="2" name2="Ka'Morlin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Ka'Morlin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship3" value="1.0" />
+  </event>
+  <event name="Ship3 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="2" name2="Ka'Morlin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Ka'Morlin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship3" value="0.0" />
+  </event> 
+  <event name="Ship4 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="3" name2="Ka'Morlin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Ka'Morlin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship4" value="1.0" />
+  </event>
+  <event name="Ship4 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="3" name2="Ka'Morlin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Ka'Morlin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship4" value="0.0" />
+  </event> 
+  <event name="Ship5 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="4" name2="Ka'Morlin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Ka'Morlin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship5" value="1.0" />
+  </event>
+  <event name="Ship5 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="4" name2="Ka'Morlin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Ka'Morlin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship5" value="0.0" />
+  </event> 
+  <event name="Ship6 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="5" name2="Ka'Morlin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Ka'Morlin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship6" value="1.0" />
+  </event>
+  <event name="Ship6 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="5" name2="Ka'Morlin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Ka'Morlin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship6" value="0.0" />
+  </event> 
+  <event name="Ship7 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="6" name2="Ka'Morlin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Ka'Morlin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship7" value="1.0" />
+  </event>
+  <event name="Ship7 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="6" name2="Ka'Morlin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Ka'Morlin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship7" value="0.0" />
+  </event> 
+  <event name="Ship8 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="7" name2="Ka'Morlin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Ka'Morlin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship8" value="1.0" />
+  </event>
+  <event name="Ship8 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="7" name2="Ka'Morlin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Ka'Morlin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship8" value="0.0" />
+  </event> 
+
+  <event name="Gate Online">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="Ka'Morlin Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="Ka'Morlin Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="Ka'Morlin Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Vrae to Ka'Morlin" value="1.0" />
+    <set_variable name="Ka'Morlin System" value="1.0" />
+    <set_variable name="Sector" value="8" />
+    <set_variable name="shipsInrange" value="0.0" integer="yes" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+    <set_variable name="Gate System" value="0.0" />
+  </event>
+
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="9.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          <create type="enemy" x="40267.0" y="0.0" z="23559.0" angle="322.8" name="Defense Grid A" hullID="1005" sideValue="sectorSide" fleetnumber="-1" />
+    
+<create type="enemy" x="40703.0" y="0.0" z="36198.0" angle="263.5" name="Defense Grid B" hullID="1005" sideValue="sectorSide" fleetnumber="-1" />
+    
+<create type="enemy" x="40848.0" y="0.0" z="49418.0" angle="229.4" name="Defense Grid D" hullID="1005" sideValue="sectorSide" fleetnumber="-1" />
+    
+<create type="genericMesh" x="29371.0" y="8.0" z="36198.0" name="Ka'Morlin Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+  
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Vrae IX" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+      <set_object_property property="artScale" value="1.0" name="Ka'Morlin Gate" />
+      <set_object_property property="pushRadius" value="0.0" name="Ka'Morlin Gate" />
+      <set_object_property property="angle" value="4.71238898" name="Ka'Morlin Gate" />
+      <set_object_property property="rollDelta" value="0.3" name="Ka'Morlin Gate" />
+
+        
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> 
+  </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="3.0" />
+            <destroy name="Defense Grid A" />
+    <destroy name="Defense Grid B" />
+    <destroy name="Defense Grid D" />
+    <destroy name="Ka'Morlin Gate" />
+    <destroy name="Vrae IX" />
+    <set_variable name="Vrae System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+
+
+        <event name="Arrival From Ka'Morlin">
+    <if_variable name="Sector" comparator="EQUALS" value="9" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Ka'Morlin to Vrae" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="Ka'Morlin Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="Ka'Morlin Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="Ka'Morlin Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="Ka'Morlin Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="Ka'Morlin Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="Ka'Morlin Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="Ka'Morlin Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="Ka'Morlin Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="Ka'Morlin to Vrae" value="0.0" />
+  </event>
+
+
+  <event name="Create Vrae Sector 10">
+    <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="10.0" />
+    <if_timer_finished name="Transition" />
+          <create count="100" type="nebulas" nebType="2" startX="99976.0" startY="0.0" startZ="41138.0" endX="24577.0" endY="0.0" endZ="1331.0" randomRange="10000" />
+    
+<create count="100" type="nebulas" nebType="2" startX="52034.0" startY="0.0" startZ="13244.0" endX="96780.0" endY="0.0" endZ="22397.0" randomRange="10000" />
+    
+<create count="100" type="nebulas" startX="97216.0" startY="0.0" startZ="1476.0" endX="51889.0" endY="0.0" endZ="169.0" randomRange="10000" />
+    
+<create count="100" type="asteroids" startX="47676.0" startY="0.0" startZ="35326.0" endX="40412.0" endY="0.0" endZ="750.0" randomRange="20000" />
+    
+<create count="100" type="asteroids" startX="51163.0" startY="0.0" startZ="95472.0" endX="48838.0" endY="0.0" endZ="50000.0" randomRange="20000" />
+    
+<create count="100" type="nebulas" startX="48257.0" startY="0.0" startZ="84576.0" endX="1042.0" endY="0.0" endZ="18765.0" randomRange="10000" />
+    
+<create count="60" type="nebulas" startX="19928.0" startY="0.0" startZ="97796.0" endX="55231.0" endY="0.0" endZ="70484.0" randomRange="20000" />
+    
+<create count="80" type="nebulas" startX="25013.0" startY="0.0" startZ="78329.0" endX="6126.0" endY="0.0" endZ="52033.0" randomRange="10000" />
+    
+<create count="50" type="nebulas" startX="11502.0" startY="0.0" startZ="96924.0" endX="5691.0" endY="0.0" endZ="73535.0" randomRange="10000" />
+    
+<create count="10" type="nebulas" startX="751.0" startY="0.0" startZ="8595.0" endX="5400.0" endY="0.0" endZ="17312.0" randomRange="5000" />
+  
+
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Vrae System" value="2.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="0.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+  </event>
+
+      
+  <event name="Grid A Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="10.0" />
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+
+    <set_variable name="Sector" value="6.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="10.0" />
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="9.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="10.0" />
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="11.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner A1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="10.0" />
+    <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="5.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner A5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="10.0" />
+    <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="7.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+    
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="10.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Vrae X" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+
+
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> 
+  </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="3.0" />
+    <destroy name="Vrae X" />
+    <set_variable name="Vrae System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+
+
+
+  <event name="Create Vrae Sector 11">
+    <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="11.0" />
+    <if_timer_finished name="Transition" />
+          <create count="300" type="nebulas" startX="64238.0" startY="0.0" startZ="5835.0" endX="67434.0" endY="0.0" endZ="94600.0" randomRange="25000" />
+    
+<create count="30" type="nebulas" startX="40557.0" startY="0.0" startZ="63075.0" endX="42301.0" endY="0.0" endZ="16295.0" randomRange="10000" />
+    
+<create count="40" type="nebulas" startX="95908.0" startY="0.0" startZ="95907.0" endX="94020.0" endY="0.0" endZ="20363.0" randomRange="10000" />
+    
+<create count="30" type="nebulas" nebType="2" startX="30678.0" startY="0.0" startZ="97796.0" endX="34020.0" endY="0.0" endZ="53777.0" randomRange="10000" />
+    
+<create count="50" type="nebulas" startX="25.0" startY="0.0" startZ="64382.0" endX="8160.0" endY="0.0" endZ="9467.0" randomRange="10000" />
+    
+<create count="25" type="nebulas" startX="6272.0" startY="0.0" startZ="18619.0" endX="20218.0" endY="0.0" endZ="169.0" randomRange="10000" />
+  
+
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Vrae System" value="2.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="0.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+  </event>
+
+      
+  <event name="Grid A Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="11.0" />
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+
+    <set_variable name="Sector" value="7.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="11.0" />
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="10.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="11.0" />
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="12.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner A1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="11.0" />
+    <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="6.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner A5 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="11.0" />
+    <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="8.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+    
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="11.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Vrae XI" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+
+
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> 
+  </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="3.0" />
+    <destroy name="Vrae XI" />
+    <set_variable name="Vrae System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+
+
+
+  <event name="Create Vrae Sector 12">
+    <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="12.0" />
+    <if_timer_finished name="Transition" />
+          <create count="150" type="nebulas" startX="95908.0" startY="0.0" startZ="64382.0" endX="38088.0" endY="0.0" endZ="2639.0" randomRange="20000" />
+    
+<create count="150" type="nebulas" startX="42010.0" startY="0.0" startZ="55956.0" endX="94601.0" endY="0.0" endZ="5254.0" randomRange="20000" />
+    
+<create count="10" type="nebulas" nebType="2" startX="20509.0" startY="0.0" startZ="1186.0" endX="20509.0" endY="0.0" endZ="1186.0" randomRange="10000" />
+    
+
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Vrae System" value="2.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="0.0" />
+    <set_variable name="Grid E Transition Enabled" value="0.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+  </event>
+
+      
+  <event name="Grid A Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="12.0" />
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+
+    <set_variable name="Sector" value="8.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="12.0" />
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="11.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner A1 Transition">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="12.0" />
+    <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="7.0" integer="yes" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+  </event>
+
+
+    
+        <event name="Gate Offline" id_arme="4d2d3b10-fd64-4dd6-9e8d-b12ce7eb58a3" parent_id_arme="008d9df1-aa8c-4295-82ac-1fd4d150cb77">
+    <if_variable name="Sector" comparator="EQUALS" value="12" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="Athorn Gate" />
+  </event>
+
+  <event name="Ship1 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="12" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="0" name2="Athorn Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Athorn Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship1" value="1.0" />
+  </event>
+  <event name="Ship1 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="12" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="0" name2="Athorn Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Athorn Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship1" value="0.0" />
+  </event> 
+  <event name="Ship2 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="12" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="1" name2="Athorn Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Athorn Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship2" value="1.0" />
+  </event>
+  <event name="Ship2 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="12" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="1" name2="Athorn Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Athorn Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship2" value="0.0" />
+  </event> 
+  <event name="Ship3 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="12" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="2" name2="Athorn Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Athorn Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship3" value="1.0" />
+  </event>
+  <event name="Ship3 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="12" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="2" name2="Athorn Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Athorn Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship3" value="0.0" />
+  </event> 
+  <event name="Ship4 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="12" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="3" name2="Athorn Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Athorn Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship4" value="1.0" />
+  </event>
+  <event name="Ship4 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="12" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="3" name2="Athorn Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Athorn Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship4" value="0.0" />
+  </event> 
+  <event name="Ship5 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="12" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="4" name2="Athorn Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Athorn Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship5" value="1.0" />
+  </event>
+  <event name="Ship5 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="12" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="4" name2="Athorn Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Athorn Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship5" value="0.0" />
+  </event> 
+  <event name="Ship6 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="12" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="5" name2="Athorn Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Athorn Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship6" value="1.0" />
+  </event>
+  <event name="Ship6 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="12" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="5" name2="Athorn Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Athorn Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship6" value="0.0" />
+  </event> 
+  <event name="Ship7 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="12" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="6" name2="Athorn Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Athorn Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship7" value="1.0" />
+  </event>
+  <event name="Ship7 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="12" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="6" name2="Athorn Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Athorn Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship7" value="0.0" />
+  </event> 
+  <event name="Ship8 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="12" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="7" name2="Athorn Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Athorn Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship8" value="1.0" />
+  </event>
+  <event name="Ship8 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="12" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="7" name2="Athorn Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Athorn Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship8" value="0.0" />
+  </event> 
+
+  <event name="Gate Online">
+    <if_variable name="Sector" comparator="EQUALS" value="12" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="Athorn Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="Athorn Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated">
+    <if_variable name="Sector" comparator="EQUALS" value="12" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="Athorn Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="Vrae System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Vrae to Athorn" value="1.0" />
+    <set_variable name="Athorn System" value="1.0" />
+    <set_variable name="Sector" value="1" />
+    <set_variable name="shipsInrange" value="0.0" integer="yes" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+    <set_variable name="Gate System" value="0.0" />
+  </event>
+
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="12.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          <create type="genericMesh" x="62494.0" y="1.0" z="24430.0" name="Athorn Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    
+<set_object_property property="angle" value="(320.9 + 180) * 3.14159/180" name="Athorn Gate" />
+  
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Vrae XII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+      <set_object_property property="artScale" value="1.0" name="Athorn Gate" />
+      <set_object_property property="pushRadius" value="0.0" name="Athorn Gate" />
+      <set_object_property property="angle" value="4.71238898" name="Athorn Gate" />
+      <set_object_property property="rollDelta" value="0.3" name="Athorn Gate" />
+
+  
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> 
+  </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Vrae System" comparator="EQUALS" value="3.0" />
+      <destroy name="Athorn Gate" />
+    <destroy name="Vrae XII" />
+    <set_variable name="Vrae System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+
+
+        <event name="Arrival From Athorn">
+    <if_variable name="Sector" comparator="EQUALS" value="12" />
+    <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Athorn to Vrae" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="Athorn Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="Athorn Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="Athorn Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="Athorn Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="Athorn Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="Athorn Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="Athorn Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="Athorn Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="Athorn to Vrae" value="0.0" />
+  </event>
+
+

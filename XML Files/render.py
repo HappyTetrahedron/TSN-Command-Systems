@@ -14,7 +14,9 @@ env = {
     ],
     "systems": [
         "Waypoint 52",
-        "Atlantis",
+        "Vrae",
+        "Khoros",
+        "Jhohara",
         "Volantis",
         "Acantha",
         "Erebus",

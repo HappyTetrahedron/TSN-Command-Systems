@@ -72,16 +72,21 @@
     {% for t in sec.transitions %}
       {{ macros.transitionEvent(t, i+1, sys.name, sys.width, sys.height) }}
     {% endfor %}
+    
+    {# Careful: order matters! For reasons I'm currently too tired to grasp, the "Initiate Jump" event must come before the sector entity events, or the sector doesn't get cleared correctly when jumping out. #}
+    {% if sec.get("gateTarget", {}).get("system") %}
+      {{ macros.jumpGateEvents(sys.name, sec.gateTarget.system, i+1, sec.gateTarget.sector) }}
+    {% endif %}
 
-    {% call macros.entitiesEvent(sys.name, i+1, sec.get("gateTarget", {}).get("system", ""), "Planet" in sec.createdEntities) %}
+    {% call macros.entitiesEvent(sys.name, i+1, sec.get("gateTarget", {}).get("system", ""), sec.createdEntities) %}
       {{ sec.statements }}
     {% endcall %}
 
     {{ macros.destroyEvent(sys.name, i+1, sec.createdEntities) }}
 
-    {# Careful: order matters! The gate stuff (specifically the "Arrival from XY" event therein) must come after the sector entities, since the Arrival event tries to refer to the position of the gate entity in the same tick said entity gets created. #}
+    {# Careful: order matters! The "Arrival from XY" must come after the sector entities, since the Arrival event tries to refer to the position of the gate entity in the same tick said entity gets created. #}
     {% if sec.get("gateTarget", {}).get("system") %}
-      {{ macros.jumpGateEvents(sys.name, sec.gateTarget.system, i+1, sec.gateTarget.sector) }}
+      {{ macros.arrivalEvent(sys.name, sec.gateTarget.system, i+1, sec.gateTarget.sector) }}
     {% endif %}
 
   {% endfor %}

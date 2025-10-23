@@ -1,0 +1,52 @@
+{% 
+set planetTypes = {
+    'EARTHLIKE-PLANET': {
+        'textureFiles': ['TSN\\Planets\\pm1', 'TSN\\Planets\\pm2', 'TSN\\Planets\\pm3', 'TSN\\Planets\\pm4', 'TSN\\Planets\\pm5', 'TSN\\Planets\\pm6', 'TSN\\Planets\\pm7', 'TSN\\Planets\\pm8'],
+    },
+    'ARID-PLANET': {
+        'textureFiles': ['TSN\\Planets\\pa1', 'TSN\\Planets\\pa2', 'TSN\\Planets\\pa3', 'TSN\\Planets\\pa4', 'TSN\\Planets\\pa5', 'TSN\\Planets\\pa6', 'TSN\\Planets\\pa7', 'TSN\\Planets\\pa8'],
+    },
+    'BLUE-PLANET': {
+        'textureFiles': ['TSN\\Planets\\planetTex2', 'TSN\\Planets\\planetTex2', 'TSN\\Planets\\planetTex2', 'TSN\\Planets\\planetTex2', 'TSN\\Planets\\planetTex2', 'TSN\\Planets\\planetTex2', 'TSN\\Planets\\planetTex2', 'TSN\\Planets\\planetTex2'],
+    },
+    'RED-PLANET': {
+        'textureFiles': ['TSN\\Planets\\planetTex3', 'TSN\\Planets\\planetTex3', 'TSN\\Planets\\planetTex3', 'TSN\\Planets\\planetTex3', 'TSN\\Planets\\planetTex3', 'TSN\\Planets\\planetTex3', 'TSN\\Planets\\planetTex3', 'TSN\\Planets\\planetTex3'],
+    },
+    'LAVA-PLANET': {
+        'textureFiles': ['TSN\\Planets\\planetTex4', 'TSN\\Planets\\planetTex4', 'TSN\\Planets\\planetTex4', 'TSN\\Planets\\planetTex4', 'TSN\\Planets\\planetTex4', 'TSN\\Planets\\planetTex4', 'TSN\\Planets\\planetTex4', 'TSN\\Planets\\planetTex4'],
+    },
+    'SAND-PLANET': {
+        'textureFiles': ['TSN\\Planets\\planetTex5', 'TSN\\Planets\\planetTex5', 'TSN\\Planets\\planetTex5', 'TSN\\Planets\\planetTex5', 'TSN\\Planets\\planetTex5', 'TSN\\Planets\\planetTex5', 'TSN\\Planets\\planetTex5', 'TSN\\Planets\\planetTex5'],
+    },
+    'DEATHSTAR': {
+        'textureFiles': ['TSN\\Planets\\planetTex6', 'TSN\\Planets\\planetTex6', 'TSN\\Planets\\planetTex6', 'TSN\\Planets\\planetTex6', 'TSN\\Planets\\planetTex6', 'TSN\\Planets\\planetTex6', 'TSN\\Planets\\planetTex6', 'TSN\\Planets\\planetTex6'],
+    },
+    'GREEN-PLANET': {
+        'textureFiles': ['TSN\\Planets\\planetTex7', 'TSN\\Planets\\planetTex7', 'TSN\\Planets\\planetTex7', 'TSN\\Planets\\planetTex7', 'TSN\\Planets\\planetTex7', 'TSN\\Planets\\planetTex7', 'TSN\\Planets\\planetTex7', 'TSN\\Planets\\planetTex7'],
+    },
+    'PULSAR': {
+        'textureFiles': ['TSN\\Neutrals\\Dhvarahn_Spec', 'TSN\\Neutrals\\Dhvarahn_Spec', 'TSN\\Neutrals\\Dhvarahn_Spec', 'TSN\\Neutrals\\Dhvarahn_Spec', 'TSN\\Neutrals\\Dhvarahn_Spec', 'TSN\\Neutrals\\Dhvarahn_Spec', 'TSN\\Neutrals\\Dhvarahn_Spec', 'TSN\\Neutrals\\Dhvarahn_Spec'],
+    },
+}
+
+%}
+
+{% macro createPlanetSlices(relativeTo, textureFiles, prefix) %}
+    {% for i in range(8) %}
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P{{ i  }}" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\{{ textureFiles[i] }}.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="1.0" name="P{{ i  }}" />
+        <set_object_property property="artScale" value="8.0" name="P{{ i  }}" />
+        <set_relative_position name2="P{{ i  }}" distance="2000" angle="{{ 45 * i }}.0" name1="{{ relativeTo }}" />
+        <set_object_property property="positionY" value="0.0" name="P{{ i  }}" />
+        <set_object_property property="angle" value="{{ i * 0.78539816339 }}" name="P{{ i  }}" />
+        <set_ship_text name="P{{ i  }}" newname=" " />
+    {% endfor %}
+    <set_object_property property="angleDelta" value="0.004" name="{{ relativeTo }}" />
+    <set_ship_text name="{{ relativeTo }}" newname="{{ relativeTo.removeprefix(prefix) }}" />
+{% endmacro %}
+
+{% macro deletePlanetSlices() %}
+    {% for i in range(8) %}
+    <destroy name=" " />
+    {% endfor %}
+{% endmacro %}

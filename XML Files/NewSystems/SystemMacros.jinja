@@ -1,4 +1,5 @@
 {% import 'Utils.xml' as util %}
+{% import 'Planets.xml' as planet %}
 {% macro transitionEvent(dir, fromSector, inSystem, w, h) %}
 
   <event name="{{ dir }} Transition">
@@ -85,6 +86,10 @@
     <set_variable name="ExitorRetreat" value="1.0" />
     <set_variable name="Gate System" value="0.0" />
   </event>
+{% endmacro %}
+
+
+{% macro arrivalEvent(fromSystem, toSystem, fromSector, toSector) %}
   <event name="Arrival From {{ toSystem }}">
     <if_variable name="Sector" comparator="EQUALS" value="{{ fromSector }}" />
     <if_variable name="{{ fromSystem }} System" comparator="EQUALS" value="2.0" />
@@ -108,10 +113,7 @@
     <set_object_property property="angle" value="3.141592654" player_slot="7" />
     <set_variable name="{{ toSystem }} to {{ fromSystem }}" value="0.0" />
   </event>
-
 {% endmacro %}
-
-
 
 {% macro createEvent(system, sector, transitions) %}
   <event name="Create {{ system }} Sector {{ sector }}">
@@ -127,38 +129,48 @@
   </event>
 {% endmacro %}
 
-{% macro entitiesEvent(system, sector, gateTarget, hasPlanet) %}
+{% macro entitiesEvent(system, sector, gateTarget, entityNames) %}
   <event name="Generate Sector Entities">
     <if_variable name="{{ system }} System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="{{ sector }}.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
     {{ caller() }}
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="{{ system }} {{ util.romanNumerals[sector] }}" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
     {% if gateTarget %}
       <set_object_property property="artScale" value="1.0" name="{{ gateTarget }} Gate" />
       <set_object_property property="pushRadius" value="0.0" name="{{ gateTarget }} Gate" />
       <set_object_property property="angle" value="4.71238898" name="{{ gateTarget }} Gate" />
       <set_object_property property="rollDelta" value="0.3" name="{{ gateTarget }} Gate" />
     {% endif %}
-    {% if hasPlanet %}
-    <set_variable name="CustomPlanet" value="1.0" integer="yes" />
-    {% endif %}
+
+    {% for entity in entityNames %} {% for prefix in planet.planetTypes.keys() %}
+      {% if entity.startswith(prefix) %}
+        {{ planet.createPlanetSlices(entity, planet.planetTypes[prefix]['textureFiles'], prefix)}}
+      {% endif %}
+    {% endfor %} {% endfor %}
+
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="3.0" /> {# I *think* we can get away with skipping the "sector settings" step here. #}
+
   </event>
 {% endmacro %}
 
 {% macro destroyEvent(system, sector, entityList) %}
   <event name="Destroy Sector Entities">
     <if_variable name="{{ system }} System" comparator="EQUALS" value="3.0" />
+    {% for entity in entityList %} {% for prefix in planet.planetTypes.keys() %}
+      {% if entity.startswith(prefix) %}
+        {{ planet.deletePlanetSlices()}}
+        <destroy name="{{ entity.removeprefix(prefix) }}" />
+      {% endif %}
+    {% endfor %} {% endfor %}
     {% for entity in entityList %}
     <destroy name="{{ entity }}" />
     {% endfor %}
-    {% if "Planet" in entityList %}
-    <set_variable name="DestroyPlanet" value="1.0" integer="yes" />
-    {% endif %}
     <destroy name="{{ system }} {{ util.romanNumerals[sector]}}" />
     <set_variable name="{{ system }} System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
+    
   </event>
 {% endmacro %}
