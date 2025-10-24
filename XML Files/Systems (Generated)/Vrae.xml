@@ -2833,3 +2833,85 @@
   </event>
 
 
+
+
+  <event name="Vrae - Run On Load">
+    <if_variable name="Vrae System" comparator="GREATER" value="0.0" />
+    <if_variable name="VraeOnLoadRan" comparator="NOT" value="1.0" />
+      <set_timer name="Vrae_Pulsar_Timer" seconds="1" />
+  <set_variable name="Vrae_Pulsar_InRange" value="0.0" integer="yes" />
+
+    <set_variable name="VraeOnLoadRan" value="1.0" integer="yes" />
+  </event>
+  <event name="Vrae - Reset On Load">
+    <if_variable name="Vrae System" comparator="LESS" value="1.0" />
+    <if_variable name="VraeOnLoadRan" comparator="EQUALS" value="1.0" />
+    <set_variable name="VraeOnLoadRan" value="0.0" integer="yes" />
+  </event>
+
+  <event name="Vrae - Run If In Sector [2, 3, 4, 6, 7, 8, 10, 11, 12]">
+    <if_variable name="Vrae System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+            <if_variable name="Sector" comparator="NOT" value="1" />
+            <if_variable name="Sector" comparator="NOT" value="5" />
+            <if_variable name="Sector" comparator="NOT" value="9" />
+      <if_variable name="Vrae_Pulsar_InRange" comparator="NOT" value="1.0" />
+  <warning_popup_message message="Warning: Intense Static Energy Pulses Detected" consoles="MHWESCO">Warning: Intense Static Energy Pulses</warning_popup_message>
+  <set_variable name="Vrae_Pulsar_InRange" value="1.0" integer="yes" />
+
+  </event>
+
+  <event name="Vrae - Run If In Sector [1, 5, 9]">
+    <if_variable name="Vrae System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+            <if_variable name="Sector" comparator="NOT" value="2" />
+            <if_variable name="Sector" comparator="NOT" value="3" />
+            <if_variable name="Sector" comparator="NOT" value="4" />
+            <if_variable name="Sector" comparator="NOT" value="6" />
+            <if_variable name="Sector" comparator="NOT" value="7" />
+            <if_variable name="Sector" comparator="NOT" value="8" />
+            <if_variable name="Sector" comparator="NOT" value="10" />
+            <if_variable name="Sector" comparator="NOT" value="11" />
+            <if_variable name="Sector" comparator="NOT" value="12" />
+      <if_variable name="Vrae_Pulsar_InRange" comparator="EQUALS" value="1.0" />
+  <warning_popup_message message="Clear: Static Energy Nominal" consoles="MHWESCO">Static Energy Nominal</warning_popup_message>
+  <set_variable name="Vrae_Pulsar_InRange" value="0.0" integer="yes" />
+
+  </event>
+
+  <event name="Vrae - Run If In Sector [2, 3, 4, 6, 8, 10, 11, 12]">
+    <if_variable name="Vrae System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+            <if_variable name="Sector" comparator="NOT" value="1" />
+            <if_variable name="Sector" comparator="NOT" value="5" />
+            <if_variable name="Sector" comparator="NOT" value="7" />
+            <if_variable name="Sector" comparator="NOT" value="9" />
+      <if_timer_finished name="Vrae_Pulsar_Timer" />
+    <addto_object_property value="20" property="energy" player_slot="0"  />
+    <addto_object_property value="20" property="energy" player_slot="1"  />
+    <addto_object_property value="20" property="energy" player_slot="2"  />
+    <addto_object_property value="20" property="energy" player_slot="3"  />
+    <addto_object_property value="20" property="energy" player_slot="4"  />
+    <addto_object_property value="20" property="energy" player_slot="5"  />
+    <addto_object_property value="20" property="energy" player_slot="6"  />
+    <addto_object_property value="20" property="energy" player_slot="7"  />
+  <set_timer name="Vrae_Pulsar_Timer" seconds="1" />
+
+  </event>
+
+  <event name="Vrae - Run If In Sector [7]">
+    <if_variable name="Vrae System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <if_variable name="Sector" comparator="EQUALS" value="7" />
+      <if_timer_finished name="Vrae_Pulsar_Timer" />
+    <addto_object_property value="50" property="energy" player_slot="0"  />
+    <addto_object_property value="50" property="energy" player_slot="1"  />
+    <addto_object_property value="50" property="energy" player_slot="2"  />
+    <addto_object_property value="50" property="energy" player_slot="3"  />
+    <addto_object_property value="50" property="energy" player_slot="4"  />
+    <addto_object_property value="50" property="energy" player_slot="5"  />
+    <addto_object_property value="50" property="energy" player_slot="6"  />
+    <addto_object_property value="50" property="energy" player_slot="7"  />
+  <set_timer name="Vrae_Pulsar_Timer" seconds="1" />
+
+  </event>

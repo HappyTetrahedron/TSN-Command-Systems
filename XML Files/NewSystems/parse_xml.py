@@ -153,7 +153,12 @@ template_env.trim_blocks = True
 template_env.add_extension('jinja2.ext.do')
 
 TMPL_FNAME = 'NewSystems/SystemTemplate.jinja'
+TMPL_FOLDER = 'NewSystems/'
 OUT_FNAME = '../Systems (Generated)/{}.xml'.format(system_name)
+
+template_to_use = TMPL_FNAME
+if os.path.exists("{}.jinja".format(system_name)):
+    template_to_use = "{}{}.jinja".format(TMPL_FOLDER, system_name)
 
 jinja_context = {
     "system": system_dict,
@@ -162,4 +167,4 @@ jinja_context = {
 }
 
 with open(OUT_FNAME, 'w') as f:
-    f.write(template_env.get_template(TMPL_FNAME).render(g=jinja_context))
+    f.write(template_env.get_template(template_to_use).render(g=jinja_context))
