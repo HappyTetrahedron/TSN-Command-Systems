@@ -14,6 +14,7 @@
     <create count="60" type="mines" startX="16296.0" startY="0.0" startZ="94019.0" endX="16151.0" endY="0.0" endZ="42881.0" />
     <create type="neutral" x="30824.0" y="0.0" z="26900.0" angle="0" name="Gilmik Mining" hullID="1355" sideValue="0" />
     <create type="neutral" x="63511.0" y="0.0" z="78910.0" angle="0" name="Routing Office" hullID="1357" sideValue="0" />
+    <set_ship_text name="Routing Office" desc="Logistics office for Hegemony thru traffic within the system. Lightly defended." scan_desc="The station commander enjoys extended naps during which traffic flow tends to stall." hailtext="Who the fuck are you? Terrans?" />
     <create type="genericMesh" x="74843.0" y="7.0" z="63075.0" name="Jhohara Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
   </event>
   <event name="Sector 2" id_arme="9966a48d-2da8-4345-a011-edd5febff5d5">

@@ -327,6 +327,8 @@
     
 <create type="neutral" x="63511.0" y="0.0" z="78910.0" angle="0" name="Routing Office" hullID="1357" sideValue="sectorSide" />
     
+<set_ship_text name="Routing Office" desc="Logistics office for Hegemony thru traffic within the system. Lightly defended." scan_desc="The station commander enjoys extended naps during which traffic flow tends to stall." hailtext="Who the fuck are you? Terrans?" />
+    
 <create type="genericMesh" x="74843.0" y="7.0" z="63075.0" name="Jhohara Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
   
 
