@@ -981,6 +981,10 @@
     
 <create count="30" type="asteroids" startX="69758.0" startY="0.0" startZ="9176.0" endX="78330.0" endY="0.0" endZ="37215.0" randomRange="10000" />
     
+<create count="40" type="nebulas" startX="17071.0" startY="0.0" startZ="99839.0" endX="2979.0" endY="0.0" endZ="71582.0" randomRange="10000" />
+    
+<create count="40" type="mines" startAngle="40" endAngle="190" startX="31088.0" startY="0.0" startZ="59493.0" radius="12644" />
+    
 
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Vrae System" value="2.0" />
@@ -1078,20 +1082,23 @@
           <create type="neutral" x="31986.0" y="0.0" z="27772.0" angle="0" name="Golgagi" hullID="1358" sideValue="sectorSide" />
     
 <create type="neutral" x="82688.0" y="0.0" z="55956.0" angle="0" name="Inzisda Nebula Refinery" hullID="1356" sideValue="sectorSide" />
+    
+<create type="enemy" x="31162.0" y="0.0" z="59419.0" angle="0" name="Vrae Outpost" hullID="1005" sideValue="sectorSide" fleetnumber="-1" />
   
 
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Vrae V" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
 
 
-    
+      
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="3.0" /> 
   </event>
 
       <event name="Destroy Sector Entities">
     <if_variable name="Vrae System" comparator="EQUALS" value="3.0" />
-        <destroy name="Golgagi" />
+          <destroy name="Golgagi" />
     <destroy name="Inzisda Nebula Refinery" />
+    <destroy name="Vrae Outpost" />
     <destroy name="Vrae V" />
     <set_variable name="Vrae System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
@@ -1307,25 +1314,25 @@
     
 <create count="10" type="nebulas" startX="73971.0" startY="0.0" startZ="45496.0" endX="99831.0" endY="0.0" endZ="14406.0" randomRange="1000" randomSeed="1000" />
     
-<create count="100" type="nebulas" startX="64674.0" startY="0.0" startZ="27917.0" endX="76005.0" endY="0.0" endZ="895.0" randomRange="10000" randomSeed="5000" />
+<create count="40" type="nebulas" startX="64674.0" startY="0.0" startZ="27917.0" endX="76005.0" endY="0.0" endZ="895.0" randomRange="10000" randomSeed="5000" />
     
-<create count="100" type="nebulas" startX="51599.0" startY="0.0" startZ="2058.0" endX="54359.0" endY="0.0" endZ="29370.0" randomRange="10000" randomSeed="5000" />
+<create count="40" type="nebulas" startX="51599.0" startY="0.0" startZ="2058.0" endX="54359.0" endY="0.0" endZ="29370.0" randomRange="10000" randomSeed="5000" />
     
-<create count="100" type="nebulas" startX="50582.0" startY="0.0" startZ="31985.0" endX="36344.0" endY="0.0" endZ="2639.0" randomRange="10000" randomSeed="5000" />
+<create count="50" type="nebulas" startX="54821.0" startY="0.0" startZ="31532.0" endX="33536.0" endY="0.0" endZ="1940.0" randomRange="10000" randomSeed="5000" />
     
-<create count="100" type="nebulas" startX="1477.0" startY="0.0" startZ="10774.0" endX="32277.0" endY="0.0" endZ="47966.0" randomRange="10000" randomSeed="5000" />
+<create count="50" type="nebulas" startX="1719.0" startY="0.0" startZ="12768.0" endX="29827.0" endY="0.0" endZ="47404.0" randomRange="10000" randomSeed="5000" />
     
-<create count="100" type="nebulas" startX="32858.0" startY="0.0" startZ="46658.0" endX="751.0" endY="0.0" endZ="36924.0" randomRange="10000" randomSeed="5000" />
+<create count="40" type="nebulas" startX="28641.0" startY="0.0" startZ="46143.0" endX="2609.0" endY="0.0" endZ="38207.0" randomRange="10000" randomSeed="4000" />
     
-<create count="100" type="nebulas" startX="37361.0" startY="0.0" startZ="73535.0" endX="1042.0" endY="0.0" endZ="75423.0" randomRange="10000" randomSeed="5000" />
+<create count="50" type="nebulas" startX="37361.0" startY="0.0" startZ="73535.0" endX="1042.0" endY="0.0" endZ="75423.0" randomRange="10000" randomSeed="5000" />
     
-<create count="100" type="nebulas" startX="34456.0" startY="0.0" startZ="83849.0" endX="4093.0" endY="0.0" endZ="96924.0" randomRange="10000" randomSeed="5000" />
+<create count="50" type="nebulas" startX="34456.0" startY="0.0" startZ="83849.0" endX="4093.0" endY="0.0" endZ="96924.0" randomRange="10000" randomSeed="5000" />
     
-<create count="100" type="nebulas" startX="58717.0" startY="0.0" startZ="87917.0" endX="82979.0" endY="0.0" endZ="96634.0" randomRange="10000" randomSeed="5000" />
+<create count="50" type="nebulas" startX="58717.0" startY="0.0" startZ="87917.0" endX="82979.0" endY="0.0" endZ="96634.0" randomRange="10000" randomSeed="5000" />
     
-<create count="100" type="nebulas" startX="82107.0" startY="0.0" startZ="47966.0" endX="100122.0" endY="0.0" endZ="73244.0" randomRange="10000" randomSeed="5000" />
+<create count="50" type="nebulas" startX="82107.0" startY="0.0" startZ="47966.0" endX="100122.0" endY="0.0" endZ="73244.0" randomRange="10000" randomSeed="5000" />
     
-<create count="100" type="nebulas" startX="104335.0" startY="0.0" startZ="25883.0" endX="85448.0" endY="0.0" endZ="50000.0" randomRange="10000" randomSeed="5000" />
+<create count="40" type="nebulas" startX="104335.0" startY="0.0" startZ="25883.0" endX="85448.0" endY="0.0" endZ="50000.0" randomRange="10000" randomSeed="5000" />
     
 <create count="60" type="nebulas" startX="2494.0" startY="0.0" startZ="16295.0" endX="3657.0" endY="0.0" endZ="44334.0" randomRange="10000" randomSeed="5000" />
     
@@ -1338,12 +1345,6 @@
 <create count="20" type="nebulas" startX="4964.0" startY="0.0" startZ="45205.0" endX="23269.0" endY="0.0" endZ="47530.0" randomRange="10000" randomSeed="5000" />
     
 <create count="20" type="nebulas" startX="62494.0" startY="0.0" startZ="34600.0" endX="64238.0" endY="0.0" endZ="29661.0" randomRange="10000" randomSeed="5000" />
-    
-<create count="5" type="nebulas" nebType="2" startX="9613.0" startY="0.0" startZ="91840.0" endX="11357.0" endY="0.0" endZ="86901.0" randomRange="10000" randomSeed="5000" />
-    
-<create count="5" type="nebulas" nebType="2" startX="65836.0" startY="0.0" startZ="2929.0" endX="50146.0" endY="0.0" endZ="2784.0" randomRange="10000" randomSeed="5000" />
-    
-<create count="7" type="nebulas" nebType="2" startX="6562.0" startY="0.0" startZ="31985.0" endX="1913.0" endY="0.0" endZ="26029.0" randomRange="10000" randomSeed="5000" />
     
 <create count="10" type="asteroids" startX="98814.0" startY="0.0" startZ="2639.0" endX="98814.0" endY="0.0" endZ="2639.0" randomRange="10000" />
     
@@ -1673,7 +1674,7 @@
     <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-          <create type="genericMesh" x="61332.0" y="0.0" z="60895.0" angle="0" name="PULSARVrae Pulsar" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+          <create type="genericMesh" x="61332.0" y="0.0" z="60895.0" name="PULSARVrae Pulsar" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     
 <create type="genericMesh" x="26320.0" y="8.0" z="67578.0" name="Khoros Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
   
@@ -2194,11 +2195,11 @@
     <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="9.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-          <create type="enemy" x="40267.0" y="0.0" z="23559.0" angle="322.8" name="Defense Grid A" hullID="1005" sideValue="sectorSide" fleetnumber="-1" />
+          <create type="enemy" x="40267.0" y="0.0" z="23559.0" angle="322.8" name="Defense Grid A" hullID="1005" fleetnumber="-1" sideValue="sectorSide" />
     
-<create type="enemy" x="40703.0" y="0.0" z="36198.0" angle="263.5" name="Defense Grid B" hullID="1005" sideValue="sectorSide" fleetnumber="-1" />
+<create type="enemy" x="40703.0" y="0.0" z="36198.0" angle="263.5" name="Defense Grid B" hullID="1005" fleetnumber="-1" sideValue="sectorSide" />
     
-<create type="enemy" x="40848.0" y="0.0" z="49418.0" angle="229.4" name="Defense Grid D" hullID="1005" sideValue="sectorSide" fleetnumber="-1" />
+<create type="enemy" x="40848.0" y="0.0" z="49418.0" angle="229.4" name="Defense Grid D" hullID="1005" fleetnumber="-1" sideValue="sectorSide" />
     
 <create type="genericMesh" x="29371.0" y="8.0" z="36198.0" name="Ka'Morlin Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
   

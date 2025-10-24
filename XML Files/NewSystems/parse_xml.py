@@ -98,6 +98,8 @@ def parse_event(event):
         if action.tag == "create":
             if "name" in action.attrib:
                 name = action.attrib["name"]
+                if action.attrib.get("type", "") in ["enemy", "neutral"]:
+                    action.attrib["sideValue"] = "sectorSide"
                 sector_dict["createdEntities"].append(name)
                 sectorLines.append(et.tostring(action, encoding="unicode"))
                 if name.endswith(" Gate"):
