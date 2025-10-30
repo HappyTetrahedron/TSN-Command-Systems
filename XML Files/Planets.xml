@@ -25,7 +25,7 @@ set planetTypes = {
         'textureFiles': ['TSN\\Planets\\planetTex7', 'TSN\\Planets\\planetTex7', 'TSN\\Planets\\planetTex7', 'TSN\\Planets\\planetTex7', 'TSN\\Planets\\planetTex7', 'TSN\\Planets\\planetTex7', 'TSN\\Planets\\planetTex7', 'TSN\\Planets\\planetTex7'],
     },
     'PULSAR': {
-        'textureFiles': ['TSN\\Neutrals\\Dhvarahn_Spec', 'TSN\\Neutrals\\Dhvarahn_Spec', 'TSN\\Neutrals\\Dhvarahn_Spec', 'TSN\\Neutrals\\Dhvarahn_Spec', 'TSN\\Neutrals\\Dhvarahn_Spec', 'TSN\\Neutrals\\Dhvarahn_Spec', 'TSN\\Neutrals\\Dhvarahn_Spec', 'TSN\\Neutrals\\Dhvarahn_Spec'],
+        'textureFiles': ['white32', 'white32', 'white32', 'white32', 'white32', 'white32', 'white32', 'white32'],
     },
 }
 
@@ -34,7 +34,7 @@ set planetTypes = {
 {% macro createPlanetSlices(relativeTo, textureFiles, prefix) %}
     {% for i in range(8) %}
         <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P{{ i  }}" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\{{ textureFiles[i] }}.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
-        <set_object_property property="pushRadius" value="1.0" name="P{{ i  }}" />
+        <set_object_property property="pushRadius" value="0.0" name="P{{ i  }}" />
         <set_object_property property="artScale" value="8.0" name="P{{ i  }}" />
         <set_relative_position name2="P{{ i  }}" distance="2000" angle="{{ 45 * i }}.0" name1="{{ relativeTo }}" />
         <set_object_property property="positionY" value="0.0" name="P{{ i  }}" />
@@ -42,6 +42,7 @@ set planetTypes = {
         <set_ship_text name="P{{ i  }}" newname=" " />
     {% endfor %}
     <set_object_property property="angleDelta" value="0.004" name="{{ relativeTo }}" />
+    <set_object_property property="pushRadius" value="2000" name="{{ relativeTo }}" />
     <set_ship_text name="{{ relativeTo }}" newname="{{ relativeTo.removeprefix(prefix) }}" />
 {% endmacro %}
 

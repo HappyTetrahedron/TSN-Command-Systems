@@ -10,13 +10,13 @@
 
 {% call sysutil.runIfInSector(g.system, [2,3,4,6,7,8,10,11,12]) %}
   <if_variable name="Vrae_Pulsar_InRange" comparator="NOT" value="1.0" />
-  <warning_popup_message message="Warning: Intense Static Energy Pulses Detected" consoles="MHWESCO">Warning: Intense Static Energy Pulses</warning_popup_message>
+  <warning_popup_message message="Warning: Intense Electromagnetic Radiation Detected" consoles="MHWESCO">Warning: Intense Electromagnetic Radiation Pulses</warning_popup_message>
   <set_variable name="Vrae_Pulsar_InRange" value="1.0" integer="yes" />
 {% endcall %}
 
 {% call sysutil.runIfInSector(g.system, [1,5,9]) %}
   <if_variable name="Vrae_Pulsar_InRange" comparator="EQUALS" value="1.0" />
-  <warning_popup_message message="Clear: Static Energy Nominal" consoles="MHWESCO">Static Energy Nominal</warning_popup_message>
+  <warning_popup_message message="Clear: Electromagnetic Radiation Nominal" consoles="MHWESCO">Electromagnetic Radiation Nominal</warning_popup_message>
   <set_variable name="Vrae_Pulsar_InRange" value="0.0" integer="yes" />
 {% endcall %}
 

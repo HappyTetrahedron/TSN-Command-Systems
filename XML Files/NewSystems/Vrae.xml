@@ -12,9 +12,14 @@
     <create count="200" type="nebulas" startX="27337.0" startY="0.0" startZ="2784.0" endX="94165.0" endY="0.0" endZ="92130.0" randomRange="30000" />
     <create count="10" type="asteroids" startX="23560.0" startY="0.0" startZ="12518.0" endX="34601.0" endY="0.0" endZ="26319.0" randomRange="10000" />
     <create count="60" type="mines" startX="16296.0" startY="0.0" startZ="94019.0" endX="16151.0" endY="0.0" endZ="42881.0" />
-    <create type="neutral" x="30824.0" y="0.0" z="26900.0" angle="0" name="Gilmik Mining" hullID="1355" sideValue="0" />
+    <create type="neutral" x="30824.0" y="0.0" z="26900.0" angle="0" name="Gilmik Mining" hullID="1005" sideValue="0" />
     <create type="neutral" x="63511.0" y="0.0" z="78910.0" angle="0" name="Routing Office" hullID="1357" sideValue="0" />
+    <set_ship_text name="Gilmik Mining" desc="Kralien mining base, equipped to extract valuable resources from asteroids. Lightly defended." scan_desc="The station commander runs a disciplined work crew, but is not particularly brave." hailtext="Who the fuck are you? Terrans?" />
     <set_ship_text name="Routing Office" desc="Logistics office for Hegemony thru traffic within the system. Lightly defended." scan_desc="The station commander enjoys extended naps during which traffic flow tends to stall." hailtext="Who the fuck are you? Terrans?" />
+    <create type="enemy" x="22440.0" y="0.0" z="32664.0" angle="240" name="Arvo Transport" hullID="2101" fleetnumber="-1" />
+    <clear_ai name="Arvo Transport" />
+    <add_ai type="DIR_THROTTLE" value1="240" value2="1.0" name="Arvo Transport" />
+    <set_ship_text name="Arvo Transport" class="Transport" desc="Bulk cargo vessel belonging to an independent crew. Volume: 0.26 cubic kilometers." scan_desc="En route from Il'Is'Kar to Jhohara. Transporting Is'Karan sugar crystals." hailtext="Who the fuck are you? Terrans?" />
     <create type="genericMesh" x="74843.0" y="7.0" z="63075.0" name="Jhohara Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
   </event>
   <event name="Sector 2" id_arme="9966a48d-2da8-4345-a011-edd5febff5d5">
@@ -60,6 +65,18 @@
     <create type="neutral" x="31986.0" y="0.0" z="27772.0" angle="0" name="Golgagi" hullID="1358" sideValue="0" />
     <create type="neutral" x="82688.0" y="0.0" z="55956.0" angle="0" name="Inzisda Nebula Refinery" hullID="1356" sideValue="0" />
     <create type="enemy" x="31162.0" y="0.0" z="59419.0" angle="0" name="Vrae Outpost" hullID="1005" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="58877.0" y="0.0" z="14725.0" angle="179.2" name="Gilmik Transport" hullID="2101" fleetnumber="-1" />
+    <create type="enemy" x="48281.0" y="0.0" z="77095.0" angle="359.5" name="Shnikshnak Transport" hullID="2101" fleetnumber="-1" />
+    <create type="enemy" x="54602.0" y="0.0" z="45398.0" angle="359.5" name="Inzisda Transport" hullID="2101" fleetnumber="-1" />
+    <clear_ai name="Gilmik Transport" />
+    <add_ai type="DIR_THROTTLE" value1="180" value2="1.0" name="Gilmik Transport" />
+    <set_ship_text name="Gilmik Transport" class="Transport" desc="Bulk cargo vessel belonging to the Gilmik crew. Volume: 0.26 cubic kilometers." scan_desc="Transporting a variety of filtered and crushed ores for further processing in less hostile environments." hailtext="Who the fuck are you? Terrans?" />
+    <clear_ai name="Inzisda Transport" />
+    <add_ai type="DIR_THROTTLE" value1="0" value2="1.0" name="Inzisda Transport" />
+    <set_ship_text name="Inzisda Transport" class="Transport" desc="Bulk cargo vessel belonging to the Inzisda crew. Volume: 0.21 cubic kilometers." scan_desc="Transporting rare gases, stored in liquid form in 300 liter dewars." hailtext="Who the fuck are you? Terrans?" />
+    <clear_ai name="Shnikshnak Transport" />
+    <set_ship_text name="Shnikshnak Transport" class="Transport" desc="Bulk cargo vessel belonging to an independent crew. Volume: 0.30 cubic kilometers." scan_desc="Transporting computer chips and other electrical components." hailtext="Who the fuck are you? Terrans?" />
+    <add_ai type="DIR_THROTTLE" value1="0" value2="1.0" name="Shnikshnak Transport" />
   </event>
   <event name="Sector 6" id_arme="46db5832-8b2f-4f7f-95ae-e58a744bc54c">
     <create count="150" type="nebulas" startX="19056.0" startY="0.0" startZ="65980.0" endX="93293.0" endY="0.0" endZ="90823.0" randomRange="25000" />
@@ -103,7 +120,9 @@
     <create count="10" type="asteroids" startX="98814.0" startY="0.0" startZ="2639.0" endX="98814.0" endY="0.0" endZ="2639.0" randomRange="10000" />
     <create count="10" type="nebulas" nebType="2" startX="75570.0" startY="0.0" startZ="30677.0" endX="91841.0" endY="0.0" endZ="460.0" randomRange="1000" randomSeed="1000" />
     <create count="10" type="nebulas" nebType="2" startX="78475.0" startY="0.0" startZ="70193.0" endX="99105.0" endY="0.0" endZ="84866.0" randomRange="1000" randomSeed="1000" />
+    <create count="5" type="nebulas" nebType="2" startX="61201.0" startY="0.0" startZ="60921.0" radius="2000" randomRange="500" />
     <create type="genericMesh" x="61332.0" y="0.0" z="60895.0" name="PULSARVrae Pulsar" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_ship_text name="PULSARVrae Pulsar" class="Pulsar" desc="A rapidly spinning neutron star that emits beams of electromagnetic radiation. Radiation may induce energy in systems of nearby ships.^Recommended distance: 200000 km." scan_desc="High electromagnetic activity." />
     <create type="genericMesh" x="26320.0" y="8.0" z="67578.0" name="Khoros Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
   </event>
   <event name="Sector 8" id_arme="7d3a2cf6-3259-43f5-9a93-8e999c4671ec">
@@ -115,7 +134,15 @@
     <create count="10" type="nebulas" startX="86901.0" startY="0.0" startZ="65835.0" endX="60461.0" endY="0.0" endZ="66852.0" randomRange="5000" />
     <create count="200" type="nebulas" startX="96054.0" startY="0.0" startZ="19636.0" endX="25594.0" endY="0.0" endZ="19636.0" randomRange="25000" />
     <create count="10" type="nebulas" startX="99540.0" startY="0.0" startZ="46368.0" endX="77168.0" endY="0.0" endZ="42154.0" randomRange="5000" />
+    <create type="neutral" x="13982.0" y="0.0" z="53113.0" angle="0" name="Seztanach" hullID="1100" />
     <create count="10" type="nebulas" startX="43899.0" startY="0.0" startZ="44043.0" endX="21381.0" endY="0.0" endZ="44043.0" randomRange="5000" />
+    <clear_ai name="Seztanach" />
+    <add_ai type="SPCL_AI" name="Seztanach" />
+    <set_special name="Seztanach" ability="Stealth" />
+    <set_special name="Seztanach" ability="LowVis" />
+    <set_special name="Seztanach" ability="Cloak" />
+    <add_ai type="CHASE_ANGER" name="Seztanach" />
+    <set_ship_text name="Seztanach" race="Sechatzal" class="Outpost" desc="No match in stellar cartography data for this installation." scan_desc="Installation is shielded by Sechatzal cloaking technology. Deep scan failed." hailtext="Greetings, terrans. If anyone asks, you have never seen us." />
   </event>
   <event name="Sector 9" id_arme="957fa0e1-b4bb-41fb-aaac-c227ae9b625b">
     <create count="30" type="nebulas" nebType="2" startX="20654.0" startY="0.0" startZ="9903.0" radius="8179" randomRange="5000" />
@@ -123,17 +150,26 @@
     <create count="60" type="nebulas" nebType="2" startX="93293.0" startY="0.0" startZ="58426.0" endX="84721.0" endY="0.0" endZ="97651.0" randomRange="30000" />
     <create count="40" type="nebulas" nebType="2" startX="78620.0" startY="0.0" startZ="66125.0" endX="98814.0" endY="0.0" endZ="2203.0" randomRange="10000" />
     <create count="10" type="nebulas" nebType="2" startX="40848.0" startY="0.0" startZ="97070.0" endX="64383.0" endY="0.0" endZ="86029.0" randomRange="5000" />
-    <create count="60" type="mines" startX="18475.0" startY="0.0" startZ="11791.0" endX="18620.0" endY="0.0" endZ="58135.0" />
+    <create count="60" type="mines" startX="23928.0" startY="0.0" startZ="51812.0" endX="23928.0" endY="0.0" endZ="13051.0" />
     <create type="enemy" x="40267.0" y="0.0" z="23559.0" angle="322.8" name="Defense Grid A" hullID="1005" fleetnumber="-1" />
     <create type="enemy" x="40703.0" y="0.0" z="36198.0" angle="263.5" name="Defense Grid B" hullID="1005" fleetnumber="-1" />
     <create type="enemy" x="40848.0" y="0.0" z="49418.0" angle="229.4" name="Defense Grid D" hullID="1005" fleetnumber="-1" />
     <create type="genericMesh" x="29371.0" y="8.0" z="36198.0" name="Ka'Morlin Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="enemy" x="31921.0" y="0.0" z="11099.0" angle="0" name="So Transport" hullID="2101" fleetnumber="-1" />
+    <set_ship_text name="So Transport" class="Transport" desc="Bulk cargo vessel belonging to an independent crew. Volume: 0.12 cubic kilometers." scan_desc="En route from Ka'Morlin to Jhohara. Transporting clothing of the Arvonian fashion." hailtext="Who the fuck are you? Terrans?" />
+    <clear_ai name="So Transport" />
+    <add_ai type="DIR_THROTTLE" value1="0" value2="1.0" name="So Transport" />
   </event>
   <event name="Sector 10" id_arme="b324cc03-d8d5-4130-b887-d366b5e53daa">
     <create count="100" type="nebulas" nebType="2" startX="99976.0" startY="0.0" startZ="41138.0" endX="24577.0" endY="0.0" endZ="1331.0" randomRange="10000" />
+    <create type="genericMesh" x="44377.0" y="0.0" z="24206.0" name="Moon" meshFileName="dat\asteroid8.dxs" textureFileName="dat\Asteroid_8_Albedo.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+    <set_object_property property="artScale" value="4.0" name="Moon" />
+    <set_object_property property="pushRadius" value="2500.0" name="Moon" />
+    <set_object_property property="angleDelta" value="0.1" name="Moon" />
     <create count="100" type="nebulas" nebType="2" startX="52034.0" startY="0.0" startZ="13244.0" endX="96780.0" endY="0.0" endZ="22397.0" randomRange="10000" />
+    <set_ship_text name="Moon" class="Class P Planetoid" desc="While colloquially called &quot;moon&quot;, this astral body is technically a dwarf planet." scan_desc="High concentrations of energy crystals detected." />
     <create count="100" type="nebulas" startX="97216.0" startY="0.0" startZ="1476.0" endX="51889.0" endY="0.0" endZ="169.0" randomRange="10000" />
-    <create count="100" type="asteroids" startX="47676.0" startY="0.0" startZ="35326.0" endX="40412.0" endY="0.0" endZ="750.0" randomRange="20000" />
+    <create count="100" type="asteroids" startX="47676.0" startY="0.0" startZ="35326.0" endX="40412.0" endY="0.0" endZ="750.0" randomRange="20000" randomSeed="1" />
     <create count="100" type="asteroids" startX="51163.0" startY="0.0" startZ="95472.0" endX="48838.0" endY="0.0" endZ="50000.0" randomRange="20000" />
     <create count="100" type="nebulas" startX="48257.0" startY="0.0" startZ="84576.0" endX="1042.0" endY="0.0" endZ="18765.0" randomRange="10000" />
     <create count="60" type="nebulas" startX="19928.0" startY="0.0" startZ="97796.0" endX="55231.0" endY="0.0" endZ="70484.0" randomRange="20000" />
@@ -154,6 +190,13 @@
     <create count="150" type="nebulas" startX="42010.0" startY="0.0" startZ="55956.0" endX="94601.0" endY="0.0" endZ="5254.0" randomRange="20000" />
     <create count="10" type="nebulas" nebType="2" startX="20509.0" startY="0.0" startZ="1186.0" endX="20509.0" endY="0.0" endZ="1186.0" randomRange="10000" />
     <create type="genericMesh" x="62494.0" y="1.0" z="24430.0" name="Athorn Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
-    <set_object_property property="angle" value="(320.9 + 180) * 3.14159/180" name="Athorn Gate" />
+    <create type="neutral" x="29784.0" y="0.0" z="22254.0" angle="0" name="Ganchez" hullID="1100" />
+    <clear_ai name="Ganchez" />
+    <add_ai type="SPCL_AI" name="Ganchez" />
+    <set_special name="Ganchez" ability="Stealth" />
+    <set_special name="Ganchez" ability="LowVis" />
+    <set_special name="Ganchez" ability="Cloak" />
+    <add_ai type="CHASE_ANGER" name="Ganchez" />
+    <set_ship_text name="Ganchez" race="Sechatzal" class="Outpost" desc="No match in stellar cartography data for this installation." scan_desc="Installation is shielded by Sechatzal cloaking technology. Deep scan failed." hailtext="Greetings, terrans. If anyone asks, you have never seen us." />
   </event>
 </mission_data>

@@ -323,11 +323,21 @@
     <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-          <create type="neutral" x="30824.0" y="0.0" z="26900.0" angle="0" name="Gilmik Mining" hullID="1355" sideValue="sectorSide" />
+          <create type="neutral" x="30824.0" y="0.0" z="26900.0" angle="0" name="Gilmik Mining" hullID="1005" sideValue="sectorSide" />
     
 <create type="neutral" x="63511.0" y="0.0" z="78910.0" angle="0" name="Routing Office" hullID="1357" sideValue="sectorSide" />
     
+<set_ship_text name="Gilmik Mining" desc="Kralien mining base, equipped to extract valuable resources from asteroids. Lightly defended." scan_desc="The station commander runs a disciplined work crew, but is not particularly brave." hailtext="Who the fuck are you? Terrans?" />
+    
 <set_ship_text name="Routing Office" desc="Logistics office for Hegemony thru traffic within the system. Lightly defended." scan_desc="The station commander enjoys extended naps during which traffic flow tends to stall." hailtext="Who the fuck are you? Terrans?" />
+    
+<create type="enemy" x="22440.0" y="0.0" z="32664.0" angle="240" name="Arvo Transport" hullID="2101" fleetnumber="-1" sideValue="sectorSide" />
+    
+<clear_ai name="Arvo Transport" />
+    
+<add_ai type="DIR_THROTTLE" value1="240" value2="1.0" name="Arvo Transport" />
+    
+<set_ship_text name="Arvo Transport" class="Transport" desc="Bulk cargo vessel belonging to an independent crew. Volume: 0.26 cubic kilometers." scan_desc="En route from Il'Is'Kar to Jhohara. Transporting Is'Karan sugar crystals." hailtext="Who the fuck are you? Terrans?" />
     
 <create type="genericMesh" x="74843.0" y="7.0" z="63075.0" name="Jhohara Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
   
@@ -339,15 +349,16 @@
       <set_object_property property="angle" value="4.71238898" name="Jhohara Gate" />
       <set_object_property property="rollDelta" value="0.3" name="Jhohara Gate" />
 
-      
+        
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="3.0" /> 
   </event>
 
       <event name="Destroy Sector Entities">
     <if_variable name="Vrae System" comparator="EQUALS" value="3.0" />
-          <destroy name="Gilmik Mining" />
+            <destroy name="Gilmik Mining" />
     <destroy name="Routing Office" />
+    <destroy name="Arvo Transport" />
     <destroy name="Jhohara Gate" />
     <destroy name="Vrae I" />
     <set_variable name="Vrae System" value="System" integer="yes" />
@@ -1086,21 +1097,48 @@
 <create type="neutral" x="82688.0" y="0.0" z="55956.0" angle="0" name="Inzisda Nebula Refinery" hullID="1356" sideValue="sectorSide" />
     
 <create type="enemy" x="31162.0" y="0.0" z="59419.0" angle="0" name="Vrae Outpost" hullID="1005" sideValue="sectorSide" fleetnumber="-1" />
+    
+<create type="enemy" x="58877.0" y="0.0" z="14725.0" angle="179.2" name="Gilmik Transport" hullID="2101" fleetnumber="-1" sideValue="sectorSide" />
+    
+<create type="enemy" x="48281.0" y="0.0" z="77095.0" angle="359.5" name="Shnikshnak Transport" hullID="2101" fleetnumber="-1" sideValue="sectorSide" />
+    
+<create type="enemy" x="54602.0" y="0.0" z="45398.0" angle="359.5" name="Inzisda Transport" hullID="2101" fleetnumber="-1" sideValue="sectorSide" />
+    
+<clear_ai name="Gilmik Transport" />
+    
+<add_ai type="DIR_THROTTLE" value1="180" value2="1.0" name="Gilmik Transport" />
+    
+<set_ship_text name="Gilmik Transport" class="Transport" desc="Bulk cargo vessel belonging to the Gilmik crew. Volume: 0.26 cubic kilometers." scan_desc="Transporting a variety of filtered and crushed ores for further processing in less hostile environments." hailtext="Who the fuck are you? Terrans?" />
+    
+<clear_ai name="Inzisda Transport" />
+    
+<add_ai type="DIR_THROTTLE" value1="0" value2="1.0" name="Inzisda Transport" />
+    
+<set_ship_text name="Inzisda Transport" class="Transport" desc="Bulk cargo vessel belonging to the Inzisda crew. Volume: 0.21 cubic kilometers." scan_desc="Transporting rare gases, stored in liquid form in 300 liter dewars." hailtext="Who the fuck are you? Terrans?" />
+    
+<clear_ai name="Shnikshnak Transport" />
+    
+<set_ship_text name="Shnikshnak Transport" class="Transport" desc="Bulk cargo vessel belonging to an independent crew. Volume: 0.30 cubic kilometers." scan_desc="Transporting computer chips and other electrical components." hailtext="Who the fuck are you? Terrans?" />
+    
+<add_ai type="DIR_THROTTLE" value1="0" value2="1.0" name="Shnikshnak Transport" />
   
 
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Vrae V" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
 
 
-      
+            
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="3.0" /> 
   </event>
 
       <event name="Destroy Sector Entities">
     <if_variable name="Vrae System" comparator="EQUALS" value="3.0" />
-          <destroy name="Golgagi" />
+                <destroy name="Golgagi" />
     <destroy name="Inzisda Nebula Refinery" />
     <destroy name="Vrae Outpost" />
+    <destroy name="Gilmik Transport" />
+    <destroy name="Shnikshnak Transport" />
+    <destroy name="Inzisda Transport" />
     <destroy name="Vrae V" />
     <set_variable name="Vrae System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
@@ -1353,6 +1391,8 @@
 <create count="10" type="nebulas" nebType="2" startX="75570.0" startY="0.0" startZ="30677.0" endX="91841.0" endY="0.0" endZ="460.0" randomRange="1000" randomSeed="1000" />
     
 <create count="10" type="nebulas" nebType="2" startX="78475.0" startY="0.0" startZ="70193.0" endX="99105.0" endY="0.0" endZ="84866.0" randomRange="1000" randomSeed="1000" />
+    
+<create count="5" type="nebulas" nebType="2" startX="61201.0" startY="0.0" startZ="60921.0" radius="2000" randomRange="500" />
     
 
     <set_variable name="Sector Entities" value="1.0" />
@@ -1678,6 +1718,8 @@
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
           <create type="genericMesh" x="61332.0" y="0.0" z="60895.0" name="PULSARVrae Pulsar" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     
+<set_ship_text name="PULSARVrae Pulsar" class="Pulsar" desc="A rapidly spinning neutron star that emits beams of electromagnetic radiation. Radiation may induce energy in systems of nearby ships.^Recommended distance: 200000 km." scan_desc="High electromagnetic activity." />
+    
 <create type="genericMesh" x="26320.0" y="8.0" z="67578.0" name="Khoros Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
   
 
@@ -1688,63 +1730,64 @@
       <set_object_property property="angle" value="4.71238898" name="Khoros Gate" />
       <set_object_property property="rollDelta" value="0.3" name="Khoros Gate" />
 
-                 <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P0" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Neutrals\Dhvarahn_Spec.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
-        <set_object_property property="pushRadius" value="1.0" name="P0" />
+                 <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P0" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\white32.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P0" />
         <set_object_property property="artScale" value="8.0" name="P0" />
         <set_relative_position name2="P0" distance="2000" angle="0.0" name1="PULSARVrae Pulsar" />
         <set_object_property property="positionY" value="0.0" name="P0" />
         <set_object_property property="angle" value="0.0" name="P0" />
         <set_ship_text name="P0" newname=" " />
-        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P1" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Neutrals\Dhvarahn_Spec.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
-        <set_object_property property="pushRadius" value="1.0" name="P1" />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P1" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\white32.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P1" />
         <set_object_property property="artScale" value="8.0" name="P1" />
         <set_relative_position name2="P1" distance="2000" angle="45.0" name1="PULSARVrae Pulsar" />
         <set_object_property property="positionY" value="0.0" name="P1" />
         <set_object_property property="angle" value="0.78539816339" name="P1" />
         <set_ship_text name="P1" newname=" " />
-        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P2" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Neutrals\Dhvarahn_Spec.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
-        <set_object_property property="pushRadius" value="1.0" name="P2" />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P2" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\white32.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P2" />
         <set_object_property property="artScale" value="8.0" name="P2" />
         <set_relative_position name2="P2" distance="2000" angle="90.0" name1="PULSARVrae Pulsar" />
         <set_object_property property="positionY" value="0.0" name="P2" />
         <set_object_property property="angle" value="1.57079632678" name="P2" />
         <set_ship_text name="P2" newname=" " />
-        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P3" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Neutrals\Dhvarahn_Spec.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
-        <set_object_property property="pushRadius" value="1.0" name="P3" />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P3" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\white32.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P3" />
         <set_object_property property="artScale" value="8.0" name="P3" />
         <set_relative_position name2="P3" distance="2000" angle="135.0" name1="PULSARVrae Pulsar" />
         <set_object_property property="positionY" value="0.0" name="P3" />
         <set_object_property property="angle" value="2.35619449017" name="P3" />
         <set_ship_text name="P3" newname=" " />
-        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P4" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Neutrals\Dhvarahn_Spec.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
-        <set_object_property property="pushRadius" value="1.0" name="P4" />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P4" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\white32.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P4" />
         <set_object_property property="artScale" value="8.0" name="P4" />
         <set_relative_position name2="P4" distance="2000" angle="180.0" name1="PULSARVrae Pulsar" />
         <set_object_property property="positionY" value="0.0" name="P4" />
         <set_object_property property="angle" value="3.14159265356" name="P4" />
         <set_ship_text name="P4" newname=" " />
-        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P5" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Neutrals\Dhvarahn_Spec.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
-        <set_object_property property="pushRadius" value="1.0" name="P5" />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P5" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\white32.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P5" />
         <set_object_property property="artScale" value="8.0" name="P5" />
         <set_relative_position name2="P5" distance="2000" angle="225.0" name1="PULSARVrae Pulsar" />
         <set_object_property property="positionY" value="0.0" name="P5" />
         <set_object_property property="angle" value="3.92699081695" name="P5" />
         <set_ship_text name="P5" newname=" " />
-        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P6" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Neutrals\Dhvarahn_Spec.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
-        <set_object_property property="pushRadius" value="1.0" name="P6" />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P6" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\white32.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P6" />
         <set_object_property property="artScale" value="8.0" name="P6" />
         <set_relative_position name2="P6" distance="2000" angle="270.0" name1="PULSARVrae Pulsar" />
         <set_object_property property="positionY" value="0.0" name="P6" />
         <set_object_property property="angle" value="4.71238898034" name="P6" />
         <set_ship_text name="P6" newname=" " />
-        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P7" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Neutrals\Dhvarahn_Spec.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
-        <set_object_property property="pushRadius" value="1.0" name="P7" />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P7" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\white32.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P7" />
         <set_object_property property="artScale" value="8.0" name="P7" />
         <set_relative_position name2="P7" distance="2000" angle="315.0" name1="PULSARVrae Pulsar" />
         <set_object_property property="positionY" value="0.0" name="P7" />
         <set_object_property property="angle" value="5.49778714373" name="P7" />
         <set_ship_text name="P7" newname=" " />
     <set_object_property property="angleDelta" value="0.004" name="PULSARVrae Pulsar" />
+    <set_object_property property="pushRadius" value="2000" name="PULSARVrae Pulsar" />
     <set_ship_text name="PULSARVrae Pulsar" newname="Vrae Pulsar" />
 
    
@@ -1819,7 +1862,7 @@
 <create count="10" type="nebulas" startX="99540.0" startY="0.0" startZ="46368.0" endX="77168.0" endY="0.0" endZ="42154.0" randomRange="5000" />
     
 <create count="10" type="nebulas" startX="43899.0" startY="0.0" startZ="44043.0" endX="21381.0" endY="0.0" endZ="44043.0" randomRange="5000" />
-  
+    
 
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Vrae System" value="2.0" />
@@ -1914,18 +1957,34 @@
     <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="8.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-          
+          <create type="neutral" x="13982.0" y="0.0" z="53113.0" angle="0" name="Seztanach" hullID="1100" sideValue="sectorSide" />
+    
+<clear_ai name="Seztanach" />
+    
+<add_ai type="SPCL_AI" name="Seztanach" />
+    
+<set_special name="Seztanach" ability="Stealth" />
+    
+<set_special name="Seztanach" ability="LowVis" />
+    
+<set_special name="Seztanach" ability="Cloak" />
+    
+<add_ai type="CHASE_ANGER" name="Seztanach" />
+    
+<set_ship_text name="Seztanach" race="Sechatzal" class="Outpost" desc="No match in stellar cartography data for this installation." scan_desc="Installation is shielded by Sechatzal cloaking technology. Deep scan failed." hailtext="Greetings, terrans. If anyone asks, you have never seen us." />
+  
 
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Vrae VIII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
 
 
-
+  
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="3.0" /> 
   </event>
 
       <event name="Destroy Sector Entities">
     <if_variable name="Vrae System" comparator="EQUALS" value="3.0" />
+      <destroy name="Seztanach" />
     <destroy name="Vrae VIII" />
     <set_variable name="Vrae System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
@@ -1948,7 +2007,7 @@
     
 <create count="10" type="nebulas" nebType="2" startX="40848.0" startY="0.0" startZ="97070.0" endX="64383.0" endY="0.0" endZ="86029.0" randomRange="5000" />
     
-<create count="60" type="mines" startX="18475.0" startY="0.0" startZ="11791.0" endX="18620.0" endY="0.0" endZ="58135.0" />
+<create count="60" type="mines" startX="23928.0" startY="0.0" startZ="51812.0" endX="23928.0" endY="0.0" endZ="13051.0" />
     
 
     <set_variable name="Sector Entities" value="1.0" />
@@ -2204,6 +2263,14 @@
 <create type="enemy" x="40848.0" y="0.0" z="49418.0" angle="229.4" name="Defense Grid D" hullID="1005" fleetnumber="-1" sideValue="sectorSide" />
     
 <create type="genericMesh" x="29371.0" y="8.0" z="36198.0" name="Ka'Morlin Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    
+<create type="enemy" x="31921.0" y="0.0" z="11099.0" angle="0" name="So Transport" hullID="2101" fleetnumber="-1" sideValue="sectorSide" />
+    
+<set_ship_text name="So Transport" class="Transport" desc="Bulk cargo vessel belonging to an independent crew. Volume: 0.12 cubic kilometers." scan_desc="En route from Ka'Morlin to Jhohara. Transporting clothing of the Arvonian fashion." hailtext="Who the fuck are you? Terrans?" />
+    
+<clear_ai name="So Transport" />
+    
+<add_ai type="DIR_THROTTLE" value1="0" value2="1.0" name="So Transport" />
   
 
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Vrae IX" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
@@ -2213,17 +2280,18 @@
       <set_object_property property="angle" value="4.71238898" name="Ka'Morlin Gate" />
       <set_object_property property="rollDelta" value="0.3" name="Ka'Morlin Gate" />
 
-        
+          
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="3.0" /> 
   </event>
 
       <event name="Destroy Sector Entities">
     <if_variable name="Vrae System" comparator="EQUALS" value="3.0" />
-            <destroy name="Defense Grid A" />
+              <destroy name="Defense Grid A" />
     <destroy name="Defense Grid B" />
     <destroy name="Defense Grid D" />
     <destroy name="Ka'Morlin Gate" />
+    <destroy name="So Transport" />
     <destroy name="Vrae IX" />
     <set_variable name="Vrae System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
@@ -2266,7 +2334,7 @@
     
 <create count="100" type="nebulas" startX="97216.0" startY="0.0" startZ="1476.0" endX="51889.0" endY="0.0" endZ="169.0" randomRange="10000" />
     
-<create count="100" type="asteroids" startX="47676.0" startY="0.0" startZ="35326.0" endX="40412.0" endY="0.0" endZ="750.0" randomRange="20000" />
+<create count="100" type="asteroids" startX="47676.0" startY="0.0" startZ="35326.0" endX="40412.0" endY="0.0" endZ="750.0" randomRange="20000" randomSeed="1" />
     
 <create count="100" type="asteroids" startX="51163.0" startY="0.0" startZ="95472.0" endX="48838.0" endY="0.0" endZ="50000.0" randomRange="20000" />
     
@@ -2374,18 +2442,28 @@
     <if_variable name="Vrae System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="10.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-          
+          <create type="genericMesh" x="44377.0" y="0.0" z="24206.0" name="Moon" meshFileName="dat\asteroid8.dxs" textureFileName="dat\Asteroid_8_Albedo.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+    
+<set_object_property property="artScale" value="4.0" name="Moon" />
+    
+<set_object_property property="pushRadius" value="2500.0" name="Moon" />
+    
+<set_object_property property="angleDelta" value="0.1" name="Moon" />
+    
+<set_ship_text name="Moon" class="Class P Planetoid" desc="While colloquially called &quot;moon&quot;, this astral body is technically a dwarf planet." scan_desc="High concentrations of energy crystals detected." />
+    
 
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Vrae X" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
 
 
-
+  
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="3.0" /> 
   </event>
 
       <event name="Destroy Sector Entities">
     <if_variable name="Vrae System" comparator="EQUALS" value="3.0" />
+      <destroy name="Moon" />
     <destroy name="Vrae X" />
     <set_variable name="Vrae System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
@@ -2783,7 +2861,21 @@
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
           <create type="genericMesh" x="62494.0" y="1.0" z="24430.0" name="Athorn Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
     
-<set_object_property property="angle" value="(320.9 + 180) * 3.14159/180" name="Athorn Gate" />
+<create type="neutral" x="29784.0" y="0.0" z="22254.0" angle="0" name="Ganchez" hullID="1100" sideValue="sectorSide" />
+    
+<clear_ai name="Ganchez" />
+    
+<add_ai type="SPCL_AI" name="Ganchez" />
+    
+<set_special name="Ganchez" ability="Stealth" />
+    
+<set_special name="Ganchez" ability="LowVis" />
+    
+<set_special name="Ganchez" ability="Cloak" />
+    
+<add_ai type="CHASE_ANGER" name="Ganchez" />
+    
+<set_ship_text name="Ganchez" race="Sechatzal" class="Outpost" desc="No match in stellar cartography data for this installation." scan_desc="Installation is shielded by Sechatzal cloaking technology. Deep scan failed." hailtext="Greetings, terrans. If anyone asks, you have never seen us." />
   
 
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Vrae XII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
@@ -2793,14 +2885,15 @@
       <set_object_property property="angle" value="4.71238898" name="Athorn Gate" />
       <set_object_property property="rollDelta" value="0.3" name="Athorn Gate" />
 
-  
+    
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="3.0" /> 
   </event>
 
       <event name="Destroy Sector Entities">
     <if_variable name="Vrae System" comparator="EQUALS" value="3.0" />
-      <destroy name="Athorn Gate" />
+        <destroy name="Athorn Gate" />
+    <destroy name="Ganchez" />
     <destroy name="Vrae XII" />
     <set_variable name="Vrae System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
@@ -2856,7 +2949,7 @@
             <if_variable name="Sector" comparator="NOT" value="5" />
             <if_variable name="Sector" comparator="NOT" value="9" />
       <if_variable name="Vrae_Pulsar_InRange" comparator="NOT" value="1.0" />
-  <warning_popup_message message="Warning: Intense Static Energy Pulses Detected" consoles="MHWESCO">Warning: Intense Static Energy Pulses</warning_popup_message>
+  <warning_popup_message message="Warning: Intense Electromagnetic Radiation Detected" consoles="MHWESCO">Warning: Intense Electromagnetic Radiation Pulses</warning_popup_message>
   <set_variable name="Vrae_Pulsar_InRange" value="1.0" integer="yes" />
 
   </event>
@@ -2874,7 +2967,7 @@
             <if_variable name="Sector" comparator="NOT" value="11" />
             <if_variable name="Sector" comparator="NOT" value="12" />
       <if_variable name="Vrae_Pulsar_InRange" comparator="EQUALS" value="1.0" />
-  <warning_popup_message message="Clear: Static Energy Nominal" consoles="MHWESCO">Static Energy Nominal</warning_popup_message>
+  <warning_popup_message message="Clear: Electromagnetic Radiation Nominal" consoles="MHWESCO">Electromagnetic Radiation Nominal</warning_popup_message>
   <set_variable name="Vrae_Pulsar_InRange" value="0.0" integer="yes" />
 
   </event>
