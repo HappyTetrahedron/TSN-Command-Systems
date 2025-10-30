@@ -146,7 +146,7 @@
 
     {% for entity in entityNames %} {% for prefix in planet.planetTypes.keys() %}
       {% if entity.startswith(prefix) %}
-        {{ planet.createPlanetSlices(entity, planet.planetTypes[prefix]['textureFiles'], prefix)}}
+        {{ planet.createPlanetSlices(entity, planet.planetTypes[prefix], prefix)}}
       {% endif %}
     {% endfor %} {% endfor %}
 

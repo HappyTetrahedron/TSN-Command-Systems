@@ -70,6 +70,30 @@ Now, your map is available for inclusion when building the mission script.
 To actually build the mission script, you can use the `XML Files/render.py` utility.
 You will want to update its parameters (directly inside the file) to include your new map.
 
+### Planets
+There's a system in place to help you create cool planets on your maps.
+
+Planets are a bit fiddly to set up.
+It can be done by hand - nothing's stopping you - but it's much easier and more reliable to use the automation for it.
+
+To create a planet, all you have to do is create a marker `genericMesh` object in the desired position:
+```
+    <create type="genericMesh" x="61332.0" y="0.0" z="60895.0" name="PLANETHelios" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="0.8" colorBlue="0.0" />
+```
+The name starts with `PLANET` in all-caps.
+This detail is what tells the system to render a planet here.
+The system also removes the `PLANET` prefix, so your planet's name doesn't end up looking stupid.
+
+If you want to give your planet a nice description, you can do so by configuring the `genericMesh` as usual.
+(You'll have to use the "stupid" name though - the name change happens later in the script)
+```
+    <set_ship_text name="PLANETHelios" class="Class M Planet" desc="A sparsely populated world known for its impressive tectonic landscape." scan_desc="High seismic activity." />
+```
+
+The `PLANET` keyword results in a nice, earth-like planet with a big ocean and continents.
+There are some other options, though, such as `ARID-PLANET` and `SAND-PLANET`.
+You can check the file `XML Files/Planets.xml` for the full list.
+
 ## Advanced Maps
 
 Some maps contain additional logic to produce special effects, such as hazardous areas or moving entities.

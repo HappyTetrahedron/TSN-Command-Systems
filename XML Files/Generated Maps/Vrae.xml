@@ -1392,7 +1392,7 @@
     
 <create count="10" type="nebulas" nebType="2" startX="78475.0" startY="0.0" startZ="70193.0" endX="99105.0" endY="0.0" endZ="84866.0" randomRange="1000" randomSeed="1000" />
     
-<create count="5" type="nebulas" nebType="2" startX="61201.0" startY="0.0" startZ="60921.0" radius="2000" randomRange="500" />
+<create count="5" type="nebulas" nebType="2" startX="61201.0" startY="0.0" startZ="60921.0" radius="3000" randomRange="500" />
     
 
     <set_variable name="Sector Entities" value="1.0" />
@@ -1732,62 +1732,62 @@
 
                  <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P0" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\white32.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
         <set_object_property property="pushRadius" value="0.0" name="P0" />
-        <set_object_property property="artScale" value="8.0" name="P0" />
-        <set_relative_position name2="P0" distance="2000" angle="0.0" name1="PULSARVrae Pulsar" />
+        <set_object_property property="artScale" value="12.0" name="P0" />
+        <set_relative_position name2="P0" distance="3000.0" angle="0.0" name1="PULSARVrae Pulsar" />
         <set_object_property property="positionY" value="0.0" name="P0" />
         <set_object_property property="angle" value="0.0" name="P0" />
         <set_ship_text name="P0" newname=" " />
         <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P1" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\white32.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
         <set_object_property property="pushRadius" value="0.0" name="P1" />
-        <set_object_property property="artScale" value="8.0" name="P1" />
-        <set_relative_position name2="P1" distance="2000" angle="45.0" name1="PULSARVrae Pulsar" />
+        <set_object_property property="artScale" value="12.0" name="P1" />
+        <set_relative_position name2="P1" distance="3000.0" angle="45.0" name1="PULSARVrae Pulsar" />
         <set_object_property property="positionY" value="0.0" name="P1" />
         <set_object_property property="angle" value="0.78539816339" name="P1" />
         <set_ship_text name="P1" newname=" " />
         <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P2" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\white32.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
         <set_object_property property="pushRadius" value="0.0" name="P2" />
-        <set_object_property property="artScale" value="8.0" name="P2" />
-        <set_relative_position name2="P2" distance="2000" angle="90.0" name1="PULSARVrae Pulsar" />
+        <set_object_property property="artScale" value="12.0" name="P2" />
+        <set_relative_position name2="P2" distance="3000.0" angle="90.0" name1="PULSARVrae Pulsar" />
         <set_object_property property="positionY" value="0.0" name="P2" />
         <set_object_property property="angle" value="1.57079632678" name="P2" />
         <set_ship_text name="P2" newname=" " />
         <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P3" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\white32.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
         <set_object_property property="pushRadius" value="0.0" name="P3" />
-        <set_object_property property="artScale" value="8.0" name="P3" />
-        <set_relative_position name2="P3" distance="2000" angle="135.0" name1="PULSARVrae Pulsar" />
+        <set_object_property property="artScale" value="12.0" name="P3" />
+        <set_relative_position name2="P3" distance="3000.0" angle="135.0" name1="PULSARVrae Pulsar" />
         <set_object_property property="positionY" value="0.0" name="P3" />
         <set_object_property property="angle" value="2.35619449017" name="P3" />
         <set_ship_text name="P3" newname=" " />
         <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P4" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\white32.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
         <set_object_property property="pushRadius" value="0.0" name="P4" />
-        <set_object_property property="artScale" value="8.0" name="P4" />
-        <set_relative_position name2="P4" distance="2000" angle="180.0" name1="PULSARVrae Pulsar" />
+        <set_object_property property="artScale" value="12.0" name="P4" />
+        <set_relative_position name2="P4" distance="3000.0" angle="180.0" name1="PULSARVrae Pulsar" />
         <set_object_property property="positionY" value="0.0" name="P4" />
         <set_object_property property="angle" value="3.14159265356" name="P4" />
         <set_ship_text name="P4" newname=" " />
         <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P5" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\white32.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
         <set_object_property property="pushRadius" value="0.0" name="P5" />
-        <set_object_property property="artScale" value="8.0" name="P5" />
-        <set_relative_position name2="P5" distance="2000" angle="225.0" name1="PULSARVrae Pulsar" />
+        <set_object_property property="artScale" value="12.0" name="P5" />
+        <set_relative_position name2="P5" distance="3000.0" angle="225.0" name1="PULSARVrae Pulsar" />
         <set_object_property property="positionY" value="0.0" name="P5" />
         <set_object_property property="angle" value="3.92699081695" name="P5" />
         <set_ship_text name="P5" newname=" " />
         <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P6" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\white32.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
         <set_object_property property="pushRadius" value="0.0" name="P6" />
-        <set_object_property property="artScale" value="8.0" name="P6" />
-        <set_relative_position name2="P6" distance="2000" angle="270.0" name1="PULSARVrae Pulsar" />
+        <set_object_property property="artScale" value="12.0" name="P6" />
+        <set_relative_position name2="P6" distance="3000.0" angle="270.0" name1="PULSARVrae Pulsar" />
         <set_object_property property="positionY" value="0.0" name="P6" />
         <set_object_property property="angle" value="4.71238898034" name="P6" />
         <set_ship_text name="P6" newname=" " />
         <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P7" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\white32.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
         <set_object_property property="pushRadius" value="0.0" name="P7" />
-        <set_object_property property="artScale" value="8.0" name="P7" />
-        <set_relative_position name2="P7" distance="2000" angle="315.0" name1="PULSARVrae Pulsar" />
+        <set_object_property property="artScale" value="12.0" name="P7" />
+        <set_relative_position name2="P7" distance="3000.0" angle="315.0" name1="PULSARVrae Pulsar" />
         <set_object_property property="positionY" value="0.0" name="P7" />
         <set_object_property property="angle" value="5.49778714373" name="P7" />
         <set_ship_text name="P7" newname=" " />
     <set_object_property property="angleDelta" value="0.004" name="PULSARVrae Pulsar" />
-    <set_object_property property="pushRadius" value="2000" name="PULSARVrae Pulsar" />
+    <set_object_property property="pushRadius" value="3000.0" name="PULSARVrae Pulsar" />
     <set_ship_text name="PULSARVrae Pulsar" newname="Vrae Pulsar" />
 
    
