@@ -56,6 +56,12 @@
     <set_variable name="OperationType" value="{{ mineCargo }}.0" integer="yes" />
   {% endcall %}
 
+  {% call util.onModuleButtonPressed("Shuttle Status", ship) %}
+    <if_exists player_slot="{{ ship.slot }}" />
+    <if_variable name="{{ ship.shuttle }}CargoType" comparator="EQUALS" value="{{ mineCargo }}.0" />
+    <incoming_comms_text from="CHANNEL {{ ship.id }}" sideValue="playerSide" type="STATUS">{{ ship.shuttle }} has a deployable mine field loaded.^The deployment timer is 30 seconds.</incoming_comms_text>
+  {% endcall %}
+
 
   {# Loading and Unloading #}
   <event name="Ship {{ ship.id }} Load Bombs">
@@ -103,22 +109,30 @@
     <if_variable name="Module_{{ moduleName }}_Ship{{ ship.id }}_TimerArmed" comparator="NOT" value="1.0" />
     <warning_popup_message message="Mine Deployment Countdown Started - {{ timer }} seconds" consoles="MCF" player_slot="{{ ship.slot }}" />
     <set_timer name="Module_{{ moduleName }}_Ship{{ ship.id }}_Timer" seconds="30" />
-  <set_variable name="Module_{{ moduleName }}_Ship{{ ship.id }}_TimerArmed" value="1.0" integer="yes" />
+    <set_timer name="Module_{{ moduleName }}_Ship{{ ship.id }}_CountdownTimer" seconds="25" />
+    <set_variable name="KMShip{{ ship.id }}CD" value="5" integer="yes" />
+    <set_variable name="Module_{{ moduleName }}_Ship{{ ship.id }}_TimerArmed" value="1.0" integer="yes" />
   </event>
 
-  <event name="Ship {{ ship.id }} Mines Deploy">
+  <event name="Ship {{ ship.id }} Mines Countdown">
+      <if_variable name="KMShip{{ ship.id }}CD" comparator="GREATER" value="0.0" />
+      <if_timer_finished name="Module_{{ moduleName }}_Ship{{ ship.id }}_CountdownTimer"/>
+      <warning_popup_message message="Countdown: |KMShip{{ ship.id }}CD|" consoles="F" player_slot="{{ ship.slot }}" />
+      <set_variable name="KMShip{{ ship.id }}CD" value="KMShip{{ ship.id }}CD - 1"  integer="yes" />
+      <set_timer name="Module_{{ moduleName }}_Ship{{ ship.id }}_CountdownTimer" seconds="1" />
+  </event>
+
+  <event name="Ship {{ ship.id }} Mines Deploy Phase 1">
     <if_exists name="{{ ship.shuttle }}" />
     <if_timer_finished name="Module_{{ moduleName }}_Ship{{ ship.id }}_Timer"/>
     <if_variable name="{{ ship.shuttle }}CurrentCargo" comparator="GREATER" value="0.0" />
     <if_variable name="{{ ship.shuttle }}CargoType" comparator="EQUALS" value="{{ mineCargo }}.0" />
 
-    <!-- deploy mines -->
     
+    <!-- get coordinates for mines -->
     <get_object_property property="positionX" name="{{ ship.shuttle }}" variable="Module_{{ moduleName}}_{{ ship.shuttle }}_X" />
+    <get_object_property property="positionY" name="{{ ship.shuttle }}" variable="Module_{{ moduleName}}_{{ ship.shuttle }}_Y" />
     <get_object_property property="positionZ" name="{{ ship.shuttle }}" variable="Module_{{ moduleName}}_{{ ship.shuttle }}_Z" />
-    <create count="1" type="mines" startX="Module_{{ moduleName}}_{{ ship.shuttle }}_X" startY="0.0" startZ="Module_{{ moduleName}}_{{ ship.shuttle }}_Z" radius="1" />
-    <create count="8" type="mines" startX="Module_{{ moduleName}}_{{ ship.shuttle }}_X" startY="0.0" startZ="Module_{{ moduleName}}_{{ ship.shuttle }}_Z" radius="500" />
-    <create count="16" type="mines" startX="Module_{{ moduleName}}_{{ ship.shuttle }}_X" startY="0.0" startZ="Module_{{ moduleName}}_{{ ship.shuttle }}_Z" radius="1000" />
 
     <!-- reset shuttle cargo mines -->
     <warning_popup_message message="Minefield deployed" consoles="MCF" player_slot="{{ ship.slot }}" />
@@ -126,6 +140,20 @@
     <set_variable name="{{ ship.shuttle }}CargoType" value="0.0" integer="yes" />
 
     <set_variable name="Module_{{ moduleName }}_Ship{{ ship.id }}_TimerArmed" value="0.0" integer="yes" />
+    <set_timer name="Module_{{ moduleName }}_Ship{{ ship.id }}_DeployTimer" seconds="1" />
+  </event>
+
+  <event name="Ship {{ ship.id }} Mines Deploy Phase 2">
+      <if_exists name="{{ ship.shuttle }}" />
+      <if_variable name="Module_{{ moduleName }}_Ship{{ ship.id }}_MinesDeployed" comparator="NOT" value="1.0" />
+      <if_timer_finished name="Module_{{ moduleName }}_Ship{{ ship.id }}_DeployTimer"/>
+
+      <!-- deploy mines -->
+      <create count="1" type="mines" startX="Module_{{ moduleName}}_{{ ship.shuttle }}_X" startY="Module_{{ moduleName}}_{{ ship.shuttle }}_Y" startZ="Module_{{ moduleName}}_{{ ship.shuttle }}_Z" radius="1" />
+      <create count="8" type="mines" startX="Module_{{ moduleName}}_{{ ship.shuttle }}_X" startY="Module_{{ moduleName}}_{{ ship.shuttle }}_Y" startZ="Module_{{ moduleName}}_{{ ship.shuttle }}_Z" radius="500" />
+      <create count="16" type="mines" startX="Module_{{ moduleName}}_{{ ship.shuttle }}_X" startY="Module_{{ moduleName}}_{{ ship.shuttle }}_Y" startZ="Module_{{ moduleName}}_{{ ship.shuttle }}_Z" radius="1000" />
+
+      <set_variable name="Module_{{ moduleName }}_Ship{{ ship.id }}_MinesDeployed" value="1.0" integer="yes" />
   </event>
 
   <event name="Ship {{ ship.id }} Mines Recovered">
