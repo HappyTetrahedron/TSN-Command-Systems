@@ -9,17 +9,13 @@ import datetime
 
 env = {
     "extensions": [
-        "S21",
-        "VerdantFleet",
+        "HazardPainter",
     ],
     "maps": [
-        "Waypoint 52",
         "Vrae",
         "Khoros",
-        "Jhohara",
-        "Volantis",
-        "Acantha",
-        "Erebus",
+        "Mria",
+        "Eulis",
     ],
     "ordnance": {
         "ship1": {
@@ -43,6 +39,7 @@ env = {
             "Decoy",
             "ShieldEnhancer",
             "KamikazeMine",
+            "Fireworks",
         ],
         "ship2": [
             "Decoy",

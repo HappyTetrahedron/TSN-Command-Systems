@@ -1,0 +1,110 @@
+<mission_data version="1.0" background_id_arme="4076349e-e1c0-4950-8e05-27c894bfaff8" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <start id_arme="4076349e-e1c0-4950-8e05-27c894bfaff8">
+    <set_variable name="Coordinate X" value="1542.0" />
+    <set_variable name="Coordinate Y" value="321.0" />
+    <set_variable name="Width" value="3.0" />
+    <set_variable name="Height" value="3.0" />
+    <set_variable name="Alignment" value="Neutral" />
+  </start>
+  <event name="Sector 1" id_arme="a7d0b21d-dd0a-4bc2-bd4f-2d5c7a5e0f19">
+    <set_skybox_index index="26" />
+    <create count="100" type="nebulas" startX="88438.0" startY="0.0" startZ="57500.0" endX="22143.0" endY="0.0" endZ="78392.0" randomRange="10000" />
+    <create count="100" type="asteroids" startX="84018.0" startY="-400.0" startZ="51473.0" endX="32590.0" endY="400.0" endZ="78794.0" randomRange="15000" />
+    <create type="neutral" x="61652.0" y="0.0" z="66339.0" angle="0" name="Mining Collective" hullID="1051" sideValue="sectorSide" />
+    <create type="neutral" x="41429.0" y="0.0" z="50133.0" name="Khoros Watchpost" hullID="1100" sideValue="sectorSide" />
+    <create count="100" type="nebulas" startX="76652.0" startY="0.0" startZ="37276.0" endX="46786.0" endY="0.0" endZ="75044.0" randomRange="10000" />
+    <create type="genericMesh" x="56027.0" y="0.0" z="38482.0" name="PLANETKhoros" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="0.8" colorBlue="0.0" />
+    <clear_ai name="Khoros Watchpost" />
+    <add_ai type="SPCL_AI" name="Khoros Watchpost" />
+    <set_special name="Khoros Watchpost" ability="Stealth" />
+    <set_special name="Khoros Watchpost" ability="LowVis" />
+    <set_special name="Khoros Watchpost" ability="Cloak" />
+    <add_ai type="CHASE_ANGER" name="Khoros Watchpost" />
+    <set_ship_text name="Khoros Watchpost" race="Sechatzal" class="Watchpost" desc="Administrative station and trading post for interstellar trade between Khoros Planet and other systems.^By Sechatzal administrative law, all trade to the planet must go through this station." scan_desc="Installation is shielded by Sechatzal cloaking technology. Deep scan failed." hailtext="Greetings, terrans. Here for a visit?" />
+    <clear_ai name="Mining Collective" />
+    <add_ai type="SPCL_AI" name="Mining Collective" />
+    <set_special name="Mining Collective" ability="LowVis" />
+    <set_special name="Mining Collective" ability="Stealth" />
+    <set_special name="Mining Collective" ability="Cloak" />
+    <add_ai type="CHASE_ANGER" name="Mining Collective" />
+    <set_ship_text name="Mining Collective" race="Sechatzal" class="Mining Station" desc="Sechatzal asteroid mining operation. According to TSN observation, most materials mined here are shipped directly to Khoros planet, allegedly for the construction of large underwater installations." scan_desc="Installation is shielded by Sechatzal cloaking technology. Deep scan failed." hailtext="Greetings, terrans. Apologies, but we do not trade." />
+    <set_ship_text name="PLANETKhoros" class="Class M Planet" desc="Home world of the Sechatzal. Very little is known about the reclusive species. Their skin naturally produces a radiation-absorbent compound that makes them very hard to observe on all wavelengths." scan_desc="Estimated population: 1674000" />
+  </event>
+  <event name="Sector 2" id_arme="20f7737b-b971-49cd-a428-bea44d51ba6a">
+    <set_skybox_index index="26" />
+    <create type="blackHole" x="23215.0" y="0.0" z="57767.0" name="Blackhole" />
+    <create count="50" type="nebulas" startX="30849.0" startY="0.0" startZ="36473.0" endX="9956.0" endY="0.0" endZ="46651.0" randomRange="5000" />
+    <create count="100" type="nebulas" startX="32322.0" startY="0.0" startZ="33928.0" endX="66608.0" endY="0.0" endZ="47857.0" randomRange="5000" />
+    <create count="150" type="nebulas" startX="67545.0" startY="0.0" startZ="49062.0" endX="59643.0" endY="0.0" endZ="97678.0" randomRange="5000" />
+    <create count="30" type="asteroids" startX="82411.0" startY="0.0" startZ="52008.0" endX="55625.0" endY="0.0" endZ="78526.0" randomRange="10000" />
+    <create type="genericMesh" x="23215.0" y="0.0" z="57767.0" name="Mrianath" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" />
+    <set_ship_text name="Mrianath" class="Singularity" desc="Medium-sized black hole named quite creatively after the nearby jump node." scan_desc="Gravitational aberrations nominal." />
+  </event>
+  <event name="Sector 3" id_arme="054f5e37-48d8-4436-a384-07a1deb6c8ed">
+    <set_skybox_index index="26" />
+    <create count="150" type="nebulas" nebType="2" startX="66072.0" startY="0.0" startZ="35267.0" radius="10000" randomRange="10000" />
+    <create count="150" type="nebulas" nebType="2" startX="48795.0" startY="0.0" startZ="69285.0" radius="10000" randomRange="10000" />
+    <create count="50" type="asteroids" startX="65536.0" startY="0.0" startZ="39017.0" endX="68483.0" endY="0.0" endZ="31785.0" randomRange="8000" />
+    <create count="50" type="asteroids" startX="46652.0" startY="0.0" startZ="72366.0" endX="43840.0" endY="0.0" endZ="81071.0" randomRange="8000" />
+    <create type="genericMesh" x="34599.0" y="18.0" z="38482.0" name="Mria Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="50804.0" y="0.0" z="50803.0" name="Ingal Post" hullID="1001" sideValue="sectorSide" />
+  </event>
+  <event name="Sector 4" id_arme="870cb578-accf-4108-9292-27d240afa6a5">
+    <set_skybox_index index="26" />
+    <create count="100" type="nebulas" nebType="1" startX="65402.0" startY="0.0" startZ="33928.0" endX="72902.0" endY="0.0" endZ="69955.0" randomRange="15000" />
+    <create count="100" type="nebulas" nebType="2" startX="77054.0" startY="0.0" startZ="30848.0" endX="60045.0" endY="0.0" endZ="73973.0" randomRange="15000" />
+    <create count="300" type="asteroids" startX="50224.0" startY="-200.0" startZ="59739.0" radius="10000" randomRange="30000" />
+    <create type="genericMesh" x="45447.0" y="8.0" z="55223.0" name="Eulis Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="60313.0" y="200.0" z="35133.0" name="Yadina Post" hullID="1001" sideValue="sectorSide" />
+  </event>
+  <event name="Sector 5" id_arme="21ee2fa9-5c5a-4e7f-a07a-a123dbcd6890">
+    <set_skybox_index index="26" />
+    <create count="100" type="nebulas" startX="61384.0" startY="0.0" startZ="312.0" endX="52009.0" endY="0.0" endZ="41428.0" randomRange="8000" />
+    <create count="100" type="nebulas" startX="46655.0" startY="0.0" startZ="66728.0" endX="54238.0" endY="0.0" endZ="32379.0" randomRange="12000" />
+    <create count="100" type="nebulas" startX="42194.0" startY="0.0" startZ="97509.0" endX="50075.0" endY="0.0" endZ="54237.0" randomRange="8000" />
+    <create count="25" type="asteroids" startX="73438.0" startY="0.0" startZ="35803.0" endX="69956.0" endY="0.0" endZ="54553.0" randomRange="5000" />
+    <create count="25" type="asteroids" startX="34867.0" startY="0.0" startZ="55892.0" endX="26563.0" endY="0.0" endZ="69687.0" randomRange="5000" />
+  </event>
+  <event name="Sector 6" id_arme="f17f3a93-accf-46f8-bd23-ef69e4fc9075">
+    <set_skybox_index index="26" />
+    <create count="100" type="nebulas" startX="28974.0" startY="0.0" startZ="19330.0" endX="59643.0" endY="0.0" endZ="47723.0" randomRange="15000" />
+    <create count="100" type="nebulas" nebType="2" startX="37411.0" startY="0.0" startZ="17187.0" endX="32188.0" endY="0.0" endZ="56830.0" randomRange="15000" />
+    <create count="50" type="asteroids" startX="72902.0" startY="0.0" startZ="41294.0" endX="46384.0" endY="0.0" endZ="75312.0" randomRange="8000" />
+  </event>
+  <event name="Sector 7" id_arme="f25a4db3-2b45-4a2c-913d-83f69c95501f">
+    <set_skybox_index index="26" />
+    <create count="300" type="asteroids" startX="52411.0" startY="200.0" startZ="32589.0" radius="10000" randomRange="30000" />
+    <create count="500" type="nebulas" startX="35402.0" startY="0.0" startZ="22410.0" endX="64733.0" endY="0.0" endZ="62053.0" randomRange="20000" />
+    <create type="station" x="49733.0" y="-200.0" z="42232.0" name="Korath Foundry" hullID="1003" sideValue="sectorSide" />
+    <create type="neutral" x="62054.0" y="400.0" z="38214.0" angle="0" name="Kilti Ores" hullID="1050" sideValue="sectorSide" />
+    <create type="neutral" x="46652.0" y="-400.0" z="53348.0" angle="0" name="Joab Minerals" hullID="1050" sideValue="sectorSide" />
+    <create type="neutral" x="43572.0" y="0.0" z="33392.0" angle="0" name="Misha Denabite" hullID="1051" sideValue="sectorSide" />
+  </event>
+  <event name="Sector 8" id_arme="88708f08-05ef-441f-a496-8933b524e145">
+    <set_skybox_index index="26" />
+    <create type="blackHole" x="66432.0" y="0.0" z="38178.0" name="Blackhole" />
+    <create count="50" type="nebulas" startX="67679.0" startY="0.0" startZ="59776.0" endX="85911.0" endY="0.0" endZ="46654.0" randomRange="5000" />
+    <create count="100" type="nebulas" startX="35354.0" startY="0.0" startZ="52156.0" endX="61376.0" endY="0.0" endZ="64498.0" randomRange="5000" />
+    <create count="150" type="nebulas" startX="33929.0" startY="0.0" startZ="48794.0" endX="42099.0" endY="0.0" endZ="1383.0" randomRange="6000" />
+    <create count="60" type="asteroids" startX="22714.0" startY="0.0" startZ="67769.0" endX="24201.0" endY="0.0" endZ="18847.0" randomRange="7000" />
+    <create type="genericMesh" x="40261.0" y="7.0" z="78178.0" name="Vrae Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="genericMesh" x="66432.0" y="0.0" z="38178.0" name="Vraenath" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    <create type="neutral" x="34431.0" y="0.0" z="46421.0" angle="292.8" name="Chachatz" hullID="1100" />
+    <clear_ai name="Chachatz" />
+    <add_ai type="SPCL_AI" name="Chachatz" />
+    <set_special name="Chachatz" ability="LowVis" />
+    <set_special name="Chachatz" ability="Stealth" />
+    <set_special name="Chachatz" ability="Cloak" />
+    <add_ai type="CHASE_ANGER" name="Chachatz" />
+    <set_ship_text name="Chachatz" race="Sechatzal" class="Outpost" desc="Sechatzal outpost. Purpose unknown." scan_desc="Installation is shielded by Sechatzal cloaking technology. Deep scan failed." hailtext="Greetings, terrans. Apologies, but we do not trade." />
+    <set_ship_text name="Vraenath" class="Singularity" desc="Medium-sized black hole named quite creatively after the nearby jump node." scan_desc="Gravitational aberrations nominal." />
+  </event>
+  <event name="Sector 9" id_arme="21136eb5-522b-4790-a571-9b3bb7726ce9">
+    <set_skybox_index index="26" />
+    <create count="100" type="nebulas" nebType="1" startX="72634.0" startY="0.0" startZ="31919.0" endX="27902.0" endY="0.0" endZ="75982.0" randomRange="15000" />
+    <create count="100" type="nebulas" nebType="3" startX="68750.0" startY="0.0" startZ="30044.0" endX="36206.0" endY="0.0" endZ="80401.0" randomRange="15000" />
+    <create count="100" type="nebulas" nebType="2" startX="76117.0" startY="0.0" startZ="37410.0" endX="25893.0" endY="0.0" endZ="64062.0" randomRange="15000" />
+    <create count="30" type="asteroids" startX="67947.0" startY="-300.0" startZ="34196.0" endX="35268.0" endY="-300.0" endZ="56428.0" randomRange="7000" />
+    <create count="30" type="asteroids" startX="55358.0" startY="300.0" startZ="31785.0" endX="47054.0" endY="300.0" endZ="71294.0" randomRange="7000" />
+  </event>
+</mission_data>

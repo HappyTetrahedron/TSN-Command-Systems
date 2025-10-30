@@ -114,6 +114,8 @@ def parse_event(event):
                         sys.exit(1)
             else:
                 terrainLines.append(et.tostring(action, encoding="unicode"))
+        elif action.tag == "set_skybox_index":
+            terrainLines.append(et.tostring(action, encoding="unicode"))
         else:
             sectorLines.append(et.tostring(action, encoding="unicode"))
 
