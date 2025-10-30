@@ -1,6 +1,8 @@
 #!/bin/bash
 
-. venv/bin/activate
+./generate_systems.sh
+
+. .venv/bin/activate
 
 cd "XML Files"
 python render.py

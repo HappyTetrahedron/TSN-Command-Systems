@@ -2837,16 +2837,16 @@
 
   <event name="Vrae - Run On Load">
     <if_variable name="Vrae System" comparator="GREATER" value="0.0" />
-    <if_variable name="VraeOnLoadRan" comparator="NOT" value="1.0" />
+    <if_variable name="_VraeOnLoadRan" comparator="NOT" value="1.0" />
       <set_timer name="Vrae_Pulsar_Timer" seconds="1" />
   <set_variable name="Vrae_Pulsar_InRange" value="0.0" integer="yes" />
 
-    <set_variable name="VraeOnLoadRan" value="1.0" integer="yes" />
+    <set_variable name="_VraeOnLoadRan" value="1.0" integer="yes" />
   </event>
   <event name="Vrae - Reset On Load">
     <if_variable name="Vrae System" comparator="LESS" value="1.0" />
-    <if_variable name="VraeOnLoadRan" comparator="EQUALS" value="1.0" />
-    <set_variable name="VraeOnLoadRan" value="0.0" integer="yes" />
+    <if_variable name="_VraeOnLoadRan" comparator="EQUALS" value="1.0" />
+    <set_variable name="_VraeOnLoadRan" value="0.0" integer="yes" />
   </event>
 
   <event name="Vrae - Run If In Sector [2, 3, 4, 6, 7, 8, 10, 11, 12]">

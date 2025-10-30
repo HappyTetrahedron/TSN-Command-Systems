@@ -3,14 +3,14 @@
   {% macro createMenu(name, id) %}
   <event name="Menu Create {{ name }}">
     <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ id }}.0" />
-    <if_variable name="GM_Menu_{{ name }}_Active" comparator="NOT" value="1.0" />
-    <set_variable name="GM_Menu_{{ name }}_Active" value="1.0" integer="yes" />
+    <if_variable name="_GM_Menu_{{ name }}_Active" comparator="NOT" value="1.0" />
+    <set_variable name="_GM_Menu_{{ name }}_Active" value="1.0" integer="yes" />
   {% endmacro %}
   {% macro destroyMenu(name, id) %}
   <event name="Menu Destroy {{ name }}">
     <if_variable name="GM_Menu_Selector" comparator="NOT" value="{{ id }}.0" />
-    <if_variable name="GM_Menu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
-    <set_variable name="GM_Menu_{{ name }}_Active" value="0.0" integer="yes" />
+    <if_variable name="_GM_Menu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
+    <set_variable name="_GM_Menu_{{ name }}_Active" value="0.0" integer="yes" />
     {% endmacro %}
   {% macro menuEvent(name, id, triggerButton) %}
   <event name="Menu Activate {{ name }}">
@@ -22,8 +22,8 @@
   <event name="{{ menuname }} Menu Create {{ name }}">
     <if_variable name="GM_{{ menuname }}Menu_Selector" comparator="EQUALS" value="{{ id }}.0" />
     <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ parent_id }}.0" />
-    <if_variable name="GM_{{ menuname }}Menu_{{ name }}_Active" comparator="NOT" value="1.0" />
-    <set_variable name="GM_{{ menuname }}Menu_{{ name }}_Active" value="1.0" integer="yes" />
+    <if_variable name="_GM_{{ menuname }}Menu_{{ name }}_Active" comparator="NOT" value="1.0" />
+    <set_variable name="_GM_{{ menuname }}Menu_{{ name }}_Active" value="1.0" integer="yes" />
   {% endmacro %}
   {% macro exclusiveSubMenuEvent(name, triggerButton, id, menuname, parent_id) %}
   <event name="{{ menuname }}Menu Activate {{ name }}">
@@ -35,8 +35,8 @@
   {% macro destroyExclusiveSubMenu(name, id, menuname) %}
   <event name="{{ menuname }} Menu Destroy {{ name }}">
     <if_variable name="GM_{{ menuname }}Menu_Selector" comparator="NOT" value="{{ id }}.0" />
-    <if_variable name="GM_{{ menuname }}Menu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
-    <set_variable name="GM_{{ menuname }}Menu_{{ name }}_Active" value="0.0" integer="yes" />
+    <if_variable name="_GM_{{ menuname }}Menu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
+    <set_variable name="_GM_{{ menuname }}Menu_{{ name }}_Active" value="0.0" integer="yes" />
   {% endmacro %}
   {% macro createSpawnMenu(name, id) %}
     {{ createExclusiveSubMenu(name, id, "Spawn", 2) }}
@@ -60,14 +60,14 @@
   <event name="SubMenu Create {{ name }}">
     {% do allSubmenus.append(name) %}
     <if_variable name="GM_Submenu_{{ name }}_ShouldShow" comparator="EQUALS" value="1.0" />
-    <if_variable name="GM_Submenu_{{ name }}_Active" comparator="NOT" value="1.0" />
-    <set_variable name="GM_Submenu_{{ name }}_Active" value="1.0" integer="yes" />
+    <if_variable name="_GM_Submenu_{{ name }}_Active" comparator="NOT" value="1.0" />
+    <set_variable name="_GM_Submenu_{{ name }}_Active" value="1.0" integer="yes" />
   {% endmacro %}
   {% macro destroySubMenu(name) %}
     <event name="SubMenu Destroy {{ name }}">
       <if_variable name="GM_Submenu_{{ name }}_ShouldShow" comparator="NOT" value="1.0" />
-      <if_variable name="GM_Submenu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
-      <set_variable name="GM_Submenu_{{ name }}_Active" value="0.0" integer="yes" />
+      <if_variable name="_GM_Submenu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
+      <set_variable name="_GM_Submenu_{{ name }}_Active" value="0.0" integer="yes" />
   {% endmacro %}
   {% macro dismissEvent(name, buttonPath) %}
   <event name="SubMenu Dismiss {{ name }} ({{ buttonPath }})">
@@ -1828,7 +1828,7 @@
     <set_variable name="GM_AIMenu_DirMoveBtn_Shown" value="0.0" integer="yes" />
   </event>
   <event name="AI Commands Button Cleanup">
-    <if_variable name="GM_Submenu_AIMenu_Active" comparator="NOT" value="1.0" />
+    <if_variable name="_GM_Submenu_AIMenu_Active" comparator="NOT" value="1.0" />
     <if_variable name="AIMenu_Button_Shown" comparator="EQUALS" value="1.0" />
     <clear_gm_button text="AI Cmds On" />
     <clear_gm_button text="AI Cmds Off" />

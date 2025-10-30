@@ -167,9 +167,9 @@
         {% for var, val in conditions.items() %}
         <if_variable name="{{ var }}" comparator="EQUALS" value="{{ val }}.0" />
         {% endfor %}
-        <if_variable name="ConditionalMenu_{{ name }}_Active" comparator="NOT" value="1.0" />
+        <if_variable name="_ConditionalMenu_{{ name }}_Active" comparator="NOT" value="1.0" />
         {{ caller() }}
-        <set_variable name="ConditionalMenu_{{ name }}_Active" value="1.0" integer="yes" />
+        <set_variable name="_ConditionalMenu_{{ name }}_Active" value="1.0" integer="yes" />
     </event>
 {% endmacro %}
 
@@ -177,16 +177,16 @@
     {% for var, val in conditions.items() %}
     <event name="Conditional Menu {{ name }} destroy based on {{ var }}">
         <if_variable name="{{ var }}" comparator="NOT" value="{{ val }}.0" />
-        <if_variable name="ConditionalMenu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
+        <if_variable name="_ConditionalMenu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
         {{ caller() }}
-        <set_variable name="ConditionalMenu_{{ name }}_Active" value="0.0" integer="yes" />
+        <set_variable name="_ConditionalMenu_{{ name }}_Active" value="0.0" integer="yes" />
     </event>
     {% endfor %}
     {% if not conditions %}
         <event name="Conditional Menu {{ name }} destroy">
-            <if_variable name="ConditionalMenu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
+            <if_variable name="_ConditionalMenu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
             {{ caller() }}
-            <set_variable name="ConditionalMenu_{{ name }}_Active" value="0.0" integer="yes" />
+            <set_variable name="_ConditionalMenu_{{ name }}_Active" value="0.0" integer="yes" />
         </event>
     {% endif %}
 {% endmacro %}
@@ -194,9 +194,9 @@
 {% macro createConditionalMenuPerShip(name) %}
   {% for ship in shipConfigs %}
     <event name="Conditional Menu {{ name }} setup - ship{{ ship.id }}">
-        <if_variable name="ConditionalMenu_ship{{ ship.id }}_{{ name }}_Active" comparator="NOT" value="1.0" />
+        <if_variable name="_ConditionalMenu_ship{{ ship.id }}_{{ name }}_Active" comparator="NOT" value="1.0" />
         {{ caller(ship) }}
-        <set_variable name="ConditionalMenu_ship{{ ship.id }}_{{ name }}_Active" value="1.0" integer="yes" />
+        <set_variable name="_ConditionalMenu_ship{{ ship.id }}_{{ name }}_Active" value="1.0" integer="yes" />
     </event>
   {% endfor %}
 {% endmacro %}
@@ -205,9 +205,9 @@
   {# caller is expected to include ship-specific conditions in the sub block #}
   {% for ship in shipConfigs %}
     <event name="Conditional Menu {{ name }} destroy - ship{{ ship.id }}">
-        <if_variable name="ConditionalMenu_ship{{ ship.id }}_{{ name }}_Active" comparator="EQUALS" value="1.0" />
+        <if_variable name="_ConditionalMenu_ship{{ ship.id }}_{{ name }}_Active" comparator="EQUALS" value="1.0" />
         {{ caller(ship) }}
-        <set_variable name="ConditionalMenu_ship{{ ship.id }}_{{ name }}_Active" value="0.0" integer="yes" />
+        <set_variable name="_ConditionalMenu_ship{{ ship.id }}_{{ name }}_Active" value="0.0" integer="yes" />
     </event>
   {% endfor %}
 {% endmacro %}

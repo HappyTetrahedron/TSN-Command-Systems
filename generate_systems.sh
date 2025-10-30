@@ -11,7 +11,7 @@ for file in "XML Files/Star Systems/"*.xml
 do
     PRINT=false
     START=true
-    echo "  " $file
+    #echo "  " $file
     of="${file##*Star Systems/}"
     while read -r line ; do
         if $START
@@ -47,7 +47,7 @@ done
 cd "XML Files/NewSystems"
 for file in *.xml
 do
-    echo "   XML Files/NewSystems/$file"
+    echo "XML Files/NewSystems/$file"
     python parse_xml.py "$file"
 done
 
