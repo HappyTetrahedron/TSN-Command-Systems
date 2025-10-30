@@ -12,7 +12,7 @@ app = Blueprint('app', __name__)
 MAIN_TMPL='main.xml'
 
 SCRIPT_FOLDER="Extensions"
-SYSTEM_FOLDER="Generated Systems"
+SYSTEM_FOLDER="Generated Maps"
 
 VERSION_FILE="../.version"
 
