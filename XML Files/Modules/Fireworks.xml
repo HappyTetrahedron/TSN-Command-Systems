@@ -1,0 +1,20 @@
+
+{# Fireworks module - spawn fireworks whenever the button is pressed. Mostly useless. #}
+
+{% macro render(ship, util) %}
+
+  {# Menu Lifecycle #}
+  {{ util.registerPermanentModuleButtons(ship, ["Spawn Fireworks"], "Fireworks") }}
+
+  {% call util.onModuleButtonPressed("Spawn Fireworks", ship) %}
+    <create type="enemy" x="0.0" y="0.0" z="0.0" name="D{{ ship.id }}" hullID="1058" sideValue="2" fleetnumber="-1" />
+    <set_object_property name="D{{ ship.id }}" shieldStateFront="0" />
+    <set_object_property name="D{{ ship.id }}" shieldStateBack="0" />
+    <set_relative_position name2="D{{ ship.id }}" distance="2000" angle="0" player_slot1="{{ ship.slot }}" />
+    <get_object_property property="positionX" name="D{{ ship.id }}" variable="Module_Fireworks_{{ ship.id }}_X" />
+    <get_object_property property="positionY" name="D{{ ship.id }}" variable="Module_Fireworks_{{ ship.id }}_Y" />
+    <get_object_property property="positionZ" name="D{{ ship.id }}" variable="Module_Fireworks_{{ ship.id }}_Z" />
+    <create count="1" type="mines" startX="Module_Fireworks_{{ ship.id }}_X" startY="Module_Fireworks_{{ ship.id }}_Y" startZ="Module_Fireworks_{{ ship.id }}_Z" radius="1" />
+  {% endcall %}
+
+{% endmacro %}

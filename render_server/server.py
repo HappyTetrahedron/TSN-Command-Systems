@@ -12,7 +12,7 @@ app = Blueprint('app', __name__)
 MAIN_TMPL='main.xml'
 
 SCRIPT_FOLDER="Extensions"
-SYSTEM_FOLDER="Systems (Generated)"
+SYSTEM_FOLDER="Generated Systems"
 
 VERSION_FILE="../.version"
 
@@ -34,7 +34,7 @@ def render():
 def get_version():
     return current_app.config['version']
 
-@app.route("/systems")
+@app.route("/maps")
 def get_star_systems():
     mypath = current_app.config['datadir']
     scripts_path = os.path.join(mypath, SYSTEM_FOLDER)

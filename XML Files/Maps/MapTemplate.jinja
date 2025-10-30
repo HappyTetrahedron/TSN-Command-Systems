@@ -1,7 +1,7 @@
-{% set sys = g.system %}
+{% set sys = g.map %}
 {{ '{#' }} x={{ sys.x }} y={{ sys.y }} alignment={{ sys.alignment }} {{ '#}' }}
 
-{% import "NewSystems/SystemMacros.jinja" as macros %}
+{% import "Maps/MapMacros.jinja" as macros %}
 
   <event name="{{ sys.name}} Active">
     <if_variable name="Activation Menu" comparator="EQUALS" value="1.0" />

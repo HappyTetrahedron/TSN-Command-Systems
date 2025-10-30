@@ -4,13 +4,13 @@
 {% macro registerPermanentModuleButtons(ship, buttonTexts, identifier) %}
   {# Adds a list of 'permanent' module buttons - buttons that are always available if this module is loaded. #}
   {# Buttons with more complicated conditions for when they should show need to be created and managed by hand. #}
-  {% call(ship) _util.createConditionalMenu("Module" + identifier) %}
-    {{ _comms.ifMenuVariable(ship, 3) }}
+  {% call(sh) _util.createConditionalMenu("Mod" + identifier + "_Ship" + ship.id) %}
+    {{ _comms.ifMenuVariable(ship, 3, "EQUALS") }}
     {% for text in buttonTexts %}
       {{ _comms.button(text, ship) }}
     {% endfor %}
   {% endcall %}
-  {% call(ship) _util.destroyConditionalMenu("Module" + identifier) %}
+  {% call(sh) _util.destroyConditionalMenu("Mod" + identifier + "_Ship" + ship.id) %}
     {{ _comms.ifMenuVariable(ship, 3, "NOT") }}
     {% for text in buttonTexts %}
       {{ _comms.destroybutton(text, ship) }}
@@ -20,14 +20,14 @@
 
 {% macro createConditionalModuleButtons(ship, identifier) %}
   {% set caller_cont = caller() %}
-  {% call(ship) _util.createConditionalMenu("Module" + identifier) %}
+  {% call(ship) _util.createConditionalMenu("Mod" + identifier + "_Ship" + ship.id) %}
     {{ caller_cont }}
   {% endcall %}
 {% endmacro %}
 
 {% macro destroyConditionalModuleButtons(ship, identifier) %}
   {% set caller_cont = caller() %}
-  {% call(ship) _util.destroyConditionalMenu("Module" + identifier) %}
+  {% call(ship) _util.destroyConditionalMenu("Mod" + identifier + "_Ship" + ship.id) %}
     {{ caller_cont }}
   {% endcall %}
 {% endmacro %}

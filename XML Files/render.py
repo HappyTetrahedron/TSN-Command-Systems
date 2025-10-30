@@ -12,7 +12,7 @@ env = {
         "S21",
         "VerdantFleet",
     ],
-    "systems": [
+    "maps": [
         "Waypoint 52",
         "Vrae",
         "Khoros",
@@ -43,6 +43,10 @@ env = {
             "Decoy",
             "ShieldEnhancer",
             "KamikazeMine",
+        ],
+        "ship2": [
+            "Decoy",
+            "Fireworks",
         ]
     }
 }

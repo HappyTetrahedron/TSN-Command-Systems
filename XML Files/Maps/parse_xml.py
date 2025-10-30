@@ -152,16 +152,16 @@ template_env.lstrip_blocks = True
 template_env.trim_blocks = True
 template_env.add_extension('jinja2.ext.do')
 
-TMPL_FNAME = 'NewSystems/SystemTemplate.jinja'
-TMPL_FOLDER = 'NewSystems/'
-OUT_FNAME = '../Systems (Generated)/{}.xml'.format(system_name)
+TMPL_FNAME = 'Maps/MapTemplate.jinja'
+TMPL_FOLDER = 'Maps/'
+OUT_FNAME = '../Generated Maps/{}.xml'.format(system_name)
 
 template_to_use = TMPL_FNAME
 if os.path.exists("{}.jinja".format(system_name)):
     template_to_use = "{}{}.jinja".format(TMPL_FOLDER, system_name)
 
 jinja_context = {
-    "system": system_dict,
+    "map": system_dict,
     "version": "local",
     "time": datetime.datetime.now(datetime.UTC).isoformat()
 }

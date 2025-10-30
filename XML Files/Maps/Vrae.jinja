@@ -1,26 +1,26 @@
-{% include 'NewSystems/SystemTemplate.jinja' %}
-{% import 'NewSystems/SystemUtils.jinja' as sysutil %}
+{% include 'Maps/MapTemplate.jinja' %}
+{% import 'Maps/MapUtils.jinja' as sysutil %}
 {% import 'Utils.xml' as util %}
 
 
-{% call sysutil.runOnSystemLoad(g.system) %}
+{% call sysutil.runOnMapLoad(g.map) %}
   <set_timer name="Vrae_Pulsar_Timer" seconds="1" />
   <set_variable name="Vrae_Pulsar_InRange" value="0.0" integer="yes" />
 {% endcall %}
 
-{% call sysutil.runIfInSector(g.system, [2,3,4,6,7,8,10,11,12]) %}
+{% call sysutil.runIfInSector(g.map, [2,3,4,6,7,8,10,11,12]) %}
   <if_variable name="Vrae_Pulsar_InRange" comparator="NOT" value="1.0" />
   <warning_popup_message message="Warning: Intense Electromagnetic Radiation Detected" consoles="MHWESCO">Warning: Intense Electromagnetic Radiation Pulses</warning_popup_message>
   <set_variable name="Vrae_Pulsar_InRange" value="1.0" integer="yes" />
 {% endcall %}
 
-{% call sysutil.runIfInSector(g.system, [1,5,9]) %}
+{% call sysutil.runIfInSector(g.map, [1,5,9]) %}
   <if_variable name="Vrae_Pulsar_InRange" comparator="EQUALS" value="1.0" />
   <warning_popup_message message="Clear: Electromagnetic Radiation Nominal" consoles="MHWESCO">Electromagnetic Radiation Nominal</warning_popup_message>
   <set_variable name="Vrae_Pulsar_InRange" value="0.0" integer="yes" />
 {% endcall %}
 
-{% call sysutil.runIfInSector(g.system, [2,3,4,6,8,10,11,12]) %}
+{% call sysutil.runIfInSector(g.map, [2,3,4,6,8,10,11,12]) %}
   <if_timer_finished name="Vrae_Pulsar_Timer" />
   {% for ship in util.shipConfigs %}
     <addto_object_property value="20" property="energy" player_slot="{{ ship.slot }}"  />
@@ -28,7 +28,7 @@
   <set_timer name="Vrae_Pulsar_Timer" seconds="1" />
 {% endcall %}
 
-{% call sysutil.runIfInSector(g.system, [7]) %}
+{% call sysutil.runIfInSector(g.map, [7]) %}
   <if_timer_finished name="Vrae_Pulsar_Timer" />
   {% for ship in util.shipConfigs %}
     <addto_object_property value="50" property="energy" player_slot="{{ ship.slot }}"  />

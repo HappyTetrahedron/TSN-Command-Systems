@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./generate_systems.sh
+./generate_maps.sh
 
 . .venv/bin/activate
 

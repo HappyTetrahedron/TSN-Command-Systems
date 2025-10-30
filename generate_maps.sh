@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Generating systems..."
+echo "Generating maps..."
 
 python -m venv .venv
 . .venv/bin/activate
@@ -7,12 +7,12 @@ python -m venv .venv
 pip install jinja2
 
 IFS=''
-for file in "XML Files/Star Systems/"*.xml
+for file in "XML Files/Legacy Maps/"*.xml
 do
     PRINT=false
     START=true
     #echo "  " $file
-    of="${file##*Star Systems/}"
+    of="${file##*Legacy Maps/}"
     while read -r line ; do
         if $START
         then
@@ -41,16 +41,16 @@ do
         then
             echo "$line"
         fi
-    done < "$file"  > "XML Files/Systems (Generated)/$of"
+    done < "$file"  > "XML Files/Generated Maps/$of"
 done
 
-cd "XML Files/NewSystems"
+cd "XML Files/Maps"
 for file in *.xml
 do
-    echo "XML Files/NewSystems/$file"
+    echo "XML Files/Maps/$file"
     python parse_xml.py "$file"
 done
 
 cd ../../
 
-git add "XML Files/Systems (Generated)/"*
+git add "XML Files/Generated Maps/"*
