@@ -1,7 +1,7 @@
 <mission_data version="1.0" background_id_arme="4076349e-e1c0-4950-8e05-27c894bfaff8" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
   <start id_arme="4076349e-e1c0-4950-8e05-27c894bfaff8">
-    <set_variable name="Coordinate X" value="2377.0" />
-    <set_variable name="Coordinate Y" value="315.0" />
+    <set_variable name="Coordinate X" value="1624.0" />
+    <set_variable name="Coordinate Y" value="230.0" />
     <set_variable name="Width" value="2.0" />
     <set_variable name="Height" value="3.0" />
     <set_variable name="Alignment" value="Neutral" />
