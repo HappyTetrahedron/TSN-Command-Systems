@@ -134,8 +134,17 @@
     <create count="10" type="nebulas" startX="86901.0" startY="0.0" startZ="65835.0" endX="60461.0" endY="0.0" endZ="66852.0" randomRange="5000" />
     <create count="200" type="nebulas" startX="96054.0" startY="0.0" startZ="19636.0" endX="25594.0" endY="0.0" endZ="19636.0" randomRange="25000" />
     <create count="10" type="nebulas" startX="99540.0" startY="0.0" startZ="46368.0" endX="77168.0" endY="0.0" endZ="42154.0" randomRange="5000" />
-    <create type="neutral" x="13982.0" y="0.0" z="53113.0" angle="0" name="Seztanach" hullID="1100" />
     <create count="10" type="nebulas" startX="43899.0" startY="0.0" startZ="44043.0" endX="21381.0" endY="0.0" endZ="44043.0" randomRange="5000" />
+    <create type="neutral" x="52185.0" y="0.0" z="41123.0" angle="174.3" name="Seztanach" hullID="1100" />
+    <create type="neutral" x="25787.0" y="0.0" z="68450.0" angle="0" name="Ganchez" hullID="1100" />
+    <create type="genericMesh" x="29784.0" y="1.0" z="46514.0" name="Athorn Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <set_ship_text name="Ganchez" race="Sechatzal" class="Outpost" desc="No match in stellar cartography data for this installation." scan_desc="Installation is shielded by Sechatzal cloaking technology. Deep scan failed." hailtext="Greetings, terrans. If anyone asks, you have never seen us." />
+    <clear_ai name="Ganchez" />
+    <add_ai type="SPCL_AI" name="Ganchez" />
+    <add_ai type="CHASE_ANGER" name="Ganchez" />
+    <set_special name="Ganchez" ability="Cloak" />
+    <set_special name="Ganchez" ability="LowVis" />
+    <set_special name="Ganchez" ability="Stealth" />
     <clear_ai name="Seztanach" />
     <add_ai type="SPCL_AI" name="Seztanach" />
     <set_special name="Seztanach" ability="Stealth" />
@@ -162,12 +171,7 @@
   </event>
   <event name="Sector 10" id_arme="b324cc03-d8d5-4130-b887-d366b5e53daa">
     <create count="100" type="nebulas" nebType="2" startX="99976.0" startY="0.0" startZ="41138.0" endX="24577.0" endY="0.0" endZ="1331.0" randomRange="10000" />
-    <create type="genericMesh" x="44377.0" y="0.0" z="24206.0" name="Moon" meshFileName="dat\asteroid8.dxs" textureFileName="dat\Asteroid_8_Albedo.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
-    <set_object_property property="artScale" value="4.0" name="Moon" />
-    <set_object_property property="pushRadius" value="2500.0" name="Moon" />
-    <set_object_property property="angleDelta" value="0.1" name="Moon" />
     <create count="100" type="nebulas" nebType="2" startX="52034.0" startY="0.0" startZ="13244.0" endX="96780.0" endY="0.0" endZ="22397.0" randomRange="10000" />
-    <set_ship_text name="Moon" class="Class P Planetoid" desc="While colloquially called &quot;moon&quot;, this astral body is technically a dwarf planet." scan_desc="High concentrations of energy crystals detected." />
     <create count="100" type="nebulas" startX="97216.0" startY="0.0" startZ="1476.0" endX="51889.0" endY="0.0" endZ="169.0" randomRange="10000" />
     <create count="100" type="asteroids" startX="47676.0" startY="0.0" startZ="35326.0" endX="40412.0" endY="0.0" endZ="750.0" randomRange="20000" randomSeed="1" />
     <create count="100" type="asteroids" startX="51163.0" startY="0.0" startZ="95472.0" endX="48838.0" endY="0.0" endZ="50000.0" randomRange="20000" />
@@ -176,6 +180,16 @@
     <create count="80" type="nebulas" startX="25013.0" startY="0.0" startZ="78329.0" endX="6126.0" endY="0.0" endZ="52033.0" randomRange="10000" />
     <create count="50" type="nebulas" startX="11502.0" startY="0.0" startZ="96924.0" endX="5691.0" endY="0.0" endZ="73535.0" randomRange="10000" />
     <create count="10" type="nebulas" startX="751.0" startY="0.0" startZ="8595.0" endX="5400.0" endY="0.0" endZ="17312.0" randomRange="5000" />
+    <create type="genericMesh" x="44377.0" y="0.0" z="24206.0" name="Moon Moon" meshFileName="dat\asteroid8.dxs" textureFileName="dat\Asteroid_8_Albedo.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+    <create type="Anomaly" pickupType="2" x="47630.0" y="0.0" z="23927.0" name="C3" />
+    <create type="Anomaly" pickupType="2" x="52371.0" y="0.0" z="24020.0" name="C4" />
+    <create type="Anomaly" pickupType="2" x="54880.0" y="0.0" z="27459.0" name="C5" />
+    <create type="Anomaly" pickupType="2" x="42332.0" y="0.0" z="20487.0" name="C1" />
+    <create type="Anomaly" pickupType="2" x="49954.0" y="0.0" z="18907.0" name="C2" />
+    <set_object_property property="artScale" value="4.0" name="Moon Moon" />
+    <set_object_property property="pushRadius" value="2500.0" name="Moon Moon" />
+    <set_object_property property="angleDelta" value="0.1" name="Moon Moon" />
+    <set_ship_text name="Moon Moon" class="Class P Planetoid" desc="While colloquially called &quot;moon&quot; by this system's inhabitants, this astral body is technically a dwarf planet." scan_desc="High concentrations of cetrocite detected." />
   </event>
   <event name="Sector 11" id_arme="2177bb45-f5cf-4804-b1ee-b29075ad45d3">
     <create count="300" type="nebulas" startX="64238.0" startY="0.0" startZ="5835.0" endX="67434.0" endY="0.0" endZ="94600.0" randomRange="25000" />
@@ -189,14 +203,5 @@
     <create count="150" type="nebulas" startX="95908.0" startY="0.0" startZ="64382.0" endX="38088.0" endY="0.0" endZ="2639.0" randomRange="20000" />
     <create count="150" type="nebulas" startX="42010.0" startY="0.0" startZ="55956.0" endX="94601.0" endY="0.0" endZ="5254.0" randomRange="20000" />
     <create count="10" type="nebulas" nebType="2" startX="20509.0" startY="0.0" startZ="1186.0" endX="20509.0" endY="0.0" endZ="1186.0" randomRange="10000" />
-    <create type="genericMesh" x="62494.0" y="1.0" z="24430.0" name="Athorn Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
-    <create type="neutral" x="29784.0" y="0.0" z="22254.0" angle="0" name="Ganchez" hullID="1100" />
-    <clear_ai name="Ganchez" />
-    <add_ai type="SPCL_AI" name="Ganchez" />
-    <set_special name="Ganchez" ability="Stealth" />
-    <set_special name="Ganchez" ability="LowVis" />
-    <set_special name="Ganchez" ability="Cloak" />
-    <add_ai type="CHASE_ANGER" name="Ganchez" />
-    <set_ship_text name="Ganchez" race="Sechatzal" class="Outpost" desc="No match in stellar cartography data for this installation." scan_desc="Installation is shielded by Sechatzal cloaking technology. Deep scan failed." hailtext="Greetings, terrans. If anyone asks, you have never seen us." />
   </event>
 </mission_data>
