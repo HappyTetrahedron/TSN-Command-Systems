@@ -12,10 +12,8 @@ env = {
         "HazardPainter",
     ],
     "maps": [
-        "Vrae",
-        "Khoros",
-        "Helios",
-        "Athorn",
+        "No'Ma",
+        "Poseidon",
     ],
     "ordnance": {
         "ship1": {
