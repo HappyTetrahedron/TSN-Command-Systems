@@ -65,7 +65,7 @@
 
   {% for sec in sys.sectors %}
     {% set i = loop.index0 %}
-    {% call macros.createEvent(sys.name, i+1, sec.transitions) %}
+    {% call macros.createEvent(sys.name, i+1, sec.transitions, sys.skybox if "skybox" in sys else -1) %}
       {{ sec.terrainStatements }}
     {% endcall %}
 

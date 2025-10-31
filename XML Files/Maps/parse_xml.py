@@ -45,6 +45,8 @@ def parse_start(start):
                     system_dict["width"] = int(value.split('.')[0])
                 case "Height":
                     system_dict["height"] = int(value.split('.')[0])
+                case "Skybox":
+                    system_dict["skybox"] = int(value.split('.')[0])
 
 
 def parse_event(event):

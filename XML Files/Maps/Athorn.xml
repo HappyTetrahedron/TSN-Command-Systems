@@ -1,0 +1,158 @@
+<mission_data version="1.0" background_id_arme="4076349e-e1c0-4950-8e05-27c894bfaff8" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <start id_arme="4076349e-e1c0-4950-8e05-27c894bfaff8">
+    <set_variable name="Coordinate X" value="2377.0" />
+    <set_variable name="Coordinate Y" value="315.0" />
+    <set_variable name="Width" value="2.0" />
+    <set_variable name="Height" value="3.0" />
+    <set_variable name="Alignment" value="Neutral" />
+    <set_variable name="Skybox" value="6.0" />
+  </start>
+  <event name="Sector 1" id_arme="a7d0b21d-dd0a-4bc2-bd4f-2d5c7a5e0f19">
+    <create count="30" type="nebulas" nebType="2" startAngle="60" endAngle="120" startX="100148.0" startY="0.0" startZ="21510.0" radius="44715" randomRange="10000" />
+    <create count="20" type="nebulas" nebType="2" startAngle="240" endAngle="300" startX="23277.0" startY="0.0" startZ="66591.0" radius="44715" randomRange="5000" />
+    <create count="40" type="nebulas" nebType="2" startAngle="230" endAngle="300" startX="-39721.0" startY="0.0" startZ="28257.0" radius="48116" randomRange="10000" />
+    <create count="40" type="asteroids" startX="25229.0" startY="0.0" startZ="99403.0" endX="25136.0" endY="0.0" endZ="59806.0" randomRange="2000" />
+    <create type="neutral" x="26809.0" y="0.0" z="57575.0" angle="174.3" name="Chonos" hullID="1100" />
+    <clear_ai name="Chonos" />
+    <add_ai type="SPCL_AI" name="Chonos" />
+    <set_special name="Chonos" ability="Stealth" />
+    <set_special name="Chonos" ability="LowVis" />
+    <set_special name="Chonos" ability="Cloak" />
+    <add_ai type="CHASE_ANGER" name="Chonos" />
+    <set_ship_text name="Chonos" race="Sechatzal" class="Outpost" desc="No match in stellar cartography data for this installation." scan_desc="Installation is shielded by Sechatzal cloaking technology. Deep scan failed." hailtext="Greetings, terrans. If anyone asks, you have never seen us." />
+    <create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="24392.0" y="0.0" z="64360.0" name="B2" />
+    <create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="24578.0" y="0.0" z="57389.0" name="B1" />
+    <create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="24764.0" y="0.0" z="70681.0" name="B4" />
+    <create type="genericMesh" x="26320.0" y="8.0" z="67578.0" name="Vrae Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+  </event>
+  <event name="Sector 2" id_arme="20f7737b-b971-49cd-a428-bea44d51ba6a">
+    <create count="40" type="nebulas" nebType="2" startAngle="240" endAngle="300" startX="44721.0" startY="0.0" startZ="28257.0" radius="48116" randomRange="10000" />
+    <create count="40" type="nebulas" nebType="2" startAngle="60" endAngle="120" startX="128374.0" startY="0.0" startZ="83361.0" radius="48116" randomRange="10000" />
+    <create count="40" type="asteroids" startX="61852.0" startY="0.0" startZ="61386.0" endX="61945.0" endY="0.0" endZ="98752.0" randomRange="2000" />
+    <create count="40" type="nebulas" nebType="2" startAngle="60" endAngle="120" startX="55903.0" startY="0.0" startZ="25879.0" radius="48116" randomRange="10000" />
+    <create count="40" type="nebulas" nebType="2" startAngle="240" endAngle="300" startX="-28605.0" startY="0.0" startZ="79697.0" radius="48116" randomRange="10000" />
+    <create count="15" type="mines" startAngle="40" endAngle="170" startX="66313.0" startY="0.0" startZ="17792.0" radius="6238" />
+    <create count="15" type="mines" startAngle="0" endAngle="130" startX="65942.0" startY="0.0" startZ="33036.0" radius="6238" />
+    <create count="15" type="mines" startAngle="-30" endAngle="100" startX="57018.0" startY="0.0" startZ="45213.0" radius="6238" />
+    <create count="15" type="mines" startAngle="-70" endAngle="60" startX="41681.0" startY="0.0" startZ="49024.0" radius="6238" />
+    <create count="15" type="mines" startAngle="-130" endAngle="0" startX="19466.0" startY="0.0" startZ="32292.0" radius="6238" />
+    <create count="15" type="mines" startAngle="170" endAngle="300" startX="20488.0" startY="0.0" startZ="17420.0" radius="6238" />
+    <create count="15" type="mines" startAngle="245" endAngle="115" startX="43169.0" startY="0.0" startZ="2083.0" radius="6238" />
+    <create count="15" type="mines" startAngle="210" endAngle="80" startX="57204.0" startY="0.0" startZ="5708.0" radius="6238" />
+    <create count="15" type="mines" startAngle="280" endAngle="150" startX="29226.0" startY="0.0" startZ="5987.0" radius="6238" />
+    <create count="15" type="mines" startAngle="-100" endAngle="30" startX="27274.0" startY="0.0" startZ="45027.0" radius="6238" />
+    <create type="genericMesh" x="43169.0" y="8.0" z="25414.0" name="Burin Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="48746.0" y="0.0" z="28109.0" name="B2" />
+    <create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="41774.0" y="0.0" z="30619.0" name="B1" />
+    <create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="40938.0" y="0.0" z="20302.0" name="B4" />
+    <create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="37313.0" y="0.0" z="24577.0" name="B3" />
+    <create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="47816.0" y="0.0" z="21138.0" name="B5" />
+    <create type="neutral" x="46887.0" y="0.0" z="32571.0" angle="0" name="Slipstream Convocation" hullID="7714" />
+    <create type="monster" monsterType="4" podnumber="1" x="60736.0" y="0.0" z="84066.0" angle="0" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="1" x="60829.0" y="0.0" z="81371.0" angle="0" name="PIRA" />
+    <set_ship_text name="Slipstream Convocation" race="Budron" class="Outpost" desc="Budron Outpost armed with various beams and a fighter bay. Contains advanced sensors for monitoring surrounding space sectors." scan_desc="Station is completely filled with phosphorous water." hailtext="May the Sacred Prophecy guide you safely through these waters, Terran." />
+    <create type="monster" monsterType="4" podnumber="1" x="62317.0" y="0.0" z="85460.0" angle="0" name="PIRA" />
+  </event>
+  <event name="Sector 3" id_arme="054f5e37-48d8-4436-a384-07a1deb6c8ed">
+    <create count="20" type="nebulas" nebType="1" startAngle="60" endAngle="110" startX="135000.0" startY="0.0" startZ="90467.0" radius="44715" randomRange="5000" randomSeed="2" />
+    <create count="20" type="nebulas" startAngle="60" endAngle="100" startX="72076.0" startY="0.0" startZ="99310.0" radius="44715" randomRange="5000" />
+    <create count="20" type="nebulas" nebType="2" startAngle="80" endAngle="120" startX="44749.0" startY="0.0" startZ="11750.0" radius="44715" randomRange="5000" />
+    <create count="100" type="asteroids" startX="25415.0" startY="0.0" startZ="410.0" endX="25508.0" endY="0.0" endZ="98845.0" randomRange="2000" />
+    <create type="genericMesh" x="48560.0" y="0.0" z="42517.0" name="Wreck A31" meshFileName="dat\artemis.dxs" textureFileName="dat\LightCruiser_Diffuse.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    <set_ship_text name="Wreck A31" race="TSN" class="Light Cruiser" desc="Systems offline" scan_desc="No lifesigns. Radiation decay analysis indicates this wreck has been here for several years." />
+    <create type="genericMesh" x="48188.0" y="0.0" z="48466.0" name="Wreck A48" meshFileName="dat/ENE_RoundC.dxs" textureFileName="dat/RoundC_Diffuse.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    <set_ship_text name="Wreck A48" race="Kralien" class="Dreadnaught" desc="Systems offline" scan_desc="No lifesigns. Radiation decay analysis indicates this wreck has been here for several years." />
+    <create type="genericMesh" x="42518.0" y="0.0" z="44097.0" name="Wreck A33" meshFileName="dat/ENE_RoundA.dxs" textureFileName="dat/roundA_diffuse.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    <set_ship_text name="Wreck A33" race="Kralien" class="Cruiser" desc="Systems offline" scan_desc="No lifesigns. Radiation decay analysis indicates this wreck has been here for several years." />
+    <create type="monster" monsterType="8" age="3" x="38614.0" y="0.0" z="48652.0" angle="0" name="Wreck A12" />
+    <create type="monster" monsterType="8" age="3" x="34152.0" y="0.0" z="46700.0" angle="0" name="Wreck A93" />
+    <create type="monster" monsterType="8" age="3" x="32572.0" y="0.0" z="50232.0" angle="0" name="Wreck A81" />
+    <create type="monster" monsterType="8" age="3" x="30806.0" y="0.0" z="56088.0" angle="0" name="Wreck A01" />
+    <create type="monster" monsterType="8" age="3" x="28482.0" y="0.0" z="59806.0" angle="0" name="Wreck A99999" />
+    <create type="monster" monsterType="8" age="2" x="27460.0" y="0.0" z="71518.0" angle="0" name="Wreck A72" />
+    <create type="monster" monsterType="4" podnumber="1" x="29133.0" y="0.0" z="64918.0" angle="0" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="1" x="29133.0" y="0.0" z="66405.0" angle="0" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="1" x="26902.0" y="0.0" z="64546.0" angle="0" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="1" x="31457.0" y="0.0" z="63710.0" angle="0" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="1" x="28575.0" y="0.0" z="62687.0" angle="0" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="1" x="28018.0" y="0.0" z="63896.0" angle="0" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="1" x="26066.0" y="0.0" z="63803.0" angle="0" name="PIRA" />
+    <set_object_property property="rollDelta" value="0.2" name="Wreck A33" />
+    <set_object_property property="angleDelta" value="0.1" name="Wreck A33" />
+    <addto_object_property value="10.1" property="positionY" name="Wreck A33" />
+    <set_object_property property="pushRadius" value="75.0" name="Wreck A33" />
+    <set_object_property property="artScale" value="0.2" name="Wreck A33" />
+    <set_object_property property="rollDelta" value="0.2" name="Wreck A48" />
+    <set_object_property property="angleDelta" value="0.1" name="Wreck A48" />
+    <addto_object_property value="10.1" property="positionY" name="Wreck A48" />
+    <set_object_property property="pushRadius" value="75.0" name="Wreck A48" />
+    <set_object_property property="artScale" value="0.3" name="Wreck A48" />
+    <set_object_property property="rollDelta" value="0.2" name="Wreck A31" />
+    <set_object_property property="angleDelta" value="0.1" name="Wreck A31" />
+    <addto_object_property value="10.1" property="positionY" name="Wreck A31" />
+    <set_object_property property="pushRadius" value="75.0" name="Wreck A31" />
+    <set_object_property property="artScale" value="0.2" name="Wreck A31" />
+  </event>
+  <event name="Sector 4" id_arme="870cb578-accf-4108-9292-27d240afa6a5">
+    <create count="20" type="nebulas" nebType="1" startAngle="60" endAngle="120" startX="86019.0" startY="0.0" startZ="34709.0" radius="44715" randomRange="5000" />
+    <create count="100" type="asteroids" startX="62317.0" startY="0.0" startZ="689.0" endX="61852.0" endY="0.0" endZ="67614.0" randomRange="2000" />
+    <create count="40" type="nebulas" nebType="1" startAngle="240" endAngle="300" startX="7661.0" startY="0.0" startZ="82114.0" radius="44715" randomRange="10000" />
+    <create type="genericMesh" x="40473.0" y="0.0" z="36940.0" name="Wreck B40" meshFileName="dat\artemis.dxs" textureFileName="dat\LightCruiser_Diffuse.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    <set_ship_text name="Wreck B40" race="TSN" class="Light Cruiser" desc="Systems offline" scan_desc="No lifesigns. Radiation decay analysis indicates this wreck has been here for several years." />
+    <create type="genericMesh" x="48188.0" y="0.0" z="48466.0" name="Wreck B41" meshFileName="dat/ENE_RoundC.dxs" textureFileName="dat/RoundC_Diffuse.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    <set_ship_text name="Wreck B41" race="Kralien" class="Dreadnaught" desc="Systems offline" scan_desc="No lifesigns. Radiation decay analysis indicates this wreck has been here for several years." />
+    <create type="genericMesh" x="42518.0" y="0.0" z="44097.0" name="Wreck B42" meshFileName="dat/ENE_RoundA.dxs" textureFileName="dat/roundA_diffuse.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    <set_ship_text name="Wreck B42" race="Kralien" class="Cruiser" desc="Systems offline" scan_desc="No lifesigns. Radiation decay analysis indicates this wreck has been here for several years." />
+    <create type="monster" monsterType="8" age="2" x="51720.0" y="0.0" z="47164.0" angle="0" name="Wreck B02" />
+    <create type="monster" monsterType="8" age="2" x="60829.0" y="0.0" z="51533.0" angle="0" name="Wreck B97" />
+    <create type="monster" monsterType="8" age="2" x="47909.0" y="0.0" z="54136.0" angle="0" name="Wreck B13" />
+    <create type="monster" monsterType="8" age="2" x="61387.0" y="0.0" z="57575.0" angle="0" name="Wreck B00" />
+    <create type="monster" monsterType="8" age="2" x="61852.0" y="0.0" z="69659.0" angle="0" name="Wreck B" />
+    <create type="monster" monsterType="8" age="3" x="62595.0" y="0.0" z="73284.0" angle="0" name="Wreck B65" />
+    <create type="monster" monsterType="4" podnumber="1" x="43726.0" y="0.0" z="41866.0" angle="0" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="1" x="44098.0" y="0.0" z="38613.0" angle="0" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="2" x="65942.0" y="0.0" z="78675.0" angle="0" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="1" x="42425.0" y="0.0" z="40565.0" angle="0" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="1" x="45771.0" y="0.0" z="40472.0" angle="0" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="2" x="62409.0" y="0.0" z="80162.0" angle="0" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="2" x="64083.0" y="0.0" z="78210.0" angle="0" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="2" x="64733.0" y="0.0" z="80999.0" angle="0" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="2" x="63804.0" y="0.0" z="79883.0" angle="0" name="PIRA" />
+    <set_object_property property="rollDelta" value="0.2" name="Wreck B42" />
+    <set_object_property property="angleDelta" value="0.1" name="Wreck B42" />
+    <addto_object_property value="10.1" property="positionY" name="Wreck B42" />
+    <set_object_property property="pushRadius" value="75.0" name="Wreck B42" />
+    <set_object_property property="artScale" value="0.2" name="Wreck B42" />
+    <set_object_property property="rollDelta" value="0.2" name="Wreck B41" />
+    <set_object_property property="angleDelta" value="0.1" name="Wreck B41" />
+    <addto_object_property value="10.1" property="positionY" name="Wreck B41" />
+    <set_object_property property="pushRadius" value="75.0" name="Wreck B41" />
+    <set_object_property property="artScale" value="0.3" name="Wreck B41" />
+    <set_object_property property="rollDelta" value="0.2" name="Wreck B40" />
+    <set_object_property property="angleDelta" value="0.1" name="Wreck B40" />
+    <addto_object_property value="10.1" property="positionY" name="Wreck B40" />
+    <set_object_property property="pushRadius" value="75.0" name="Wreck B40" />
+    <set_object_property property="artScale" value="0.2" name="Wreck B40" />
+  </event>
+  <event name="Sector 5" id_arme="21ee2fa9-5c5a-4e7f-a07a-a123dbcd6890">
+    <create count="40" type="nebulas" nebType="1" startAngle="60" endAngle="120" startX="71147.0" startY="0.0" startZ="28481.0" radius="44715" randomRange="10000" />
+    <create count="100" type="asteroids" startX="25415.0" startY="0.0" startZ="410.0" endX="25136.0" endY="0.0" endZ="73563.0" randomRange="2000" />
+    <create count="60" type="nebulas" nebType="1" startAngle="240" endAngle="300" startX="-3958.0" startY="0.0" startZ="81835.0" radius="44715" randomRange="15000" />
+    <create count="60" type="nebulas" startAngle="240" endAngle="300" startX="55624.0" startY="0.0" startZ="76072.0" radius="44715" randomRange="10000" />
+    <create type="monster" monsterType="4" podnumber="1" x="29133.0" y="0.0" z="64918.0" angle="0" name="PIRA" />
+    <create count="40" type="nebulas" startAngle="70" endAngle="130" startX="129443.0" startY="0.0" startZ="15786.0" radius="44715" randomRange="10000" />
+    <create type="monster" monsterType="4" podnumber="1" x="28203.0" y="0.0" z="64732.0" angle="0" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="1" x="28854.0" y="0.0" z="63989.0" angle="0" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="1" x="29412.0" y="0.0" z="65755.0" angle="0" name="PIRA" />
+  </event>
+  <event name="Sector 6" id_arme="f17f3a93-accf-46f8-bd23-ef69e4fc9075">
+    <create count="70" type="nebulas" nebType="1" startAngle="50" endAngle="130" startX="79977.0" startY="0.0" startZ="78582.0" radius="44715" randomRange="15000" />
+    <create type="neutral" x="23091.0" y="0.0" z="37962.0" angle="0" name="Athorn Outpost" hullID="1000" />
+    <create count="40" type="nebulas" nebType="1" startAngle="240" endAngle="300" startX="4222.0" startY="0.0" startZ="22625.0" radius="44715" randomRange="10000" />
+    <create count="40" type="mines" startAngle="-150" endAngle="20" startX="30155.0" startY="0.0" startZ="48745.0" radius="13075" />
+    <create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="33409.0" y="0.0" z="41866.0" name="B1" />
+    <create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="37777.0" y="0.0" z="45027.0" name="B2" />
+    <create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="38428.0" y="0.0" z="51254.0" name="B3" />
+    <create type="genericMesh" x="32200.0" y="2.0" z="47722.0" name="Helios Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+  </event>
+</mission_data>

@@ -266,7 +266,7 @@
   </event>
   <event name="402 - Wreck" id_arme="ca59f2ed-2e5c-4048-8d6a-789ff7258e67" parent_id_arme="693b84da-6a6c-4059-a2c1-c6bec1e040cb">
     <if_variable name="Auto AI Type" comparator="EQUALS" value="402.0" />
-    <set_object_property property="pitchDelta" value="0.2" name="--" />
+    <set_object_property property="rollDelta" value="0.2" name="--" />
     <set_object_property property="angleDelta" value="0.1" name="--" />
     <addto_object_property value="10.1" property="positionY" name="--" />
     <set_object_property property="pushRadius" value="push/2" name="--" />

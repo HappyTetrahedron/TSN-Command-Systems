@@ -115,11 +115,14 @@
   </event>
 {% endmacro %}
 
-{% macro createEvent(system, sector, transitions) %}
+{% macro createEvent(system, sector, transitions, skybox) %}
   <event name="Create {{ system }} Sector {{ sector }}">
     <if_variable name="{{ system }} System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="{{ sector }}.0" />
     <if_timer_finished name="Transition" />
+    {% if skybox >= 0 %}
+    <set_skybox_index index="{{ skybox }}" />
+    {% endif %}
     {{ caller() }}
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="{{ system }} System" value="2.0" />

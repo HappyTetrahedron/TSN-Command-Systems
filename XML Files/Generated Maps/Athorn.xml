@@ -1,0 +1,1611 @@
+{# x=2377.0 y=315.0 alignment=Neutral #}
+
+
+  <event name="Athorn Active">
+    <if_variable name="Activation Menu" comparator="EQUALS" value="1.0" />
+    <set_gm_button text="Systems/Athorn System" />
+    <set_variable name="Athorn Gate" value="1.0" integer="yes" />
+  </event>
+  <event name="Clear Menu Item">
+    <if_variable name="Activation Menu" comparator="EQUALS" value="0.0" />
+    <clear_gm_button text="Systems/Athorn System" />
+  </event>
+  <event name="Athorn System">
+    <if_gm_button text="Systems/Athorn System" />
+    <set_variable name="Sandbox Activation" value="3.0" integer="yes" />
+    <set_variable name="Athorn System" value="1.0" integer="yes" />
+    <set_gm_button text="Select Sector" x="90" y="100" h="30" w="200" />
+        <set_gm_button text="Sector 1" x="170" y="190" h="60" w="60" />
+        <set_gm_button text="Sector 2" x="235" y="190" h="60" w="60" />
+        <set_gm_button text="Sector 3" x="170" y="255" h="60" w="60" />
+        <set_gm_button text="Sector 4" x="235" y="255" h="60" w="60" />
+        <set_gm_button text="Sector 5" x="170" y="320" h="60" w="60" />
+        <set_gm_button text="Sector 6" x="235" y="320" h="60" w="60" />
+    <set_variable name="GM Mode" value="4.0" integer="yes" />
+  </event>
+  <event name="Default System Side">
+    <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="System" />
+    <if_variable name="systemSideOverride" comparator="LESS" value="1.0" />
+    <set_variable name="systemSide" value="2.0" integer="yes" />
+    <set_variable name="System Settings" value="2.0" integer="yes" />
+  </event>
+  <event name="System Side Override">
+    <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="System" />
+    <if_variable name="systemSideOverride" comparator="GREATER_EQUAL" value="1.0" />
+    <set_variable name="systemSide" value="systemSideOverride" integer="yes" />
+    <set_variable name="System Settings" value="2.0" integer="yes" />
+  </event>
+  <event name="Sector Side Override" id_arme="3f602d27-595b-43f1-8fdb-b80385a8ec79" parent_id_arme="e12965cc-4adf-447b-9c58-37de11bbe78f">
+    <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="System" />
+    <if_variable name="sectorSideOverride" comparator="GREATER_EQUAL" value="1.0" />
+    <set_variable name="sectorSide" value="sectorSideOverride" integer="yes" />
+    <set_variable name="System Settings" value="3.0" integer="yes" />
+  </event>
+  <event name="Sector Side Override (RESET)" id_arme="6e959c03-0cf4-4896-8370-708ee5d520b5" parent_id_arme="e12965cc-4adf-447b-9c58-37de11bbe78f">
+    <if_variable name="System Settings" comparator="EQUALS" value="3.0" />
+    <set_variable name="sectorSideOverride" value="0.0" integer="yes" />
+    <set_variable name="System Settings" value="0.0" integer="yes" />
+  </event>
+  <event name="Set Sector Side" id_arme="f729a094-5131-48f9-a880-07becef4410b" parent_id_arme="e12965cc-4adf-447b-9c58-37de11bbe78f">
+    <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="System" />
+    <if_variable name="sectorSideOverride" comparator="LESS" value="1.0" />
+    <set_variable name="sectorSide" value="systemSide" integer="yes" />
+    <set_variable name="System Settings" value="0.0" integer="yes" />
+  </event>
+
+
+  <event name="Create Athorn Sector 1">
+    <if_variable name="Athorn System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_skybox_index index="6" />
+          <create count="30" type="nebulas" nebType="2" startAngle="60" endAngle="120" startX="100148.0" startY="0.0" startZ="21510.0" radius="44715" randomRange="10000" />
+    
+<create count="20" type="nebulas" nebType="2" startAngle="240" endAngle="300" startX="23277.0" startY="0.0" startZ="66591.0" radius="44715" randomRange="5000" />
+    
+<create count="40" type="nebulas" nebType="2" startAngle="230" endAngle="300" startX="-39721.0" startY="0.0" startZ="28257.0" radius="48116" randomRange="10000" />
+    
+<create count="40" type="asteroids" startX="25229.0" startY="0.0" startZ="99403.0" endX="25136.0" endY="0.0" endZ="59806.0" randomRange="2000" />
+    
+
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Athorn System" value="2.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="0.0" />
+    <set_variable name="Grid A Transition Enabled" value="0.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+  </event>
+
+      
+  <event name="Grid E Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 5 Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="2.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner E5 Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="4.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+    
+        <event name="Gate Offline" id_arme="4d2d3b10-fd64-4dd6-9e8d-b12ce7eb58a3" parent_id_arme="008d9df1-aa8c-4295-82ac-1fd4d150cb77">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="Vrae Gate" />
+  </event>
+
+  <event name="Ship1 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="0" name2="Vrae Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Vrae Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship1" value="1.0" />
+  </event>
+  <event name="Ship1 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="0" name2="Vrae Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Vrae Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship1" value="0.0" />
+  </event> 
+  <event name="Ship2 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="1" name2="Vrae Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Vrae Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship2" value="1.0" />
+  </event>
+  <event name="Ship2 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="1" name2="Vrae Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Vrae Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship2" value="0.0" />
+  </event> 
+  <event name="Ship3 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="2" name2="Vrae Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Vrae Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship3" value="1.0" />
+  </event>
+  <event name="Ship3 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="2" name2="Vrae Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Vrae Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship3" value="0.0" />
+  </event> 
+  <event name="Ship4 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="3" name2="Vrae Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Vrae Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship4" value="1.0" />
+  </event>
+  <event name="Ship4 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="3" name2="Vrae Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Vrae Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship4" value="0.0" />
+  </event> 
+  <event name="Ship5 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="4" name2="Vrae Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Vrae Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship5" value="1.0" />
+  </event>
+  <event name="Ship5 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="4" name2="Vrae Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Vrae Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship5" value="0.0" />
+  </event> 
+  <event name="Ship6 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="5" name2="Vrae Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Vrae Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship6" value="1.0" />
+  </event>
+  <event name="Ship6 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="5" name2="Vrae Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Vrae Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship6" value="0.0" />
+  </event> 
+  <event name="Ship7 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="6" name2="Vrae Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Vrae Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship7" value="1.0" />
+  </event>
+  <event name="Ship7 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="6" name2="Vrae Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Vrae Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship7" value="0.0" />
+  </event> 
+  <event name="Ship8 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="7" name2="Vrae Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Vrae Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship8" value="1.0" />
+  </event>
+  <event name="Ship8 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="7" name2="Vrae Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Vrae Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship8" value="0.0" />
+  </event> 
+
+  <event name="Gate Online">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="Vrae Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="Vrae Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="Vrae Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Athorn to Vrae" value="1.0" />
+    <set_variable name="Vrae System" value="1.0" />
+    <set_variable name="Sector" value="8" />
+    <set_variable name="shipsInrange" value="0.0" integer="yes" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+    <set_variable name="Gate System" value="0.0" />
+  </event>
+
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          <create type="neutral" x="26809.0" y="0.0" z="57575.0" angle="174.3" name="Chonos" hullID="1100" sideValue="sectorSide" />
+    
+<clear_ai name="Chonos" />
+    
+<add_ai type="SPCL_AI" name="Chonos" />
+    
+<set_special name="Chonos" ability="Stealth" />
+    
+<set_special name="Chonos" ability="LowVis" />
+    
+<set_special name="Chonos" ability="Cloak" />
+    
+<add_ai type="CHASE_ANGER" name="Chonos" />
+    
+<set_ship_text name="Chonos" race="Sechatzal" class="Outpost" desc="No match in stellar cartography data for this installation." scan_desc="Installation is shielded by Sechatzal cloaking technology. Deep scan failed." hailtext="Greetings, terrans. If anyone asks, you have never seen us." />
+    
+<create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="24392.0" y="0.0" z="64360.0" name="B2" />
+    
+<create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="24578.0" y="0.0" z="57389.0" name="B1" />
+    
+<create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="24764.0" y="0.0" z="70681.0" name="B4" />
+    
+<create type="genericMesh" x="26320.0" y="8.0" z="67578.0" name="Vrae Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+  
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Athorn I" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+      <set_object_property property="artScale" value="1.0" name="Vrae Gate" />
+      <set_object_property property="pushRadius" value="0.0" name="Vrae Gate" />
+      <set_object_property property="angle" value="4.71238898" name="Vrae Gate" />
+      <set_object_property property="rollDelta" value="0.3" name="Vrae Gate" />
+
+          
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> 
+  </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Athorn System" comparator="EQUALS" value="3.0" />
+              <destroy name="Chonos" />
+    <destroy name="B2" />
+    <destroy name="B1" />
+    <destroy name="B4" />
+    <destroy name="Vrae Gate" />
+    <destroy name="Athorn I" />
+    <set_variable name="Athorn System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+
+
+        <event name="Arrival From Vrae">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Vrae to Athorn" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="Vrae Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="Vrae Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="Vrae Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="Vrae Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="Vrae Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="Vrae Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="Vrae Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="Vrae Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="Vrae to Athorn" value="0.0" />
+  </event>
+
+
+  <event name="Create Athorn Sector 2">
+    <if_variable name="Athorn System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="Transition" />
+    <set_skybox_index index="6" />
+          <create count="40" type="nebulas" nebType="2" startAngle="240" endAngle="300" startX="44721.0" startY="0.0" startZ="28257.0" radius="48116" randomRange="10000" />
+    
+<create count="40" type="nebulas" nebType="2" startAngle="60" endAngle="120" startX="128374.0" startY="0.0" startZ="83361.0" radius="48116" randomRange="10000" />
+    
+<create count="40" type="asteroids" startX="61852.0" startY="0.0" startZ="61386.0" endX="61945.0" endY="0.0" endZ="98752.0" randomRange="2000" />
+    
+<create count="40" type="nebulas" nebType="2" startAngle="60" endAngle="120" startX="55903.0" startY="0.0" startZ="25879.0" radius="48116" randomRange="10000" />
+    
+<create count="40" type="nebulas" nebType="2" startAngle="240" endAngle="300" startX="-28605.0" startY="0.0" startZ="79697.0" radius="48116" randomRange="10000" />
+    
+<create count="15" type="mines" startAngle="40" endAngle="170" startX="66313.0" startY="0.0" startZ="17792.0" radius="6238" />
+    
+<create count="15" type="mines" startAngle="0" endAngle="130" startX="65942.0" startY="0.0" startZ="33036.0" radius="6238" />
+    
+<create count="15" type="mines" startAngle="-30" endAngle="100" startX="57018.0" startY="0.0" startZ="45213.0" radius="6238" />
+    
+<create count="15" type="mines" startAngle="-70" endAngle="60" startX="41681.0" startY="0.0" startZ="49024.0" radius="6238" />
+    
+<create count="15" type="mines" startAngle="-130" endAngle="0" startX="19466.0" startY="0.0" startZ="32292.0" radius="6238" />
+    
+<create count="15" type="mines" startAngle="170" endAngle="300" startX="20488.0" startY="0.0" startZ="17420.0" radius="6238" />
+    
+<create count="15" type="mines" startAngle="245" endAngle="115" startX="43169.0" startY="0.0" startZ="2083.0" radius="6238" />
+    
+<create count="15" type="mines" startAngle="210" endAngle="80" startX="57204.0" startY="0.0" startZ="5708.0" radius="6238" />
+    
+<create count="15" type="mines" startAngle="280" endAngle="150" startX="29226.0" startY="0.0" startZ="5987.0" radius="6238" />
+    
+<create count="15" type="mines" startAngle="-100" endAngle="30" startX="27274.0" startY="0.0" startZ="45027.0" radius="6238" />
+    
+
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Athorn System" value="2.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="0.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="0.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+  </event>
+
+      
+  <event name="Grid E Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+
+    <set_variable name="Sector" value="4.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 1 Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="1.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner E1 Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+    
+        <event name="Gate Offline" id_arme="4d2d3b10-fd64-4dd6-9e8d-b12ce7eb58a3" parent_id_arme="008d9df1-aa8c-4295-82ac-1fd4d150cb77">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="Burin Gate" />
+  </event>
+
+  <event name="Ship1 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="0" name2="Burin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship1" value="1.0" />
+  </event>
+  <event name="Ship1 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="0" name2="Burin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship1" value="0.0" />
+  </event> 
+  <event name="Ship2 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="1" name2="Burin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship2" value="1.0" />
+  </event>
+  <event name="Ship2 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="1" name2="Burin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship2" value="0.0" />
+  </event> 
+  <event name="Ship3 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="2" name2="Burin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship3" value="1.0" />
+  </event>
+  <event name="Ship3 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="2" name2="Burin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship3" value="0.0" />
+  </event> 
+  <event name="Ship4 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="3" name2="Burin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship4" value="1.0" />
+  </event>
+  <event name="Ship4 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="3" name2="Burin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship4" value="0.0" />
+  </event> 
+  <event name="Ship5 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="4" name2="Burin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship5" value="1.0" />
+  </event>
+  <event name="Ship5 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="4" name2="Burin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship5" value="0.0" />
+  </event> 
+  <event name="Ship6 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="5" name2="Burin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship6" value="1.0" />
+  </event>
+  <event name="Ship6 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="5" name2="Burin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship6" value="0.0" />
+  </event> 
+  <event name="Ship7 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="6" name2="Burin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship7" value="1.0" />
+  </event>
+  <event name="Ship7 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="6" name2="Burin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship7" value="0.0" />
+  </event> 
+  <event name="Ship8 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="7" name2="Burin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship8" value="1.0" />
+  </event>
+  <event name="Ship8 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="7" name2="Burin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship8" value="0.0" />
+  </event> 
+
+  <event name="Gate Online">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="Burin Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Athorn to Burin" value="1.0" />
+    <set_variable name="Burin System" value="1.0" />
+    <set_variable name="Sector" value="8" />
+    <set_variable name="shipsInrange" value="0.0" integer="yes" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+    <set_variable name="Gate System" value="0.0" />
+  </event>
+
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          <create type="genericMesh" x="43169.0" y="8.0" z="25414.0" name="Burin Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    
+<create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="48746.0" y="0.0" z="28109.0" name="B2" />
+    
+<create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="41774.0" y="0.0" z="30619.0" name="B1" />
+    
+<create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="40938.0" y="0.0" z="20302.0" name="B4" />
+    
+<create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="37313.0" y="0.0" z="24577.0" name="B3" />
+    
+<create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="47816.0" y="0.0" z="21138.0" name="B5" />
+    
+<create type="neutral" x="46887.0" y="0.0" z="32571.0" angle="0" name="Slipstream Convocation" hullID="7714" sideValue="sectorSide" />
+    
+<create type="monster" monsterType="4" podnumber="1" x="60736.0" y="0.0" z="84066.0" angle="0" name="PIRA" />
+    
+<create type="monster" monsterType="4" podnumber="1" x="60829.0" y="0.0" z="81371.0" angle="0" name="PIRA" />
+    
+<set_ship_text name="Slipstream Convocation" race="Budron" class="Outpost" desc="Budron Outpost armed with various beams and a fighter bay. Contains advanced sensors for monitoring surrounding space sectors." scan_desc="Station is completely filled with phosphorous water." hailtext="May the Sacred Prophecy guide you safely through these waters, Terran." />
+    
+<create type="monster" monsterType="4" podnumber="1" x="62317.0" y="0.0" z="85460.0" angle="0" name="PIRA" />
+  
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Athorn II" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+      <set_object_property property="artScale" value="1.0" name="Burin Gate" />
+      <set_object_property property="pushRadius" value="0.0" name="Burin Gate" />
+      <set_object_property property="angle" value="4.71238898" name="Burin Gate" />
+      <set_object_property property="rollDelta" value="0.3" name="Burin Gate" />
+
+                    
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> 
+  </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Athorn System" comparator="EQUALS" value="3.0" />
+                        <destroy name="Burin Gate" />
+    <destroy name="B2" />
+    <destroy name="B1" />
+    <destroy name="B4" />
+    <destroy name="B3" />
+    <destroy name="B5" />
+    <destroy name="Slipstream Convocation" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="Athorn II" />
+    <set_variable name="Athorn System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+
+
+        <event name="Arrival From Burin">
+    <if_variable name="Sector" comparator="EQUALS" value="2" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Burin to Athorn" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="Burin Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="Burin Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="Burin Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="Burin Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="Burin Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="Burin Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="Burin Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="Burin Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="Burin to Athorn" value="0.0" />
+  </event>
+
+
+  <event name="Create Athorn Sector 3">
+    <if_variable name="Athorn System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_timer_finished name="Transition" />
+    <set_skybox_index index="6" />
+          <create count="20" type="nebulas" nebType="1" startAngle="60" endAngle="110" startX="135000.0" startY="0.0" startZ="90467.0" radius="44715" randomRange="5000" randomSeed="2" />
+    
+<create count="20" type="nebulas" startAngle="60" endAngle="100" startX="72076.0" startY="0.0" startZ="99310.0" radius="44715" randomRange="5000" />
+    
+<create count="20" type="nebulas" nebType="2" startAngle="80" endAngle="120" startX="44749.0" startY="0.0" startZ="11750.0" radius="44715" randomRange="5000" />
+    
+<create count="100" type="asteroids" startX="25415.0" startY="0.0" startZ="410.0" endX="25508.0" endY="0.0" endZ="98845.0" randomRange="2000" />
+    
+
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Athorn System" value="2.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="0.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="1.0" />
+  </event>
+
+      
+  <event name="Grid A Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+
+    <set_variable name="Sector" value="1.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid E Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+
+    <set_variable name="Sector" value="5.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 5 Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="4.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner A5 Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="2.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner E5 Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Corner E5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="6.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+    
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          <create type="genericMesh" x="48560.0" y="0.0" z="42517.0" name="Wreck A31" meshFileName="dat\artemis.dxs" textureFileName="dat\LightCruiser_Diffuse.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    
+<set_ship_text name="Wreck A31" race="TSN" class="Light Cruiser" desc="Systems offline" scan_desc="No lifesigns. Radiation decay analysis indicates this wreck has been here for several years." />
+    
+<create type="genericMesh" x="48188.0" y="0.0" z="48466.0" name="Wreck A48" meshFileName="dat/ENE_RoundC.dxs" textureFileName="dat/RoundC_Diffuse.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    
+<set_ship_text name="Wreck A48" race="Kralien" class="Dreadnaught" desc="Systems offline" scan_desc="No lifesigns. Radiation decay analysis indicates this wreck has been here for several years." />
+    
+<create type="genericMesh" x="42518.0" y="0.0" z="44097.0" name="Wreck A33" meshFileName="dat/ENE_RoundA.dxs" textureFileName="dat/roundA_diffuse.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    
+<set_ship_text name="Wreck A33" race="Kralien" class="Cruiser" desc="Systems offline" scan_desc="No lifesigns. Radiation decay analysis indicates this wreck has been here for several years." />
+    
+<create type="monster" monsterType="8" age="3" x="38614.0" y="0.0" z="48652.0" angle="0" name="Wreck A12" />
+    
+<create type="monster" monsterType="8" age="3" x="34152.0" y="0.0" z="46700.0" angle="0" name="Wreck A93" />
+    
+<create type="monster" monsterType="8" age="3" x="32572.0" y="0.0" z="50232.0" angle="0" name="Wreck A81" />
+    
+<create type="monster" monsterType="8" age="3" x="30806.0" y="0.0" z="56088.0" angle="0" name="Wreck A01" />
+    
+<create type="monster" monsterType="8" age="3" x="28482.0" y="0.0" z="59806.0" angle="0" name="Wreck A99999" />
+    
+<create type="monster" monsterType="8" age="2" x="27460.0" y="0.0" z="71518.0" angle="0" name="Wreck A72" />
+    
+<create type="monster" monsterType="4" podnumber="1" x="29133.0" y="0.0" z="64918.0" angle="0" name="PIRA" />
+    
+<create type="monster" monsterType="4" podnumber="1" x="29133.0" y="0.0" z="66405.0" angle="0" name="PIRA" />
+    
+<create type="monster" monsterType="4" podnumber="1" x="26902.0" y="0.0" z="64546.0" angle="0" name="PIRA" />
+    
+<create type="monster" monsterType="4" podnumber="1" x="31457.0" y="0.0" z="63710.0" angle="0" name="PIRA" />
+    
+<create type="monster" monsterType="4" podnumber="1" x="28575.0" y="0.0" z="62687.0" angle="0" name="PIRA" />
+    
+<create type="monster" monsterType="4" podnumber="1" x="28018.0" y="0.0" z="63896.0" angle="0" name="PIRA" />
+    
+<create type="monster" monsterType="4" podnumber="1" x="26066.0" y="0.0" z="63803.0" angle="0" name="PIRA" />
+    
+<set_object_property property="rollDelta" value="0.2" name="Wreck A33" />
+    
+<set_object_property property="angleDelta" value="0.1" name="Wreck A33" />
+    
+<addto_object_property value="10.1" property="positionY" name="Wreck A33" />
+    
+<set_object_property property="pushRadius" value="75.0" name="Wreck A33" />
+    
+<set_object_property property="artScale" value="0.2" name="Wreck A33" />
+    
+<set_object_property property="rollDelta" value="0.2" name="Wreck A48" />
+    
+<set_object_property property="angleDelta" value="0.1" name="Wreck A48" />
+    
+<addto_object_property value="10.1" property="positionY" name="Wreck A48" />
+    
+<set_object_property property="pushRadius" value="75.0" name="Wreck A48" />
+    
+<set_object_property property="artScale" value="0.3" name="Wreck A48" />
+    
+<set_object_property property="rollDelta" value="0.2" name="Wreck A31" />
+    
+<set_object_property property="angleDelta" value="0.1" name="Wreck A31" />
+    
+<addto_object_property value="10.1" property="positionY" name="Wreck A31" />
+    
+<set_object_property property="pushRadius" value="75.0" name="Wreck A31" />
+    
+<set_object_property property="artScale" value="0.2" name="Wreck A31" />
+  
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Athorn III" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+
+                                
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> 
+  </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Athorn System" comparator="EQUALS" value="3.0" />
+                                    <destroy name="Wreck A31" />
+    <destroy name="Wreck A48" />
+    <destroy name="Wreck A33" />
+    <destroy name="Wreck A12" />
+    <destroy name="Wreck A93" />
+    <destroy name="Wreck A81" />
+    <destroy name="Wreck A01" />
+    <destroy name="Wreck A99999" />
+    <destroy name="Wreck A72" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="Athorn III" />
+    <set_variable name="Athorn System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+
+
+
+  <event name="Create Athorn Sector 4">
+    <if_variable name="Athorn System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_timer_finished name="Transition" />
+    <set_skybox_index index="6" />
+          <create count="20" type="nebulas" nebType="1" startAngle="60" endAngle="120" startX="86019.0" startY="0.0" startZ="34709.0" radius="44715" randomRange="5000" />
+    
+<create count="100" type="asteroids" startX="62317.0" startY="0.0" startZ="689.0" endX="61852.0" endY="0.0" endZ="67614.0" randomRange="2000" />
+    
+<create count="40" type="nebulas" nebType="1" startAngle="240" endAngle="300" startX="7661.0" startY="0.0" startZ="82114.0" radius="44715" randomRange="10000" />
+    
+
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Athorn System" value="2.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="0.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+  </event>
+
+      
+  <event name="Grid A Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+
+    <set_variable name="Sector" value="2.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid E Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+
+    <set_variable name="Sector" value="6.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 1 Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner A1 Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="1.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner E1 Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_variable name="Corner E1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner E1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="5.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+    
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="4.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          <create type="genericMesh" x="40473.0" y="0.0" z="36940.0" name="Wreck B40" meshFileName="dat\artemis.dxs" textureFileName="dat\LightCruiser_Diffuse.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    
+<set_ship_text name="Wreck B40" race="TSN" class="Light Cruiser" desc="Systems offline" scan_desc="No lifesigns. Radiation decay analysis indicates this wreck has been here for several years." />
+    
+<create type="genericMesh" x="48188.0" y="0.0" z="48466.0" name="Wreck B41" meshFileName="dat/ENE_RoundC.dxs" textureFileName="dat/RoundC_Diffuse.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    
+<set_ship_text name="Wreck B41" race="Kralien" class="Dreadnaught" desc="Systems offline" scan_desc="No lifesigns. Radiation decay analysis indicates this wreck has been here for several years." />
+    
+<create type="genericMesh" x="42518.0" y="0.0" z="44097.0" name="Wreck B42" meshFileName="dat/ENE_RoundA.dxs" textureFileName="dat/roundA_diffuse.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    
+<set_ship_text name="Wreck B42" race="Kralien" class="Cruiser" desc="Systems offline" scan_desc="No lifesigns. Radiation decay analysis indicates this wreck has been here for several years." />
+    
+<create type="monster" monsterType="8" age="2" x="51720.0" y="0.0" z="47164.0" angle="0" name="Wreck B02" />
+    
+<create type="monster" monsterType="8" age="2" x="60829.0" y="0.0" z="51533.0" angle="0" name="Wreck B97" />
+    
+<create type="monster" monsterType="8" age="2" x="47909.0" y="0.0" z="54136.0" angle="0" name="Wreck B13" />
+    
+<create type="monster" monsterType="8" age="2" x="61387.0" y="0.0" z="57575.0" angle="0" name="Wreck B00" />
+    
+<create type="monster" monsterType="8" age="2" x="61852.0" y="0.0" z="69659.0" angle="0" name="Wreck B" />
+    
+<create type="monster" monsterType="8" age="3" x="62595.0" y="0.0" z="73284.0" angle="0" name="Wreck B65" />
+    
+<create type="monster" monsterType="4" podnumber="1" x="43726.0" y="0.0" z="41866.0" angle="0" name="PIRA" />
+    
+<create type="monster" monsterType="4" podnumber="1" x="44098.0" y="0.0" z="38613.0" angle="0" name="PIRA" />
+    
+<create type="monster" monsterType="4" podnumber="2" x="65942.0" y="0.0" z="78675.0" angle="0" name="PIRA" />
+    
+<create type="monster" monsterType="4" podnumber="1" x="42425.0" y="0.0" z="40565.0" angle="0" name="PIRA" />
+    
+<create type="monster" monsterType="4" podnumber="1" x="45771.0" y="0.0" z="40472.0" angle="0" name="PIRA" />
+    
+<create type="monster" monsterType="4" podnumber="2" x="62409.0" y="0.0" z="80162.0" angle="0" name="PIRA" />
+    
+<create type="monster" monsterType="4" podnumber="2" x="64083.0" y="0.0" z="78210.0" angle="0" name="PIRA" />
+    
+<create type="monster" monsterType="4" podnumber="2" x="64733.0" y="0.0" z="80999.0" angle="0" name="PIRA" />
+    
+<create type="monster" monsterType="4" podnumber="2" x="63804.0" y="0.0" z="79883.0" angle="0" name="PIRA" />
+    
+<set_object_property property="rollDelta" value="0.2" name="Wreck B42" />
+    
+<set_object_property property="angleDelta" value="0.1" name="Wreck B42" />
+    
+<addto_object_property value="10.1" property="positionY" name="Wreck B42" />
+    
+<set_object_property property="pushRadius" value="75.0" name="Wreck B42" />
+    
+<set_object_property property="artScale" value="0.2" name="Wreck B42" />
+    
+<set_object_property property="rollDelta" value="0.2" name="Wreck B41" />
+    
+<set_object_property property="angleDelta" value="0.1" name="Wreck B41" />
+    
+<addto_object_property value="10.1" property="positionY" name="Wreck B41" />
+    
+<set_object_property property="pushRadius" value="75.0" name="Wreck B41" />
+    
+<set_object_property property="artScale" value="0.3" name="Wreck B41" />
+    
+<set_object_property property="rollDelta" value="0.2" name="Wreck B40" />
+    
+<set_object_property property="angleDelta" value="0.1" name="Wreck B40" />
+    
+<addto_object_property value="10.1" property="positionY" name="Wreck B40" />
+    
+<set_object_property property="pushRadius" value="75.0" name="Wreck B40" />
+    
+<set_object_property property="artScale" value="0.2" name="Wreck B40" />
+  
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Athorn IV" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+
+                                    
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> 
+  </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Athorn System" comparator="EQUALS" value="3.0" />
+                                        <destroy name="Wreck B40" />
+    <destroy name="Wreck B41" />
+    <destroy name="Wreck B42" />
+    <destroy name="Wreck B02" />
+    <destroy name="Wreck B97" />
+    <destroy name="Wreck B13" />
+    <destroy name="Wreck B00" />
+    <destroy name="Wreck B" />
+    <destroy name="Wreck B65" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="Athorn IV" />
+    <set_variable name="Athorn System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+
+
+
+  <event name="Create Athorn Sector 5">
+    <if_variable name="Athorn System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_timer_finished name="Transition" />
+    <set_skybox_index index="6" />
+          <create count="40" type="nebulas" nebType="1" startAngle="60" endAngle="120" startX="71147.0" startY="0.0" startZ="28481.0" radius="44715" randomRange="10000" />
+    
+<create count="100" type="asteroids" startX="25415.0" startY="0.0" startZ="410.0" endX="25136.0" endY="0.0" endZ="73563.0" randomRange="2000" />
+    
+<create count="60" type="nebulas" nebType="1" startAngle="240" endAngle="300" startX="-3958.0" startY="0.0" startZ="81835.0" radius="44715" randomRange="15000" />
+    
+<create count="60" type="nebulas" startAngle="240" endAngle="300" startX="55624.0" startY="0.0" startZ="76072.0" radius="44715" randomRange="10000" />
+    
+<create count="40" type="nebulas" startAngle="70" endAngle="130" startX="129443.0" startY="0.0" startZ="15786.0" radius="44715" randomRange="10000" />
+    
+
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Athorn System" value="2.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="0.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="1.0" />
+    <set_variable name="Grid E Transition Enabled" value="0.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="1.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+  </event>
+
+      
+  <event name="Grid A Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 5 Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Grid 5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="6.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner A5 Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Corner A5 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A5 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="4.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+    
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="5.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          <create type="monster" monsterType="4" podnumber="1" x="29133.0" y="0.0" z="64918.0" angle="0" name="PIRA" />
+    
+<create type="monster" monsterType="4" podnumber="1" x="28203.0" y="0.0" z="64732.0" angle="0" name="PIRA" />
+    
+<create type="monster" monsterType="4" podnumber="1" x="28854.0" y="0.0" z="63989.0" angle="0" name="PIRA" />
+    
+<create type="monster" monsterType="4" podnumber="1" x="29412.0" y="0.0" z="65755.0" angle="0" name="PIRA" />
+  
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Athorn V" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+
+        
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> 
+  </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Athorn System" comparator="EQUALS" value="3.0" />
+            <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="Athorn V" />
+    <set_variable name="Athorn System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+
+
+
+  <event name="Create Athorn Sector 6">
+    <if_variable name="Athorn System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_timer_finished name="Transition" />
+    <set_skybox_index index="6" />
+          <create count="70" type="nebulas" nebType="1" startAngle="50" endAngle="130" startX="79977.0" startY="0.0" startZ="78582.0" radius="44715" randomRange="15000" />
+    
+<create count="40" type="nebulas" nebType="1" startAngle="240" endAngle="300" startX="4222.0" startY="0.0" startZ="22625.0" radius="44715" randomRange="10000" />
+    
+<create count="40" type="mines" startAngle="-150" endAngle="20" startX="30155.0" startY="0.0" startZ="48745.0" radius="13075" />
+    
+
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Athorn System" value="2.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="1.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="0.0" />
+    <set_variable name="Grid E Transition Enabled" value="0.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="1.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+  </event>
+
+      
+  <event name="Grid A Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+
+    <set_variable name="Sector" value="4.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Grid 1 Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Grid 1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid 1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="5.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+      
+  <event name="Corner A1 Transition">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Corner A1 Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Corner A1 Transition" value="0.0" />
+
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+  </event>
+
+
+    
+        <event name="Gate Offline" id_arme="4d2d3b10-fd64-4dd6-9e8d-b12ce7eb58a3" parent_id_arme="008d9df1-aa8c-4295-82ac-1fd4d150cb77">
+    <if_variable name="Sector" comparator="EQUALS" value="6" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="Helios Gate" />
+  </event>
+
+  <event name="Ship1 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="6" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="0" name2="Helios Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship1" value="1.0" />
+  </event>
+  <event name="Ship1 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="6" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="0" name2="Helios Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship1" value="0.0" />
+  </event> 
+  <event name="Ship2 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="6" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="1" name2="Helios Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship2" value="1.0" />
+  </event>
+  <event name="Ship2 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="6" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="1" name2="Helios Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship2" value="0.0" />
+  </event> 
+  <event name="Ship3 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="6" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="2" name2="Helios Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship3" value="1.0" />
+  </event>
+  <event name="Ship3 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="6" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="2" name2="Helios Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship3" value="0.0" />
+  </event> 
+  <event name="Ship4 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="6" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="3" name2="Helios Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship4" value="1.0" />
+  </event>
+  <event name="Ship4 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="6" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="3" name2="Helios Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship4" value="0.0" />
+  </event> 
+  <event name="Ship5 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="6" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="4" name2="Helios Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship5" value="1.0" />
+  </event>
+  <event name="Ship5 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="6" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="4" name2="Helios Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship5" value="0.0" />
+  </event> 
+  <event name="Ship6 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="6" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="5" name2="Helios Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship6" value="1.0" />
+  </event>
+  <event name="Ship6 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="6" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="5" name2="Helios Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship6" value="0.0" />
+  </event> 
+  <event name="Ship7 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="6" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="6" name2="Helios Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship7" value="1.0" />
+  </event>
+  <event name="Ship7 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="6" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="6" name2="Helios Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship7" value="0.0" />
+  </event> 
+  <event name="Ship8 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="6" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="7" name2="Helios Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship8" value="1.0" />
+  </event>
+  <event name="Ship8 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="6" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="7" name2="Helios Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship8" value="0.0" />
+  </event> 
+
+  <event name="Gate Online">
+    <if_variable name="Sector" comparator="EQUALS" value="6" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="Helios Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated">
+    <if_variable name="Sector" comparator="EQUALS" value="6" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="Helios Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="Athorn System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Athorn to Helios" value="1.0" />
+    <set_variable name="Helios System" value="1.0" />
+    <set_variable name="Sector" value="2" />
+    <set_variable name="shipsInrange" value="0.0" integer="yes" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+    <set_variable name="Gate System" value="0.0" />
+  </event>
+
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="6.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          <create type="neutral" x="23091.0" y="0.0" z="37962.0" angle="0" name="Athorn Outpost" hullID="1000" sideValue="sectorSide" />
+    
+<create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="33409.0" y="0.0" z="41866.0" name="B1" />
+    
+<create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="37777.0" y="0.0" z="45027.0" name="B2" />
+    
+<create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="38428.0" y="0.0" z="51254.0" name="B3" />
+    
+<create type="genericMesh" x="32200.0" y="2.0" z="47722.0" name="Helios Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+  
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Athorn VI" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+      <set_object_property property="artScale" value="1.0" name="Helios Gate" />
+      <set_object_property property="pushRadius" value="0.0" name="Helios Gate" />
+      <set_object_property property="angle" value="4.71238898" name="Helios Gate" />
+      <set_object_property property="rollDelta" value="0.3" name="Helios Gate" />
+
+          
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> 
+  </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Athorn System" comparator="EQUALS" value="3.0" />
+              <destroy name="Athorn Outpost" />
+    <destroy name="B1" />
+    <destroy name="B2" />
+    <destroy name="B3" />
+    <destroy name="Helios Gate" />
+    <destroy name="Athorn VI" />
+    <set_variable name="Athorn System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+
+
+        <event name="Arrival From Helios">
+    <if_variable name="Sector" comparator="EQUALS" value="6" />
+    <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Helios to Athorn" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="Helios Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="Helios Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="Helios Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="Helios Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="Helios Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="Helios Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="Helios Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="Helios Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="Helios to Athorn" value="0.0" />
+  </event>
+
+

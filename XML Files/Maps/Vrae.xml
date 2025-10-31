@@ -5,7 +5,7 @@
     <set_variable name="Width" value="4.0" />
     <set_variable name="Height" value="3.0" />
     <set_variable name="Alignment" value="Hegemony" />
-    <set_variable name="sectorSide" value="0.0" integer="yes" />
+    <set_variable name="Skybox" value="21.0" integer="yes" />
   </start>
   <event name="Sector 1" id_arme="65fd2aab-bf46-4b67-8c72-026fe3b37927">
     <create count="500" type="nebulas" startX="60751.0" startY="0.0" startZ="2639.0" endX="95618.0" endY="0.0" endZ="46949.0" randomRange="30000" />

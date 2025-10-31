@@ -68,6 +68,7 @@
     <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="1.0" />
     <if_timer_finished name="Transition" />
+    <set_skybox_index index="21" />
           <create count="500" type="nebulas" startX="60751.0" startY="0.0" startZ="2639.0" endX="95618.0" endY="0.0" endZ="46949.0" randomRange="30000" />
     
 <create count="200" type="nebulas" startX="27337.0" startY="0.0" startZ="2784.0" endX="94165.0" endY="0.0" endZ="92130.0" randomRange="30000" />
@@ -396,6 +397,7 @@
     <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
     <if_timer_finished name="Transition" />
+    <set_skybox_index index="21" />
           <create count="40" type="nebulas" nebType="2" startX="5109.0" startY="0.0" startZ="27191.0" endX="4528.0" endY="0.0" endZ="83849.0" randomRange="7000" />
     
 <create count="40" type="nebulas" nebType="2" startX="3076.0" startY="0.0" startZ="97941.0" endX="16586.0" endY="0.0" endZ="39830.0" randomRange="7000" />
@@ -746,6 +748,7 @@
     <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="3.0" />
     <if_timer_finished name="Transition" />
+    <set_skybox_index index="21" />
           <create count="100" type="nebulas" startX="20800.0" startY="0.0" startZ="39539.0" endX="43899.0" endY="0.0" endZ="95762.0" randomRange="20000" />
     
 <create count="100" type="nebulas" startX="94165.0" startY="0.0" startZ="51598.0" endX="20073.0" endY="0.0" endZ="35326.0" randomRange="20000" />
@@ -884,6 +887,7 @@
     <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="4.0" />
     <if_timer_finished name="Transition" />
+    <set_skybox_index index="21" />
           <create count="200" type="nebulas" startX="94165.0" startY="0.0" startZ="87481.0" endX="39105.0" endY="0.0" endZ="81234.0" randomRange="20000" />
     
 <create count="40" type="nebulas" startX="4238.0" startY="0.0" startZ="96343.0" endX="34310.0" endY="0.0" endZ="72082.0" randomRange="10000" />
@@ -986,6 +990,7 @@
     <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
     <if_timer_finished name="Transition" />
+    <set_skybox_index index="21" />
           <create count="60" type="nebulas" startX="79928.0" startY="0.0" startZ="1476.0" endX="92277.0" endY="0.0" endZ="52615.0" randomRange="10000" />
     
 <create count="70" type="nebulas" startX="94165.0" startY="0.0" startZ="94745.0" endX="94746.0" endY="0.0" endZ="4092.0" randomRange="10000" />
@@ -1151,6 +1156,7 @@
     <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_timer_finished name="Transition" />
+    <set_skybox_index index="21" />
           <create count="150" type="nebulas" startX="19056.0" startY="0.0" startZ="65980.0" endX="93293.0" endY="0.0" endZ="90823.0" randomRange="25000" />
     
 <create count="150" type="nebulas" startX="83415.0" startY="0.0" startZ="82978.0" endX="45061.0" endY="0.0" endZ="13244.0" randomRange="25000" />
@@ -1334,6 +1340,7 @@
     <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
     <if_timer_finished name="Transition" />
+    <set_skybox_index index="21" />
           <create count="10" type="nebulas" startX="88790.0" startY="0.0" startZ="314.0" endX="67289.0" endY="0.0" endZ="39975.0" randomRange="1000" randomSeed="1000" />
     
 <create count="10" type="nebulas" startX="44189.0" startY="0.0" startZ="38087.0" endX="20509.0" endY="0.0" endZ="314.0" randomRange="1000" />
@@ -1845,6 +1852,7 @@
     <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="8.0" />
     <if_timer_finished name="Transition" />
+    <set_skybox_index index="21" />
           <create count="50" type="nebulas" startX="101284.0" startY="0.0" startZ="75569.0" endX="45933.0" endY="0.0" endZ="79200.0" randomRange="10000" />
     
 <create count="50" type="nebulas" startX="27482.0" startY="0.0" startZ="92130.0" endX="96780.0" endY="0.0" endZ="91840.0" randomRange="10000" />
@@ -2228,6 +2236,7 @@
     <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="9.0" />
     <if_timer_finished name="Transition" />
+    <set_skybox_index index="21" />
           <create count="30" type="nebulas" nebType="2" startX="20654.0" startY="0.0" startZ="9903.0" radius="8179" randomRange="5000" />
     
 <create count="60" type="nebulas" nebType="2" startX="13100.0" startY="0.0" startZ="3365.0" endX="4528.0" endY="0.0" endZ="42590.0" randomRange="10000" />
@@ -2559,6 +2568,7 @@
     <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="10.0" />
     <if_timer_finished name="Transition" />
+    <set_skybox_index index="21" />
           <create count="100" type="nebulas" nebType="2" startX="99976.0" startY="0.0" startZ="41138.0" endX="24577.0" endY="0.0" endZ="1331.0" randomRange="10000" />
     
 <create count="100" type="nebulas" nebType="2" startX="52034.0" startY="0.0" startZ="13244.0" endX="96780.0" endY="0.0" endZ="22397.0" randomRange="10000" />
@@ -2722,6 +2732,7 @@
     <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="11.0" />
     <if_timer_finished name="Transition" />
+    <set_skybox_index index="21" />
           <create count="300" type="nebulas" startX="64238.0" startY="0.0" startZ="5835.0" endX="67434.0" endY="0.0" endZ="94600.0" randomRange="25000" />
     
 <create count="30" type="nebulas" startX="40557.0" startY="0.0" startZ="63075.0" endX="42301.0" endY="0.0" endZ="16295.0" randomRange="10000" />
@@ -2852,6 +2863,7 @@
     <if_variable name="Vrae System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="12.0" />
     <if_timer_finished name="Transition" />
+    <set_skybox_index index="21" />
           <create count="150" type="nebulas" startX="95908.0" startY="0.0" startZ="64382.0" endX="38088.0" endY="0.0" endZ="2639.0" randomRange="20000" />
     
 <create count="150" type="nebulas" startX="42010.0" startY="0.0" startZ="55956.0" endX="94601.0" endY="0.0" endZ="5254.0" randomRange="20000" />

@@ -65,9 +65,8 @@
     <if_variable name="Khoros System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="1.0" />
     <if_timer_finished name="Transition" />
-          <set_skybox_index index="26" />
-    
-<create count="100" type="nebulas" startX="88438.0" startY="0.0" startZ="57500.0" endX="22143.0" endY="0.0" endZ="78392.0" randomRange="10000" />
+    <set_skybox_index index="26" />
+          <create count="100" type="nebulas" startX="88438.0" startY="0.0" startZ="57500.0" endX="22143.0" endY="0.0" endZ="78392.0" randomRange="10000" />
     
 <create count="100" type="asteroids" startX="84018.0" startY="-400.0" startZ="51473.0" endX="32590.0" endY="400.0" endZ="78794.0" randomRange="15000" />
     
@@ -269,9 +268,8 @@
     <if_variable name="Khoros System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
     <if_timer_finished name="Transition" />
-          <set_skybox_index index="26" />
-    
-<create count="50" type="nebulas" startX="30849.0" startY="0.0" startZ="36473.0" endX="9956.0" endY="0.0" endZ="46651.0" randomRange="5000" />
+    <set_skybox_index index="26" />
+          <create count="50" type="nebulas" startX="30849.0" startY="0.0" startZ="36473.0" endX="9956.0" endY="0.0" endZ="46651.0" randomRange="5000" />
     
 <create count="100" type="nebulas" startX="32322.0" startY="0.0" startZ="33928.0" endX="66608.0" endY="0.0" endZ="47857.0" randomRange="5000" />
     
@@ -404,9 +402,8 @@
     <if_variable name="Khoros System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="3.0" />
     <if_timer_finished name="Transition" />
-          <set_skybox_index index="26" />
-    
-<create count="150" type="nebulas" nebType="2" startX="66072.0" startY="0.0" startZ="35267.0" radius="10000" randomRange="10000" />
+    <set_skybox_index index="26" />
+          <create count="150" type="nebulas" nebType="2" startX="66072.0" startY="0.0" startZ="35267.0" radius="10000" randomRange="10000" />
     
 <create count="150" type="nebulas" nebType="2" startX="48795.0" startY="0.0" startZ="69285.0" radius="10000" randomRange="10000" />
     
@@ -718,9 +715,8 @@
     <if_variable name="Khoros System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="4.0" />
     <if_timer_finished name="Transition" />
-          <set_skybox_index index="26" />
-    
-<create count="100" type="nebulas" nebType="1" startX="65402.0" startY="0.0" startZ="33928.0" endX="72902.0" endY="0.0" endZ="69955.0" randomRange="15000" />
+    <set_skybox_index index="26" />
+          <create count="100" type="nebulas" nebType="1" startX="65402.0" startY="0.0" startZ="33928.0" endX="72902.0" endY="0.0" endZ="69955.0" randomRange="15000" />
     
 <create count="100" type="nebulas" nebType="2" startX="77054.0" startY="0.0" startZ="30848.0" endX="60045.0" endY="0.0" endZ="73973.0" randomRange="15000" />
     
@@ -1060,9 +1056,8 @@
     <if_variable name="Khoros System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
     <if_timer_finished name="Transition" />
-          <set_skybox_index index="26" />
-    
-<create count="100" type="nebulas" startX="61384.0" startY="0.0" startZ="312.0" endX="52009.0" endY="0.0" endZ="41428.0" randomRange="8000" />
+    <set_skybox_index index="26" />
+          <create count="100" type="nebulas" startX="61384.0" startY="0.0" startZ="312.0" endX="52009.0" endY="0.0" endZ="41428.0" randomRange="8000" />
     
 <create count="100" type="nebulas" startX="46655.0" startY="0.0" startZ="66728.0" endX="54238.0" endY="0.0" endZ="32379.0" randomRange="12000" />
     
@@ -1235,9 +1230,8 @@
     <if_variable name="Khoros System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_timer_finished name="Transition" />
-          <set_skybox_index index="26" />
-    
-<create count="100" type="nebulas" startX="28974.0" startY="0.0" startZ="19330.0" endX="59643.0" endY="0.0" endZ="47723.0" randomRange="15000" />
+    <set_skybox_index index="26" />
+          <create count="100" type="nebulas" startX="28974.0" startY="0.0" startZ="19330.0" endX="59643.0" endY="0.0" endZ="47723.0" randomRange="15000" />
     
 <create count="100" type="nebulas" nebType="2" startX="37411.0" startY="0.0" startZ="17187.0" endX="32188.0" endY="0.0" endZ="56830.0" randomRange="15000" />
     
@@ -1361,9 +1355,8 @@
     <if_variable name="Khoros System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
     <if_timer_finished name="Transition" />
-          <set_skybox_index index="26" />
-    
-<create count="300" type="asteroids" startX="52411.0" startY="200.0" startZ="32589.0" radius="10000" randomRange="30000" />
+    <set_skybox_index index="26" />
+          <create count="300" type="asteroids" startX="52411.0" startY="200.0" startZ="32589.0" radius="10000" randomRange="30000" />
     
 <create count="500" type="nebulas" startX="35402.0" startY="0.0" startZ="22410.0" endX="64733.0" endY="0.0" endZ="62053.0" randomRange="20000" />
     
@@ -1466,9 +1459,8 @@
     <if_variable name="Khoros System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="8.0" />
     <if_timer_finished name="Transition" />
-          <set_skybox_index index="26" />
-    
-<create count="50" type="nebulas" startX="67679.0" startY="0.0" startZ="59776.0" endX="85911.0" endY="0.0" endZ="46654.0" randomRange="5000" />
+    <set_skybox_index index="26" />
+          <create count="50" type="nebulas" startX="67679.0" startY="0.0" startZ="59776.0" endX="85911.0" endY="0.0" endZ="46654.0" randomRange="5000" />
     
 <create count="100" type="nebulas" startX="35354.0" startY="0.0" startZ="52156.0" endX="61376.0" endY="0.0" endZ="64498.0" randomRange="5000" />
     
@@ -1832,9 +1824,8 @@
     <if_variable name="Khoros System" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector" comparator="EQUALS" value="9.0" />
     <if_timer_finished name="Transition" />
-          <set_skybox_index index="26" />
-    
-<create count="100" type="nebulas" nebType="1" startX="72634.0" startY="0.0" startZ="31919.0" endX="27902.0" endY="0.0" endZ="75982.0" randomRange="15000" />
+    <set_skybox_index index="26" />
+          <create count="100" type="nebulas" nebType="1" startX="72634.0" startY="0.0" startZ="31919.0" endX="27902.0" endY="0.0" endZ="75982.0" randomRange="15000" />
     
 <create count="100" type="nebulas" nebType="3" startX="68750.0" startY="0.0" startZ="30044.0" endX="36206.0" endY="0.0" endZ="80401.0" randomRange="15000" />
     
