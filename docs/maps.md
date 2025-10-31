@@ -94,6 +94,29 @@ The `PLANET` keyword results in a nice, earth-like planet with a big ocean and c
 There are some other options, though, such as `ARID-PLANET` and `SAND-PLANET`.
 You can check the file `XML Files/Planets.xml` for the full list.
 
+### Jump Gates
+Jump gates are the mechanism by which maps are connected.
+Your map should ideally contain at least one, paired with its opposite in another map, to connect it to the rest of the galaxy.
+
+Configuration of a jump gate is done automatically when a jump gate is detected.
+For autodetection to work, your jump gate needs to be named `System Gate`, where `System` is the name of the map to which this gate connects.
+So for example, a jump gate to Ashia must be named `Ashia Gate`.
+
+The look of a jump gate is configured by hand; the following line provides an example:
+```
+    <create type="genericMesh" x="26320.0" y="8.0" z="67578.0" name="Khoros Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+```
+
+The gate's name determines which system it will jump to - that is the reason why the name must be constructed in such a specific way.
+But for the gate to fully function, it also needs to know which *sector* it points to in the target system.
+This information is encoded in the gate's **Y coordinate**.
+
+The example gate above has an Y coordinate of 8.
+As a result, the gate will bring the player to Khoros sector 8.
+
+A gate only functions well if both the gate and its counterpart exist.
+Without the counterpart gate, a gate transition will still work, but players will emerge at a random position within the target sector.
+
 ## Advanced Maps
 
 Some maps contain additional logic to produce special effects, such as hazardous areas or moving entities.
