@@ -97,6 +97,8 @@
     <create count="20" type="nebulas" nebType="1" startAngle="60" endAngle="120" startX="86019.0" startY="0.0" startZ="34709.0" radius="44715" randomRange="5000" />
     <create count="100" type="asteroids" startX="62317.0" startY="0.0" startZ="689.0" endX="61852.0" endY="0.0" endZ="67614.0" randomRange="2000" />
     <create count="40" type="nebulas" nebType="1" startAngle="240" endAngle="300" startX="7661.0" startY="0.0" startZ="82114.0" radius="44715" randomRange="10000" />
+    <create count="20" type="nebulas" nebType="2" startAngle="90" endAngle="130" startX="139590.0" startY="0.0" startZ="410.0" radius="44715" randomRange="7000" />
+    <create count="20" type="nebulas" nebType="2" startAngle="240" endAngle="270" startX="-31746.0" startY="0.0" startZ="-55.0" radius="44715" randomRange="7000" />
     <create type="genericMesh" x="40473.0" y="0.0" z="36940.0" name="Wreck B40" meshFileName="dat\artemis.dxs" textureFileName="dat\LightCruiser_Diffuse.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
     <set_ship_text name="Wreck B40" race="TSN" class="Light Cruiser" desc="Systems offline" scan_desc="No lifesigns. Radiation decay analysis indicates this wreck has been here for several years." />
     <create type="genericMesh" x="48188.0" y="0.0" z="48466.0" name="Wreck B41" meshFileName="dat/ENE_RoundC.dxs" textureFileName="dat/RoundC_Diffuse.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />

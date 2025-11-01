@@ -976,6 +976,10 @@
     
 <create count="40" type="nebulas" nebType="1" startAngle="240" endAngle="300" startX="7661.0" startY="0.0" startZ="82114.0" radius="44715" randomRange="10000" />
     
+<create count="20" type="nebulas" nebType="2" startAngle="90" endAngle="130" startX="139590.0" startY="0.0" startZ="410.0" radius="44715" randomRange="7000" />
+    
+<create count="20" type="nebulas" nebType="2" startAngle="240" endAngle="270" startX="-31746.0" startY="0.0" startZ="-55.0" radius="44715" randomRange="7000" />
+    
 
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Athorn System" value="2.0" />
