@@ -1,0 +1,34 @@
+{# GM tool to give the player virtual "tokens", a counter for which gets displayed on the map. #}
+
+{% import 'Utils.xml' as util %}
+
+{% call() util.createConditionalMenu("TokenSys", {
+    "GM_Menu_Selector": "1",
+}) %}
+    <set_gm_button text="AddToken" x="195" y="235" h="28" w="90" />
+    <set_gm_button text="RmToken" x="195" y="265" h="28" w="90" />
+{% endcall %}
+
+{% call() util.destroyConditionalMenu("TokenSys", {
+    "GM_Menu_Selector": "1",
+}) %}
+    <clear_gm_button text="AddToken" />
+    <clear_gm_button text="RmToken" />
+{% endcall %}
+
+<event name="AddToken">
+  <if_gm_button text="AddToken" />
+  <set_variable name="TokenSysT" value="TokenSysT + 1" integer="yes" />
+</event>
+
+<event name="RmToken">
+  <if_gm_button text="RmToken" />
+  <set_variable name="TokenSysT" value="TokenSysT - 1" integer="yes" />
+</event>
+
+<event name="UpdateTokenCounter">
+  <if_variable name="TokenSysT" comparator="NOT" value="TokenSysS" />
+  <destroy name="Tokens: |TokenSysS|" />
+  <create type="genericMesh" x="0.0" y="0.0" z="0.0" name="Tokens: |TokenSysT|" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+  <set_variable name="TokenSysS" value="TokenSysT" />
+</event>

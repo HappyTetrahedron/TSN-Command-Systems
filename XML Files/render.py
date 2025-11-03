@@ -10,6 +10,7 @@ import datetime
 env = {
     "extensions": [
         "HazardPainter",
+        "TokenSystem",
     ],
     "maps": [
         "No'Ma",
