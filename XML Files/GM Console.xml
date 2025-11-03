@@ -9,6 +9,7 @@
     <if_variable name="GM Controls" comparator="EQUALS" value="1.0" />
     <if_variable name="GM Menu" comparator="EQUALS" value="1.0" />
     <clear_gm_button text="GM Mode" />
+    <!-- Initialize menu buttons -->
     <set_gm_button text="End" x="70" y="60" h="30" w="40" />
     <set_gm_button text="Bas." x="40" y="100" h="30" w="50" />
     <set_gm_button text="SPWN." x="40" y="140" h="30" w="50" />
@@ -19,6 +20,8 @@
     <set_gm_button text="DelOff" x="40" y="340" h="30" w="50" />
     <set_gm_button text="AI Off" x="40" y="380" h="30" w="50" />
     <set_gm_button text="Clear" x="120" y="60" h="30" w="60" />
+    <!-- Initialize variable governing "Add/Rm Ordnance" menu -->
+    <set_variable name="Ordnance" value="1.0" integer="yes" />
     <set_variable name="GM Menu" value="2.0" />
   </event>
   <folder_arme name="Bas. Keys" id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e" parent_id_arme="a63d8b7a-dd61-481e-b818-314ef7f7af5f" />
