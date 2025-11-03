@@ -22,7 +22,7 @@
     <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
     <if_variable name="No'Ma System" comparator="EQUALS" value="System" />
     <if_variable name="systemSideOverride" comparator="LESS" value="1.0" />
-    <set_variable name="systemSide" value="0.0" integer="yes" />
+    <set_variable name="systemSide" value="1.0" integer="yes" />
     <set_variable name="System Settings" value="2.0" integer="yes" />
   </event>
   <event name="System Side Override" id_arme="cd61a7d0-01a8-403b-8b23-8b0c34bdac65" parent_id_arme="6015d1ff-e9fa-487d-8d3b-9eed19300e12">

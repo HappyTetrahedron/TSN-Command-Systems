@@ -211,3 +211,14 @@
     </event>
   {% endfor %}
 {% endmacro %}
+
+{% macro storeAndSet(variable, value=0) %}
+  <set_variable name="{{ variable }}_Stored" value="{{ variable }}" integer="yes" />
+  <set_variable name="{{ variable }}" value="{{ value }}.0" integer="yes" />
+{% endmacro %}
+{% macro store(variable) %}
+  <set_variable name="{{ variable }}_Stored" value="{{ variable }}" integer="yes" />
+{% endmacro %}
+{% macro restore(variable) %}
+  <set_variable name="{{ variable }}" value="{{ variable }}_Stored" integer="yes" />
+{% endmacro %}

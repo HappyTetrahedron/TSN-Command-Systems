@@ -32,11 +32,14 @@
     <set_variable name="_GM_{{ menuname }}Menu_{{ name }}_Active" value="1.0" integer="yes" />
   </event>
   {% endmacro %}
-  {% macro exclusiveSubMenuEvent(name, triggerButton, id, menuname, parent_id) %}
+  {% macro exclusiveSubMenuEvent(name, triggerButton, id, menuname, parent_id, additional_variables={}) %}
   <event name="{{ menuname }}Menu Activate {{ name }}">
     <if_gm_button text="{{triggerButton}}" />
     <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ parent_id }}.0" />
     <set_variable name="GM_{{ menuname }}Menu_Selector" value="{{ id }}.0" integer="yes" />
+    {% for var, val in additional_variables.items() %}
+    <set_variable name="{{ var }}" value="{{ val }}.0" integer="yes" />
+    {% endfor %}
   </event>
   {% endmacro %}
   {% macro destroyExclusiveSubMenu(name, id, menuname) %}
@@ -53,8 +56,8 @@
       {{ outercaller }}
     {% endcall %}
   {% endmacro %}
-  {% macro spawnmenuEvent(name, triggerButton, id) %}
-    {{ exclusiveSubMenuEvent(name, triggerButton, id, "Spawn", 2) }}
+  {% macro spawnmenuEvent(name, triggerButton, id, defaultSide) %}
+    {{ exclusiveSubMenuEvent(name, triggerButton, id, "Spawn", 2, {"SideValue": defaultSide}) }}
   {% endmacro %}
   {% macro destroySpawnMenu(name, id) %}
     {% set outercaller = caller() %}
@@ -108,13 +111,6 @@
     {% endif %}
     <set_variable name="GM_Submenu_{{ name }}_ShouldShow" value="1.0" integer="yes" />
   </event>
-  {% endmacro %}
-  {% macro storeAndSet(variable, value=0) %}
-    <set_variable name="{{ variable }}_Stored" value="{{ variable }}" integer="yes" />
-    <set_variable name="{{ variable }}" value="{{ value }}.0" integer="yes" />
-  {% endmacro %}
-  {% macro restore(variable) %}
-    <set_variable name="{{ variable }}" value="{{ variable }}_Stored" integer="yes" />
   {% endmacro %}
 
 
@@ -190,7 +186,7 @@
   {{ menuEvent("Basic", 1, "Bas.") }}
 
   {% call createMenu("Spawn", 2) %}
-    {{ restore("GM_SpawnMenu_Selector") }}
+    {{ util.restore("GM_SpawnMenu_Selector") }}
     <set_gm_button text="AI Setting:" x="95" y="135" h="30" w="80" />
     <set_gm_button text="Default" x="175" y="135" h="30" w="120" />
     <set_gm_button text="TSN" x="100" y="170" h="30" w="70" />
@@ -226,7 +222,7 @@
   {% endcall %}
 
   {% call destroyMenu("Spawn", 2) %}
-    {{ storeAndSet("GM_SpawnMenu_Selector") }}
+    {{ util.storeAndSet("GM_SpawnMenu_Selector") }}
     <clear_gm_button text="Set AI Type\Default" />
     <clear_gm_button text="Set AI Type\Hunt Enemies" />
     <clear_gm_button text="Set AI Type\Hunt Stations" />
@@ -307,7 +303,7 @@
   {{ menuEvent("Spawn", 2, "SPWN.") }}
 
   {% call createMenu("POI", 3) %}
-    {{ restore("GM_WreckMenu_Selector") }}
+    {{ util.restore("GM_WreckMenu_Selector") }}
     <set_gm_button text="Waypoint SPAWN" x="100" y="100" h="30" w="80" />
     <set_gm_button text="Scan Pts" x="100" y="135" h="30" w="80" />
     <set_gm_button text="Debris" x="100" y="170" h="30" w="80" />
@@ -321,7 +317,7 @@
     <clear_gm_button text="Debris" />
     <clear_gm_button text="Scan Pts" />
     <set_variable name="GM_Submenu_POIWreckSelect_ShouldShow" value="0.0" integer="yes" />
-    {{ storeAndSet("GM_WreckMenu_Selector") }}
+    {{ util.storeAndSet("GM_WreckMenu_Selector") }}
   {% endcall %}
   {{ menuEvent("POI", 3, "POI") }}
 
@@ -347,7 +343,7 @@
     <set_gm_button text="Scan Text" x="100" y="275" h="30" w="90" />
     <set_gm_button text="Shuttle Resup" x="100" y="310" h="30" w="90" />
     <set_gm_button text="Reset Comms" x="100" y="345" h="30" w="90" />
-    {{ restore("GM_Submenu_IntSupplies_ShouldShow") }}
+    {{ util.restore("GM_Submenu_IntSupplies_ShouldShow") }}
   {% endcall %}
   {% call destroyMenu("Interaction", 5) %}
     <clear_gm_button text="Messages" />
@@ -358,7 +354,7 @@
     <clear_gm_button text="Brd Act." />
     <clear_gm_button text="Shuttle Resup" />
     <clear_gm_button text="Reset Comms" />
-    {{ storeAndSet("GM_Submenu_IntSupplies_ShouldShow") }}
+    {{ util.storeAndSet("GM_Submenu_IntSupplies_ShouldShow") }}
   {% endcall %}
   {{ menuEvent("Interaction", 5, "Int.") }}
 
@@ -369,18 +365,18 @@
   {% endcall %}
   {{ menuEvent("Custom", 6, "CSTM") }}
 
-  {{ spawnmenuEvent("SpawnTSN", "TSN", 1) }}
-  {{ spawnmenuEvent("SpawnUSFP", "USFP", 2) }}
-  {{ spawnmenuEvent("SpawnXimni", "Ximni", 3) }}
-  {{ spawnmenuEvent("SpawnHjorden", "Hjorden", 4) }}
-  {{ spawnmenuEvent("SpawnHegemony", "Hegemony", 5) }}
-  {{ spawnmenuEvent("SpawnUSF", "USF", 6) }}
-  {{ spawnmenuEvent("SpawnNtani", "N'Tani", 7) }}
-  {{ spawnmenuEvent("SpawnPirate", "Pirate", 8) }}
-  {{ spawnmenuEvent("SpawnNeutrals", "Neutrals", 9) }}
-  {{ spawnmenuEvent("SpawnCaltron", "Caltron", 10) }}
-  {{ spawnmenuEvent("SpawnBiomech", "Biomech", 11) }}
-  {{ spawnmenuEvent("SpawnStatic", "Static Objects", 12) }}
+  {{ spawnmenuEvent("SpawnTSN", "TSN", 1, 2) }}
+  {{ spawnmenuEvent("SpawnUSFP", "USFP", 2, 2) }}
+  {{ spawnmenuEvent("SpawnXimni", "Ximni", 3, 1) }}
+  {{ spawnmenuEvent("SpawnHjorden", "Hjorden", 4, 2) }}
+  {{ spawnmenuEvent("SpawnHegemony", "Hegemony", 5, 1) }}
+  {{ spawnmenuEvent("SpawnUSF", "USF", 6, 3) }}
+  {{ spawnmenuEvent("SpawnNtani", "N'Tani", 7, 4) }}
+  {{ spawnmenuEvent("SpawnPirate", "Pirate", 8, 5) }}
+  {{ spawnmenuEvent("SpawnNeutrals", "Neutrals", 9, 8) }}
+  {{ spawnmenuEvent("SpawnCaltron", "Caltron", 10, 6) }}
+  {{ spawnmenuEvent("SpawnBiomech", "Biomech", 11, 7) }}
+  {{ spawnmenuEvent("SpawnStatic", "Static Objects", 12, 2) }}
 
   {% call createSpawnMenu("SpawnTSN", 1) %}
     <set_gm_button text="TSN Fleets\Devin Supply Fleet" />
@@ -413,7 +409,6 @@
     <set_gm_button text="TSN Assets\Weapons Platform" />
     <set_gm_button text="TSN Assets\Sensor Buoy" />
     <set_gm_button text="TSN Assets\Comms Relay" />
-    <set_variable name="SideValue" value="2.0" integer="yes" />
   {% endcall %}
   {% call destroySpawnMenu("SpawnTSN", 1) %}
     <!--TSN Menu-->
@@ -480,7 +475,6 @@
     <set_gm_button text="USFP Assets\Docking Port" />
     <set_gm_button text="USFP Assets\Sensor Buoy" />
     <set_gm_button text="USFP Assets\Comms Relay" />
-    <set_variable name="SideValue" value="2.0" integer="yes" />
   {% endcall %}
 
   {% call destroySpawnMenu("SpawnUSFP", 2) %}
@@ -531,7 +525,6 @@
     <set_gm_button text="Ximni Fleet\Light Group" />
     <set_gm_button text="Ximni Fleet\Medium Group" />
     <set_gm_button text="Ximni Fleet\Heavy Group" />
-    <set_variable name="SideValue" value="1.0" integer="yes" />
   {% endcall %}
 
   {% call destroySpawnMenu("SpawnXimni", 3) %}
@@ -557,7 +550,6 @@
     <set_gm_button text="Single Hjorden\Transport" />
     <set_gm_button text="Hjorden Fleets\Cruiser Fleet" />
     <set_gm_button text="Hjorden Assets\Hjorden Base" />
-    <set_variable name="SideValue" value="2.0" integer="yes" />
   {% endcall %}
 
   {% call destroySpawnMenu("SpawnHjorden", 4) %}
@@ -625,7 +617,6 @@
     <set_gm_button text="Hegemony Assets\Slingshot Power" />
     <set_gm_button text="Hegemony Assets\Slingshot Antenna" />
     <set_gm_button text="Hegemony Assets\Slingshot Array" />
-    <set_variable name="SideValue" value="1.0" integer="yes" />
   {% endcall %}
 
   {% call destroySpawnMenu("SpawnHegemony", 5) %}
@@ -697,7 +688,6 @@
     <set_gm_button text="USF Fleet\Light Fleet" />
     <set_gm_button text="USF Fleet\Medium Fleet" />
     <set_gm_button text="USF Fleet\Heavy Fleet" />
-    <set_variable name="SideValue" value="3.0" integer="yes" />
   {% endcall %}
 
   {% call destroySpawnMenu("SpawnUSF", 6) %}
@@ -723,7 +713,6 @@
     <set_gm_button text="N'Tani Fleets\Medium Fleet" />
     <set_gm_button text="N'Tani Fleets\Heavy Fleet" />
     <set_gm_button text="N'Tani Assets\N'Tani Base" />
-    <set_variable name="SideValue" value="4.0" integer="yes" />
   {% endcall %}
 
   {% call destroySpawnMenu("SpawnNtani", 7) %}
@@ -755,7 +744,6 @@
     <set_gm_button text="Euphini Pirates\Medium Fleet" />
     <set_gm_button text="Euphini Pirates\Heavy Fleet" />
     <set_gm_button text="Pirate Assets\Asteroid Base" />
-    <set_variable name="SideValue" value="5.0" integer="yes" />
   {% endcall %}
 
   {% call destroySpawnMenu("SpawnPirate", 8) %}
@@ -788,7 +776,6 @@
     <set_gm_button text="Caltron Fleets\Scout Group" />
     <set_gm_button text="Caltron Fleets\Battle Group" />
     <set_gm_button text="Caltron Fleets\Invasion Fleet" />
-    <set_variable name="SideValue" value="6.0" integer="yes" />
   {% endcall %}
 
   {% call destroySpawnMenu("SpawnCaltron", 10) %}
@@ -826,7 +813,6 @@
     <set_gm_button text="Sechatzal\Spectre" />
     <set_gm_button text="Sechatzal\Ghost" />
     <set_gm_button text="Sechatzal\Wraith" />
-    <set_variable name="SideValue" value="5.0" integer="yes" />
   {% endcall %}
 
   {% call destroySpawnMenu("SpawnNeutrals", 9) %}
@@ -857,7 +843,6 @@
     <set_gm_button text="Biomechs\Stage 2" />
     <set_gm_button text="Biomechs\Stage 3" />
     <set_gm_button text="Biomechs\Stage 4" />
-    <set_variable name="SideValue" value="7.0" integer="yes" />
   {% endcall %}
 
   {% call destroySpawnMenu("SpawnBiomech", 11) %}
@@ -878,7 +863,6 @@
     <set_gm_button text="Docking Port\(Standard)" />
     <set_gm_button text="Other\Lifepod" />
     <set_gm_button text="Other\Black Box" />
-    <set_variable name="SideValue" value="2.0" integer="yes" />
   {% endcall %}
 
   {% call destroySpawnMenu("SpawnStatic", 12) %}
