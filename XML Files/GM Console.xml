@@ -4418,6 +4418,10 @@
     <set_variable name="ReassignAI" value="1041.0" integer="yes" />
   </event>
   <folder_arme name="Enemy Commands" id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9" parent_id_arme="7ef9ad11-aebe-4397-aa87-16d7e5aa88a2" />
+  <event name="GrpToGM" id_arme="5ad2f952-0534-4a8b-b2ba-850bc1e61ac9" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
+    <if_gm_button text="GrpToGM" />
+    <set_variable name="ReassignAI" value="1025.0" integer="yes" />
+  </event>
   <event name="Unsurrender" id_arme="5ad2f952-0539-4a8b-b2ba-850bc1e61ac9" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
     <if_gm_button text="Unsurrender" />
     <set_variable name="ReassignAI" value="1022.0" integer="yes" />
