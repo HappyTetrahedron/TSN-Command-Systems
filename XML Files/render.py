@@ -9,47 +9,43 @@ import datetime
 
 env = {
     "extensions": [
-        "HazardPainter",
         "TokenSystem",
+        "HazardPainter",
+        "NebulaEffects",
     ],
     "maps": [
-        "No'Ma",
-        "Poseidon",
+        "Drenan",
+        "Ibroan",
+        "Erowis",
     ],
     "ordnance": {
         "ship1": {
-            "torpedo": 10,
-            "pshock": 10,
+            "torpedo": -1,
+            "pshock": -1,
         },
         "ship2": {
-            "torpedo": 10,
-            "emp": 0,
+            "torpedo": -1,
+            "emp": -1,
             "nuke": -1,
         },
     },
     "cargo": {
         "ship1": {
-            "marines": 5
+            "marines": 3
         }
     },
     "modules": {
         "ship1": [
-            "ClusterMine",
             "Decoy",
-            "ShieldEnhancer",
             "KamikazeMine",
-            "Fireworks",
         ],
-        "ship2": [
-            "Decoy",
-            "Fireworks",
-        ]
     }
 }
 
 template_env = Environment(loader=FileSystemLoader('.'))
 template_env.lstrip_blocks = True
 template_env.trim_blocks = True
+template_env.autoescape = True
 template_env.add_extension('jinja2.ext.do')
 TMPL_FNAME = 'main.xml'
 OUT_FNAME = '../MISS_TSN-Command.xml'

@@ -49,12 +49,12 @@
    #####################}
 
 {% call(ship) createMenu("Main", 1) %}
-    {{ button("Request Cargo &amp; Personnel Status", ship) }}
+    {{ button("Request Cargo & Personnel Status", ship) }}
     {{ button("Shuttle Bay", ship) }}
     {{ button("Ship Modules", ship) }}
 {% endcall %}
 {% call(ship) destroyMenu("Main", 1) %}
-    {{ destroybutton("Request Cargo &amp; Personnel Status", ship) }}
+    {{ destroybutton("Request Cargo & Personnel Status", ship) }}
     {{ destroybutton("Shuttle Bay", ship) }}
     {{ destroybutton("Ship Modules", ship) }}
 {% endcall %}
@@ -124,7 +124,7 @@
    Shuttle Cargo Handling
    ########################}
 
-{% call(ship) onButtonPress("Request Cargo &amp; Personnel Status") %}
+{% call(ship) onButtonPress("Request Cargo & Personnel Status") %}
     <if_exists player_slot="{{ ship.slot }}" />
     <incoming_comms_text from="CHANNEL {{ ship.id }}" sideValue="playerSide" type="STATUS">We have |Ship{{ ship.id }}Marines| battle ready Marines.^There are |Ship{{ ship.id }}MarineTeams| marine teams ready to be deployed.^There are |Ship{{ ship.id }}Cargos| units of cargo.^There are |Ship{{ ship.id }}EngineerTeams| teams of engineers ready to be deployed.^There are |Ship{{ ship.id }}MedicTeams| medical teams ready to be deployed.^Aboard, we have supplies of |Ship{{ ship.id }}CommsRelays| Comms relays and |Ship{{ ship.id }}SensorBuoys| Sensor buoys equipped and ready to be deployed.</incoming_comms_text>
 {% endcall %}

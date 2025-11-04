@@ -19,7 +19,7 @@
   {% endmacro %}
   {% macro menuEvent(name, id, triggerButton) %}
   <event name="Menu Activate {{ name }}">
-    <if_gm_button text="{{triggerButton}}" />
+    <if_gm_button text="{{triggerButton | safe}}" />
     <set_variable name="GM_Menu_Selector" value="{{ id }}.0" integer="yes" />
   </event>
   {% endmacro %}
@@ -34,7 +34,7 @@
   {% endmacro %}
   {% macro exclusiveSubMenuEvent(name, triggerButton, id, menuname, parent_id, additional_variables={}) %}
   <event name="{{ menuname }}Menu Activate {{ name }}">
-    <if_gm_button text="{{triggerButton}}" />
+    <if_gm_button text="{{triggerButton | safe}}" />
     <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ parent_id }}.0" />
     <set_variable name="GM_{{ menuname }}Menu_Selector" value="{{ id }}.0" integer="yes" />
     {% for var, val in additional_variables.items() %}
