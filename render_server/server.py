@@ -13,6 +13,7 @@ MAIN_TMPL='main.xml'
 
 SCRIPT_FOLDER="Extensions"
 SYSTEM_FOLDER="Generated Maps"
+MODULE_FOLDER="Modules"
 
 VERSION_FILE="../.version"
 
@@ -83,7 +84,31 @@ def get_systems():
                     metaParsed = True
                     s = l.strip().strip('{#-}').strip()
                     data["comment"] = s
-                
+        found.append(data)
+    return found
+
+@app.route("/modules")
+def get_modules():
+    mypath = current_app.config['datadir']
+    scripts_path = os.path.join(mypath, MODULE_FOLDER)
+    found = []
+    files = [f for f in os.listdir(scripts_path) if f.endswith(XML_EXT) and os.path.isfile(os.path.join(scripts_path, f))]
+    for file in files:
+        metaParsed = False
+        data = {
+            "name": os.path.splitext(file)[0]
+        }
+        print("Parsing " + file)
+        with open(os.path.join(scripts_path, file)) as content:
+            l = "\n"
+            c = 0
+            while c < 6 and not metaParsed:
+                l = content.readline()
+                c += 1
+                if l.strip().startswith('{#') and l.strip().endswith('#}'):
+                    metaParsed = True
+                    s = l.strip().strip('{#-}').strip()
+                    data["comment"] = s
         found.append(data)
     return found
 
