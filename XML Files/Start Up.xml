@@ -256,115 +256,10 @@
     <set_gm_button text="Initial System Side\N'Tani (Side 4)" />
     <set_gm_button text="Initial System Side\Pirate (Side 5)" />
     <set_gm_button text="Initial System Side\Caltron (Side 6)" />
-    <set_gm_button text="Ship1 Config Disabled" x="700" y="100" h="30" w="120" />
-    <set_gm_button text="Ship2 Config Disabled" x="700" y="165" h="30" w="120" />
-    <set_gm_button text="Ship3 Config Disabled" x="700" y="230" h="30" w="120" />
-    <set_gm_button text="Ship4 Config Disabled" x="700" y="295" h="30" w="120" />
-    <set_gm_button text="Ship5 Config Disabled" x="700" y="360" h="30" w="120" />
-    <set_gm_button text="Ship6 Config Disabled" x="700" y="425" h="30" w="120" />
-    <set_gm_button text="Ship7 Config Disabled" x="700" y="490" h="30" w="120" />
-    <set_gm_button text="Ship8 Config Disabled" x="700" y="555" h="30" w="120" />
     <set_variable name="Custom Config" value="1.0" integer="yes" />
     <set_variable name="GM Mode" value="1.0" integer="yes" />
   </event>
   <folder_arme name="GM Mode" id_arme="10a3b890-07b8-4df7-8bb8-5ec4c9750c28" parent_id_arme="d2f73ac8-352b-463b-aa12-87d61dd5064f" />
-  <folder_arme name="Custom Config" id_arme="fa633206-c6e0-4ee2-ad51-9dc16e3e3288" parent_id_arme="10a3b890-07b8-4df7-8bb8-5ec4c9750c28" />
-  <event name="Ship 1 Enable" id_arme="92f3ba91-ad3a-4809-8512-b664bee80fda" parent_id_arme="fa633206-c6e0-4ee2-ad51-9dc16e3e3288">
-    <if_gm_button text="Ship1 Config Disabled" />
-    <clear_gm_button text="Ship1 Config Disabled" />
-    <set_gm_button text="Ship1 Config Enabled" x="700" y="100" h="30" w="120" />
-    <set_variable name="Ship1 Config" value="1.0" integer="yes" />
-  </event>
-  <event name="Ship 2 Enable" id_arme="4c3f61aa-4403-4fb3-957f-68a0a328f26f" parent_id_arme="fa633206-c6e0-4ee2-ad51-9dc16e3e3288">
-    <if_gm_button text="Ship2 Config Disabled" />
-    <clear_gm_button text="Ship2 Config Disabled" />
-    <set_gm_button text="Ship2 Config Enabled" x="700" y="165" h="30" w="120" />
-    <set_variable name="Ship2 Config" value="1.0" integer="yes" />
-  </event>
-  <event name="Ship 3 Enable" id_arme="c3c2f7d3-c1d2-476a-9686-c205536a0a57" parent_id_arme="fa633206-c6e0-4ee2-ad51-9dc16e3e3288">
-    <if_gm_button text="Ship3 Config Disabled" />
-    <clear_gm_button text="Ship3 Config Disabled" />
-    <set_gm_button text="Ship3 Config Enabled" x="700" y="230" h="30" w="120" />
-    <set_variable name="Ship3 Config" value="1.0" integer="yes" />
-  </event>
-  <event name="Ship 4 Enable" id_arme="6dbfa847-0983-4b4e-a6b7-9fc94f1a0f83" parent_id_arme="fa633206-c6e0-4ee2-ad51-9dc16e3e3288">
-    <if_gm_button text="Ship4 Config Disabled" />
-    <clear_gm_button text="Ship4 Config Disabled" />
-    <set_gm_button text="Ship4 Config Enabled" x="700" y="295" h="30" w="120" />
-    <set_variable name="Ship4 Config" value="1.0" integer="yes" />
-  </event>
-  <event name="Ship 5 Enable" id_arme="e709d221-2141-402c-a1c4-6240b514ee8e" parent_id_arme="fa633206-c6e0-4ee2-ad51-9dc16e3e3288">
-    <if_gm_button text="Ship5 Config Disabled" />
-    <clear_gm_button text="Ship5 Config Disabled" />
-    <set_gm_button text="Ship5 Config Enabled" x="700" y="360" h="30" w="120" />
-    <set_variable name="Ship5 Config" value="1.0" integer="yes" />
-  </event>
-  <event name="Ship 6 Enable" id_arme="bb53f50e-240f-4344-b203-b1a8ac0c4ba7" parent_id_arme="fa633206-c6e0-4ee2-ad51-9dc16e3e3288">
-    <if_gm_button text="Ship6 Config Disabled" />
-    <clear_gm_button text="Ship6 Config Disabled" />
-    <set_gm_button text="Ship6 Config Enabled" x="700" y="425" h="30" w="120" />
-    <set_variable name="Ship6 Config" value="1.0" integer="yes" />
-  </event>
-  <event name="Ship 7 Enable" id_arme="d372bfb0-c38b-4d2b-bb77-bf859e5fbad2" parent_id_arme="fa633206-c6e0-4ee2-ad51-9dc16e3e3288">
-    <if_gm_button text="Ship7 Config Disabled" />
-    <clear_gm_button text="Ship7 Config Disabled" />
-    <set_gm_button text="Ship7 Config Enabled" x="700" y="490" h="30" w="120" />
-    <set_variable name="Ship7 Config" value="1.0" integer="yes" />
-  </event>
-  <event name="Ship 8 Enable" id_arme="961ffa24-960a-44e4-982c-538cbf06b3cf" parent_id_arme="fa633206-c6e0-4ee2-ad51-9dc16e3e3288">
-    <if_gm_button text="Ship8 Config Disabled" />
-    <clear_gm_button text="Ship8 Config Disabled" />
-    <set_gm_button text="Ship8 Config Enabled" x="700" y="555" h="30" w="120" />
-    <set_variable name="Ship8 Config" value="1.0" integer="yes" />
-  </event>
-  <event name="Ship 1 Disabled" id_arme="b42e5ea0-3f2a-4bc2-9aac-b30c97ba8941" parent_id_arme="fa633206-c6e0-4ee2-ad51-9dc16e3e3288">
-    <if_gm_button text="Ship1 Config Enabled" />
-    <clear_gm_button text="Ship1 Config Enabled" />
-    <set_gm_button text="Ship1 Config Disabled" x="700" y="100" h="30" w="120" />
-    <set_variable name="Ship1 Config" value="0.0" integer="yes" />
-  </event>
-  <event name="Ship 2 Disabled" id_arme="bc625606-02dd-46f9-b367-b14acb2f70b9" parent_id_arme="fa633206-c6e0-4ee2-ad51-9dc16e3e3288">
-    <if_gm_button text="Ship2 Config Enabled" />
-    <clear_gm_button text="Ship2 Config Enabled" />
-    <set_gm_button text="Ship2 Config Disabled" x="700" y="165" h="30" w="120" />
-    <set_variable name="Ship2 Config" value="0.0" integer="yes" />
-  </event>
-  <event name="Ship 3 Disabled" id_arme="6550840c-c2e2-4723-a108-0e957244a00e" parent_id_arme="fa633206-c6e0-4ee2-ad51-9dc16e3e3288">
-    <if_gm_button text="Ship3 Config Enabled" />
-    <clear_gm_button text="Ship3 Config Enabled" />
-    <set_gm_button text="Ship3 Config Disabled" x="700" y="230" h="30" w="120" />
-    <set_variable name="Ship3 Config" value="0.0" integer="yes" />
-  </event>
-  <event name="Ship 4 Disabled" id_arme="0640cd5b-ba85-4e29-86e5-129a964f7ba4" parent_id_arme="fa633206-c6e0-4ee2-ad51-9dc16e3e3288">
-    <if_gm_button text="Ship4 Config Enabled" />
-    <clear_gm_button text="Ship4 Config Enabled" />
-    <set_gm_button text="Ship4 Config Disabled" x="700" y="295" h="30" w="120" />
-    <set_variable name="Ship4 Config" value="0.0" integer="yes" />
-  </event>
-  <event name="Ship 5 Disabled" id_arme="a845dfaf-3942-4892-9109-a23470367a77" parent_id_arme="fa633206-c6e0-4ee2-ad51-9dc16e3e3288">
-    <if_gm_button text="Ship5 Config Enabled" />
-    <clear_gm_button text="Ship5 Config Enabled" />
-    <set_gm_button text="Ship5 Config Disabled" x="700" y="360" h="30" w="120" />
-    <set_variable name="Ship5 Config" value="0.0" integer="yes" />
-  </event>
-  <event name="Ship 6 Disabled" id_arme="d3ab82b1-94e1-4aee-8640-6c319e11d2a1" parent_id_arme="fa633206-c6e0-4ee2-ad51-9dc16e3e3288">
-    <if_gm_button text="Ship6 Config Enabled" />
-    <clear_gm_button text="Ship6 Config Enabled" />
-    <set_gm_button text="Ship6 Config Disabled" x="700" y="425" h="30" w="120" />
-    <set_variable name="Ship6 Config" value="0.0" integer="yes" />
-  </event>
-  <event name="Ship 7 Disabled" id_arme="dca29768-b0c6-4ce5-9d39-6415362f97fd" parent_id_arme="fa633206-c6e0-4ee2-ad51-9dc16e3e3288">
-    <if_gm_button text="Ship7 Config Enabled" />
-    <clear_gm_button text="Ship7 Config Enabled" />
-    <set_gm_button text="Ship7 Config Disabled" x="700" y="490" h="30" w="120" />
-    <set_variable name="Ship7 Config" value="0.0" integer="yes" />
-  </event>
-  <event name="Ship 8 Disabled" id_arme="72725c3e-972b-4029-9244-b78764286e0b" parent_id_arme="fa633206-c6e0-4ee2-ad51-9dc16e3e3288">
-    <if_gm_button text="Ship8 Config Enabled" />
-    <clear_gm_button text="Ship8 Config Enabled" />
-    <set_gm_button text="Ship8 Config Disabled" x="700" y="555" h="30" w="120" />
-    <set_variable name="Ship8 Config" value="0.0" integer="yes" />
-  </event>
   <folder_arme name="Sector Menus" id_arme="de68fc8e-8137-4c76-ad1d-cea535f027a3" parent_id_arme="10a3b890-07b8-4df7-8bb8-5ec4c9750c28" />
   <event name="101 (3x2)" id_arme="49e30087-c5e6-4a89-83b8-8a59608074fd" parent_id_arme="de68fc8e-8137-4c76-ad1d-cea535f027a3">
     <if_variable name="GM Mode" comparator="EQUALS" value="3.0" />
@@ -799,22 +694,6 @@
     <clear_gm_button text="Sector 24" />
     <clear_gm_button text="Sector 25" />
     <clear_gm_button text="Restart Sandbox" />
-    <clear_gm_button text="Ship1 Config Disabled" />
-    <clear_gm_button text="Ship2 Config Disabled" />
-    <clear_gm_button text="Ship3 Config Disabled" />
-    <clear_gm_button text="Ship4 Config Disabled" />
-    <clear_gm_button text="Ship5 Config Disabled" />
-    <clear_gm_button text="Ship6 Config Disabled" />
-    <clear_gm_button text="Ship7 Config Disabled" />
-    <clear_gm_button text="Ship8 Config Disabled" />
-    <clear_gm_button text="Ship1 Config Enabled" />
-    <clear_gm_button text="Ship2 Config Enabled" />
-    <clear_gm_button text="Ship3 Config Enabled" />
-    <clear_gm_button text="Ship4 Config Enabled" />
-    <clear_gm_button text="Ship5 Config Enabled" />
-    <clear_gm_button text="Ship6 Config Enabled" />
-    <clear_gm_button text="Ship7 Config Enabled" />
-    <clear_gm_button text="Ship8 Config Enabled" />
     <!---->
     <warning_popup_message message="Linking to Command Network" consoles="MHWESCO" player_slot="0" />
     <warning_popup_message message="Linking to Command Network" consoles="MHWESCO" player_slot="1" />
@@ -841,14 +720,6 @@
     <warning_popup_message message="Ship Systems Activated" consoles="MHWESCO" player_slot="5" />
     <warning_popup_message message="Ship Systems Activated" consoles="MHWESCO" player_slot="6" />
     <warning_popup_message message="Ship Systems Activated" consoles="MHWESCO" player_slot="7" />
-    <set_variable name="Ship1CommsMenu" value="0.0" integer="yes" />
-    <set_variable name="Ship2CommsMenu" value="0.0" integer="yes" />
-    <set_variable name="Ship3CommsMenu" value="0.0" integer="yes" />
-    <set_variable name="Ship4CommsMenu" value="0.0" integer="yes" />
-    <set_variable name="Ship5CommsMenu" value="0.0" integer="yes" />
-    <set_variable name="Ship6CommsMenu" value="0.0" integer="yes" />
-    <set_variable name="Ship7CommsMenu" value="0.0" integer="yes" />
-    <set_variable name="Ship8CommsMenu" value="0.0" integer="yes" />
     <set_variable name="Refresh" value="0.0" integer="yes" />
     <clear_gm_button text="Refresh" />
     <set_variable name="Position Ships" value="1.0" integer="yes" />

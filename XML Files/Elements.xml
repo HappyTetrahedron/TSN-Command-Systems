@@ -878,7 +878,6 @@
     <set_variable name="Ship1MarinesMax" value="20.0" integer="yes" />
     <set_variable name="Ship1Silent" value="0.0" integer="yes" />
     <set_variable name="Ship1 Status" value="2.0" integer="yes" />
-    <!--<set_variable name="Ship1CommsMenu" value="1.0" integer="yes" />-->
   </event>
   <event name="Ship1 Inactive" id_arme="31f6e75f-fef2-4b6e-9822-1ca5dfaa81ac" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
     <if_variable name="Ship1 Status" comparator="EQUALS" value="1.0" />
@@ -893,7 +892,6 @@
     <set_variable name="Ship1 Ready Corner E1" value="1.0" integer="yes" />
     <set_variable name="Ship1 Ready Corner E5" value="1.0" integer="yes" />
     <set_variable name="Ship1 Status" value="4.0" integer="yes" />
-    <!--<set_variable name="Ship1CommsMenu" value="0.0" integer="yes" />-->
   </event>
   <event name="Ship2 Active" id_arme="f058287b-3523-4e16-9041-b196ee6c9305" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
     <if_variable name="Ship2 Status" comparator="EQUALS" value="1.0" />
@@ -923,7 +921,6 @@
     <set_variable name="Ship2MarinesMax" value="20.0" integer="yes" />
     <set_variable name="Ship2Silent" value="0.0" integer="yes" />
     <set_variable name="Ship2 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship2CommsMenu" value="1.0" integer="yes" />
   </event>
   <event name="Ship2 Inactive" id_arme="4397bf6d-9bed-4f15-80b0-5be924767239" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
     <if_variable name="Ship2 Status" comparator="EQUALS" value="1.0" />
@@ -938,7 +935,6 @@
     <set_variable name="Ship2 Ready Corner E1" value="1.0" integer="yes" />
     <set_variable name="Ship2 Ready Corner E5" value="1.0" integer="yes" />
     <set_variable name="Ship2 Status" value="4.0" integer="yes" />
-    <set_variable name="Ship2CommsMenu" value="0.0" integer="yes" />
   </event>
   <event name="Ship3 Active" id_arme="eac73c86-f5f1-498e-a4e2-2d44469029d5" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
     <if_variable name="Ship3 Status" comparator="EQUALS" value="1.0" />
@@ -968,7 +964,6 @@
     <set_variable name="Ship3MarinesMax" value="20.0" integer="yes" />
     <set_variable name="Ship3Silent" value="0.0" integer="yes" />
     <set_variable name="Ship3 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship3CommsMenu" value="1.0" integer="yes" />
   </event>
   <event name="Ship3 Inactive" id_arme="4f3e8ed3-34d4-4d81-84b5-ef55a840a18b" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
     <if_variable name="Ship3 Status" comparator="EQUALS" value="1.0" />
@@ -983,7 +978,6 @@
     <set_variable name="Ship3 Ready Corner E1" value="1.0" integer="yes" />
     <set_variable name="Ship3 Ready Corner E5" value="1.0" integer="yes" />
     <set_variable name="Ship3 Status" value="4.0" integer="yes" />
-    <set_variable name="Ship3CommsMenu" value="0.0" integer="yes" />
   </event>
   <event name="Ship4 Active" id_arme="1d8b61ac-a81d-443f-b226-b3bed86945ef" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
     <if_variable name="Ship4 Status" comparator="EQUALS" value="1.0" />
@@ -1013,7 +1007,6 @@
     <set_variable name="Ship4MarinesMax" value="20.0" integer="yes" />
     <set_variable name="Ship4Silent" value="0.0" integer="yes" />
     <set_variable name="Ship4 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship4CommsMenu" value="1.0" integer="yes" />
   </event>
   <event name="Ship4 Inactive" id_arme="08c9d2a2-45eb-4181-8104-8feb48efcd05" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
     <if_variable name="Ship4 Status" comparator="EQUALS" value="1.0" />
@@ -1028,7 +1021,6 @@
     <set_variable name="Ship4 Ready Corner E1" value="1.0" integer="yes" />
     <set_variable name="Ship4 Ready Corner E5" value="1.0" integer="yes" />
     <set_variable name="Ship4 Status" value="4.0" integer="yes" />
-    <set_variable name="Ship4CommsMenu" value="0.0" integer="yes" />
   </event>
   <event name="Ship5 Active" id_arme="dd0a6256-643f-4d08-8a5e-df3a42e44c11" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
     <if_variable name="Ship5 Status" comparator="EQUALS" value="1.0" />
@@ -1058,7 +1050,6 @@
     <set_variable name="Ship5MarinesMax" value="20.0" integer="yes" />
     <set_variable name="Ship5Silent" value="0.0" integer="yes" />
     <set_variable name="Ship5 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship5CommsMenu" value="1.0" integer="yes" />
   </event>
   <event name="Ship5 Inactive" id_arme="cf872d64-1e14-4888-99b3-1c1fcce2f4da" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
     <if_variable name="Ship5 Status" comparator="EQUALS" value="1.0" />
@@ -1073,7 +1064,6 @@
     <set_variable name="Ship5 Ready Corner E1" value="1.0" integer="yes" />
     <set_variable name="Ship5 Ready Corner E5" value="1.0" integer="yes" />
     <set_variable name="Ship5 Status" value="4.0" integer="yes" />
-    <set_variable name="Ship5CommsMenu" value="0.0" integer="yes" />
   </event>
   <event name="Ship6 Active" id_arme="5a12cdf0-24d6-4df9-ab91-3c89f6654807" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
     <if_variable name="Ship6 Status" comparator="EQUALS" value="1.0" />
@@ -1103,7 +1093,6 @@
     <set_variable name="Ship6MarinesMax" value="20.0" integer="yes" />
     <set_variable name="Ship6Silent" value="0.0" integer="yes" />
     <set_variable name="Ship6 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship6CommsMenu" value="1.0" integer="yes" />
   </event>
   <event name="Ship6 Inactive" id_arme="1a816f7e-9864-4be2-93b6-50ea3fbfda37" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
     <if_variable name="Ship6 Status" comparator="EQUALS" value="1.0" />
@@ -1118,7 +1107,6 @@
     <set_variable name="Ship6 Ready Corner E1" value="1.0" integer="yes" />
     <set_variable name="Ship6 Ready Corner E5" value="1.0" integer="yes" />
     <set_variable name="Ship6 Status" value="4.0" integer="yes" />
-    <set_variable name="Ship6CommsMenu" value="0.0" integer="yes" />
   </event>
   <event name="Ship7 Active" id_arme="69b6f682-c7a6-43c6-a3f0-4e88cc9dfe28" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
     <if_variable name="Ship7 Status" comparator="EQUALS" value="1.0" />
@@ -1148,7 +1136,6 @@
     <set_variable name="Ship7MarinesMax" value="20.0" integer="yes" />
     <set_variable name="Ship7Silent" value="0.0" integer="yes" />
     <set_variable name="Ship7 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship7CommsMenu" value="1.0" integer="yes" />
   </event>
   <event name="Ship7 Inactive" id_arme="66a88483-ddc1-481d-ae95-b454dbea8bbe" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
     <if_variable name="Ship7 Status" comparator="EQUALS" value="1.0" />
@@ -1163,7 +1150,6 @@
     <set_variable name="Ship7 Ready Corner E1" value="1.0" integer="yes" />
     <set_variable name="Ship7 Ready Corner E5" value="1.0" integer="yes" />
     <set_variable name="Ship7 Status" value="4.0" integer="yes" />
-    <set_variable name="Ship7CommsMenu" value="0.0" integer="yes" />
   </event>
   <event name="Ship8 Active" id_arme="43751af3-05a7-4fad-b2ce-547b8d9307fc" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
     <if_variable name="Ship8 Status" comparator="EQUALS" value="1.0" />
@@ -1193,7 +1179,6 @@
     <set_variable name="Ship8MarinesMax" value="20.0" integer="yes" />
     <set_variable name="Ship8Silent" value="0.0" integer="yes" />
     <set_variable name="Ship8 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship8CommsMenu" value="1.0" integer="yes" />
   </event>
   <event name="Ship8 Inactive" id_arme="2faf2564-a12d-4bbb-a251-a19e89fd6860" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
     <if_variable name="Ship8 Status" comparator="EQUALS" value="1.0" />
@@ -1208,7 +1193,6 @@
     <set_variable name="Ship8 Ready Corner E1" value="1.0" integer="yes" />
     <set_variable name="Ship8 Ready Corner E5" value="1.0" integer="yes" />
     <set_variable name="Ship8 Status" value="4.0" integer="yes" />
-    <set_variable name="Ship8CommsMenu" value="0.0" integer="yes" />
   </event>
   <folder_arme name="Track Ship Status" id_arme="1160c145-db31-4c90-99e1-907d9e1bb8bc" parent_id_arme="da1f4d06-129f-463c-a1e6-d7a4eae746b1" />
   <folder_arme name="Ordnance Tracker" id_arme="b3425a71-9d46-47b4-b88c-60320d9a6e56" parent_id_arme="1160c145-db31-4c90-99e1-907d9e1bb8bc" />
@@ -2130,7 +2114,6 @@
     <set_variable name="Ship1ProRespawn" value="Ship1ProCurrent" integer="yes" />
     <set_variable name="Ship1TagRespawn" value="Ship1TagCurrent" integer="yes" />
     <set_variable name="Ship1 Status" value="3.0" integer="yes" />
-    <set_variable name="Ship1CommsMenu" value="0.0" integer="yes" />
   </event>
   <event name="Ship2 Destroyed" id_arme="0c970568-8a97-47f4-8624-122ec6ef0cb7" parent_id_arme="5e24183b-0344-45c6-9981-1b2d210778d7">
     <if_variable name="Ship2 Status" comparator="EQUALS" value="2.0" />
@@ -2153,7 +2136,6 @@
     <set_variable name="Ship2ProRespawn" value="Ship2ProCurrent" integer="yes" />
     <set_variable name="Ship2TagRespawn" value="Ship2TagCurrent" integer="yes" />
     <set_variable name="Ship2 Status" value="3.0" integer="yes" />
-    <set_variable name="Ship2CommsMenu" value="0.0" integer="yes" />
   </event>
   <event name="Ship3 Destroyed" id_arme="041a3d99-4d38-484e-9345-f1d315dd7b7e" parent_id_arme="5e24183b-0344-45c6-9981-1b2d210778d7">
     <if_variable name="Ship3 Status" comparator="EQUALS" value="2.0" />
@@ -2176,7 +2158,6 @@
     <set_variable name="Ship3ProRespawn" value="Ship3ProCurrent" integer="yes" />
     <set_variable name="Ship3TagRespawn" value="Ship3TagCurrent" integer="yes" />
     <set_variable name="Ship3 Status" value="3.0" integer="yes" />
-    <set_variable name="Ship3CommsMenu" value="0.0" integer="yes" />
   </event>
   <event name="Ship4 Destroyed" id_arme="991dcc06-fd36-4dd8-a45d-bc8f923905e4" parent_id_arme="5e24183b-0344-45c6-9981-1b2d210778d7">
     <if_variable name="Ship4 Status" comparator="EQUALS" value="2.0" />
@@ -2199,7 +2180,6 @@
     <set_variable name="Ship4ProRespawn" value="Ship4ProCurrent" integer="yes" />
     <set_variable name="Ship4TagRespawn" value="Ship4TagCurrent" integer="yes" />
     <set_variable name="Ship4 Status" value="3.0" integer="yes" />
-    <set_variable name="Ship4CommsMenu" value="0.0" integer="yes" />
   </event>
   <event name="Ship5 Destroyed" id_arme="904a341e-aa83-45c9-b34c-d76e30a2973e" parent_id_arme="5e24183b-0344-45c6-9981-1b2d210778d7">
     <if_variable name="Ship5 Status" comparator="EQUALS" value="2.0" />
@@ -2222,7 +2202,6 @@
     <set_variable name="Ship5ProRespawn" value="Ship5ProCurrent" integer="yes" />
     <set_variable name="Ship5TagRespawn" value="Ship5TagCurrent" integer="yes" />
     <set_variable name="Ship5 Status" value="3.0" integer="yes" />
-    <set_variable name="Ship5CommsMenu" value="0.0" integer="yes" />
   </event>
   <event name="Ship6 Destroyed" id_arme="3560eff4-7073-4c14-a429-009360ca8543" parent_id_arme="5e24183b-0344-45c6-9981-1b2d210778d7">
     <if_variable name="Ship6 Status" comparator="EQUALS" value="2.0" />
@@ -2245,7 +2224,6 @@
     <set_variable name="Ship6ProRespawn" value="Ship6ProCurrent" integer="yes" />
     <set_variable name="Ship6TagRespawn" value="Ship6TagCurrent" integer="yes" />
     <set_variable name="Ship6 Status" value="3.0" integer="yes" />
-    <set_variable name="Ship6CommsMenu" value="0.0" integer="yes" />
   </event>
   <event name="Ship7 Destroyed" id_arme="c591984b-de29-4570-b461-cb34d856d917" parent_id_arme="5e24183b-0344-45c6-9981-1b2d210778d7">
     <if_variable name="Ship7 Status" comparator="EQUALS" value="2.0" />
@@ -2268,7 +2246,6 @@
     <set_variable name="Ship7ProRespawn" value="Ship7ProCurrent" integer="yes" />
     <set_variable name="Ship7TagRespawn" value="Ship7TagCurrent" integer="yes" />
     <set_variable name="Ship7 Status" value="3.0" integer="yes" />
-    <set_variable name="Ship7CommsMenu" value="0.0" integer="yes" />
   </event>
   <event name="Ship8 Destroyed" id_arme="8fa6fc3a-2c18-4010-9b46-0c4f148fbee7" parent_id_arme="5e24183b-0344-45c6-9981-1b2d210778d7">
     <if_variable name="Ship8 Status" comparator="EQUALS" value="2.0" />
@@ -2291,7 +2268,6 @@
     <set_variable name="Ship8ProRespawn" value="Ship8ProCurrent" integer="yes" />
     <set_variable name="Ship8TagRespawn" value="Ship8TagCurrent" integer="yes" />
     <set_variable name="Ship8 Status" value="3.0" integer="yes" />
-    <set_variable name="Ship8CommsMenu" value="0.0" integer="yes" />
   </event>
   <folder_arme name="Respawned" id_arme="5ad31e48-b16b-44b8-9360-b4f84d22dc71" parent_id_arme="1160c145-db31-4c90-99e1-907d9e1bb8bc" />
   <event name="Ship1 Respawns" id_arme="801e27e3-85a8-47f6-b4c8-76c8fd84cfe5" parent_id_arme="5ad31e48-b16b-44b8-9360-b4f84d22dc71">
@@ -2309,7 +2285,6 @@
     <set_object_property property="countTag" value="Ship1TagRespawn" player_slot="0" />
     <set_variable name="Proteus Status" value="1.0" integer="yes" />
     <set_variable name="Ship1 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship1CommsMenu" value="1.0" integer="yes" />
     <set_variable name="Ship1Silent" value="0.0" integer="yes" />
   </event>
   <event name="Ship2 Respawns" id_arme="3c119512-a58a-4355-ad96-a245b8f0274a" parent_id_arme="5ad31e48-b16b-44b8-9360-b4f84d22dc71">
@@ -2327,7 +2302,6 @@
     <set_object_property property="countTag" value="Ship2TagRespawn" player_slot="1" />
     <set_variable name="Theseus Status" value="1.0" integer="yes" />
     <set_variable name="Ship2 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship2CommsMenu" value="1.0" integer="yes" />
     <set_variable name="Ship2Silent" value="0.0" integer="yes" />
   </event>
   <event name="Ship3 Respawns" id_arme="5940168d-d930-4897-be50-dd934b179af5" parent_id_arme="5ad31e48-b16b-44b8-9360-b4f84d22dc71">
@@ -2345,7 +2319,6 @@
     <set_object_property property="countTag" value="Ship3TagRespawn" player_slot="2" />
     <set_variable name="Odysseus Status" value="1.0" integer="yes" />
     <set_variable name="Ship3 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship3CommsMenu" value="1.0" integer="yes" />
     <set_variable name="Ship3Silent" value="0.0" integer="yes" />
   </event>
   <event name="Ship4 Respawns" id_arme="29894b0c-fd6b-4a20-b1ee-1a47909272a4" parent_id_arme="5ad31e48-b16b-44b8-9360-b4f84d22dc71">
@@ -2363,7 +2336,6 @@
     <set_object_property property="countTag" value="Ship4TagRespawn" player_slot="3" />
     <set_variable name="Perseus Status" value="1.0" integer="yes" />
     <set_variable name="Ship4 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship4CommsMenu" value="1.0" integer="yes" />
     <set_variable name="Ship4Silent" value="0.0" integer="yes" />
   </event>
   <event name="Ship5 Respawns" id_arme="bdfc503c-ab8a-4295-92db-ed65e8dafe76" parent_id_arme="5ad31e48-b16b-44b8-9360-b4f84d22dc71">
@@ -2381,7 +2353,6 @@
     <set_object_property property="countTag" value="Ship5TagRespawn" player_slot="4" />
     <set_variable name="Dionysus Status" value="1.0" integer="yes" />
     <set_variable name="Ship5 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship5CommsMenu" value="1.0" integer="yes" />
     <set_variable name="Ship5Silent" value="0.0" integer="yes" />
   </event>
   <event name="Ship6 Respawns" id_arme="ce1f8a64-8c50-4848-9642-366651df5d64" parent_id_arme="5ad31e48-b16b-44b8-9360-b4f84d22dc71">
@@ -2399,7 +2370,6 @@
     <set_object_property property="countTag" value="Ship6TagRespawn" player_slot="5" />
     <set_variable name="Icarus Status" value="1.0" integer="yes" />
     <set_variable name="Ship6 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship6CommsMenu" value="1.0" integer="yes" />
     <set_variable name="Ship6Silent" value="0.0" integer="yes" />
   </event>
   <event name="Ship7 Respawns" id_arme="1ffc302f-b362-4eaa-a610-195fbf6b0252" parent_id_arme="5ad31e48-b16b-44b8-9360-b4f84d22dc71">
@@ -2417,7 +2387,6 @@
     <set_object_property property="countTag" value="Ship7TagRespawn" player_slot="6" />
     <set_variable name="Adonis Status" value="1.0" integer="yes" />
     <set_variable name="Ship7 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship7CommsMenu" value="1.0" integer="yes" />
     <set_variable name="Ship7Silent" value="0.0" integer="yes" />
   </event>
   <event name="Ship8 Respawns" id_arme="992b89d8-fd69-426b-a66a-f6524de7344b" parent_id_arme="5ad31e48-b16b-44b8-9360-b4f84d22dc71">
@@ -2435,7 +2404,6 @@
     <set_object_property property="countTag" value="Ship8TagRespawn" player_slot="7" />
     <set_variable name="Invention Status" value="1.0" integer="yes" />
     <set_variable name="Ship8 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship8CommsMenu" value="1.0" integer="yes" />
     <set_variable name="Ship8Silent" value="0.0" integer="yes" />
   </event>
   <folder_arme name="Late Spawn" id_arme="fa4ad454-aa24-490a-b2c9-33c8d317e838" parent_id_arme="1160c145-db31-4c90-99e1-907d9e1bb8bc" />
@@ -2468,7 +2436,6 @@
     <set_variable name="Ship1MarinesMax" value="20.0" integer="yes" />
     <set_variable name="Ship1Silent" value="0.0" integer="yes" />
     <set_variable name="Ship1 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship1CommsMenu" value="1.0" integer="yes" />
   </event>
   <event name="Ship2 Late Spawn" id_arme="d52c6157-49ea-492f-ad83-4068a2b23a73" parent_id_arme="fa4ad454-aa24-490a-b2c9-33c8d317e838">
     <if_variable name="Ship2 Status" comparator="EQUALS" value="4.0" />
@@ -2499,7 +2466,6 @@
     <set_variable name="Ship2MarinesMax" value="20.0" integer="yes" />
     <set_variable name="Ship2Silent" value="0.0" integer="yes" />
     <set_variable name="Ship2 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship2CommsMenu" value="1.0" integer="yes" />
   </event>
   <event name="Ship3 Late Spawn" id_arme="390bafd7-c68f-4d66-9362-6f44e98c26b2" parent_id_arme="fa4ad454-aa24-490a-b2c9-33c8d317e838">
     <if_variable name="Ship3 Status" comparator="EQUALS" value="4.0" />
@@ -2530,7 +2496,6 @@
     <set_variable name="Ship3MarinesMax" value="20.0" integer="yes" />
     <set_variable name="Ship3Silent" value="0.0" integer="yes" />
     <set_variable name="Ship3 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship3CommsMenu" value="1.0" integer="yes" />
   </event>
   <event name="Ship4 Late Spawn" id_arme="d002ff9e-edab-4ae4-a9a2-f18efa3dbbcf" parent_id_arme="fa4ad454-aa24-490a-b2c9-33c8d317e838">
     <if_variable name="Ship4 Status" comparator="EQUALS" value="4.0" />
@@ -2561,7 +2526,6 @@
     <set_variable name="Ship4MarinesMax" value="20.0" integer="yes" />
     <set_variable name="Ship4Silent" value="0.0" integer="yes" />
     <set_variable name="Ship4 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship4CommsMenu" value="1.0" integer="yes" />
   </event>
   <event name="Ship5 Late Spawn" id_arme="17959c2f-0ef8-4bdd-9019-46f6d48b3b20" parent_id_arme="fa4ad454-aa24-490a-b2c9-33c8d317e838">
     <if_variable name="Ship5 Status" comparator="EQUALS" value="4.0" />
@@ -2592,7 +2556,6 @@
     <set_variable name="Ship5MarinesMax" value="20.0" integer="yes" />
     <set_variable name="Ship5Silent" value="0.0" integer="yes" />
     <set_variable name="Ship5 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship5CommsMenu" value="1.0" integer="yes" />
   </event>
   <event name="Ship6 Late Spawn" id_arme="86acd42b-d9e2-44e2-971b-e4206acd2168" parent_id_arme="fa4ad454-aa24-490a-b2c9-33c8d317e838">
     <if_variable name="Ship6 Status" comparator="EQUALS" value="4.0" />
@@ -2623,7 +2586,6 @@
     <set_variable name="Ship6MarinesMax" value="20.0" integer="yes" />
     <set_variable name="Ship6Silent" value="0.0" integer="yes" />
     <set_variable name="Ship6 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship6CommsMenu" value="1.0" integer="yes" />
   </event>
   <event name="Ship7 Late Spawn" id_arme="bef7ee5d-35e4-4e3f-b4e5-5e5f2ad0ab88" parent_id_arme="fa4ad454-aa24-490a-b2c9-33c8d317e838">
     <if_variable name="Ship7 Status" comparator="EQUALS" value="4.0" />
@@ -2654,7 +2616,6 @@
     <set_variable name="Ship7MarinesMax" value="20.0" integer="yes" />
     <set_variable name="Ship7Silent" value="0.0" integer="yes" />
     <set_variable name="Ship7 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship7CommsMenu" value="1.0" integer="yes" />
   </event>
   <event name="Ship8 Late Spawn" id_arme="8b34d00f-7c5a-4ee2-82a3-dc81c7ee8eb5" parent_id_arme="fa4ad454-aa24-490a-b2c9-33c8d317e838">
     <if_variable name="Ship8 Status" comparator="EQUALS" value="4.0" />
@@ -2685,7 +2646,6 @@
     <set_variable name="Ship8MarinesMax" value="20.0" integer="yes" />
     <set_variable name="Ship8Silent" value="0.0" integer="yes" />
     <set_variable name="Ship8 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship8CommsMenu" value="1.0" integer="yes" />
   </event>
   <folder_arme name="Marine Complement" id_arme="e4178e64-948a-46ad-b088-53887f2ffc29" parent_id_arme="da1f4d06-129f-463c-a1e6-d7a4eae746b1" />
   <folder_arme name="Ship1" id_arme="3c6f84c6-53fa-4242-8c00-80cc7dda3f50" parent_id_arme="e4178e64-948a-46ad-b088-53887f2ffc29" />
