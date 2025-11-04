@@ -1253,7 +1253,7 @@
     <if_variable name="Sector" comparator="EQUALS" value="8.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
     <create type="genericMesh" x="50000.0" y="0.0" z="62187.0" name="Olvido" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" />
-    <create type="blackHole" x="50000.0" y="0.0" z="62187.0" name="Olvido" />
+    <create type="blackHole" x="50000.0" y="0.0" z="62187.0" name="blackhole" />
     <create type="neutral" x="77456.0" y="0.0" z="23214.0" name="Quee" hullID="1003" sideValue="sectorSide" />
     <create type="neutral" x="43974.0" y="0.0" z="22946.0" name="Gi'Yanu Mall" hullID="1001" sideValue="sectorSide" />
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Acantha VIII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
@@ -1263,12 +1263,13 @@
     <if_variable name="Sector" comparator="EQUALS" value="8.0" />
     <if_variable name="Acantha System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_ship_text name="Olvido" class="Singularity" desc="Small black hole named after the discoverer, Ha'ales Olvido." scan_desc="Gravitational aberrations nominal." />
     <set_variable name="Sector Entities" value="3.0" />
   </event>
   <event name="Destroy Sector Entities" id_arme="6719be6c-803b-44b2-b89e-bba100fff4dc" parent_id_arme="4df95258-ec67-482c-8a69-5145e1b8664c">
     <if_variable name="Acantha System" comparator="EQUALS" value="3.0" />
     <destroy name="Olvido" />
-    <destroy name="Olvido" />
+    <destroy name="blackhole" />
     <destroy name="Quee" />
     <destroy name="Gi'Yanu Mall" />
     <destroy name="Acantha VIII" />

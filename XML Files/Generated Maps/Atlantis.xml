@@ -3632,7 +3632,7 @@
     <create type="neutral" x="47968.0" y="0.0" z="53839.0" angle="0" name="Honor" hullID="1001" />
     <create type="neutral" x="65433.0" y="0.0" z="56549.0" angle="0" name="Ordan" hullID="1100" />
     <create type="neutral" x="11983.0" y="0.0" z="86060.0" angle="0" name="A'Aureln" hullID="1100" />
-    <create type="blackHole" x="23878.0" y="0.0" z="28544.0" name="MatildaBH" />
+    <create type="blackHole" x="23878.0" y="0.0" z="28544.0" name="blackhole" />
     <create type="genericMesh" x="23878.0" y="-600.0" z="28545.0" name="Matilda" meshFileName="dat\mine.dxs" textureFileName="dat\artemis_illum.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <create type="neutral" x="28244.0" y="0.0" z="75821.0" angle="0" name="Elnan" hullID="1100" />
     <create type="genericMesh" x="54593.0" y="0.0" z="72057.0" name="Arietis Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
@@ -3649,6 +3649,7 @@
     <set_object_property property="pushRadius" value="0.0" name="Arietis Gate" />
     <set_object_property property="angle" value="3.490658504" name="Arietis Gate" />
     <set_object_property property="rollDelta" value="0.3" name="Arietis Gate" />
+    <set_ship_text name="Matilda" class="Singularity" desc="Medium-sized black hole named after the discoverer, Professor Matilda Singer" scan_desc="Gravitational aberrations nominal." />
     <set_variable name="Entry Random" value="1.0" />
     <set_timer name="Entry Random" seconds="1" />
     <set_variable name="USFPTraffic1" value="1.0" />
@@ -3666,7 +3667,7 @@
     <destroy name="Elnan" />
     <destroy name="Matilda" />
     <destroy name="Arietis Gate" />
-    <destroy name="MatildaBH" />
+    <destroy name="blackhole" />
     <destroy name="Seer Entertainment Systems" />
     <set_variable name="Atlantis System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />

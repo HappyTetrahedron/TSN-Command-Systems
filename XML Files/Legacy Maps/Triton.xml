@@ -857,8 +857,9 @@
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Triton VI" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
     <create type="neutral" x="22500.0" y="0.0" z="53524.0" angle="0" name="Cassandra Observation" hullID="1004" />
-    <create type="blackHole" x="70527.0" y="0.0" z="65303.0" name="Cassandra Black Hole" />
+    <create type="blackHole" x="70527.0" y="0.0" z="65303.0" name="BlackHole" />
     <create type="genericMesh" x="70452.0" y="0.0" z="68646.0" name="Cassandra" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="0.0" colorBlue="1.0" />
+    <set_ship_text name="Cassandra" class="Singularity" desc="Supermassive black hole of some scientific interest." scan_desc="Gravitational aberrations nominal." />
     <set_variable name="Sector Entities" value="2.0" />
   </event>
   <event name="Settings" id_arme="66c45ac7-8cef-45dc-8ec7-4c62ad3d0664" parent_id_arme="4034ee67-c0fb-4f10-b747-1a6ed5015fd4">
@@ -872,7 +873,7 @@
     <if_variable name="Triton System" comparator="EQUALS" value="3.0" />
     <destroy name="Triton VI" />
     <destroy name="Cassandra Observation" />
-    <destroy name="Cassandra Black Hole" />
+    <destroy name="BlackHole" />
     <destroy name="Cassandra" />
     <set_variable name="Triton System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />

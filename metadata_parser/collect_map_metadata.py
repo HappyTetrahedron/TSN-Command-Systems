@@ -132,6 +132,12 @@ def type_from_name(name):
         return "Comms Relay"
     if name.startswith("I-"):
         return "Industrial Station"
+    if name.startswith("B-"):
+        return "Marker Buoy"
+    if name.startswith("Marker Buoy"):
+        return "Marker Buoy"
+    if name.endswith(" Prime"):
+        return "Planet"
     if name.startswith("M-"):
         return "Mining Station"
     if name.startswith("CP-"):
@@ -140,7 +146,7 @@ def type_from_name(name):
         return "Black Hole"
     if name.endswith(" Command"):
         return "Command Post"
-    if 'PLANET' in name:
+    if 'planet' in name.lower():
         return "Planet"
     if name.startswith("PULSAR"):
         return "Pulsar"
@@ -181,7 +187,7 @@ def is_filter_attrib(attribs):
     return False
 
 
-def process_action(action, system_name, sector_id):
+def process_create_action(action, system_name, sector_id):
     if is_filter_attrib(action.attrib):
         return None
     name = action.attrib["name"]
@@ -213,12 +219,40 @@ def process_action(action, system_name, sector_id):
         entityData["gate_target_system"] = gate_target
     return entityData
 
+def process_settext_action(action, original):
+    if not original:
+        return
+    if 'singularity' in action.attrib.get('class', "").lower():
+        original["type"] = "Black Hole"
+    if 'planet' in action.attrib.get('class', "").lower():
+        original["type"] = "Planet"
+    if 'planetoid' in action.attrib.get('class', "").lower():
+        original["type"] = "Moon"
+    if 'moon' in action.attrib.get('class', "").lower():
+        original["type"] = "Moon"
+    if 'newname' in action.attrib:
+        original["name"] = action.attrib["newname"]
+
+def process_setspecial_action(action, original, entityList):
+    if not original:
+        return
+    if action.attrib.get('ability', "") == "Cloak":
+        del entityList[entityList.index(original)]
+    if action.attrib.get('ability', "") == "Stealth":
+        del entityList[entityList.index(original)]
+    if action.attrib.get('ability', "") == "LowVis":
+        del entityList[entityList.index(original)]
+
+def findByName(name, entityList):
+    l = [ e for e in entityList if e["name"] == name ]
+    if l:
+        return l[0]
 
 def parse_event_actions(event, sector, system_name):
     for action in event:
         if action.tag == "create":
             if "name" in action.attrib:
-                entity = process_action(action, system_name, sector["id"])
+                entity = process_create_action(action, system_name, sector["id"])
                 if not entity:
                     continue
                 if entity.get("type", "") == "Gate" and "gate_target_sector" not in entity:
@@ -226,6 +260,10 @@ def parse_event_actions(event, sector, system_name):
                         entity["gate_target_sector"] = sector["gate_target_sector"]
                         del sector["gate_target_sector"]
                 sector["entities"].append(entity)
+        if action.tag == "set_ship_text":
+            process_settext_action(action, findByName(action.attrib["name"], sector["entities"]))
+        if action.tag == "set_special":
+            process_setspecial_action(action, findByName(action.attrib["name"], sector["entities"]), sector["entities"])
     
 
 def parse_newstyle_event(event, sectors, system_name):
@@ -258,6 +296,12 @@ def parse_oldstyle_event(event, old_sector_id, system_dict, sectors):
         if sector_id-1 not in sectors:
             sectors[sector_id-1] = {"id": sector_id, "entities": []}
     if event.attrib.get("name", "").startswith("Generate Sector Entities"):
+        sector_id = old_sector_id
+        if sector_id-1 not in sectors:
+            eprint("Error: found sector entities but no sector defined")
+            sys.exit(1)
+        parse_event_actions(event, sectors[sector_id-1], system_dict["name"])
+    if event.attrib.get("name", "").startswith("Settings"):
         sector_id = old_sector_id
         if sector_id-1 not in sectors:
             eprint("Error: found sector entities but no sector defined")
@@ -325,6 +369,9 @@ def parse_file(file, style):
                 parse_start(child, system_dict)
             if child.tag == "event":
                 sec = parse_oldstyle_event(child, sec, system_dict, sectors)
+    
+    for sector in sectors.values():
+        sector["entities"] = [e for e in sector["entities"] if 'type' in e]
 
 
     w = system_dict.get("width", 0)

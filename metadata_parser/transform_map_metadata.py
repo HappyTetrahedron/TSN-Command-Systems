@@ -39,6 +39,7 @@ TYPEMAP = {
     'Moon': 'P',
     'Megastructure': 'MEG',
     'Black Hole': 'H',
+    'Marker Buoy': 'MK',
     'Ship': 'SHIP',
 }
 UNKNOWN_TYPE = "UNK"
