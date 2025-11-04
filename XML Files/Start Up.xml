@@ -13,11 +13,10 @@
     <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="6" />
     <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="7" />
     <gm_instructions title="Instructions">Welcome to the TSN Sandbox Version {{ g.version }}. ^--Activation---^The activation sequence allows the GM to choose the System and Sector for the players to start.^Once the activation sequence is completed, the main Sandbox menu will appear and the GM can begin their mission. Below is a step-by-step guide to activation: ^- First, ensure all player ships have spawned before activating GM Mode.^- Next, click on Activate GM Mode to begin the Sandbox activation sequence.^- Finally, select the System and Sector where the players will start.^- Once complete, the Sandbox will run.^^The GM menus are as follows:^- Bas.: basic interactions, teleporting and deleting entities.^-SPWN.: Spawn AI ships of various factions.^-POI: Create secondary points of interest such as waypoints, wrecks, rendezvous points or anomalies.^-Haz.: Spawn hazards such as mines, asteroids and nebulae.^- Int.: Interact with player ships by sending messages, modifying ordnance stores, and causing system node damage.</gm_instructions>
-    <set_variable name="tagShipNumber" value="0.0" integer="yes" />
-    <set_variable name="CurrentLetter" value="1.0" integer="yes" />
     <!--Test Variables (not required in start block)-->
     <!--End of Test Variables-->
-    <!--Suspicious Variables - maybe not needed here but haven't dared to delete.-->
+    <set_variable name="tagShipNumber" value="0.0" integer="yes" />
+    <set_variable name="CurrentLetter" value="1.0" integer="yes" />
     <set_variable name="System" value="1.0" integer="yes" />
     <!--Random Elements-->
     <set_variable name="Name Assign" value="0.0" integer="yes" />

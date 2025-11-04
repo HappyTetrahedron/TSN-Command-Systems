@@ -265,12 +265,12 @@
     <clear_ai {{ nn(name) }} />
     <add_ai type="SPCL_AI" {{ nn(name) }} />
     <add_ai type="TRY_TO_BECOME_LEADER" {{ nn(name) }} />
+    <add_ai type="LEADER_LEADS" {{ nn(name) }} />
     <add_ai type="DIR_THROTTLE" value1="AI_Reassign_ThrottleDir" value2="4.0" {{ nn(name) }} />
     <add_ai type="CHASE_STATION" value1="5000" {{ nn(name) }} />
     <add_ai type="CHASE_AI_SHIP" value1="5000" value2="2500" {{ nn(name) }} />
     <add_ai type="CHASE_PLAYER" value1="5000" value2="2500" {{ nn(name) }} />
     <add_ai type="CHASE_ANGER" {{ nn(name) }} />
-    <add_ai type="LEADER_LEADS" {{ nn(name) }} />
     <add_ai type="FOLLOW_LEADER" {{ nn(name) }} />
     <add_ai type="LAUNCH_FIGHTERS" value1="6000" {{ nn(name) }} />
   {% endfor %}

@@ -69,6 +69,10 @@
       "loadOp": "2",
       "id": "1",
       "default_count": 3,
+      "rv": {
+        "drop": 1,
+        "pickup": 2,
+      },
     },
     {
       "name": "Medics",
@@ -77,6 +81,10 @@
       "loadOp": "4",
       "id": "3",
       "default_count": 2,
+      "rv": {
+        "drop": 20,
+        "pickup": 21,
+      },
     },
     {
       "name": "Engineers",
@@ -85,6 +93,10 @@
       "loadOp": "5",
       "id": "4",
       "default_count": 1,
+      "rv": {
+        "drop": 30,
+        "pickup": 31,
+      },
     },
     {
       "name": "Cargo",
@@ -93,6 +105,10 @@
       "loadOp": "3",
       "id": "2",
       "default_count": 0,
+      "rv": {
+        "drop": 10,
+        "pickup": 11,
+      },
     },
     {
       "name": "Comms Relay",
@@ -101,6 +117,17 @@
       "loadOp": "6",
       "id": "5",
       "default_count": 1,
+      "rv": {
+        "drop": 40,
+        "pickup": 41,
+      },
+      "item_drop": {
+        "hull": 1055,
+        "desc": "TSN Comms Relay",
+        "scan_desc": "Standard TSN Communications Relay",
+        "hailtext": "Signal relay established. Communication link active.",
+        "ai": 401,
+      }
     },
     {
       "name": "Sensor Buoy",
@@ -109,6 +136,17 @@
       "loadOp": "7",
       "id": "6",
       "default_count": 1,
+      "rv": {
+        "drop": 42,
+        "pickup": 43,
+      },
+      "item_drop": {
+        "hull": 1054,
+        "desc": "TSN Sensor Buoy",
+        "scan_desc": "Standard TSN Sensor Buoy",
+        "hailtext": "Connection established. Data link online.",
+        "ai": 401,
+      }
     },
   ]
 %}
