@@ -3421,68 +3421,77 @@
     <set_variable name="Black Box 3 Invention Retrieves" value="0.0" integer="yes" />
   </event>
   <folder_arme name="Lifepods" id_arme="d1f2a3f4-0b1e-4741-ae53-7b1b27581618" parent_id_arme="89c68d9f-7426-4dff-8b4a-141dcf140bd7" />
-  <event name="Activate Lifepod" id_arme="f5e538f7-6b37-41ec-8973-cc871655e6bf" parent_id_arme="d1f2a3f4-0b1e-4741-ae53-7b1b27581618">
-    <if_gm_button text="Other\Lifepod" />
-    <set_variable name="Lifepods" value="1.0" integer="yes" />
+  {% macro createPickuppable(prefix, button, counter) %}
+  <event name="Activate" id_arme="f5e538f7-6b37-41ec-8973-cc871655e6bf" parent_id_arme="d1f2a3f4-0b1e-4741-ae53-7b1b27581618">
+    <if_gm_button text="Other\{{ button }}" />
+    <set_variable name="Spawn_{{ prefix }}" value="1.0" integer="yes" />
   </event>
-  <event name="Activate Lifepod (POI)" id_arme="f5e538f7-6b37-41ec-8973-cc871655e6bf" parent_id_arme="d1f2a3f4-0b1e-4741-ae53-7b1b27581618">
-    <if_gm_button text="RVs\Lifepod" />
-    <set_variable name="Lifepods" value="1.0" integer="yes" />
+  <event name="Activate (POI)" id_arme="f5e538f7-6b37-41ec-8973-cc871655e6bf" parent_id_arme="d1f2a3f4-0b1e-4741-ae53-7b1b27581618">
+    <if_gm_button text="RVs\{{ button }}" />
+    <set_variable name="Spawn_{{ prefix }}" value="1.0" integer="yes" />
   </event>
   <event name="All Spawned" id_arme="12628720-c387-49c7-a840-e1bb2288f528" parent_id_arme="d1f2a3f4-0b1e-4741-ae53-7b1b27581618">
-    <if_variable name="Lifepods" comparator="EQUALS" value="1.0" />
-    <if_exists name="Life Pod 1" />
-    <if_exists name="Life Pod 2" />
-    <if_exists name="Life Pod 3" />
-    <if_exists name="Life Pod 4" />
-    <if_exists name="Life Pod 5" />
-    <set_variable name="Lifepods" value="0.0" integer="yes" />
+    <if_variable name="Spawn_{{ prefix }}" comparator="EQUALS" value="1.0" />
+    <if_exists name="{{ prefix }} 1" />
+    <if_exists name="{{ prefix }} 2" />
+    <if_exists name="{{ prefix }} 3" />
+    <if_exists name="{{ prefix }} 4" />
+    <if_exists name="{{ prefix }} 5" />
+    <set_variable name="Spawn_{{ prefix }}" value="0.0" integer="yes" />
   </event>
   <event name="Lifepod Spawn" id_arme="952e1377-fe9b-45e9-8877-188d7a21cd39" parent_id_arme="d1f2a3f4-0b1e-4741-ae53-7b1b27581618">
-    <if_variable name="Lifepods" comparator="EQUALS" value="1.0" />
-    <if_not_exists name="Life Pod |lifepodNumber|" />
-    <create type="genericMesh" use_gm_position="" name="Life Pod |lifepodNumber|" meshFileName="dat\wreck1.dxs" textureFileName="dat\drone4_spec.png" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
-    <set_variable name="Lifepods" value="2.0" integer="yes" />
+    <if_variable name="Spawn_{{ prefix }}" comparator="EQUALS" value="1.0" />
+    <if_not_exists name="{{ prefix }} |{{ counter }}|" />
+    {{ caller() }}
+    <set_variable name="Spawn_{{ prefix }}" value="3.0" integer="yes" />
   </event>
   <event name="Lifepod Skip" id_arme="5a236afc-4569-441b-a591-a037a907b1cf" parent_id_arme="d1f2a3f4-0b1e-4741-ae53-7b1b27581618">
-    <if_variable name="Lifepods" comparator="EQUALS" value="1.0" />
-    <if_exists name="Life Pod |lifepodNumber|" />
-    <set_variable name="Lifepods" value="4.0" integer="yes" />
+    <if_variable name="Spawn_{{ prefix }}" comparator="EQUALS" value="1.0" />
+    <if_exists name="{{ prefix }} |lifepodNumber|" />
+    <set_variable name="Spawn_{{ prefix }}" value="4.0" integer="yes" />
   </event>
   <folder_arme name="Skip Pod Spawn" id_arme="518f7533-d725-4aa6-b4bd-532d1226433d" parent_id_arme="d1f2a3f4-0b1e-4741-ae53-7b1b27581618" />
   <event name="Increment Pod Number" id_arme="72d9d21b-afef-44ae-bdaa-5d36bc43be05" parent_id_arme="518f7533-d725-4aa6-b4bd-532d1226433d">
-    <if_variable name="Lifepods" comparator="EQUALS" value="4.0" />
-    <if_variable name="lifepodNumber" comparator="LESS" value="5.0" />
-    <set_variable name="lifepodNumber" value="lifepodNumber+1" integer="yes" />
-    <set_variable name="Lifepods" value="1.0" integer="yes" />
+    <if_variable name="Spawn_{{ prefix }}" comparator="EQUALS" value="4.0" />
+    <if_variable name="{{ counter }}" comparator="LESS" value="5.0" />
+    <set_variable name="{{ counter }}" value="{{ counter }}+1" integer="yes" />
+    <set_variable name="Spawn_{{ prefix }}" value="1.0" integer="yes" />
   </event>
   <event name="Reset Pod Number" id_arme="d0cb18ca-aad0-4536-b495-35b6c04342d1" parent_id_arme="518f7533-d725-4aa6-b4bd-532d1226433d">
-    <if_variable name="Lifepods" comparator="EQUALS" value="4.0" />
-    <if_variable name="lifepodNumber" comparator="GREATER_EQUAL" value="5.0" />
-    <set_variable name="lifepodNumber" value="1.0" integer="yes" />
-    <set_variable name="Lifepods" value="1.0" integer="yes" />
+    <if_variable name="Spawn_{{ prefix }}" comparator="EQUALS" value="4.0" />
+    <if_variable name="{{ counter }}" comparator="GREATER_EQUAL" value="5.0" />
+    <set_variable name="{{ counter }}" value="1.0" integer="yes" />
+    <set_variable name="Spawn_{{ prefix }}" value="1.0" integer="yes" />
   </event>
-  <event name="Lifepod Settings" id_arme="cc9173fc-f546-4a92-b94b-a8953e7f112d" parent_id_arme="d1f2a3f4-0b1e-4741-ae53-7b1b27581618">
-    <if_variable name="Lifepods" comparator="EQUALS" value="2.0" />
+  <event name="Increment Pod Number" id_arme="b0530d03-2239-46a8-a824-eb65b568da84" parent_id_arme="d1f2a3f4-0b1e-4741-ae53-7b1b27581618">
+    <if_variable name="Spawn_{{ prefix }}" comparator="EQUALS" value="3.0" />
+    <if_variable name="{{ counter }}" comparator="LESS" value="5.0" />
+    <set_variable name="{{ counter }}" value="{{ counter }}+1" integer="yes" />
+    <set_variable name="Spawn_{{ prefix }}" value="0.0" integer="yes" />
+  </event>
+  <event name="Reset Pod Number" id_arme="a61108ff-faea-4578-985f-772083c71fba" parent_id_arme="d1f2a3f4-0b1e-4741-ae53-7b1b27581618">
+    <if_variable name="Spawn_{{ prefix }}" comparator="EQUALS" value="3.0" />
+    <if_variable name="{{ counter }}" comparator="GREATER_EQUAL" value="5.0" />
+    <set_variable name="{{ counter }}" value="1.0" integer="yes" />
+    <set_variable name="Spawn_{{ prefix }}" value="0.0" integer="yes" />
+  </event>
+  {% endmacro %}
+  {% call createPickuppable("Life Pod", "Lifepod", "lifepodNumber") %}
+    <create type="genericMesh" use_gm_position="" name="Life Pod |lifepodNumber|" meshFileName="dat\wreck1.dxs" textureFileName="dat\drone4_spec.png" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
     <set_object_property property="rollDelta" value="-0.2" name="Life Pod |lifepodNumber|" />
     <set_object_property property="pushRadius" value="20.0" name="Life Pod |lifepodNumber|" />
     <set_object_property property="angleDelta" value="0.05" name="Life Pod |lifepodNumber|" />
     <addto_object_property value="10.0" property="positionY" name="Life Pod |lifepodNumber|" />
     <set_ship_text name="Life Pod |lifepodNumber|" desc="Life pod" scan_desc="Life signs detected." hailtext="Automated Distress Signal detected." />
-    <set_variable name="Lifepods" value="3.0" integer="yes" />
-  </event>
-  <event name="Increment Pod Number" id_arme="b0530d03-2239-46a8-a824-eb65b568da84" parent_id_arme="d1f2a3f4-0b1e-4741-ae53-7b1b27581618">
-    <if_variable name="Lifepods" comparator="EQUALS" value="3.0" />
-    <if_variable name="lifepodNumber" comparator="LESS" value="5.0" />
-    <set_variable name="lifepodNumber" value="lifepodNumber+1" integer="yes" />
-    <set_variable name="Lifepods" value="0.0" integer="yes" />
-  </event>
-  <event name="Reset Pod Number" id_arme="a61108ff-faea-4578-985f-772083c71fba" parent_id_arme="d1f2a3f4-0b1e-4741-ae53-7b1b27581618">
-    <if_variable name="Lifepods" comparator="EQUALS" value="3.0" />
-    <if_variable name="lifepodNumber" comparator="GREATER_EQUAL" value="5.0" />
-    <set_variable name="lifepodNumber" value="1.0" integer="yes" />
-    <set_variable name="Lifepods" value="0.0" integer="yes" />
-  </event>
+  {% endcall %}
+  {% call createPickuppable("Weapons Crate", "WeaponCrate", "crateNumber") %}
+    <create type="genericMesh" use_gm_position="" name="Weapons Crate |crateNumber|" meshFileName="dat\TSN\USFP\cargoPod.dxs" textureFileName="dat\TSN\USFP\CargoPod.png" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="rollDelta" value="-0.2" name="Weapons Crate |crateNumber|" />
+    <set_object_property property="pushRadius" value="20.0" name="Weapons Crate |crateNumber|" />
+    <set_object_property property="angleDelta" value="0.05" name="Weapons Crate |crateNumber|" />
+    <addto_object_property value="10.0" property="positionY" name="Weapons Crate |crateNumber|" />
+    <set_ship_text name="Weapons Crate |crateNumber|" desc="Ordnance containment unit" scan_desc="Contains heavy ordnance" hailtext="It's a crate. Why are you hailing it?" />
+  {% endcall %}
   <folder_arme name="Docking Ports" id_arme="822ebab5-c150-41fa-bcbc-8affff6360e8" parent_id_arme="e68b43cd-1ae4-49d6-ae8b-19f9bfeefa38" />
   <event name="USFP Energy Only" id_arme="dbb90f12-887f-4841-8f7c-9e7700e294a6" parent_id_arme="822ebab5-c150-41fa-bcbc-8affff6360e8">
     <if_gm_button text="Docking Port\Energy Only" />

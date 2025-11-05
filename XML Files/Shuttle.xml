@@ -178,20 +178,68 @@
   {% endfor %}
 {% endfor %}
 
-{# Life pods #}
-{% for ship in util.shipConfigs %}
-  {% for pod in range(1, 6) %}
-    <event name="Life Pod {{ pod}}">
-      <if_exists name="Life Pod {{ pod }}" />
-      <if_variable name="{{ ship.shuttle }}CargoType" comparator="EQUALS" value="0.0" />
-      <if_distance name1="{{ ship.shuttle }}" name2="Life Pod {{ pod }}" comparator="LESS" value="100.0" />
-      <if_variable name="{{ ship.shuttle }}CurrentCargo" comparator="LESS" value="{{ ship.shuttle }}MaxCargo" />
-      <set_variable name="{{ ship.shuttle }}CurrentCargo" value="{{ ship.shuttle }}CurrentCargo+1" integer="yes" />
-      <warning_popup_message message="Life Pod secured." consoles="MCF" player_slot="{{ ship.slot }}" />
-      <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">Survivors are aboard. Minor injuries to some.</incoming_comms_text>
-      <!-- apparently life pods give medics, huh -->
-      <set_variable name="{{ ship.shuttle }}CargoType" value="3.0" integer="yes" />
-      <destroy name="Life Pod {{ pod }}" />
+{# Custom pickuppables #}
+
+{% macro shuttlePickup(name, resultingCargoType) %}
+  {% for ship in util.shipConfigs %}
+    {% for id in range(1, 6) %}
+      <event name="Pickup {{ name }} {{ id }}">
+        <if_exists name="{{ name }} {{ id }}" />
+        <if_variable name="{{ ship.shuttle }}CargoType" comparator="EQUALS" value="0.0" />
+        <if_distance name1="{{ ship.shuttle }}" name2="{{ name }} {{ id }}" comparator="LESS" value="100.0" />
+        <if_variable name="{{ ship.shuttle }}CurrentCargo" comparator="LESS" value="{{ ship.shuttle }}MaxCargo" />
+        <set_variable name="{{ ship.shuttle }}CurrentCargo" value="{{ ship.shuttle }}CurrentCargo+1" integer="yes" />
+        <warning_popup_message message="{{ name }} secured." consoles="MCF" player_slot="{{ ship.slot }}" />
+        <set_variable name="{{ ship.shuttle }}CargoType" value="{{ resultingCargoType }}.0" integer="yes" />
+        <destroy name="{{ name }} {{ id }}" />
+        {{ caller(ship) }}
+      </event>
+    {% endfor %}
+  {% endfor %}
+{% endmacro %}
+
+{% macro shuttleUnload(name, cargoType) %}
+  {% for ship in util.shipConfigs %}
+    <event name="Unload {{ name }}">
+      <if_variable name="ShuttleSelect" comparator="EQUALS" value="{{ ship.id }}" />
+      <if_variable name="OperationType" comparator="EQUALS" value="1.0" />
+      <if_timer_finished name="ShuttleOps" />
+      <if_variable name="{{ ship.shuttle }} Status" comparator="EQUALS" value="2.0" />
+      <if_variable name="{{ ship.shuttle }}CurrentCargo" comparator="GREATER" value="0.0" />
+      <if_variable name="{{ ship.shuttle }}CargoType" comparator="EQUALS" value="{{ cargoType }}.0" />
+      <set_variable name="{{ ship.shuttle }}CurrentCargo" value="0.0" integer="yes" />
+      <set_variable name="ShuttleSelect" value="0.0" integer="yes" />
+      <set_variable name="OperationType" value="0.0" integer="yes" />
+      <warning_popup_message message="Shuttle Unloaded" consoles="MCF" player_slot="{{ ship.slot }}" />
+      <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">{{ name }} unloaded.</incoming_comms_text>
+      <set_variable name="{{ ship.shuttle }}CargoType" value="0.0" integer="yes" />
+      {{ caller(ship) }}
     </event>
   {% endfor %}
-{% endfor %}
+{% endmacro %}
+
+{# Life pods #}
+{% call(ship) shuttlePickup("Life Pod", 3) %}
+  <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">Survivors are aboard. Minor injuries to some.</incoming_comms_text>
+{% endcall %}
+
+{# Weapon crates #}
+{% call(ship) shuttlePickup("Weapons Crate", 0) %}
+  {# argument cargo type is overwritten #}
+  <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">Ordnance secured.</incoming_comms_text>
+  <set_variable name="WeaponsCrateSelect" randomIntLow="31" randomIntHigh="32" integer="yes" />
+  <set_variable name="{{ ship.shuttle }}CargoType" value="WeaponsCrateSelect" integer="yes" />
+{% endcall %}
+
+{% call(ship) shuttleUnload("Weapons Crate", 31) %}
+  <addto_object_property property="countEMP" value="2.0" player_slot="{{ ship.slot }}" />
+  <addto_object_property property="countNuke" value="1.0" player_slot="{{ ship.slot }}" />
+  <addto_object_property property="countMine" value="1.0" player_slot="{{ ship.slot }}" />
+  <addto_object_property property="countShk" value="3.0" player_slot="{{ ship.slot }}" />
+{% endcall %}
+
+{% call(ship) shuttleUnload("Weapons Crate", 32) %}
+  <addto_object_property property="countEMP" value="1.0" player_slot="{{ ship.slot }}" />
+  <addto_object_property property="countMine" value="2.0" player_slot="{{ ship.slot }}" />
+  <addto_object_property property="countShk" value="7.0" player_slot="{{ ship.slot }}" />
+{% endcall %}

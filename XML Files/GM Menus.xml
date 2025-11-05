@@ -862,6 +862,7 @@
     <set_gm_button text="Docking Port\Xeno Research" />
     <set_gm_button text="Docking Port\(Standard)" />
     <set_gm_button text="Other\Lifepod" />
+    <set_gm_button text="Other\WeaponCrate" />
     <set_gm_button text="Other\Black Box" />
   {% endcall %}
 
@@ -874,6 +875,7 @@
     <clear_gm_button text="Docking Port\Xeno Research" />
     <clear_gm_button text="Docking Port\(Standard)" />
     <clear_gm_button text="Other\Lifepod" />
+    <clear_gm_button text="Other\WeaponCrate" />
     <clear_gm_button text="Other\Black Box" />
   {% endcall %}
 
@@ -984,6 +986,9 @@
     <set_gm_button text="RVs\ComRel Exfil" />
     <set_gm_button text="RVs\SenBoi Drop" />
     <set_gm_button text="RVs\SenBoi Exfil" />
+    <set_gm_button text="RVs\Lifepod" />
+    <set_gm_button text="RVs\WeaponCrate" />
+    <set_gm_button text="RVs\Blackbox" />
     <set_gm_button text="RVs\_Dismiss" />
   {% endcall %}
 
@@ -1002,6 +1007,7 @@
     <clear_gm_button text="RVs\SenBoi Exfil" />
     <clear_gm_button text="RVs\Lifepod" />
     <clear_gm_button text="RVs\Blackbox" />
+    <clear_gm_button text="RVs\WeaponCrate" />
     <clear_gm_button text="RVs\_Dismiss" />
   {% endcall %}
 
