@@ -113,8 +113,6 @@
   </event>
   {% endmacro %}
 
-
-
   {% call createMenu("Base", 1) %}
     <!---->
     <set_gm_button text="SlctdToGM" x="100" y="100" h="28" w="90" />

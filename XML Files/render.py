@@ -7,6 +7,17 @@ faulthandler.enable()
 from jinja2 import Environment, FileSystemLoader
 import datetime
 
+track_dict = {}
+
+def track(key, value):
+    if key in track_dict:
+        track_dict[key].append(value)
+    else:
+        track_dict[key] = [value]
+
+def retrieve(key):
+    return track_dict.get(key, [])
+
 env = {
     "extensions": [
         "TokenSystem",
@@ -47,6 +58,7 @@ template_env.lstrip_blocks = True
 template_env.trim_blocks = True
 template_env.autoescape = True
 template_env.add_extension('jinja2.ext.do')
+template_env.globals.update(track=track, retrieve=retrieve)
 TMPL_FNAME = 'main.xml'
 OUT_FNAME = '../MISS_TSN-Command.xml'
 
