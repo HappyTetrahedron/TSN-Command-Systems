@@ -1,4 +1,5 @@
   {% import 'AI.xml' as ai %}
+  {% import 'Utils.xml' as util %}
   <folder_arme name="Elements" id_arme="22ead096-32e5-4cf4-9f90-3c7924af9696" expanded_arme="" />
   <folder_arme name="Random Elements" id_arme="e5a3ec26-6d23-4bb8-9698-be3f70d38947" parent_id_arme="22ead096-32e5-4cf4-9f90-3c7924af9696" />
   <event name="Random Coordinates" id_arme="7c7265dd-f0de-4d29-9f42-9f23d1e09a4e" parent_id_arme="e5a3ec26-6d23-4bb8-9698-be3f70d38947">
@@ -850,350 +851,51 @@
     <set_variable name="Sandbox Activation" value="100.0" integer="yes" />
   </event>
   <folder_arme name="Status on Activation" id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9" parent_id_arme="da1f4d06-129f-463c-a1e6-d7a4eae746b1" />
-  <event name="Ship1 Active" id_arme="7e9d2816-cbfc-40b8-a548-831ce7352f33" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
-    <if_variable name="Ship1 Status" comparator="EQUALS" value="1.0" />
-    <if_exists player_slot="0" />
+  {% for ship in util.shipConfigs %}
+  <event name="Ship{{ ship.id }} Active">
+    <if_variable name="Ship{{ ship.id }} Status" comparator="EQUALS" value="1.0" />
+    <if_exists player_slot="{{ ship.slot }}" />
     <set_variable name="shipCount" value="shipCount+1" integer="yes" />
     <!--Determine Max Stores-->
-    <get_object_property property="countHoming" player_slot="0" variable="Ship1HomingMax" />
-    <get_object_property property="countNuke" player_slot="0" variable="Ship1NukeMax" />
-    <get_object_property property="countMine" player_slot="0" variable="Ship1MineMax" />
-    <get_object_property property="countEMP" player_slot="0" variable="Ship1EMPMax" />
-    <get_object_property property="countShk" player_slot="0" variable="Ship1ShkMax" />
-    <get_object_property property="countBea" player_slot="0" variable="Ship1BeaMax" />
-    <get_object_property property="countPro" player_slot="0" variable="Ship1ProMax" />
-    <get_object_property property="countTag" player_slot="0" variable="Ship1TagMax" />
+    <get_object_property property="countHoming" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}HomingMax" />
+    <get_object_property property="countNuke" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}NukeMax" />
+    <get_object_property property="countMine" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}MineMax" />
+    <get_object_property property="countEMP" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}EMPMax" />
+    <get_object_property property="countShk" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}ShkMax" />
+    <get_object_property property="countBea" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}BeaMax" />
+    <get_object_property property="countPro" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}ProMax" />
+    <get_object_property property="countTag" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}TagMax" />
     <!--Set Initial Stores-->
-    <set_variable name="Ship1HomingCurrent" value="Ship1HomingMax" integer="yes" />
-    <set_variable name="Ship1NukeCurrent" value="Ship1NukeMax" integer="yes" />
-    <set_variable name="Ship1MineCurrent" value="Ship1MineMax" integer="yes" />
-    <set_variable name="Ship1EMPCurrent" value="Ship1EMPMax" integer="yes" />
-    <set_variable name="Ship1ShkCurrent" value="Ship1ShkMax" integer="yes" />
-    <set_variable name="Ship1BeaCurrent" value="Ship1BeaMax" integer="yes" />
-    <set_variable name="Ship1ProCurrent" value="Ship1ProMax" integer="yes" />
-    <set_variable name="Ship1TagCurrent" value="Ship1TagMax" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}HomingCurrent" value="Ship{{ ship.id }}HomingMax" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}NukeCurrent" value="Ship{{ ship.id }}NukeMax" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}MineCurrent" value="Ship{{ ship.id }}MineMax" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}EMPCurrent" value="Ship{{ ship.id }}EMPMax" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}ShkCurrent" value="Ship{{ ship.id }}ShkMax" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}BeaCurrent" value="Ship{{ ship.id }}BeaMax" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}ProCurrent" value="Ship{{ ship.id }}ProMax" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}TagCurrent" value="Ship{{ ship.id }}TagMax" integer="yes" />
     <!--Additional Trackers-->
-    <set_variable name="Ship1 Marines" value="1.0" integer="yes" />
-    <set_variable name="Proteus Status" value="1.0" integer="yes" />
-    <set_variable name="Ship1MarinesMax" value="20.0" integer="yes" />
-    <set_variable name="Ship1Silent" value="0.0" integer="yes" />
-    <set_variable name="Ship1 Status" value="2.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }} Marines" value="1.0" integer="yes" />
+    <set_variable name="{{ ship.shuttle }} Status" value="1.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}MarinesMax" value="20.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}Silent" value="0.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }} Status" value="2.0" integer="yes" />
   </event>
-  <event name="Ship1 Inactive" id_arme="31f6e75f-fef2-4b6e-9822-1ca5dfaa81ac" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
-    <if_variable name="Ship1 Status" comparator="EQUALS" value="1.0" />
-    <if_not_exists player_slot="0" />
+  <event name="Ship{{ ship.id }} Inactive">
+    <if_variable name="Ship{{ ship.id }} Status" comparator="EQUALS" value="1.0" />
+    <if_not_exists player_slot="{{ ship.slot }}" />
     <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
-    <set_variable name="Ship1 Ready Grid A" value="1.0" integer="yes" />
-    <set_variable name="Ship1 Ready Grid E" value="1.0" integer="yes" />
-    <set_variable name="Ship1 Ready Grid 1" value="1.0" integer="yes" />
-    <set_variable name="Ship1 Ready Grid 5" value="1.0" integer="yes" />
-    <set_variable name="Ship1 Ready Corner A1" value="1.0" integer="yes" />
-    <set_variable name="Ship1 Ready Corner A5" value="1.0" integer="yes" />
-    <set_variable name="Ship1 Ready Corner E1" value="1.0" integer="yes" />
-    <set_variable name="Ship1 Ready Corner E5" value="1.0" integer="yes" />
-    <set_variable name="Ship1 Status" value="4.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }} Ready Grid A" value="1.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }} Ready Grid E" value="1.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }} Ready Grid 1" value="1.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }} Ready Grid 5" value="1.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }} Ready Corner A1" value="1.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }} Ready Corner A5" value="1.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }} Ready Corner E1" value="1.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }} Ready Corner E5" value="1.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }} Status" value="4.0" integer="yes" />
   </event>
-  <event name="Ship2 Active" id_arme="f058287b-3523-4e16-9041-b196ee6c9305" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
-    <if_variable name="Ship2 Status" comparator="EQUALS" value="1.0" />
-    <if_exists player_slot="1" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <!--Determine Max Stores-->
-    <get_object_property property="countHoming" player_slot="1" variable="Ship2HomingMax" />
-    <get_object_property property="countNuke" player_slot="1" variable="Ship2NukeMax" />
-    <get_object_property property="countMine" player_slot="1" variable="Ship2MineMax" />
-    <get_object_property property="countEMP" player_slot="1" variable="Ship2EMPMax" />
-    <get_object_property property="countShk" player_slot="1" variable="Ship2ShkMax" />
-    <get_object_property property="countBea" player_slot="1" variable="Ship2BeaMax" />
-    <get_object_property property="countPro" player_slot="1" variable="Ship2ProMax" />
-    <get_object_property property="countTag" player_slot="1" variable="Ship2TagMax" />
-    <!--Set Initial Stores-->
-    <set_variable name="Ship2HomingCurrent" value="Ship2HomingMax" integer="yes" />
-    <set_variable name="Ship2NukeCurrent" value="Ship2NukeMax" integer="yes" />
-    <set_variable name="Ship2MineCurrent" value="Ship2MineMax" integer="yes" />
-    <set_variable name="Ship2EMPCurrent" value="Ship2EMPMax" integer="yes" />
-    <set_variable name="Ship2ShkCurrent" value="Ship2ShkMax" integer="yes" />
-    <set_variable name="Ship2BeaCurrent" value="Ship2BeaMax" integer="yes" />
-    <set_variable name="Ship2ProCurrent" value="Ship2ProMax" integer="yes" />
-    <set_variable name="Ship2TagCurrent" value="Ship2TagMax" integer="yes" />
-    <!--Additional Trackers-->
-    <set_variable name="Ship2 Marines" value="1.0" integer="yes" />
-    <set_variable name="Theseus Status" value="1.0" integer="yes" />
-    <set_variable name="Ship2MarinesMax" value="20.0" integer="yes" />
-    <set_variable name="Ship2Silent" value="0.0" integer="yes" />
-    <set_variable name="Ship2 Status" value="2.0" integer="yes" />
-  </event>
-  <event name="Ship2 Inactive" id_arme="4397bf6d-9bed-4f15-80b0-5be924767239" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
-    <if_variable name="Ship2 Status" comparator="EQUALS" value="1.0" />
-    <if_not_exists player_slot="1" />
-    <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
-    <set_variable name="Ship2 Ready Grid A" value="1.0" integer="yes" />
-    <set_variable name="Ship2 Ready Grid E" value="1.0" integer="yes" />
-    <set_variable name="Ship2 Ready Grid 1" value="1.0" integer="yes" />
-    <set_variable name="Ship2 Ready Grid 5" value="1.0" integer="yes" />
-    <set_variable name="Ship2 Ready Corner A1" value="1.0" integer="yes" />
-    <set_variable name="Ship2 Ready Corner A5" value="1.0" integer="yes" />
-    <set_variable name="Ship2 Ready Corner E1" value="1.0" integer="yes" />
-    <set_variable name="Ship2 Ready Corner E5" value="1.0" integer="yes" />
-    <set_variable name="Ship2 Status" value="4.0" integer="yes" />
-  </event>
-  <event name="Ship3 Active" id_arme="eac73c86-f5f1-498e-a4e2-2d44469029d5" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
-    <if_variable name="Ship3 Status" comparator="EQUALS" value="1.0" />
-    <if_exists player_slot="2" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <!--Determine Max Stores-->
-    <get_object_property property="countHoming" player_slot="2" variable="Ship3HomingMax" />
-    <get_object_property property="countNuke" player_slot="2" variable="Ship3NukeMax" />
-    <get_object_property property="countMine" player_slot="2" variable="Ship3MineMax" />
-    <get_object_property property="countEMP" player_slot="2" variable="Ship3EMPMax" />
-    <get_object_property property="countShk" player_slot="2" variable="Ship3ShkMax" />
-    <get_object_property property="countBea" player_slot="2" variable="Ship3BeaMax" />
-    <get_object_property property="countPro" player_slot="2" variable="Ship3ProMax" />
-    <get_object_property property="countTag" player_slot="2" variable="Ship3TagMax" />
-    <!--Set Initial Stores-->
-    <set_variable name="Ship3HomingCurrent" value="Ship3HomingMax" integer="yes" />
-    <set_variable name="Ship3NukeCurrent" value="Ship3NukeMax" integer="yes" />
-    <set_variable name="Ship3MineCurrent" value="Ship3MineMax" integer="yes" />
-    <set_variable name="Ship3EMPCurrent" value="Ship3EMPMax" integer="yes" />
-    <set_variable name="Ship3ShkCurrent" value="Ship3ShkMax" integer="yes" />
-    <set_variable name="Ship3BeaCurrent" value="Ship3BeaMax" integer="yes" />
-    <set_variable name="Ship3ProCurrent" value="Ship3ProMax" integer="yes" />
-    <set_variable name="Ship3TagCurrent" value="Ship3TagMax" integer="yes" />
-    <!--Additional Trackers-->
-    <set_variable name="Ship3 Marines" value="1.0" integer="yes" />
-    <set_variable name="Odysseus Status" value="1.0" integer="yes" />
-    <set_variable name="Ship3MarinesMax" value="20.0" integer="yes" />
-    <set_variable name="Ship3Silent" value="0.0" integer="yes" />
-    <set_variable name="Ship3 Status" value="2.0" integer="yes" />
-  </event>
-  <event name="Ship3 Inactive" id_arme="4f3e8ed3-34d4-4d81-84b5-ef55a840a18b" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
-    <if_variable name="Ship3 Status" comparator="EQUALS" value="1.0" />
-    <if_not_exists player_slot="2" />
-    <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
-    <set_variable name="Ship3 Ready Grid A" value="1.0" integer="yes" />
-    <set_variable name="Ship3 Ready Grid E" value="1.0" integer="yes" />
-    <set_variable name="Ship3 Ready Grid 1" value="1.0" integer="yes" />
-    <set_variable name="Ship3 Ready Grid 5" value="1.0" integer="yes" />
-    <set_variable name="Ship3 Ready Corner A1" value="1.0" integer="yes" />
-    <set_variable name="Ship3 Ready Corner A5" value="1.0" integer="yes" />
-    <set_variable name="Ship3 Ready Corner E1" value="1.0" integer="yes" />
-    <set_variable name="Ship3 Ready Corner E5" value="1.0" integer="yes" />
-    <set_variable name="Ship3 Status" value="4.0" integer="yes" />
-  </event>
-  <event name="Ship4 Active" id_arme="1d8b61ac-a81d-443f-b226-b3bed86945ef" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
-    <if_variable name="Ship4 Status" comparator="EQUALS" value="1.0" />
-    <if_exists player_slot="3" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <!--Determine Max Stores-->
-    <get_object_property property="countHoming" player_slot="3" variable="Ship4HomingMax" />
-    <get_object_property property="countNuke" player_slot="3" variable="Ship4NukeMax" />
-    <get_object_property property="countMine" player_slot="3" variable="Ship4MineMax" />
-    <get_object_property property="countEMP" player_slot="3" variable="Ship4EMPMax" />
-    <get_object_property property="countShk" player_slot="3" variable="Ship4ShkMax" />
-    <get_object_property property="countBea" player_slot="3" variable="Ship4BeaMax" />
-    <get_object_property property="countPro" player_slot="3" variable="Ship4ProMax" />
-    <get_object_property property="countTag" player_slot="3" variable="Ship4TagMax" />
-    <!--Set Initial Stores-->
-    <set_variable name="Ship4HomingCurrent" value="Ship4HomingMax" integer="yes" />
-    <set_variable name="Ship4NukeCurrent" value="Ship4NukeMax" integer="yes" />
-    <set_variable name="Ship4MineCurrent" value="Ship4MineMax" integer="yes" />
-    <set_variable name="Ship4EMPCurrent" value="Ship4EMPMax" integer="yes" />
-    <set_variable name="Ship4ShkCurrent" value="Ship4ShkMax" integer="yes" />
-    <set_variable name="Ship4BeaCurrent" value="Ship4BeaMax" integer="yes" />
-    <set_variable name="Ship4ProCurrent" value="Ship4ProMax" integer="yes" />
-    <set_variable name="Ship4TagCurrent" value="Ship4TagMax" integer="yes" />
-    <!--Additional Trackers-->
-    <set_variable name="Ship4 Marines" value="1.0" integer="yes" />
-    <set_variable name="Perseus Status" value="1.0" integer="yes" />
-    <set_variable name="Ship4MarinesMax" value="20.0" integer="yes" />
-    <set_variable name="Ship4Silent" value="0.0" integer="yes" />
-    <set_variable name="Ship4 Status" value="2.0" integer="yes" />
-  </event>
-  <event name="Ship4 Inactive" id_arme="08c9d2a2-45eb-4181-8104-8feb48efcd05" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
-    <if_variable name="Ship4 Status" comparator="EQUALS" value="1.0" />
-    <if_not_exists player_slot="3" />
-    <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
-    <set_variable name="Ship4 Ready Grid A" value="1.0" integer="yes" />
-    <set_variable name="Ship4 Ready Grid E" value="1.0" integer="yes" />
-    <set_variable name="Ship4 Ready Grid 1" value="1.0" integer="yes" />
-    <set_variable name="Ship4 Ready Grid 5" value="1.0" integer="yes" />
-    <set_variable name="Ship4 Ready Corner A1" value="1.0" integer="yes" />
-    <set_variable name="Ship4 Ready Corner A5" value="1.0" integer="yes" />
-    <set_variable name="Ship4 Ready Corner E1" value="1.0" integer="yes" />
-    <set_variable name="Ship4 Ready Corner E5" value="1.0" integer="yes" />
-    <set_variable name="Ship4 Status" value="4.0" integer="yes" />
-  </event>
-  <event name="Ship5 Active" id_arme="dd0a6256-643f-4d08-8a5e-df3a42e44c11" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
-    <if_variable name="Ship5 Status" comparator="EQUALS" value="1.0" />
-    <if_exists player_slot="4" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <!--Determine Max Stores-->
-    <get_object_property property="countHoming" player_slot="4" variable="Ship5HomingMax" />
-    <get_object_property property="countNuke" player_slot="4" variable="Ship5NukeMax" />
-    <get_object_property property="countMine" player_slot="4" variable="Ship5MineMax" />
-    <get_object_property property="countEMP" player_slot="4" variable="Ship5EMPMax" />
-    <get_object_property property="countShk" player_slot="4" variable="Ship5ShkMax" />
-    <get_object_property property="countBea" player_slot="4" variable="Ship5BeaMax" />
-    <get_object_property property="countPro" player_slot="4" variable="Ship5ProMax" />
-    <get_object_property property="countTag" player_slot="4" variable="Ship5TagMax" />
-    <!--Set Initial Stores-->
-    <set_variable name="Ship5HomingCurrent" value="Ship5HomingMax" integer="yes" />
-    <set_variable name="Ship5NukeCurrent" value="Ship5NukeMax" integer="yes" />
-    <set_variable name="Ship5MineCurrent" value="Ship5MineMax" integer="yes" />
-    <set_variable name="Ship5EMPCurrent" value="Ship5EMPMax" integer="yes" />
-    <set_variable name="Ship5ShkCurrent" value="Ship5ShkMax" integer="yes" />
-    <set_variable name="Ship5BeaCurrent" value="Ship5BeaMax" integer="yes" />
-    <set_variable name="Ship5ProCurrent" value="Ship5ProMax" integer="yes" />
-    <set_variable name="Ship5TagCurrent" value="Ship5TagMax" integer="yes" />
-    <!--Additional Trackers-->
-    <set_variable name="Ship5 Marines" value="1.0" integer="yes" />
-    <set_variable name="Dionysus Status" value="1.0" integer="yes" />
-    <set_variable name="Ship5MarinesMax" value="20.0" integer="yes" />
-    <set_variable name="Ship5Silent" value="0.0" integer="yes" />
-    <set_variable name="Ship5 Status" value="2.0" integer="yes" />
-  </event>
-  <event name="Ship5 Inactive" id_arme="cf872d64-1e14-4888-99b3-1c1fcce2f4da" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
-    <if_variable name="Ship5 Status" comparator="EQUALS" value="1.0" />
-    <if_not_exists player_slot="4" />
-    <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
-    <set_variable name="Ship5 Ready Grid A" value="1.0" integer="yes" />
-    <set_variable name="Ship5 Ready Grid E" value="1.0" integer="yes" />
-    <set_variable name="Ship5 Ready Grid 1" value="1.0" integer="yes" />
-    <set_variable name="Ship5 Ready Grid 5" value="1.0" integer="yes" />
-    <set_variable name="Ship5 Ready Corner A1" value="1.0" integer="yes" />
-    <set_variable name="Ship5 Ready Corner A5" value="1.0" integer="yes" />
-    <set_variable name="Ship5 Ready Corner E1" value="1.0" integer="yes" />
-    <set_variable name="Ship5 Ready Corner E5" value="1.0" integer="yes" />
-    <set_variable name="Ship5 Status" value="4.0" integer="yes" />
-  </event>
-  <event name="Ship6 Active" id_arme="5a12cdf0-24d6-4df9-ab91-3c89f6654807" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
-    <if_variable name="Ship6 Status" comparator="EQUALS" value="1.0" />
-    <if_exists player_slot="5" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <!--Determine Max Stores-->
-    <get_object_property property="countHoming" player_slot="5" variable="Ship6HomingMax" />
-    <get_object_property property="countNuke" player_slot="5" variable="Ship6NukeMax" />
-    <get_object_property property="countMine" player_slot="5" variable="Ship6MineMax" />
-    <get_object_property property="countEMP" player_slot="5" variable="Ship6EMPMax" />
-    <get_object_property property="countShk" player_slot="5" variable="Ship6ShkMax" />
-    <get_object_property property="countBea" player_slot="5" variable="Ship6BeaMax" />
-    <get_object_property property="countPro" player_slot="5" variable="Ship6ProMax" />
-    <get_object_property property="countTag" player_slot="5" variable="Ship6TagMax" />
-    <!--Set Initial Stores-->
-    <set_variable name="Ship6HomingCurrent" value="Ship6HomingMax" integer="yes" />
-    <set_variable name="Ship6NukeCurrent" value="Ship6NukeMax" integer="yes" />
-    <set_variable name="Ship6MineCurrent" value="Ship6MineMax" integer="yes" />
-    <set_variable name="Ship6EMPCurrent" value="Ship6EMPMax" integer="yes" />
-    <set_variable name="Ship6ShkCurrent" value="Ship6ShkMax" integer="yes" />
-    <set_variable name="Ship6BeaCurrent" value="Ship6BeaMax" integer="yes" />
-    <set_variable name="Ship6ProCurrent" value="Ship6ProMax" integer="yes" />
-    <set_variable name="Ship6TagCurrent" value="Ship6TagMax" integer="yes" />
-    <!--Additional Trackers-->
-    <set_variable name="Ship6 Marines" value="1.0" integer="yes" />
-    <set_variable name="Icarus Status" value="1.0" integer="yes" />
-    <set_variable name="Ship6MarinesMax" value="20.0" integer="yes" />
-    <set_variable name="Ship6Silent" value="0.0" integer="yes" />
-    <set_variable name="Ship6 Status" value="2.0" integer="yes" />
-  </event>
-  <event name="Ship6 Inactive" id_arme="1a816f7e-9864-4be2-93b6-50ea3fbfda37" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
-    <if_variable name="Ship6 Status" comparator="EQUALS" value="1.0" />
-    <if_not_exists player_slot="5" />
-    <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
-    <set_variable name="Ship6 Ready Grid A" value="1.0" integer="yes" />
-    <set_variable name="Ship6 Ready Grid E" value="1.0" integer="yes" />
-    <set_variable name="Ship6 Ready Grid 1" value="1.0" integer="yes" />
-    <set_variable name="Ship6 Ready Grid 5" value="1.0" integer="yes" />
-    <set_variable name="Ship6 Ready Corner A1" value="1.0" integer="yes" />
-    <set_variable name="Ship6 Ready Corner A5" value="1.0" integer="yes" />
-    <set_variable name="Ship6 Ready Corner E1" value="1.0" integer="yes" />
-    <set_variable name="Ship6 Ready Corner E5" value="1.0" integer="yes" />
-    <set_variable name="Ship6 Status" value="4.0" integer="yes" />
-  </event>
-  <event name="Ship7 Active" id_arme="69b6f682-c7a6-43c6-a3f0-4e88cc9dfe28" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
-    <if_variable name="Ship7 Status" comparator="EQUALS" value="1.0" />
-    <if_exists player_slot="6" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <!--Determine Max Stores-->
-    <get_object_property property="countHoming" player_slot="6" variable="Ship7HomingMax" />
-    <get_object_property property="countNuke" player_slot="6" variable="Ship7NukeMax" />
-    <get_object_property property="countMine" player_slot="6" variable="Ship7MineMax" />
-    <get_object_property property="countEMP" player_slot="6" variable="Ship7EMPMax" />
-    <get_object_property property="countShk" player_slot="6" variable="Ship7ShkMax" />
-    <get_object_property property="countBea" player_slot="6" variable="Ship7BeaMax" />
-    <get_object_property property="countPro" player_slot="6" variable="Ship7ProMax" />
-    <get_object_property property="countTag" player_slot="6" variable="Ship7TagMax" />
-    <!--Set Initial Stores-->
-    <set_variable name="Ship7HomingCurrent" value="Ship7HomingMax" integer="yes" />
-    <set_variable name="Ship7NukeCurrent" value="Ship7NukeMax" integer="yes" />
-    <set_variable name="Ship7MineCurrent" value="Ship7MineMax" integer="yes" />
-    <set_variable name="Ship7EMPCurrent" value="Ship7EMPMax" integer="yes" />
-    <set_variable name="Ship7ShkCurrent" value="Ship7ShkMax" integer="yes" />
-    <set_variable name="Ship7BeaCurrent" value="Ship7BeaMax" integer="yes" />
-    <set_variable name="Ship7ProCurrent" value="Ship7ProMax" integer="yes" />
-    <set_variable name="Ship7TagCurrent" value="Ship7TagMax" integer="yes" />
-    <!--Additional Trackers-->
-    <set_variable name="Ship7 Marines" value="1.0" integer="yes" />
-    <set_variable name="Adonis Status" value="1.0" integer="yes" />
-    <set_variable name="Ship7MarinesMax" value="20.0" integer="yes" />
-    <set_variable name="Ship7Silent" value="0.0" integer="yes" />
-    <set_variable name="Ship7 Status" value="2.0" integer="yes" />
-  </event>
-  <event name="Ship7 Inactive" id_arme="66a88483-ddc1-481d-ae95-b454dbea8bbe" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
-    <if_variable name="Ship7 Status" comparator="EQUALS" value="1.0" />
-    <if_not_exists player_slot="6" />
-    <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
-    <set_variable name="Ship7 Ready Grid A" value="1.0" integer="yes" />
-    <set_variable name="Ship7 Ready Grid E" value="1.0" integer="yes" />
-    <set_variable name="Ship7 Ready Grid 1" value="1.0" integer="yes" />
-    <set_variable name="Ship7 Ready Grid 5" value="1.0" integer="yes" />
-    <set_variable name="Ship7 Ready Corner A1" value="1.0" integer="yes" />
-    <set_variable name="Ship7 Ready Corner A5" value="1.0" integer="yes" />
-    <set_variable name="Ship7 Ready Corner E1" value="1.0" integer="yes" />
-    <set_variable name="Ship7 Ready Corner E5" value="1.0" integer="yes" />
-    <set_variable name="Ship7 Status" value="4.0" integer="yes" />
-  </event>
-  <event name="Ship8 Active" id_arme="43751af3-05a7-4fad-b2ce-547b8d9307fc" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
-    <if_variable name="Ship8 Status" comparator="EQUALS" value="1.0" />
-    <if_exists player_slot="7" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <!--Determine Max Stores-->
-    <get_object_property property="countHoming" player_slot="7" variable="Ship8HomingMax" />
-    <get_object_property property="countNuke" player_slot="7" variable="Ship8NukeMax" />
-    <get_object_property property="countMine" player_slot="7" variable="Ship8MineMax" />
-    <get_object_property property="countEMP" player_slot="7" variable="Ship8EMPMax" />
-    <get_object_property property="countShk" player_slot="7" variable="Ship8ShkMax" />
-    <get_object_property property="countBea" player_slot="7" variable="Ship8BeaMax" />
-    <get_object_property property="countPro" player_slot="7" variable="Ship8ProMax" />
-    <get_object_property property="countTag" player_slot="7" variable="Ship8TagMax" />
-    <!--Set Initial Stores-->
-    <set_variable name="Ship8HomingCurrent" value="Ship8HomingMax" integer="yes" />
-    <set_variable name="Ship8NukeCurrent" value="Ship8NukeMax" integer="yes" />
-    <set_variable name="Ship8MineCurrent" value="Ship8MineMax" integer="yes" />
-    <set_variable name="Ship8EMPCurrent" value="Ship8EMPMax" integer="yes" />
-    <set_variable name="Ship8ShkCurrent" value="Ship8ShkMax" integer="yes" />
-    <set_variable name="Ship8BeaCurrent" value="Ship8BeaMax" integer="yes" />
-    <set_variable name="Ship8ProCurrent" value="Ship8ProMax" integer="yes" />
-    <set_variable name="Ship8TagCurrent" value="Ship8TagMax" integer="yes" />
-    <!--Additional Trackers-->
-    <set_variable name="Ship8 Marines" value="1.0" integer="yes" />
-    <set_variable name="Invention Status" value="1.0" integer="yes" />
-    <set_variable name="Ship8MarinesMax" value="20.0" integer="yes" />
-    <set_variable name="Ship8Silent" value="0.0" integer="yes" />
-    <set_variable name="Ship8 Status" value="2.0" integer="yes" />
-  </event>
-  <event name="Ship8 Inactive" id_arme="2faf2564-a12d-4bbb-a251-a19e89fd6860" parent_id_arme="2f04d95e-6b8e-4dca-a553-98bd1bc2f0c9">
-    <if_variable name="Ship8 Status" comparator="EQUALS" value="1.0" />
-    <if_not_exists player_slot="7" />
-    <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
-    <set_variable name="Ship8 Ready Grid A" value="1.0" integer="yes" />
-    <set_variable name="Ship8 Ready Grid E" value="1.0" integer="yes" />
-    <set_variable name="Ship8 Ready Grid 1" value="1.0" integer="yes" />
-    <set_variable name="Ship8 Ready Grid 5" value="1.0" integer="yes" />
-    <set_variable name="Ship8 Ready Corner A1" value="1.0" integer="yes" />
-    <set_variable name="Ship8 Ready Corner A5" value="1.0" integer="yes" />
-    <set_variable name="Ship8 Ready Corner E1" value="1.0" integer="yes" />
-    <set_variable name="Ship8 Ready Corner E5" value="1.0" integer="yes" />
-    <set_variable name="Ship8 Status" value="4.0" integer="yes" />
-  </event>
+  {% endfor %}
   <folder_arme name="Track Ship Status" id_arme="1160c145-db31-4c90-99e1-907d9e1bb8bc" parent_id_arme="da1f4d06-129f-463c-a1e6-d7a4eae746b1" />
   <folder_arme name="Ordnance Tracker" id_arme="b3425a71-9d46-47b4-b88c-60320d9a6e56" parent_id_arme="1160c145-db31-4c90-99e1-907d9e1bb8bc" />
   <folder_arme name="Ship1" id_arme="2c027645-c62e-485b-bf7e-87f3f2140426" parent_id_arme="b3425a71-9d46-47b4-b88c-60320d9a6e56" />
@@ -2270,383 +1972,55 @@
     <set_variable name="Ship8 Status" value="3.0" integer="yes" />
   </event>
   <folder_arme name="Respawned" id_arme="5ad31e48-b16b-44b8-9360-b4f84d22dc71" parent_id_arme="1160c145-db31-4c90-99e1-907d9e1bb8bc" />
-  <event name="Ship1 Respawns" id_arme="801e27e3-85a8-47f6-b4c8-76c8fd84cfe5" parent_id_arme="5ad31e48-b16b-44b8-9360-b4f84d22dc71">
-    <if_variable name="Ship1 Status" comparator="EQUALS" value="3.0" />
-    <if_exists player_slot="0" />
-    <set_side_value value="playerSide" player_slot="0" />
+  {% for ship in util.shipConfigs %}
+  <event name="Ship{{ ship.id }} Respawns">
+    <if_variable name="Ship{{ ship.id }} Status" comparator="EQUALS" value="3.0" />
+    <if_exists player_slot="{{ ship.slot }}" />
+    <set_side_value value="playerSide" player_slot="{{ ship.slot }}" />
     <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <set_object_property property="countHoming" value="Ship1HomingRespawn" player_slot="0" />
-    <set_object_property property="countNuke" value="Ship1NukeRespawn" player_slot="0" />
-    <set_object_property property="countMine" value="Ship1MineRespawn" player_slot="0" />
-    <set_object_property property="countEMP" value="Ship1EMPRespawn" player_slot="0" />
-    <set_object_property property="countShk" value="Ship1ShkRespawn" player_slot="0" />
-    <set_object_property property="countBea" value="Ship1BeaRespawn" player_slot="0" />
-    <set_object_property property="countPro" value="Ship1ProRespawn" player_slot="0" />
-    <set_object_property property="countTag" value="Ship1TagRespawn" player_slot="0" />
-    <set_variable name="Proteus Status" value="1.0" integer="yes" />
-    <set_variable name="Ship1 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship1Silent" value="0.0" integer="yes" />
+    <set_object_property property="countHoming" value="Ship{{ ship.id }}HomingRespawn" player_slot="{{ ship.slot }}" />
+    <set_object_property property="countNuke" value="Ship{{ ship.id }}NukeRespawn" player_slot="{{ ship.slot }}" />
+    <set_object_property property="countMine" value="Ship{{ ship.id }}MineRespawn" player_slot="{{ ship.slot }}" />
+    <set_object_property property="countEMP" value="Ship{{ ship.id }}EMPRespawn" player_slot="{{ ship.slot }}" />
+    <set_object_property property="countShk" value="Ship{{ ship.id }}ShkRespawn" player_slot="{{ ship.slot }}" />
+    <set_object_property property="countBea" value="Ship{{ ship.id }}BeaRespawn" player_slot="{{ ship.slot }}" />
+    <set_object_property property="countPro" value="Ship{{ ship.id }}ProRespawn" player_slot="{{ ship.slot }}" />
+    <set_object_property property="countTag" value="Ship{{ ship.id }}TagRespawn" player_slot="{{ ship.slot }}" />
+    <set_variable name="{{ ship.shuttle }} Status" value="1.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }} Status" value="2.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}Silent" value="0.0" integer="yes" />
   </event>
-  <event name="Ship2 Respawns" id_arme="3c119512-a58a-4355-ad96-a245b8f0274a" parent_id_arme="5ad31e48-b16b-44b8-9360-b4f84d22dc71">
-    <if_variable name="Ship2 Status" comparator="EQUALS" value="3.0" />
-    <if_exists player_slot="1" />
-    <set_side_value value="playerSide" player_slot="1" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <set_object_property property="countHoming" value="Ship2HomingRespawn" player_slot="1" />
-    <set_object_property property="countNuke" value="Ship2NukeRespawn" player_slot="1" />
-    <set_object_property property="countMine" value="Ship2MineRespawn" player_slot="1" />
-    <set_object_property property="countEMP" value="Ship2EMPRespawn" player_slot="1" />
-    <set_object_property property="countShk" value="Ship2ShkRespawn" player_slot="1" />
-    <set_object_property property="countBea" value="Ship2BeaRespawn" player_slot="1" />
-    <set_object_property property="countPro" value="Ship2ProRespawn" player_slot="1" />
-    <set_object_property property="countTag" value="Ship2TagRespawn" player_slot="1" />
-    <set_variable name="Theseus Status" value="1.0" integer="yes" />
-    <set_variable name="Ship2 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship2Silent" value="0.0" integer="yes" />
-  </event>
-  <event name="Ship3 Respawns" id_arme="5940168d-d930-4897-be50-dd934b179af5" parent_id_arme="5ad31e48-b16b-44b8-9360-b4f84d22dc71">
-    <if_variable name="Ship3 Status" comparator="EQUALS" value="3.0" />
-    <if_exists player_slot="2" />
-    <set_side_value value="playerSide" player_slot="2" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <set_object_property property="countHoming" value="Ship3HomingRespawn" player_slot="2" />
-    <set_object_property property="countNuke" value="Ship3NukeRespawn" player_slot="2" />
-    <set_object_property property="countMine" value="Ship3MineRespawn" player_slot="2" />
-    <set_object_property property="countEMP" value="Ship3EMPRespawn" player_slot="2" />
-    <set_object_property property="countShk" value="Ship3ShkRespawn" player_slot="2" />
-    <set_object_property property="countBea" value="Ship3BeaRespawn" player_slot="2" />
-    <set_object_property property="countPro" value="Ship3ProRespawn" player_slot="2" />
-    <set_object_property property="countTag" value="Ship3TagRespawn" player_slot="2" />
-    <set_variable name="Odysseus Status" value="1.0" integer="yes" />
-    <set_variable name="Ship3 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship3Silent" value="0.0" integer="yes" />
-  </event>
-  <event name="Ship4 Respawns" id_arme="29894b0c-fd6b-4a20-b1ee-1a47909272a4" parent_id_arme="5ad31e48-b16b-44b8-9360-b4f84d22dc71">
-    <if_variable name="Ship4 Status" comparator="EQUALS" value="3.0" />
-    <if_exists player_slot="3" />
-    <set_side_value value="playerSide" player_slot="3" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <set_object_property property="countHoming" value="Ship4HomingRespawn" player_slot="3" />
-    <set_object_property property="countNuke" value="Ship4NukeRespawn" player_slot="3" />
-    <set_object_property property="countMine" value="Ship4MineRespawn" player_slot="3" />
-    <set_object_property property="countEMP" value="Ship4EMPRespawn" player_slot="3" />
-    <set_object_property property="countShk" value="Ship4ShkRespawn" player_slot="3" />
-    <set_object_property property="countBea" value="Ship4BeaRespawn" player_slot="3" />
-    <set_object_property property="countPro" value="Ship4ProRespawn" player_slot="3" />
-    <set_object_property property="countTag" value="Ship4TagRespawn" player_slot="3" />
-    <set_variable name="Perseus Status" value="1.0" integer="yes" />
-    <set_variable name="Ship4 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship4Silent" value="0.0" integer="yes" />
-  </event>
-  <event name="Ship5 Respawns" id_arme="bdfc503c-ab8a-4295-92db-ed65e8dafe76" parent_id_arme="5ad31e48-b16b-44b8-9360-b4f84d22dc71">
-    <if_variable name="Ship5 Status" comparator="EQUALS" value="3.0" />
-    <if_exists player_slot="4" />
-    <set_side_value value="playerSide" player_slot="4" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <set_object_property property="countHoming" value="Ship5HomingRespawn" player_slot="4" />
-    <set_object_property property="countNuke" value="Ship5NukeRespawn" player_slot="4" />
-    <set_object_property property="countMine" value="Ship5MineRespawn" player_slot="4" />
-    <set_object_property property="countEMP" value="Ship5EMPRespawn" player_slot="4" />
-    <set_object_property property="countShk" value="Ship5ShkRespawn" player_slot="4" />
-    <set_object_property property="countBea" value="Ship5BeaRespawn" player_slot="4" />
-    <set_object_property property="countPro" value="Ship5ProRespawn" player_slot="4" />
-    <set_object_property property="countTag" value="Ship5TagRespawn" player_slot="4" />
-    <set_variable name="Dionysus Status" value="1.0" integer="yes" />
-    <set_variable name="Ship5 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship5Silent" value="0.0" integer="yes" />
-  </event>
-  <event name="Ship6 Respawns" id_arme="ce1f8a64-8c50-4848-9642-366651df5d64" parent_id_arme="5ad31e48-b16b-44b8-9360-b4f84d22dc71">
-    <if_variable name="Ship6 Status" comparator="EQUALS" value="3.0" />
-    <if_exists player_slot="5" />
-    <set_side_value value="playerSide" player_slot="5" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <set_object_property property="countHoming" value="Ship6HomingRespawn" player_slot="5" />
-    <set_object_property property="countNuke" value="Ship6NukeRespawn" player_slot="5" />
-    <set_object_property property="countMine" value="Ship6MineRespawn" player_slot="5" />
-    <set_object_property property="countEMP" value="Ship6EMPRespawn" player_slot="5" />
-    <set_object_property property="countShk" value="Ship6ShkRespawn" player_slot="5" />
-    <set_object_property property="countBea" value="Ship6BeaRespawn" player_slot="5" />
-    <set_object_property property="countPro" value="Ship6ProRespawn" player_slot="5" />
-    <set_object_property property="countTag" value="Ship6TagRespawn" player_slot="5" />
-    <set_variable name="Icarus Status" value="1.0" integer="yes" />
-    <set_variable name="Ship6 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship6Silent" value="0.0" integer="yes" />
-  </event>
-  <event name="Ship7 Respawns" id_arme="1ffc302f-b362-4eaa-a610-195fbf6b0252" parent_id_arme="5ad31e48-b16b-44b8-9360-b4f84d22dc71">
-    <if_variable name="Ship7 Status" comparator="EQUALS" value="3.0" />
-    <if_exists player_slot="6" />
-    <set_side_value value="playerSide" player_slot="6" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <set_object_property property="countHoming" value="Ship7HomingRespawn" player_slot="6" />
-    <set_object_property property="countNuke" value="Ship7NukeRespawn" player_slot="6" />
-    <set_object_property property="countMine" value="Ship7MineRespawn" player_slot="6" />
-    <set_object_property property="countEMP" value="Ship7EMPRespawn" player_slot="6" />
-    <set_object_property property="countShk" value="Ship7ShkRespawn" player_slot="6" />
-    <set_object_property property="countBea" value="Ship7BeaRespawn" player_slot="6" />
-    <set_object_property property="countPro" value="Ship7ProRespawn" player_slot="6" />
-    <set_object_property property="countTag" value="Ship7TagRespawn" player_slot="6" />
-    <set_variable name="Adonis Status" value="1.0" integer="yes" />
-    <set_variable name="Ship7 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship7Silent" value="0.0" integer="yes" />
-  </event>
-  <event name="Ship8 Respawns" id_arme="992b89d8-fd69-426b-a66a-f6524de7344b" parent_id_arme="5ad31e48-b16b-44b8-9360-b4f84d22dc71">
-    <if_variable name="Ship8 Status" comparator="EQUALS" value="3.0" />
-    <if_exists player_slot="7" />
-    <set_side_value value="playerSide" player_slot="7" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <set_object_property property="countHoming" value="Ship8HomingRespawn" player_slot="7" />
-    <set_object_property property="countNuke" value="Ship8NukeRespawn" player_slot="7" />
-    <set_object_property property="countMine" value="Ship8MineRespawn" player_slot="7" />
-    <set_object_property property="countEMP" value="Ship8EMPRespawn" player_slot="7" />
-    <set_object_property property="countShk" value="Ship8ShkRespawn" player_slot="7" />
-    <set_object_property property="countBea" value="Ship8BeaRespawn" player_slot="7" />
-    <set_object_property property="countPro" value="Ship8ProRespawn" player_slot="7" />
-    <set_object_property property="countTag" value="Ship8TagRespawn" player_slot="7" />
-    <set_variable name="Invention Status" value="1.0" integer="yes" />
-    <set_variable name="Ship8 Status" value="2.0" integer="yes" />
-    <set_variable name="Ship8Silent" value="0.0" integer="yes" />
-  </event>
-  <folder_arme name="Late Spawn" id_arme="fa4ad454-aa24-490a-b2c9-33c8d317e838" parent_id_arme="1160c145-db31-4c90-99e1-907d9e1bb8bc" />
-  <event name="Ship1 Late Spawn" id_arme="90c2cd5f-d28f-4d6d-8131-595a3d9028c3" parent_id_arme="fa4ad454-aa24-490a-b2c9-33c8d317e838">
-    <if_variable name="Ship1 Status" comparator="EQUALS" value="4.0" />
-    <if_exists player_slot="0" />
+  <event name="Ship{{ ship.id }} Late Spawn" id_arme="90c2cd5f-d28f-4d6d-8131-595a3d9028c3" parent_id_arme="fa4ad454-aa24-490a-b2c9-33c8d317e838">
+    <if_variable name="Ship{{ ship.id }} Status" comparator="EQUALS" value="4.0" />
+    <if_exists player_slot="{{ ship.slot }}" />
     <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
     <set_variable name="shipCount" value="shipCount+1" integer="yes" />
     <!--Determine Max Stores-->
-    <get_object_property property="countHoming" player_slot="0" variable="Ship1HomingMax" />
-    <get_object_property property="countNuke" player_slot="0" variable="Ship1NukeMax" />
-    <get_object_property property="countMine" player_slot="0" variable="Ship1MineMax" />
-    <get_object_property property="countEMP" player_slot="0" variable="Ship1EMPMax" />
-    <get_object_property property="countShk" player_slot="0" variable="Ship1ShkMax" />
-    <get_object_property property="countBea" player_slot="0" variable="Ship1BeaMax" />
-    <get_object_property property="countPro" player_slot="0" variable="Ship1ProMax" />
-    <get_object_property property="countTag" player_slot="0" variable="Ship1TagMax" />
+    <get_object_property property="countHoming" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}HomingMax" />
+    <get_object_property property="countNuke" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}NukeMax" />
+    <get_object_property property="countMine" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}MineMax" />
+    <get_object_property property="countEMP" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}EMPMax" />
+    <get_object_property property="countShk" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}ShkMax" />
+    <get_object_property property="countBea" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}BeaMax" />
+    <get_object_property property="countPro" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}ProMax" />
+    <get_object_property property="countTag" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}TagMax" />
     <!--Set Initial Stores-->
-    <set_variable name="Ship1HomingCurrent" value="Ship1HomingMax" integer="yes" />
-    <set_variable name="Ship1NukeCurrent" value="Ship1NukeMax" integer="yes" />
-    <set_variable name="Ship1MineCurrent" value="Ship1MineMax" integer="yes" />
-    <set_variable name="Ship1EMPCurrent" value="Ship1EMPMax" integer="yes" />
-    <set_variable name="Ship1ShkCurrent" value="Ship1ShkMax" integer="yes" />
-    <set_variable name="Ship1BeaCurrent" value="Ship1BeaMax" integer="yes" />
-    <set_variable name="Ship1ProCurrent" value="Ship1ProMax" integer="yes" />
-    <set_variable name="Ship1TagCurrent" value="Ship1TagMax" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}HomingCurrent" value="Ship{{ ship.id }}HomingMax" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}NukeCurrent" value="Ship{{ ship.id }}NukeMax" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}MineCurrent" value="Ship{{ ship.id }}MineMax" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}EMPCurrent" value="Ship{{ ship.id }}EMPMax" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}ShkCurrent" value="Ship{{ ship.id }}ShkMax" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}BeaCurrent" value="Ship{{ ship.id }}BeaMax" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}ProCurrent" value="Ship{{ ship.id }}ProMax" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}TagCurrent" value="Ship{{ ship.id }}TagMax" integer="yes" />
     <!--Additional Trackers-->
-    <set_variable name="Ship1 Marines" value="1.0" integer="yes" />
-    <set_variable name="Proteus Status" value="1.0" integer="yes" />
-    <set_variable name="Ship1MarinesMax" value="20.0" integer="yes" />
-    <set_variable name="Ship1Silent" value="0.0" integer="yes" />
-    <set_variable name="Ship1 Status" value="2.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }} Marines" value="1.0" integer="yes" />
+    <set_variable name="{{ ship.shuttle }} Status" value="1.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}MarinesMax" value="20.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}Silent" value="0.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }} Status" value="2.0" integer="yes" />
   </event>
-  <event name="Ship2 Late Spawn" id_arme="d52c6157-49ea-492f-ad83-4068a2b23a73" parent_id_arme="fa4ad454-aa24-490a-b2c9-33c8d317e838">
-    <if_variable name="Ship2 Status" comparator="EQUALS" value="4.0" />
-    <if_exists player_slot="1" />
-    <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <!--Determine Max Stores-->
-    <get_object_property property="countHoming" player_slot="1" variable="Ship2HomingMax" />
-    <get_object_property property="countNuke" player_slot="1" variable="Ship2NukeMax" />
-    <get_object_property property="countMine" player_slot="1" variable="Ship2MineMax" />
-    <get_object_property property="countEMP" player_slot="1" variable="Ship2EMPMax" />
-    <get_object_property property="countShk" player_slot="1" variable="Ship2ShkMax" />
-    <get_object_property property="countBea" player_slot="1" variable="Ship2BeaMax" />
-    <get_object_property property="countPro" player_slot="1" variable="Ship2ProMax" />
-    <get_object_property property="countTag" player_slot="1" variable="Ship2TagMax" />
-    <!--Set Initial Stores-->
-    <set_variable name="Ship2HomingCurrent" value="Ship2HomingMax" integer="yes" />
-    <set_variable name="Ship2NukeCurrent" value="Ship2NukeMax" integer="yes" />
-    <set_variable name="Ship2MineCurrent" value="Ship2MineMax" integer="yes" />
-    <set_variable name="Ship2EMPCurrent" value="Ship2EMPMax" integer="yes" />
-    <set_variable name="Ship2ShkCurrent" value="Ship2ShkMax" integer="yes" />
-    <set_variable name="Ship2BeaCurrent" value="Ship2BeaMax" integer="yes" />
-    <set_variable name="Ship2ProCurrent" value="Ship2ProMax" integer="yes" />
-    <set_variable name="Ship2TagCurrent" value="Ship2TagMax" integer="yes" />
-    <!--Additional Trackers-->
-    <set_variable name="Ship2 Marines" value="1.0" integer="yes" />
-    <set_variable name="Theseus Status" value="1.0" integer="yes" />
-    <set_variable name="Ship2MarinesMax" value="20.0" integer="yes" />
-    <set_variable name="Ship2Silent" value="0.0" integer="yes" />
-    <set_variable name="Ship2 Status" value="2.0" integer="yes" />
-  </event>
-  <event name="Ship3 Late Spawn" id_arme="390bafd7-c68f-4d66-9362-6f44e98c26b2" parent_id_arme="fa4ad454-aa24-490a-b2c9-33c8d317e838">
-    <if_variable name="Ship3 Status" comparator="EQUALS" value="4.0" />
-    <if_exists player_slot="2" />
-    <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <!--Determine Max Stores-->
-    <get_object_property property="countHoming" player_slot="2" variable="Ship3HomingMax" />
-    <get_object_property property="countNuke" player_slot="2" variable="Ship3NukeMax" />
-    <get_object_property property="countMine" player_slot="2" variable="Ship3MineMax" />
-    <get_object_property property="countEMP" player_slot="2" variable="Ship3EMPMax" />
-    <get_object_property property="countShk" player_slot="2" variable="Ship3ShkMax" />
-    <get_object_property property="countBea" player_slot="2" variable="Ship3BeaMax" />
-    <get_object_property property="countPro" player_slot="2" variable="Ship3ProMax" />
-    <get_object_property property="countTag" player_slot="2" variable="Ship3TagMax" />
-    <!--Set Initial Stores-->
-    <set_variable name="Ship3HomingCurrent" value="Ship3HomingMax" integer="yes" />
-    <set_variable name="Ship3NukeCurrent" value="Ship3NukeMax" integer="yes" />
-    <set_variable name="Ship3MineCurrent" value="Ship3MineMax" integer="yes" />
-    <set_variable name="Ship3EMPCurrent" value="Ship3EMPMax" integer="yes" />
-    <set_variable name="Ship3ShkCurrent" value="Ship3ShkMax" integer="yes" />
-    <set_variable name="Ship3BeaCurrent" value="Ship3BeaMax" integer="yes" />
-    <set_variable name="Ship3ProCurrent" value="Ship3ProMax" integer="yes" />
-    <set_variable name="Ship3TagCurrent" value="Ship3TagMax" integer="yes" />
-    <!--Additional Trackers-->
-    <set_variable name="Ship3 Marines" value="1.0" integer="yes" />
-    <set_variable name="Odysseus Status" value="1.0" integer="yes" />
-    <set_variable name="Ship3MarinesMax" value="20.0" integer="yes" />
-    <set_variable name="Ship3Silent" value="0.0" integer="yes" />
-    <set_variable name="Ship3 Status" value="2.0" integer="yes" />
-  </event>
-  <event name="Ship4 Late Spawn" id_arme="d002ff9e-edab-4ae4-a9a2-f18efa3dbbcf" parent_id_arme="fa4ad454-aa24-490a-b2c9-33c8d317e838">
-    <if_variable name="Ship4 Status" comparator="EQUALS" value="4.0" />
-    <if_exists player_slot="3" />
-    <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <!--Determine Max Stores-->
-    <get_object_property property="countHoming" player_slot="3" variable="Ship4HomingMax" />
-    <get_object_property property="countNuke" player_slot="3" variable="Ship4NukeMax" />
-    <get_object_property property="countMine" player_slot="3" variable="Ship4MineMax" />
-    <get_object_property property="countEMP" player_slot="3" variable="Ship4EMPMax" />
-    <get_object_property property="countShk" player_slot="3" variable="Ship4ShkMax" />
-    <get_object_property property="countBea" player_slot="3" variable="Ship4BeaMax" />
-    <get_object_property property="countPro" player_slot="3" variable="Ship4ProMax" />
-    <get_object_property property="countTag" player_slot="3" variable="Ship4TagMax" />
-    <!--Set Initial Stores-->
-    <set_variable name="Ship4HomingCurrent" value="Ship4HomingMax" integer="yes" />
-    <set_variable name="Ship4NukeCurrent" value="Ship4NukeMax" integer="yes" />
-    <set_variable name="Ship4MineCurrent" value="Ship4MineMax" integer="yes" />
-    <set_variable name="Ship4EMPCurrent" value="Ship4EMPMax" integer="yes" />
-    <set_variable name="Ship4ShkCurrent" value="Ship4ShkMax" integer="yes" />
-    <set_variable name="Ship4BeaCurrent" value="Ship4BeaMax" integer="yes" />
-    <set_variable name="Ship4ProCurrent" value="Ship4ProMax" integer="yes" />
-    <set_variable name="Ship4TagCurrent" value="Ship4TagMax" integer="yes" />
-    <!--Additional Trackers-->
-    <set_variable name="Ship4 Marines" value="1.0" integer="yes" />
-    <set_variable name="Perseus Status" value="1.0" integer="yes" />
-    <set_variable name="Ship4MarinesMax" value="20.0" integer="yes" />
-    <set_variable name="Ship4Silent" value="0.0" integer="yes" />
-    <set_variable name="Ship4 Status" value="2.0" integer="yes" />
-  </event>
-  <event name="Ship5 Late Spawn" id_arme="17959c2f-0ef8-4bdd-9019-46f6d48b3b20" parent_id_arme="fa4ad454-aa24-490a-b2c9-33c8d317e838">
-    <if_variable name="Ship5 Status" comparator="EQUALS" value="4.0" />
-    <if_exists player_slot="4" />
-    <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <!--Determine Max Stores-->
-    <get_object_property property="countHoming" player_slot="4" variable="Ship5HomingMax" />
-    <get_object_property property="countNuke" player_slot="4" variable="Ship5NukeMax" />
-    <get_object_property property="countMine" player_slot="4" variable="Ship5MineMax" />
-    <get_object_property property="countEMP" player_slot="4" variable="Ship5EMPMax" />
-    <get_object_property property="countShk" player_slot="4" variable="Ship5ShkMax" />
-    <get_object_property property="countBea" player_slot="4" variable="Ship5BeaMax" />
-    <get_object_property property="countPro" player_slot="4" variable="Ship5ProMax" />
-    <get_object_property property="countTag" player_slot="4" variable="Ship5TagMax" />
-    <!--Set Initial Stores-->
-    <set_variable name="Ship5HomingCurrent" value="Ship5HomingMax" integer="yes" />
-    <set_variable name="Ship5NukeCurrent" value="Ship5NukeMax" integer="yes" />
-    <set_variable name="Ship5MineCurrent" value="Ship5MineMax" integer="yes" />
-    <set_variable name="Ship5EMPCurrent" value="Ship5EMPMax" integer="yes" />
-    <set_variable name="Ship5ShkCurrent" value="Ship5ShkMax" integer="yes" />
-    <set_variable name="Ship5BeaCurrent" value="Ship5BeaMax" integer="yes" />
-    <set_variable name="Ship5ProCurrent" value="Ship5ProMax" integer="yes" />
-    <set_variable name="Ship5TagCurrent" value="Ship5TagMax" integer="yes" />
-    <!--Additional Trackers-->
-    <set_variable name="Ship5 Marines" value="1.0" integer="yes" />
-    <set_variable name="Dionysus Status" value="1.0" integer="yes" />
-    <set_variable name="Ship5MarinesMax" value="20.0" integer="yes" />
-    <set_variable name="Ship5Silent" value="0.0" integer="yes" />
-    <set_variable name="Ship5 Status" value="2.0" integer="yes" />
-  </event>
-  <event name="Ship6 Late Spawn" id_arme="86acd42b-d9e2-44e2-971b-e4206acd2168" parent_id_arme="fa4ad454-aa24-490a-b2c9-33c8d317e838">
-    <if_variable name="Ship6 Status" comparator="EQUALS" value="4.0" />
-    <if_exists player_slot="5" />
-    <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <!--Determine Max Stores-->
-    <get_object_property property="countHoming" player_slot="5" variable="Ship6HomingMax" />
-    <get_object_property property="countNuke" player_slot="5" variable="Ship6NukeMax" />
-    <get_object_property property="countMine" player_slot="5" variable="Ship6MineMax" />
-    <get_object_property property="countEMP" player_slot="5" variable="Ship6EMPMax" />
-    <get_object_property property="countShk" player_slot="5" variable="Ship6ShkMax" />
-    <get_object_property property="countBea" player_slot="5" variable="Ship6BeaMax" />
-    <get_object_property property="countPro" player_slot="5" variable="Ship6ProMax" />
-    <get_object_property property="countTag" player_slot="5" variable="Ship6TagMax" />
-    <!--Set Initial Stores-->
-    <set_variable name="Ship6HomingCurrent" value="Ship6HomingMax" integer="yes" />
-    <set_variable name="Ship6NukeCurrent" value="Ship6NukeMax" integer="yes" />
-    <set_variable name="Ship6MineCurrent" value="Ship6MineMax" integer="yes" />
-    <set_variable name="Ship6EMPCurrent" value="Ship6EMPMax" integer="yes" />
-    <set_variable name="Ship6ShkCurrent" value="Ship6ShkMax" integer="yes" />
-    <set_variable name="Ship6BeaCurrent" value="Ship6BeaMax" integer="yes" />
-    <set_variable name="Ship6ProCurrent" value="Ship6ProMax" integer="yes" />
-    <set_variable name="Ship6TagCurrent" value="Ship6TagMax" integer="yes" />
-    <!--Additional Trackers-->
-    <set_variable name="Ship6 Marines" value="1.0" integer="yes" />
-    <set_variable name="Icarus Status" value="1.0" integer="yes" />
-    <set_variable name="Ship6MarinesMax" value="20.0" integer="yes" />
-    <set_variable name="Ship6Silent" value="0.0" integer="yes" />
-    <set_variable name="Ship6 Status" value="2.0" integer="yes" />
-  </event>
-  <event name="Ship7 Late Spawn" id_arme="bef7ee5d-35e4-4e3f-b4e5-5e5f2ad0ab88" parent_id_arme="fa4ad454-aa24-490a-b2c9-33c8d317e838">
-    <if_variable name="Ship7 Status" comparator="EQUALS" value="4.0" />
-    <if_exists player_slot="6" />
-    <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <!--Determine Max Stores-->
-    <get_object_property property="countHoming" player_slot="6" variable="Ship7HomingMax" />
-    <get_object_property property="countNuke" player_slot="6" variable="Ship7NukeMax" />
-    <get_object_property property="countMine" player_slot="6" variable="Ship7MineMax" />
-    <get_object_property property="countEMP" player_slot="6" variable="Ship7EMPMax" />
-    <get_object_property property="countShk" player_slot="6" variable="Ship7ShkMax" />
-    <get_object_property property="countBea" player_slot="6" variable="Ship7BeaMax" />
-    <get_object_property property="countPro" player_slot="6" variable="Ship7ProMax" />
-    <get_object_property property="countTag" player_slot="6" variable="Ship7TagMax" />
-    <!--Set Initial Stores-->
-    <set_variable name="Ship7HomingCurrent" value="Ship7HomingMax" integer="yes" />
-    <set_variable name="Ship7NukeCurrent" value="Ship7NukeMax" integer="yes" />
-    <set_variable name="Ship7MineCurrent" value="Ship7MineMax" integer="yes" />
-    <set_variable name="Ship7EMPCurrent" value="Ship7EMPMax" integer="yes" />
-    <set_variable name="Ship7ShkCurrent" value="Ship7ShkMax" integer="yes" />
-    <set_variable name="Ship7BeaCurrent" value="Ship7BeaMax" integer="yes" />
-    <set_variable name="Ship7ProCurrent" value="Ship7ProMax" integer="yes" />
-    <set_variable name="Ship7TagCurrent" value="Ship7TagMax" integer="yes" />
-    <!--Additional Trackers-->
-    <set_variable name="Ship7 Marines" value="1.0" integer="yes" />
-    <set_variable name="Adonis Status" value="1.0" integer="yes" />
-    <set_variable name="Ship7MarinesMax" value="20.0" integer="yes" />
-    <set_variable name="Ship7Silent" value="0.0" integer="yes" />
-    <set_variable name="Ship7 Status" value="2.0" integer="yes" />
-  </event>
-  <event name="Ship8 Late Spawn" id_arme="8b34d00f-7c5a-4ee2-82a3-dc81c7ee8eb5" parent_id_arme="fa4ad454-aa24-490a-b2c9-33c8d317e838">
-    <if_variable name="Ship8 Status" comparator="EQUALS" value="4.0" />
-    <if_exists player_slot="7" />
-    <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
-    <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <!--Determine Max Stores-->
-    <get_object_property property="countHoming" player_slot="7" variable="Ship8HomingMax" />
-    <get_object_property property="countNuke" player_slot="7" variable="Ship8NukeMax" />
-    <get_object_property property="countMine" player_slot="7" variable="Ship8MineMax" />
-    <get_object_property property="countEMP" player_slot="7" variable="Ship8EMPMax" />
-    <get_object_property property="countShk" player_slot="7" variable="Ship8ShkMax" />
-    <get_object_property property="countBea" player_slot="7" variable="Ship8BeaMax" />
-    <get_object_property property="countPro" player_slot="7" variable="Ship8ProMax" />
-    <get_object_property property="countTag" player_slot="7" variable="Ship8TagMax" />
-    <!--Set Initial Stores-->
-    <set_variable name="Ship8HomingCurrent" value="Ship8HomingMax" integer="yes" />
-    <set_variable name="Ship8NukeCurrent" value="Ship8NukeMax" integer="yes" />
-    <set_variable name="Ship8MineCurrent" value="Ship8MineMax" integer="yes" />
-    <set_variable name="Ship8EMPCurrent" value="Ship8EMPMax" integer="yes" />
-    <set_variable name="Ship8ShkCurrent" value="Ship8ShkMax" integer="yes" />
-    <set_variable name="Ship8BeaCurrent" value="Ship8BeaMax" integer="yes" />
-    <set_variable name="Ship8ProCurrent" value="Ship8ProMax" integer="yes" />
-    <set_variable name="Ship8TagCurrent" value="Ship8TagMax" integer="yes" />
-    <!--Additional Trackers-->
-    <set_variable name="Ship8 Marines" value="1.0" integer="yes" />
-    <set_variable name="Invention Status" value="1.0" integer="yes" />
-    <set_variable name="Ship8MarinesMax" value="20.0" integer="yes" />
-    <set_variable name="Ship8Silent" value="0.0" integer="yes" />
-    <set_variable name="Ship8 Status" value="2.0" integer="yes" />
-  </event>
+  {% endfor %}
   <folder_arme name="Marine Complement" id_arme="e4178e64-948a-46ad-b088-53887f2ffc29" parent_id_arme="da1f4d06-129f-463c-a1e6-d7a4eae746b1" />
   <folder_arme name="Ship1" id_arme="3c6f84c6-53fa-4242-8c00-80cc7dda3f50" parent_id_arme="e4178e64-948a-46ad-b088-53887f2ffc29" />
   <event name="Add Marine Complement" id_arme="43ca4cd1-f396-435e-ab59-44493e228b2d" parent_id_arme="3c6f84c6-53fa-4242-8c00-80cc7dda3f50">

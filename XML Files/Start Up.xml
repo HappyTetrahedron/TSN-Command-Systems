@@ -1,3 +1,4 @@
+  {% import 'Utils.xml' as util %}
   <start name="Start" id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4">
     <!--Configurations-->
     <set_variable name="Clear" value="11.0" integer="yes" />
@@ -39,14 +40,9 @@
     <set_variable name="ShuttleSelect" value="0.0" integer="yes" />
     <set_variable name="OperationType" value="0.0" integer="yes" />
     <!--Adding Shuttles-->
-    <set_player_carried_type player_slot="0" bay_slot="0" hullID="102" name="Proteus" />
-    <set_player_carried_type player_slot="1" bay_slot="0" hullID="102" name="Theseus" />
-    <set_player_carried_type player_slot="2" bay_slot="0" hullID="102" name="Odysseus" />
-    <set_player_carried_type player_slot="4" bay_slot="0" hullID="102" name="Dionysus" />
-    <set_player_carried_type player_slot="3" bay_slot="0" hullID="102" name="Perseus" />
-    <set_player_carried_type player_slot="5" bay_slot="0" hullID="102" name="Icarus" />
-    <set_player_carried_type player_slot="6" bay_slot="0" hullID="102" name="Adonis" />
-    <set_player_carried_type player_slot="7" bay_slot="0" hullID="102" name="Invention" />
+    {% for ship in util.shipConfigs %}
+      <set_player_carried_type player_slot="{{ ship.slot }}" bay_slot="0" hullID="102" name="{{ ship.shuttle }}" />
+    {% endfor %}
     <!--Sandbox Activation-->
     <set_variable name="GM Mode" value="0.0" integer="yes" />
     <set_variable name="GM Controls" value="0.0" integer="yes" />

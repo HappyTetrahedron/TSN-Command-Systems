@@ -1,4 +1,5 @@
 {% import 'Utils.xml' as util %}
+{% import 'Comms.xml' as comms %}
 
 {# Ship-to-ship RVs #}
 {% for ship in util.shipConfigs %}
@@ -67,7 +68,7 @@
       <if_timer_finished name="ShuttleOps" />
       <if_variable name="{{ ship.shuttle }} Status" comparator="EQUALS" value="2.0" />
       <if_variable name="{{ ship.shuttle }}CurrentCargo" comparator="LESS" value="{{ ship.shuttle }}MaxCargo" />
-      <if_variable name="Ship{{ ship.id }}MarineTeams" comparator="LESS_EQUAL" value="0.0" />
+      <if_variable name="Ship{{ ship.id }}{{ cargo.variable }}" comparator="LESS_EQUAL" value="0.0" />
       <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">Cancelled - No {{ cargo.name | lower }} available.</incoming_comms_text>
       <set_variable name="ShuttleSelect" value="0.0" integer="yes" />
       <set_variable name="OperationType" value="0.0" integer="yes" />
@@ -78,7 +79,7 @@
       <if_timer_finished name="ShuttleOps" />
       <if_variable name="{{ ship.shuttle }} Status" comparator="EQUALS" value="2.0" />
       <if_variable name="{{ ship.shuttle }}CurrentCargo" comparator="LESS" value="{{ ship.shuttle }}MaxCargo" />
-      <if_variable name="Ship{{ ship.id }}MarineTeams" comparator="GREATER" value="0.0" />
+      <if_variable name="Ship{{ ship.id }}{{ cargo.variable }}" comparator="GREATER" value="0.0" />
       <set_variable name="ShuttleSelect" value="0.0" integer="yes" />
       <set_variable name="OperationType" value="0.0" integer="yes" />
       <warning_popup_message message="{{ cargo.name }} Ready" consoles="MCF" player_slot="{{ ship.slot }}" />
@@ -86,7 +87,7 @@
       <set_variable name="{{ ship.shuttle }}CurrentCargo" value="{{ ship.shuttle }}CurrentCargo+1" integer="yes" />
       <set_variable name="{{ ship.shuttle }}CargoType" value="{{ cargo.id }}.0" integer="yes" />
       <!--Modify Ship Inventory-->
-      <set_variable name="Ship{{ ship.id }}MarineTeams" value="Ship{{ ship.id }}MarineTeams-1" integer="yes" />
+      <set_variable name="Ship{{ ship.id }}{{ cargo.variable }}" value="Ship{{ ship.id }}{{ cargo.variable }}-1" integer="yes" />
     </event>
     <event name="Unload {{ cargo.name }}">
       <if_variable name="ShuttleSelect" comparator="EQUALS" value="{{ ship.id }}" />
@@ -102,7 +103,7 @@
       <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">{{ cargo.name }} unloaded.</incoming_comms_text>
       <set_variable name="{{ ship.shuttle }}CargoType" value="0.0" integer="yes" />
       <!--Modify Ship Inventory-->
-      <set_variable name="Ship{{ ship.id }}MarineTeams" value="Ship{{ ship.id }}MarineTeams+1" integer="yes" />
+      <set_variable name="Ship{{ ship.id }}{{ cargo.variable }}" value="Ship{{ ship.id }}{{ cargo.variable }}+1" integer="yes" />
     </event>
   {% endfor %}
   <event name="Abort">
@@ -199,6 +200,10 @@
 {% endmacro %}
 
 {% macro shuttleUnload(name, cargoType) %}
+  {% call(ship) comms.onButtonPress("Shuttle Status") %}
+    <if_variable name="{{ ship.shuttle }}CargoType" comparator="EQUALS" value="{{ cargoType }}" />
+      <incoming_comms_text from="CHANNEL {{ ship.id }}" sideValue="playerSide" type="STATUS">{{ ship.shuttle }} has {{ name | lower }} loaded.</incoming_comms_text>
+  {% endcall %}
   {% for ship in util.shipConfigs %}
     <event name="Unload {{ name }}">
       <if_variable name="ShuttleSelect" comparator="EQUALS" value="{{ ship.id }}" />
@@ -219,8 +224,10 @@
 {% endmacro %}
 
 {# Life pods #}
-{% call(ship) shuttlePickup("Life Pod", 3) %}
+{% call(ship) shuttlePickup("Life Pod", 30) %}
   <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">Survivors are aboard. Minor injuries to some.</incoming_comms_text>
+{% endcall %}
+{% call(ship) shuttleUnload("Survivors", 30) %}
 {% endcall %}
 
 {# Weapon crates #}

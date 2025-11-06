@@ -75,8 +75,8 @@
     <set_variable name="OperationType" value="0.0" integer="yes" />
     <warning_popup_message message="Deployable mine field loaded." consoles="MCF" player_slot="0" />
     <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">Deployable mine field loaded and armed. Deploy timer is {{ timer }} seconds.</incoming_comms_text>
-    <set_variable name="ProteusCurrentCargo" value="ProteusCurrentCargo+1" integer="yes" />
-    <set_variable name="ProteusCargoType" value="{{ mineCargo }}.0" integer="yes" />
+    <set_variable name="{{ ship.shuttle }}CurrentCargo" value="{{ ship.shuttle }}CurrentCargo+1" integer="yes" />
+    <set_variable name="{{ ship.shuttle }}CargoType" value="{{ mineCargo }}.0" integer="yes" />
     <!--Modify Ship Inventory-->
     <set_variable name="Module_{{ moduleName }}_Ship{{ ship.id }}_Used" value="1.0" integer="yes" />
   </event>
