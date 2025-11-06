@@ -200,24 +200,7 @@ def get_config_options():
         "modules": {
             "friendly_name": "Ship modules",
             "type": "multi-select",
-            "options": [
-                {
-                    "name": "ClusterMine",
-                    "friendly_name": "Cluster mines",
-                },
-                {
-                    "name": "Decoy",
-                    "friendly_name": "Decoy buoys",
-                },
-                {
-                    "name": "ShieldEnhancer",
-                    "friendly_name": "Shield enhancers",
-                },
-                {
-                    "name": "KamikazeMine",
-                    "friendly_name": "Kamikaze Bombs",
-                },
-            ]
+            "options": get_modules(),
         }
     }
 
