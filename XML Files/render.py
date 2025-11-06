@@ -21,11 +21,11 @@ def retrieve(key):
 env = {
     "extensions": [
         "TokenSystem",
-        "HazardPainter",
+        "VerdantFleet",
         "NebulaEffects",
     ],
     "maps": [
-        "Drenan",
+        "Acantha",
         "Ibroan",
         "Erowis",
     ],
