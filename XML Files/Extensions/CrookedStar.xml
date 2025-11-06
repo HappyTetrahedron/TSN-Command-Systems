@@ -1,0 +1,44 @@
+
+{% call() util.createConditionalMenu("CrookedStarSpawn", {
+    "GM_Menu_Selector": "2",
+    "GM_SpawnMenu_Selector": "8",
+}) %}
+    <set_gm_button text="Skull Pirates\+CrookedStar" />
+{% endcall %}
+{% call() util.destroyConditionalMenu("CrookedStarSpawn", {
+    "GM_Menu_Selector": "2",
+    "GM_SpawnMenu_Selector": "8",
+}) %}
+    <clear_gm_button text="Skull Pirates\+CrookedStar" />
+{% endcall %}
+
+
+<event name="Crooked Star" id_arme="7cbbe37d-6ec1-46fe-808c-f304306ad0a4" parent_id_arme="0fc9dd71-2783-4713-a773-bca1116e079d">
+  <if_gm_button text="Skull Pirates\+CrookedStar" />
+  <create type="enemy" use_gm_position="" angle="0" name="Crooked Star" hullID="7107" sideValue="SideValue" fleetnumber="-1" />
+  <clear_ai name="Crooked Star" />
+  <set_object_property property="surrenderChance" value="0" name="Crooked Star" />
+  <add_ai type="SPCL_AI" name="Crooked Star" />
+  <add_ai type="TRY_TO_BECOME_LEADER" name="Crooked Star" />
+  <add_ai type="CHASE_PLAYER" name="Crooked Star" />
+  <add_ai type="CHASE_STATION" value1="1000" name="Crooked Star" />
+  <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="Crooked Star" />
+  <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="Crooked Star" />
+  <add_ai type="CHASE_ANGER" name="Crooked Star" />
+  <add_ai type="LEADER_LEADS" name="Crooked Star" />
+  <add_ai type="FOLLOW_LEADER" name="Crooked Star" />
+  <set_special name="Crooked Star" clear="yes" ability="Stealth" />
+  <set_special name="Crooked Star" clear="yes" ability="LowVis" />
+  <set_special name="Crooked Star" clear="yes" ability="Cloak" />
+  <set_special name="Crooked Star" ability="HET" />
+  <set_special name="Crooked Star" ability="Warp" />
+  <set_special name="Crooked Star" clear="yes" ability="Teleport" />
+  <set_special name="Crooked Star" ability="Tractor" />
+  <set_special name="Crooked Star" clear="yes" ability="Drones" />
+  <set_special name="Crooked Star" clear="yes" ability="AntiMine" />
+  <set_special name="Crooked Star" clear="yes" ability="AntiTorp" />
+  <set_special name="Crooked Star" ability="ShldDrain" />
+  <set_special name="Crooked Star" clear="yes" ability="ShldVamp" />
+  <set_special name="Crooked Star" clear="yes" ability="TeleBack" />
+  <set_special name="Crooked Star" ability="ShldReset" />
+</event>

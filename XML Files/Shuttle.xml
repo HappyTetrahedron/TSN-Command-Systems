@@ -243,3 +243,47 @@
   <addto_object_property property="countMine" value="2.0" player_slot="{{ ship.slot }}" />
   <addto_object_property property="countShk" value="7.0" player_slot="{{ ship.slot }}" />
 {% endcall %}
+
+{# Black boxes #}
+{% for ship in util.shipConfigs %}
+  {% for id in range(1, 6) %}
+    <event name="Black Box {{ id }} collection {{ ship.shuttle }}">
+    <if_exists name="* {{ id }}" />
+    <if_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" comparator="EQUALS" value="0.0" />
+    <if_distance name1="{{ ship.shuttle }}" name2="* {{ id }}" comparator="LESS" value="200.0" />
+    <if_object_property property="warpState" name="{{ ship.shuttle }}" comparator="LESS" value="1.0" />
+    <incoming_comms_text from="System">Data recorder detected.^Downloading data......</incoming_comms_text>
+    <warning_popup_message message="Downloading Data ..." consoles="CF">Downloading data......</warning_popup_message>
+    <set_timer name="Black Box {{ id }}" seconds="20" />
+    <set_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" value="1.0" integer="yes" />
+  </event>
+  <event name="{{ ship.shuttle }} leaves (Warp)">
+    <if_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" comparator="EQUALS" value="1.0" />
+    <if_object_property property="warpState" name="{{ ship.shuttle }}" comparator="GREATER" value="1.0" />
+    <set_timer name="Black Box {{ id }}" seconds="2" />
+    <set_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" value="2.0" integer="yes" />
+  </event>
+  <event name="{{ ship.shuttle }} leaves (Distance)">
+    <if_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" comparator="EQUALS" value="1.0" />
+    <if_distance name1="{{ ship.shuttle }}" name2="* {{ id }}" comparator="GREATER" value="200.0" />
+    <set_timer name="Black Box {{ id }}" seconds="2" />
+    <set_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" value="2.0" integer="yes" />
+  </event>
+  <event name="{{ ship.shuttle }} Fails">
+    <if_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="Black Box {{ id }}" />
+    <incoming_comms_text from="System">Connection lost....^Data transfer failed.</incoming_comms_text>
+    <set_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" value="0.0" integer="yes" />
+  </event>
+  <event name="{{ ship.shuttle }} Succeeds">
+    <if_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Black Box {{ id }}" />
+    <destroy name="* {{ id }}" />
+    <incoming_comms_text from="System">Download complete.^Data retrieved.^Transmitting to Command and Control....</incoming_comms_text>
+    <warning_popup_message message="Download complete." consoles="CF">Downloading data......</warning_popup_message>
+    <set_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" value="0.0" integer="yes" />
+  </event>
+  {% endfor %}
+{% endfor %}
+
+2579

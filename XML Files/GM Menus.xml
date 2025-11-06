@@ -863,7 +863,7 @@
     <set_gm_button text="Docking Port\(Standard)" />
     <set_gm_button text="Other\Lifepod" />
     <set_gm_button text="Other\WeaponCrate" />
-    <set_gm_button text="Other\Black Box" />
+    <set_gm_button text="Other\Blackbox" />
   {% endcall %}
 
   {% call destroySpawnMenu("SpawnStatic", 12) %}
@@ -876,7 +876,7 @@
     <clear_gm_button text="Docking Port\(Standard)" />
     <clear_gm_button text="Other\Lifepod" />
     <clear_gm_button text="Other\WeaponCrate" />
-    <clear_gm_button text="Other\Black Box" />
+    <clear_gm_button text="Other\Blackbox" />
   {% endcall %}
 
 
