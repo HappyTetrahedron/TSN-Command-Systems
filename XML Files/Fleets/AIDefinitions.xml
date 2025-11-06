@@ -1,5 +1,4 @@
-
-{% set FleetLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
+{% import 'Utils.xml' as util %}
 
 {%- macro nn(name) -%}{% if name == "GM" %}use_gm_selection=""{% else %}name="{{ name }}"{% endif %}{%- endmacro -%}
 
@@ -425,7 +424,7 @@
       <set_gm_button text="Reassigning AI" x="230" y="415" h="60" w="150" />
       <set_variable name="ReassignDigits" value="1.0" integer="yes" />
     </event>
-    {% for letter in FleetLetters %}
+    {% for letter in util.FleetLetters %}
       <event name="Reassign {{ ai.name }} AI {{ letter }}">
         <if_variable name="ReassignLetter" comparator="EQUALS" value="{{ loop.index }}" />
         <if_variable name="ReassignAI" comparator="EQUALS" value="{{ id }}.0" />

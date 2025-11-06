@@ -1,0 +1,27 @@
+{# Handlers for setting random coordinates, direction, and multiplier. Need to be included before spawn / AI config events. #}
+  <event name="Random Coordinates" id_arme="7c7265dd-f0de-4d29-9f42-9f23d1e09a4e" parent_id_arme="e5a3ec26-6d23-4bb8-9698-be3f70d38947">
+    <if_variable name="Random Coordinates" comparator="EQUALS" value="1.0" />
+    <set_variable name="GridACoordinatesZ" randomIntLow="20" randomIntHigh="300" />
+    <set_variable name="GridACoordinatesX" randomIntLow="10" randomIntHigh="990" />
+    <set_variable name="GridECoordinatesZ" randomIntLow="700" randomIntHigh="970" />
+    <set_variable name="GridECoordinatesX" randomIntLow="10" randomIntHigh="990" />
+    <set_variable name="Grid1CoordinatesX" randomIntLow="700" randomIntHigh="970" />
+    <set_variable name="Grid1CoordinatesZ" randomIntLow="10" randomIntHigh="990" />
+    <set_variable name="Grid5CoordinatesX" randomIntLow="20" randomIntHigh="300" />
+    <set_variable name="Grid5CoordinatesZ" randomIntLow="10" randomIntHigh="990" />
+    <set_variable name="RandomCoordinateX" randomIntLow="20" randomIntHigh="980" />
+    <set_variable name="RandomCoordinateZ" randomIntLow="20" randomIntHigh="980" />
+    <set_variable name="Random Coordinates" value="0.0" integer="yes" />
+  </event>
+  <event name="Random Direction" id_arme="da8304a5-e55d-4f22-870c-128c2d0850ad" parent_id_arme="e5a3ec26-6d23-4bb8-9698-be3f70d38947">
+    <if_variable name="Random Direction" comparator="EQUALS" value="1.0" />
+    <set_variable name="randX" randomIntLow="0" randomIntHigh="100000" />
+    <set_variable name="randZ" randomIntLow="0" randomIntHigh="100000" />
+    <set_variable name="Degrees" randomIntLow="1" randomIntHigh="360" />
+    <set_variable name="Random Direction" value="0.0" integer="yes" />
+  </event>
+  <event name="Random Multiplier" id_arme="ad80a078-9de4-42f6-93c9-99969c407ad7" parent_id_arme="e5a3ec26-6d23-4bb8-9698-be3f70d38947">
+    <if_variable name="Random Multiplier" comparator="EQUALS" value="1.0" />
+    <set_variable name="randMult" randomIntLow="1" randomIntHigh="5" integer="yes" />
+    <set_variable name="Random Multiplier" value="0.0" integer="yes" />
+  </event>

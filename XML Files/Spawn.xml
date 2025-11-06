@@ -123,6 +123,7 @@
 
 {% macro createPickuppable(prefix, button, counter) %}
   {% do track("spawn12", "Other\\" + button) %}
+  {% do track("pickup", prefix) %}
   <event name="Activate" id_arme="f5e538f7-6b37-41ec-8973-cc871655e6bf" parent_id_arme="d1f2a3f4-0b1e-4741-ae53-7b1b27581618">
     <if_gm_button text="Other\{{ button }}" />
     <set_variable name="Spawn_{{ prefix }}" value="1.0" integer="yes" />

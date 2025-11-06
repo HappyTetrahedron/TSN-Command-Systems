@@ -1272,9 +1272,7 @@
     <clear_gm_button text="AI Off" />
     <set_gm_button text="AI On" x="40" y="380" h="30" w="50" />
     <!--Group Selection Menu-->
-    <set_gm_button text="Target:" x="40" y="415" h="28" w="60" />
-    <set_gm_button text="Grp     GM" x="100" y="415" h="28" w="50" />
-    <set_gm_button text="Target SWCH" x="155" y="415" h="28" w="50" />
+    <set_variable name="TGrpPicker_Should_Show" value="1.0" integer="yes" />
     <!--Direction Menu-->
     <set_gm_button text="0   /\" x="70" y="510" h="28" w="28" />
     <set_gm_button text="45   //" x="100" y="510" h="28" w="28" />
@@ -1288,7 +1286,7 @@
     <set_gm_button text="Speed -0.6" x="40" y="600" h="28" w="40" />
     <set_gm_button text="GrpToGM" x="40" y="480" h="28" w="88" />
     <set_gm_button text="Del Grp" x="40" y="630" h="28" w="88" />
-    <set_gm_button text="Switch Side" x="40" y="660" h="28" w="88" />
+    <set_variable name="SwSidePicker_Should_Show" value="1.0" integer="yes" />
     <set_gm_button text="AI Cmds Off" x="140" y="480" h="28" w="90" />
     <set_variable name="AIMenu_Button_Shown" value="1.0" integer="yes" />
     <!--Set Key Variables-->
@@ -1321,40 +1319,9 @@
   {% call destroySubMenu("AIMenu") %}
     <!--Target Select Buttons-->
     <set_variable name="GM_Submenu_AICommands_ShouldShow" value="0.0" integer="yes" />
-    <!-- Remove legacy side picker and group letter picker -->
-    <set_variable name="CycleAISide" value="2.0" integer="yes" />
-    <set_variable name="CycleAIMenu" value="2.0" integer="yes" />
     <clear_gm_button text="AI On" />
     <set_gm_button text="AI Off" x="40" y="380" h="30" w="50" />
-    <clear_gm_button text="Target:" />
-    <clear_gm_button text="Target SWCH" />
-    <clear_gm_button text="Grp     GM" />
-    <clear_gm_button text="Grp A" />
-    <clear_gm_button text="Grp B" />
-    <clear_gm_button text="Grp C" />
-    <clear_gm_button text="Grp D" />
-    <clear_gm_button text="Grp E" />
-    <clear_gm_button text="Grp F" />
-    <clear_gm_button text="Grp G" />
-    <clear_gm_button text="Grp H" />
-    <clear_gm_button text="Grp I" />
-    <clear_gm_button text="Grp J" />
-    <clear_gm_button text="Grp K" />
-    <clear_gm_button text="Grp L" />
-    <clear_gm_button text="Grp M" />
-    <clear_gm_button text="Grp N" />
-    <clear_gm_button text="Grp O" />
-    <clear_gm_button text="Grp P" />
-    <clear_gm_button text="Grp Q" />
-    <clear_gm_button text="Grp R" />
-    <clear_gm_button text="Grp S" />
-    <clear_gm_button text="Grp T" />
-    <clear_gm_button text="Grp U" />
-    <clear_gm_button text="Grp V" />
-    <clear_gm_button text="Grp W" />
-    <clear_gm_button text="Grp X" />
-    <clear_gm_button text="Grp Y" />
-    <clear_gm_button text="Grp Z" />
+    <set_variable name="TGrpPicker_Should_Show" value="0.0" integer="yes" />
     <!--General Buttons-->
     <clear_gm_button text="0   /\" />
     <clear_gm_button text="315   \\" />
@@ -1369,7 +1336,7 @@
     <clear_gm_button text="Speed -0.6" />
     <clear_gm_button text="GrpToGM" />
     <clear_gm_button text="Del Grp" />
-    <clear_gm_button text="Switch Side" />
+    <set_variable name="SwSidePicker_Should_Show" value="0.0" integer="yes" />
     <clear_gm_button text="AI Cmds On" />
     <clear_gm_button text="AI Cmds Off" />
     <set_variable name="GM_AIMenu_DirStrikeBtn_Shown" value="0.0" integer="yes" />

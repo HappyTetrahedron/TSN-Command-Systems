@@ -1,0 +1,7 @@
+{% include 'Fleets/RandomProperties.xml' %}
+{% include 'Fleets/AutoAI.xml' %}
+{% include 'Fleets/NameAssign.xml' %}
+{% include 'Fleets/Destroy.xml' %}
+{% include 'Fleets/Reassign.xml' %}
+{% include 'Fleets/GMAI.xml' %}
+{% include 'Fleets/SensorPings.xml' %}

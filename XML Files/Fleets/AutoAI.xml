@@ -1,0 +1,452 @@
+{% import 'Fleets/AIDefinitions.xml' as ai %}
+
+  {{ ai.AutoAIEvents() }}
+  <event name="8 - Torgoth Hunter AI" id_arme="44d283a3-d033-460d-b759-91a4f94ffe08" parent_id_arme="d474c83d-3108-49d6-983d-3752ff52be2f">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="8.0" />
+    <clear_ai name="--" />
+    <set_object_property property="surrenderChance" value="15" name="--" />
+    <add_ai type="SPCL_AI" name="--" />
+    <add_ai type="TRY_TO_BECOME_LEADER" name="--" />
+    <add_ai type="CHASE_PLAYER" name="--" />
+    <add_ai type="CHASE_STATION" value1="1000" name="--" />
+    <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="--" />
+    <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="--" />
+    <add_ai type="CHASE_WHALE" name="--" />
+    <add_ai type="CHASE_ANGER" name="--" />
+    <add_ai type="LEADER_LEADS" name="--" />
+    <add_ai type="FOLLOW_LEADER" name="--" />
+  </event>
+  <event name="9 - Arvonian Weapons Platform" id_arme="d154787e-2023-47b0-9e98-d02b04533d2f" parent_id_arme="d474c83d-3108-49d6-983d-3752ff52be2f">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="9.0" />
+    <set_object_property property="topSpeed" value="0" name="--" />
+    <set_special name="--" ship="-1" captain="-1" ability="AntiMine" />
+    <set_special name="--" ship="-1" captain="-1" ability="AntiTorp" />
+    <set_object_property property="surrenderChance" value="0" name="--" />
+    <clear_ai name="--" />
+    <add_ai type="SPCL_AI" name="--" />
+    <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="--" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="--" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="--" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="--" />
+  </event>
+  <event name="10 - Hegemony Weapons Platform" id_arme="85915acf-22ca-42f4-afe6-42467f417bf8" parent_id_arme="d474c83d-3108-49d6-983d-3752ff52be2f">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="10.0" />
+    <set_object_property property="topSpeed" value="0" name="--" />
+    <set_special name="--" ship="-1" captain="-1" ability="AntiMine" />
+    <set_special name="--" ship="-1" captain="-1" ability="AntiTorp" />
+    <set_object_property property="surrenderChance" value="0" name="--" />
+    <clear_ai name="--" />
+    <add_ai type="SPCL_AI" name="--" />
+    <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="--" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="--" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="--" />
+  </event>
+  <event name="11 - Skaraan Base" id_arme="5bfeaae4-6a1f-4dba-a797-5020993e0660" parent_id_arme="d474c83d-3108-49d6-983d-3752ff52be2f">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="11.0" />
+    <set_object_property property="topSpeed" value="0" name="--" />
+    <set_special name="--" ship="-1" captain="-1" clear="yes" ability="Stealth" />
+    <set_special name="--" ship="-1" captain="-1" clear="yes" ability="Cloak" />
+    <set_special name="--" ship="-1" captain="-1" clear="yes" ability="HET" />
+    <set_special name="--" ship="-1" captain="-1" clear="yes" ability="Warp" />
+    <set_special name="--" ship="-1" captain="-1" clear="yes" ability="Teleport" />
+    <set_special name="--" ship="-1" captain="-1" clear="yes" ability="Tractor" />
+    <set_special name="--" ship="-1" captain="-1" clear="yes" ability="ShldDrain" />
+    <set_special name="--" ship="-1" captain="-1" clear="yes" ability="ShldVamp" />
+    <set_special name="--" ship="-1" captain="-1" clear="yes" ability="TeleBack" />
+    <set_special name="--" ship="-1" captain="-1" clear="yes" ability="ShldReset" />
+    <set_special name="--" ship="-1" captain="-1" ability="AntiMine" />
+    <set_special name="--" ship="-1" captain="-1" ability="AntiTorp" />
+    <set_special name="--" ship="-1" captain="-1" ability="LowVis" />
+    <set_object_property property="surrenderChance" value="0" name="--" />
+    <clear_ai name="--" />
+    <add_ai type="SPCL_AI" name="--" />
+    <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="--" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="--" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="--" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="--" />
+  </event>
+  <event name="12 - Hegemony Base" id_arme="fb57931d-e8ff-4ef0-bb1b-8741031d8855" parent_id_arme="d474c83d-3108-49d6-983d-3752ff52be2f">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="12.0" />
+    <set_object_property property="topSpeed" value="0" name="--" />
+    <set_object_property property="turnRate" value="0.006" name="--" />
+    <set_object_property property="surrenderChance" value="0" name="--" />
+    <clear_ai name="--" />
+    <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="--" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="--" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="--" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="--" />
+  </event>
+  <folder_arme name="Non-Combat AI (50 - 99)" id_arme="78fa2f1b-700f-4a72-8254-4be22e7c74ac" parent_id_arme="f4e899cb-4edd-4729-ac40-d582379619fb" />
+  <event name="52 - Supply Escort (Jinn)" id_arme="73ac10f7-4e91-4460-8b01-2a5c0b836164" parent_id_arme="78fa2f1b-700f-4a72-8254-4be22e7c74ac">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="202.0" />
+    <set_object_property property="topSpeed" value="0.8" name="--" />
+    <clear_ai name="--" />
+    <add_ai type="TARGET_THROTTLE" value1="1.5" targetName="Jinn" name="--" />
+    <add_ai type="DEFEND" value1="2000" value2="1500" name="--" />
+    <add_ai type="CHASE_AI_SHIP" value1="1500" value2="500" name="--" />
+    <add_ai type="DEFEND" value1="3000" value2="1000" name="--" />
+  </event>
+  <event name="53 - Supply Escort (Grant)" id_arme="5e421777-0fb0-4df4-9f88-7c160ff3f7e4" parent_id_arme="78fa2f1b-700f-4a72-8254-4be22e7c74ac">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="203.0" />
+    <set_object_property property="topSpeed" value="0.8" name="--" />
+    <clear_ai name="--" />
+    <add_ai type="TARGET_THROTTLE" value1="1.5" targetName="Grant" name="--" />
+    <add_ai type="DEFEND" value1="2000" value2="1500" name="--" />
+    <add_ai type="CHASE_AI_SHIP" value1="1500" value2="500" name="--" />
+    <add_ai type="DEFEND" value1="3000" value2="1000" name="--" />
+  </event>
+  <event name="54 - Supply Escort (Goblin)" id_arme="4249db5a-c210-48b8-869a-7f18d2bef702" parent_id_arme="78fa2f1b-700f-4a72-8254-4be22e7c74ac">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="205.0" />
+    <set_object_property property="topSpeed" value="0.8" name="--" />
+    <clear_ai name="--" />
+    <add_ai type="TARGET_THROTTLE" value1="1.5" targetName="Goblin" name="--" />
+    <add_ai type="DEFEND" value1="2000" value2="1500" name="--" />
+    <add_ai type="CHASE_AI_SHIP" value1="1500" value2="500" name="--" />
+    <add_ai type="DEFEND" value1="3000" value2="1000" name="--" />
+  </event>
+  <folder_arme name="Alien AI (100 - 149)" id_arme="1c478493-8c0e-45f5-ba6a-ecd2b4fbd624" parent_id_arme="f4e899cb-4edd-4729-ac40-d582379619fb" />
+  <event name="100 - Ximni" id_arme="9ea1a99d-faee-412c-a64f-f9cd7911060d" parent_id_arme="1c478493-8c0e-45f5-ba6a-ecd2b4fbd624">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="305.0" />
+    <if_variable name="SideValue" comparator="NOT" value="2.0" />
+    <clear_ai name="--" />
+    <set_special name="--" ship="-1" captain="-1" ability="HET" />
+    <set_special name="--" ship="-1" captain="-1" ability="AntiTorp" />
+    <set_special name="--" ship="-1" captain="-1" ability="Teleport" />
+    <set_object_property property="surrenderChance" value="10" name="--" />
+    <add_ai type="SPCL_AI" name="--" />
+    <add_ai type="TRY_TO_BECOME_LEADER" name="--" />
+    <add_ai type="CHASE_PLAYER" name="--" />
+    <add_ai type="CHASE_STATION" value1="1000" name="--" />
+    <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="--" />
+    <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="--" />
+    <add_ai type="CHASE_ANGER" name="--" />
+    <add_ai type="LEADER_LEADS" name="--" />
+    <add_ai type="FOLLOW_LEADER" name="--" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="8000" name="--" />
+  </event>
+  <event name="102 - Caltron AI" id_arme="dddbffaa-83ea-4a9f-8e80-7fadeb562498" parent_id_arme="1c478493-8c0e-45f5-ba6a-ecd2b4fbd624">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="102.0" />
+    <set_object_property property="surrenderChance" value="0" name="--" />
+    <clear_ai name="--" />
+    <add_ai type="SPCL_AI" name="--" />
+    <add_ai type="TRY_TO_BECOME_LEADER" name="--" />
+    <add_ai type="CHASE_PLAYER" name="--" />
+    <add_ai type="CHASE_STATION" value1="1000" name="--" />
+    <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="--" />
+    <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="--" />
+    <add_ai type="CHASE_ANGER" name="--" />
+    <add_ai type="LEADER_LEADS" name="--" />
+    <add_ai type="FOLLOW_LEADER" name="--" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="--" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="--" />
+  </event>
+  <event name="103 - N'Tani AI" id_arme="08d7d3fe-15dd-4cc4-a088-6faf48e250df" parent_id_arme="1c478493-8c0e-45f5-ba6a-ecd2b4fbd624">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="103.0" />
+    <set_object_property property="surrenderChance" value="10" name="--" />
+    <clear_ai name="--" />
+    <add_ai type="SPCL_AI" name="--" />
+    <add_ai type="CHASE_PLAYER" name="--" />
+    <add_ai type="CHASE_AI_SHIP" name="--" />
+    <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="--" />
+    <add_ai type="CHASE_STATION" value1="100000" name="--" />
+    <add_ai type="CHASE_AI_SHIP" name="--" />
+    <add_ai type="CHASE_STATION" value1="1000" name="--" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="500" name="--" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="--" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="--" />
+  </event>
+  <event name="104 - Biomech Aggressive AI" id_arme="9fd38937-f37f-4396-ae1c-d4393e713d12" parent_id_arme="1c478493-8c0e-45f5-ba6a-ecd2b4fbd624">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="104.0" />
+    <set_object_property property="surrenderChance" value="0" name="--" />
+    <clear_ai name="--" />
+    <add_ai type="SPCL_AI" name="--" />
+    <add_ai type="DIR_THROTTLE" value1="Degrees" value2="1.5" name="--" />
+    <add_ai type="CHASE_PLAYER" name="--" />
+    <add_ai type="CHASE_PLAYER" value2="4000" name="--" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="500" name="--" />
+    <add_ai type="CHASE_AI_SHIP" value1="1000" value2="500" name="--" />
+    <add_ai type="CHASE_ANGER" name="--" />
+  </event>
+  <event name="105 - Sechateal" id_arme="6b695d90-5e00-473a-bef0-d843e4cb8f88" parent_id_arme="1c478493-8c0e-45f5-ba6a-ecd2b4fbd624">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="105.0" />
+    <set_object_property property="surrenderChance" value="10" name="--" />
+    <clear_ai name="--" />
+    <set_special name="--" ship="-1" ability="Stealth" />
+    <set_special name="--" ship="-1" captain="-1" ability="LowVis" />
+    <set_special name="--" ship="-1" captain="-1" ability="ShldReset" />
+    <set_special name="--" ship="-1" captain="-1" ability="Warp" />
+    <set_special name="--" ship="-1" captain="-1" ability="HET" />
+    <set_special name="--" ship="-1" captain="-1" ability="Cloak" />
+    <add_ai type="SPCL_AI" name="--" />
+    <add_ai type="TRY_TO_BECOME_LEADER" name="--" />
+    <add_ai type="CHASE_PLAYER" name="--" />
+    <add_ai type="CHASE_STATION" value1="3000" name="--" />
+    <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="--" />
+    <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="--" />
+    <add_ai type="CHASE_ANGER" name="--" />
+    <add_ai type="LEADER_LEADS" name="--" />
+    <add_ai type="FOLLOW_LEADER" name="--" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="8000" name="--" />
+  </event>
+  <event name="106 - Budron AI" id_arme="7c6f4932-33eb-459a-8219-6619127877e6" parent_id_arme="1c478493-8c0e-45f5-ba6a-ecd2b4fbd624">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="106.0" />
+    <set_object_property property="surrenderChance" value="10" name="--" />
+    <clear_ai name="--" />
+    <add_ai type="SPCL_AI" name="--" />
+    <add_ai type="CHASE_AI_SHIP" name="--" />
+    <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="--" />
+    <add_ai type="CHASE_STATION" value1="1000" name="--" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="500" name="--" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="--" />
+    <add_ai type="CHASE_ANGER" name="--" />
+    <set_ship_text name="--" race="Budron" />
+  </event>
+  <folder_arme name="Convoy AI (200 - 299)" id_arme="57fee414-3e9a-4bc0-93aa-fc4e32f86816" parent_id_arme="f4e899cb-4edd-4729-ac40-d582379619fb" />
+  <event name="200 - Convoy AI Code" id_arme="bc882791-5364-4e90-be86-1985145048d2" parent_id_arme="57fee414-3e9a-4bc0-93aa-fc4e32f86816">
+    <if_variable name="Name Assign" comparator="EQUALS" value="1.0" />
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="200.0" />
+    <set_object_property property="exitPointX" value="convoyExitX" name="--" />
+    <set_object_property property="exitPointZ" value="convoyExitZ" name="--" />
+    <set_object_property property="topSpeed" value="0.6" name="--" />
+    <clear_ai name="--" />
+    <set_object_property property="surrenderChance" value="20" name="--" />
+    <add_ai type="SPCL_AI" name="--" />
+    <add_ai type="PROCEED_TO_EXIT" name="--" />
+    <add_ai type="DIR_THROTTLE" value1="convoyDirection" value2="1.0" name="--" />
+    <add_ai type="DEFEND" value1="4000" value2="1000" name="--" />
+    <add_ai type="CHASE_ANGER" name="--" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="8000" name="--" />
+  </event>
+  <folder_arme name="Specialist and POIs (400-499)" id_arme="693b84da-6a6c-4059-a2c1-c6bec1e040cb" parent_id_arme="f4e899cb-4edd-4729-ac40-d582379619fb" />
+  <event name="400 - Relay and Buoy" id_arme="816b08cb-4ce2-4dd3-8de4-573e1478b688" parent_id_arme="693b84da-6a6c-4059-a2c1-c6bec1e040cb">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="400.0" />
+    <set_object_property property="surrenderChance" value="0" name="--" />
+    <clear_ai name="--" />
+    <set_object_property property="pitch" value="0.2" name="--" />
+    <set_object_property property="angleDelta" value="0.1" name="--" />
+    <addto_object_property value="3.0" property="positionY" name="--" />
+  </event>
+  <folder_arme name="Deploy Relay" id_arme="b1e328cf-b14a-4595-9efe-a375729e8144" parent_id_arme="693b84da-6a6c-4059-a2c1-c6bec1e040cb" />
+  <event name="401 - Shuttle Ops Relay and Buoy" id_arme="0327b13b-a82e-4ecc-bc18-d048ddcd90cb" parent_id_arme="b1e328cf-b14a-4595-9efe-a375729e8144">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="401.0" />
+    <set_object_property property="surrenderChance" value="0" name="--" />
+    <clear_ai name="--" />
+    <set_object_property property="pitch" value="0.2" name="--" />
+    <set_object_property property="angleDelta" value="0.1" name="--" />
+    <addto_object_property value="3.0" property="positionY" name="--" />
+  </event>
+  <event name="402 - Wreck" id_arme="ca59f2ed-2e5c-4048-8d6a-789ff7258e67" parent_id_arme="693b84da-6a6c-4059-a2c1-c6bec1e040cb">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="402.0" />
+    <set_object_property property="rollDelta" value="0.2" name="--" />
+    <set_object_property property="angleDelta" value="0.1" name="--" />
+    <addto_object_property value="10.1" property="positionY" name="--" />
+    <set_object_property property="pushRadius" value="push/2" name="--" />
+    <set_object_property property="artScale" value="scale" name="--" />
+  </event>
+  <event name="403 - Artefact" id_arme="7f7978de-b539-48f0-9c6b-bbdce7d3ea4b" parent_id_arme="693b84da-6a6c-4059-a2c1-c6bec1e040cb">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="403.0" />
+    <set_object_property property="artScale" value="4.0" name="--" />
+    <set_object_property property="rollDelta" value="0.2" name="--" />
+    <set_object_property property="angleDelta" value="0.1" name="--" />
+    <addto_object_property value="1.5" property="positionY" name="--" />
+  </event>
+  <event name="404 - Caltron Base" id_arme="12c45639-dd5a-4885-85ff-359f5fe6ddef" parent_id_arme="693b84da-6a6c-4059-a2c1-c6bec1e040cb">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="404.0" />
+    <set_object_property property="topSpeed" value="0" name="--" />
+    <set_object_property property="surrenderChance" value="0" name="--" />
+    <clear_ai name="--" />
+    <add_ai type="CHASE_PLAYER" value1="6000" value2="6000" name="--" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="5000" name="--" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="--" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="--" />
+  </event>
+  <event name="405 - Shipyard" id_arme="cd9292d3-aa84-41cb-a886-bbab24e6f4ed" parent_id_arme="693b84da-6a6c-4059-a2c1-c6bec1e040cb">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="405.0" />
+    <set_object_property property="turnRate" value="0.0" name="--" />
+    <set_object_property property="surrenderChance" value="0" name="--" />
+    <clear_ai name="--" />
+  </event>
+  <event name="406 - Docking Port" id_arme="be394bee-b27a-46db-828e-f7212b3b0db2" parent_id_arme="693b84da-6a6c-4059-a2c1-c6bec1e040cb">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="406.0" />
+    <set_object_property property="canBuild" value="0" name="--" />
+    <set_object_property property="missileStoresHoming" value="4" name="--" />
+    <set_object_property property="missileStoresNuke" value="5" name="--" />
+    <set_object_property property="missileStoresMine" value="3" name="--" />
+    <set_object_property property="missileStoresEMP" value="6" name="--" />
+    <set_object_property property="missileStoresPShock" value="2" name="--" />
+    <set_object_property property="missileStoresTag" value="1" name="--" />
+    <set_object_property property="missileStoresBeacon" value="6" name="--" />
+    <set_object_property property="missileStoresProbe" value="3" name="--" />
+  </event>
+  <event name="407 - Civilian Bases" id_arme="8872f213-f4b3-4dce-baff-279e7798df37" parent_id_arme="693b84da-6a6c-4059-a2c1-c6bec1e040cb">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="407.0" />
+    <set_object_property property="canBuild" value="0" name="--" />
+    <set_object_property property="missileStoresHoming" value="0" name="--" />
+    <set_object_property property="missileStoresNuke" value="0" name="--" />
+    <set_object_property property="missileStoresMine" value="0" name="--" />
+    <set_object_property property="missileStoresEMP" value="0" name="--" />
+    <set_object_property property="missileStoresPShock" value="0" name="--" />
+  </event>
+  <event name="408 - Enemy Wreck" id_arme="8f3e4dd3-98e1-4a5a-83db-d61236b62d21" parent_id_arme="693b84da-6a6c-4059-a2c1-c6bec1e040cb">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="408.0" />
+    <clear_ai name="--" />
+    <set_object_property property="topSpeed" value="0" name="--" />
+    <set_object_property property="surrenderChance" value="0" name="--" />
+    <set_object_property property="pitch" value="0.2" name="--" />
+    <set_object_property property="rollDelta" value="0.1" name="--" />
+    <set_object_property property="angleDelta" value="0.1" name="--" />
+    <addto_object_property value="3.0" property="positionY" name="--" />
+    <set_ship_text name="--" scan_desc="All systems offline." hailtext="No response... Communications systems offline." />
+  </event>
+  <event name="409 - Active Sensor Buoy" id_arme="2593b85b-a3f5-40bc-a098-28db8bac891a" parent_id_arme="693b84da-6a6c-4059-a2c1-c6bec1e040cb">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="409.0" />
+    <set_object_property property="surrenderChance" value="0" name="--" />
+    <clear_ai name="--" />
+    <set_object_property property="sensorSetting" value="3.0" />
+    <set_object_property property="pitch" value="0.2" name="--" />
+    <set_object_property property="angleDelta" value="0.1" name="--" />
+    <addto_object_property value="3.0" property="positionY" name="--" />
+    <set_gm_button text="Rst Snr Rng" x="185" y="60" h="30" w="120" />
+    <set_variable name="Auto AI Type" value="0.0" integer="yes" />
+  </event>
+  <event name="410 - Slingshot Platform" id_arme="cdbed266-4494-45a5-9eeb-4680b8fd59d9" parent_id_arme="693b84da-6a6c-4059-a2c1-c6bec1e040cb">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="410.0" />
+    <set_object_property property="surrenderChance" value="0" name="--" />
+    <clear_ai name="--" />
+    <set_variable name="Auto AI Type" value="0.0" integer="yes" />
+  </event>
+  <event name="411 - Slingshot Power" id_arme="98e16b5c-b2f9-49bd-93c7-812132e5fa49" parent_id_arme="693b84da-6a6c-4059-a2c1-c6bec1e040cb">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="411.0" />
+    <set_object_property property="pitch" value="1.5708" name="--" />
+    <set_object_property property="angleDelta" value="0.3" name="--" />
+    <clear_ai name="--" />
+    <set_variable name="Auto AI Type" value="0.0" integer="yes" />
+  </event>
+  <event name="412 - Slingshot Antenna" id_arme="51edb6a2-2e54-4675-8eae-f756b44944f4" parent_id_arme="693b84da-6a6c-4059-a2c1-c6bec1e040cb">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="412.0" />
+    <set_object_property property="surrenderChance" value="0" name="--" />
+    <set_object_property property="angleDelta" value="0.3" name="--" />
+    <clear_ai name="--" />
+    <set_variable name="Auto AI Type" value="0.0" integer="yes" />
+  </event>
+  <event name="413 - Slingshot Antenna" id_arme="3c1945ff-bda3-4ac2-a913-7256fdf841f6" parent_id_arme="693b84da-6a6c-4059-a2c1-c6bec1e040cb">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="413.0" />
+    <set_object_property property="surrenderChance" value="10" name="--" />
+    <clear_ai name="--" />
+    <set_special name="--" ship="-1" ability="AntiMine" />
+    <set_special name="--" ship="-1" captain="-1" ability="ShldReset" />
+    <add_ai type="SPCL_AI" name="--" />
+    <add_ai type="TRY_TO_BECOME_LEADER" name="--" />
+    <add_ai type="CHASE_PLAYER" name="--" />
+    <add_ai type="CHASE_STATION" value1="3000" name="--" />
+    <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="--" />
+    <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="--" />
+    <add_ai type="CHASE_ANGER" name="--" />
+    <add_ai type="LEADER_LEADS" name="--" />
+    <add_ai type="FOLLOW_LEADER" name="--" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="8000" name="--" />
+  </event>
+  <folder_arme name="AI Type 900 + reserved for AutoSpawn" id_arme="140d8dfe-1462-4f8e-a614-26996e607c84" parent_id_arme="f4e899cb-4edd-4729-ac40-d582379619fb" />
+  <event name="Fleeing (left)" id_arme="f2e23031-d190-4b84-94b8-16d910971602" parent_id_arme="140d8dfe-1462-4f8e-a614-26996e607c84">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="900.0" />
+    <if_variable name="SideValue" comparator="EQUALS" value="2.0" />
+    <set_object_property property="topSpeed" value="0.8" name="--" />
+    <clear_ai name="--" />
+    <set_object_property property="exitPointX" value="100000.0" name="--" />
+    <set_object_property property="exitPointY" value="0.0" name="--" />
+    <set_object_property property="exitPointZ" value="50000-(randMult*5000)" name="--" />
+    <add_ai type="PROCEED_TO_EXIT" name="--" />
+  </event>
+  <event name="Fleeing (cornertopleft)" id_arme="becbb965-f49b-49eb-a49e-2d07c81d7103" parent_id_arme="140d8dfe-1462-4f8e-a614-26996e607c84">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="901.0" />
+    <if_variable name="SideValue" comparator="EQUALS" value="2.0" />
+    <set_object_property property="topSpeed" value="0.8" name="--" />
+    <clear_ai name="--" />
+    <set_object_property property="exitPointX" value="100000.0" name="--" />
+    <set_object_property property="exitPointY" value="0.0" name="--" />
+    <set_object_property property="exitPointZ" value="0+(randMult*5000)" name="--" />
+    <add_ai type="PROCEED_TO_EXIT" name="--" />
+  </event>
+  <folder_arme name="Docking Ports (500 - 599)" id_arme="3d823e2e-4dba-4bb6-8919-31cbc3afbb1c" parent_id_arme="f4e899cb-4edd-4729-ac40-d582379619fb" />
+  <event name="500 - Energy Only" id_arme="d899309b-70ae-4c73-b003-3d306851d990" parent_id_arme="3d823e2e-4dba-4bb6-8919-31cbc3afbb1c">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="500.0" />
+    <set_object_property property="canBuild" value="0" name="--" />
+    <set_ship_text name="--" race="-" class="Tether" desc="Supplying energy" scan_desc="Energy transfer systems online." hailtext="Energy tether is online and ready for energy transfer operations." />
+    <set_object_property property="missileStoresHoming" value="0" name="--" />
+    <set_object_property property="missileStoresNuke" value="0" name="--" />
+    <set_object_property property="missileStoresMine" value="0" name="--" />
+    <set_object_property property="missileStoresEMP" value="0" name="--" />
+    <set_object_property property="missileStoresPShock" value="0" name="--" />
+    <set_object_property property="missileStoresTag" value="0" name="--" />
+    <set_object_property property="missileStoresBeacon" value="0" name="--" />
+    <set_object_property property="missileStoresProbe" value="0" name="--" />
+  </event>
+  <event name="501 - Light Ordnance" id_arme="e1c2d79b-e766-45c0-b739-e0275f85351f" parent_id_arme="3d823e2e-4dba-4bb6-8919-31cbc3afbb1c">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="501.0" />
+    <set_object_property property="canBuild" value="0" name="--" />
+    <set_ship_text name="--" race="-" class="Tether" desc="Supplying energy" scan_desc="Energy and supply transfer systems online." hailtext="Energy tether is online and ready for energy transfer operations. We have ordnance available for resupply." />
+    <set_object_property property="missileStoresHoming" value="50" name="--" />
+    <set_object_property property="missileStoresNuke" value="0" name="--" />
+    <set_object_property property="missileStoresMine" value="0" name="--" />
+    <set_object_property property="missileStoresEMP" value="30" name="--" />
+    <set_object_property property="missileStoresPShock" value="40" name="--" />
+    <set_object_property property="missileStoresTag" value="10" name="--" />
+    <set_object_property property="missileStoresBeacon" value="0" name="--" />
+    <set_object_property property="missileStoresProbe" value="0" name="--" />
+  </event>
+  <event name="502 - Heavy Ordnance" id_arme="c1af14ca-686f-4428-93fc-707928243147" parent_id_arme="3d823e2e-4dba-4bb6-8919-31cbc3afbb1c">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="502.0" />
+    <set_object_property property="canBuild" value="0" name="--" />
+    <set_ship_text name="--" race="-" class="Tether" desc="Supplying energy" scan_desc="Energy and supply transfer systems online." hailtext="Energy tether is online and ready for energy transfer operations. We have ordnance available for resupply." />
+    <set_object_property property="missileStoresHoming" value="0" name="--" />
+    <set_object_property property="missileStoresNuke" value="10" name="--" />
+    <set_object_property property="missileStoresMine" value="15" name="--" />
+    <set_object_property property="missileStoresEMP" value="30" name="--" />
+    <set_object_property property="missileStoresPShock" value="20" name="--" />
+    <set_object_property property="missileStoresTag" value="5" name="--" />
+    <set_object_property property="missileStoresBeacon" value="0" name="--" />
+    <set_object_property property="missileStoresProbe" value="0" name="--" />
+  </event>
+  <event name="503 - Mining" id_arme="942dbb96-7041-4ef1-84ae-38e73c1337d7" parent_id_arme="3d823e2e-4dba-4bb6-8919-31cbc3afbb1c">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="503.0" />
+    <set_object_property property="canBuild" value="0" name="--" />
+    <set_ship_text name="--" race="-" class="Tether" desc="Supplying energy" scan_desc="Energy and supply transfer systems online." hailtext="Energy tether is online and ready for energy transfer operations. We have mining equipment available for resupply." />
+    <set_object_property property="missileStoresHoming" value="0" name="--" />
+    <set_object_property property="missileStoresNuke" value="0" name="--" />
+    <set_object_property property="missileStoresMine" value="50" name="--" />
+    <set_object_property property="missileStoresEMP" value="0" name="--" />
+    <set_object_property property="missileStoresPShock" value="0" name="--" />
+    <set_object_property property="missileStoresTag" value="0" name="--" />
+    <set_object_property property="missileStoresBeacon" value="0" name="--" />
+    <set_object_property property="missileStoresProbe" value="30" name="--" />
+  </event>
+  <event name="504 - Exploration" id_arme="35bdb4b4-6b8c-4a8a-90d3-f68d867d2388" parent_id_arme="3d823e2e-4dba-4bb6-8919-31cbc3afbb1c">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="504.0" />
+    <set_object_property property="canBuild" value="0" name="--" />
+    <set_ship_text name="--" race="-" class="Tether" desc="Supplying energy" scan_desc="Energy and supply transfer systems online." hailtext="Energy tether is online and ready for energy transfer operations. We have exploration equipment available for resupply." />
+    <set_object_property property="missileStoresHoming" value="0" name="--" />
+    <set_object_property property="missileStoresNuke" value="0" name="--" />
+    <set_object_property property="missileStoresMine" value="0" name="--" />
+    <set_object_property property="missileStoresEMP" value="20" name="--" />
+    <set_object_property property="missileStoresPShock" value="0" name="--" />
+    <set_object_property property="missileStoresTag" value="40" name="--" />
+    <set_object_property property="missileStoresBeacon" value="0" name="--" />
+    <set_object_property property="missileStoresProbe" value="30" name="--" />
+  </event>
+  <event name="505 - Xeno Research" id_arme="2c127aee-54bf-4d93-ace1-dada95ebca15" parent_id_arme="3d823e2e-4dba-4bb6-8919-31cbc3afbb1c">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="505.0" />
+    <set_object_property property="canBuild" value="0" name="--" />
+    <set_ship_text name="--" race="-" class="Tether" desc="Supplying energy" scan_desc="Energy and supply transfer systems online." hailtext="Energy tether is online and ready for energy transfer operations. We have research equipment available for resupply." />
+    <set_object_property property="missileStoresHoming" value="0" name="--" />
+    <set_object_property property="missileStoresNuke" value="0" name="--" />
+    <set_object_property property="missileStoresMine" value="0" name="--" />
+    <set_object_property property="missileStoresEMP" value="0" name="--" />
+    <set_object_property property="missileStoresPShock" value="0" name="--" />
+    <set_object_property property="missileStoresTag" value="40" name="--" />
+    <set_object_property property="missileStoresBeacon" value="50" name="--" />
+    <set_object_property property="missileStoresProbe" value="30" name="--" />
+  </event>
+  <event name="506 - Normal" id_arme="bce0c4bc-8312-4f0c-8321-f5c05d661452" parent_id_arme="3d823e2e-4dba-4bb6-8919-31cbc3afbb1c">
+    <if_variable name="Auto AI Type" comparator="EQUALS" value="505.0" />
+    <set_ship_text name="--" race="-" class="Tether" desc="Supplying energy" scan_desc="Energy and supply transfer systems online." hailtext="Energy tether is online and ready for energy transfer operations. We have research equipment available for resupply." />
+  </event>

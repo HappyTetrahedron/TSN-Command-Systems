@@ -200,6 +200,45 @@
   ]
 %}
 
+{% set FleetLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
+
+{% set specials = [
+  "Stealth",
+  "ShldDrain",
+  "Tractor",
+  "ShldReset",
+  "TeleBack",
+  "Warp",
+  "HET",
+  "AntiTorp",
+  "AntiMine",
+  "Cloak",
+  "LowVis",
+  "Teleport",
+  "Drones",
+  "ShldVamp",
+  "Stealth",
+] %}
+
+{% set abilities = [
+ {
+  "id": -1,
+  "name": "Normal",
+ },
+ {
+  "id": 1,
+  "name": "Overpowered",
+ },
+ {
+  "id": 0,
+  "name": "Upgraded",
+ },
+ {
+  "id": 2,
+  "name": "Underpowered",
+ },
+] %}
+
 {% macro createConditionalMenu(name, conditions={}) %}
     <event name="Conditional Menu {{ name }} setup">
         {% for var, val in conditions.items() %}

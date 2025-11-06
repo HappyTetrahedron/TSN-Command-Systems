@@ -1,0 +1,167 @@
+{% import 'Utils.xml' as util %}
+
+{% macro wipePings() %}
+ {% for l in util.FleetLetters %}
+  <destroy name="_{{ l }}_" />
+ {% endfor %}
+{% endmacro %}
+
+{% set sensorStates = [
+  {
+    "range": 8000,
+    "setting": 4,
+    "msg": "Effective 8k",
+  },
+  {
+    "range": 11000,
+    "setting": 3,
+    "msg": "Effective 11k",
+  },
+  {
+    "range": 16000,
+    "setting": 2,
+    "msg": "Effective 16k",
+  },
+  {
+    "range": 33000,
+    "setting": 1,
+    "msg": "Effective 33k",
+  },
+  {
+    "range": 0,
+    "setting": 0,
+    "msg": "Effective unlimited",
+  },
+] %}
+
+{# TODO I may have broken these buttons #}
+  <event name="SensorPingStatusDisabled" id_arme="0b346f90-3153-4d7e-a74f-1051c0ddbecf" parent_id_arme="5281ed9f-faab-47da-981b-3aa5f38459a0">
+    <if_variable name="DisablePing" comparator="EQUALS" value="1.0" />
+    <set_gm_button text="Sensor Pings Disabled" x="850" y="100" h="30" w="160" />
+  </event>
+  <event name="SensorPingStatusEnabled" id_arme="b08653c5-eb44-4dca-8624-f4650ac03918" parent_id_arme="5281ed9f-faab-47da-981b-3aa5f38459a0">
+    <if_variable name="DisablePing" comparator="EQUALS" value="2.0" />
+    <set_gm_button text="Sensor Pings Enabled" x="850" y="100" h="30" w="160" />
+  </event>
+  
+  {% for s in sensorStates %}
+  <event name="{{ s.range }} sensors">
+    <if_gm_button text="Sensor Rng\Set to {{ s.range }}" />
+    <set_variable name="Sensor Ping" value="1.0" integer="yes" />
+    <set_object_property property="sensorSetting" value="{{ s.setting }}.0" />
+    {% if s.range == 0 %}
+    {{ wipePings() }}
+    {% endif %}
+  </event>
+  <event name="8K sensors (msg)" id_arme="2f1fc731-1eed-482c-9051-e427d45538df" parent_id_arme="5281ed9f-faab-47da-981b-3aa5f38459a0">
+    <if_gm_button text="Sensor Rng\Notify {{ s.range }}" />
+    <set_variable name="Sensor Ping" value="1.0" integer="yes" />
+    <set_object_property property="sensorSetting" value="{{ s.setting }}.0" />
+    <warning_popup_message message="{{ s.msg }}" consoles="S" />
+    <warning_popup_message message="{{ "Sensors Disrupted" if s.range > 0 else "Sensors Restored" }}" consoles="MHWESC" />
+    {% if s.range == 0 %}
+    {{ wipePings() }}
+    {% endif %}
+  </event>
+  {% endfor %}
+
+  <event name="Disable Pings" id_arme="d27fa453-0f36-4f6b-8dec-ccec947ee11f" parent_id_arme="5281ed9f-faab-47da-981b-3aa5f38459a0">
+    <if_gm_button text="Sensor Rng/Disable Sensor Ping" />
+    <clear_gm_button text="Sensor Pings Enabled" />
+    <set_variable name="DisablePing" value="1.0" integer="yes" />
+  </event>
+  <event name="Enable Pings" id_arme="2d8b6bd6-e2b7-47b5-b18c-6d82a7ecf579" parent_id_arme="5281ed9f-faab-47da-981b-3aa5f38459a0">
+    <if_gm_button text="Sensor Rng/Enable Sensor Ping" />
+    <clear_gm_button text="Sensor Pings Disabled" />
+    <set_variable name="DisablePing" value="2.0" integer="yes" />
+  </event>
+  <event name="Remove Pings" id_arme="780301c6-1898-4970-a106-0c0a523bfffd" parent_id_arme="5281ed9f-faab-47da-981b-3aa5f38459a0">
+    <if_gm_button text="Sensor Rng/Clear Pings" />
+    <set_variable name="Sensor Ping" value="10.0" integer="yes" />
+  </event>
+
+  <event name="Sensors Off" id_arme="79530b6a-9a01-41ae-9cc9-3a43331948b4" parent_id_arme="ad9938a2-658d-41b7-848f-b251c044b0d7">
+    <if_variable name="Sensor Ping" comparator="EQUALS" value="10.0" />
+    {{ wipePings() }}
+    <set_variable name="Sensor Ping" value="11.0" integer="yes" />
+  </event>
+
+  <event name="Ping Sensors" id_arme="44c606bb-79ae-42f2-9403-97957fca9b6f" parent_id_arme="ad9938a2-658d-41b7-848f-b251c044b0d7">
+    <if_variable name="DisablePing" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sensor Ping" comparator="LESS" value="10.0" />
+    <if_timer_finished name="Sensor Ping" />
+    {% for l in util.FleetLetters %}
+    <set_variable name="Update Position {{ l }}" value="1.0" integer="yes" />
+    {% endfor %}
+    <set_variable name="Sensor Ping" value="1.0" integer="yes" />
+  </event>
+{% for l in util.FleetLetters %}
+  <event name="Update {{ l }} Position">
+    <if_variable name="Update Position {{ l }}" comparator="EQUALS" value="1.0" />
+    <if_exists name="{{ l }}|digit{{ l }}1||digit{{ l }}2|" />
+    <if_exists name="_{{ l }}_" />
+    <copy_object_property property="positionX" name1="{{ l }}|digit{{ l }}1||digit{{ l }}2|" name2="_{{ l }}_" />
+    <copy_object_property property="positionZ" name1="{{ l }}|digit{{ l }}1||digit{{ l }}2|" name2="_{{ l }}_" />
+    <set_variable name="Update Position {{ l }}" value="0.0" integer="yes" />
+  </event>
+  <event name="Rescan {{ l }} Position">
+    <if_variable name="Update Position {{ l }}" comparator="EQUALS" value="1.0" />
+    <if_not_exists name="{{ l }}|digit{{ l }}1||digit{{ l }}2|" />
+    <if_exists name="_{{ l }}_" />
+    <set_variable name="digit{{ l }}1" value="0.0" integer="yes" />
+    <set_variable name="digit{{ l }}2" value="0.0" integer="yes" />
+    <set_variable name="Update Position {{ l }}" value="2.0" integer="yes" />
+  </event>
+  <event name="Pass {{ l }} Position">
+    <if_variable name="Update Position {{ l }}" comparator="EQUALS" value="1.0" />
+    <if_not_exists name="_{{ l }}_" />
+    <set_variable name="digit{{ l }}1" value="0.0" integer="yes" />
+    <set_variable name="digit{{ l }}2" value="0.0" integer="yes" />
+    <set_variable name="Update Position {{ l }}" value="2.0" integer="yes" />
+  </event>
+{% endfor %}
+  <event name="Reset Digits" id_arme="2889b035-b601-46a4-9b76-90172583270a" parent_id_arme="e793a6de-f8c1-485a-b7d1-30a6d2a551bb">
+    <if_variable name="Sensor Ping" comparator="EQUALS" value="1.0" />
+    <set_timer name="Sensor Ping" seconds="20" />
+    <set_variable name="Sensor Ping" value="0.0" integer="yes" />
+  </event>
+{% for l in util.FleetLetters %}
+  <event name="Check{{ l }}">
+    <if_variable name="Update Position {{ l }}" comparator="EQUALS" value="2.0" />
+    <if_not_exists name="_{{ l }}_" />
+    <if_exists name="{{ l }}|digit{{ l }}1||digit{{ l }}2|" />
+    <create type="genericMesh" x="0.0" y="1000.0" z="0.0" name="_{{ l }}_" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" />
+    <copy_object_property property="positionX" name1="{{ l }}|digit{{ l }}1||digit{{ l }}2|" name2="_{{ l }}_" />
+    <copy_object_property property="positionZ" name1="{{ l }}|digit{{ l }}1||digit{{ l }}2|" name2="_{{ l }}_" />
+    <set_variable name="Update Position {{ l }}" value="0.0" integer="yes" />
+  </event>
+  <event name="Reestablish {{ l }}">
+    <if_variable name="Update Position {{ l }}" comparator="EQUALS" value="2.0" />
+    <if_exists name="_{{ l }}_" />
+    <if_exists name="{{ l }}|digit{{ l }}1||digit{{ l }}2|" />
+    <copy_object_property property="positionX" name1="{{ l }}|digit{{ l }}1||digit{{ l }}2|" name2="_{{ l }}_" />
+    <copy_object_property property="positionZ" name1="{{ l }}|digit{{ l }}1||digit{{ l }}2|" name2="_{{ l }}_" />
+    <set_variable name="Update Position {{ l }}" value="0.0" integer="yes" />
+  </event>
+  <event name="Add to digit{{ l }}1">
+    <if_variable name="Update Position {{ l }}" comparator="EQUALS" value="2.0" />
+    <if_not_exists name="{{ l }}|digit{{ l }}1||digit{{ l }}2|" />
+    <if_variable name="digit{{ l }}1" comparator="LESS" value="10.0" />
+    <if_variable name="digit{{ l }}2" comparator="LESS" value="10.0" />
+    <set_variable name="digit{{ l }}1" value="digit{{ l }}1 + 1" integer="yes" />
+  </event>
+  <event name="Add to digit{{ l }}2" id_arme="299a42ab-70df-4ef6-910f-d4f01768f5c2" parent_id_arme="2357c63b-d021-42cd-8094-cceba6d430f5">
+    <if_variable name="Update Position {{ l }}" comparator="EQUALS" value="2.0" />
+    <if_not_exists name="{{ l }}|digit{{ l }}1||digit{{ l }}2|" />
+    <if_variable name="digit{{ l }}1" comparator="EQUALS" value="10.0" />
+    <if_variable name="digit{{ l }}2" comparator="LESS" value="10.0" />
+    <set_variable name="digit{{ l }}1" value="0.0" integer="yes" />
+    <set_variable name="digit{{ l }}2" value="digit{{ l }}2 + 1" integer="yes" />
+  </event>
+  <event name="All digits {{ l }} Done">
+    <if_variable name="Update Position {{ l }}" comparator="EQUALS" value="2.0" />
+    <if_variable name="digit{{ l }}2" comparator="EQUALS" value="10.0" />
+    <destroy name="_{{ l }}_" />
+    <set_variable name="Update Position {{ l }}" value="0.0" integer="yes" />
+  </event>
+{% endfor %}

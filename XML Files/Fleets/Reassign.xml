@@ -1,0 +1,48 @@
+{% import 'Picker.xml' as picker %}
+{% import 'Fleets/AIDefinitions.xml' as ai %}
+{% import 'Utils.xml' as util %}
+
+{% set btns = ["GM"] %}
+{%- for l in util.FleetLetters -%} {% do btns.append(l) %} {%- endfor -%}
+
+{% call(choice) picker.Picker("TGrp", "Target SWCH", btns, "Target:", 1, 40, 415) %}
+  {% if choice == "GM" %}
+    <set_variable name="ReassignLetter" value="30.0" integer="yes" />
+  {% else %}
+    <set_variable name="ReassignLetter" value="{{ btns.index(choice) }}.0" integer="yes" />
+    <set_variable name="ReassignLetter" value="1.0" integer="yes" />
+    <set_variable name="reassignNumber0" value="0.0" integer="yes" />
+    <set_variable name="reassignNumber2" value="10.0" integer="yes" />
+    <set_variable name="reassignNumber4" value="35.0" integer="yes" />
+    <set_variable name="reassignNumber6" value="60.0" integer="yes" />
+    <set_variable name="reassignNumber8" value="80.0" integer="yes" />
+    <set_variable name="ReassignDigits" value="0.0" />
+  {% endif %}
+{% endcall %}
+
+  <event name="Increase combined number">
+    <if_variable name="ReassignDigits" comparator="EQUALS" value="1.0" />
+    <set_variable name="reassignNumber8" value="reassignNumber8+1" integer="yes" />
+    <set_variable name="reassignNumber6" value="reassignNumber6+1" integer="yes" />
+    <set_variable name="reassignNumber4" value="reassignNumber4+1" integer="yes" />
+    <set_variable name="reassignNumber2" value="reassignNumber2+1" integer="yes" />
+    <set_variable name="reassignNumber0" value="reassignNumber0+1" integer="yes" />
+    <set_variable name="ReassignDigits" value="2.0" integer="yes" />
+  </event>
+  <event name="End Cycle">
+    <if_variable name="reassignNumber0" comparator="GREATER" value="10.0" />
+    <if_variable name="reassignNumber2" comparator="GREATER" value="35.0" />
+    <if_variable name="reassignNumber4" comparator="GREATER" value="60.0" />
+    <if_variable name="reassignNumber6" comparator="GREATER" value="80.0" />
+    <if_variable name="reassignNumber8" comparator="GREATER" value="100.0" />
+    <set_variable name="reassignNumber0" value="0.0" integer="yes" />
+    <set_variable name="reassignNumber2" value="10.0" integer="yes" />
+    <set_variable name="reassignNumber4" value="35.0" integer="yes" />
+    <set_variable name="reassignNumber6" value="60.0" integer="yes" />
+    <set_variable name="reassignNumber8" value="80.0" integer="yes" />
+    <clear_gm_button text="Reassigning AI" />
+    <set_variable name="ReassignAI" value="0.0" integer="yes" />
+    <set_variable name="ReassignDigits" value="0.0" integer="yes" />
+  </event>
+
+  {{ ai.ReassignAIEvents() }}

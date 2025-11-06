@@ -4,6 +4,8 @@
 {% include 'Elements.xml' %}
 {% include 'Comms.xml' %}
 {% include 'Custom Config.xml' %}
+{% include 'Spawn.xml' %}
+{% include 'Fleets/FleetSystem.xml' %}
 {% import 'ModuleUtils.xml' as modutil %}
 {% import 'Utils.xml' as util %}
 {% for ship in util.shipConfigs %}
@@ -18,6 +20,5 @@
 {% for extension in g.data.get("extensions", []) %}
   {% include 'Extensions/' + extension + '.xml' %}
 {% endfor %}
-{% include 'Spawn.xml' %}
 {% include 'GM Console.xml' %}
 </mission_data>
