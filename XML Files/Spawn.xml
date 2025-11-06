@@ -1,61 +1,86 @@
+{% import 'Utils.xml' as util %}
 {%
   set TSN = {
     "key": "1",
+    "name": "TSN",
+    "defaultSide": 2,
   }
 %}
 {%
   set USFP = {
-    "key": "1",
+    "key": "2",
+    "name": "USFP",
+    "defaultSide": 2,
   }
 %}
 {%
   set Ximni = {
     "key": "3",
+    "name": "Ximni",
+    "defaultSide": 1,
   }
 %}
 {%
   set Hjorden = {
     "key": "4",
+    "name": "Hjorden",
+    "defaultSide": 4,
   }
 %}
 {%
   set Hegemony = {
     "key": "5",
+    "name": "Hegemony",
+    "defaultSide": 1,
   }
 %}
 {%
   set USF = {
     "key": "6",
+    "name": "USF",
+    "defaultSide": 3,
   }
 %}
 {%
   set NTani = {
     "key": "7",
+    "name": "NTani",
+    "defaultSide": 4,
   }
 %}
 {%
   set Pirate = {
     "key": "8",
+    "name": "Pirate",
+    "defaultSide": 5,
   }
 %}
 {%
   set Neutral = {
     "key": "9",
+    "name": "Neutral",
+    "defaultSide": 8,
   }
 %}
 {%
   set Caltron = {
     "key": "10",
+    "name": "Caltron",
+    "defaultSide": 6,
   }
 %}
 {%
   set Biomech = {
     "key": "11",
+    "name": "Biomech",
+    "defaultSide": 7,
   }
 %}
 {%
   set Static = {
     "key": "12",
+    "name": "Static",
+    "defaultSide": 2,
   }
 %}
 {%
