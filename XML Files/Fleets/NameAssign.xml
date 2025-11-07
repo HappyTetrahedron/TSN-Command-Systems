@@ -24,6 +24,7 @@
 {% for letter in util.FleetLetters %}
   <event name="{{ letter }}-- Already Exists">
     <if_variable name="Name Assign" comparator="EQUALS" value="2.0" />
+    <if_variable name="LetterPrefix" comparator="EQUALS" value="{{ loop.index }}.0" />
     <if_exists name="{{ letter }}|firstnumber||secondnumber|" />
     <set_variable name="Name Assign" value="1.0" integer="yes" />
   </event>

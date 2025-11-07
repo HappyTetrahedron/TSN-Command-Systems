@@ -10,7 +10,6 @@
     <set_variable name="ReassignLetter" value="30.0" integer="yes" />
   {% else %}
     <set_variable name="ReassignLetter" value="{{ btns.index(choice) }}.0" integer="yes" />
-    <set_variable name="ReassignLetter" value="1.0" integer="yes" />
     <set_variable name="reassignNumber0" value="0.0" integer="yes" />
     <set_variable name="reassignNumber2" value="10.0" integer="yes" />
     <set_variable name="reassignNumber4" value="35.0" integer="yes" />

@@ -23,6 +23,7 @@
       {% endfor %}
       <set_variable name="combinednumber{{ cn }}" value="combinednumber{{ cn }}+1" integer="yes" />
     {% endfor %}
+  </event>
 
   <event name="End Cycle">
     <if_variable name="combinednumber0" comparator="EQUALS" value="10.0" />

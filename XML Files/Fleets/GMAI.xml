@@ -87,6 +87,8 @@
     <set_variable name="ReassignAI" value="1022.0" integer="yes" />
   </event>
   <event name="Surrender" id_arme="3b3d74c4-8de4-4d7a-bc9e-d51741cf671a" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
+    <if_gm_button text="Surrender" />
+    <set_variable name="ReassignAI" value="1021.0" integer="yes" />
   </event>
   <event name="Default AI" id_arme="ef738414-bfe4-4eb2-be08-bd1978d45fa9" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
     <if_gm_button text="DefaultAI" />
