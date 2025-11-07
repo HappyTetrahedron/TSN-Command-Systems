@@ -513,7 +513,6 @@
     <set_variable name="System Settings" value="2.0" integer="yes" />
   </event>
   <folder_arme name="Spawn Keys" id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5" parent_id_arme="a63d8b7a-dd61-481e-b818-314ef7f7af5f" />
-  {% include 'SidePicker.xml' %}
   <folder_arme name="AI Setting" id_arme="64bab513-59a8-4578-af89-ddd5431a0131" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5" />
   <event name="Default" id_arme="07782f17-f917-413c-93f6-69f5f0fce737" parent_id_arme="64bab513-59a8-4578-af89-ddd5431a0131">
     <if_gm_button text="Set AI Type\Default" />

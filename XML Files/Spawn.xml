@@ -1,4 +1,5 @@
 {% import 'Utils.xml' as util %}
+{% import 'Picker.xml' as picker %}
 {%
   set TSN = {
     "key": "1",
@@ -178,6 +179,11 @@
     <set_variable name="Spawn_{{ prefix }}" value="0.0" integer="yes" />
   </event>
 {% endmacro %}
+
+{% set sides = range(1, 14)|list %}
+{% do sides.__setitem__(1, "2 PLYR") %}
+{% call(choice) picker.Picker("Side", "CHNG", sides, "Side Value:", 0, 95, 100, track="SideValue") %}
+{% endcall %}
 
 {% call spawn(TSN.key, "TSN Ships", "Scout", autoAI=1, nameAssign=True, randomDir=True) %}
   <create type="enemy" use_gm_position="" name="--" hullID="1" sideValue="SideValue" fleetnumber="-1" />

@@ -5,7 +5,7 @@
 {% set btns = ["GM"] %}
 {%- for l in util.FleetLetters -%} {% do btns.append(l) %} {%- endfor -%}
 
-{% call(choice) picker.Picker("TGrp", "Target SWCH", btns, "Target:", 1, 40, 415) %}
+{% call(choice) picker.Picker("TGrp", "SWCH", btns, "Target:", 1, 40, 415) %}
   {% if choice == "GM" %}
     <set_variable name="ReassignLetter" value="30.0" integer="yes" />
   {% else %}
