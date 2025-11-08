@@ -421,8 +421,7 @@
       <if_variable name="ReassignAI" comparator="EQUALS" value="{{ id }}.0" />
       <if_variable name="ReassignDigits" comparator="NOT" value="1.0" />
 {{    ai.macro(["GM"]) | indent(2, True) }}
-      <set_gm_button text="Reassigning AI" x="230" y="415" h="60" w="150" />
-      <set_variable name="ReassignDigits" value="1.0" integer="yes" />
+      <set_variable name="ReassignAI" value="0.0" integer="yes" />
     </event>
     {% for letter in util.FleetLetters %}
       <event name="Reassign {{ ai.name }} AI {{ letter }}">

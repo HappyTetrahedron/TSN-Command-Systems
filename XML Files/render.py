@@ -18,7 +18,23 @@ def track(key, value):
 def retrieve(key):
     return track_dict.get(key, [])
 
+def textwidth(text):
+    w = 0
+    for c in text:
+        if c.isupper():
+            w += 9
+        elif c.isdigit():
+            w += 8
+        elif c.isalpha():
+            w += 7
+        elif c.isspace():
+            w += 2
+        else:
+            w += 4
+    return w
+
 env = {
+    "difficulty": 7,
     "extensions": [
         "TokenSystem",
         "VerdantFleet",
@@ -59,6 +75,7 @@ template_env.trim_blocks = True
 template_env.autoescape = True
 template_env.add_extension('jinja2.ext.do')
 template_env.globals.update(track=track, retrieve=retrieve)
+template_env.filters.update(textwidth=textwidth)
 TMPL_FNAME = 'main.xml'
 OUT_FNAME = '../MISS_TSN-Command.xml'
 

@@ -1287,6 +1287,7 @@
     <set_gm_button text="GrpToGM" x="40" y="480" h="28" w="88" />
     <set_gm_button text="Del Grp" x="40" y="630" h="28" w="88" />
     <set_variable name="SwSidePicker_Should_Show" value="1.0" integer="yes" />
+    <set_variable name="DifPicker_Should_Show" value="1.0" integer="yes" />
     <set_gm_button text="AI Cmds Off" x="140" y="480" h="28" w="90" />
     <set_variable name="AIMenu_Button_Shown" value="1.0" integer="yes" />
     <!--Set Key Variables-->
@@ -1337,6 +1338,7 @@
     <clear_gm_button text="GrpToGM" />
     <clear_gm_button text="Del Grp" />
     <set_variable name="SwSidePicker_Should_Show" value="0.0" integer="yes" />
+    <set_variable name="DifPicker_Should_Show" value="0.0" integer="yes" />
     <clear_gm_button text="AI Cmds On" />
     <clear_gm_button text="AI Cmds Off" />
     <set_variable name="GM_AIMenu_DirStrikeBtn_Shown" value="0.0" integer="yes" />

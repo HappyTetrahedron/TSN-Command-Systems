@@ -1,9 +1,15 @@
 {% import 'Picker.xml' as picker %}
 {% import 'Utils.xml' as util %}
 
-{% call(choice) picker.PickerStateless("SwSide", "Switch Side", range(1, 13), 40, 690) %}
-  <set_variable name="AI_Reassign_ChangeToSide" value="{{ choice }}.0" integer="yes" />
+{% set sides = range(1, 14)|list %}
+{% do sides.__setitem__(1, "2 PLYR") %}
+{% call(choice) picker.PickerStateless("SwSide", "Switch Side", sides, 40, 690) %}
+  <set_variable name="AI_Reassign_ChangeToSide" value="{{ 2 if choice == '2 PLYR' else choice }}.0" integer="yes" />
   <set_variable name="ReassignAI" value="1000.0" integer="yes" />
+{% endcall %}
+
+{% call(choice) picker.Picker("Dif", "Change", range(1, 11), "Difficulty", g.data.difficulty or 10, 40, 445) %}
+  <set_difficulty_level value="{{ choice }}" />
 {% endcall %}
 
   <folder_arme name="Comms Enable-Disable" id_arme="6e370a09-6c89-457e-b917-e7c866c6ad45" parent_id_arme="846725f1-9752-4065-a2a1-9f52b9a4a32b" />

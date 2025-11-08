@@ -1,5 +1,4 @@
-{% set padding = 14 %}
-{% set perchar = 10 %}
+{% set padding = 16 %}
 {% set labelw = 80 %}
 {% set cancelw = 60 %}
 
@@ -19,7 +18,7 @@
 
   {% set tw = [0] %}
   {% for p in pickBtns %}
-  {% set w = padding + perchar * (p|string|length) %}
+  {% set w = padding + (p|string|textwidth) %}
   <clear_gm_button text="PIK{{ prefix }}   {{p}}" />
   <set_gm_button text="{{ prefix }}   {{p}}" x="{{ startX + labelw + tw[0] }}" y="{{ startY }}" h="30" w="{{ w }}" />
   {% do tw.append(tw.pop() + w) %}
@@ -37,6 +36,7 @@
   <clear_gm_button text="{{ prefix }}   {{ switchBtn }}" />
   <clear_gm_button text="{{ label }}" />
 
+  <set_variable name="{{ prefix }}PickerOpen" value="0.0" integer="yes" />
   <set_variable name="{{ prefix }}Picker_Shown" value="0.0" integer="yes" />
   <set_variable name="{{ prefix }}Picker_Choice_Shown" integer="yes" value="0.0" />
 </event>
@@ -54,14 +54,14 @@
 
     <clear_gm_button text="{{ prefix }}   {{ switchBtn }}" />
     <set_gm_button text="{{ label }}" x="{{ startX }}" y="{{ startY }}" h="30" w="{{ labelw }}" />
-    <set_gm_button text="{{ prefix }}   {{ switchBtn }}" x="{{ labelw + startX + padding + perchar * (btn|string|length) }}" y="{{ startY }}" h="30" w="{{ padding + perchar * (switchBtn|length) }}" />
+    <set_gm_button text="{{ prefix }}   {{ switchBtn }}" x="{{ labelw + startX + padding + (btn|string|textwidth) }}" y="{{ startY }}" h="30" w="{{ padding + (switchBtn|textwidth) }}" />
 
     {% for p in pickBtns %}
     <clear_gm_button text="{{ prefix }}   {{p}}" />
     <clear_gm_button text="PIK{{ prefix }}   {{p}}" />
     {% endfor %}
 
-    <set_gm_button text="PIK{{ prefix }}   {{ btn }}" x="{{ startX + labelw }}" y="{{ startY }}" h="30" w="{{ padding + perchar * (btn|string|length) }}" />
+    <set_gm_button text="PIK{{ prefix }}   {{ btn }}" x="{{ startX + labelw }}" y="{{ startY }}" h="30" w="{{ padding + (btn|string|textwidth) }}" />
     <set_variable name="{{ prefix }}Picker_Choice_Shown" value="{{ loop.index }}.0" integer="yes" />
     <set_variable name="{{ prefix }}Picker_Shown" value="1.0" integer="yes" />
   </event>
@@ -92,7 +92,7 @@
   <if_gm_button text="{{ prefix }}   {{ switchBtn }}" />
   {% set tw = [0] %}
   {% for p in pickBtns %}
-  {% set w = padding + perchar * (p|string|length) %}
+  {% set w = padding + (p|string|textwidth) %}
   <set_gm_button text="{{ prefix }}   {{p}}" x="{{ startX + labelw + tw[0] }}" y="{{ startY }}" h="30" w="{{ w }}" />
   {% do tw.append(tw.pop() + w) %}
   {% endfor %}
