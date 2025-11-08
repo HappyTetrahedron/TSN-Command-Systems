@@ -3,7 +3,7 @@
 
   <folder_arme name="GM Menus" id_arme="a63d8b7a-dd61-481e-b818-312ef7f7af5f" />
   {% set allSubmenus = [] %}
-  {% macro createMenu(name, id) %}
+  {% macro _createMenu(name, id) %}
   <event name="Menu Create {{ name }}">
     <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ id }}.0" />
     <if_variable name="_GM_Menu_{{ name }}_Active" comparator="NOT" value="1.0" />
@@ -11,7 +11,7 @@
     <set_variable name="_GM_Menu_{{ name }}_Active" value="1.0" integer="yes" />
   </event>
   {% endmacro %}
-  {% macro destroyMenu(name, id) %}
+  {% macro _destroyMenu(name, id) %}
   <event name="Menu Destroy {{ name }}">
     <if_variable name="GM_Menu_Selector" comparator="NOT" value="{{ id }}.0" />
     <if_variable name="_GM_Menu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
@@ -19,13 +19,13 @@
     <set_variable name="_GM_Menu_{{ name }}_Active" value="0.0" integer="yes" />
   </event>
   {% endmacro %}
-  {% macro menuEvent(name, id, triggerButton) %}
+  {% macro _menuEvent(name, id, triggerButton) %}
   <event name="Menu Activate {{ name }}">
     <if_gm_button text="{{triggerButton | safe}}" />
     <set_variable name="GM_Menu_Selector" value="{{ id }}.0" integer="yes" />
   </event>
   {% endmacro %}
-  {% macro createExclusiveSubMenu(name, id, menuname, parent_id) %}
+  {% macro _createExclusiveSubmenu(name, id, menuname, parent_id) %}
   <event name="{{ menuname }} Menu Create {{ name }}">
     <if_variable name="GM_{{ menuname }}Menu_Selector" comparator="EQUALS" value="{{ id }}.0" />
     <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ parent_id }}.0" />
@@ -34,7 +34,7 @@
     <set_variable name="_GM_{{ menuname }}Menu_{{ name }}_Active" value="1.0" integer="yes" />
   </event>
   {% endmacro %}
-  {% macro exclusiveSubMenuEvent(name, triggerButton, id, menuname, parent_id, additional_variables={}) %}
+  {% macro _exclusiveSubmenuEvent(name, triggerButton, id, menuname, parent_id, additional_variables={}) %}
   <event name="{{ menuname }}Menu Activate {{ name }}">
     <if_gm_button text="{{triggerButton | safe}}" />
     <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ parent_id }}.0" />
@@ -44,7 +44,7 @@
     {% endfor %}
   </event>
   {% endmacro %}
-  {% macro destroyExclusiveSubMenu(name, id, menuname) %}
+  {% macro _destroyExclusiveSubmenu(name, id, menuname) %}
   <event name="{{ menuname }} Menu Destroy {{ name }}">
     <if_variable name="GM_{{ menuname }}Menu_Selector" comparator="NOT" value="{{ id }}.0" />
     <if_variable name="_GM_{{ menuname }}Menu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
@@ -52,37 +52,37 @@
     <set_variable name="_GM_{{ menuname }}Menu_{{ name }}_Active" value="0.0" integer="yes" />
   </event>
   {% endmacro %}
-  {% macro createSpawnMenu(name, id) %}
+  {% macro _createSpawnMenu(name, id) %}
     {% set outercaller = caller() %}
-    {% call createExclusiveSubMenu(name, id, "Spawn", 2) %}
+    {% call _createExclusiveSubmenu(name, id, "Spawn", 2) %}
       {{ outercaller }}
     {% endcall %}
   {% endmacro %}
-  {% macro spawnmenuEvent(name, triggerButton, id, defaultSide) %}
-    {{ exclusiveSubMenuEvent(name, triggerButton, id, "Spawn", 2, {"SideValue": defaultSide}) }}
+  {% macro _spawnMenuEvent(name, triggerButton, id, defaultSide) %}
+    {{ _exclusiveSubmenuEvent(name, triggerButton, id, "Spawn", 2, {"SideValue": defaultSide}) }}
   {% endmacro %}
-  {% macro destroySpawnMenu(name, id) %}
+  {% macro _destroySpawnMenu(name, id) %}
     {% set outercaller = caller() %}
-    {% call destroyExclusiveSubMenu(name, id, "Spawn") %}
+    {% call _destroyExclusiveSubmenu(name, id, "Spawn") %}
       {{ outercaller }}
     {% endcall %}
   {% endmacro %}
-  {% macro createWreckMenu(name, id) %}
+  {% macro _createWreckMenu(name, id) %}
     {% set outercaller = caller() %}
-    {% call createExclusiveSubMenu(name, id, "Wreck", 3) %}
+    {% call _createExclusiveSubmenu(name, id, "Wreck", 3) %}
       {{ outercaller }}
     {% endcall %}
   {% endmacro %}
-  {% macro wreckmenuEvent(name, triggerButton, id) %}
-    {{ exclusiveSubMenuEvent(name, triggerButton, id, "Wreck", 3) }}
+  {% macro _wreckMenuEvent(name, triggerButton, id) %}
+    {{ _exclusiveSubmenuEvent(name, triggerButton, id, "Wreck", 3) }}
   {% endmacro %}
-  {% macro destroyWreckMenu(name, id) %}
+  {% macro _destroyWreckMenu(name, id) %}
     {% set outercaller = caller() %}
-    {% call destroyExclusiveSubMenu(name, id, "Wreck") %}
+    {% call _destroyExclusiveSubmenu(name, id, "Wreck") %}
       {{ outercaller }}
     {% endcall %}
   {% endmacro %}
-  {% macro createSubMenu(name) %}
+  {% macro _createSubmenu(name) %}
   <event name="SubMenu Create {{ name }}">
     {% do allSubmenus.append(name) %}
     <if_variable name="GM_Submenu_{{ name }}_ShouldShow" comparator="EQUALS" value="1.0" />
@@ -91,7 +91,7 @@
     <set_variable name="_GM_Submenu_{{ name }}_Active" value="1.0" integer="yes" />
   </event>
   {% endmacro %}
-  {% macro destroySubMenu(name) %}
+  {% macro _destroySubmenu(name) %}
     <event name="SubMenu Destroy {{ name }}">
       <if_variable name="GM_Submenu_{{ name }}_ShouldShow" comparator="NOT" value="1.0" />
       <if_variable name="_GM_Submenu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
@@ -99,13 +99,13 @@
       <set_variable name="_GM_Submenu_{{ name }}_Active" value="0.0" integer="yes" />
   </event>
   {% endmacro %}
-  {% macro dismissEvent(name, buttonPath) %}
+  {% macro _dismissEvent(name, buttonPath) %}
   <event name="SubMenu Dismiss {{ name }} ({{ buttonPath }})">
     <if_gm_button text="{{buttonPath}}" />
     <set_variable name="GM_Submenu_{{ name }}_ShouldShow" value="0.0" integer="yes" />
   </event>
   {% endmacro %}
-  {% macro submenuEvent(name, triggerButton, guard=0) %}
+  {% macro _submenuEvent(name, triggerButton, guard=0) %}
   <event name="SubMenu Activate {{ name }}">
     <if_gm_button text="{{triggerButton}}" />
     {% if guard > 0 %}
@@ -115,7 +115,7 @@
   </event>
   {% endmacro %}
 
-  {% call createMenu("Base", 1) %}
+  {% call _createMenu("Base", 1) %}
     <!---->
     <set_gm_button text="SlctdToGM" x="100" y="100" h="28" w="90" />
     <set_gm_button text="DelTerrain" x="100" y="130" h="28" w="90" />
@@ -149,7 +149,7 @@
     <set_variable name="Shortcut Keys" value="1.0" />
   {% endcall %}
 
-  {% call destroyMenu("Base", 1) %}
+  {% call _destroyMenu("Base", 1) %}
     <!--Basic Keys-->
     <clear_gm_button text="SlctdToGM" />
     <clear_gm_button text="DelTerrain" />
@@ -183,9 +183,9 @@
     <set_variable name="Shortcut Keys" value="0.0" />
   {% endcall %}
 
-  {{ menuEvent("Basic", 1, "Bas.") }}
+  {{ _menuEvent("Basic", 1, "Bas.") }}
 
-  {% call createMenu("Spawn", 2) %}
+  {% call _createMenu("Spawn", 2) %}
     {{ util.restore("GM_SpawnMenu_Selector") }}
     <set_gm_button text="AI Setting:" x="95" y="135" h="30" w="80" />
     <set_gm_button text="Default" x="175" y="135" h="30" w="120" />
@@ -212,7 +212,7 @@
     <set_variable name="SidePicker_Side_Shown" value="0.0" integer="yes" />
   {% endcall %}
 
-  {% call destroyMenu("Spawn", 2) %}
+  {% call _destroyMenu("Spawn", 2) %}
     {{ util.storeAndSet("GM_SpawnMenu_Selector") }}
     <clear_gm_button text="Set AI Type\Default" />
     <clear_gm_button text="Set AI Type\Hunt Enemies" />
@@ -282,9 +282,9 @@
     <clear_gm_button text="Cnvy Heading 135" />
     <set_variable name="SidePicker_Should_Show" value="0.0" integer="yes" />
   {% endcall %}
-  {{ menuEvent("Spawn", 2, "SPWN.") }}
+  {{ _menuEvent("Spawn", 2, "SPWN.") }}
 
-  {% call createMenu("POI", 3) %}
+  {% call _createMenu("POI", 3) %}
     {{ util.restore("GM_WreckMenu_Selector") }}
     <set_gm_button text="Waypoint SPAWN" x="100" y="100" h="30" w="80" />
     <set_gm_button text="Scan Pts" x="100" y="135" h="30" w="80" />
@@ -292,7 +292,7 @@
     <set_gm_button text="Rndz. Pts" x="100" y="205" h="30" w="80" />
     <set_gm_button text="Anomalies" x="100" y="240" h="30" w="80" />
   {% endcall %}
-  {% call destroyMenu("POI", 3) %}
+  {% call _destroyMenu("POI", 3) %}
     <clear_gm_button text="Waypoint SPAWN" />
     <clear_gm_button text="Rndz. Pts" />
     <clear_gm_button text="Anomalies" />
@@ -301,22 +301,22 @@
     <set_variable name="GM_Submenu_POIWreckSelect_ShouldShow" value="0.0" integer="yes" />
     {{ util.storeAndSet("GM_WreckMenu_Selector") }}
   {% endcall %}
-  {{ menuEvent("POI", 3, "POI") }}
+  {{ _menuEvent("POI", 3, "POI") }}
 
-  {% call createMenu("Hazard", 4) %}
+  {% call _createMenu("Hazard", 4) %}
     <set_gm_button text="Terrain" x="100" y="100" h="30" w="80" />
     <set_gm_button text="Creatures" x="100" y="135" h="30" w="80" />
     <set_gm_button text="Mines" x="100" y="170" h="30" w="80" />
   {% endcall %}
-  {% call destroyMenu("Hazard", 4) %}
+  {% call _destroyMenu("Hazard", 4) %}
     <clear_gm_button text="Terrain" />
     <clear_gm_button text="Creatures" />
     <clear_gm_button text="Mines" />
   {% endcall %}
 
-  {{ menuEvent("Hazard", 4, "Haz.") }}
+  {{ _menuEvent("Hazard", 4, "Haz.") }}
 
-  {% call createMenu("Interaction", 5) %}
+  {% call _createMenu("Interaction", 5) %}
     <set_gm_button text="Messages" x="100" y="100" h="30" w="90" />
     <set_gm_button text="Supplies" x="100" y="135" h="30" w="90" />
     <set_gm_button text="Rprs/Dmge" x="100" y="170" h="30" w="90" />
@@ -327,7 +327,7 @@
     <set_gm_button text="Reset Comms" x="100" y="345" h="30" w="90" />
     {{ util.restore("GM_Submenu_IntSupplies_ShouldShow") }}
   {% endcall %}
-  {% call destroyMenu("Interaction", 5) %}
+  {% call _destroyMenu("Interaction", 5) %}
     <clear_gm_button text="Messages" />
     <clear_gm_button text="Supplies" />
     <clear_gm_button text="Rprs/Dmge" />
@@ -338,34 +338,34 @@
     <clear_gm_button text="Reset Comms" />
     {{ util.storeAndSet("GM_Submenu_IntSupplies_ShouldShow") }}
   {% endcall %}
-  {{ menuEvent("Interaction", 5, "Int.") }}
+  {{ _menuEvent("Interaction", 5, "Int.") }}
 
-  {% call createMenu("Custom", 6) %}
+  {% call _createMenu("Custom", 6) %}
   {% endcall %}
 
-  {% call destroyMenu("Custom", 6) %}
+  {% call _destroyMenu("Custom", 6) %}
   {% endcall %}
-  {{ menuEvent("Custom", 6, "CSTM") }}
+  {{ _menuEvent("Custom", 6, "CSTM") }}
 
   {% for faction in spawn.factions %}
-    {{ spawnmenuEvent("Spawn" + faction.name, faction.name, faction.key, faction.defaultSide) }}
+    {{ _spawnMenuEvent("Spawn" + faction.name, faction.name, faction.key, faction.defaultSide) }}
   {% endfor %}
 
   {% for faction in spawn.factions %}
     {% set buttons = retrieve("spawn" + faction.key) %}
-    {% call createSpawnMenu("Spawn" + faction.name, faction.key) %}
+    {% call _createSpawnMenu("Spawn" + faction.name, faction.key) %}
       {% for b in buttons %}
         <set_gm_button text="{{ b | safe }}" />
       {% endfor %}
     {% endcall %}
-    {% call destroySpawnMenu("Spawn" + faction.name, faction.key) %}
+    {% call _destroySpawnMenu("Spawn" + faction.name, faction.key) %}
       {% for b in buttons %}
         <clear_gm_button text="{{ b | safe }}" />
       {% endfor %}
     {% endcall %}
   {% endfor %}
 
-  {% call createSubMenu("POIAnomalies") %}
+  {% call _createSubmenu("POIAnomalies") %}
     <set_gm_button text="Spawn Anomaly\Energy" />
     <set_gm_button text="Spawn Anomaly\DamCons" />
     <set_gm_button text="Spawn Anomaly\Heat" />
@@ -378,7 +378,7 @@
   {% endcall %}
 
 
-  {% call destroySubMenu("POIAnomalies") %}
+  {% call _destroySubmenu("POIAnomalies") %}
     <clear_gm_button text="Spawn Anomaly\Energy" />
     <clear_gm_button text="Spawn Anomaly\DamCons" />
     <clear_gm_button text="Spawn Anomaly\Heat" />
@@ -390,10 +390,10 @@
     <clear_gm_button text="Spawn Anomaly\_Dismiss" />
   {% endcall %}
 
-  {{ submenuEvent("POIAnomalies", "Anomalies") }}
-  {{ dismissEvent("POIAnomalies", "Spawn Anomaly\_Dismiss") }}
+  {{ _submenuEvent("POIAnomalies", "Anomalies") }}
+  {{ _dismissEvent("POIAnomalies", "Spawn Anomaly\_Dismiss") }}
   
-  {% call createSubMenu("POISignatures") %}
+  {% call _createSubmenu("POISignatures") %}
     <!--TSN Signatures-->
     <set_gm_button text="Signatures\TSN\Energy Signatures" />
     <set_gm_button text="Signatures\TSN\Weapons Signatures" />
@@ -424,7 +424,7 @@
     <set_gm_button text="Signatures\_Dismiss" />
   {% endcall %}
 
-  {% call destroySubMenu("POISignatures") %}
+  {% call _destroySubmenu("POISignatures") %}
     <!--TSN Signatures-->
     <clear_gm_button text="Signatures\TSN\Energy Signatures" />
     <clear_gm_button text="Signatures\TSN\Weapons Signatures" />
@@ -455,10 +455,10 @@
     <clear_gm_button text="Signatures\_Dismiss" />
   {% endcall %}
 
-  {{ submenuEvent("POISignatures", "Scan Pts") }}
-  {{ dismissEvent("POISignatures", "Signatures\_Dismiss") }}
+  {{ _submenuEvent("POISignatures", "Scan Pts") }}
+  {{ _dismissEvent("POISignatures", "Signatures\_Dismiss") }}
   
-  {% call createSubMenu("POIRvPts") %}
+  {% call _createSubmenu("POIRvPts") %}
     <set_gm_button text="RVs\Marine Drop" />
     <set_gm_button text="RVs\Marine Exfil" />
     <set_gm_button text="RVs\Enginr Drop" />
@@ -477,7 +477,7 @@
     <set_gm_button text="RVs\_Dismiss" />
   {% endcall %}
 
-  {% call destroySubMenu("POIRvPts") %}
+  {% call _destroySubmenu("POIRvPts") %}
     <clear_gm_button text="RVs\Marine Drop" />
     <clear_gm_button text="RVs\Marine Exfil" />
     <clear_gm_button text="RVs\Enginr Drop" />
@@ -496,10 +496,10 @@
     <clear_gm_button text="RVs\_Dismiss" />
   {% endcall %}
 
-  {{ submenuEvent("POIRvPts", "Rndz. Pts") }}
-  {{ dismissEvent("POIRvPts", "RVs\_Dismiss") }}
+  {{ _submenuEvent("POIRvPts", "Rndz. Pts") }}
+  {{ _dismissEvent("POIRvPts", "RVs\_Dismiss") }}
 
-  {% call createSubMenu("POIWreckSelect") %}
+  {% call _createSubmenu("POIWreckSelect") %}
     <set_gm_button text="Wrecks:" x="190" y="100" h="30" w="80" />
     <set_gm_button text="TSN" x="265" y="135" h="30" w="70" />
     <set_gm_button text="USFP" x="190" y="135" h="30" w="70" />
@@ -515,7 +515,7 @@
     <set_gm_button text="Dismiss" x="265" y="310" h="30" w="70" />
   {% endcall %}
 
-  {% call destroySubMenu("POIWreckSelect") %}
+  {% call _destroySubmenu("POIWreckSelect") %}
     <!--Debris-->
     <clear_gm_button text="Wrecks:" />
     <clear_gm_button text="TSN" />
@@ -532,7 +532,7 @@
     <clear_gm_button text="Dismiss" />
   {% endcall %}
 
-  {{ submenuEvent("POIWreckSelect", "Debris") }}
+  {{ _submenuEvent("POIWreckSelect", "Debris") }}
 
   <event name="Dismiss Wreck Menu">
     <if_gm_button text="Dismiss" />
@@ -541,19 +541,19 @@
     <set_variable name="GM_Submenu_POIWreckSelect_ShouldShow" value="0.0" integer="yes" />
   </event>
 
-  {{ wreckmenuEvent("WreckTSN", "TSN", 1) }}
-  {{ wreckmenuEvent("WreckUSFP", "USFP", 2) }}
-  {{ wreckmenuEvent("WreckXimni", "Ximni", 3) }}
-  {{ wreckmenuEvent("WreckHjorden", "Hjorden", 4) }}
-  {{ wreckmenuEvent("WreckHegemony", "Hegemony", 5) }}
-  {{ wreckmenuEvent("WreckUSF", "USF", 6) }}
-  {{ wreckmenuEvent("WreckNtani", "N'Tani", 7) }}
-  {{ wreckmenuEvent("WreckPirate", "Pirate", 8) }}
-  {{ wreckmenuEvent("WreckCaltron", "Caltron", 10) }}
-  {{ wreckmenuEvent("WreckBiomech", "Biomech", 11) }}
-  {{ wreckmenuEvent("WreckBases", "Bases", 12) }}
+  {{ _wreckMenuEvent("WreckTSN", "TSN", 1) }}
+  {{ _wreckMenuEvent("WreckUSFP", "USFP", 2) }}
+  {{ _wreckMenuEvent("WreckXimni", "Ximni", 3) }}
+  {{ _wreckMenuEvent("WreckHjorden", "Hjorden", 4) }}
+  {{ _wreckMenuEvent("WreckHegemony", "Hegemony", 5) }}
+  {{ _wreckMenuEvent("WreckUSF", "USF", 6) }}
+  {{ _wreckMenuEvent("WreckNtani", "N'Tani", 7) }}
+  {{ _wreckMenuEvent("WreckPirate", "Pirate", 8) }}
+  {{ _wreckMenuEvent("WreckCaltron", "Caltron", 10) }}
+  {{ _wreckMenuEvent("WreckBiomech", "Biomech", 11) }}
+  {{ _wreckMenuEvent("WreckBases", "Bases", 12) }}
 
-  {% call createWreckMenu("WreckTSN", 1) %}
+  {% call _createWreckMenu("WreckTSN", 1) %}
     <set_gm_button text="TSN Wrecks\Scout" />
     <set_gm_button text="TSN Wrecks\Light Cruiser" />
     <set_gm_button text="TSN Wrecks\Battleship" />
@@ -575,7 +575,7 @@
     <set_gm_button text="In-System Wrecks\Shuttle-LR Shuttle" />
     {% endcall %}
 
-  {% call destroyWreckMenu("WreckTSN", 1) %}
+  {% call _destroyWreckMenu("WreckTSN", 1) %}
     <!--TSN Debris-->
     <clear_gm_button text="TSN Wrecks\Scout" />
     <clear_gm_button text="TSN Wrecks\Light Cruiser" />
@@ -598,7 +598,7 @@
     <clear_gm_button text="In-System Wrecks\Shuttle-LR Shuttle" />
   {% endcall %}
 
-  {% call createWreckMenu("WreckUSFP", 2) %}
+  {% call _createWreckMenu("WreckUSFP", 2) %}
     <set_gm_button text="USFP Wrecks\Science Vessel" />
     <set_gm_button text="USFP Wrecks\Bulk Cargo" />
     <set_gm_button text="USFP Wrecks\Luxury Liner" />
@@ -608,7 +608,7 @@
     <!--<set_gm_button text="USFP Wrecks\Scow" />-->
   {% endcall %}
 
-  {% call destroyWreckMenu("WreckUSFP", 2) %}
+  {% call _destroyWreckMenu("WreckUSFP", 2) %}
     <!--USFP Debris-->
     <clear_gm_button text="USFP Wrecks\Science Vessel" />
     <clear_gm_button text="USFP Wrecks\Bulk Cargo" />
@@ -619,7 +619,7 @@
     <clear_gm_button text="USFP Wrecks\Scow" />
   {% endcall %}
 
-  {% call createWreckMenu("WreckHegemony", 5) %}
+  {% call _createWreckMenu("WreckHegemony", 5) %}
     <set_gm_button text="Hegemony Wreck\Kralien Cruiser" />
     <set_gm_button text="Hegemony Wreck\Kralien Battleship" />
     <set_gm_button text="Hegemony Wreck\Kralien Dreadnought" />
@@ -637,7 +637,7 @@
     <set_gm_button text="Hegemony Wreck\Transport" />
   {% endcall %}
 
-  {% call destroyWreckMenu("WreckHegemony", 5) %}
+  {% call _destroyWreckMenu("WreckHegemony", 5) %}
     <!--Hegemony Debris-->
     <clear_gm_button text="Hegemony Wreck\Kralien Cruiser" />
     <clear_gm_button text="Hegemony Wreck\Kralien Battleship" />
@@ -656,7 +656,7 @@
     <clear_gm_button text="Hegemony Wreck\Transport" />
   {% endcall %}
 
-  {% call createWreckMenu("WreckXimni", 3) %}
+  {% call _createWreckMenu("WreckXimni", 3) %}
     <set_gm_button text="Ximni Wreck\Light Cruiser" />
     <set_gm_button text="Ximni Wreck\Scout" />
     <set_gm_button text="Ximni Wreck\Missile Cruiser" />
@@ -668,7 +668,7 @@
     <set_gm_button text="Ximni Wreck\Shuttle" />
   {% endcall %}
 
-  {% call destroyWreckMenu("WreckXimni", 3) %}
+  {% call _destroyWreckMenu("WreckXimni", 3) %}
     <!--Ximni Debris-->
     <clear_gm_button text="Ximni Wreck\Light Cruiser" />
     <clear_gm_button text="Ximni Wreck\Scout" />
@@ -681,7 +681,7 @@
     <clear_gm_button text="Ximni Wreck\Shuttle" />
   {% endcall %}
 
-  {% call createWreckMenu("WreckPirate", 8) %}
+  {% call _createWreckMenu("WreckPirate", 8) %}
     <set_gm_button text="Skull Pirates Wrecks\Strongbow" />
     <set_gm_button text="Skull Pirates Wrecks\Longbow" />
     <set_gm_button text="Skull Pirates Wrecks\Brigantine" />
@@ -692,7 +692,7 @@
     <set_gm_button text="Euphini Pirates Wrecks\Transport" />
   {% endcall %}
 
-  {% call destroyWreckMenu("WreckPirate", 8) %}
+  {% call _destroyWreckMenu("WreckPirate", 8) %}
     <!--Pirate Debris-->
     <clear_gm_button text="Skull Pirates Wrecks\Strongbow" />
     <clear_gm_button text="Skull Pirates Wrecks\Longbow" />
@@ -704,7 +704,7 @@
     <clear_gm_button text="Euphini Pirates Wrecks\Transport" />
   {% endcall %}
 
-  {% call createWreckMenu("WreckNtani", 7) %}
+  {% call _createWreckMenu("WreckNtani", 7) %}
     <set_gm_button text="N'Tani Wreck\Skavanger" />
     <set_gm_button text="N'Tani Wreck\Frigate" />
     <set_gm_button text="N'Tani Wreck\Cargo Pod Ship" />
@@ -712,7 +712,7 @@
     <set_gm_button text="N'Tani Wreck\Ranger" />
   {% endcall %}
 
-  {% call destroyWreckMenu("WreckNtani", 7) %}
+  {% call _destroyWreckMenu("WreckNtani", 7) %}
     <!--N'Tani Debris-->
     <clear_gm_button text="N'Tani Wreck\Skavanger" />
     <clear_gm_button text="N'Tani Wreck\Frigate" />
@@ -721,19 +721,19 @@
     <clear_gm_button text="N'Tani Wreck\Ranger" />
   {% endcall %}
 
-  {% call createWreckMenu("WreckHjorden", 4) %}
+  {% call _createWreckMenu("WreckHjorden", 4) %}
     <set_gm_button text="Hjorden Wreck\Cruiser" />
     <set_gm_button text="Hjorden Wreck\Cruise Liner" />
     <set_gm_button text="Hjorden Wreck\Transport" />
   {% endcall %}
-  {% call destroyWreckMenu("WreckHjorden", 4) %}
+  {% call _destroyWreckMenu("WreckHjorden", 4) %}
     <!--Hjorden Debris-->
     <clear_gm_button text="Hjorden Wreck\Cruiser" />
     <clear_gm_button text="Hjorden Wreck\Cruise Liner" />
     <clear_gm_button text="Hjorden Wreck\Transport" />
   {% endcall %}
 
-  {% call createWreckMenu("WreckUSF", 6) %}
+  {% call _createWreckMenu("WreckUSF", 6) %}
     <set_gm_button text="USF Wreck\Xenophobe" />
     <set_gm_button text="USF Wreck\Emu" />
     <set_gm_button text="USF Wreck\Gallu" />
@@ -741,7 +741,7 @@
     <set_gm_button text="USF Wreck\Nightmare" />
     <set_gm_button text="USF Wreck\Griffzungenschwert" />
   {% endcall %}
-  {% call destroyWreckMenu("WreckUSF", 6) %}
+  {% call _destroyWreckMenu("WreckUSF", 6) %}
     <!--USF Debris-->
     <clear_gm_button text="USF Wreck\Xenophobe" />
     <clear_gm_button text="USF Wreck\Emu" />
@@ -751,7 +751,7 @@
     <clear_gm_button text="USF Wreck\Griffzungenschwert" />
   {% endcall %}
 
-  {% call createWreckMenu("WreckCaltron", 10) %}
+  {% call _createWreckMenu("WreckCaltron", 10) %}
     <set_gm_button text="Caltron Wrecks\Primary" />
     <set_gm_button text="Caltron Wrecks\Tertiary" />
     <set_gm_button text="Caltron Wrecks\Senary" />
@@ -760,7 +760,7 @@
     <set_gm_button text="Caltron Wrecks\Super Swarm" />
     <set_gm_button text="Caltron Wrecks\Primary (Var. B)" />
   {% endcall %}
-  {% call destroyWreckMenu("WreckCaltron", 10) %}
+  {% call _destroyWreckMenu("WreckCaltron", 10) %}
     <!--Caltron Wrecks-->
     <clear_gm_button text="Caltron Wrecks\Primary" />
     <clear_gm_button text="Caltron Wrecks\Tertiary" />
@@ -771,13 +771,13 @@
     <clear_gm_button text="Caltron Wrecks\Primary (Var. B)" />
   {% endcall %}
 
-  {% call createWreckMenu("WreckBiomech", 11) %}
+  {% call _createWreckMenu("WreckBiomech", 11) %}
     <set_gm_button text="Biomech Wrecks\Stage 1" />
     <set_gm_button text="Biomech Wrecks\Stage 2" />
     <set_gm_button text="Biomech Wrecks\Stage 3" />
     <set_gm_button text="Biomech Wrecks\Stage 4" />
   {% endcall %}
-  {% call destroyWreckMenu("WreckBiomech", 11) %}
+  {% call _destroyWreckMenu("WreckBiomech", 11) %}
     <!--Biomech Wrecks-->
     <clear_gm_button text="Biomech Wrecks\Stage 1" />
     <clear_gm_button text="Biomech Wrecks\Stage 2" />
@@ -785,7 +785,7 @@
     <clear_gm_button text="Biomech Wrecks\Stage 4" />
   {% endcall %}
 
-  {% call createWreckMenu("WreckBases", 12) %}
+  {% call _createWreckMenu("WreckBases", 12) %}
     <set_gm_button text="Military Base Wreck\TSN Gate" />
     <!--<set_gm_button text="Military Base Wreck\TSN DS Base" />-->
     <set_gm_button text="Military Base Wreck\TSN Cmd Base" />
@@ -806,7 +806,7 @@
     <!--<set_gm_button text="Defense Wrecks\TSN Weapons Platform" />-->
     <!--<set_gm_button text="Defense Wrecks\Heg. Defense Platform" />-->
   {% endcall %}
-  {% call destroyWreckMenu("WreckBases", 12) %}
+  {% call _destroyWreckMenu("WreckBases", 12) %}
     <!--Bases Debris-->
     <clear_gm_button text="Military Base Wreck\TSN Gate" />
     <clear_gm_button text="Military Base Wreck\TSN DS Base" />
@@ -829,7 +829,7 @@
     <clear_gm_button text="Defense Wrecks\Heg. Defense Platform" />
   {% endcall %}
 
-  {% call createSubMenu("HazardTerrain") %}
+  {% call _createSubmenu("HazardTerrain") %}
     <set_gm_button text="Terrain\Blackhole" />
     <set_gm_button text="Terrain\Radiation Point" />
     <set_gm_button text="Terrain\Nebulae\Single Nebula (Purple)" />
@@ -850,7 +850,7 @@
     <set_gm_button text="Terrain\Asteroids\Large Field" />
     <set_gm_button text="Terrain\_Dismiss" />
   {% endcall %}
-  {% call destroySubMenu("HazardTerrain") %}
+  {% call _destroySubmenu("HazardTerrain") %}
     <clear_gm_button text="Terrain\Blackhole" />
     <clear_gm_button text="Terrain\Radiation Point" />
     <clear_gm_button text="Terrain\Nebulae\Single Nebula (Purple)" />
@@ -871,9 +871,9 @@
     <clear_gm_button text="Terrain\Asteroids\Large Field" />
     <clear_gm_button text="Terrain\_Dismiss" />
   {% endcall %}
-  {{ submenuEvent("HazardTerrain", "Terrain") }}
-  {{ dismissEvent("HazardTerrain", "Terrain\_Dismiss") }}
-  {% call createSubMenu("HazardCreatures") %}
+  {{ _submenuEvent("HazardTerrain", "Terrain") }}
+  {{ _dismissEvent("HazardTerrain", "Terrain\_Dismiss") }}
+  {% call _createSubmenu("HazardCreatures") %}
     <set_gm_button text="Creatures\Shark" />
     <set_gm_button text="Creatures\Bug" />
     <set_gm_button text="Creatures\Charybdis" />
@@ -883,7 +883,7 @@
     <set_gm_button text="Creatures\Whale Pod" />
     <set_gm_button text="Creatures\_Dismiss" />
   {% endcall %}
-  {% call destroySubMenu("HazardCreatures") %}
+  {% call _destroySubmenu("HazardCreatures") %}
     <clear_gm_button text="Creatures\Shark" />
     <clear_gm_button text="Creatures\Bug" />
     <clear_gm_button text="Creatures\Charybdis" />
@@ -893,26 +893,26 @@
     <clear_gm_button text="Creatures\Whale Pod" />
     <clear_gm_button text="Creatures\_Dismiss" />
   {% endcall %}
-  {{ submenuEvent("HazardCreatures", "Creatures") }}
-  {{ dismissEvent("HazardCreatures", "Creatures\_Dismiss") }}
-  {% call createSubMenu("HazardMines") %}
+  {{ _submenuEvent("HazardCreatures", "Creatures") }}
+  {{ _dismissEvent("HazardCreatures", "Creatures\_Dismiss") }}
+  {% call _createSubmenu("HazardMines") %}
     <set_gm_button text="Mines\Large Minefield (Circ.)" />
     <set_gm_button text="Mines\Medium Minefield (Circ.)" />
     <set_gm_button text="Mines\Small Minefield (Circ.)" />
     <set_gm_button text="Mines\Single Mine" />
     <set_gm_button text="Mines\_Dismiss" />
   {% endcall %}
-  {% call destroySubMenu("HazardMines") %}
+  {% call _destroySubmenu("HazardMines") %}
     <clear_gm_button text="Mines\Large Minefield (Circ.)" />
     <clear_gm_button text="Mines\Medium Minefield (Circ.)" />
     <clear_gm_button text="Mines\Small Minefield (Circ.)" />
     <clear_gm_button text="Mines\Single Mine" />
     <clear_gm_button text="Mines\_Dismiss" />
   {% endcall %}
-  {{ submenuEvent("HazardMines", "Mines") }}
-  {{ dismissEvent("HazardMines", "Mines\_Dismiss") }}
+  {{ _submenuEvent("HazardMines", "Mines") }}
+  {{ _dismissEvent("HazardMines", "Mines\_Dismiss") }}
 
-  {% call createSubMenu("IntBoarding") %}
+  {% call _createSubmenu("IntBoarding") %}
     <set_gm_button text="Boarding Actions\Attack Ship1" />
     <set_gm_button text="Boarding Actions\Attack Ship6" />
     <set_gm_button text="Boarding Actions\Attack Ship4" />
@@ -924,7 +924,7 @@
     <set_gm_button text="Boarding Actions\Disable Ship" />
     <set_gm_button text="Boarding Actions\_Dismiss" />
   {% endcall %}
-  {% call destroySubMenu("IntBoarding") %}
+  {% call _destroySubmenu("IntBoarding") %}
     <clear_gm_button text="Boarding Actions\Attack Ship1" />
     <clear_gm_button text="Boarding Actions\Attack Ship6" />
     <clear_gm_button text="Boarding Actions\Attack Ship4" />
@@ -936,11 +936,11 @@
     <clear_gm_button text="Boarding Actions\Disable Ship" />
     <clear_gm_button text="Boarding Actions\_Dismiss" />
   {% endcall %}
-  {{ submenuEvent("IntBoarding", "Brd Act.") }}
-  {{ dismissEvent("IntBoarding", "Boarding Actions\_Dismiss") }}
+  {{ _submenuEvent("IntBoarding", "Brd Act.") }}
+  {{ _dismissEvent("IntBoarding", "Boarding Actions\_Dismiss") }}
 
 
-  {% call createSubMenu("IntScantext") %}
+  {% call _createSubmenu("IntScantext") %}
     <set_gm_button text="NPC Descriptions\Refugee Marker" />
     <set_gm_button text="NPC Descriptions\Contraband" />
     <set_gm_button text="NPC Descriptions\Radiation Haz" />
@@ -968,7 +968,7 @@
     <set_gm_button text="NPC Descriptions\Stations\Mineral Refinary" />
     <set_gm_button text="NPC Descriptions\_Dismiss" />
   {% endcall %}
-  {% call destroySubMenu("IntScantext") %}
+  {% call _destroySubmenu("IntScantext") %}
     <clear_gm_button text="NPC Descriptions\Refugee Marker" />
     <clear_gm_button text="NPC Descriptions\Contraband" />
     <clear_gm_button text="NPC Descriptions\Radiation Haz" />
@@ -996,10 +996,10 @@
     <clear_gm_button text="NPC Descriptions\Stations\Metal Refinary" />
     <clear_gm_button text="NPC Descriptions\Stations\Mineral Refinary" />
   {% endcall %}
-  {{ submenuEvent("IntScantext", "Scan Text") }}
-  {{ dismissEvent("IntScantext", "NPC Descriptions\_Dismiss") }}
+  {{ _submenuEvent("IntScantext", "Scan Text") }}
+  {{ _dismissEvent("IntScantext", "NPC Descriptions\_Dismiss") }}
 
-  {% call createSubMenu("IntSensor") %}
+  {% call _createSubmenu("IntSensor") %}
     <set_gm_button text="Sensor Rng\Set to 8000" />
     <set_gm_button text="Sensor Rng\Set to 11000" />
     <set_gm_button text="Sensor Rng\Set to 16000" />
@@ -1015,7 +1015,7 @@
     <set_gm_button text="Sensor Rng\Clear Pings" />
     <set_gm_button text="Sensor Rng\_Dismiss" />
   {% endcall %}
-  {% call destroySubMenu("IntSensor") %}
+  {% call _destroySubmenu("IntSensor") %}
     <clear_gm_button text="Sensor Rng\Set to 8000" />
     <clear_gm_button text="Sensor Rng\Set to 11000" />
     <clear_gm_button text="Sensor Rng\Set to 16000" />
@@ -1031,10 +1031,10 @@
     <clear_gm_button text="Sensor Rng\Clear Pings" />
     <clear_gm_button text="Sensor Rng\_Dismiss" />
   {% endcall %}
-  {{ submenuEvent("IntSensor", "Sensors", 5) }}
-  {{ dismissEvent("IntSensor", "Sensor Rng\_Dismiss") }}
+  {{ _submenuEvent("IntSensor", "Sensors", 5) }}
+  {{ _dismissEvent("IntSensor", "Sensor Rng\_Dismiss") }}
 
-  {% call createSubMenu("IntComms") %}
+  {% call _createSubmenu("IntComms") %}
     <set_gm_button text="Command Messages\Sim Aborted" />
     <set_gm_button text="Command Messages\Data Tranferring" />
     <set_gm_button text="Command Messages\Personnel Tranferring" />
@@ -1045,7 +1045,7 @@
     <set_gm_button text="Command Messages\Sensor Contacts" />
     <set_gm_button text="Command Messages\_Dismiss" />
   {% endcall %}
-  {% call destroySubMenu("IntComms") %}
+  {% call _destroySubmenu("IntComms") %}
     <clear_gm_button text="Command Messages\Sim Aborted" />
     <clear_gm_button text="Command Messages\Data Tranferring" />
     <clear_gm_button text="Command Messages\Personnel Tranferring" />
@@ -1056,10 +1056,10 @@
     <clear_gm_button text="Command Messages\Sensor Contacts" />
     <clear_gm_button text="Command Messages\_Dismiss" />
   {% endcall %}
-  {{ submenuEvent("IntComms", "Messages") }}
-  {{ dismissEvent("IntComms", "Command Messages\_Dismiss") }}
+  {{ _submenuEvent("IntComms", "Messages") }}
+  {{ _dismissEvent("IntComms", "Command Messages\_Dismiss") }}
 
-  {% call createSubMenu("IntRepairDamage") %}
+  {% call _createSubmenu("IntRepairDamage") %}
     <set_gm_button text="RepairDamage\Repair Ship\Repair Beams" />
     <set_gm_button text="RepairDamage\Repair Ship\Repair Torpedoes" />
     <set_gm_button text="RepairDamage\Repair Ship\Repair Sensors" />
@@ -1095,7 +1095,7 @@
     <set_gm_button text="RepairDamage\Reinstate" />
     <set_gm_button text="RepairDamage\_Dismiss" />
   {% endcall %}
-  {% call destroySubMenu("IntRepairDamage") %}
+  {% call _destroySubmenu("IntRepairDamage") %}
     <clear_gm_button text="RepairDamage\Repair Ship\Repair Beams" />
     <clear_gm_button text="RepairDamage\Repair Ship\Repair Torpedoes" />
     <clear_gm_button text="RepairDamage\Repair Ship\Repair Sensors" />
@@ -1131,10 +1131,10 @@
     <clear_gm_button text="RepairDamage\Reinstate" />
     <clear_gm_button text="RepairDamage\_Dismiss" />
   {% endcall %}
-  {{ submenuEvent("IntRepairDamage", "Rprs/Dmge") }}
-  {{ dismissEvent("IntRepairDamage", "RepairDamage\_Dismiss") }}
+  {{ _submenuEvent("IntRepairDamage", "Rprs/Dmge") }}
+  {{ _dismissEvent("IntRepairDamage", "RepairDamage\_Dismiss") }}
 
-  {% call createSubMenu("IntSupplies") %}
+  {% call _createSubmenu("IntSupplies") %}
     <set_gm_button text="Homing" x="200" y="155" h="30" w="100" />
     <set_gm_button text="Nuke" x="200" y="185" h="30" w="100" />
     <set_gm_button text="Mine" x="200" y="215" h="30" w="100" />
@@ -1147,7 +1147,7 @@
     <set_gm_button text="Coolant" x="200" y="450" h="30" w="100" />
     <set_gm_button text="Supplies Menu    Close" x="200" y="485" h="30" w="100" />
   {% endcall %}
-  {% call destroySubMenu("IntSupplies") %}
+  {% call _destroySubmenu("IntSupplies") %}
     <!--Supplies Menu-->
     <clear_gm_button text="Homing" />
     <clear_gm_button text="Nuke" />
@@ -1161,8 +1161,8 @@
     <clear_gm_button text="Coolant" />
     <clear_gm_button text="Supplies Menu    Close" />
   {% endcall %}
-  {{ submenuEvent("IntSupplies", "Supplies", 5) }}
-  {{ dismissEvent("IntSupplies", "Supplies Menu    Close") }}
+  {{ _submenuEvent("IntSupplies", "Supplies", 5) }}
+  {{ _dismissEvent("IntSupplies", "Supplies Menu    Close") }}
 
   {% call util.createConditionalMenu("GmAddOrdn", {
     "Ordnance": "1",
@@ -1194,22 +1194,22 @@
     <clear_gm_button text="Rmv Ordn" />
   {% endcall %}
 
-  {% call createSubMenu("IntShuttleResupply") %}
+  {% call _createSubmenu("IntShuttleResupply") %}
     {% for shuttle in ShuttleList %}
       <set_gm_button text="Shuttles\{{ shuttle }}" />
     {% endfor %}
     <set_gm_button text="Shuttles\_Dismiss"/>
   {% endcall %}
-  {% call destroySubMenu("IntShuttleResupply") %}
+  {% call _destroySubmenu("IntShuttleResupply") %}
     {% for shuttle in ShuttleList %}
       <clear_gm_button text="Shuttles\{{ shuttle }}" />
     {% endfor %}
     <clear_gm_button text="Shuttles\_Dismiss"/>
   {% endcall %}
-  {{ submenuEvent("IntShuttleResupply", "Shuttle Resup", 5) }}
-  {{ dismissEvent("IntShuttleResupply", "Shuttles\_Dismiss") }}
+  {{ _submenuEvent("IntShuttleResupply", "Shuttle Resup", 5) }}
+  {{ _dismissEvent("IntShuttleResupply", "Shuttles\_Dismiss") }}
 
-  {% call createSubMenu("AICommands") %}
+  {% call _createSubmenu("AICommands") %}
     <set_gm_button text="AI Cmds On" x="140" y="480" h="28" w="90" />
     <clear_gm_button text="AI Cmds Off" />
     <set_gm_button text="DefaultAI" x="140" y="510" h="28" w="90" />
@@ -1226,7 +1226,7 @@
     <set_gm_button text="Surrender" x="230" y="660" h="28" w="90" />
     <set_gm_button text="Specials" x="320" y="510" h="28" w="90" />
   {% endcall %}
-  {% call destroySubMenu("AICommands") %}
+  {% call _destroySubmenu("AICommands") %}
     <clear_gm_button text="AI Cmds On" />
     <set_gm_button text="AI Cmds Off" x="140" y="480" h="28" w="90" />
     <clear_gm_button text="DefaultAI" />
@@ -1247,8 +1247,8 @@
     <set_variable name="GM_AICommands_DirStrikeBtn_Shown" value="0.0" integer="yes" />
     <set_variable name="GM_AICommands_DirMoveBtn_Shown" value="0.0" integer="yes" />
   {% endcall %}
-  {{ submenuEvent("AICommands", "AI Cmds Off") }}
-  {{ dismissEvent("AICommands", "AI Cmds On") }}
+  {{ _submenuEvent("AICommands", "AI Cmds Off") }}
+  {{ _dismissEvent("AICommands", "AI Cmds On") }}
   <event name="AICommands Directional Move Button">
     <if_variable name="GM_Submenu_AICommands_ShouldShow" comparator="EQUALS" value="1.0" />
     <if_variable name="DirectionalStrikeEnabled" comparator="EQUALS" value="1.0" />
@@ -1268,7 +1268,7 @@
     <set_variable name="GM_AICommands_DirMoveBtn_Shown" value="0.0" integer="yes" />
   </event>
 
-  {% call createSubMenu("AIMenu") %}
+  {% call _createSubmenu("AIMenu") %}
     <clear_gm_button text="AI Off" />
     <set_gm_button text="AI On" x="40" y="380" h="30" w="50" />
     <!--Group Selection Menu-->
@@ -1317,7 +1317,7 @@
     <set_variable name="GM_AIMenu_DirStrikeBtn_Shown" value="1.0" integer="yes" />
     <set_variable name="GM_AIMenu_DirMoveBtn_Shown" value="0.0" integer="yes" />
   </event>
-  {% call destroySubMenu("AIMenu") %}
+  {% call _destroySubmenu("AIMenu") %}
     <!--Target Select Buttons-->
     <set_variable name="GM_Submenu_AICommands_ShouldShow" value="0.0" integer="yes" />
     <clear_gm_button text="AI On" />
@@ -1351,10 +1351,10 @@
     <clear_gm_button text="AI Cmds Off" />
     <set_variable name="AIMenu_Button_Shown" value="0.0" integer="yes" />
   </event>
-  {{ submenuEvent("AIMenu", "AI Off") }}
-  {{ dismissEvent("AIMenu", "AI On") }}
+  {{ _submenuEvent("AIMenu", "AI Off") }}
+  {{ _dismissEvent("AIMenu", "AI On") }}
 
-  {% call createSubMenu("AISpecials") %}
+  {% call _createSubmenu("AISpecials") %}
     <set_gm_button text="Assign Specials\Add\Normal" />
     <set_gm_button text="Assign Specials\Add\Upgraded" />
     <set_gm_button text="Assign Specials\Add\Overpowered" />
@@ -1390,7 +1390,7 @@
     <set_gm_button text="Assign Specials\Clear\Clear All" />
     <set_gm_button text="Assign Specials\_Dismiss" />
   {% endcall %}
-  {% call destroySubMenu("AISpecials") %}
+  {% call _destroySubmenu("AISpecials") %}
     <clear_gm_button text="Assign Specials\Add\Normal" />
     <clear_gm_button text="Assign Specials\Add\Upgraded" />
     <clear_gm_button text="Assign Specials\Add\Overpowered" />
@@ -1426,8 +1426,8 @@
     <clear_gm_button text="Assign Specials\Clear\Clear All" />
     <clear_gm_button text="Assign Specials\_Dismiss" />
   {% endcall %}
-  {{ submenuEvent("AISpecials", "Specials") }}
-  {{ dismissEvent("AISpecials", "Assign Specials\_Dismiss") }}
+  {{ _submenuEvent("AISpecials", "Specials") }}
+  {{ _dismissEvent("AISpecials", "Assign Specials\_Dismiss") }}
 
   <event name="Clear All Menus (Button Trigger)">
     <if_gm_button text="Clear" />
