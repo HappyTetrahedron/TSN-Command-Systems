@@ -2,17 +2,7 @@
 
 {% import 'Utils.xml' as util %}
 {% import 'Spawn.xml' as spawn %}
-
-{% call() util.createConditionalMenu("VerdantBase", {
-    "GM_Menu_Selector": "1",
-}) %}
-    <set_gm_button text="RmVerdantShips" x="295" y="130" h="28" w="150" />
-{% endcall %}
-{% call() util.destroyConditionalMenu("VerdantBase", {
-    "GM_Menu_Selector": "1",
-}) %}
-    <clear_gm_button text="RmVerdantShips" />
-{% endcall %}
+{% import 'GM Menus.xml' as menu %}
 
 {% call() util.createConditionalMenu("VerdantAI", {
     "GM_Submenu_AICommands_ShouldShow": "1",
@@ -27,28 +17,27 @@
     <clear_gm_button text="BoostVerdant" />
 {% endcall %}
 
-  <event name="Verdant_RemoveCustomShips">
-    <if_gm_button text="RmVerdantShips" />
-    <destroy name="TSN Verdant" />
-    <destroy name="TSN Vengeance" />
-    <destroy name="TSN Warspite" />
-    <destroy name="TSN Fury" />
-    <destroy name="TSN Dawn" />
-    <destroy name="TSN Shield" />
-    <destroy name="TSN Daring" />
-    <destroy name=" TSN Verdant " />
-    <destroy name=" TSN Vengeance " />
-    <destroy name=" TSN Warspite " />
-    <destroy name=" TSN Fury " />
-    <destroy name=" TSN Dawn " />
-    <destroy name=" TSN Shield " />
-    <destroy name=" TSN Daring " />
-    <destroy name="Keloi Gitosz" />
-    <destroy name="Black Bertha" />
-    <destroy name="TSN Whispers of Freedom" />
-    <destroy name="Wisdom" />
-    <destroy name="Ubuntu" />
-  </event>
+{% call menu.onButtonClick("RmVerdantShips", menu.main.base) %}
+  <destroy name="TSN Verdant" />
+  <destroy name="TSN Vengeance" />
+  <destroy name="TSN Warspite" />
+  <destroy name="TSN Fury" />
+  <destroy name="TSN Dawn" />
+  <destroy name="TSN Shield" />
+  <destroy name="TSN Daring" />
+  <destroy name=" TSN Verdant " />
+  <destroy name=" TSN Vengeance " />
+  <destroy name=" TSN Warspite " />
+  <destroy name=" TSN Fury " />
+  <destroy name=" TSN Dawn " />
+  <destroy name=" TSN Shield " />
+  <destroy name=" TSN Daring " />
+  <destroy name="Keloi Gitosz" />
+  <destroy name="Black Bertha" />
+  <destroy name="TSN Whispers of Freedom" />
+  <destroy name="Wisdom" />
+  <destroy name="Ubuntu" />
+{% endcall %}
 
   {% for name in ["TSN Verdant"] %}
   {% call spawn.spawn(spawn.TSN.key, "TSN Ships", "+Verdant") %}

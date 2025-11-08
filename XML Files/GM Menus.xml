@@ -1,13 +1,154 @@
-  {% import 'Utils.xml' as util %}
-  {% import 'Spawn.xml' as spawn %}
+{% import 'Utils.xml' as util %}
+{% import 'Spawn.xml' as spawn %}
 
-  <folder_arme name="GM Menus" id_arme="a63d8b7a-dd61-481e-b818-312ef7f7af5f" />
+{% set padding = 2 %}
+{% set main = {
+  'base': {
+    "key": "base",
+    "button": "Bas.",
+    "id": 1,
+    "buttons": {
+      "x": 290,
+      "y": 100,
+      "w": 90,
+      "h": 30,
+      "rows": 6,
+    },
+  },
+  'spawn': {
+    "key": "spawn",
+    "button": "SPWN",
+    "id": 2,
+    "submenus_illegal": True,
+  },
+  'poi': {
+    "key": "poi",
+    "button": "POI",
+    "id": 3,
+    "buttons": {
+      "x": 100,
+      "y": 100,
+      "w": 90,
+      "h": 30,
+      "rows": 10,
+    },
+  },
+  'hazard': {
+    "key": "hazard",
+    "button": "Haz.",
+    "id": 4,
+    "buttons": {
+      "x": 100,
+      "y": 100,
+      "w": 90,
+      "h": 30,
+      "rows": 10,
+    },
+  },
+  'interaction': {
+    "key": "interaction",
+    "button": "Int.",
+    "id": 5,
+    "buttons": {
+      "x": 100,
+      "y": 100,
+      "w": 90,
+      "h": 30,
+      "rows": 10,
+    },
+  },
+  'custom': {
+    "key": "custom",
+    "button": "CSTM",
+    "id": 6,
+    "buttons": {
+      "x": 100,
+      "y": 100,
+      "w": 90,
+      "h": 30,
+      "rows": 10,
+    },
+  },
+  'ai': {
+    "key": "ai",
+    "buttons": {
+      "x": 140,
+      "y": 510,
+      "w": 90,
+      "h": 30,
+      "rows": 6,
+    },
+  },
+
+} %}
+
+{% macro _buttonGrid(buttons, x, y, w, h, rows, padding=2) %}
+  {% for button in buttons %}
+    <set_gm_button text="{{ button }}" x="{{ x + (loop.index0 / rows)|int * h }}" y="{{ y + (loop.index0 % rows) * w }}" w="{{ w - padding }}" h="{{ h - padding }}" /> 
+  {% endfor %}
+{% endmacro %}
+
+{% macro addDismissableSubmenu(name, parentMenuKey) %}
+  {% if submenus_illegal in main[parentMenuKey] and main[parentMenuKey].submenus_illegal %} {% do panic("Cannot add submenu to " + parentMenuKey + " menu.") %} {% endif %}
+  {% do track("dynamicMenus", {
+    "type": "dismissableSubmenu",
+    "name": name,
+    "parentMenu": parentMenuKey,
+  }) %}
+{% endmacro %}
+
+{% macro addPermanentSubmenu(name, parentMenuKey) %}
+  {% if submenus_illegal in main[parentMenuKey] and main[parentMenuKey].submenus_illegal %} {% do panic("Cannot add submenu to " + parentMenuKey + " menu.") %} {% endif %}
+  {% do track("dynamicMenus", {
+    "type": "permanentSubmenu",
+    "name": name,
+    "parentMenu": parentMenuKey,
+  }) %}
+{% endmacro %}
+
+{% macro addButtonExpandMenu(name, parentMenuKey, x, y, w=90, h=30, rows=10) %}
+  {% if submenus_illegal in main[parentMenuKey] and main[parentMenuKey].submenus_illegal %} {% do panic("Cannot add submenu to " + parentMenuKey + " menu.") %} {% endif %}
+  {% do track("dynamicMenus", {
+    "type": "buttonExpandMenu",
+    "name": name,
+    "parentMenu": parentMenuKey,
+    "x": x,
+    "y": y,
+    "w": w,
+    "h": h,
+    "rows": rows,
+  }) %}
+{% endmacro %}
+
+{% macro onMenuClick(name, parentMenu) %}
+  {% do track("menukey" + parentMenu, parentMenu + "\\" + name) %}
+  <event name="{{ name }} onClick">
+    <if_gm_button text="{{ parentMenu }}\{{ name | safe }}" />
+    {{ caller() }}
+  </event>
+{% endmacro %}
+
+{% macro onButtonClick(name, parentMenu) %}
+  {% do track("buttons" + (parentMenu.key if parentMenu is mapping else parentMenu), name) %}
+  <event name="{{ name }} onClick">
+    <if_gm_button text="{{ name | safe }}" />
+    {{ caller() }}
+  </event>
+{% endmacro %}
+
   {% set allSubmenus = [] %}
   {% macro _createMenu(name, id) %}
   <event name="Menu Create {{ name }}">
     <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ id }}.0" />
     <if_variable name="_GM_Menu_{{ name }}_Active" comparator="NOT" value="1.0" />
     {{ caller () }}
+    {% set menu = main[name] %}
+    {% if not (submenus_illegal in menu or menu.submenus_illegal) %}
+      {{ _buttonGrid(retrieve("buttons" + name), menu.buttons.x, menu.buttons.y, menu.buttons.w, menu.buttons.h, menu.buttons.rows) }}
+    {% endif %}
+    {% for permmenu in retrieve("permSubmenus" + name) %}
+      <set_variable name="GM_Submenu_{{ permmenu }}_ShouldShow" value="1.0" integer="yes" />
+    {% endfor %}
     <set_variable name="_GM_Menu_{{ name }}_Active" value="1.0" integer="yes" />
   </event>
   {% endmacro %}
@@ -16,6 +157,14 @@
     <if_variable name="GM_Menu_Selector" comparator="NOT" value="{{ id }}.0" />
     <if_variable name="_GM_Menu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
     {{ caller () }}
+    {% if not submenus_illegal in main[parentMenuKey] or not main[parentMenuKey].submenus_illegal %}
+      {% for button in retrieve("buttons" + name) %}
+        <clear_gm_button text="{{ button }}" />
+      {% endfor %}
+    {% endif %}
+    {% for permmenu in retrieve("permSubmenus" + name) %}
+      <set_variable name="GM_Submenu_{{ permmenu }}_ShouldShow" value="0.0" integer="yes" />
+    {% endfor %}
     <set_variable name="_GM_Menu_{{ name }}_Active" value="0.0" integer="yes" />
   </event>
   {% endmacro %}
@@ -115,8 +264,71 @@
   </event>
   {% endmacro %}
 
-  {% call _createMenu("Base", 1) %}
+
+
+
+{% set dynamicMenus = retrieve("dynamicMenus") %}
+
+{% for menu in dynamicMenus %}
+
+  {% if menu.type == "dismissableSubmenu" %}
+    {% set menuname = menu.parentMenu + menu.name %}
+    {% do track("buttons" + parentMenuKey, name) %}
+    {% call _createSubmenu(menuname) %}
+      {% for button in retrieve("menukey" + name) %}
+        <set_gm_button text="{{ name }}\{{ button }}" />
+      {% endfor %}
+      <set_gm_button text="{{ name }}\_Dismiss" />
+    {% endcall %}
+    {% call _destroySubmenu(menuname) %}
+      {% for button in retrieve("menukey" + name) %}
+        <clear_gm_button text="{{ name }}\{{ button }}" />
+      {% endfor %}
+      <clear_gm_button text="{{ name }}\_Dismiss" />
+    {% endcall %}
+    {{ _submenuEvent(menuname, menu.name) }}
+    {{ _dismissEvent(menuname, menu.name + "\\_Dismiss") }}
+  {% endif %}
+
+  {% if menu.type == "permanentSubmenu" %}
+    {% set menuname = menu.parentMenu + menu.name %}
+    {% do track("permSubmenus" + parentMenuKey, menuname) %}
+    {% call _createSubmenu(menuname) %}
+      {% for button in retrieve("menukey" + name) %}
+        <set_gm_button text="{{ name }}\{{ button }}" />
+      {% endfor %}
+    {% endcall %}
+    {% call _destroySubmenu(menuname) %}
+      {% for button in retrieve("menukey" + name) %}
+        <clear_gm_button text="{{ name }}\{{ button }}" />
+      {% endfor %}
+    {% endcall %}
+  {% endif %}
+
+  {% if menu.type == "buttonExpandMenu" %}
+    {% set menuname = menu.parentMenu + menu.name %}
+    {% do track("buttons" + parentMenuKey, name) %}
+    {% set buttons = retrieve("buttons" + name) %}
+    {% call _createSubmenu(menuname) %}
+      {{ _buttonGrid(buttons + [menu.name + " Dismiss"], menu.x, menu.y, menu.w, menu.h) }}
+    {% endcall %}
+    {% call _destroySubmenu(menuname) %}
+      {% for button in retrieve("menukey" + name) %}
+        <clear_gm_button text="{{ button }}" />
+      {% endfor %}
+      <clear_gm_button text="{{ menu.name }} Close" />
+    {% endcall %}
+    {{ _submenuEvent(menuname, menu.name) }}
+    {{ _dismissEvent(menuname, menu.name + " Close") }}
+  {% endif %}
+
+{% endfor %}
+
+
+
+  {% call _createMenu(main.base.key, main.base.id) %}
     <!---->
+    {% set menu = main.base %}
     <set_gm_button text="SlctdToGM" x="100" y="100" h="28" w="90" />
     <set_gm_button text="DelTerrain" x="100" y="130" h="28" w="90" />
     <set_gm_button text="DelShips" x="100" y="160" h="28" w="90" />
@@ -146,10 +358,9 @@
     <set_gm_button text="Configure Sector Side\N'Tani (Side 4)" />
     <set_gm_button text="Configure Sector Side\Pirate (Side 5)" />
     <set_gm_button text="Configure Sector Side\Caltron (Side 6)" />
-    <set_variable name="Shortcut Keys" value="1.0" />
   {% endcall %}
 
-  {% call _destroyMenu("Base", 1) %}
+  {% call _destroyMenu(main.base.key, main.base.id) %}
     <!--Basic Keys-->
     <clear_gm_button text="SlctdToGM" />
     <clear_gm_button text="DelTerrain" />
@@ -180,12 +391,11 @@
     <clear_gm_button text="Configure Sector Side\N'Tani (Side 4)" />
     <clear_gm_button text="Configure Sector Side\Pirate (Side 5)" />
     <clear_gm_button text="Configure Sector Side\Caltron (Side 6)" />
-    <set_variable name="Shortcut Keys" value="0.0" />
   {% endcall %}
 
-  {{ _menuEvent("Basic", 1, "Bas.") }}
+  {{ _menuEvent(main.base.key, main.base.id, main.base.button) }}
 
-  {% call _createMenu("Spawn", 2) %}
+  {% call _createMenu(main.spawn.key, main.spawn.id) %}
     {{ util.restore("GM_SpawnMenu_Selector") }}
     <set_gm_button text="AI Setting:" x="95" y="135" h="30" w="80" />
     <set_gm_button text="Default" x="175" y="135" h="30" w="120" />
@@ -212,7 +422,7 @@
     <set_variable name="SidePicker_Side_Shown" value="0.0" integer="yes" />
   {% endcall %}
 
-  {% call _destroyMenu("Spawn", 2) %}
+  {% call _destroyMenu(main.spawn.key, main.spawn.id) %}
     {{ util.storeAndSet("GM_SpawnMenu_Selector") }}
     <clear_gm_button text="Set AI Type\Default" />
     <clear_gm_button text="Set AI Type\Hunt Enemies" />
@@ -282,9 +492,9 @@
     <clear_gm_button text="Cnvy Heading 135" />
     <set_variable name="SidePicker_Should_Show" value="0.0" integer="yes" />
   {% endcall %}
-  {{ _menuEvent("Spawn", 2, "SPWN.") }}
+  {{ _menuEvent(main.spawn.key, main.spawn.id, main.spawn.button) }}
 
-  {% call _createMenu("POI", 3) %}
+  {% call _createMenu(main.poi.key, main.poi.id) %}
     {{ util.restore("GM_WreckMenu_Selector") }}
     <set_gm_button text="Waypoint SPAWN" x="100" y="100" h="30" w="80" />
     <set_gm_button text="Scan Pts" x="100" y="135" h="30" w="80" />
@@ -292,7 +502,7 @@
     <set_gm_button text="Rndz. Pts" x="100" y="205" h="30" w="80" />
     <set_gm_button text="Anomalies" x="100" y="240" h="30" w="80" />
   {% endcall %}
-  {% call _destroyMenu("POI", 3) %}
+  {% call _destroyMenu(main.poi.key, main.poi.id) %}
     <clear_gm_button text="Waypoint SPAWN" />
     <clear_gm_button text="Rndz. Pts" />
     <clear_gm_button text="Anomalies" />
@@ -301,22 +511,22 @@
     <set_variable name="GM_Submenu_POIWreckSelect_ShouldShow" value="0.0" integer="yes" />
     {{ util.storeAndSet("GM_WreckMenu_Selector") }}
   {% endcall %}
-  {{ _menuEvent("POI", 3, "POI") }}
+  {{ _menuEvent(main.poi.key, main.poi.id, main.poi.button) }}
 
-  {% call _createMenu("Hazard", 4) %}
+  {% call _createMenu(main.hazard.key, main.hazard.id) %}
     <set_gm_button text="Terrain" x="100" y="100" h="30" w="80" />
     <set_gm_button text="Creatures" x="100" y="135" h="30" w="80" />
     <set_gm_button text="Mines" x="100" y="170" h="30" w="80" />
   {% endcall %}
-  {% call _destroyMenu("Hazard", 4) %}
+  {% call _destroyMenu(main.hazard.key, main.hazard.id) %}
     <clear_gm_button text="Terrain" />
     <clear_gm_button text="Creatures" />
     <clear_gm_button text="Mines" />
   {% endcall %}
 
-  {{ _menuEvent("Hazard", 4, "Haz.") }}
+  {{ _menuEvent(main.hazard.key, main.hazard.id, main.hazard.button) }}
 
-  {% call _createMenu("Interaction", 5) %}
+  {% call _createMenu(main.interaction.key, main.interaction.id) %}
     <set_gm_button text="Messages" x="100" y="100" h="30" w="90" />
     <set_gm_button text="Supplies" x="100" y="135" h="30" w="90" />
     <set_gm_button text="Rprs/Dmge" x="100" y="170" h="30" w="90" />
@@ -327,7 +537,7 @@
     <set_gm_button text="Reset Comms" x="100" y="345" h="30" w="90" />
     {{ util.restore("GM_Submenu_IntSupplies_ShouldShow") }}
   {% endcall %}
-  {% call _destroyMenu("Interaction", 5) %}
+  {% call _destroyMenu(main.interaction.key, main.interaction.id) %}
     <clear_gm_button text="Messages" />
     <clear_gm_button text="Supplies" />
     <clear_gm_button text="Rprs/Dmge" />
@@ -338,14 +548,14 @@
     <clear_gm_button text="Reset Comms" />
     {{ util.storeAndSet("GM_Submenu_IntSupplies_ShouldShow") }}
   {% endcall %}
-  {{ _menuEvent("Interaction", 5, "Int.") }}
+  {{ _menuEvent(main.interaction.key, main.interaction.id, main.interaction.button) }}
 
-  {% call _createMenu("Custom", 6) %}
+  {% call _createMenu(main.custom.key, main.custom.id) %}
   {% endcall %}
 
-  {% call _destroyMenu("Custom", 6) %}
+  {% call _destroyMenu(main.custom.key, main.custom.id) %}
   {% endcall %}
-  {{ _menuEvent("Custom", 6, "CSTM") }}
+  {{ _menuEvent(main.custom.key, main.custom.id, main.custom.button) }}
 
   {% for faction in spawn.factions %}
     {{ _spawnMenuEvent("Spawn" + faction.name, faction.name, faction.key, faction.defaultSide) }}
@@ -1209,7 +1419,7 @@
   {{ _submenuEvent("IntShuttleResupply", "Shuttle Resup", 5) }}
   {{ _dismissEvent("IntShuttleResupply", "Shuttles\_Dismiss") }}
 
-  {% call _createSubmenu("AICommands") %}
+  {% call _createSubmenu(main.ai.key) %}
     <set_gm_button text="AI Cmds On" x="140" y="480" h="28" w="90" />
     <clear_gm_button text="AI Cmds Off" />
     <set_gm_button text="DefaultAI" x="140" y="510" h="28" w="90" />
@@ -1225,8 +1435,13 @@
     <set_gm_button text="Unsurrender" x="230" y="630" h="28" w="90" />
     <set_gm_button text="Surrender" x="230" y="660" h="28" w="90" />
     <set_gm_button text="Specials" x="320" y="510" h="28" w="90" />
-  {% endcall %}
-  {% call _destroySubmenu("AICommands") %}
+    {% set menu = main.ai %}
+      {{ _buttonGrid(retrieve("buttons" + main.ai.key), menu.buttons.x, menu.buttons.y, menu.buttons.w, menu.buttons.h, menu.buttons.rows) }}
+    {% endcall %}
+    {% for permmenu in retrieve("permSubmenus" + main.ai.key) %}
+      <set_variable name="GM_Submenu_{{ permmenu }}_ShouldShow" value="1.0" integer="yes" />
+    {% endfor %}
+  {% call _destroySubmenu(main.ai.key) %}
     <clear_gm_button text="AI Cmds On" />
     <set_gm_button text="AI Cmds Off" x="140" y="480" h="28" w="90" />
     <clear_gm_button text="DefaultAI" />
@@ -1244,11 +1459,17 @@
     <clear_gm_button text="Specials" />
     <clear_gm_button text="Dir Strike" />
     <clear_gm_button text="Dir Move" />
+    {% for button in retrieve("buttons" + main.ai.key) %}
+      <clear_gm_button text="{{ button }}" />
+    {% endfor %}
+    {% for permmenu in retrieve("permSubmenus" + main.ai.key) %}
+      <set_variable name="GM_Submenu_{{ permmenu }}_ShouldShow" value="0.0" integer="yes" />
+    {% endfor %}
     <set_variable name="GM_AICommands_DirStrikeBtn_Shown" value="0.0" integer="yes" />
     <set_variable name="GM_AICommands_DirMoveBtn_Shown" value="0.0" integer="yes" />
   {% endcall %}
-  {{ _submenuEvent("AICommands", "AI Cmds Off") }}
-  {{ _dismissEvent("AICommands", "AI Cmds On") }}
+  {{ _submenuEvent(main.ai.key, "AI Cmds Off") }}
+  {{ _dismissEvent(main.ai.key, "AI Cmds On") }}
   <event name="AICommands Directional Move Button">
     <if_variable name="GM_Submenu_AICommands_ShouldShow" comparator="EQUALS" value="1.0" />
     <if_variable name="DirectionalStrikeEnabled" comparator="EQUALS" value="1.0" />

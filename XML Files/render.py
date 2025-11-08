@@ -18,6 +18,9 @@ def track(key, value):
 def retrieve(key):
     return track_dict.get(key, [])
 
+def raise_helper(str):
+    raise str
+
 def textwidth(text):
     w = 0
     for c in text:
@@ -37,13 +40,14 @@ env = {
     "difficulty": 7,
     "extensions": [
         "TokenSystem",
-        "VerdantFleet",
         "NebulaEffects",
+        "HazardPainter",
+        "VerdantFleet",
     ],
     "maps": [
-        "Acantha",
-        "Ibroan",
-        "Erowis",
+        "Tibur",
+        "Mria",
+        "Helios",
     ],
     "ordnance": {
         "ship1": {
@@ -74,7 +78,7 @@ template_env.lstrip_blocks = True
 template_env.trim_blocks = True
 template_env.autoescape = True
 template_env.add_extension('jinja2.ext.do')
-template_env.globals.update(track=track, retrieve=retrieve)
+template_env.globals.update(track=track, retrieve=retrieve, panic=raise_helper)
 template_env.filters.update(textwidth=textwidth)
 TMPL_FNAME = 'main.xml'
 OUT_FNAME = '../MISS_TSN-Command.xml'
