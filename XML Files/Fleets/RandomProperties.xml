@@ -25,3 +25,29 @@
     <set_variable name="randMult" randomIntLow="1" randomIntHigh="5" integer="yes" />
     <set_variable name="Random Multiplier" value="0.0" integer="yes" />
   </event>
+
+  <event name="Fleet Spacing" id_arme="54b321e2-22c5-4b50-8dcd-4006516aec4c" parent_id_arme="0e4d583e-5dea-4097-a675-97423f6f29e4">
+    <if_variable name="Fleet Settings" comparator="EQUALS" value="1.0" />
+    <set_fleet_property property="fleetSpacing" value="500.0" fleetIndex="Fleetnumber" />
+    <set_fleet_property property="fleetMaxRadius" value="3000.0" fleetIndex="Fleetnumber" />
+    <set_variable name="Fleet Settings" value="2.0" />
+  </event>
+  <event name="Increment Fleet Number" id_arme="85906409-aa9b-4aa7-b958-c804106dff74" parent_id_arme="0e4d583e-5dea-4097-a675-97423f6f29e4">
+    <if_variable name="Fleet Settings" comparator="EQUALS" value="2.0" />
+    <if_variable name="Fleetnumber" comparator="GREATER_EQUAL" value="1.0" />
+    <if_variable name="Fleetnumber" comparator="LESS" value="99.0" />
+    <set_variable name="Fleetnumber" value="Fleetnumber+1" integer="yes" />
+    <set_variable name="Fleet Settings" value="0.0" />
+  </event>
+  <event name="Fleet Number Reset" id_arme="7156fe37-07f4-4a30-a11c-6d7b98830052" parent_id_arme="0e4d583e-5dea-4097-a675-97423f6f29e4">
+    <if_variable name="Fleet Settings" comparator="EQUALS" value="2.0" />
+    <if_variable name="Fleetnumber" comparator="GREATER_EQUAL" value="99.0" />
+    <set_variable name="Fleetnumber" value="1.0" integer="yes" />
+    <set_variable name="Fleet Settings" value="0.0" />
+  </event>
+  <folder_arme name="Default AI Override" id_arme="70c29f72-0adf-4368-8e52-9c49fccf287a" parent_id_arme="047cc0b3-ea2a-4991-98c9-400c3bbcd6c5" />
+  <event name="Override Default AI" id_arme="f12c82cc-6107-483b-9b99-b6c4c0613b46" parent_id_arme="70c29f72-0adf-4368-8e52-9c49fccf287a">
+    <if_variable name="AI Override" comparator="EQUALS" value="1.0" />
+    <if_variable name="Auto AI Type" comparator="NOT" value="AISetting" />
+    <set_variable name="Auto AI Type" value="AISetting" integer="yes" />
+  </event>

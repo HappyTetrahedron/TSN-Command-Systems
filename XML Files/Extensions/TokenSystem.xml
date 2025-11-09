@@ -2,6 +2,11 @@
 
 {% import 'Utils.xml' as util %}
 
+{% call() util.init("tokens") %}
+    <set_variable name="TokenSysT" value="0.0" integer="yes" />
+    <set_variable name="TokenSysS" value="0.0" integer="yes" />
+{% endcall %}
+
 {% call() util.createConditionalMenu("TokenSys", {
     "GM_Menu_Selector": "1",
 }) %}
@@ -30,5 +35,5 @@
   <if_variable name="TokenSysT" comparator="NOT" value="TokenSysS" />
   <destroy name="Tokens: |TokenSysS|" />
   <create type="genericMesh" x="0.0" y="0.0" z="0.0" name="Tokens: |TokenSysT|" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
-  <set_variable name="TokenSysS" value="TokenSysT" />
+  <set_variable name="TokenSysS" value="TokenSysT" integer="yes" />
 </event>

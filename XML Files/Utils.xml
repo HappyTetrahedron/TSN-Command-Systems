@@ -299,3 +299,11 @@
 {% macro restore(variable) %}
   <set_variable name="{{ variable }}" value="{{ variable }}_Stored" integer="yes" />
 {% endmacro %}
+
+{% macro init(name) %}
+  <event name="{{ name }} init">
+    <if_variable name="{{ name }} Initialized" comparator="NOT" value="1.0" />
+    {{ caller() }}
+    <set_variable name="{{ name }} Initialized" value="1.0" integer="yes" />
+  </event>
+{% endmacro %}

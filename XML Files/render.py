@@ -11,7 +11,8 @@ track_dict = {}
 
 def track(key, value):
     if key in track_dict:
-        track_dict[key].append(value)
+        if value not in track_dict[key]:
+            track_dict[key].append(value)
     else:
         track_dict[key] = [value]
 
@@ -40,9 +41,6 @@ env = {
     "difficulty": 7,
     "extensions": [
         "TokenSystem",
-        "NebulaEffects",
-        "HazardPainter",
-        "VerdantFleet",
     ],
     "maps": [
         "Tibur",

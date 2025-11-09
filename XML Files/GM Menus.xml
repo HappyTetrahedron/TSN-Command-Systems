@@ -17,7 +17,7 @@
   },
   'spawn': {
     "key": "spawn",
-    "button": "SPWN",
+    "button": "SPWN.",
     "id": 2,
     "submenus_illegal": True,
   },
@@ -84,34 +84,38 @@
 
 {% macro _buttonGrid(buttons, x, y, w, h, rows, padding=2) %}
   {% for button in buttons %}
-    <set_gm_button text="{{ button }}" x="{{ x + (loop.index0 / rows)|int * h }}" y="{{ y + (loop.index0 % rows) * w }}" w="{{ w - padding }}" h="{{ h - padding }}" /> 
+    <set_gm_button text="{{ button }}" x="{{ x + (loop.index0 / rows)|int * w }}" y="{{ y + (loop.index0 % rows) * h }}" w="{{ w - padding }}" h="{{ h - padding }}" /> 
   {% endfor %}
 {% endmacro %}
 
-{% macro addDismissableSubmenu(name, parentMenuKey) %}
-  {% if submenus_illegal in main[parentMenuKey] and main[parentMenuKey].submenus_illegal %} {% do panic("Cannot add submenu to " + parentMenuKey + " menu.") %} {% endif %}
+{% macro addDismissableSubmenu(name, parentMenu) %}
+  {% set pk = parentMenu.key if parentMenu is mapping else parentMenu %}
+  {% if submenus_illegal in main[pk] and main[pk].submenus_illegal %} {% do panic("Cannot add submenu to " + pk + " menu.") %} {% endif %}
   {% do track("dynamicMenus", {
     "type": "dismissableSubmenu",
     "name": name,
-    "parentMenu": parentMenuKey,
+    "parentMenu": pk,
   }) %}
 {% endmacro %}
 
-{% macro addPermanentSubmenu(name, parentMenuKey) %}
-  {% if submenus_illegal in main[parentMenuKey] and main[parentMenuKey].submenus_illegal %} {% do panic("Cannot add submenu to " + parentMenuKey + " menu.") %} {% endif %}
+{% macro addPermanentSubmenu(name, parentMenu) %}
+  {% set pk = parentMenu.key if parentMenu is mapping else parentMenu %}
+  {% if submenus_illegal in main[pk] and main[pk].submenus_illegal %} {% do panic("Cannot add submenu to " + pk + " menu.") %} {% endif %}
   {% do track("dynamicMenus", {
     "type": "permanentSubmenu",
     "name": name,
-    "parentMenu": parentMenuKey,
+    "parentMenu": pk,
   }) %}
 {% endmacro %}
 
-{% macro addButtonExpandMenu(name, parentMenuKey, x, y, w=90, h=30, rows=10) %}
-  {% if submenus_illegal in main[parentMenuKey] and main[parentMenuKey].submenus_illegal %} {% do panic("Cannot add submenu to " + parentMenuKey + " menu.") %} {% endif %}
+{% macro addButtonExpandMenu(name, parentMenu, x, y, w=90, h=30, rows=10) %}
+  {% set pk = parentMenu.key if parentMenu is mapping else parentMenu %}
+  {% if submenus_illegal in main[pk] and main[pk].submenus_illegal %} {% do panic("Cannot add submenu to " + pk + " menu.") %} {% endif %}
   {% do track("dynamicMenus", {
     "type": "buttonExpandMenu",
     "name": name,
-    "parentMenu": parentMenuKey,
+    "parentMenu": pk,
+    "body": caller,
     "x": x,
     "y": y,
     "w": w,
@@ -121,7 +125,7 @@
 {% endmacro %}
 
 {% macro onMenuClick(name, parentMenu) %}
-  {% do track("menukey" + parentMenu, parentMenu + "\\" + name) %}
+  {% do track("menukey" + parentMenu, name) %}
   <event name="{{ name }} onClick">
     <if_gm_button text="{{ parentMenu }}\{{ name | safe }}" />
     {{ caller() }}
@@ -273,18 +277,18 @@
 
   {% if menu.type == "dismissableSubmenu" %}
     {% set menuname = menu.parentMenu + menu.name %}
-    {% do track("buttons" + parentMenuKey, name) %}
+    {% do track("buttons" + menu.parentMenu, menu.name) %}
     {% call _createSubmenu(menuname) %}
-      {% for button in retrieve("menukey" + name) %}
-        <set_gm_button text="{{ name }}\{{ button }}" />
+      {% for button in retrieve("menukey" + menu.name) %}
+        <set_gm_button text="{{ menu.name }}\{{ button }}" />
       {% endfor %}
-      <set_gm_button text="{{ name }}\_Dismiss" />
+      <set_gm_button text="{{ menu.name }}\_Dismiss" />
     {% endcall %}
     {% call _destroySubmenu(menuname) %}
-      {% for button in retrieve("menukey" + name) %}
-        <clear_gm_button text="{{ name }}\{{ button }}" />
+      {% for button in retrieve("menukey" + menu.name) %}
+        <clear_gm_button text="{{ menu.name }}\{{ button }}" />
       {% endfor %}
-      <clear_gm_button text="{{ name }}\_Dismiss" />
+      <clear_gm_button text="{{ menu.name }}\_Dismiss" />
     {% endcall %}
     {{ _submenuEvent(menuname, menu.name) }}
     {{ _dismissEvent(menuname, menu.name + "\\_Dismiss") }}
@@ -294,26 +298,32 @@
     {% set menuname = menu.parentMenu + menu.name %}
     {% do track("permSubmenus" + parentMenuKey, menuname) %}
     {% call _createSubmenu(menuname) %}
-      {% for button in retrieve("menukey" + name) %}
-        <set_gm_button text="{{ name }}\{{ button }}" />
+      {% for button in retrieve("menukey" + menu.name) %}
+        <set_gm_button text="{{ menu.name }}\{{ button }}" />
       {% endfor %}
     {% endcall %}
     {% call _destroySubmenu(menuname) %}
-      {% for button in retrieve("menukey" + name) %}
-        <clear_gm_button text="{{ name }}\{{ button }}" />
+      {% for button in retrieve("menukey" + menu.name) %}
+        <clear_gm_button text="{{ menu.name }}\{{ button }}" />
       {% endfor %}
     {% endcall %}
   {% endif %}
 
   {% if menu.type == "buttonExpandMenu" %}
     {% set menuname = menu.parentMenu + menu.name %}
-    {% do track("buttons" + parentMenuKey, name) %}
-    {% set buttons = retrieve("buttons" + name) %}
+    {% do track("buttons" + parentMenuKey, menu.name) %}
+    {% set buttons = retrieve("buttons" + menu.name) %}
     {% call _createSubmenu(menuname) %}
+      {% if menu.caller %}
+        {{ menu.caller(True) }}
+      {% endif %}
       {{ _buttonGrid(buttons + [menu.name + " Dismiss"], menu.x, menu.y, menu.w, menu.h) }}
     {% endcall %}
     {% call _destroySubmenu(menuname) %}
-      {% for button in retrieve("menukey" + name) %}
+      {% if menu.caller %}
+        {{ menu.caller(False) }}
+      {% endif %}
+      {% for button in retrieve("menukey" + menu.name) %}
         <clear_gm_button text="{{ button }}" />
       {% endfor %}
       <clear_gm_button text="{{ menu.name }} Close" />
@@ -323,8 +333,6 @@
   {% endif %}
 
 {% endfor %}
-
-
 
   {% call _createMenu(main.base.key, main.base.id) %}
     <!---->
@@ -514,14 +522,8 @@
   {{ _menuEvent(main.poi.key, main.poi.id, main.poi.button) }}
 
   {% call _createMenu(main.hazard.key, main.hazard.id) %}
-    <set_gm_button text="Terrain" x="100" y="100" h="30" w="80" />
-    <set_gm_button text="Creatures" x="100" y="135" h="30" w="80" />
-    <set_gm_button text="Mines" x="100" y="170" h="30" w="80" />
   {% endcall %}
   {% call _destroyMenu(main.hazard.key, main.hazard.id) %}
-    <clear_gm_button text="Terrain" />
-    <clear_gm_button text="Creatures" />
-    <clear_gm_button text="Mines" />
   {% endcall %}
 
   {{ _menuEvent(main.hazard.key, main.hazard.id, main.hazard.button) }}
@@ -1039,89 +1041,6 @@
     <clear_gm_button text="Defense Wrecks\Heg. Defense Platform" />
   {% endcall %}
 
-  {% call _createSubmenu("HazardTerrain") %}
-    <set_gm_button text="Terrain\Blackhole" />
-    <set_gm_button text="Terrain\Radiation Point" />
-    <set_gm_button text="Terrain\Nebulae\Single Nebula (Purple)" />
-    <set_gm_button text="Terrain\Nebulae\Sml Nebula Cluster (Purple)" />
-    <set_gm_button text="Terrain\Nebulae\Med Nebula Cluster (Purple)" />
-    <set_gm_button text="Terrain\Nebulae\Lrg Nebula Cluster (Purple)" />
-    <set_gm_button text="Terrain\Nebulae\Single Nebula (Yellow)" />
-    <set_gm_button text="Terrain\Nebulae\Sml Nebula Cluster (Yellow)" />
-    <set_gm_button text="Terrain\Nebulae\Med Nebula Cluster (Yellow)" />
-    <set_gm_button text="Terrain\Nebulae\Lrg Nebula Cluster (Yellow)" />
-    <set_gm_button text="Terrain\Nebulae\Single Nebula (Blue)" />
-    <set_gm_button text="Terrain\Nebulae\Sml Nebula Cluster (Blue)" />
-    <set_gm_button text="Terrain\Nebulae\Med Nebula Cluster (Blue)" />
-    <set_gm_button text="Terrain\Nebulae\Lrg Nebula Cluster (Blue)" />
-    <set_gm_button text="Terrain\Asteroids\Single Asteroid" />
-    <set_gm_button text="Terrain\Asteroids\Small Field" />
-    <set_gm_button text="Terrain\Asteroids\Medium Field" />
-    <set_gm_button text="Terrain\Asteroids\Large Field" />
-    <set_gm_button text="Terrain\_Dismiss" />
-  {% endcall %}
-  {% call _destroySubmenu("HazardTerrain") %}
-    <clear_gm_button text="Terrain\Blackhole" />
-    <clear_gm_button text="Terrain\Radiation Point" />
-    <clear_gm_button text="Terrain\Nebulae\Single Nebula (Purple)" />
-    <clear_gm_button text="Terrain\Nebulae\Sml Nebula Cluster (Purple)" />
-    <clear_gm_button text="Terrain\Nebulae\Med Nebula Cluster (Purple)" />
-    <clear_gm_button text="Terrain\Nebulae\Lrg Nebula Cluster (Purple)" />
-    <clear_gm_button text="Terrain\Nebulae\Single Nebula (Yellow)" />
-    <clear_gm_button text="Terrain\Nebulae\Sml Nebula Cluster (Yellow)" />
-    <clear_gm_button text="Terrain\Nebulae\Med Nebula Cluster (Yellow)" />
-    <clear_gm_button text="Terrain\Nebulae\Lrg Nebula Cluster (Yellow)" />
-    <clear_gm_button text="Terrain\Nebulae\Single Nebula (Blue)" />
-    <clear_gm_button text="Terrain\Nebulae\Sml Nebula Cluster (Blue)" />
-    <clear_gm_button text="Terrain\Nebulae\Med Nebula Cluster (Blue)" />
-    <clear_gm_button text="Terrain\Nebulae\Lrg Nebula Cluster (Blue)" />
-    <clear_gm_button text="Terrain\Asteroids\Single Asteroid" />
-    <clear_gm_button text="Terrain\Asteroids\Small Field" />
-    <clear_gm_button text="Terrain\Asteroids\Medium Field" />
-    <clear_gm_button text="Terrain\Asteroids\Large Field" />
-    <clear_gm_button text="Terrain\_Dismiss" />
-  {% endcall %}
-  {{ _submenuEvent("HazardTerrain", "Terrain") }}
-  {{ _dismissEvent("HazardTerrain", "Terrain\_Dismiss") }}
-  {% call _createSubmenu("HazardCreatures") %}
-    <set_gm_button text="Creatures\Shark" />
-    <set_gm_button text="Creatures\Bug" />
-    <set_gm_button text="Creatures\Charybdis" />
-    <set_gm_button text="Creatures\Space Monster" />
-    <set_gm_button text="Creatures\Pirahna Swarm" />
-    <set_gm_button text="Creatures\Dragon" />
-    <set_gm_button text="Creatures\Whale Pod" />
-    <set_gm_button text="Creatures\_Dismiss" />
-  {% endcall %}
-  {% call _destroySubmenu("HazardCreatures") %}
-    <clear_gm_button text="Creatures\Shark" />
-    <clear_gm_button text="Creatures\Bug" />
-    <clear_gm_button text="Creatures\Charybdis" />
-    <clear_gm_button text="Creatures\Space Monster" />
-    <clear_gm_button text="Creatures\Pirahna Swarm" />
-    <clear_gm_button text="Creatures\Dragon" />
-    <clear_gm_button text="Creatures\Whale Pod" />
-    <clear_gm_button text="Creatures\_Dismiss" />
-  {% endcall %}
-  {{ _submenuEvent("HazardCreatures", "Creatures") }}
-  {{ _dismissEvent("HazardCreatures", "Creatures\_Dismiss") }}
-  {% call _createSubmenu("HazardMines") %}
-    <set_gm_button text="Mines\Large Minefield (Circ.)" />
-    <set_gm_button text="Mines\Medium Minefield (Circ.)" />
-    <set_gm_button text="Mines\Small Minefield (Circ.)" />
-    <set_gm_button text="Mines\Single Mine" />
-    <set_gm_button text="Mines\_Dismiss" />
-  {% endcall %}
-  {% call _destroySubmenu("HazardMines") %}
-    <clear_gm_button text="Mines\Large Minefield (Circ.)" />
-    <clear_gm_button text="Mines\Medium Minefield (Circ.)" />
-    <clear_gm_button text="Mines\Small Minefield (Circ.)" />
-    <clear_gm_button text="Mines\Single Mine" />
-    <clear_gm_button text="Mines\_Dismiss" />
-  {% endcall %}
-  {{ _submenuEvent("HazardMines", "Mines") }}
-  {{ _dismissEvent("HazardMines", "Mines\_Dismiss") }}
-
   {% call _createSubmenu("IntBoarding") %}
     <set_gm_button text="Boarding Actions\Attack Ship1" />
     <set_gm_button text="Boarding Actions\Attack Ship6" />
@@ -1422,19 +1341,6 @@
   {% call _createSubmenu(main.ai.key) %}
     <set_gm_button text="AI Cmds On" x="140" y="480" h="28" w="90" />
     <clear_gm_button text="AI Cmds Off" />
-    <set_gm_button text="DefaultAI" x="140" y="510" h="28" w="90" />
-    <set_gm_button text="EliteAI" x="140" y="540" h="28" w="90" />
-    <set_gm_button text="Hunt Plyr" x="140" y="570" h="28" w="90" />
-    <set_gm_button text="Hunt Bse" x="140" y="600" h="28" w="90" />
-    <set_gm_button text="Hunt Ntrl" x="140" y="630" h="28" w="90" />
-    <set_gm_button text="PirateAI" x="140" y="660" h="28" w="90" />
-    <set_gm_button text="AllyAI" x="230" y="510" h="28" w="90" />
-    <set_gm_button text="Guard Bse" x="230" y="540" h="28" w="90" />
-    <set_gm_button text="GoToBase" x="230" y="570" h="28" w="90" />
-    <set_gm_button text="Noncombat" x="230" y="600" h="28" w="90" />
-    <set_gm_button text="Unsurrender" x="230" y="630" h="28" w="90" />
-    <set_gm_button text="Surrender" x="230" y="660" h="28" w="90" />
-    <set_gm_button text="Specials" x="320" y="510" h="28" w="90" />
     {% set menu = main.ai %}
       {{ _buttonGrid(retrieve("buttons" + main.ai.key), menu.buttons.x, menu.buttons.y, menu.buttons.w, menu.buttons.h, menu.buttons.rows) }}
     {% endcall %}
@@ -1444,50 +1350,15 @@
   {% call _destroySubmenu(main.ai.key) %}
     <clear_gm_button text="AI Cmds On" />
     <set_gm_button text="AI Cmds Off" x="140" y="480" h="28" w="90" />
-    <clear_gm_button text="DefaultAI" />
-    <clear_gm_button text="EliteAI" />
-    <clear_gm_button text="Hunt Plyr" />
-    <clear_gm_button text="Hunt Bse" />
-    <clear_gm_button text="Hunt Ntrl" />
-    <clear_gm_button text="PirateAI" />
-    <clear_gm_button text="AllyAI" />
-    <clear_gm_button text="Guard Bse" />
-    <clear_gm_button text="GoToBase" />
-    <clear_gm_button text="Noncombat"/>
-    <clear_gm_button text="Unsurrender" />
-    <clear_gm_button text="Surrender" />
-    <clear_gm_button text="Specials" />
-    <clear_gm_button text="Dir Strike" />
-    <clear_gm_button text="Dir Move" />
     {% for button in retrieve("buttons" + main.ai.key) %}
       <clear_gm_button text="{{ button }}" />
     {% endfor %}
     {% for permmenu in retrieve("permSubmenus" + main.ai.key) %}
       <set_variable name="GM_Submenu_{{ permmenu }}_ShouldShow" value="0.0" integer="yes" />
     {% endfor %}
-    <set_variable name="GM_AICommands_DirStrikeBtn_Shown" value="0.0" integer="yes" />
-    <set_variable name="GM_AICommands_DirMoveBtn_Shown" value="0.0" integer="yes" />
   {% endcall %}
   {{ _submenuEvent(main.ai.key, "AI Cmds Off") }}
   {{ _dismissEvent(main.ai.key, "AI Cmds On") }}
-  <event name="AICommands Directional Move Button">
-    <if_variable name="GM_Submenu_AICommands_ShouldShow" comparator="EQUALS" value="1.0" />
-    <if_variable name="DirectionalStrikeEnabled" comparator="EQUALS" value="1.0" />
-    <if_variable name="GM_AICommands_DirMoveBtn_Shown" comparator="EQUALS" value="0.0" />
-    <clear_gm_button text="Dir Strike" />
-    <set_gm_button text="Dir Move" x="320" y="540" h="28" w="90" />
-    <set_variable name="GM_AICommands_DirMoveBtn_Shown" value="1.0" integer="yes" />
-    <set_variable name="GM_AICommands_DirStrikeBtn_Shown" value="0.0" integer="yes" />
-  </event>
-  <event name="AICommands Directional Strike Button">
-    <if_variable name="GM_Submenu_AICommands_ShouldShow" comparator="EQUALS" value="1.0" />
-    <if_variable name="DirectionalStrikeEnabled" comparator="EQUALS" value="0.0" />
-    <if_variable name="GM_AICommands_DirStrikeBtn_Shown" comparator="EQUALS" value="0.0" />
-    <clear_gm_button text="Dir Move" />
-    <set_gm_button text="Dir Strike" x="320" y="540" h="28" w="90" />
-    <set_variable name="GM_AICommands_DirStrikeBtn_Shown" value="1.0" integer="yes" />
-    <set_variable name="GM_AICommands_DirMoveBtn_Shown" value="0.0" integer="yes" />
-  </event>
 
   {% call _createSubmenu("AIMenu") %}
     <clear_gm_button text="AI Off" />
@@ -1574,81 +1445,6 @@
   </event>
   {{ _submenuEvent("AIMenu", "AI Off") }}
   {{ _dismissEvent("AIMenu", "AI On") }}
-
-  {% call _createSubmenu("AISpecials") %}
-    <set_gm_button text="Assign Specials\Add\Normal" />
-    <set_gm_button text="Assign Specials\Add\Upgraded" />
-    <set_gm_button text="Assign Specials\Add\Overpowered" />
-    <set_gm_button text="Assign Specials\Add\Underpowered" />
-    <set_gm_button text="Assign Specials\Add\Stealth" />
-    <set_gm_button text="Assign Specials\Add\Shield Drain" />
-    <set_gm_button text="Assign Specials\Add\Tractor" />
-    <set_gm_button text="Assign Specials\Add\Shield Reset" />
-    <set_gm_button text="Assign Specials\Add\Teleback" />
-    <set_gm_button text="Assign Specials\Add\Warp" />
-    <set_gm_button text="Assign Specials\Add\HET" />
-    <set_gm_button text="Assign Specials\Add\Anti-Torp" />
-    <set_gm_button text="Assign Specials\Add\Anti-Mine" />
-    <set_gm_button text="Assign Specials\Add\Cloak" />
-    <set_gm_button text="Assign Specials\Add\Low Vis" />
-    <set_gm_button text="Assign Specials\Add\Teleport" />
-    <set_gm_button text="Assign Specials\Add\Drones" />
-    <set_gm_button text="Assign Specials\Add\Shield Vamp" />
-    <set_gm_button text="Assign Specials\Clear\Stealth" />
-    <set_gm_button text="Assign Specials\Clear\Shield Drain" />
-    <set_gm_button text="Assign Specials\Clear\Tractor" />
-    <set_gm_button text="Assign Specials\Clear\Shield Reset" />
-    <set_gm_button text="Assign Specials\Clear\Teleback" />
-    <set_gm_button text="Assign Specials\Clear\Warp" />
-    <set_gm_button text="Assign Specials\Clear\HET" />
-    <set_gm_button text="Assign Specials\Clear\Anti-Torp" />
-    <set_gm_button text="Assign Specials\Clear\Anti-Mine" />
-    <set_gm_button text="Assign Specials\Clear\Cloak" />
-    <set_gm_button text="Assign Specials\Clear\Low Vis" />
-    <set_gm_button text="Assign Specials\Clear\Teleport" />
-    <set_gm_button text="Assign Specials\Clear\Drones" />
-    <set_gm_button text="Assign Specials\Clear\Shield Vamp" />
-    <set_gm_button text="Assign Specials\Clear\Clear All" />
-    <set_gm_button text="Assign Specials\_Dismiss" />
-  {% endcall %}
-  {% call _destroySubmenu("AISpecials") %}
-    <clear_gm_button text="Assign Specials\Add\Normal" />
-    <clear_gm_button text="Assign Specials\Add\Upgraded" />
-    <clear_gm_button text="Assign Specials\Add\Overpowered" />
-    <clear_gm_button text="Assign Specials\Add\Underpowered" />
-    <clear_gm_button text="Assign Specials\Add\Stealth" />
-    <clear_gm_button text="Assign Specials\Add\Shield Drain" />
-    <clear_gm_button text="Assign Specials\Add\Tractor" />
-    <clear_gm_button text="Assign Specials\Add\Shield Reset" />
-    <clear_gm_button text="Assign Specials\Add\Teleback" />
-    <clear_gm_button text="Assign Specials\Add\Warp" />
-    <clear_gm_button text="Assign Specials\Add\HET" />
-    <clear_gm_button text="Assign Specials\Add\Anti-Torp" />
-    <clear_gm_button text="Assign Specials\Add\Anti-Mine" />
-    <clear_gm_button text="Assign Specials\Add\Cloak" />
-    <clear_gm_button text="Assign Specials\Add\Low Vis" />
-    <clear_gm_button text="Assign Specials\Add\Teleport" />
-    <clear_gm_button text="Assign Specials\Add\Drones" />
-    <clear_gm_button text="Assign Specials\Add\Shield Vamp" />
-    <clear_gm_button text="Assign Specials\Clear\Stealth" />
-    <clear_gm_button text="Assign Specials\Clear\Shield Drain" />
-    <clear_gm_button text="Assign Specials\Clear\Tractor" />
-    <clear_gm_button text="Assign Specials\Clear\Shield Reset" />
-    <clear_gm_button text="Assign Specials\Clear\Teleback" />
-    <clear_gm_button text="Assign Specials\Clear\Warp" />
-    <clear_gm_button text="Assign Specials\Clear\HET" />
-    <clear_gm_button text="Assign Specials\Clear\Anti-Torp" />
-    <clear_gm_button text="Assign Specials\Clear\Anti-Mine" />
-    <clear_gm_button text="Assign Specials\Clear\Cloak" />
-    <clear_gm_button text="Assign Specials\Clear\Low Vis" />
-    <clear_gm_button text="Assign Specials\Clear\Teleport" />
-    <clear_gm_button text="Assign Specials\Clear\Drones" />
-    <clear_gm_button text="Assign Specials\Clear\Shield Vamp" />
-    <clear_gm_button text="Assign Specials\Clear\Clear All" />
-    <clear_gm_button text="Assign Specials\_Dismiss" />
-  {% endcall %}
-  {{ _submenuEvent("AISpecials", "Specials") }}
-  {{ _dismissEvent("AISpecials", "Assign Specials\_Dismiss") }}
 
   <event name="Clear All Menus (Button Trigger)">
     <if_gm_button text="Clear" />

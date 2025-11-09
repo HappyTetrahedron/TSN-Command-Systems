@@ -1,0 +1,82 @@
+
+{% import 'GM Menus.xml' as menu %}
+
+{{ menu.addDismissableSubmenu("Mines", menu.main.hazard) }}
+{{ menu.addDismissableSubmenu("Creatures", menu.main.hazard) }}
+{{ menu.addDismissableSubmenu("Terrain", menu.main.hazard) }}
+
+{% call menu.onMenuClick("Single Mine", "Mines") %}
+  <create count="1" type="mines" use_gm_position="" radius="1" />
+{% endcall %}
+{% call menu.onMenuClick("Small Minefield", "Mines") %}
+  <create count="8" type="mines" use_gm_position="" radius="500" />
+{% endcall %}
+{% call menu.onMenuClick("Medium Minefield", "Mines") %}
+  <create count="8" type="mines" use_gm_position="" radius="500" />
+  <create count="16" type="mines" use_gm_position="" radius="1000" />
+{% endcall %}
+{% call menu.onMenuClick("Large Minefield", "Mines") %}
+  <create count="8" type="mines" use_gm_position="" radius="500" />
+  <create count="16" type="mines" use_gm_position="" radius="1000" />
+  <create count="24" type="mines" use_gm_position="" radius="1500" />
+{% endcall %}
+
+{% call menu.onMenuClick("Shark", "Creatures") %}
+  <create type="monster" monsterType="2" use_gm_position="" />
+{% endcall %}
+{% call menu.onMenuClick("Bug", "Creatures") %}
+    <create type="monster" monsterType="6" use_gm_position="" />
+{% endcall %}
+{% call menu.onMenuClick("Typhon", "Creatures") %}
+    <create type="monster" monsterType="0" use_gm_position="" />
+{% endcall %}
+{% call menu.onMenuClick("Charybdis", "Creatures") %}
+    <create type="monster" monsterType="5" use_gm_position="" />
+{% endcall %}
+{% call menu.onMenuClick("Piranhas", "Creatures") %}
+    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="PIRA" />
+    <set_variable name="Podnumber" value="Podnumber + 1" integer="yes" />
+{% endcall %}
+{% call menu.onMenuClick("Dragon", "Creatures") %}
+    <create type="monster" monsterType="3" use_gm_position="" />
+{% endcall %}
+{% call menu.onMenuClick("Whales", "Creatures") %}
+    <create type="monster" monsterType="1" podnumber="Podnumber" use_gm_position="" name="Xeno" />
+    <create type="monster" monsterType="1" podnumber="Podnumber" use_gm_position="" name="Xeno" />
+    <create type="monster" monsterType="1" podnumber="Podnumber" use_gm_position="" name="Xeno" />
+    <set_variable name="Podnumber" value="Podnumber + 1" integer="yes" />
+{% endcall %}
+
+{% call menu.onMenuClick("Black Hole", "Terrain") %}
+    <create type="blackHole" use_gm_position="" name="BH" />
+{% endcall %}
+{% for color in ["Purple", "Blue", "Yellow"] %}
+  {% call menu.onMenuClick("Single Nebula\\" + color, "Terrain") %}
+      <create count="1" type="nebulas" nebType="{{ loop.index }}" use_gm_position="" radius="1" />
+  {% endcall %}
+  {% call menu.onMenuClick("Small Nebulae\\" + color, "Terrain") %}
+      <create count="4" type="nebulas" nebType="{{ loop.index }}" use_gm_position="" radius="1000" randomRange="1000" />
+  {% endcall %}
+  {% call menu.onMenuClick("Medium Nebulae\\" + color, "Terrain") %}
+      <create count="15" type="nebulas" nebType="{{ loop.index }}" use_gm_position="" radius="2500" randomRange="2500" />
+  {% endcall %}
+  {% call menu.onMenuClick("Large Nebulae\\" + color, "Terrain") %}
+      <create count="30" type="nebulas" nebType="{{ loop.index }}" use_gm_position="" radius="5000" randomRange="5000" />
+  {% endcall %}
+{% endfor %}
+{% call menu.onMenuClick("Single Asteroid", "Terrain") %}
+    <create count="1" type="asteroids" use_gm_position="" radius="1" />
+{% endcall %}
+{% call menu.onMenuClick("Small Roid Field", "Terrain") %}
+    <create count="10" type="asteroids" use_gm_position="" radius="1000" randomRange="1000" />
+{% endcall %}
+{% call menu.onMenuClick("Mid Roid Field", "Terrain") %}
+    <create count="50" type="asteroids" use_gm_position="" radius="2500" randomRange="2500" />
+{% endcall %}
+{% call menu.onMenuClick("Large Roid Field", "Terrain") %}
+    <create count="100" type="asteroids" use_gm_position="" radius="5000" randomRange="5000" />
+{% endcall %}

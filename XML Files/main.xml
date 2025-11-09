@@ -20,5 +20,6 @@
 {% for extension in g.data.get("extensions", []) %}
   {% include 'Extensions/' + extension + '.xml' %}
 {% endfor %}
+{% include 'GM/GMTools.xml' %}
 {% include 'GM Console.xml' %}
 </mission_data>

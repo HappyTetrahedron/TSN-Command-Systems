@@ -44,4 +44,29 @@
     <set_variable name="ReassignDigits" value="0.0" integer="yes" />
   </event>
 
-  {{ ai.ReassignAIEvents() }}
+{% for id, ai in ai.availableAIs.items() if not ai.get("skipInReassign", False) %}
+  <event name="Reassign {{ ai.name }} AI GM">
+    <if_variable name="ReassignLetter" comparator="EQUALS" value="30" />
+    <if_variable name="ReassignAI" comparator="EQUALS" value="{{ id }}.0" />
+    <if_variable name="ReassignDigits" comparator="NOT" value="1.0" />
+{{    ai.macro(["GM"]) | indent(2, True) }}
+    <set_variable name="ReassignAI" value="0.0" integer="yes" />
+  </event>
+  {% for letter in util.FleetLetters %}
+    <event name="Reassign {{ ai.name }} AI {{ letter }}">
+      <if_variable name="ReassignLetter" comparator="EQUALS" value="{{ loop.index }}" />
+      <if_variable name="ReassignAI" comparator="EQUALS" value="{{ id }}.0" />
+      <if_variable name="ReassignDigits" comparator="NOT" value="1.0" />
+{{      ai.macro([
+        letter + "0|reassignNumber0|",
+        letter + "|reassignNumber2|",
+        letter + "|reassignNumber4|",
+        letter + "|reassignNumber8|",
+        letter + "|reassignNumber6|",
+      ]) | indent(4, True) }}
+      <set_gm_button text="Reassigning AI" x="230" y="415" h="60" w="150" />
+      <set_variable name="ReassignDigits" value="1.0" integer="yes" />
+    </event>
+  {% endfor %}
+
+{% endfor %}

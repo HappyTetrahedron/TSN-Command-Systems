@@ -1,5 +1,6 @@
 {% import 'Picker.xml' as picker %}
 {% import 'Utils.xml' as util %}
+{% import 'GM Menus.xml' as menu %}
 
 {% set sides = range(1, 14)|list %}
 {% do sides.__setitem__(1, "2 PLYR") %}
@@ -39,6 +40,7 @@
     <if_gm_button text="STOP    O" />
     <set_variable name="ReassignAI" value="1030.0" integer="yes" />
   </event>
+
   <event name="EnableDirMoveAI">
       <if_gm_button text="Dir Move" />
       <set_variable name="DirectionalStrikeEnabled" value="0.0" integer="yes" />
@@ -75,6 +77,7 @@
     </event>
     {% endfor %}
   {% endfor %}
+
   <event name="Increase Speed" id_arme="bfebddcb-b230-4c94-98bd-5717a686ecdc" parent_id_arme="db6a0663-4c0e-4b4c-9baf-e203cf72afaf">
     <if_gm_button text="Speed +0.6" />
     <set_variable name="ReassignAI" value="1040.0" integer="yes" />
@@ -88,77 +91,62 @@
     <if_gm_button text="GrpToGM" />
     <set_variable name="ReassignAI" value="1025.0" integer="yes" />
   </event>
-  <event name="Unsurrender" id_arme="5ad2f952-0539-4a8b-b2ba-850bc1e61ac9" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
-    <if_gm_button text="Unsurrender" />
+  {% call menu.onButtonClick("Unsurrender", menu.main.ai) %}
     <set_variable name="ReassignAI" value="1022.0" integer="yes" />
-  </event>
-  <event name="Surrender" id_arme="3b3d74c4-8de4-4d7a-bc9e-d51741cf671a" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
-    <if_gm_button text="Surrender" />
+  {% endcall %}
+  {% call menu.onButtonClick("Surrender", menu.main.ai) %}
     <set_variable name="ReassignAI" value="1021.0" integer="yes" />
-  </event>
-  <event name="Default AI" id_arme="ef738414-bfe4-4eb2-be08-bd1978d45fa9" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
-    <if_gm_button text="DefaultAI" />
+  {% endcall %}
+  {% call menu.onButtonClick("DefaultAI", menu.main.ai) %}
     <set_variable name="ReassignAI" value="1.0" integer="yes" />
-  </event>
-  <event name="Elite AI" id_arme="5b14f567-7b28-41d2-a9c7-a902137663ec" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
-    <if_gm_button text="EliteAI" />
+  {% endcall %}
+  {% call menu.onButtonClick("EliteAI", menu.main.ai) %}
     <set_variable name="ReassignAI" value="6.0" integer="yes" />
-  </event>
-  <event name="Hunt Players" id_arme="85039ea1-9651-4149-a716-9a0ada50e5ec" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
-    <if_gm_button text="Hunt Plyr" />
+  {% endcall %}
+  {% call menu.onButtonClick("Hunt Plyr", menu.main.ai) %}
     <set_variable name="ReassignAI" value="2.0" integer="yes" />
-  </event>
-  <event name="Hunt Bases" id_arme="daa46aeb-497a-4967-9ab3-6fddc7dabf49" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
-    <if_gm_button text="Hunt Bse" />
+  {% endcall %}
+  {% call menu.onButtonClick("Hunt Bse", menu.main.ai) %}
     <set_variable name="ReassignAI" value="3.0" integer="yes" />
-  </event>
-  <event name="Hunt Neutral" id_arme="46dda40a-24f1-4dca-8b11-fb5a5e570eec" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
-    <if_gm_button text="Hunt Ntrl" />
+  {% endcall %}
+  {% call menu.onButtonClick("Hunt Ntrl", menu.main.ai) %}
     <set_variable name="ReassignAI" value="13.0" integer="yes" />
-  </event>
-  <event name="PirateAI" id_arme="46dda40a-24f1-4dca-8b11-fb5a5e570efc" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
-    <if_gm_button text="PirateAI" />
+  {% endcall %}
+  {% call menu.onButtonClick("PirateAI", menu.main.ai) %}
     <set_variable name="ReassignAI" value="101.0" integer="yes" />
-  </event>
-  <event name="AllyAI" id_arme="46dda40a-24f1-4dca-8b11-fb5a5e570eef" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
-    <if_gm_button text="AllyAI" />
+  {% endcall %}
+  {% call menu.onButtonClick("AllyAI", menu.main.ai) %}
     <set_variable name="ReassignAI" value="60.0" integer="yes" />
-  </event>
-  <event name="Guard Bse" id_arme="46dda40a-24f1-4dca-8b11-fb5a5e570eed" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
-    <if_gm_button text="Guard Bse" />
+  {% endcall %}
+  {% call menu.onButtonClick("Guard Bse", menu.main.ai) %}
     <set_variable name="ReassignAI" value="4.0" integer="yes" />
-  </event>
-  <event name="GoToBase" id_arme="46dda40a-24f1-4dca-8b11-fb5a5e570eed" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
-    <if_gm_button text="GoToBase" />
+  {% endcall %}
+  {% call menu.onButtonClick("GoToBase", menu.main.ai) %}
     <set_variable name="ReassignAI" value="51.0" integer="yes" />
-  </event>
-  <event name="Noncombat" id_arme="46dda40a-24f1-4dca-8b11-fb5a5e570eed" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
-    <if_gm_button text="Noncombat" />
+  {% endcall %}
+  {% call menu.onButtonClick("Noncombat", menu.main.ai) %}
     <set_variable name="ReassignAI" value="50.0" integer="yes" />
-  </event>
+  {% endcall %}
+
+  {{ menu.addDismissableSubmenu("Specials", menu.main.ai) }}
 
 
   {% for ability in util.abilities %}
-  <event name="{{ ability.name }}">
-    <if_gm_button text="Assign Specials\Add\{{ ability.name }}" />
-    <set_special use_gm_selection="" ship="{{ ability.id }}" />
-  </event>
+    {% call menu.onMenuClick("Add\\" + ability.name, "Specials") %}
+      <set_special use_gm_selection="" ship="{{ ability.id }}" />
+    {% endcall %}
   {% endfor %}
   {% for special in util.specials %}
-  <event name="{{ special }}">
-    <if_gm_button text="Assign Specials\Add\{{ special }}" />
-    <set_special use_gm_selection="" ability="{{ special }}" />
-  </event>
-  <event name="rm {{ special }}">
-    <if_gm_button text="Assign Specials\Clear\{{ special }}" />
-    <set_special use_gm_selection="" clear="yes" ability="{{ special }}" />
-  </event>
+    {% call menu.onMenuClick("Add\\" + special, "Specials") %}
+      <set_special use_gm_selection="" ability="{{ special }}" />
+    {% endcall %}
+    {% call menu.onMenuClick("Clear\\" + special, "Specials") %}
+      <set_special use_gm_selection="" clear="yes" ability="{{ special }}" />
+    {% endcall %}
   {% endfor %}
-  <event name="Clear All" id_arme="b4203b09-49b5-4c85-86e5-10d24b3a1e90" parent_id_arme="8b2a6ca1-caf3-4f27-bd34-4ec5e4d13b49">
-    <if_variable name="AI Commands Menu" comparator="EQUALS" value="1.0" />
-    <if_gm_button text="Assign Specials\Clear\Clear All" />
-  {% for special in util.specials %}
-    <set_special use_gm_selection="" clear="yes" ability="{{ special }}" />
-  {% endfor %}
-  </event>
+  {% call menu.onMenuClick("Clear\\Clear All", "Specials") %}
+    {% for special in util.specials %}
+      <set_special use_gm_selection="" clear="yes" ability="{{ special }}" />
+    {% endfor %}
+  {% endcall %}
 
