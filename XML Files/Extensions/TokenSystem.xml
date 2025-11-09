@@ -24,11 +24,17 @@
 <event name="AddToken">
   <if_gm_button text="AddToken" />
   <set_variable name="TokenSysT" value="TokenSysT + 1" integer="yes" />
+  {% for ship in util.shipConfigs %}
+    <warning_popup_message message="&gt; You receive a token &lt;" consoles="MSC" player_slot="{{ ship.slot }}" />
+  {% endfor %}
 </event>
 
 <event name="RmToken">
   <if_gm_button text="RmToken" />
   <set_variable name="TokenSysT" value="TokenSysT - 1" integer="yes" />
+  {% for ship in util.shipConfigs %}
+    <warning_popup_message message="&gt; You spent a token &lt;" consoles="MSC" player_slot="{{ ship.slot }}" />
+  {% endfor %}
 </event>
 
 <event name="UpdateTokenCounter">
