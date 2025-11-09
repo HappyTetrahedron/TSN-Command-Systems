@@ -41,6 +41,7 @@ env = {
     "difficulty": 7,
     "extensions": [
         "TokenSystem",
+        "Radiation",
     ],
     "maps": [
         "Tibur",
@@ -66,6 +67,7 @@ env = {
     "modules": {
         "ship1": [
             "Decoy",
+            "Fireworks",
             "KamikazeMine",
         ],
     }

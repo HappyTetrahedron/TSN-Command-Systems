@@ -2,6 +2,12 @@
 {% import 'GM Menus.xml' as menu %}
 {% import 'Utils.xml' as util %}
 
+{% call util.init("radiation") %}
+  {% for ship in util.shipConfigs %}
+    <set_variable name="Ship{{ ship.id }}Level" value="0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}RadDis" value="0" integer="yes" />
+  {% endfor %}
+{% endcall %}
 
 {% call menu.onButtonClick("Radiation", menu.main.hazard) %}
   <if_exists name="'" />
@@ -10,6 +16,7 @@
 {% call menu.onButtonClick("Radiation", menu.main.hazard) %}
   <if_not_exists name="'" />
   <create type="genericMesh" use_gm_position="" name="'" meshFileName="dat\mine.dxs" textureFileName="dat\cargo_vessel_glow.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+  <set_ship_text name="'" desc="Approximate location of radiation source." scan_desc="Radiation causes shield failure if the level rises above 60, and can destabilize energy containment if the level rises above 100." hailtext="Signal relay established. Communication link active." />
   <set_variable name="Active Radiation" value="1.0" integer="yes" />
   <set_variable name="RadiationLevel" value="1.0" integer="yes" />
 {% endcall %}
@@ -57,7 +64,7 @@
     <if_variable name="Ship{{ ship.id }}Monitor" comparator="EQUALS" value="1.0" />
     <if_variable name="Ship{{ ship.id }}Level" comparator="GREATER_EQUAL" value="100.0" />
     <if_timer_finished name="Ship{{ ship.id }} Radiation" />
-    <addto_object_property value="-6.0" property="energy" player_slot="{{ ship.slot }}" />
+    <addto_object_property value="-20.0" property="energy" player_slot="{{ ship.slot }}" />
   </event>
   <event name="Ship{{ ship.id }} Exposed">
     <if_variable name="Ship{{ ship.id }}RadDist" comparator="GREATER" value="0.0" />
@@ -82,6 +89,17 @@
   <event name="Ship{{ ship.id }} Underflow">
     <if_variable name="Ship{{ ship.id }}Level" comparator="LESS" value="0.0" />
     <set_variable name="Ship{{ ship.id }}Level" value="0.0" integer="yes" />
+  </event>
+  {# Order matters: Notify events must be in between level recalculation and monitor update. #}
+  <event name="Ship{{ ship.id }} Shield Failure Notify">
+    <if_variable name="Ship{{ ship.id }}Level" comparator="GREATER_EQUAL" value="60.0" />
+    <if_variable name="Ship{{ ship.id }}RadDis" comparator="LESS" value="60.0" />
+    <warning_popup_message message="Radiation Levels High: Shields Failing" consoles="MES" player_slot="{{ ship.slot }}" />
+  </event>
+  <event name="Ship{{ ship.id }} Energy Breach Notify">
+    <if_variable name="Ship{{ ship.id }}Level" comparator="GREATER_EQUAL" value="100.0" />
+    <if_variable name="Ship{{ ship.id }}RadDis" comparator="LESS" value="100.0" />
+    <warning_popup_message message="Radiation Levels Critical: Energy Containment Failing" consoles="MES" player_slot="{{ ship.slot }}" />
   </event>
   <event name="Create Ship{{ ship.id }} Monitor">
     <if_variable name="Active Radiation" comparator="EQUALS" value="2.0" />
