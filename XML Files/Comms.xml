@@ -1,4 +1,5 @@
 {% import 'Utils.xml' as util %}
+{% import 'GM Menus.xml' as menu %}
 
 {% macro addStatusLine() %}
   {% do track("commStatusLines", caller) %}
@@ -47,6 +48,7 @@
 {% macro ifMenuVariable(ship, value, comparator="EQUALS") %}
         <if_variable name="Comms_Menu_Ship{{ ship.id }}" comparator="{{ comparator }}" value="{{ value }}.0"/>
 {% endmacro %}
+
 
 {######################
    Menu Definitions 
@@ -116,12 +118,11 @@
     {{ setMenuVariable(ship, 1) }}
   </event>
 {% endfor %}
-<event name="Full Comms Reset">
-  <if_gm_button text="Reset Comms" />
-{% for ship in util.shipConfigs %}
-  {{ setMenuVariable(ship, 0) }}
-{% endfor %}
-</event>
+{% call menu.onButtonClick("Reset Comms", menu.main.interaction) %}
+  {% for ship in util.shipConfigs %}
+    {{ setMenuVariable(ship, 0) }}
+  {% endfor %}
+{% endcall %}
 
 
 {########################

@@ -8461,20 +8461,6 @@
     <addto_object_property value="1.0" property="countPro" player_slot="7" />
     <set_timer name="Resupply Ship8" seconds="2" />
   </event>
-  <folder_arme name="Pirahna Whale Pod Settings" id_arme="b1da9375-82a4-4abe-aa57-efca4e29ae35" parent_id_arme="22ead096-32e5-4cf4-9f90-3c7924af9696" />
-  <event name="Increment Pod Number" id_arme="505a4e06-8b44-4552-abe2-7c28814e8ca7" parent_id_arme="b1da9375-82a4-4abe-aa57-efca4e29ae35">
-    <if_variable name="Pod Settings" comparator="EQUALS" value="1.0" />
-    <if_variable name="Podnumber" comparator="GREATER_EQUAL" value="1.0" />
-    <if_variable name="Podnumber" comparator="LESS" value="9.0" />
-    <set_variable name="Podnumber" value="Podnumber+1" />
-    <set_variable name="Pod Settings" value="0.0" />
-  </event>
-  <event name="Pod Number Reset" id_arme="2179a2fa-1372-49d3-b94a-69e80a3a3521" parent_id_arme="b1da9375-82a4-4abe-aa57-efca4e29ae35">
-    <if_variable name="Pod Settings" comparator="EQUALS" value="1.0" />
-    <if_variable name="Podnumber" comparator="EQUALS" value="9.0" />
-    <set_variable name="Podnumber" value="1.0" />
-    <set_variable name="Pod Settings" value="0.0" />
-  </event>
   <event name="End Mission" id_arme="3e9b80be-6696-467c-ba4f-26a41d2ae9ee" parent_id_arme="22ead096-32e5-4cf4-9f90-3c7924af9696">
     <if_variable name="Mission End" comparator="EQUALS" value="1.0" />
     <if_timer_finished name="Mission End" />

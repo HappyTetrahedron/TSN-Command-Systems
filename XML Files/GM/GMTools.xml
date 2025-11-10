@@ -1,2 +1,9 @@
+{% include 'GM/ScanPoints.xml' %}
+
 {% include 'GM/SpawnHazard.xml' %}
+
+{% include 'GM/SensorPings.xml' %}
 {% include 'GM/RepairDamage.xml' %}
+{% include 'GM/Supplies.xml' %}
+{% include 'GM/ScanText.xml' %}
+{% include 'GM/QuickComms.xml' %}

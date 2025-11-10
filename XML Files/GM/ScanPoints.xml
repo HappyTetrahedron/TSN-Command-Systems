@@ -1,0 +1,143 @@
+{% import 'GM Menus.xml' as menu %}
+{% import 'Utils.xml' as util %}
+{% import 'Spawn.xml' as spawn %}
+
+{{ menu.addDismissableSubmenu("Scan Points", menu.main.poi) }}
+
+{% set signatures = [
+    {
+        "desc": "Residual electro-magnetic energy.",
+        "scan_desc": "EM spectrum matches TSN ship signatures.",
+        "type": "Energy",
+        "faction": "TSN",
+    },
+    {
+        "desc": "Trace phaser field",
+        "scan_desc": "EM spectrum matches TSN weapon signatures.",
+        "type": "Weapons",
+        "faction": "TSN",
+    },
+    {
+        "desc": "Baryon-acoustic oscillation spike",
+        "scan_desc": "Oscillation pattern matches TSN warp signatures.",
+        "type": "Warp",
+        "faction": "TSN",
+    },
+    {
+        "desc": "Trace tritonic phase pulse.^Elevated levels of Trellium concentration.^Tritonic ion traces.",
+        "scan_desc": "Pulse spectrum indicates possible slingshot array.",
+        "type": "Slingshot",
+        "faction": "Hegemony",
+    },
+    {
+        "desc": "Phased bio-electric particle trail",
+        "scan_desc": "Phase shift correlates with Kralien energy signatures",
+        "type": "Energy",
+        "faction": "Kralien",
+    },
+    {
+        "desc": "Inversed bio-electric ion field",
+        "scan_desc": "Field pattern indicates a Kralien power source. Possible Kralien weapon signature.",
+        "type": "Weapons",
+        "faction": "Kralien",
+    },
+    {
+        "desc": "Bio-electric phase pulses. Field oscillation variance of 2.9GHz.",
+        "scan_desc": "Indications of recent data transmission burst, likely Kralien in origin.",
+        "type": "Comms",
+        "faction": "Kralien",
+    },
+    {
+        "desc": "Bio-neutral cell compounds.",
+        "scan_desc": "Composition of residual bio-neural energy suggests Kralien origin.",
+        "type": "Hull",
+        "faction": "Kralien",
+    },
+    {
+        "desc": "Charged trellium phase distortions",
+        "scan_desc": "Distortion wave patterns correlate with known Torgoth energy signatures.",
+        "type": "Energy",
+        "faction": "Torgoth",
+    },
+    {
+        "desc": "Trellium photon emissions",
+        "scan_desc": "Frequency spectrum indicates Torgoth weapon signatures.",
+        "type": "Weapons",
+        "faction": "Torgoth",
+    },
+    {
+        "desc": "Phased thalmerite compounds",
+        "scan_desc": "Analysis of fragment compounds suggests Torgoth origin.",
+        "type": "Hull",
+        "faction": "Torgoth",
+    },
+    {
+        "desc": "High frequency EM carrier wave pulses. Variance of 3.4 indicating encryption of transmitted data.",
+        "scan_desc": "Signal patterns consistent with Torgoth communication protocols.",
+        "type": "Comms",
+        "faction": "Torgoth",
+    },
+    {
+        "desc": "Inverse tritonic ion field",
+        "scan_desc": "Field patterns correlate with known Arvonian energy signatures.",
+        "type": "Energy",
+        "faction": "Arvonian",
+    },
+    {
+        "desc": "Phased tritonic beam distortions",
+        "scan_desc": "Disruption patterns suggest Arvonian weapon signatures.",
+        "type": "Weapons",
+        "faction": "Arvonian",
+    },
+    {
+        "desc": "Highly variable electromagnetic field emissions",
+        "scan_desc": "Patterns do not match any major faction. Possible rogue or pirate origin.",
+        "type": "Energy",
+        "faction": "Pirate",
+    },
+    {
+        "desc": "Highly variable ion-pulse",
+        "scan_desc": "Patterns do not match any major faction. Possible rogue or pirate origin. Pulse levels suggest weapon signature.",
+        "type": "Weapon",
+        "faction": "Pirate",
+    },
+    {
+        "desc": "Highly variable baryon-acoustic oscillation spike",
+        "scan_desc": "Patterns do not match typical TSN warp drives. Possible rogue or pirate origin.",
+        "type": "Warp",
+        "faction": "Pirate",
+    },
+    {
+        "desc": "Dispersed gravimetric radiation field",
+        "scan_desc": "High frequency distortions indicate a jump event. Dispersion correlates with known Skaraan jump drive technology.",
+        "type": "Jump",
+        "faction": "Skaraan",
+    },
+    {
+        "desc": "Delminium ion distortions",
+        "scan_desc": "Resonance of particels consistent with energy weapon discharge. Frequency matches known Skaraan weapons technology.",
+        "type": "Weapons",
+        "faction": "Skaraan",
+    },
+    {
+        "desc": "Residual ion disruption field",
+        "scan_desc": "Reflective low-energy disruption patterns indicate possible Skaraan cloaking device.",
+        "type": "Cloak",
+        "faction": "Skaraan",
+    },
+    {
+        "desc": "Focused delminium particle trail",
+        "scan_desc": "Particle density consistent with Skaraan high energy data transmission.",
+        "type": "Comms",
+        "faction": "Skaraan",
+    },
+] %}
+
+{% for sig in signatures %}
+  {% call spawn.createNumberedConditional("(|ScanPointNumber|)", sig.faction + "\\" + sig.type, "Scan Points", "ScanPoint", "ScanPointNumber", loop.index) %}
+    <create type="genericMesh" use_gm_position="" name="(|ScanPointNumber|)" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.1" colorGreen="0.5" colorBlue="0.1" />
+    <set_ship_text name="(|ScanPointNumber|)" race="Signature" class="Scan Location" desc="{{ sig.desc }}" scan_desc="{{ sig.scan_desc }}" />
+  {% endcall %}
+{% endfor %}
+
+{{ spawn.scaffoldNumbered("(|ScanPointNumber|)", "ScanPoint", "ScanPointNumber", amount=9) }}

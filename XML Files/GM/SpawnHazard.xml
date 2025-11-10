@@ -83,3 +83,8 @@
 {% call menu.onMenuClick("Large Roid Field", "Terrain") %}
     <create count="100" type="asteroids" use_gm_position="" radius="5000" randomRange="5000" />
 {% endcall %}
+
+  <event name="Pod Number Reset" id_arme="2179a2fa-1372-49d3-b94a-69e80a3a3521" parent_id_arme="b1da9375-82a4-4abe-aa57-efca4e29ae35">
+    <if_variable name="Podnumber" comparator="GREATER" value="9.0" />
+    <set_variable name="Podnumber" value="1.0" />
+  </event>

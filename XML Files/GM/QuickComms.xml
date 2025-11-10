@@ -1,0 +1,29 @@
+{% import 'GM Menus.xml' as menu %}
+
+{{ menu.addDismissableSubmenu("Send Comms", menu.main.interaction) }}
+
+{% call menu.onMenuClick("Sim Aborted", "Send Comms") %}
+    <warning_popup_message message="Simulation Aborted" consoles="MHWESC" />
+    <incoming_comms_text from="Systems">Simulation mode terminated^Weapon systems re-enabled^Artificial sensor contacts removed</incoming_comms_text>
+{% endcall %}
+{% call menu.onMenuClick("Data Transfer", "Send Comms") %}
+    <incoming_comms_text from="Systems">Initiating data tranfer</incoming_comms_text>
+{% endcall %}
+{% call menu.onMenuClick("Personnel Transfer", "Send Comms") %}
+    <incoming_comms_text from="Systems">Personnel transfer in progress</incoming_comms_text>
+{% endcall %}
+{% call menu.onMenuClick("Cargo Transfer", "Send Comms") %}
+    <incoming_comms_text from="Systems">Initiating cargo transfer</incoming_comms_text>
+{% endcall %}
+{% call menu.onMenuClick("Transfer Complete", "Send Comms") %}
+    <incoming_comms_text from="Systems">Transfer complete</incoming_comms_text>
+{% endcall %}
+{% call menu.onMenuClick("Distress Call", "Send Comms") %}
+    <incoming_comms_text from="Systems">Distress call detected</incoming_comms_text>
+{% endcall %}
+{% call menu.onMenuClick("Anomalous Readings", "Send Comms") %}
+    <incoming_comms_text from="Systems">Anomalous readings detected</incoming_comms_text>
+{% endcall %}
+{% call menu.onMenuClick("New Sensor Contacts", "Send Comms") %}
+    <incoming_comms_text from="Systems">New sensor contacts detected</incoming_comms_text>
+{% endcall %}

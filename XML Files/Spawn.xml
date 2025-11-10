@@ -26,10 +26,7 @@
   </event>
 {% endmacro %}
 
-{% macro createNumbered(name_template, button, menuName, counter, amount=5) %}
-  {% call menu.onMenuClick(button, menuName) %}
-    <set_variable name="Spawn_{{ button }}" value="1.0" integer="yes" />
-  {% endcall %}
+{% macro scaffoldNumbered(name_template, identifier, counter, amount=5) %}
   {% call start.onStart() %}
     <set_variable name="{{ counter }}" value="1.0" integer="yes" />
   {% endcall %}
@@ -39,49 +36,70 @@
       <destroy name="{{ name }}" />
     {% endfor %}
   {% endcall %}
-  {# TODO once a delete hook exists we need to autodelete them too #}
-  <event name="All {{ button }} Spawned">
-    <if_variable name="Spawn_{{ button }}" comparator="EQUALS" value="1.0" />
+  <event name="All {{ identifier }} Spawned">
+    <if_variable name="Spawn_{{ identifier }}" comparator="EQUALS" value="1.0" />
     {% for i in range(1, amount+1) %}
       {% set name = name_template|replace("|" + counter + "|", i|string) %}
       <if_exists name="{{ name }}" />
     {% endfor %}
-    <set_variable name="Spawn_{{ button }}" value="0.0" integer="yes" />
+    <set_variable name="Spawn_{{ identifier }}" value="0.0" integer="yes" />
   </event>
+  <event name="{{ identifier }} Skip">
+    <if_variable name="Spawn_{{ identifier }}" comparator="EQUALS" value="1.0" />
+    <if_exists name="{{ identifier }} |lifepodNumber|" />
+    <set_variable name="Spawn_{{ identifier }}" value="4.0" integer="yes" />
+  </event>
+  <event name="Increment {{ identifier }} Number">
+    <if_variable name="Spawn_{{ identifier }}" comparator="EQUALS" value="4.0" />
+    <if_variable name="{{ counter }}" comparator="LESS" value="{{ amount }}.0" />
+    <set_variable name="{{ counter }}" value="{{ counter }}+1" integer="yes" />
+    <set_variable name="Spawn_{{ identifier }}" value="1.0" integer="yes" />
+  </event>
+  <event name="Reset {{ identifier }} Number">
+    <if_variable name="Spawn_{{ identifier }}" comparator="EQUALS" value="4.0" />
+    <if_variable name="{{ counter }}" comparator="GREATER_EQUAL" value="{{ amount }}.0" />
+    <set_variable name="{{ counter }}" value="1.0" integer="yes" />
+    <set_variable name="Spawn_{{ identifier }}" value="1.0" integer="yes" />
+  </event>
+  <event name="Increment {{ identifier }} Number">
+    <if_variable name="Spawn_{{ identifier }}" comparator="EQUALS" value="3.0" />
+    <if_variable name="{{ counter }}" comparator="LESS" value="{{ amount }}.0" />
+    <set_variable name="{{ counter }}" value="{{ counter }}+1" integer="yes" />
+    <set_variable name="Spawn_{{ identifier }}" value="0.0" integer="yes" />
+  </event>
+  <event name="Reset {{ identifier }} Number">
+    <if_variable name="Spawn_{{ identifier }}" comparator="EQUALS" value="3.0" />
+    <if_variable name="{{ counter }}" comparator="GREATER_EQUAL" value="{{ amount }}.0" />
+    <set_variable name="{{ counter }}" value="1.0" integer="yes" />
+    <set_variable name="Spawn_{{ identifier }}" value="0.0" integer="yes" />
+  </event>
+{% endmacro %}
+
+{% macro createNumberedConditional(name_template, button, menuName, identifier, counter, optionID) %}
+  {% call menu.onMenuClick(button, menuName) %}
+    <set_variable name="Spawn_{{ identifier }}" value="1.0" integer="yes" />
+    <set_variable name="Condition_{{ identifier }}" value="{{ optionID}}.0" integer="yes" />
+  {% endcall %}
+  <event name="{{ button }} Spawn">
+    <if_variable name="Spawn_{{ identifier }}" comparator="EQUALS" value="1.0" />
+    <if_variable name="Condition_{{ identifier }}" comparator="EQUALS" value="{{ optionID }}.0" />
+    <if_not_exists name="{{ name_template }}" />
+    {{ caller() }}
+    <set_variable name="Spawn_{{ identifier }}" value="3.0" integer="yes" />
+    <set_variable name="Condition_{{ identifier }}" value="0.0" integer="yes" />
+  </event>
+{% endmacro %}
+
+{% macro createNumbered(name_template, button, menuName, counter, amount=5) %}
+  {% call menu.onMenuClick(button, menuName) %}
+    <set_variable name="Spawn_{{ button }}" value="1.0" integer="yes" />
+  {% endcall %}
+  {{ scaffoldNumbered(name_template, button,  counter, amount) }}
   <event name="{{ button }} Spawn">
     <if_variable name="Spawn_{{ button }}" comparator="EQUALS" value="1.0" />
     <if_not_exists name="{{ button }} |{{ counter }}|" />
     {{ caller() }}
     <set_variable name="Spawn_{{ button }}" value="3.0" integer="yes" />
-  </event>
-  <event name="{{ button }} Skip">
-    <if_variable name="Spawn_{{ button }}" comparator="EQUALS" value="1.0" />
-    <if_exists name="{{ button }} |lifepodNumber|" />
-    <set_variable name="Spawn_{{ button }}" value="4.0" integer="yes" />
-  </event>
-  <event name="Increment {{ button }} Number">
-    <if_variable name="Spawn_{{ button }}" comparator="EQUALS" value="4.0" />
-    <if_variable name="{{ counter }}" comparator="LESS" value="{{ amount }}.0" />
-    <set_variable name="{{ counter }}" value="{{ counter }}+1" integer="yes" />
-    <set_variable name="Spawn_{{ button }}" value="1.0" integer="yes" />
-  </event>
-  <event name="Reset {{ button }} Number">
-    <if_variable name="Spawn_{{ button }}" comparator="EQUALS" value="4.0" />
-    <if_variable name="{{ counter }}" comparator="GREATER_EQUAL" value="{{ amount }}.0" />
-    <set_variable name="{{ counter }}" value="1.0" integer="yes" />
-    <set_variable name="Spawn_{{ button }}" value="1.0" integer="yes" />
-  </event>
-  <event name="Increment {{ button }} Number">
-    <if_variable name="Spawn_{{ button }}" comparator="EQUALS" value="3.0" />
-    <if_variable name="{{ counter }}" comparator="LESS" value="{{ amount }}.0" />
-    <set_variable name="{{ counter }}" value="{{ counter }}+1" integer="yes" />
-    <set_variable name="Spawn_{{ button }}" value="0.0" integer="yes" />
-  </event>
-  <event name="Reset {{ button }} Number">
-    <if_variable name="Spawn_{{ button }}" comparator="EQUALS" value="3.0" />
-    <if_variable name="{{ counter }}" comparator="GREATER_EQUAL" value="{{ amount }}.0" />
-    <set_variable name="{{ counter }}" value="1.0" integer="yes" />
-    <set_variable name="Spawn_{{ button }}" value="0.0" integer="yes" />
   </event>
 {% endmacro %}
 

@@ -25,7 +25,7 @@
     "button": "POI",
     "id": 3,
     "buttons": {
-      "x": 100,
+      "x": 300,
       "y": 100,
       "w": 90,
       "h": 30,
@@ -49,7 +49,7 @@
     "button": "Int.",
     "id": 5,
     "buttons": {
-      "x": 300,
+      "x": 100,
       "y": 100,
       "w": 90,
       "h": 30,
@@ -295,7 +295,7 @@
 
   {% if menu.type == "permanentSubmenu" %}
     {% set menuname = menu.parentMenu + menu.name %}
-    {% do track("permSubmenus" + parentMenuKey, menuname) %}
+    {% do track("permSubmenus" + menu.parentMenu, menuname) %}
     {% call _createSubmenu(menuname) %}
       {% for button in retrieve("menukey" + menu.name) %}
         <set_gm_button text="{{ menu.name }}\{{ button }}" />
@@ -310,17 +310,17 @@
 
   {% if menu.type == "buttonExpandMenu" %}
     {% set menuname = menu.parentMenu + menu.name %}
-    {% do track("buttons" + parentMenuKey, menu.name) %}
+    {% do track("buttons" + menu.parentMenu, menu.name) %}
     {% set buttons = retrieve("buttons" + menu.name) %}
     {% call _createSubmenu(menuname) %}
-      {% if menu.caller %}
-        {{ menu.caller(True) }}
+      {% if menu.body %}
+        {{ menu.body(True) }}
       {% endif %}
-      {{ _buttonGrid(buttons + [menu.name + " Dismiss"], menu.x, menu.y, menu.w, menu.h) }}
+      {{ _buttonGrid(buttons + [menu.name + " Dismiss"], menu.x, menu.y, menu.w, menu.h, menu.rows) }}
     {% endcall %}
     {% call _destroySubmenu(menuname) %}
-      {% if menu.caller %}
-        {{ menu.caller(False) }}
+      {% if menu.body %}
+        {{ menu.body(False) }}
       {% endif %}
       {% for button in retrieve("menukey" + menu.name) %}
         <clear_gm_button text="{{ button }}" />
@@ -524,24 +524,11 @@
   {% endcall %}
   {% call _destroyMenu(main.hazard.key, main.hazard.id) %}
   {% endcall %}
-
   {{ _menuEvent(main.hazard.key, main.hazard.id, main.hazard.button) }}
 
   {% call _createMenu(main.interaction.key, main.interaction.id) %}
-    <set_gm_button text="Messages" x="100" y="100" h="30" w="90" />
-    <set_gm_button text="Supplies" x="100" y="135" h="30" w="90" />
-    <set_gm_button text="Scan Text" x="100" y="275" h="30" w="90" />
-    <set_gm_button text="Shuttle Resup" x="100" y="310" h="30" w="90" />
-    <set_gm_button text="Reset Comms" x="100" y="345" h="30" w="90" />
-    {{ util.restore("GM_Submenu_IntSupplies_ShouldShow") }}
   {% endcall %}
   {% call _destroyMenu(main.interaction.key, main.interaction.id) %}
-    <clear_gm_button text="Messages" />
-    <clear_gm_button text="Supplies" />
-    <clear_gm_button text="Scan Text" />
-    <clear_gm_button text="Shuttle Resup" />
-    <clear_gm_button text="Reset Comms" />
-    {{ util.storeAndSet("GM_Submenu_IntSupplies_ShouldShow") }}
   {% endcall %}
   {{ _menuEvent(main.interaction.key, main.interaction.id, main.interaction.button) }}
 
@@ -1117,66 +1104,6 @@
   {% endcall %}
   {{ _submenuEvent("IntComms", "Messages") }}
   {{ _dismissEvent("IntComms", "Command Messages\_Dismiss") }}
-
-  {% call _createSubmenu("IntSupplies") %}
-    <set_gm_button text="Homing" x="200" y="155" h="30" w="100" />
-    <set_gm_button text="Nuke" x="200" y="185" h="30" w="100" />
-    <set_gm_button text="Mine" x="200" y="215" h="30" w="100" />
-    <set_gm_button text="EMP" x="200" y="245" h="30" w="100" />
-    <set_gm_button text="PShock" x="200" y="275" h="30" w="100" />
-    <set_gm_button text="Beacon" x="200" y="310" h="30" w="100" />
-    <set_gm_button text="Tag" x="200" y="345" h="30" w="100" />
-    <set_gm_button text="Probe" x="200" y="380" h="30" w="100" />
-    <set_gm_button text="100 Enrgy" x="200" y="415" h="30" w="100" />
-    <set_gm_button text="Coolant" x="200" y="450" h="30" w="100" />
-    <set_gm_button text="Supplies Menu    Close" x="200" y="485" h="30" w="100" />
-  {% endcall %}
-  {% call _destroySubmenu("IntSupplies") %}
-    <!--Supplies Menu-->
-    <clear_gm_button text="Homing" />
-    <clear_gm_button text="Nuke" />
-    <clear_gm_button text="Mine" />
-    <clear_gm_button text="EMP" />
-    <clear_gm_button text="PShock" />
-    <clear_gm_button text="Beacon" />
-    <clear_gm_button text="Tag" />
-    <clear_gm_button text="Probe" />
-    <clear_gm_button text="100 Enrgy" />
-    <clear_gm_button text="Coolant" />
-    <clear_gm_button text="Supplies Menu    Close" />
-  {% endcall %}
-  {{ _submenuEvent("IntSupplies", "Supplies", 5) }}
-  {{ _dismissEvent("IntSupplies", "Supplies Menu    Close") }}
-
-  {% call util.createConditionalMenu("GmAddOrdn", {
-    "Ordnance": "1",
-    "GM_Menu_Selector": "5",
-    "GM_Submenu_IntSupplies_ShouldShow": "1",
-  }) %}
-    <set_gm_button text="Add Ordn" x="200" y="125" h="30" w="100" />
-  {% endcall %}
-  {% call util.destroyConditionalMenu("GmAddOrdn", {
-    "Ordnance": "1",
-    "GM_Menu_Selector": "5",
-    "GM_Submenu_IntSupplies_ShouldShow": "1",
-  }) %}
-    <clear_gm_button text="Add Ordn" />
-  {% endcall %}
-
-  {% call util.createConditionalMenu("GmRmOrdn", {
-    "Ordnance": "-1",
-    "GM_Menu_Selector": "5",
-    "GM_Submenu_IntSupplies_ShouldShow": "1",
-  }) %}
-    <set_gm_button text="Rmv Ordn" x="200" y="125" h="30" w="100" />
-  {% endcall %}
-  {% call util.destroyConditionalMenu("GmRmOrdn", {
-    "Ordnance": "-1",
-    "GM_Menu_Selector": "5",
-    "GM_Submenu_IntSupplies_ShouldShow": "1",
-  }) %}
-    <clear_gm_button text="Rmv Ordn" />
-  {% endcall %}
 
   {% call _createSubmenu("IntShuttleResupply") %}
     {% for shuttle in ShuttleList %}
