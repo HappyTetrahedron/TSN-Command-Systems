@@ -2,6 +2,7 @@
   <mission_description>TSN Command Systems Version {{ g.version }}, compiled at {{ g.time }}. Maps:{% for map in g.data.get("maps", []) %} {{ map }}{% endfor %} - Extensions:{% for script in g.data.get("extensions", []) %} {{ script }}{% endfor %}</mission_description>
 {% include 'Start Up.xml' %}
 {% include 'Elements.xml' %}
+{% include 'Legacy Maps/LegacyMapSystems.jinja' %}
 {% include 'Custom Config.xml' %}
 {% include 'Spawn.xml' %}
 {% include 'Fleets/FleetSystem.xml' %}
