@@ -2,22 +2,10 @@
 
 {% import 'Utils.xml' as util %}
 {% import 'Spawn.xml' as spawn %}
+{% import 'Fleets/Destroy.xml' as destroy %}
 {% import 'GM Menus.xml' as menu %}
 
-{% call() util.createConditionalMenu("VerdantAI", {
-    "GM_Submenu_AICommands_ShouldShow": "1",
-}) %}
-    <set_gm_button text="ResetVerdant" x="320" y="540" h="28" w="90" />
-    <set_gm_button text="BoostVerdant" x="320" y="570" h="28" w="90" />
-{% endcall %}
-{% call() util.destroyConditionalMenu("VerdantAI", {
-    "GM_Submenu_AICommands_ShouldShow": "1",
-}) %}
-    <clear_gm_button text="ResetVerdant" />
-    <clear_gm_button text="BoostVerdant" />
-{% endcall %}
-
-{% call menu.onButtonClick("RmVerdantShips", menu.main.base) %}
+{% call destroy.onDestroy("VerdantShips") %}
   <destroy name="TSN Verdant" />
   <destroy name="TSN Vengeance" />
   <destroy name="TSN Warspite" />
@@ -279,8 +267,7 @@
   </event>
 
 
-  <event name="VerdantFleet_AIReset" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
-    <if_gm_button text="ResetVerdant" />
+  {% call menu.onButtonClick("ResetVerdant", menu.main.ai) %}
     {% for name in ["TSN Verdant", "TSN Vengeance", "TSN Warspite", "TSN Fury", "TSN Dawn", "TSN Shield", "TSN Daring"] %}
       <clear_ai name="{{ name }}" />
       <add_ai type="SPCL_AI" name="{{ name }}" />
@@ -295,12 +282,11 @@
       <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="{{ name }}" />
       <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="{{ name }}" />
     {% endfor %}
-  </event>
+  {% endcall %}
 
-  <event name="VerdantFleet_PlotArmor" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
-    <if_gm_button text="BoostVerdant" />
+  {% call menu.onButtonClick("BoostVerdant", menu.main.ai) %}
     {{ verdantFleetShields() }}
-  </event>
+  {% endcall %}
 
 
   {% for name in ["Keloi Gitosz"] %}
