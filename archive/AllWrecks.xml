@@ -1,0 +1,898 @@
+  <root>
+  <folder_arme name="Derelicts and Debris" id_arme="c4dae11a-c157-4ba2-b36e-614e85362d39" parent_id_arme="16ea2536-7911-4199-bcd8-d74f63c6379b" />
+  <folder_arme name="Hegemony Wrecks" id_arme="944bfb16-c8b5-404e-ad2e-bea100921343" parent_id_arme="c4dae11a-c157-4ba2-b36e-614e85362d39" />
+  <folder_arme name="Single Enemies" id_arme="795be911-6927-4425-8cf1-c0d701e2df0f" parent_id_arme="944bfb16-c8b5-404e-ad2e-bea100921343" />
+  <event name="Create Kralian Light Cruiser" id_arme="69738d45-5aa4-41ec-8787-517435d140b3" parent_id_arme="795be911-6927-4425-8cf1-c0d701e2df0f">
+    <if_gm_button text="Hegemony Wreck\Kralien Cruiser" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_RoundA.dxs" textureFileName="dat/roundA_diffuse.png" />
+    <set_ship_text name="--" race="Kralien" class="Cruiser" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Create Kralian Battleship" id_arme="ab91c90f-2613-4750-8524-c6fa9b229671" parent_id_arme="795be911-6927-4425-8cf1-c0d701e2df0f">
+    <if_gm_button text="Hegemony Wreck\Kralien Battleship" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_RoundB.dxs" textureFileName="dat/roundB_diffuse.png" />
+    <set_ship_text name="--" race="Kralien" class="Battleship" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.25" />
+  </event>
+  <event name="Create Kralian Dreadnought" id_arme="3498eca4-fa3e-4ef7-83bb-b18b5e8990bb" parent_id_arme="795be911-6927-4425-8cf1-c0d701e2df0f">
+    <if_gm_button text="Hegemony Wreck\Kralien Dreadnought" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_RoundC.dxs" textureFileName="dat/RoundC_Diffuse.png" />
+    <set_ship_text name="--" race="Kralien" class="Dreadnaught" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.3" />
+  </event>
+  <event name="Create Torgoth Goliath" id_arme="795e3df0-600e-450f-8880-b3f54314796c" parent_id_arme="795be911-6927-4425-8cf1-c0d701e2df0f">
+    <if_gm_button text="Hegemony Wreck\Torgoth Goliath" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_LeeA.dxs" textureFileName="dat/ship1_color_1024.png" />
+    <set_ship_text name="--" race="Torgoth" class="Goliath" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.3" />
+  </event>
+  <event name="Create Torgoth Leviathan" id_arme="30e15f15-113f-441a-88ca-cda87003f9cb" parent_id_arme="795be911-6927-4425-8cf1-c0d701e2df0f">
+    <if_gm_button text="Hegemony Wreck\Torgoth Leviathan" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_LeeB.dxs" textureFileName="dat/ship2_color_1024.png" />
+    <set_ship_text name="--" race="Torgoth" class="Leviathan" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="200.0" integer="yes" />
+    <set_variable name="scale" value="0.35" />
+  </event>
+  <event name="Create Torgoth Behemoth" id_arme="fabe2d50-cbbd-482e-bb6a-5589ae1415c9" parent_id_arme="795be911-6927-4425-8cf1-c0d701e2df0f">
+    <if_gm_button text="Hegemony Wreck\Torgoth Behemoth" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_LeeC.dxs" textureFileName="dat/ship3_color_1024.png" />
+    <set_ship_text name="--" race="Torgoth" class="Behemoth" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="250.0" integer="yes" />
+    <set_variable name="scale" value="0.4" />
+  </event>
+  <event name="Create Torgoth Command" id_arme="7d73265b-8322-4d37-b58d-ae50ddd08275" parent_id_arme="795be911-6927-4425-8cf1-c0d701e2df0f">
+    <if_gm_button text="Hegemony Wreck\Torgoth Command" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/TSN/Hegemony/TorgothCommand.dxs" textureFileName="dat/ship1A_diffuse.png" />
+    <set_ship_text name="--" race="Torgoth" class="Command" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="250.0" integer="yes" />
+    <set_variable name="scale" value="0.4" />
+  </event>
+  <event name="Create Skaraan Defiler" id_arme="581fe4b7-16bd-4227-b77f-f48ce140d922" parent_id_arme="795be911-6927-4425-8cf1-c0d701e2df0f">
+    <if_gm_button text="Hegemony Wreck\Skaraan Defiler" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_EliteC.dxs" textureFileName="dat/ship1C_diffuse.png" />
+    <set_ship_text name="--" race="Skaraan" class="Defiler" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.25" />
+  </event>
+  <event name="Create Skaraan Enforcer" id_arme="c6d84ddc-df8c-4c72-b7a8-6b9d3ffdd3b2" parent_id_arme="795be911-6927-4425-8cf1-c0d701e2df0f">
+    <if_gm_button text="Hegemony Wreck\Skaraan Enforcer" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_EliteA.dxs" textureFileName="dat/ship1A_diffuse.png" />
+    <set_ship_text name="--" race="Skaraan" class="Enforcer" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.25" />
+  </event>
+  <event name="Create Skaraan Executor" id_arme="d5871b97-8a61-4321-8c88-588a0ce8819d" parent_id_arme="795be911-6927-4425-8cf1-c0d701e2df0f">
+    <if_gm_button text="Hegemony Wreck\Skaraan Executor" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_EliteB.dxs" textureFileName="dat/ship1B_diffuse.png" />
+    <set_ship_text name="--" race="Skaraan" class="Executor" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.25" />
+  </event>
+  <event name="Create Arvonian Fighter" id_arme="5e31f1eb-4e05-47bb-b502-e558ab85854a" parent_id_arme="795be911-6927-4425-8cf1-c0d701e2df0f">
+    <if_gm_button text="Hegemony Wreck\Arvonian Fighter" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_Matt3A.dxs" textureFileName="dat/ship4A_diffuse.png" />
+    <set_ship_text name="--" race="Arvonian" class="Fighter" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="80.0" integer="yes" />
+    <set_variable name="scale" value="0.05" />
+  </event>
+  <event name="Create Arvonian Light" id_arme="be60a1f7-7b98-4edc-a151-101dfb9d562e" parent_id_arme="795be911-6927-4425-8cf1-c0d701e2df0f">
+    <if_gm_button text="Hegemony Wreck\Arvonian Light" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_Matt3B.dxs" textureFileName="dat/ship4B_diffuse.png" />
+    <set_ship_text name="--" race="Arvonian" class="Light Carrier" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="200.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Create Arvonian Heavy" id_arme="b0060f55-daa7-411c-8a70-0db4825d2e99" parent_id_arme="795be911-6927-4425-8cf1-c0d701e2df0f">
+    <if_gm_button text="Hegemony Wreck\Arvonian Heavy" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_Matt3C.dxs" textureFileName="dat/ship4C_diffuse.png" />
+    <set_ship_text name="--" race="Arvonian" class="Carrier" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="200.0" integer="yes" />
+    <set_variable name="scale" value="0.3" />
+  </event>
+  <event name="Create Arvonian Command" id_arme="761abb9b-0070-4fba-8992-71b996ec8944" parent_id_arme="795be911-6927-4425-8cf1-c0d701e2df0f">
+    <if_gm_button text="Hegemony Wreck\Arvonian Command" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/TSN/Hegemony/AVCommandShip.dxs" textureFileName="dat/TSN/Hegemony/AVCommand-diffuse.png" />
+    <set_ship_text name="--" race="Arvonian" class="Command Carrier" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="200.0" integer="yes" />
+    <set_variable name="scale" value="0.4" />
+  </event>
+  <event name="Create Hegemony Transport" id_arme="e19fc8ac-5312-4bf6-8bf2-6f31fb38867d" parent_id_arme="795be911-6927-4425-8cf1-c0d701e2df0f">
+    <if_gm_button text="Hegemony Wreck\Transport" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/TSN/Hegemony/kralien-transport.dxs" textureFileName="dat/TSN/Hegemony/kralien-transport.png" />
+    <set_ship_text name="--" race="Hegemony" class="Transport" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="175.0" integer="yes" />
+    <set_variable name="scale" value="0.17" />
+  </event>
+  <folder_arme name="TSN Wrecks" id_arme="25e6e706-1070-47d3-85c8-e1120daf034e" parent_id_arme="c4dae11a-c157-4ba2-b36e-614e85362d39" />
+  <folder_arme name="TSN Wrecks" id_arme="54be47ff-1396-4e42-a3f2-57a361a0da58" parent_id_arme="25e6e706-1070-47d3-85c8-e1120daf034e" />
+  <event name="Scout" id_arme="a6fa5443-9138-407e-ac51-0536aff033bb" parent_id_arme="54be47ff-1396-4e42-a3f2-57a361a0da58">
+    <if_gm_button text="TSN Wrecks\Scout" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\artemis-scout.dxs" textureFileName="dat\artemis_diffuse.png" />
+    <set_ship_text name="--" race="TSN" class="Scout" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Light Cruiser" id_arme="7a2d2e6d-4a02-429b-998d-12e558667b0c" parent_id_arme="54be47ff-1396-4e42-a3f2-57a361a0da58">
+    <if_gm_button text="TSN Wrecks\Light Cruiser" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\artemis.dxs" textureFileName="dat\LightCruiser_Diffuse.png" />
+    <set_ship_text name="--" race="TSN" class="Light Cruiser" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Battleship" id_arme="12ce2a16-c93c-45af-a648-64a216040fbe" parent_id_arme="54be47ff-1396-4e42-a3f2-57a361a0da58">
+    <if_gm_button text="TSN Wrecks\Battleship" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\artemis-3.dxs" textureFileName="dat\artemis_diffuse.png" />
+    <set_ship_text name="--" race="TSN" class="Battleship" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Missile Cruiser" id_arme="78f4f415-5b44-487f-b706-5c0b970c9d52" parent_id_arme="54be47ff-1396-4e42-a3f2-57a361a0da58">
+    <if_gm_button text="TSN Wrecks\Missile Cruiser" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\artemis-4.dxs" textureFileName="dat\artemis_diffuse.png" />
+    <set_ship_text name="--" race="TSN" class="Missile Cruiser" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Dreadnought" id_arme="9ca008c1-1c65-444b-92b0-4c7be4d17caa" parent_id_arme="54be47ff-1396-4e42-a3f2-57a361a0da58">
+    <if_gm_button text="TSN Wrecks\Dreadnought" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\artemis-5.dxs" textureFileName="dat\artemis_diffuse.png" />
+    <set_ship_text name="--" race="TSN" class="Dreadnaught" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.25" />
+  </event>
+  <event name="Carrier" id_arme="f5b63962-4ebf-4a12-9d3a-94ef0e1db38d" parent_id_arme="54be47ff-1396-4e42-a3f2-57a361a0da58">
+    <if_gm_button text="TSN Wrecks\Carrier" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSNMediumCarrier.dxs" textureFileName="dat\CarrierDiffuse.png" />
+    <set_ship_text name="--" race="TSN" class="Carrier" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.25" />
+  </event>
+  <event name="Minelayer" id_arme="86a524d3-9ac2-44ba-87b1-3019e8a56704" parent_id_arme="54be47ff-1396-4e42-a3f2-57a361a0da58">
+    <if_gm_button text="TSN Wrecks\Minelayer" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSNMineLayer.dxs" textureFileName="dat\CarrierDiffuse.png" />
+    <set_ship_text name="--" race="TSN" class="Minelayer" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.22" />
+  </event>
+  <event name="Juggernaut" id_arme="628a19ce-9341-45de-aa74-e506a916459c" parent_id_arme="54be47ff-1396-4e42-a3f2-57a361a0da58">
+    <if_gm_button text="TSN Wrecks\Juggernaut" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSNSuperDread.dxs" textureFileName="dat\CarrierDiffuse.png" />
+    <set_ship_text name="--" race="TSN" class="Juggernaut" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="170.0" integer="yes" />
+    <set_variable name="scale" value="0.27" />
+  </event>
+  <event name="Battlecruiser" id_arme="3f1b7e6c-9d6d-4044-b828-a1ab93743df7" parent_id_arme="54be47ff-1396-4e42-a3f2-57a361a0da58">
+    <if_gm_button text="TSN Wrecks\Battlecruiser" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Player\Battlecruiser.dxs" textureFileName="dat\artemis_diffuse.png" />
+    <set_ship_text name="--" race="TSN" class="Battlecruiser" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Ares Class" id_arme="74a647c3-1b56-4f2c-9686-57d07c753a5d" parent_id_arme="54be47ff-1396-4e42-a3f2-57a361a0da58">
+    <if_gm_button text="TSN Wrecks\Ares Class" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Player\frigate.dxs" textureFileName="dat\artemis_diffuse.png" />
+    <set_ship_text name="--" race="TSN" class="Ares Class" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Valkyrie Class" id_arme="16d7cb61-d4fe-440c-bcee-382c1e746497" parent_id_arme="54be47ff-1396-4e42-a3f2-57a361a0da58">
+    <if_gm_button text="TSN Wrecks\Valkyrie Class" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Player\missile-cruiser-mkII.dxs" textureFileName="dat\TSN\Player\artemis_diffuse_mkII.png" />
+    <set_ship_text name="--" race="TSN" class="Valkyrie Class" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Nemesis Class" id_arme="512ec6a1-87b2-4bba-b007-c596612a2ee7" parent_id_arme="54be47ff-1396-4e42-a3f2-57a361a0da58">
+    <if_gm_button text="TSN Wrecks\Nemesis Class" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Player\nemesis.dxs" textureFileName="dat\TSN\Player\nemesis_diffuse.png" />
+    <set_ship_text name="--" race="TSN" class="Nemesis Class" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Supply Ship" id_arme="868afe3b-d23b-44d3-a986-0fd5291f4a8c" parent_id_arme="54be47ff-1396-4e42-a3f2-57a361a0da58">
+    <if_gm_button text="TSN Wrecks\Supply Ship" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\TSNsupply.dxs" textureFileName="dat\artemis_diffuse.png" />
+    <set_ship_text name="--" race="TSN" class="Auxillary" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="200.0" integer="yes" />
+    <set_variable name="scale" value="0.3" />
+  </event>
+  <folder_arme name="In-System Wrecks" id_arme="18d18a0d-760a-4873-9303-3cf5b898a750" parent_id_arme="25e6e706-1070-47d3-85c8-e1120daf034e" />
+  <event name="Escort" id_arme="b34f1277-f32e-4019-9ac8-5933c27ae384" parent_id_arme="18d18a0d-760a-4873-9303-3cf5b898a750">
+    <if_gm_button text="In-System Wrecks\Escort" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\civilian1.dxs" textureFileName="dat\civilian1_diffuse.png" />
+    <set_ship_text name="--" race="TSN" class="Escort" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Destroyer" id_arme="bb626e31-dd36-4355-93d1-b96c91cd0cf2" parent_id_arme="18d18a0d-760a-4873-9303-3cf5b898a750">
+    <if_gm_button text="In-System Wrecks\Destroyer" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\civilian2.dxs" textureFileName="dat\civilian1_diffuse.png" />
+    <set_ship_text name="--" race="TSN" class="Destroyer" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Patrol Boat" id_arme="493a9f6f-e518-4a0d-b1e2-a5ebe5042db2" parent_id_arme="18d18a0d-760a-4873-9303-3cf5b898a750">
+    <if_gm_button text="In-System Wrecks\Patrol Boat" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\patrol-boat.dxs" textureFileName="dat\artemis_diffuse.png" />
+    <set_ship_text name="--" race="TSN" class="Patrol Boat" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="100.0" integer="yes" />
+    <set_variable name="scale" value="0.1" />
+  </event>
+  <event name="Corvette" id_arme="30286882-1800-49bb-a55a-52fcddd9f69c" parent_id_arme="18d18a0d-760a-4873-9303-3cf5b898a750">
+    <if_gm_button text="In-System Wrecks\Corvette" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\corvette.dxs" textureFileName="dat\artemis_diffuse.png" />
+    <set_ship_text name="--" race="TSN" class="Corvette" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Fighter Bomber" id_arme="9d87cad9-c213-4ea1-957c-7c65e25aeb94" parent_id_arme="18d18a0d-760a-4873-9303-3cf5b898a750">
+    <if_gm_button text="In-System Wrecks\Fighter-Bomber" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSNFighter.dxs" textureFileName="dat\LightCruiser_Diffuse.png" />
+    <set_ship_text name="--" race="TSN" class="Fighter-Bomber" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="50.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Shuttle" id_arme="1e825caa-2ba1-4800-a6ec-35465c19fba7" parent_id_arme="18d18a0d-760a-4873-9303-3cf5b898a750">
+    <if_gm_button text="In-System Wrecks\Shuttle-LR Shuttle" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSNShuttle.dxs" textureFileName="dat\LightCruiser_Diffuse.png" />
+    <set_ship_text name="--" race="TSN" class="Shuttle" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="50.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <folder_arme name="USFP Wrecks" id_arme="64fd9dcc-d1dd-4c18-8ba2-48e2a7355e4b" parent_id_arme="c4dae11a-c157-4ba2-b36e-614e85362d39" />
+  <folder_arme name="Single Ships" id_arme="c14df161-486a-4ba1-bb32-e3336bfd7b7f" parent_id_arme="64fd9dcc-d1dd-4c18-8ba2-48e2a7355e4b" />
+  <event name="Science Vessel" id_arme="aec9dbc8-56ad-4db5-8d3f-fb04bc5524e1" parent_id_arme="c14df161-486a-4ba1-bb32-e3336bfd7b7f">
+    <if_gm_button text="USFP Wrecks\Science Vessel" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\science-vessel.dxs" textureFileName="dat\Science_Vessel_color.png" hullRace="USFP" hullType="Science Vessel" />
+    <set_ship_text name="--" desc="Damaged science vessel." scan_desc="Systems offline. Ship adrift with no power or life support." />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.32" />
+  </event>
+  <event name="Bulk Cargo" id_arme="2bb7fa5b-0485-42ee-84b7-bd82463955c5" parent_id_arme="c14df161-486a-4ba1-bb32-e3336bfd7b7f">
+    <if_gm_button text="USFP Wrecks\Bulk Cargo" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\cargo_vessel.dxs" textureFileName="dat\cargo_vessel_color.png" hullRace="USFP" hullType="Bulk Cargo" />
+    <set_ship_text name="--" desc="Damaged cargo vessel." scan_desc="Systems offline. Ship adrift with no power or life support." />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.4" />
+  </event>
+  <event name="Luxury Liner" id_arme="aed8b471-82ad-4788-a180-c2c678e1e8d7" parent_id_arme="c14df161-486a-4ba1-bb32-e3336bfd7b7f">
+    <if_gm_button text="USFP Wrecks\Luxury Liner" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\luxury-vessel.dxs" textureFileName="dat\leisure_vessel_color.png" hullRace="USFP" hullType="Luxury Liner" />
+    <set_ship_text name="--" desc="Damaged civilian liner." scan_desc="Systems offline. Ship adrift with no power or life support." />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.3" />
+  </event>
+  <event name="Transport" id_arme="676c7af7-63b3-4d01-9af0-46ad094cd8d6" parent_id_arme="c14df161-486a-4ba1-bb32-e3336bfd7b7f">
+    <if_gm_button text="USFP Wrecks\Transport" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\transport-vessel.dxs" textureFileName="dat\transport_vessel_color.png" hullRace="USFP" hullType="Transport" />
+    <set_ship_text name="--" desc="Damaged transport vessel." scan_desc="Systems offline. Ship adrift with no power or life support." />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Transport Mk II" id_arme="0e325e4e-47e8-4d51-b42e-c4cc1bde0d5a" parent_id_arme="c14df161-486a-4ba1-bb32-e3336bfd7b7f">
+    <if_gm_button text="USFP Wrecks\Transport Mk II" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\transport.dxs" textureFileName="dat\TSN\USFP\transport_color.png" />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="320.0" integer="yes" />
+    <set_variable name="scale" value="0.8" />
+  </event>
+  <event name="Gaspode" id_arme="bdea78db-3cf3-4a4c-930f-35f5b9610347" parent_id_arme="c14df161-486a-4ba1-bb32-e3336bfd7b7f">
+    <if_gm_button text="USFP Wrecks\Gaspode" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\miningrig.dxs" textureFileName="dat\TSN\USFP\miningrig_color.png" />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="170.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Scow" id_arme="6e4e148b-6156-41dd-b122-a991c2388dbb" parent_id_arme="c14df161-486a-4ba1-bb32-e3336bfd7b7f">
+    <if_gm_button text="USFP Wrecks\Scow" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\garbagescow.dxs" textureFileName="dat\TSN\USFP\scow-diffuse.png" />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="200.0" integer="yes" />
+    <set_variable name="scale" value="0.3" />
+  </event>
+  <folder_arme name="Ximni Wrecks" id_arme="3e63b327-0f9f-42a5-9b46-380a6f97a857" parent_id_arme="c4dae11a-c157-4ba2-b36e-614e85362d39" />
+  <folder_arme name="Single Ships" id_arme="b7275858-62c1-4a8b-96dd-f3422d1bf466" parent_id_arme="3e63b327-0f9f-42a5-9b46-380a6f97a857" />
+  <event name="Light Cruiser" id_arme="d665ff75-ab22-4853-852c-eb80e4c1aba5" parent_id_arme="b7275858-62c1-4a8b-96dd-f3422d1bf466">
+    <if_gm_button text="Ximni Wreck\Light Cruiser" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\ximni-light-cruiser.dxs" textureFileName="dat\XimniDiffuse.png" />
+    <set_ship_text name="--" race="Ximni" class="Light Cruiser" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Scout" id_arme="a2db071b-827c-4ae9-ad8c-e9573e828860" parent_id_arme="b7275858-62c1-4a8b-96dd-f3422d1bf466">
+    <if_gm_button text="Ximni Wreck\Scout" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\ximni-scout.dxs" textureFileName="dat\XimniDiffuse.png" />
+    <set_ship_text name="--" race="Ximni" class="Scout" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Missile Cruiser" id_arme="136b2a96-60b2-4059-a192-0b5683455389" parent_id_arme="b7275858-62c1-4a8b-96dd-f3422d1bf466">
+    <if_gm_button text="Ximni Wreck\Missile Cruiser" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\ximni-missile.dxs" textureFileName="dat\XimniDiffuse.png" />
+    <set_ship_text name="--" race="Ximni" class="Missile Cruiser" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Battleship" id_arme="17cfda07-c7c6-469b-99e4-1130b3e94f66" parent_id_arme="b7275858-62c1-4a8b-96dd-f3422d1bf466">
+    <if_gm_button text="Ximni Wreck\Battleship" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\ximni-battleship.dxs" textureFileName="dat\XimniDiffuse.png" />
+    <set_ship_text name="--" race="Ximni" class="Battleship" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Carrier" id_arme="4956011f-75a4-4811-9e73-5a48205d61da" parent_id_arme="b7275858-62c1-4a8b-96dd-f3422d1bf466">
+    <if_gm_button text="Ximni Wreck\Carrier" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\ximni-carrier.dxs" textureFileName="dat\XimniDiffuse.png" />
+    <set_ship_text name="--" race="Ximni" class="Carrier" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Dreadnought" id_arme="f277567c-0329-42b7-bafa-db7c8ddc286d" parent_id_arme="b7275858-62c1-4a8b-96dd-f3422d1bf466">
+    <if_gm_button text="Ximni Wreck\Dreadnought" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\ximni-dread.dxs" textureFileName="dat\XimniDiffuse.png" />
+    <set_ship_text name="--" race="Ximni" class="Dreadnought" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.23" />
+  </event>
+  <event name="Fighter" id_arme="88501deb-3f42-4074-9810-4a21adc2691d" parent_id_arme="b7275858-62c1-4a8b-96dd-f3422d1bf466">
+    <if_gm_button text="Ximni Wreck\Fighter" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\ximni-fighter.dxs" textureFileName="dat\XimniDiffuse.png" />
+    <set_ship_text name="--" race="Ximni" class="Fighter" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="50.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Bomber" id_arme="4f809a76-ffb7-4df6-9175-a553fda826b8" parent_id_arme="b7275858-62c1-4a8b-96dd-f3422d1bf466">
+    <if_gm_button text="Ximni Wreck\Bomber" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\ximni-bomber.dxs" textureFileName="dat\XimniDiffuse.png" />
+    <set_ship_text name="--" race="Ximni" class="Bomber" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="50.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Shuttle" id_arme="9609bdcc-26b8-4d12-ba3a-589ed9c1f73b" parent_id_arme="b7275858-62c1-4a8b-96dd-f3422d1bf466">
+    <if_gm_button text="Ximni Wreck\Shuttle" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\ximni-bomber.dxs" textureFileName="dat\XimniDiffuse.png" />
+    <set_ship_text name="--" race="Ximni" class="Shuttle" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="50.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <folder_arme name="Hjorden Menu" id_arme="35aa95d3-4926-447d-ae9e-c9eb408ae577" parent_id_arme="c4dae11a-c157-4ba2-b36e-614e85362d39" />
+  <folder_arme name="Single Ships" id_arme="a093b94d-3e3e-45af-ae8a-7e2152f86b8e" parent_id_arme="35aa95d3-4926-447d-ae9e-c9eb408ae577" />
+  <event name="Cruiser" id_arme="5b9bd2fd-37e8-4e06-8fae-c7e3003de059" parent_id_arme="a093b94d-3e3e-45af-ae8a-7e2152f86b8e">
+    <if_gm_button text="Hjorden Wreck\Cruiser" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Hjorden\hjordencruiser.dxs" textureFileName="dat\TSN\Hjorden\hjordencruiser_color.png" />
+    <set_ship_text name="--" race="Hjorden" class="Cruiser" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="100.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Cruise Liner" id_arme="7f9c5f8a-1cc1-4177-8004-387a04020081" parent_id_arme="a093b94d-3e3e-45af-ae8a-7e2152f86b8e">
+    <if_gm_button text="Hjorden Wreck\Cruise Liner" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Hjorden\hjordensightseeing.dxs" textureFileName="dat\TSN\Hjorden\hjordensightseeing_color.png" />
+    <set_ship_text name="--" race="Hjorden" class="Cruise Liner" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="100.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Transport" id_arme="63e93ae2-9c8f-42cf-ac76-3f336cd9db42" parent_id_arme="a093b94d-3e3e-45af-ae8a-7e2152f86b8e">
+    <if_gm_button text="Hjorden Wreck\Transport" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Hjorden\hjordentransport.dxs" textureFileName="dat\TSN\Hjorden\hjordentransport_color.png" />
+    <set_ship_text name="--" race="Hjorden" class="Transport" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="100.0" integer="yes" />
+    <set_variable name="scale" value="0.3" />
+  </event>
+  <folder_arme name="USF Menu" id_arme="40e8ff86-859d-49a4-9c79-28d2c1e0a342" parent_id_arme="c4dae11a-c157-4ba2-b36e-614e85362d39" />
+  <folder_arme name="Single Ships" id_arme="489a366a-b459-4317-aa47-8b57221065ea" parent_id_arme="40e8ff86-859d-49a4-9c79-28d2c1e0a342" />
+  <event name="Xenophobe" id_arme="3d6be898-bc9d-4c82-bc5e-1239b3159770" parent_id_arme="489a366a-b459-4317-aa47-8b57221065ea">
+    <if_gm_button text="USF Wreck\Xenophobe" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Unakalhai\USNDread.dxs" textureFileName="dat\TSN\Unakalhai\USN_diffuse.png" />
+    <set_ship_text name="--" race="USF" class="Xenophobe" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="scale" value="0.5" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="200.0" integer="yes" />
+  </event>
+  <event name="Emu" id_arme="af8b4334-8979-4982-b54a-e197e64137f7" parent_id_arme="489a366a-b459-4317-aa47-8b57221065ea">
+    <if_gm_button text="USF Wreck\Emu" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Unakalhai\USNbattleship.dxs" textureFileName="dat\TSN\Unakalhai\USN_diffuse.png" />
+    <set_ship_text name="--" race="USF" class="Emu" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.3" />
+    <set_variable name="push" value="200.0" integer="yes" />
+  </event>
+  <event name="Gallu" id_arme="e817322e-441c-4424-b175-12a618cd3ccd" parent_id_arme="489a366a-b459-4317-aa47-8b57221065ea">
+    <if_gm_button text="USF Wreck\Gallu" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Unakalhai\USNLC.dxs" textureFileName="dat\TSN\Unakalhai\USN_diffuse.png" />
+    <set_ship_text name="--" race="USF" class="Gallu" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.25" />
+    <set_variable name="push" value="200.0" integer="yes" />
+  </event>
+  <event name="Gladiator" id_arme="68e9e017-742b-40cf-8abf-0b97cf638a9a" parent_id_arme="489a366a-b459-4317-aa47-8b57221065ea">
+    <if_gm_button text="USF Wreck\Gladiator" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Unakalhai\USNScoutf.dxs" textureFileName="dat\TSN\Unakalhai\USN_diffuse.png" />
+    <set_ship_text name="--" race="USF" class="Gladiator" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="200.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+  </event>
+  <event name="Nightmare" id_arme="187aad6d-5ca9-4a8f-a9fa-d8e3cd28839d" parent_id_arme="489a366a-b459-4317-aa47-8b57221065ea">
+    <if_gm_button text="USF Wreck\Nightmare" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Unakalhai\USNScout1.dxs" textureFileName="dat\TSN\Unakalhai\USN_diffuse.png" />
+    <set_ship_text name="--" race="USF" class="Nightmare" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="200.0" integer="yes" />
+    <set_variable name="scale" value="0.25" />
+  </event>
+  <event name="Griffzungenschwert" id_arme="15bd15a8-0d56-4e4d-98cd-37c375c9281e" parent_id_arme="489a366a-b459-4317-aa47-8b57221065ea">
+    <if_gm_button text="USF Wreck\Griffzungenschwert" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Unakalhai\USNSuperdestroyer.dxs" textureFileName="dat\TSN\Unakalhai\USN_diffuse.png" />
+    <set_ship_text name="--" race="USF" class="Griffzungenschwert" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="300.0" integer="yes" />
+    <set_variable name="scale" value="1.0" />
+  </event>
+  <folder_arme name="N'Tani Menu" id_arme="d9867d35-0ece-4b9d-9428-5bd3515991f9" parent_id_arme="c4dae11a-c157-4ba2-b36e-614e85362d39" />
+  <folder_arme name="Single Ships" id_arme="92e28359-854e-485f-86ff-4786e0d06828" parent_id_arme="d9867d35-0ece-4b9d-9428-5bd3515991f9" />
+  <event name="Skavanger" id_arme="79cec7c0-c82e-4035-a77f-e7e4a1d604cf" parent_id_arme="92e28359-854e-485f-86ff-4786e0d06828">
+    <if_gm_button text="N'Tani Wreck\Skavanger" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\NTani\ntani-skavanger.dxs" textureFileName="dat\TSN\NTani\ntani-skavanger-diffuse.png" />
+    <set_ship_text name="--" race="N'Tani" class="Skavanger" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+    <set_variable name="push" value="150.0" integer="yes" />
+  </event>
+  <event name="Frigate" id_arme="c684e93e-f95d-49eb-abb5-29e62225ee1d" parent_id_arme="92e28359-854e-485f-86ff-4786e0d06828">
+    <if_gm_button text="N'Tani Wreck\Frigate" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\NTani\ntani-frigate.dxs" textureFileName="dat\TSN\NTani\ntani-frigate-diffuse.png" />
+    <set_ship_text name="--" race="N'Tani" class="Frigate" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+    <set_variable name="push" value="100.0" integer="yes" />
+  </event>
+  <event name="Cargo Pod Ship" id_arme="04ebc0cc-165d-4316-b92d-5a793871a9e7" parent_id_arme="92e28359-854e-485f-86ff-4786e0d06828">
+    <if_gm_button text="N'Tani Wreck\Cargo Pod Ship" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\NTani\ntani-cargo.dxs" textureFileName="dat\TSN\NTani\ntani-frigate-diffuse.png" />
+    <set_ship_text name="--" race="N'Tani" class="Cargo Pod Ship" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+    <set_variable name="push" value="75.0" integer="yes" />
+  </event>
+  <event name="Battlecruiser" id_arme="cce429ec-c020-487d-baa7-fb08affb8487" parent_id_arme="92e28359-854e-485f-86ff-4786e0d06828">
+    <if_gm_button text="N'Tani Wreck\Battlecruiser" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\NTani\ntani-battlecruiser.dxs" textureFileName="dat\TSN\NTani\ntani-frigate-diffuse.png" />
+    <set_ship_text name="--" race="N'Tani" class="Battlecruiser" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.4" />
+    <set_variable name="push" value="150.0" integer="yes" />
+  </event>
+  <event name="Ranger" id_arme="a317cb54-ed4b-42e2-bb25-feb1bd0710e5" parent_id_arme="92e28359-854e-485f-86ff-4786e0d06828">
+    <if_gm_button text="N'Tani Wreck\Ranger" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\NTani\ntani-ranger.dxs" textureFileName="dat\TSN\NTani\ntani-ranger-diffuse.png" />
+    <set_ship_text name="--" race="N'Tani" class="Ranger" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+    <set_variable name="push" value="100.0" integer="yes" />
+  </event>
+  <folder_arme name="Pirate Menu" id_arme="61d39d09-4dc6-4376-b652-fe6b643f17c0" parent_id_arme="c4dae11a-c157-4ba2-b36e-614e85362d39" />
+  <folder_arme name="Euphini Pirates Wrecks" id_arme="1b27b839-185e-44cd-b93e-a2e64a922104" parent_id_arme="61d39d09-4dc6-4376-b652-fe6b643f17c0" />
+  <event name="Arrow" id_arme="5c9c4795-6d6a-477d-a667-ca556d752f59" parent_id_arme="1b27b839-185e-44cd-b93e-a2e64a922104">
+    <if_gm_button text="Euphini Pirates Wrecks\Arrow" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Pirates\arrow-pirate.dxs" textureFileName="dat\TSN\Pirates\arrow-pirate-diffuse.png" />
+    <set_ship_text name="--" race="Euphini Pirates" class="Arrow" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.25" />
+    <set_variable name="push" value="100.0" integer="yes" />
+  </event>
+  <event name="Axe" id_arme="eef9ce11-d5df-4aa9-898a-23ee5aa1117b" parent_id_arme="1b27b839-185e-44cd-b93e-a2e64a922104">
+    <if_gm_button text="Euphini Pirates Wrecks\Axe" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Pirates\axe-pirate.dxs" textureFileName="dat\TSN\Pirates\axe-pirate-diffuse.png" />
+    <set_ship_text name="--" race="Euphini Pirates" class="Axe" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.25" />
+    <set_variable name="push" value="100.0" integer="yes" />
+  </event>
+  <event name="Transport" id_arme="af742f9f-fe2a-4dfa-9961-a8bdd9241330" parent_id_arme="1b27b839-185e-44cd-b93e-a2e64a922104">
+    <if_gm_button text="Euphini Pirates Wrecks\Transport" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\transport-vessel.dxs" textureFileName="dat\TSN\Pirates\pirate-transport.png" />
+    <set_ship_text name="--" race="Euphini Pirates" class="Transport" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.3" />
+    <set_variable name="push" value="150.0" integer="yes" />
+  </event>
+  <folder_arme name="Skull Pirates Wrecks" id_arme="94c4d131-e8d2-49cb-bcfb-9f5bf2b0aa15" parent_id_arme="61d39d09-4dc6-4376-b652-fe6b643f17c0" />
+  <event name="Strongbow" id_arme="717b7e2f-dc67-4bd4-8313-46c68dfb6de5" parent_id_arme="94c4d131-e8d2-49cb-bcfb-9f5bf2b0aa15">
+    <if_gm_button text="Skull Pirates Wrecks\Strongbow" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\PirateStrongbow.dxs" textureFileName="dat\PirateBulky_Diffuse.png" />
+    <set_ship_text name="--" race="Pirate" class="Strongbow" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+    <set_variable name="push" value="150.0" integer="yes" />
+  </event>
+  <event name="Longbow" id_arme="ff5811cf-ebcb-43c0-9448-266caa3e5f63" parent_id_arme="94c4d131-e8d2-49cb-bcfb-9f5bf2b0aa15">
+    <if_gm_button text="Skull Pirates Wrecks\Longbow" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\PirateLongbow.dxs" textureFileName="dat\Pirate_Diffuse.png" />
+    <set_ship_text name="--" race="Pirate" class="Longbow" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.18" />
+    <set_variable name="push" value="150.0" integer="yes" />
+  </event>
+  <event name="Brigantine" id_arme="c92fb15d-7809-4e6c-89a8-7cd57ada091a" parent_id_arme="94c4d131-e8d2-49cb-bcfb-9f5bf2b0aa15">
+    <if_gm_button text="Skull Pirates Wrecks\Brigantine" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\PirateBrigantine.dxs" textureFileName="dat\PirateBulky_Diffuse.png" />
+    <set_ship_text name="--" race="Pirate" class="Brigantine" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.23" />
+    <set_variable name="push" value="200.0" integer="yes" />
+  </event>
+  <event name="Boarding Craft" id_arme="4a9dedee-76c3-41c5-9817-9d34667de534" parent_id_arme="94c4d131-e8d2-49cb-bcfb-9f5bf2b0aa15">
+    <if_gm_button text="Skull Pirates Wrecks\Boarding Craft" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\patrol-boat.dxs" textureFileName="dat\artemis_diffuse.png" />
+    <set_ship_text name="--" race="Pirate" class="Boarding Craft" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.1" />
+    <set_variable name="push" value="75.0" integer="yes" />
+  </event>
+  <event name="Avenger" id_arme="c51cb62c-15df-4abe-bf57-28c32846f51e" parent_id_arme="94c4d131-e8d2-49cb-bcfb-9f5bf2b0aa15">
+    <if_gm_button text="Skull Pirates Wrecks\Avenger" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\PirateAvenger.dxs" textureFileName="dat\Pirate_Diffuse.png" />
+    <set_ship_text name="--" race="Pirate" class="Avenger" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.2" />
+    <set_variable name="push" value="50.0" integer="yes" />
+  </event>
+  <folder_arme name="Caltron Menu" id_arme="38f877ff-4959-4058-aee0-a6d7ffc4b44d" parent_id_arme="c4dae11a-c157-4ba2-b36e-614e85362d39" />
+  <folder_arme name="Single Ships" id_arme="624abcf1-cdd4-49e8-be8f-8992af1f1568" parent_id_arme="38f877ff-4959-4058-aee0-a6d7ffc4b44d" />
+  <event name="Primary" id_arme="0f8c95c6-facb-49c5-b71d-9970f3ad5282" parent_id_arme="624abcf1-cdd4-49e8-be8f-8992af1f1568">
+    <if_gm_button text="Caltron Wrecks\Primary" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Caltron\U1.dxs" textureFileName="dat\TSN\Caltron\shipHull10.png" />
+    <set_ship_text name="--" race="Caltron" class="Primary" desc="Inactive" scan_desc="Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.6" />
+    <set_variable name="push" value="50.0" integer="yes" />
+  </event>
+  <event name="Tertiary" id_arme="ffbc0d31-57ef-4674-bc76-8863748faac7" parent_id_arme="624abcf1-cdd4-49e8-be8f-8992af1f1568">
+    <if_gm_button text="Caltron Wrecks\Tertiary" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Caltron\U3.dxs" textureFileName="dat\TSN\Caltron\shipHull10.png" />
+    <set_ship_text name="--" race="Caltron" class="Tertiary" desc="Inactive" scan_desc="Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.6" />
+    <set_variable name="push" value="100.0" integer="yes" />
+  </event>
+  <event name="Senary" id_arme="227c2d98-b489-4f63-8345-2230e2b6ebce" parent_id_arme="624abcf1-cdd4-49e8-be8f-8992af1f1568">
+    <if_gm_button text="Caltron Wrecks\Senary" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Caltron\U6.dxs" textureFileName="dat\TSN\Caltron\shipHull10.png" />
+    <set_ship_text name="--" race="Caltron" class="Senary" desc="Inactive" scan_desc="Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.6" />
+    <set_variable name="push" value="100.0" integer="yes" />
+  </event>
+  <event name="Duodenary" id_arme="bad6d8c1-88bc-44e2-bc23-524d7838d95c" parent_id_arme="624abcf1-cdd4-49e8-be8f-8992af1f1568">
+    <if_gm_button text="Caltron Wrecks\Duodenary" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Caltron\U12.dxs" textureFileName="dat\TSN\Caltron\shipHull10.png" />
+    <set_ship_text name="--" race="Caltron" class="Duodenary" desc="Inactive" scan_desc="Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.6" />
+    <set_variable name="push" value="100.0" integer="yes" />
+  </event>
+  <event name="Swarm" id_arme="5df8d510-1623-4924-b1bb-ae20a5a87bdd" parent_id_arme="624abcf1-cdd4-49e8-be8f-8992af1f1568">
+    <if_gm_button text="Caltron Wrecks\Swarm" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Caltron\U24.dxs" textureFileName="dat\TSN\Caltron\shipHull10.png" />
+    <set_ship_text name="--" race="Caltron" class="Swarm" desc="Inactive" scan_desc="Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.6" />
+    <set_variable name="push" value="150.0" integer="yes" />
+  </event>
+  <event name="Super Swarm" id_arme="5d946a99-1fa5-4277-b13b-a3cb6602d418" parent_id_arme="624abcf1-cdd4-49e8-be8f-8992af1f1568">
+    <if_gm_button text="Caltron Wrecks\Super Swarm" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Caltron\U48.dxs" textureFileName="dat\TSN\Caltron\shipHull10.png" />
+    <set_ship_text name="--" race="Caltron" class="Super Swarm" desc="Inactive" scan_desc="Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.6" />
+    <set_variable name="push" value="150.0" integer="yes" />
+  </event>
+  <event name="Primary (Var. B)" id_arme="75fdd35d-fb74-48af-bb0e-1ff8dea6c4f5" parent_id_arme="624abcf1-cdd4-49e8-be8f-8992af1f1568">
+    <if_gm_button text="Caltron Wrecks\Primary (Var. B)" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Caltron\U1.dxs" textureFileName="dat\TSN\Caltron\shipHull10.png" />
+    <set_ship_text name="--" race="Caltron" class="Primary (Var. B)" desc="Inactive" scan_desc="Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.6" />
+    <set_variable name="push" value="50.0" integer="yes" />
+  </event>
+  <folder_arme name="Biomech Menu" id_arme="12e810dd-4333-4163-9d63-4fb4f7625344" parent_id_arme="c4dae11a-c157-4ba2-b36e-614e85362d39" />
+  <event name="Stage 1" id_arme="fc39b170-a858-4373-8bd7-defe78016404" parent_id_arme="12e810dd-4333-4163-9d63-4fb4f7625344">
+    <if_gm_button text="Biomech Wrecks\Stage 1" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\z-drone3.dxs" textureFileName="dat\drone3_color.png" />
+    <set_ship_text name="--" race="Biomech" class="Stage 1" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.25" />
+    <set_variable name="push" value="150.0" integer="yes" />
+  </event>
+  <event name="Stage 2" id_arme="8a9afafe-bb16-4761-b850-09d345f7f4bb" parent_id_arme="12e810dd-4333-4163-9d63-4fb4f7625344">
+    <if_gm_button text="Biomech Wrecks\Stage 2" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\z-drone4.dxs" textureFileName="dat\drone4_color.png" />
+    <set_ship_text name="--" race="Biomech" class="Stage 2" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.25" />
+    <set_variable name="push" value="150.0" integer="yes" />
+  </event>
+  <event name="Stage 3" id_arme="08a111c2-5c1c-45dc-b0d7-2802135e38b8" parent_id_arme="12e810dd-4333-4163-9d63-4fb4f7625344">
+    <if_gm_button text="Biomech Wrecks\Stage 3" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\z-drone2.dxs" textureFileName="dat\drone2_color.png" />
+    <set_ship_text name="--" race="Biomech" class="Stage 3" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.35" />
+    <set_variable name="push" value="200.0" integer="yes" />
+  </event>
+  <event name="Stage 4" id_arme="731a2451-636a-4fb4-bb50-7bcf41f68455" parent_id_arme="12e810dd-4333-4163-9d63-4fb4f7625344">
+    <if_gm_button text="Biomech Wrecks\Stage 4" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\z-drone1.dxs" textureFileName="dat\drone1_color.png" />
+    <set_ship_text name="--" race="Biomech" class="Stage 4" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="scale" value="0.45" />
+    <set_variable name="push" value="250.0" integer="yes" />
+  </event>
+  <folder_arme name="Bases Menu" id_arme="07bf5b1c-33fa-44c5-aa35-395f86c635d5" parent_id_arme="c4dae11a-c157-4ba2-b36e-614e85362d39" />
+  <folder_arme name="Military Base Wrecks" id_arme="a05c17f4-4a8e-40f7-b195-9631a1343f3d" parent_id_arme="07bf5b1c-33fa-44c5-aa35-395f86c635d5" />
+  <event name="Gate Debris" id_arme="bc125947-88a8-4706-830e-15e570b0655b" parent_id_arme="a05c17f4-4a8e-40f7-b195-9631a1343f3d">
+    <if_gm_button text="Military Base Wreck\TSN Gate" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" hullRace="USFP" hullType="Gate" />
+    <set_ship_text name="--" race="USFP" class="Jump Gate" desc="Offline" scan_desc="Damaged jump point tether. Gate control systems inactive." />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="0.0" integer="yes" />
+    <set_variable name="scale" value="1.0" />
+  </event>
+  <disabled_event name="TSN DS Base" id_arme="decf01ec-f62a-4a63-a055-54e5f7da529e" parent_id_arme="a05c17f4-4a8e-40f7-b195-9631a1343f3d">
+    <if_gm_button text="Military Base Wreck\TSN DS Base" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\dsStationwreck.dxs" />
+    <set_ship_text name="--" race="USFP" class="Deep Space Base" desc="Starbase - systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="250.0" integer="yes" />
+    <set_variable name="scale" value="0.3" />
+  </disabled_event>
+  <event name="TSN Command Base" id_arme="32ace4af-b838-4774-b303-c97e83ef46b1" parent_id_arme="a05c17f4-4a8e-40f7-b195-9631a1343f3d">
+    <if_gm_button text="Military Base Wreck\TSN Cmd Base" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\station-starfish.dxs" textureFileName="dat\player_station_color_03.png" />
+    <set_ship_text name="--" race="USFP" class="Command Base" desc="Starbase - systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="250.0" integer="yes" />
+    <set_variable name="scale" value="0.3" />
+  </event>
+  <event name="TSN Shipyard" id_arme="12543485-1909-4be9-8e40-d4d5f5675805" parent_id_arme="a05c17f4-4a8e-40f7-b195-9631a1343f3d">
+    <if_gm_button text="Military Base Wreck\TSN Shipyard" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\USFP-shipyard.dxs" textureFileName="dat\artemis_diffuse.png" />
+    <set_ship_text name="--" race="USFP" class="Shipyard" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="150.0" integer="yes" />
+    <set_variable name="scale" value="0.5" />
+  </event>
+  <event name="Kralien Base" id_arme="5369a050-dd83-4bd0-ba84-d43d63e7b7b3" parent_id_arme="a05c17f4-4a8e-40f7-b195-9631a1343f3d">
+    <if_gm_button text="Military Base Wreck\Kralien Base" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\kralien-station.dxs" textureFileName="dat\kraliens_station_color.png" />
+    <set_ship_text name="--" race="Kralien" class="Base" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="250.0" integer="yes" />
+    <set_variable name="scale" value="0.3" />
+  </event>
+  <event name="Arvonian Base" id_arme="c578dbd0-2b27-4e35-a631-a10b499a1fb0" parent_id_arme="a05c17f4-4a8e-40f7-b195-9631a1343f3d">
+    <if_gm_button text="Military Base Wreck\Arvonian Base" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\arvonian-station.dxs" textureFileName="dat\arvonian_station_color.png" />
+    <set_ship_text name="--" race="Arvonian" class="Base" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="450.0" integer="yes" />
+    <set_variable name="scale" value="0.3" />
+  </event>
+  <event name="Torgoth Base" id_arme="0ca4ea34-bbe1-4ebb-9105-8e1d81bfdf0f" parent_id_arme="a05c17f4-4a8e-40f7-b195-9631a1343f3d">
+    <if_gm_button text="Military Base Wreck\Torgoth Base" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\torgoth-station.dxs" textureFileName="dat\torgoth_color.png" />
+    <set_ship_text name="--" race="Torgoth" class="Base" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="450.0" integer="yes" />
+    <set_variable name="scale" value="0.3" />
+  </event>
+  <event name="Skaraan Base" id_arme="6ca9b6b6-fbd3-4e14-8949-023e55728b3b" parent_id_arme="a05c17f4-4a8e-40f7-b195-9631a1343f3d">
+    <if_gm_button text="Military Base Wreck\Skaraan Base" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\skaraan-station.dxs" textureFileName="dat\skaraan_station_color.png" />
+    <set_ship_text name="--" race="Skaraan" class="Base" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="250.0" integer="yes" />
+    <set_variable name="scale" value="0.3" />
+  </event>
+  <event name="Pirate Asteroid Base" id_arme="359e533f-782a-45ca-8a2e-3bf37c43db93" parent_id_arme="a05c17f4-4a8e-40f7-b195-9631a1343f3d">
+    <if_gm_button text="Military Base Wreck\Pir. Asteroid Base" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Pirates\asteroid-fortress-base.dxs" textureFileName="dat\TSN\Pirates\asteroid-fortress-base.png" />
+    <set_ship_text name="--" race="Pirate" class="Asteroid Base" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="600.0" integer="yes" />
+    <set_variable name="scale" value="0.5" />
+  </event>
+  <event name="N'Tani Base" id_arme="d6365266-d9f0-4b9c-97c7-eaefceeb3b36" parent_id_arme="a05c17f4-4a8e-40f7-b195-9631a1343f3d">
+    <if_gm_button text="Military Base Wreck\N'Tani Base" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\NTani\ntani-base.dxs" textureFileName="dat\TSN\NTani\ntani-base.png" />
+    <set_ship_text name="--" race="N'Tani" class="Fortified Base" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="400.0" integer="yes" />
+    <set_variable name="scale" value="1.6" />
+  </event>
+  <event name="Hjorden Base" id_arme="fbd68a30-69a5-4327-a540-7afff3df7fdc" parent_id_arme="a05c17f4-4a8e-40f7-b195-9631a1343f3d">
+    <if_gm_button text="Military Base Wreck\Hjorden Base" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Hjorden\hjorden-base.dxs" textureFileName="dat\TSN\Hjorden\hjorden-base_color.png" />
+    <set_ship_text name="--" race="Hjorden" class="Civilian Base" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="400.0" integer="yes" />
+    <set_variable name="scale" value="1.6" />
+  </event>
+  <folder_arme name="Civilian Base Wrecks" id_arme="1815ac0a-e5c0-4bac-b755-5a80cd4f3178" parent_id_arme="07bf5b1c-33fa-44c5-aa35-395f86c635d5" />
+  <event name="USFP Civilian Base Wreck" id_arme="4782ea1c-38e1-4bf2-a98f-5e433854ad2f" parent_id_arme="1815ac0a-e5c0-4bac-b755-5a80cd4f3178">
+    <if_gm_button text="Civilian Base Wreck\USFP Civ. Base" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\station-4donuts.dxs" textureFileName="dat\player_station_color_04.png" />
+    <set_ship_text name="--" race="USFP" class="Civilian Base" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="250.0" integer="yes" />
+    <set_variable name="scale" value="0.6" />
+  </event>
+  <event name="USFP Industrial Base" id_arme="144ebb89-b730-4aa4-a088-430d9dcf8286" parent_id_arme="1815ac0a-e5c0-4bac-b755-5a80cd4f3178">
+    <if_gm_button text="Civilian Base Wreck\USFP Ind. Base" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\station-big1.dxs" textureFileName="dat\player_station_color_02.png" />
+    <set_ship_text name="--" race="USFP" class="Civilian Base" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="400.0" integer="yes" />
+    <set_variable name="scale" value="0.6" />
+  </event>
+  <event name="USFP Science Base" id_arme="15111095-c7bd-4ae2-a81d-92b93654002c" parent_id_arme="1815ac0a-e5c0-4bac-b755-5a80cd4f3178">
+    <if_gm_button text="Civilian Base Wreck\USFP Sci. Base" />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\station-science.dxs" textureFileName="dat\player_station_color_01.png" />
+    <set_ship_text name="--" race="USFP" class="Science Base" desc="Systems offline" scan_desc="No lifesigns. Trace energy signatures detected. " />
+    <set_variable name="Auto AI Type" value="402" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_variable name="push" value="400.0" integer="yes" />
+    <set_variable name="scale" value="0.3" />
+  </event>
+</root>

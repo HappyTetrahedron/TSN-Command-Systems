@@ -1,6 +1,7 @@
 {% include 'GM/Waypoints.xml' %}
 {% include 'GM/ScanPoints.xml' %}
 {% include 'GM/Anomalies.xml' %}
+{% include 'GM/Wrecks.xml' %}
 
 {% include 'GM/SpawnHazard.xml' %}
 
