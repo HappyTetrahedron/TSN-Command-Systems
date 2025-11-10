@@ -320,7 +320,3 @@
     <set_variable name="{{ name }} Initialized" value="1.0" integer="yes" />
   </event>
 {% endmacro %}
-
-{% macro onRespawn() %}
-  {% do track("onRespawn", caller) %}
-{% endmacro %}

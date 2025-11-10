@@ -1,8 +1,9 @@
 {# GM tool to give the player virtual "tokens", a counter for which gets displayed on the map. #}
 
 {% import 'Utils.xml' as util %}
+{% import 'Start.xml' as start %}
 
-{% call() util.init("tokens") %}
+{% call start.onStart() %}
     <set_variable name="TokenSysT" value="0.0" integer="yes" />
     <set_variable name="TokenSysS" value="0.0" integer="yes" />
 {% endcall %}

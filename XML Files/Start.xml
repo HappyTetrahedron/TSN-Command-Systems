@@ -1,10 +1,18 @@
-  {% import 'Utils.xml' as util %}
+{% import 'Utils.xml' as util %}
+
+{% macro onStart() %}
+  {% do track("onStart", caller) %}
+{% endmacro %}
+
+{% set data = g.data if g else {} %}
+{% set version = g.version if g else '\" />' %}
+
   <start name="Start" id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4">
     <!--Configurations-->
     <set_variable name="Clear" value="11.0" integer="yes" />
-    <set_difficulty_level value="{{ g.data.difficulty or 10 }}" />
-    <big_message title="The TSN Universe" subtitle1="Tetra's Fork Version {{ g.version }}" subtitle2="Maps:{% for map in g.data.get("maps", []) %} {{ map }}{% endfor %} - Extensions:{% for script in g.data.get("extensions", []) %} {{ script }}{% endfor %}" />
-    <warning_popup_message message="Version {{ g.version }}" consoles="MHWESCO" player_slot="0" />
+    <set_difficulty_level value="{{ data.difficulty or 10 }}" />
+    <big_message title="The TSN Universe" subtitle1="Tetra's Fork Version {{ version }}" subtitle2="Maps:{% for map in data.get("maps", []) %} {{ map }}{% endfor %} - Extensions:{% for script in data.get("extensions", []) %} {{ script }}{% endfor %}" />
+    <warning_popup_message message="Version {{ version }}" consoles="MHWESCO" player_slot="0" />
     <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="0" />
     <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="1" />
     <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="2" />
@@ -13,7 +21,7 @@
     <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="5" />
     <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="6" />
     <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="7" />
-    <gm_instructions title="Instructions">Welcome to the TSN Sandbox Version {{ g.version }}. ^--Activation---^The activation sequence allows the GM to choose the System and Sector for the players to start.^Once the activation sequence is completed, the main Sandbox menu will appear and the GM can begin their mission. Below is a step-by-step guide to activation: ^- First, ensure all player ships have spawned before activating GM Mode.^- Next, click on Activate GM Mode to begin the Sandbox activation sequence.^- Finally, select the System and Sector where the players will start.^^The GM menus are as follows:^- Bas.: basic interactions, teleporting and deleting entities.^-SPWN.: Spawn AI ships.^-POI: Create points of interest such as waypoints, wrecks, rendezvous points or anomalies.^-Haz.: Spawn hazards such as mines, asteroids and nebulae.^- Int.: Interact with player ships by sending messages, modifying ordnance stores, and causing system damage.^CSTM: custom script features.^AI Off: Click to expand submenu to change NPC AI behaviour.</gm_instructions>
+    <gm_instructions title="Instructions">Welcome to the TSN Sandbox Version {{ version }}. ^--Activation---^The activation sequence allows the GM to choose the System and Sector for the players to start.^Once the activation sequence is completed, the main Sandbox menu will appear and the GM can begin their mission. Below is a step-by-step guide to activation: ^- First, ensure all player ships have spawned before activating GM Mode.^- Next, click on Activate GM Mode to begin the Sandbox activation sequence.^- Finally, select the System and Sector where the players will start.^^The GM menus are as follows:^- Bas.: basic interactions, teleporting and deleting entities.^-SPWN.: Spawn AI ships.^-POI: Create points of interest such as waypoints, wrecks, rendezvous points or anomalies.^-Haz.: Spawn hazards such as mines, asteroids and nebulae.^- Int.: Interact with player ships by sending messages, modifying ordnance stores, and causing system damage.^CSTM: custom script features.^AI Off: Click to expand submenu to change NPC AI behaviour.</gm_instructions>
     <!--Test Variables (not required in start block)-->
     <!--End of Test Variables-->
     <set_variable name="tagShipNumber" value="0.0" integer="yes" />
@@ -27,15 +35,6 @@
     <set_variable name="Auto Spawn" value="0.0" integer="yes" />
     <!--Ship Setups-->
     <set_variable name="playerSide" value="2.0" integer="yes" />
-    <set_variable name="Ship1 Status" value="1.0" integer="yes" />
-    <set_variable name="Ship2 Status" value="1.0" integer="yes" />
-    <set_variable name="Ship3 Status" value="1.0" integer="yes" />
-    <set_variable name="Ship4 Status" value="1.0" integer="yes" />
-    <set_variable name="Ship5 Status" value="1.0" integer="yes" />
-    <set_variable name="Ship6 Status" value="1.0" integer="yes" />
-    <set_variable name="Ship7 Status" value="1.0" integer="yes" />
-    <set_variable name="Ship8 Status" value="1.0" integer="yes" />
-    <set_variable name="shipCount" value="0.0" integer="yes" />
     <!--Shuttle Operations-->
     <set_variable name="ShuttleSelect" value="0.0" integer="yes" />
     <set_variable name="OperationType" value="0.0" integer="yes" />
@@ -103,6 +102,10 @@
     <set_variable name="ReassignAI" value="0.0" integer="yes" />
     <set_variable name="ReassignLetter" value="0.0" integer="yes" />
     <set_variable name="ReassignDigits" value="0.0" integer="yes" />
+    <!--Dynamic Initialization-->
+    {% for caller in retrieve("onStart") %}
+      {{ caller() }}
+    {% endfor %}
     <!--End of Start Block-->
   </start>
   <event name="Ship Tracking" id_arme="e1b62a55-290d-46d5-89bd-dba7c5eba540">
@@ -131,7 +134,7 @@
     <if_timer_finished name="Sandbox Activation" />
     <if_variable name="GM Mode" comparator="LESS_EQUAL" value="1.0" />
     <set_gm_button text="Activate GM Mode" x="90" y="100" h="50" w="200" />
-    <set_gm_button text="{{ g.version }}" x="115" y="38" h="25" w="100" />
+    <set_gm_button text="{{ version }}" x="115" y="38" h="25" w="100" />
     <set_timer name="Sandbox Activation" seconds="20" />
     <set_variable name="Sandbox Activation" value="2.0" integer="yes" />
   </event>
@@ -140,7 +143,7 @@
     <if_timer_finished name="Sandbox Activation" />
     <if_variable name="GM Mode" comparator="LESS" value="1.0" />
     <clear_gm_button text="Activate GM Mode" />
-    <clear_gm_button text="{{ g.version }}" />
+    <clear_gm_button text="{{ version }}" />
     <set_timer name="Sandbox Activation" seconds="1" />
     <set_variable name="Sandbox Activation" value="1.0" integer="yes" />
   </event>

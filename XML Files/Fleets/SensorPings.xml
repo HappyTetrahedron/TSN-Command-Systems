@@ -1,9 +1,10 @@
 {% import 'GM Menus.xml' as menu %}
 {% import 'Utils.xml' as util %}
+{% import 'Start.xml' as start %}
 
 {{ menu.addDismissableSubmenu("Sensors", menu.main.interaction) }}
 
-{% call util.init("Sensor Pings") %}
+{% call start.onStart() %}
   {% for l in util.FleetLetters %}
   <set_variable name="digit{{ l }}1" value="0.0" integer="yes" />
   <set_variable name="digit{{ l }}2" value="0.0" integer="yes" />

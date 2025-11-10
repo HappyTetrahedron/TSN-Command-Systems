@@ -2,12 +2,13 @@
 
 {% import 'GM Menus.xml' as menu %}
 {% import 'Utils.xml' as util %}
+{% import 'Start.xml' as start %}
 {% import 'Comms.xml' as comms %}
 
 
 {{ menu.addDismissableSubmenu("Boarding", menu.main.interaction) }}
 
-{% call util.init("Boarding Action") %}
+{% call start.onStart("Boarding Action") %}
   {% for ship in util.shipConfigs %}
     <set_variable name="Ship{{ ship.id }} Marines" value="1.0" integer="yes" />
     <set_variable name="Ship{{ ship.id }}MarinesMax" value="20.0" integer="yes" />

@@ -1,8 +1,9 @@
 {# Adds a radiation source hazard to the game #}
 {% import 'GM Menus.xml' as menu %}
 {% import 'Utils.xml' as util %}
+{% import 'Start.xml' as start %}
 
-{% call util.init("radiation") %}
+{% call start.onStart() %}
   {% for ship in util.shipConfigs %}
     <set_variable name="Ship{{ ship.id }}Level" value="0" integer="yes" />
     <set_variable name="Ship{{ ship.id }}RadDis" value="0" integer="yes" />
