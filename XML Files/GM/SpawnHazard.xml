@@ -54,6 +54,9 @@
 {% call menu.onMenuClick("Black Hole", "Terrain") %}
     <create type="blackHole" use_gm_position="" name="BH" />
 {% endcall %}
+{% call menu.onMenuClick("Remove Black Hole", "Terrain") %}
+    <destroy name="BH" />
+{% endcall %}
 {% for color in ["Purple", "Blue", "Yellow"] %}
   {% call menu.onMenuClick("Single Nebula\\" + color, "Terrain") %}
       <create count="1" type="nebulas" nebType="{{ loop.index }}" use_gm_position="" radius="1" />
