@@ -47,7 +47,6 @@
     <set_variable name="GM Controls" value="0.0" integer="yes" />
     <set_timer name="Sandbox Activation" seconds="5" />
     <set_variable name="Sandbox Activation" value="1.0" integer="yes" />
-    <set_variable name="rvnumber" value="1.0" integer="yes" />
     <!--FCS System-->
     <set_variable name="Enable FCS" value="1.0" integer="yes" />
     <set_variable name="FCSRateMod" value="0.0" integer="yes" />
@@ -56,7 +55,6 @@
     <set_variable name="PDZRateModifier" value="0.0" integer="yes" />
     <!--General-->
     <set_variable name="Fuel Status Display" value="0.0" integer="yes" />
-    <set_variable name="Podnumber" value="1.0" integer="yes" />
     <set_variable name="secondnumber" value="0.0" integer="yes" />
     <set_variable name="firstnumber" value="0.0" integer="yes" />
     <set_variable name="shipsInrange" value="0.0" integer="yes" />
@@ -68,7 +66,6 @@
     <set_variable name="Sector Entities" value="0.0" integer="yes" />
     <set_variable name="ExitorRetreat" value="0.0" integer="yes" />
     <!--GM Specific-->
-    <set_variable name="RVAngle" value="0.0" integer="yes" />
     <set_variable name="waypointnumber" value="1.0" integer="yes" />
     <set_variable name="Refresh" value="1.0" integer="yes" />
     <set_timer name="Refresh" seconds="10" />

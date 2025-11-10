@@ -109,6 +109,13 @@
         "drop": 10,
         "pickup": 11,
       },
+      "model": {
+        "mesh": "dat\\TSN\\USFP\\cargoPod.dxs",
+        "tex": "dat\\TSN\\USFP\\CargoPod.png",
+      },
+      "properties": {
+        "artScale": 0.035
+      },
     },
     {
       "name": "Comms Relay",
@@ -121,13 +128,13 @@
         "drop": 40,
         "pickup": 41,
       },
-      "item_drop": {
-        "hull": 1055,
+      "text": {
         "desc": "TSN Comms Relay",
         "scan_desc": "Standard TSN Communications Relay",
         "hailtext": "Signal relay established. Communication link active.",
-        "ai": 401,
-      }
+      },
+      "hull": 1055,
+      "ai": 401,
     },
     {
       "name": "Sensor Buoy",
@@ -140,13 +147,13 @@
         "drop": 42,
         "pickup": 43,
       },
-      "item_drop": {
-        "hull": 1054,
+      "hull": 1054,
+      "ai": 401,
+      "text": {
         "desc": "TSN Sensor Buoy",
         "scan_desc": "Standard TSN Sensor Buoy",
         "hailtext": "Connection established. Data link online.",
-        "ai": 401,
-      }
+      },
     },
   ]
 %}

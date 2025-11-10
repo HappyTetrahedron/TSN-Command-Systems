@@ -12,21 +12,19 @@
     {% endfor %}
     <set_gm_button text="DELETING SHIPS" x="150" y="100" h="30" w="200" />
     <set_variable name="DestroyNamed" value="2.0" integer="yes" />
+    {% set callers = retrieve("onDestroy") %}
+    {% for caller in callers %}
+      {{ caller() }}
+    {% endfor %}
   </event>
 
   <event name="Destroy">
     <if_variable name="DestroyNamed" comparator="EQUALS" value="2.0" />
-    <destroy name="(|combinednumber0|)" />
-    <destroy name="Rv|combinednumber0|" />
     {% for cn in range(10) %}
       {% for l in util.FleetLetters %}
         <destroy name="{{ l }}{{ '0' if cn == 0 else '' }}|combinednumber{{ cn }}|" />
       {% endfor %}
       <set_variable name="combinednumber{{ cn }}" value="combinednumber{{ cn }}+1" integer="yes" />
-    {% endfor %}
-    {% set callers = retrieve("onDestroy") %}
-    {% for caller in callers %}
-      {{ caller() }}
     {% endfor %}
   </event>
 

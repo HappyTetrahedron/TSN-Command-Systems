@@ -144,6 +144,48 @@
 {% endfor %}
 
 {# Static RV points #}
+
+{# RV spawn #}
+{{ menu.addDismissableSubmenu("RVs", menu.main.poi) }}
+{% for cargo in util.cargoTypes if not cargo.is_nothing %}
+  {% call spawn.createNumberedConditional("Rv|rvnumber|", cargo.name + " Drop", "RVs", "RV Points", "rvnumber", cargo.rv.drop) %}
+    <create type="genericMesh" use_gm_position="" name="Rv" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="Rv|rvnumber|" />
+    <set_object_property property="rollDelta" value="-0.2" name="Rv|rvnumber|" />
+    <set_object_property property="angleDelta" value="0.05" name="Rv|rvnumber|" />
+    <addto_object_property value="-8.0" property="positionY" name="Rv|rvnumber|" />
+    <incoming_comms_text from="SYSTEMS" type="PLAYER">{{ cargo.name }} deployment zone identified.</incoming_comms_text>
+    <set_ship_text name="Rv" newname="Rv|rvnumber|" class="Marine Dz" desc="Designated {{ cargo.name|lower }} dropzone" />
+    <set_variable name="Rv|rvnumber|Type" value="{{ cargo.rv.drop }}" integer="yes" />
+  {% endcall %}
+  {% call spawn.createNumberedConditional("Rv|rvnumber|", cargo.name + " Pickup", "RVs", "RV Points", "rvnumber", cargo.rv.pickup) %}
+    {% if 'hull' in cargo %}
+          <create type="neutral" use_gm_position="" name="Rv|rvnumber|" hullID="{{ cargo.hull }}" />
+    {% elif 'model' in cargo %}
+      <create type="genericMesh" use_gm_position="" name="Rv|rvnumber|" meshFileName="{{ cargo.model.mesh }}" textureFileName="{{ cargo.model.tex }}" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
+    {% else %}
+      <create type="genericMesh" use_gm_position="" name="Rv|rvnumber|" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
+    {% endif %}
+    {% if 'hull' not in cargo %}
+      <set_ship_text name="Rv|rvnumber|" class="{{ cargo.name }} Exfil" desc="Designated {{ cargo.name|lower }} pickup zone" />
+    {% endif %}
+    {% if 'text' in cargo %}
+      <set_ship_text name="Rv|rvnumber|" desc="{{ cargo.text.desc }}" scan_desc="{{ cargo.text.scan_desc }}" hailtext="{{ cargo.text.get('hailtext', "") }}" />
+    {% endif %}
+    <set_object_property property="pushRadius" value="0.0" name="Rv|rvnumber|" />
+    <set_object_property property="rollDelta" value="-0.2" name="Rv|rvnumber|" />
+    <set_object_property property="angleDelta" value="0.05" name="Rv|rvnumber|" />
+    <addto_object_property value="-8.0" property="positionY" name="Rv|rvnumber|" />
+    {% for property, value in cargo.get(properties, {}).items() %}
+      <set_object_property property="{{ property }}" value="{{ value }}" name="Rv|rvnumber|" />
+    {% endfor %}
+    <incoming_comms_text from="SYSTEMS" type="PLAYER">{{ cargo.name }} extraction zone identified.</incoming_comms_text>
+    <set_variable name="Rv|rvnumber|Type" value="RvType" integer="yes" />
+  {% endcall %}
+{% endfor %}
+{{ spawn.scaffoldNumbered("Rv|rvnumber|", "RV Points", "rvnumber", amount=9) }}
+
+{# RV pickup #}
 {% for ship in util.shipConfigs %}
   {% for rv in range(1, 10) %}
     {% for cargo in util.cargoTypes if not cargo.is_nothing %}
@@ -155,11 +197,24 @@
         <set_variable name="{{ ship.shuttle }}CurrentCargo" value="{{ ship.shuttle }}CurrentCargo-1" integer="yes" />
         <warning_popup_message message="{{ cargo.name }} deployed" consoles="MCF" player_slot="{{ ship.slot }}" />
         <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">{{ cargo.name }} deployed.</incoming_comms_text>
-        {% if 'item_drop' in cargo %}
-          <create type="neutral" x="100.0" y="100.0" z="100.0" name="--" hullID="{{ cargo.item_drop.hull }}" />
-          <set_ship_text name="--" desc="{{ cargo.item_drop.desc }}" scan_desc="{{ cargo.item_drop.scan_desc }}" hailtext="{{ cargo.item_drop.hailtext }}" />
+        {% if cargo.get('item_drop', False) %}
+          {% if 'hull' in cargo %}
+                <create type="neutral" x="100.0" y="100.0" z="100.0" name="--" hullID="{{ cargo.hull }}" />
+          {% elif 'model' in cargo %}
+            <create type="genericMesh" x="100.0" y="100.0" z="100.0" name="--" meshFileName="{{ cargo.model.mesh }}" textureFileName="{{ cargo.model.tex }}" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
+          {% else %}
+            <create type="genericMesh" x="100.0" y="100.0" z="100.0" name="--" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
+          {% endif %}
+          {% if 'hull' not in cargo %}
+            <set_ship_text name="--" class="{{ cargo.name }}" />
+          {% endif %}
+          {% if 'text' in cargo %}
+            <set_ship_text name="--" desc="{{ cargo.text.desc }}" scan_desc="{{ cargo.text.scan_desc }}" hailtext="{{ cargo.text.get('hailtext', "") }}" />
+          {% endif %}
           <set_relative_position name2="--" distance="10" angle="180" name1="{{ ship.shuttle }}" />
-          <set_variable name="Auto AI Type" value="{{ cargo.item_drop.ai }}.0" integer="yes" />
+          {% if 'ai' in cargo %}
+            <set_variable name="Auto AI Type" value="{{ cargo.ai }}.0" integer="yes" />
+          {% endif %}
           <set_variable name="Name Assign" value="1.0" integer="yes" />
         {% endif %}
         <set_variable name="{{ ship.shuttle }}CargoType" value="0.0" integer="yes" />

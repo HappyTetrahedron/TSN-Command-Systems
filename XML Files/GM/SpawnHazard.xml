@@ -1,5 +1,6 @@
 
 {% import 'GM Menus.xml' as menu %}
+{% import 'Start.xml' as start %}
 
 {{ menu.addDismissableSubmenu("Mines", menu.main.hazard) }}
 {{ menu.addDismissableSubmenu("Creatures", menu.main.hazard) }}
@@ -88,3 +89,7 @@
     <if_variable name="Podnumber" comparator="GREATER" value="9.0" />
     <set_variable name="Podnumber" value="1.0" />
   </event>
+
+{% call start.onStart() %}
+    <set_variable name="Podnumber" value="1.0" integer="yes" />
+{% endcall %}

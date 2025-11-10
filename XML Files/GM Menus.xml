@@ -504,17 +504,13 @@
   {% call _createMenu(main.poi.key, main.poi.id) %}
     {{ util.restore("GM_WreckMenu_Selector") }}
     <set_gm_button text="Waypoint SPAWN" x="100" y="100" h="30" w="80" />
-    <set_gm_button text="Scan Pts" x="100" y="135" h="30" w="80" />
     <set_gm_button text="Debris" x="100" y="170" h="30" w="80" />
-    <set_gm_button text="Rndz. Pts" x="100" y="205" h="30" w="80" />
     <set_gm_button text="Anomalies" x="100" y="240" h="30" w="80" />
   {% endcall %}
   {% call _destroyMenu(main.poi.key, main.poi.id) %}
     <clear_gm_button text="Waypoint SPAWN" />
-    <clear_gm_button text="Rndz. Pts" />
     <clear_gm_button text="Anomalies" />
     <clear_gm_button text="Debris" />
-    <clear_gm_button text="Scan Pts" />
     <set_variable name="GM_Submenu_POIWreckSelect_ShouldShow" value="0.0" integer="yes" />
     {{ util.storeAndSet("GM_WreckMenu_Selector") }}
   {% endcall %}
@@ -584,112 +580,6 @@
 
   {{ _submenuEvent("POIAnomalies", "Anomalies") }}
   {{ _dismissEvent("POIAnomalies", "Spawn Anomaly\_Dismiss") }}
-  
-  {% call _createSubmenu("POISignatures") %}
-    <!--TSN Signatures-->
-    <set_gm_button text="Signatures\TSN\Energy Signatures" />
-    <set_gm_button text="Signatures\TSN\Weapons Signatures" />
-    <set_gm_button text="Signatures\TSN\Warp Signatures" />
-    <!--Enemy Signatures-->
-    <set_gm_button text="Signatures\Slingshot Signature" />
-    <set_gm_button text="Signatures\Kraliens\Energy Signatures" />
-    <set_gm_button text="Signatures\Kraliens\Weapons Signatures" />
-    <set_gm_button text="Signatures\Kraliens\Comms Signatures" />
-    <set_gm_button text="Signatures\Kraliens\Hull Signatures" />
-    <set_gm_button text="Signatures\Torgoth\Energy Signatures" />
-    <set_gm_button text="Signatures\Torgoth\Weapons Signatures" />
-    <set_gm_button text="Signatures\Torgoth\Hull Signatures" />
-    <set_gm_button text="Signatures\Torgoth\Comms Signatures" />
-    <set_gm_button text="Signatures\Arvonian\Energy Signatures" />
-    <set_gm_button text="Signatures\Arvonian\Weapons Signatures" />
-    <set_gm_button text="Signatures\Pirates\Energy Signatures" />
-    <set_gm_button text="Signatures\Pirates\Weapons Signatures" />
-    <set_gm_button text="Signatures\Pirates\Warp Signatures" />
-    <set_gm_button text="Signatures\Skaraan\Jump Signatures" />
-    <set_gm_button text="Signatures\Skaraan\Weapons Signatures" />
-    <set_gm_button text="Signatures\Skaraan\Warp Signatures" />
-    <set_gm_button text="Signatures\Skaraan\Cloak Signatures" />
-    <set_gm_button text="Signatures\Skaraan\Comms Signatures" />
-    <!--Mobile Signatures-->
-    <set_gm_button text="Signatures\Skaraan Mob.\Heading 0" />
-    <set_gm_button text="Signatures\Skaraan Mob.\Heading 180" />
-    <set_gm_button text="Signatures\_Dismiss" />
-  {% endcall %}
-
-  {% call _destroySubmenu("POISignatures") %}
-    <!--TSN Signatures-->
-    <clear_gm_button text="Signatures\TSN\Energy Signatures" />
-    <clear_gm_button text="Signatures\TSN\Weapons Signatures" />
-    <clear_gm_button text="Signatures\TSN\Warp Signatures" />
-    <!--Enemy Signatures-->
-    <clear_gm_button text="Signatures\Slingshot Signature" />
-    <clear_gm_button text="Signatures\Kraliens\Energy Signatures" />
-    <clear_gm_button text="Signatures\Kraliens\Weapons Signatures" />
-    <clear_gm_button text="Signatures\Kraliens\Comms Signatures" />
-    <clear_gm_button text="Signatures\Kraliens\Hull Signatures" />
-    <clear_gm_button text="Signatures\Torgoth\Energy Signatures" />
-    <clear_gm_button text="Signatures\Torgoth\Weapons Signatures" />
-    <clear_gm_button text="Signatures\Torgoth\Hull Signatures" />
-    <clear_gm_button text="Signatures\Torgoth\Comms Signatures" />
-    <clear_gm_button text="Signatures\Arvonian\Energy Signatures" />
-    <clear_gm_button text="Signatures\Arvonian\Weapons Signatures" />
-    <clear_gm_button text="Signatures\Pirates\Energy Signatures" />
-    <clear_gm_button text="Signatures\Pirates\Weapons Signatures" />
-    <clear_gm_button text="Signatures\Pirates\Warp Signatures" />
-    <clear_gm_button text="Signatures\Skaraan\Jump Signatures" />
-    <clear_gm_button text="Signatures\Skaraan\Weapons Signatures" />
-    <clear_gm_button text="Signatures\Skaraan\Warp Signatures" />
-    <clear_gm_button text="Signatures\Skaraan\Cloak Signatures" />
-    <clear_gm_button text="Signatures\Skaraan\Comms Signatures" />
-    <!--Mobile Signatures-->
-    <clear_gm_button text="Signatures\Skaraan Mob.\Heading 0" />
-    <clear_gm_button text="Signatures\Skaraan Mob.\Heading 180" />
-    <clear_gm_button text="Signatures\_Dismiss" />
-  {% endcall %}
-
-  {{ _submenuEvent("POISignatures", "Scan Pts") }}
-  {{ _dismissEvent("POISignatures", "Signatures\_Dismiss") }}
-  
-  {% call _createSubmenu("POIRvPts") %}
-    <set_gm_button text="RVs\Marine Drop" />
-    <set_gm_button text="RVs\Marine Exfil" />
-    <set_gm_button text="RVs\Enginr Drop" />
-    <set_gm_button text="RVs\Enginr Exfil" />
-    <set_gm_button text="RVs\Medic Drop" />
-    <set_gm_button text="RVs\Medic Exfil" />
-    <set_gm_button text="RVs\Cargo Drop" />
-    <set_gm_button text="RVs\Cargo Exfil" />
-    <set_gm_button text="RVs\ComRel Drop" />
-    <set_gm_button text="RVs\ComRel Exfil" />
-    <set_gm_button text="RVs\SenBoi Drop" />
-    <set_gm_button text="RVs\SenBoi Exfil" />
-    <set_gm_button text="RVs\Lifepod" />
-    <set_gm_button text="RVs\WeaponCrate" />
-    <set_gm_button text="RVs\Blackbox" />
-    <set_gm_button text="RVs\_Dismiss" />
-  {% endcall %}
-
-  {% call _destroySubmenu("POIRvPts") %}
-    <clear_gm_button text="RVs\Marine Drop" />
-    <clear_gm_button text="RVs\Marine Exfil" />
-    <clear_gm_button text="RVs\Enginr Drop" />
-    <clear_gm_button text="RVs\Enginr Exfil" />
-    <clear_gm_button text="RVs\Medic Drop" />
-    <clear_gm_button text="RVs\Medic Exfil" />
-    <clear_gm_button text="RVs\Cargo Drop" />
-    <clear_gm_button text="RVs\Cargo Exfil" />
-    <clear_gm_button text="RVs\ComRel Drop" />
-    <clear_gm_button text="RVs\ComRel Exfil" />
-    <clear_gm_button text="RVs\SenBoi Drop" />
-    <clear_gm_button text="RVs\SenBoi Exfil" />
-    <clear_gm_button text="RVs\Lifepod" />
-    <clear_gm_button text="RVs\Blackbox" />
-    <clear_gm_button text="RVs\WeaponCrate" />
-    <clear_gm_button text="RVs\_Dismiss" />
-  {% endcall %}
-
-  {{ _submenuEvent("POIRvPts", "Rndz. Pts") }}
-  {{ _dismissEvent("POIRvPts", "RVs\_Dismiss") }}
 
   {% call _createSubmenu("POIWreckSelect") %}
     <set_gm_button text="Wrecks:" x="190" y="100" h="30" w="80" />
