@@ -1,5 +1,8 @@
 {% import 'Utils.xml' as util %}
 {% import 'Comms.xml' as comms %}
+{% import 'Start.xml' as start %}
+{% import 'Spawn.xml' as spawn %}
+{% import 'GM Menus.xml' as menu %}
 
 {# Ship-to-ship RVs #}
 {% for ship in util.shipConfigs %}
@@ -223,6 +226,19 @@
   {% endfor %}
 {% endmacro %}
 
+{% macro createPickuppable(name_template, button, counter) %}
+  {% do track("spawn12", "Other\\" + button) %}
+  <event name="Spawn Menu RV {{ prefix }} Click">
+    <if_gm_button text="Other\{{ button }}" />
+    <set_variable name="Spawn_{{ prefix }}" value="1.0" integer="yes" />
+  </event>
+  {% set outercaller = caller %}
+  {% call spawn.createNumbered(name_template, button, "RVs", counter) %}
+    {{ outercaller() }}
+  {% endcall %}
+{% endmacro %}
+
+
 {# Life pods #}
 {% call(ship) shuttlePickup("Life Pod", 30) %}
   <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">Survivors are aboard. Minor injuries to some.</incoming_comms_text>
@@ -254,10 +270,10 @@
 {# Black boxes #}
 {% for ship in util.shipConfigs %}
   {% for id in range(1, 6) %}
-    <event name="Black Box {{ id }} collection {{ ship.shuttle }}">
-    <if_exists name="* {{ id }}" />
+  <event name="Black Box {{ id }} collection {{ ship.shuttle }}">
+    <if_exists name="*{{ id }}*" />
     <if_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" comparator="EQUALS" value="0.0" />
-    <if_distance name1="{{ ship.shuttle }}" name2="* {{ id }}" comparator="LESS" value="200.0" />
+    <if_distance name1="{{ ship.shuttle }}" name2="*{{ id }}*" comparator="LESS" value="200.0" />
     <if_object_property property="warpState" name="{{ ship.shuttle }}" comparator="LESS" value="1.0" />
     <incoming_comms_text from="System">Data recorder detected.^Downloading data......</incoming_comms_text>
     <warning_popup_message message="Downloading Data ..." consoles="CF">Downloading data......</warning_popup_message>
@@ -272,7 +288,7 @@
   </event>
   <event name="{{ ship.shuttle }} leaves (Distance)">
     <if_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" comparator="EQUALS" value="1.0" />
-    <if_distance name1="{{ ship.shuttle }}" name2="* {{ id }}" comparator="GREATER" value="200.0" />
+    <if_distance name1="{{ ship.shuttle }}" name2="*{{ id }}*" comparator="GREATER" value="200.0" />
     <set_timer name="Black Box {{ id }}" seconds="2" />
     <set_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" value="2.0" integer="yes" />
   </event>
@@ -285,7 +301,7 @@
   <event name="{{ ship.shuttle }} Succeeds">
     <if_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" comparator="EQUALS" value="1.0" />
     <if_timer_finished name="Black Box {{ id }}" />
-    <destroy name="* {{ id }}" />
+    <destroy name="*{{ id }}*" />
     <incoming_comms_text from="System">Download complete.^Data retrieved.^Transmitting to Command and Control....</incoming_comms_text>
     <warning_popup_message message="Download complete." consoles="CF">Downloading data......</warning_popup_message>
     <set_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" value="0.0" integer="yes" />
@@ -293,4 +309,31 @@
   {% endfor %}
 {% endfor %}
 
-2579
+{% call createPickuppable("Life Pod |lifepodNumber|", "Lifepod", "lifepodNumber") %}
+  <create type="genericMesh" use_gm_position="" name="Life Pod |lifepodNumber|" meshFileName="dat\wreck1.dxs" textureFileName="dat\drone4_spec.png" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
+  <set_object_property property="rollDelta" value="-0.2" name="Life Pod |lifepodNumber|" />
+  <set_object_property property="pushRadius" value="20.0" name="Life Pod |lifepodNumber|" />
+  <set_object_property property="angleDelta" value="0.05" name="Life Pod |lifepodNumber|" />
+  <addto_object_property value="10.0" property="positionY" name="Life Pod |lifepodNumber|" />
+  <set_ship_text name="Life Pod |lifepodNumber|" desc="Life pod" scan_desc="Life signs detected." hailtext="Automated Distress Signal detected." />
+{% endcall %}
+{% call createPickuppable("Weapons Crate |crateNumber|", "WeaponCrate", "crateNumber") %}
+  <create type="genericMesh" use_gm_position="" name="Weapons Crate |crateNumber|" meshFileName="dat\TSN\USFP\cargoPod.dxs" textureFileName="dat\TSN\USFP\CargoPod.png" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
+  <set_object_property property="rollDelta" value="-0.2" name="Weapons Crate |crateNumber|" />
+  <set_object_property property="pushRadius" value="20.0" name="Weapons Crate |crateNumber|" />
+  <set_object_property property="angleDelta" value="0.05" name="Weapons Crate |crateNumber|" />
+  <addto_object_property value="10.0" property="positionY" name="Weapons Crate |crateNumber|" />
+  <set_ship_text name="Weapons Crate |crateNumber|" desc="Ordnance containment unit" scan_desc="Contains heavy ordnance" hailtext="It's a crate. Why are you hailing it?" />
+{% endcall %}
+{% call createPickuppable("*|BBNumber|*", "Blackbox", "BBNumber") %}
+  <create type="genericMesh" use_gm_position="" name="*|BBNumber|*" meshFileName="dat\mine.dxs" textureFileName="dat\cargo_vessel_glow.png" colorRed="0.4" colorGreen="0.4" colorBlue="0.4" />
+  <warning_popup_message message="Blackbox Detected" consoles="MCF">Data recorder detected.^Downloading data......</warning_popup_message>
+  <set_object_property property="rollDelta" value="2.0" name="*|BBNumber|*" />
+  <set_object_property property="angle" value="0.5" name="*|BBNumber|*" />
+  <set_object_property property="pushRadius" value="10.0" name="*|BBNumber|*" />
+  <set_object_property property="artScale" value="0.02" name="*|BBNumber|*" />
+  <set_object_property property="positionY" value="2.5" name="*|BBNumber|*" />
+  {% for ship in util.ShipConfigs %}
+    <set_variable name="Black Box |BBNumber| {{ ship.shuttle }} Retrieves" value="0.0" integer="yes" />
+  {% endfor %}
+{% endcall %}

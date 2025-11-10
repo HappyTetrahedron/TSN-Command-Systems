@@ -1,5 +1,10 @@
-{# Destroy auto-named object. Include this after Spawn.xml as it refers to global state set therein. #}
+{# Destroy auto-named object. Refers to dynamic state - include this at the end. #}
 {% import 'Utils.xml' as util %}
+
+{% macro onDestroy() %}
+  {% do track("onDestroy", caller) %}
+{% endmacro %}
+
   <event name="Begin Cycle">
     <if_variable name="DestroyNamed" comparator="EQUALS" value="1.0" />
     {% for i in range(10) %}
@@ -10,11 +15,7 @@
   </event>
 
   <event name="Destroy">
-    {% set pickups = retrieve("pickup") %}
     <if_variable name="DestroyNamed" comparator="EQUALS" value="2.0" />
-    {% for pickup in pickups %}
-    <destroy name="{{ pickup }} |combinednumber0|" />
-    {% endfor %}
     <destroy name="(|combinednumber0|)" />
     <destroy name="Rv|combinednumber0|" />
     {% for cn in range(10) %}
@@ -22,6 +23,10 @@
         <destroy name="{{ l }}{{ '0' if cn == 0 else '' }}|combinednumber{{ cn }}|" />
       {% endfor %}
       <set_variable name="combinednumber{{ cn }}" value="combinednumber{{ cn }}+1" integer="yes" />
+    {% endfor %}
+    {% set callers = retrieve("onDestroy") %}
+    {% for caller in callers %}
+      {{ caller() }}
     {% endfor %}
   </event>
 

@@ -70,9 +70,6 @@
     <!--GM Specific-->
     <set_variable name="RVAngle" value="0.0" integer="yes" />
     <set_variable name="ScanPointNumber" value="1.0" integer="yes" />
-    <set_variable name="BBNumber" value="1.0" integer="yes" />
-    <set_variable name="lifepodNumber" value="1.0" integer="yes" />
-    <set_variable name="crateNumber" value="1.0" integer="yes" />
     <set_variable name="waypointnumber" value="1.0" integer="yes" />
     <set_variable name="Refresh" value="1.0" integer="yes" />
     <set_timer name="Refresh" seconds="10" />

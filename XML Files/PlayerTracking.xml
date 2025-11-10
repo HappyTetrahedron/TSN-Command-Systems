@@ -10,7 +10,7 @@
 {% endmacro %}
 
 {% macro onDestroy() %}
-  {% do track("onDestroy", caller) %}
+  {% do track("onPlayerDestroy", caller) %}
 {% endmacro %}
 
 {% call start.onStart() %}
@@ -153,7 +153,7 @@
     <set_variable name="Ship{{ ship.id }}TagRespawn" value="Ship{{ ship.id }}TagCurrent" integer="yes" />
     <set_variable name="Ship{{ ship.id }} Status" value="3.0" integer="yes" />
     <!--Dynamic Variables-->
-    {% for caller in retrieve("onDestroy") %}
+    {% for caller in retrieve("onPlayerDestroy") %}
       {{ caller(ship) }}
     {% endfor %}
   </event>

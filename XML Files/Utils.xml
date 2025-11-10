@@ -252,6 +252,70 @@
  },
 ] %}
 
+{% set spawnFactions = {
+  "TSN": {
+    "key": "1",
+    "name": "TSN",
+    "defaultSide": 2,
+  },
+  "USFP": {
+    "key": "2",
+    "name": "USFP",
+    "defaultSide": 2,
+  },
+  "Ximni": {
+    "key": "3",
+    "name": "Ximni",
+    "defaultSide": 1,
+  },
+  "Hjorden": {
+    "key": "4",
+    "name": "Hjorden",
+    "defaultSide": 4,
+  },
+  "Hegemony": {
+    "key": "5",
+    "name": "Hegemony",
+    "defaultSide": 1,
+  },
+  "USF": {
+    "key": "6",
+    "name": "USF",
+    "defaultSide": 3,
+  },
+  "NTani": {
+    "key": "7",
+    "name": "NTani",
+    "defaultSide": 4,
+  },
+  "Pirate": {
+    "key": "8",
+    "name": "Pirate",
+    "defaultSide": 5,
+  },
+  "Neutral": {
+    "key": "9",
+    "name": "Neutral",
+    "defaultSide": 8,
+  },
+  "Caltron": {
+    "key": "10",
+    "name": "Caltron",
+    "defaultSide": 6,
+  },
+  "Biomech": {
+    "key": "11",
+    "name": "Biomech",
+    "defaultSide": 7,
+  },
+  "Static": {
+    "key": "12",
+    "name": "Static",
+    "defaultSide": 2,
+  },
+}
+%}
+
 {% macro createConditionalMenu(name, conditions={}) %}
     <event name="Conditional Menu {{ name }} setup">
         {% for var, val in conditions.items() %}

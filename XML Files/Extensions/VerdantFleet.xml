@@ -40,7 +40,7 @@
 {% endcall %}
 
   {% for name in ["TSN Verdant"] %}
-  {% call spawn.spawn(spawn.TSN.key, "TSN Ships", "+Verdant") %}
+  {% call spawn.spawn(util.spawnFactions.TSN.key, "TSN Ships", "+Verdant") %}
     <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="1701" sideValue="SideValue" fleetnumber="-1" />
 
     <clear_ai name="{{ name }}" />
@@ -102,7 +102,7 @@
   {% endmacro %}
 
   {% for mode in ["Fleet", "Form"] %}
-    {% call spawn.spawn(spawn.TSN.key, "TSN Fleets", "+Verdant" + mode) %}
+    {% call spawn.spawn(util.spawnFactions.TSN.key, "TSN Fleets", "+Verdant" + mode) %}
       <!-- flagship -->
       <create type="neutral" use_gm_position="" angle="0" name="TSN Verdant" hullID="1701" sideValue="SideValue" fleetnumber="98" />
 
@@ -304,7 +304,7 @@
 
 
   {% for name in ["Keloi Gitosz"] %}
-    {% call spawn.spawn(spawn.Hegemony.key, "Single Hegemony", "+KeloiGitos") %}
+    {% call spawn.spawn(utils.spawnFactions.Hegemony.key, "Single Hegemony", "+KeloiGitos") %}
     <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="2002" sideValue="SideValue" fleetnumber="-1" />
 
     <set_object_property property="shieldMaxStateFront" value="2000" name="{{ name }}" />
@@ -337,7 +337,7 @@
   {% endfor %}
 
   {% for name in ["Black Bertha"] %}
-  {% call spawn.spawn(spawn.Pirate.key, "Euphini Pirates", "+BlackBertha") %}
+  {% call spawn.spawn(util.spawnFactions.Pirate.key, "Euphini Pirates", "+BlackBertha") %}
     <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="7301" sideValue="SideValue" fleetnumber="-1" />
 
     <set_object_property property="shieldMaxStateFront" value="400" name="{{ name }}" />
@@ -369,7 +369,7 @@
   {% endfor %}
 
   {% for name in ["TSN Whispers of Freedom"] %}
-  {% call spawn.spawn(spawn.TSN.key, "TSN Ships", "+WhispersofFreedom") %}
+  {% call spawn.spawn(util.spawnFactions.TSN.key, "TSN Ships", "+WhispersofFreedom") %}
     <create type="neutral" use_gm_position="" angle="0" name="{{ name }}" hullID="1503" sideValue="SideValue" fleetnumber="-1" />
 
     <set_object_property property="shieldMaxStateFront" value="180" name="{{ name }}" />
@@ -391,7 +391,7 @@
   {% endfor %}
 
   {% for name in ["Wisdom"] %}
-  {% call spawn.spawn(spawn.USFP.key, "Civilian USFP", "+Wisdom") %}
+  {% call spawn.spawn(util.spawnFactions.USFP.key, "Civilian USFP", "+Wisdom") %}
     <create type="neutral" use_gm_position="" angle="0" name="{{ name }}" hullID="1504" sideValue="SideValue" fleetnumber="-1" />
 
     <set_object_property property="shieldMaxStateFront" value="400" name="{{ name }}" />
@@ -416,7 +416,7 @@
   {% endfor %}
 
   {% for name in ["Ubuntu"] %}
-  {% call spawn.spawn(spawn.USFP.key, "Civilian USFP", "+Ubuntu") %}
+  {% call spawn.spawn(util.spawnFactions.USFP.key, "Civilian USFP", "+Ubuntu") %}
     <create type="neutral" use_gm_position="" angle="0" name="{{ name }}" hullID="1602" sideValue="SideValue" fleetnumber="-1" />
 
     <set_object_property property="shieldMaxStateFront" value="600" name="{{ name }}" />

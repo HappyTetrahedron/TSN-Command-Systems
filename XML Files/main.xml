@@ -5,6 +5,7 @@
 {% include 'Custom Config.xml' %}
 {% include 'Spawn.xml' %}
 {% include 'Fleets/FleetSystem.xml' %}
+{% include 'Subsystems/Subsystems.xml' %}
 {% include 'GM/GMTools.xml' %}
 
 {% import 'ModuleUtils.xml' as modutil %}
@@ -24,6 +25,7 @@
 
 {# Below are core files that track information from other files/modules and therefore need to come last. #}
 {# Their relative order is also sensitive; handle with care. #}
+{% include 'Fleets/Destroy.xml' %}
 {% include 'PlayerTracking.xml' %}
 {% include 'Comms.xml' %}
 {% include 'GM Console.xml' %}
