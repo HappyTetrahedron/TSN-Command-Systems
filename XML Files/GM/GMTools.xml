@@ -1,1 +1,2 @@
 {% include 'GM/SpawnHazard.xml' %}
+{% include 'GM/RepairDamage.xml' %}

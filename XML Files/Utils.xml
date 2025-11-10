@@ -181,6 +181,19 @@
   }
 -%}
 
+{%-
+  set systemIdentifiers = {
+    "beams": "systemBeam",
+    "tubes": "systemTorpedo",
+    "sensors": "systemTactical",
+    "maneuver": "systemTurning",
+    "impulse": "systemImpulse",
+    "warp": "systemWarp",
+    "frontshield": "systemFrontShield",
+    "rearshield": "systemBackShield",
+  }
+-%}
+
 {%
   set transitionTypes = [
     "Grid 1",

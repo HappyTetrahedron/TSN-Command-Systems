@@ -50,7 +50,7 @@
     "button": "Int.",
     "id": 5,
     "buttons": {
-      "x": 100,
+      "x": 300,
       "y": 100,
       "w": 90,
       "h": 30,
@@ -531,8 +531,6 @@
   {% call _createMenu(main.interaction.key, main.interaction.id) %}
     <set_gm_button text="Messages" x="100" y="100" h="30" w="90" />
     <set_gm_button text="Supplies" x="100" y="135" h="30" w="90" />
-    <set_gm_button text="Rprs/Dmge" x="100" y="170" h="30" w="90" />
-    <set_gm_button text="Sensors" x="100" y="205" h="30" w="90" />
     <set_gm_button text="Brd Act." x="100" y="240" h="30" w="90" />
     <set_gm_button text="Scan Text" x="100" y="275" h="30" w="90" />
     <set_gm_button text="Shuttle Resup" x="100" y="310" h="30" w="90" />
@@ -542,8 +540,6 @@
   {% call _destroyMenu(main.interaction.key, main.interaction.id) %}
     <clear_gm_button text="Messages" />
     <clear_gm_button text="Supplies" />
-    <clear_gm_button text="Rprs/Dmge" />
-    <clear_gm_button text="Sensors" />
     <clear_gm_button text="Scan Text" />
     <clear_gm_button text="Brd Act." />
     <clear_gm_button text="Shuttle Resup" />
@@ -1128,41 +1124,6 @@
   {{ _submenuEvent("IntScantext", "Scan Text") }}
   {{ _dismissEvent("IntScantext", "NPC Descriptions\_Dismiss") }}
 
-  {% call _createSubmenu("IntSensor") %}
-    <set_gm_button text="Sensor Rng\Set to 8000" />
-    <set_gm_button text="Sensor Rng\Set to 11000" />
-    <set_gm_button text="Sensor Rng\Set to 16000" />
-    <set_gm_button text="Sensor Rng\Set to 33000" />
-    <set_gm_button text="Sensor Rng\Set to unlimited" />
-    <set_gm_button text="Sensor Rng\Notify 8000" />
-    <set_gm_button text="Sensor Rng\Notify 11000" />
-    <set_gm_button text="Sensor Rng\Notify 16000" />
-    <set_gm_button text="Sensor Rng\Notify 33000" />
-    <set_gm_button text="Sensor Rng\Notify unlimited" />
-    <set_gm_button text="Sensor Rng\Disable Sensor Ping" />
-    <set_gm_button text="Sensor Rng\Enable Sensor Ping" />
-    <set_gm_button text="Sensor Rng\Clear Pings" />
-    <set_gm_button text="Sensor Rng\_Dismiss" />
-  {% endcall %}
-  {% call _destroySubmenu("IntSensor") %}
-    <clear_gm_button text="Sensor Rng\Set to 8000" />
-    <clear_gm_button text="Sensor Rng\Set to 11000" />
-    <clear_gm_button text="Sensor Rng\Set to 16000" />
-    <clear_gm_button text="Sensor Rng\Set to 33000" />
-    <clear_gm_button text="Sensor Rng\Set to unlimited" />
-    <clear_gm_button text="Sensor Rng\Notify 8000" />
-    <clear_gm_button text="Sensor Rng\Notify 11000" />
-    <clear_gm_button text="Sensor Rng\Notify 16000" />
-    <clear_gm_button text="Sensor Rng\Notify 33000" />
-    <clear_gm_button text="Sensor Rng\Notify unlimited" />
-    <clear_gm_button text="Sensor Rng\Disable Sensor Ping" />
-    <clear_gm_button text="Sensor Rng\Enable Sensor Ping" />
-    <clear_gm_button text="Sensor Rng\Clear Pings" />
-    <clear_gm_button text="Sensor Rng\_Dismiss" />
-  {% endcall %}
-  {{ _submenuEvent("IntSensor", "Sensors", 5) }}
-  {{ _dismissEvent("IntSensor", "Sensor Rng\_Dismiss") }}
-
   {% call _createSubmenu("IntComms") %}
     <set_gm_button text="Command Messages\Sim Aborted" />
     <set_gm_button text="Command Messages\Data Tranferring" />
@@ -1187,81 +1148,6 @@
   {% endcall %}
   {{ _submenuEvent("IntComms", "Messages") }}
   {{ _dismissEvent("IntComms", "Command Messages\_Dismiss") }}
-
-  {% call _createSubmenu("IntRepairDamage") %}
-    <set_gm_button text="RepairDamage\Repair Ship\Repair Beams" />
-    <set_gm_button text="RepairDamage\Repair Ship\Repair Torpedoes" />
-    <set_gm_button text="RepairDamage\Repair Ship\Repair Sensors" />
-    <set_gm_button text="RepairDamage\Repair Ship\Repair Maneouvre" />
-    <set_gm_button text="RepairDamage\Repair Ship\Repair Impulse" />
-    <set_gm_button text="RepairDamage\Repair Ship\Repair Warp" />
-    <set_gm_button text="RepairDamage\Repair Ship\Repair F. Shields" />
-    <set_gm_button text="RepairDamage\Repair Ship\Repair R. Shields" />
-    <set_gm_button text="RepairDamage\Repair Ship\Heal DamCon 0" />
-    <set_gm_button text="RepairDamage\Repair Ship\Heal DamCon 1" />
-    <set_gm_button text="RepairDamage\Repair Ship\Heal DamCon 2" />
-    <set_gm_button text="RepairDamage\Damage Ship\Damage Beams" />
-    <set_gm_button text="RepairDamage\Damage Ship\Damage Torpedoes" />
-    <set_gm_button text="RepairDamage\Damage Ship\Damage Sensors" />
-    <set_gm_button text="RepairDamage\Damage Ship\Damage Maneouvre" />
-    <set_gm_button text="RepairDamage\Damage Ship\Damage Impulse" />
-    <set_gm_button text="RepairDamage\Damage Ship\Damage Warp" />
-    <set_gm_button text="RepairDamage\Damage Ship\Damage F. Shields" />
-    <set_gm_button text="RepairDamage\Damage Ship\Damage R. Shields" />
-    <set_gm_button text="RepairDamage\Damage Ship\Wound DamCon 0" />
-    <set_gm_button text="RepairDamage\Damage Ship\Wound DamCon 1" />
-    <set_gm_button text="RepairDamage\Damage Ship\Wound DamCon 2" />
-    <set_gm_button text="RepairDamage\Random Damage\Set Ship1 On-" />
-    <set_gm_button text="RepairDamage\Random Damage\Set Ship2 On-" />
-    <set_gm_button text="RepairDamage\Random Damage\Set Ship3 On-" />
-    <set_gm_button text="RepairDamage\Random Damage\Set Ship4 On-" />
-    <set_gm_button text="RepairDamage\Random Damage\Set Ship5 On-" />
-    <set_gm_button text="RepairDamage\Random Damage\Set Ship6 On-" />
-    <set_gm_button text="RepairDamage\Random Damage\Set Ship7 On-" />
-    <set_gm_button text="RepairDamage\Random Damage\Set Ship8 On-" />
-    <set_gm_button text="RepairDamage\Random Damage\Set All On-" />
-    <set_gm_button text="RepairDamage\Incapacitate" />
-    <set_gm_button text="RepairDamage\Reinstate" />
-    <set_gm_button text="RepairDamage\_Dismiss" />
-  {% endcall %}
-  {% call _destroySubmenu("IntRepairDamage") %}
-    <clear_gm_button text="RepairDamage\Repair Ship\Repair Beams" />
-    <clear_gm_button text="RepairDamage\Repair Ship\Repair Torpedoes" />
-    <clear_gm_button text="RepairDamage\Repair Ship\Repair Sensors" />
-    <clear_gm_button text="RepairDamage\Repair Ship\Repair Maneouvre" />
-    <clear_gm_button text="RepairDamage\Repair Ship\Repair Impulse" />
-    <clear_gm_button text="RepairDamage\Repair Ship\Repair Warp" />
-    <clear_gm_button text="RepairDamage\Repair Ship\Repair F. Shields" />
-    <clear_gm_button text="RepairDamage\Repair Ship\Repair R. Shields" />
-    <clear_gm_button text="RepairDamage\Repair Ship\Heal DamCon 0" />
-    <clear_gm_button text="RepairDamage\Repair Ship\Heal DamCon 1" />
-    <clear_gm_button text="RepairDamage\Repair Ship\Heal DamCon 2" />
-    <clear_gm_button text="RepairDamage\Damage Ship\Damage Beams" />
-    <clear_gm_button text="RepairDamage\Damage Ship\Damage Torpedoes" />
-    <clear_gm_button text="RepairDamage\Damage Ship\Damage Sensors" />
-    <clear_gm_button text="RepairDamage\Damage Ship\Damage Maneouvre" />
-    <clear_gm_button text="RepairDamage\Damage Ship\Damage Impulse" />
-    <clear_gm_button text="RepairDamage\Damage Ship\Damage Warp" />
-    <clear_gm_button text="RepairDamage\Damage Ship\Damage F. Shields" />
-    <clear_gm_button text="RepairDamage\Damage Ship\Damage R. Shields" />
-    <clear_gm_button text="RepairDamage\Damage Ship\Wound DamCon 0" />
-    <clear_gm_button text="RepairDamage\Damage Ship\Wound DamCon 1" />
-    <clear_gm_button text="RepairDamage\Damage Ship\Wound DamCon 2" />
-    <clear_gm_button text="RepairDamage\Random Damage\Set Ship1 On-" />
-    <clear_gm_button text="RepairDamage\Random Damage\Set Ship2 On-" />
-    <clear_gm_button text="RepairDamage\Random Damage\Set Ship3 On-" />
-    <clear_gm_button text="RepairDamage\Random Damage\Set Ship4 On-" />
-    <clear_gm_button text="RepairDamage\Random Damage\Set Ship5 On-" />
-    <clear_gm_button text="RepairDamage\Random Damage\Set Ship6 On-" />
-    <clear_gm_button text="RepairDamage\Random Damage\Set Ship7 On-" />
-    <clear_gm_button text="RepairDamage\Random Damage\Set Ship8 On-" />
-    <clear_gm_button text="RepairDamage\Random Damage\Set All On-" />
-    <clear_gm_button text="RepairDamage\Incapacitate" />
-    <clear_gm_button text="RepairDamage\Reinstate" />
-    <clear_gm_button text="RepairDamage\_Dismiss" />
-  {% endcall %}
-  {{ _submenuEvent("IntRepairDamage", "Rprs/Dmge") }}
-  {{ _dismissEvent("IntRepairDamage", "RepairDamage\_Dismiss") }}
 
   {% call _createSubmenu("IntSupplies") %}
     <set_gm_button text="Homing" x="200" y="155" h="30" w="100" />
