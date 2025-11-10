@@ -75,11 +75,18 @@
   </event>
 {% endmacro %}
 
-{% macro createNumberedConditional(name_template, button, menuName, identifier, counter, optionID) %}
-  {% call menu.onMenuClick(button, menuName) %}
-    <set_variable name="Spawn_{{ identifier }}" value="1.0" integer="yes" />
-    <set_variable name="Condition_{{ identifier }}" value="{{ optionID}}.0" integer="yes" />
-  {% endcall %}
+{% macro createNumberedConditional(name_template, button, menuName, identifier, counter, optionID, isButton=False) %}
+  {% if isButton %}
+    {% call menu.onButtonClick(button, menuName) %}
+      <set_variable name="Spawn_{{ identifier }}" value="1.0" integer="yes" />
+      <set_variable name="Condition_{{ identifier }}" value="{{ optionID}}.0" integer="yes" />
+    {% endcall %}
+  {% else %}
+    {% call menu.onMenuClick(button, menuName) %}
+      <set_variable name="Spawn_{{ identifier }}" value="1.0" integer="yes" />
+      <set_variable name="Condition_{{ identifier }}" value="{{ optionID}}.0" integer="yes" />
+    {% endcall %}
+  {% endif %}
   <event name="{{ button }} Spawn">
     <if_variable name="Spawn_{{ identifier }}" comparator="EQUALS" value="1.0" />
     <if_variable name="Condition_{{ identifier }}" comparator="EQUALS" value="{{ optionID }}.0" />
@@ -90,10 +97,16 @@
   </event>
 {% endmacro %}
 
-{% macro createNumbered(name_template, button, menuName, counter, amount=5) %}
-  {% call menu.onMenuClick(button, menuName) %}
-    <set_variable name="Spawn_{{ button }}" value="1.0" integer="yes" />
-  {% endcall %}
+{% macro createNumbered(name_template, button, menuName, counter, amount=5, isButton=False) %}
+  {% if isButton %}
+    {% call menu.onButtonClick(button, menuName) %}
+      <set_variable name="Spawn_{{ button }}" value="1.0" integer="yes" />
+    {% endcall %}
+  {% else %}
+    {% call menu.onMenuClick(button, menuName) %}
+      <set_variable name="Spawn_{{ button }}" value="1.0" integer="yes" />
+    {% endcall %}
+  {% endif %}
   {{ scaffoldNumbered(name_template, button,  counter, amount) }}
   <event name="{{ button }} Spawn">
     <if_variable name="Spawn_{{ button }}" comparator="EQUALS" value="1.0" />

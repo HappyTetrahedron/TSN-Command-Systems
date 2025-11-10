@@ -131,9 +131,14 @@
   {{ menu.addDismissableSubmenu("Specials", menu.main.ai) }}
 
 
-  {% for ability in util.abilities %}
-    {% call menu.onMenuClick("Add\\" + ability.name, "Specials") %}
+  {% for ability in util.shipAbilities %}
+    {% call menu.onMenuClick("Ship\\" + ability.name, "Specials") %}
       <set_special use_gm_selection="" ship="{{ ability.id }}" />
+    {% endcall %}
+  {% endfor %}
+  {% for ability in util.captainAbilities %}
+    {% call menu.onMenuClick("Captain\\" + ability.name, "Specials") %}
+      <set_special use_gm_selection="" captain="{{ ability.id }}" />
     {% endcall %}
   {% endfor %}
   {% for special in util.specials %}
@@ -149,4 +154,3 @@
       <set_special use_gm_selection="" clear="yes" ability="{{ special }}" />
     {% endfor %}
   {% endcall %}
-

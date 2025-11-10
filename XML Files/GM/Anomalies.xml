@@ -1,0 +1,10 @@
+{% import 'GM Menus.xml' as menu %}
+{% import 'Utils.xml' as util %}
+
+{{ menu.addDismissableSubmenu("Anomalies", menu.main.poi) }}
+
+{% for anomaly in util.anomalies %}
+  {% call menu.onMenuClick(anomaly.type, "Anomalies") %}
+    <create type="Anomaly" pickupType="{{ anomaly.id }}" use_gm_position="" />
+  {% endcall %}
+{% endfor %}

@@ -808,46 +808,6 @@
     <set_variable name="POI Menu" value="7.0" integer="yes" />
     <set_timer name="POI Menu" seconds="1" />
   </event>
-  <folder_arme name="Waypoints" id_arme="27300614-0319-4056-8ba1-3bd5a637b8e4" parent_id_arme="16ea2536-7911-4199-bcd8-d74f63c6379b" />
-  <folder_arme name="Waypoints" id_arme="0106fa16-af19-40e8-b025-a0987dbdea32" parent_id_arme="27300614-0319-4056-8ba1-3bd5a637b8e4" />
-  <event name="Waypoint Spawn" id_arme="3a3b7071-cabd-403b-8c25-2d259420735b" parent_id_arme="0106fa16-af19-40e8-b025-a0987dbdea32">
-    <if_gm_button text="Waypoint SPAWN" />
-    <if_not_exists name="WP|waypointnumber|" />
-    <create type="genericMesh" use_gm_position="" name="WP|waypointnumber|" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.5" colorGreen="1.0" colorBlue="0.0" />
-    <set_object_property property="positionY" value="1000.0" name="WP|waypointnumber|" />
-    <set_ship_text name="WP|waypointnumber|" class="--" desc="Waypoint Marker" />
-    <set_variable name="Waypoints" value="2.0" integer="yes" />
-  </event>
-  <event name="Waypoint Skip" id_arme="7a33bd9e-d774-474e-9edc-0efdf445573d" parent_id_arme="0106fa16-af19-40e8-b025-a0987dbdea32">
-    <if_gm_button text="Spwn Waypoint" />
-    <if_exists name="WP|waypointnumber|" />
-    <set_variable name="Waypoints" value="4.0" integer="yes" />
-  </event>
-  <folder_arme name="Skip WP Spawn" id_arme="fc35587f-339a-4ea3-84d1-7c2120ddbbb1" parent_id_arme="0106fa16-af19-40e8-b025-a0987dbdea32" />
-  <event name="Increment WP Number" id_arme="6ba7ef9d-3e0e-488c-bd88-0e1093e589d9" parent_id_arme="fc35587f-339a-4ea3-84d1-7c2120ddbbb1">
-    <if_variable name="Waypoints" comparator="EQUALS" value="4.0" />
-    <if_variable name="waypointnumber" comparator="LESS" value="100.0" />
-    <set_variable name="waypointnumber" value="waypointnumber+1" integer="yes" />
-    <set_variable name="Waypoints" value="1.0" integer="yes" />
-  </event>
-  <event name="Reset WP Number" id_arme="d7f73fd0-677d-41ee-ac94-40a459a42145" parent_id_arme="fc35587f-339a-4ea3-84d1-7c2120ddbbb1">
-    <if_variable name="Waypoints" comparator="EQUALS" value="4.0" />
-    <if_variable name="waypointnumber" comparator="GREATER_EQUAL" value="100.0" />
-    <set_variable name="waypointnumber" value="1.0" integer="yes" />
-    <set_variable name="Waypoints" value="1.0" integer="yes" />
-  </event>
-  <event name="Increment Pod Number" id_arme="9db782e2-b73c-4412-adcf-408398df316a" parent_id_arme="0106fa16-af19-40e8-b025-a0987dbdea32">
-    <if_variable name="Waypoints" comparator="EQUALS" value="2.0" />
-    <if_variable name="waypointnumber" comparator="LESS" value="100.0" />
-    <set_variable name="waypointnumber" value="waypointnumber+1" integer="yes" />
-    <set_variable name="Waypoints" value="0.0" integer="yes" />
-  </event>
-  <event name="Reset Pod Number" id_arme="75419acd-5057-41ca-9925-50c75de20a31" parent_id_arme="0106fa16-af19-40e8-b025-a0987dbdea32">
-    <if_variable name="Waypoints" comparator="EQUALS" value="2.0" />
-    <if_variable name="waypointnumber" comparator="GREATER_EQUAL" value="100.0" />
-    <set_variable name="waypointnumber" value="1.0" integer="yes" />
-    <set_variable name="Waypoints" value="0.0" integer="yes" />
-  </event>
   <folder_arme name="Derelicts and Debris" id_arme="c4dae11a-c157-4ba2-b36e-614e85362d39" parent_id_arme="16ea2536-7911-4199-bcd8-d74f63c6379b" />
   <folder_arme name="Hegemony Wrecks" id_arme="944bfb16-c8b5-404e-ad2e-bea100921343" parent_id_arme="c4dae11a-c157-4ba2-b36e-614e85362d39" />
   <folder_arme name="Single Enemies" id_arme="795be911-6927-4425-8cf1-c0d701e2df0f" parent_id_arme="944bfb16-c8b5-404e-ad2e-bea100921343" />
@@ -1772,39 +1732,6 @@
     <set_variable name="Auto AI Type" value="9.0" integer="yes" />
     <set_variable name="Name Assign" value="1.0" integer="yes" />
   </disabled_event>
-  <folder_arme name="Anomalys" id_arme="bac6ef24-6074-4d8d-8aac-b95704638fdf" parent_id_arme="16ea2536-7911-4199-bcd8-d74f63c6379b" />
-  <event name="Energy" id_arme="ca51b65b-5e28-4273-9fcc-038cdd78aa5c" parent_id_arme="bac6ef24-6074-4d8d-8aac-b95704638fdf">
-    <if_gm_button text="Spawn Anomaly\Energy" />
-    <create type="Anomaly" pickupType="0" use_gm_position="" />
-  </event>
-  <event name="DamCons" id_arme="0cea9b70-5f67-43ad-afc3-38f4a748d30c" parent_id_arme="bac6ef24-6074-4d8d-8aac-b95704638fdf">
-    <if_gm_button text="Spawn Anomaly\DamCons" />
-    <create type="Anomaly" pickupType="1" use_gm_position="" />
-  </event>
-  <event name="Heat" id_arme="458216f5-8d06-4bb7-9823-e90b2e338f63" parent_id_arme="bac6ef24-6074-4d8d-8aac-b95704638fdf">
-    <if_gm_button text="Spawn Anomaly\Heat" />
-    <create type="Anomaly" pickupType="2" use_gm_position="" />
-  </event>
-  <event name="Scan" id_arme="372ec781-8ee8-43ce-a74c-a30585c88406" parent_id_arme="bac6ef24-6074-4d8d-8aac-b95704638fdf">
-    <if_gm_button text="Spawn Anomaly\Scan" />
-    <create type="Anomaly" pickupType="3" use_gm_position="" />
-  </event>
-  <event name="Beam" id_arme="7064ae21-095e-45db-b380-a2234d3f6174" parent_id_arme="bac6ef24-6074-4d8d-8aac-b95704638fdf">
-    <if_gm_button text="Spawn Anomaly\Beam" />
-    <create type="Anomaly" pickupType="4" use_gm_position="" />
-  </event>
-  <event name="Speed" id_arme="bd60c73d-3b2e-4111-9a7b-e652f5855fb6" parent_id_arme="bac6ef24-6074-4d8d-8aac-b95704638fdf">
-    <if_gm_button text="Spawn Anomaly\Speed" />
-    <create type="Anomaly" pickupType="5" use_gm_position="" />
-  </event>
-  <event name="Shield" id_arme="4ffb4e2c-b819-4c5e-9b9d-ab7a2cbfb457" parent_id_arme="bac6ef24-6074-4d8d-8aac-b95704638fdf">
-    <if_gm_button text="Spawn Anomaly\Shield" />
-    <create type="Anomaly" pickupType="6" use_gm_position="" />
-  </event>
-  <event name="Code Case" id_arme="dd29e03b-b0b1-477d-b4a9-be8a92396f9e" parent_id_arme="bac6ef24-6074-4d8d-8aac-b95704638fdf">
-    <if_gm_button text="Spawn Anomaly\Code Case" />
-    <create type="Anomaly" pickupType="7" use_gm_position="" />
-  </event>
   <folder_arme name="Delete Enable Disable" id_arme="5db8bbfc-fdc4-4382-9094-b1c3795695b2" parent_id_arme="a63d8b7a-dd61-481e-b818-314ef7f7af5f" />
   <event name="Delete Disabled" id_arme="740d30e8-0bc0-42ac-8f09-4d841654414c" parent_id_arme="5db8bbfc-fdc4-4382-9094-b1c3795695b2">
     <if_gm_button text="DelOn" />

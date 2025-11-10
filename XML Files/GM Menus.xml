@@ -503,13 +503,9 @@
 
   {% call _createMenu(main.poi.key, main.poi.id) %}
     {{ util.restore("GM_WreckMenu_Selector") }}
-    <set_gm_button text="Waypoint SPAWN" x="100" y="100" h="30" w="80" />
     <set_gm_button text="Debris" x="100" y="170" h="30" w="80" />
-    <set_gm_button text="Anomalies" x="100" y="240" h="30" w="80" />
   {% endcall %}
   {% call _destroyMenu(main.poi.key, main.poi.id) %}
-    <clear_gm_button text="Waypoint SPAWN" />
-    <clear_gm_button text="Anomalies" />
     <clear_gm_button text="Debris" />
     <set_variable name="GM_Submenu_POIWreckSelect_ShouldShow" value="0.0" integer="yes" />
     {{ util.storeAndSet("GM_WreckMenu_Selector") }}
