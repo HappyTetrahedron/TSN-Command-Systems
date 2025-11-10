@@ -2,10 +2,11 @@
   <mission_description>TSN Command Systems Version {{ g.version }}, compiled at {{ g.time }}. Maps:{% for map in g.data.get("maps", []) %} {{ map }}{% endfor %} - Extensions:{% for script in g.data.get("extensions", []) %} {{ script }}{% endfor %}</mission_description>
 {% include 'Start Up.xml' %}
 {% include 'Elements.xml' %}
-{% include 'Comms.xml' %}
 {% include 'Custom Config.xml' %}
 {% include 'Spawn.xml' %}
 {% include 'Fleets/FleetSystem.xml' %}
+{% include 'GM/GMTools.xml' %}
+
 {% import 'ModuleUtils.xml' as modutil %}
 {% import 'Utils.xml' as util %}
 {% for ship in util.shipConfigs %}
@@ -20,6 +21,8 @@
 {% for extension in g.data.get("extensions", []) %}
   {% include 'Extensions/' + extension + '.xml' %}
 {% endfor %}
-{% include 'GM/GMTools.xml' %}
+
+{% include 'Respawn.xml' %}
+{% include 'Comms.xml' %}
 {% include 'GM Console.xml' %}
 </mission_data>

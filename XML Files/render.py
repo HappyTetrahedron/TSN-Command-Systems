@@ -41,7 +41,6 @@ env = {
     "difficulty": 7,
     "extensions": [
         "TokenSystem",
-        "Radiation",
     ],
     "maps": [
         "Tibur",

@@ -3,6 +3,13 @@
 
 {{ menu.addDismissableSubmenu("Sensors", menu.main.interaction) }}
 
+{% call util.init("Sensor Pings") %}
+  {% for l in util.FleetLetters %}
+  <set_variable name="digit{{ l }}1" value="0.0" integer="yes" />
+  <set_variable name="digit{{ l }}2" value="0.0" integer="yes" />
+  {% endfor %}
+{% endcall %}
+
 {% macro wipePings() %}
  {% for l in util.FleetLetters %}
   <destroy name="_{{ l }}_" />

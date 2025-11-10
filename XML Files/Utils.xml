@@ -45,7 +45,7 @@
         {
             "id": "8",
             "slot": "7",
-            "shuttle": "Invention",
+            "shuttle": "Proteus",
             "commPrefix": "__",
         },
 
@@ -319,4 +319,8 @@
     {{ caller() }}
     <set_variable name="{{ name }} Initialized" value="1.0" integer="yes" />
   </event>
+{% endmacro %}
+
+{% macro onRespawn() %}
+  {% do track("onRespawn", caller) %}
 {% endmacro %}

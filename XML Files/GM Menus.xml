@@ -531,7 +531,6 @@
   {% call _createMenu(main.interaction.key, main.interaction.id) %}
     <set_gm_button text="Messages" x="100" y="100" h="30" w="90" />
     <set_gm_button text="Supplies" x="100" y="135" h="30" w="90" />
-    <set_gm_button text="Brd Act." x="100" y="240" h="30" w="90" />
     <set_gm_button text="Scan Text" x="100" y="275" h="30" w="90" />
     <set_gm_button text="Shuttle Resup" x="100" y="310" h="30" w="90" />
     <set_gm_button text="Reset Comms" x="100" y="345" h="30" w="90" />
@@ -541,7 +540,6 @@
     <clear_gm_button text="Messages" />
     <clear_gm_button text="Supplies" />
     <clear_gm_button text="Scan Text" />
-    <clear_gm_button text="Brd Act." />
     <clear_gm_button text="Shuttle Resup" />
     <clear_gm_button text="Reset Comms" />
     {{ util.storeAndSet("GM_Submenu_IntSupplies_ShouldShow") }}
@@ -1036,34 +1034,6 @@
     <clear_gm_button text="Defense Wrecks\TSN Weapons Platform" />
     <clear_gm_button text="Defense Wrecks\Heg. Defense Platform" />
   {% endcall %}
-
-  {% call _createSubmenu("IntBoarding") %}
-    <set_gm_button text="Boarding Actions\Attack Ship1" />
-    <set_gm_button text="Boarding Actions\Attack Ship6" />
-    <set_gm_button text="Boarding Actions\Attack Ship4" />
-    <set_gm_button text="Boarding Actions\Attack Ship7" />
-    <set_gm_button text="Boarding Actions\Attack Ship3" />
-    <set_gm_button text="Boarding Actions\Attack Ship2" />
-    <set_gm_button text="Boarding Actions\Attack Ship8" />
-    <set_gm_button text="Boarding Actions\Attack Ship5" />
-    <set_gm_button text="Boarding Actions\Disable Ship" />
-    <set_gm_button text="Boarding Actions\_Dismiss" />
-  {% endcall %}
-  {% call _destroySubmenu("IntBoarding") %}
-    <clear_gm_button text="Boarding Actions\Attack Ship1" />
-    <clear_gm_button text="Boarding Actions\Attack Ship6" />
-    <clear_gm_button text="Boarding Actions\Attack Ship4" />
-    <clear_gm_button text="Boarding Actions\Attack Ship7" />
-    <clear_gm_button text="Boarding Actions\Attack Ship3" />
-    <clear_gm_button text="Boarding Actions\Attack Ship2" />
-    <clear_gm_button text="Boarding Actions\Attack Ship8" />
-    <clear_gm_button text="Boarding Actions\Attack Ship5" />
-    <clear_gm_button text="Boarding Actions\Disable Ship" />
-    <clear_gm_button text="Boarding Actions\_Dismiss" />
-  {% endcall %}
-  {{ _submenuEvent("IntBoarding", "Brd Act.") }}
-  {{ _dismissEvent("IntBoarding", "Boarding Actions\_Dismiss") }}
-
 
   {% call _createSubmenu("IntScantext") %}
     <set_gm_button text="NPC Descriptions\Refugee Marker" />

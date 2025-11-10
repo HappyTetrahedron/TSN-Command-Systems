@@ -1,5 +1,9 @@
 {% import 'Utils.xml' as util %}
 
+{% macro addStatusLine() %}
+  {% do track("commStatusLines", caller) %}
+{% endmacro %}
+
 {% macro createMenu(name, id ) %}
   {% for ship in util.shipConfigs %}
     <event name="Comms Menu Create {{ name }} - ship{{ ship.id }}">
@@ -126,7 +130,11 @@
 
 {% call(ship) onButtonPress("Request Cargo & Personnel Status") %}
     <if_exists player_slot="{{ ship.slot }}" />
-    <incoming_comms_text from="CHANNEL {{ ship.id }}" sideValue="playerSide" type="STATUS">We have |Ship{{ ship.id }}Marines| battle ready Marines.^There are |Ship{{ ship.id }}MarineTeams| marine teams ready to be deployed.^There are |Ship{{ ship.id }}EngineerTeams| teams of engineers ready to be deployed.^There are |Ship{{ ship.id }}MedicTeams| medical teams ready to be deployed.^We have |Ship{{ ship.id }}Cargos| units of cargo.^Aboard, we have supplies of |Ship{{ ship.id }}CommsRelays| Comms relays and |Ship{{ ship.id }}SensorBuoys| Sensor buoys equipped and ready to be deployed.</incoming_comms_text>
+    {% set lines = [] %}
+    {% for caller in retrieve("commStatusLines") %}
+      {% do lines.append(caller(ship)|trim) %}
+    {% endfor %}
+    <incoming_comms_text from="CHANNEL {{ ship.id }}" sideValue="playerSide" type="STATUS">There are |Ship{{ ship.id }}MarineTeams| marine teams ready to be deployed.^There are |Ship{{ ship.id }}EngineerTeams| teams of engineers ready to be deployed.^There are |Ship{{ ship.id }}MedicTeams| medical teams ready to be deployed.^We have |Ship{{ ship.id }}Cargos| units of cargo.^Aboard, we have supplies of |Ship{{ ship.id }}CommsRelays| Comms relays and |Ship{{ ship.id }}SensorBuoys| Sensor buoys equipped and ready to be deployed.^{{ lines|join("^") }}</incoming_comms_text>
 {% endcall %}
 
 {% for cargo in util.cargoTypes %}
