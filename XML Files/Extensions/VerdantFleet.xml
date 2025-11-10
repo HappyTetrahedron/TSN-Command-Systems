@@ -304,7 +304,7 @@
 
 
   {% for name in ["Keloi Gitosz"] %}
-    {% call spawn.spawn(utils.spawnFactions.Hegemony.key, "Single Hegemony", "+KeloiGitos") %}
+    {% call spawn.spawn(util.spawnFactions.Hegemony.key, "Single Hegemony", "+KeloiGitos") %}
     <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="2002" sideValue="SideValue" fleetnumber="-1" />
 
     <set_object_property property="shieldMaxStateFront" value="2000" name="{{ name }}" />

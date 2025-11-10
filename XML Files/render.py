@@ -18,6 +18,11 @@ env = {
     "extensions": [
         "TokenSystem",
         "BoardingActions",
+        "HazardPainter",
+        "NebulaEffects",
+        "Radiation",
+        "VerdantFleet",
+        "CrookedStar",
     ],
     "maps": [
         "Tibur",
