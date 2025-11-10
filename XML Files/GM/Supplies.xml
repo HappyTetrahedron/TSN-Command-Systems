@@ -1,7 +1,7 @@
 {% import 'GM Menus.xml' as menu %}
 {% import 'Utils.xml' as util %}
 
-{% call(isCreate) menu.addButtonExpandMenu("Supplies", menu.main.interaction, x=200, y=155, h=30, w=100) %}
+{% call(isCreate) menu.addButtonExpandMenu("Supplies", menu.main.interaction, x=230, y=155, h=30, w=100, rows=12) %}
   <set_variable name="Supplies_Toggle_ShouldShow" value="{{ 1 if isCreate else 0 }}" integer="yes" />
 {% endcall %}
 
@@ -21,7 +21,7 @@
     "Ordnance": "1",
     "Supplies_Toggle_ShouldShow": "1",
   }) %}
-    <set_gm_button text="Add Ordn" x="200" y="125" h="30" w="100" />
+    <set_gm_button text="Add Ordn" x="230" y="125" h="30" w="100" />
   {% endcall %}
   {% call util.destroyConditionalMenu("SuppliesAddOrdn", {
     "Ordnance": "1",
@@ -34,7 +34,7 @@
     "Ordnance": "-1",
     "Supplies_Toggle_ShouldShow": "1",
   }) %}
-    <set_gm_button text="Rmv Ordn" x="200" y="125" h="30" w="100" />
+    <set_gm_button text="Rmv Ordn" x="230" y="125" h="30" w="100" />
   {% endcall %}
   {% call util.destroyConditionalMenu("SuppliesRmOrdn", {
     "Ordnance": "-1",

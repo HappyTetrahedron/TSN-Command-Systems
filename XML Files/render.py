@@ -41,6 +41,7 @@ env = {
     "difficulty": 7,
     "extensions": [
         "TokenSystem",
+        "BoardingActions",
     ],
     "maps": [
         "Tibur",

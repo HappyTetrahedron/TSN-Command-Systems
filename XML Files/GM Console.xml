@@ -1,4 +1,3 @@
-  {% include 'GM Menus.xml' %}
   <event name="DelMines">
     <if_gm_button text="DelAllMines" />
     <destroy_near type="mines" radius="80000" centerX="50000" centerY="0" centerZ="50000" />

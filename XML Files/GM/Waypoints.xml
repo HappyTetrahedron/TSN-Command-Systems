@@ -1,7 +1,7 @@
 {% import 'GM Menus.xml' as menu %}
 {% import 'Spawn.xml' as spawn %}
 
-{% call spawn.createNumbered("WP|WaypointNr|", "Add Waypoint", menu.main.poi, "WaypointNr", amount=5, isButton=True) %}
+{% call spawn.createNumbered("WP|WaypointNr|", "+Waypoint", menu.main.poi, "WaypointNr", amount=5, isButton=True) %}
     <create type="genericMesh" use_gm_position="" name="WP|WaypointNr|" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.5" colorGreen="1.0" colorBlue="0.0" />
     <set_object_property property="positionY" value="1000.0" name="WP|WaypointNr|" />
     <set_ship_text name="WP|WaypointNr|" class="--" desc="Waypoint Marker" />

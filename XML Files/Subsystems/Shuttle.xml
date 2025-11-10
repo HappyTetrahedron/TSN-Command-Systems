@@ -149,7 +149,7 @@
 {{ menu.addDismissableSubmenu("RVs", menu.main.poi) }}
 {% for cargo in util.cargoTypes if not cargo.is_nothing %}
   {% call spawn.createNumberedConditional("Rv|rvnumber|", cargo.name + " Drop", "RVs", "RV Points", "rvnumber", cargo.rv.drop) %}
-    <create type="genericMesh" use_gm_position="" name="Rv" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" use_gm_position="" name="Rv|rvnumber|" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
     <set_object_property property="pushRadius" value="0.0" name="Rv|rvnumber|" />
     <set_object_property property="rollDelta" value="-0.2" name="Rv|rvnumber|" />
     <set_object_property property="angleDelta" value="0.05" name="Rv|rvnumber|" />
@@ -180,7 +180,7 @@
       <set_object_property property="{{ property }}" value="{{ value }}" name="Rv|rvnumber|" />
     {% endfor %}
     <incoming_comms_text from="SYSTEMS" type="PLAYER">{{ cargo.name }} extraction zone identified.</incoming_comms_text>
-    <set_variable name="Rv|rvnumber|Type" value="RvType" integer="yes" />
+    <set_variable name="Rv|rvnumber|Type" value="{{ cargo.rv.pickup }}" integer="yes" />
   {% endcall %}
 {% endfor %}
 {{ spawn.scaffoldNumbered("Rv|rvnumber|", "RV Points", "rvnumber", amount=9) }}
@@ -395,20 +395,20 @@
 
 {# Shuttle Resupply #}
 {{ menu.addDismissableSubmenu("Shuttle Resup", menu.main.interaction) }}
-{% for shuttle in ShuttleList %}
-  <event name="Restock{{ shuttle }}" id_arme="20b9a825-9247-4988-9fb5-f659a8514050" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
-  {% call menu.onMenuClick(shuttle, "Shuttle Resup") %}
-    <create type="station" use_gm_position="" name="{{ shuttle }} Pickup" hullID="1058" sideValue="2" />
-    <set_object_property property="canBuild" value="0" name="{{ shuttle }} Pickup" />
-    <set_object_property property="missileStoresHoming" value="0" name="{{ shuttle }} Pickup" />
-    <set_object_property property="missileStoresNuke" value="0" name="{{ shuttle }} Pickup" />
-    <set_object_property property="missileStoresMine" value="0" name="{{ shuttle }} Pickup" />
-    <set_object_property property="missileStoresEMP" value="0" name="{{ shuttle }} Pickup" />
-    <set_object_property property="missileStoresPShock" value="0" name="{{ shuttle }} Pickup" />
-    <set_object_property property="missileStoresTag" value="0" name="{{ shuttle }} Pickup" />
-    <set_object_property property="missileStoresBeacon" value="0" name="{{ shuttle }} Pickup" />
-    <set_object_property property="missileStoresProbe" value="0" name="{{ shuttle }} Pickup" />
-    <set_player_station_carried name="{{ shuttle }} Pickup" raceKeys="TSN" hullKeys="TSN Shuttle shuttle" singleSeatName="{{ shuttle }}" />
-    <set_variable name="{{ shuttle }} Status" value="1.0" integer="yes" />
+
+{% for ship in util.shipConfigs %}
+  {% call menu.onMenuClick(ship.shuttle, "Shuttle Resup") %}
+    <create type="station" use_gm_position="" name="{{ ship.shuttle }} Pickup" hullID="1058" sideValue="2" />
+    <set_object_property property="canBuild" value="0" name="{{ ship.shuttle }} Pickup" />
+    <set_object_property property="missileStoresHoming" value="0" name="{{ ship.shuttle }} Pickup" />
+    <set_object_property property="missileStoresNuke" value="0" name="{{ ship.shuttle }} Pickup" />
+    <set_object_property property="missileStoresMine" value="0" name="{{ ship.shuttle }} Pickup" />
+    <set_object_property property="missileStoresEMP" value="0" name="{{ ship.shuttle }} Pickup" />
+    <set_object_property property="missileStoresPShock" value="0" name="{{ ship.shuttle }} Pickup" />
+    <set_object_property property="missileStoresTag" value="0" name="{{ ship.shuttle }} Pickup" />
+    <set_object_property property="missileStoresBeacon" value="0" name="{{ ship.shuttle }} Pickup" />
+    <set_object_property property="missileStoresProbe" value="0" name="{{ ship.shuttle }} Pickup" />
+    <set_player_station_carried name="{{ ship.shuttle }} Pickup" raceKeys="TSN" hullKeys="TSN Shuttle shuttle" singleSeatName="{{ ship.shuttle }}" />
+    <set_variable name="{{ ship.shuttle }} Status" value="1.0" integer="yes" />
   {% endcall %}
 {% endfor %}

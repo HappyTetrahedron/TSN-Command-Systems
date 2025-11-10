@@ -25,7 +25,7 @@
     "button": "POI",
     "id": 3,
     "buttons": {
-      "x": 300,
+      "x": 100,
       "y": 100,
       "w": 90,
       "h": 30,
@@ -51,7 +51,7 @@
     "buttons": {
       "x": 100,
       "y": 100,
-      "w": 90,
+      "w": 120,
       "h": 30,
       "rows": 10,
     },
@@ -63,7 +63,7 @@
     "buttons": {
       "x": 100,
       "y": 100,
-      "w": 90,
+      "w": 120,
       "h": 30,
       "rows": 10,
     },
@@ -162,6 +162,9 @@
     {% for permmenu in retrieve("permSubmenus" + name) %}
       <set_variable name="GM_Submenu_{{ permmenu }}_ShouldShow" value="1.0" integer="yes" />
     {% endfor %}
+    {% for buttonsubmenu in retrieve("buttonSubs" + name) %}
+      {{ util.restore("GM_Submenu_" + name + buttonsubmenu + "_ShouldShow") }}
+    {% endfor %}
     <set_variable name="_GM_Menu_{{ name }}_Active" value="1.0" integer="yes" />
   </event>
   {% endmacro %}
@@ -179,6 +182,9 @@
       <set_variable name="GM_Submenu_{{ permmenu }}_ShouldShow" value="0.0" integer="yes" />
     {% endfor %}
     <set_variable name="_GM_Menu_{{ name }}_Active" value="0.0" integer="yes" />
+    {% for buttonsubmenu in retrieve("buttonSubs" + name) %}
+      {{ util.storeAndSet("GM_Submenu_" + name + buttonsubmenu + "_ShouldShow") }}
+    {% endfor %}
   </event>
   {% endmacro %}
   {% macro _menuEvent(name, id, triggerButton) %}
@@ -245,19 +251,31 @@
     {% endcall %}
   {% endmacro %}
   {% macro _createSubmenu(name) %}
-  <event name="SubMenu Create {{ name }}">
-    {% do allSubmenus.append(name) %}
-    <if_variable name="GM_Submenu_{{ name }}_ShouldShow" comparator="EQUALS" value="1.0" />
-    <if_variable name="_GM_Submenu_{{ name }}_Active" comparator="NOT" value="1.0" />
-    {{ caller () }}
-    <set_variable name="_GM_Submenu_{{ name }}_Active" value="1.0" integer="yes" />
-  </event>
+    <event name="SubMenu Create {{ name }}">
+      {% do allSubmenus.append(name) %}
+      <if_variable name="GM_Submenu_{{ name }}_ShouldShow" comparator="EQUALS" value="1.0" />
+      <if_variable name="_GM_Submenu_{{ name }}_Active" comparator="NOT" value="1.0" />
+      {{ caller () }}
+      {% for permmenu in retrieve("permSubmenus" + name) %}
+        <set_variable name="GM_Submenu_{{ permmenu }}_ShouldShow" value="1.0" integer="yes" />
+      {% endfor %}
+      {% for buttonsubmenu in retrieve("buttonSubs" + name) %}
+        {{ util.restore("GM_Submenu_" + name + buttonsubmenu + "_ShouldShow") }}
+      {% endfor %}
+      <set_variable name="_GM_Submenu_{{ name }}_Active" value="1.0" integer="yes" />
+    </event>
   {% endmacro %}
   {% macro _destroySubmenu(name) %}
     <event name="SubMenu Destroy {{ name }}">
       <if_variable name="GM_Submenu_{{ name }}_ShouldShow" comparator="NOT" value="1.0" />
       <if_variable name="_GM_Submenu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
       {{ caller () }}
+      {% for permmenu in retrieve("permSubmenus" + name) %}
+        <set_variable name="GM_Submenu_{{ permmenu }}_ShouldShow" value="0.0" integer="yes" />
+      {% endfor %}
+      {% for buttonsubmenu in retrieve("buttonSubs" + name) %}
+        {{ util.storeAndSet("GM_Submenu_" + name + buttonsubmenu + "_ShouldShow") }}
+      {% endfor %}
       <set_variable name="_GM_Submenu_{{ name }}_Active" value="0.0" integer="yes" />
   </event>
   {% endmacro %}
@@ -321,7 +339,7 @@
   {% if menu.type == "ephemeralSubmenu" %}
     {% set menuname = menu.parentMenu + menu.name %}
     {% set ephButtons = retrieve("menukey" + menu.name) %}
-    {% do track("buttons" + menu.parentMenu, menuname) %}
+    {% do track("buttons" + menu.parentMenu, menu.name) %}
     {% call _createSubmenu(menuname) %}
       {% for button in ephButtons %}
         <set_gm_button text="{{ menu.name }}\{{ button }}" />
@@ -341,18 +359,19 @@
   {% if menu.type == "buttonExpandMenu" %}
     {% set menuname = menu.parentMenu + menu.name %}
     {% do track("buttons" + menu.parentMenu, menu.name) %}
+    {% do track("buttonSubs" + menu.parentMenu, menu.name) %}
     {% set buttons = retrieve("buttons" + menu.name) %}
     {% call _createSubmenu(menuname) %}
       {% if menu.body %}
         {{ menu.body(True) }}
       {% endif %}
-      {{ _buttonGrid(buttons + [menu.name + " Dismiss"], menu.x, menu.y, menu.w, menu.h, menu.rows) }}
+      {{ _buttonGrid(buttons + [menu.name + " Close"], menu.x, menu.y, menu.w, menu.h, menu.rows) }}
     {% endcall %}
     {% call _destroySubmenu(menuname) %}
       {% if menu.body %}
         {{ menu.body(False) }}
       {% endif %}
-      {% for button in retrieve("menukey" + menu.name) %}
+      {% for button in retrieve("buttons" + menu.name) %}
         <clear_gm_button text="{{ button }}" />
       {% endfor %}
       <clear_gm_button text="{{ menu.name }} Close" />
@@ -551,7 +570,6 @@
 
   {% call _createMenu(main.custom.key, main.custom.id) %}
   {% endcall %}
-
   {% call _destroyMenu(main.custom.key, main.custom.id) %}
   {% endcall %}
   {{ _menuEvent(main.custom.key, main.custom.id, main.custom.button) }}

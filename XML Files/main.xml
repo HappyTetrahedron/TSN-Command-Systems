@@ -29,5 +29,6 @@
 {% include 'PlayerTracking.xml' %}
 {% include 'Comms.xml' %}
 {% include 'GM Console.xml' %}
+{% include 'GM Menus.xml' %}
 {% include 'Start.xml' %}
 </mission_data>

@@ -4,22 +4,23 @@
 {% import 'Utils.xml' as util %}
 {% import 'Start.xml' as start %}
 {% import 'Comms.xml' as comms %}
+{% import 'PlayerTracking.xml' as tracking %}
 
 
 {{ menu.addDismissableSubmenu("Boarding", menu.main.interaction) }}
 
-{% call start.onStart("Boarding Action") %}
+{% call start.onStart() %}
   {% for ship in util.shipConfigs %}
     <set_variable name="Ship{{ ship.id }} Marines" value="1.0" integer="yes" />
     <set_variable name="Ship{{ ship.id }}MarinesMax" value="20.0" integer="yes" />
   {% endfor %}
 {% endcall %}
-{% call(ship) util.onRespawn() %}
+{% call(ship) tracking.onRespawn() %}
   <set_variable name="Ship{{ ship.id }} Marines" value="1.0" integer="yes" />
   <set_variable name="Ship{{ ship.id }}MarinesMax" value="20.0" integer="yes" />
 {% endcall %}
 {% call(ship) comms.addStatusLine() %}
-  We have |Ship{{ ship.id }}Marines| defender teams ready for combat.
+  We have |Ship{{ ship.id }}Marines| defenders ready for combat.
 {% endcall %}
 
 {% for ship in util.shipConfigs %}
@@ -99,7 +100,7 @@
     <if_variable name="Atk Ship{{ ship.id }}" comparator="EQUALS" value="1.0" />
     <if_variable name="Ship{{ ship.id }}Attackers" comparator="LESS_EQUAL" value="0.0" />
     <set_variable name="Ship{{ ship.id }}Attackers" value="0.0" integer="yes" />
-    <incoming_comms_text from="CHANNEL {{ ship.id }}" type="STATUS">Boarders have been successfully repelled.^We have casualties though. We are down to |Ship{{ ship.id }}Marines| combat ready marines.</incoming_comms_text>
+    <incoming_comms_text from="CHANNEL {{ ship.id }}" type="STATUS">Boarders have been successfully repelled.^We have casualties though. We are down to |Ship{{ ship.id }}Marines| combat ready defenders.</incoming_comms_text>
     <set_variable name="Atk Ship{{ ship.id }}" value="0.0" integer="yes" />
     <set_variable name="Ship{{ ship.id }} Marines" value="2.0" />
   </event>

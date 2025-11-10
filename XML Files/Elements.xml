@@ -898,7 +898,6 @@
     <destroy name="TSN Eagle - Green" />
     <destroy name="TSN Eagle - Amber" />
   </event>
-  {% include 'Shuttle.xml' %}
   <folder_arme name="Fuel Collection System" id_arme="9d864d69-fde0-4ec0-9abe-d9d738f85fc6" parent_id_arme="da1f4d06-129f-463c-a1e6-d7a4eae746b1" />
   <event name="Enable Fuel Collectors System" id_arme="99b6b1e0-3feb-420b-8cdb-e66ec6a3d9d0" parent_id_arme="9d864d69-fde0-4ec0-9abe-d9d738f85fc6">
     <if_variable name="Enable FCS" comparator="EQUALS" value="1.0" />
