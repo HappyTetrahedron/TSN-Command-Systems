@@ -3,7 +3,7 @@
 {% import 'Utils.xml' as util %}
 {% import 'Start.xml' as start %}
 
-{% call start.onStart() %}
+{% call start.onStart("Radiation") %}
   {% for ship in util.shipConfigs %}
     <set_variable name="Ship{{ ship.id }}Level" value="0" integer="yes" />
     <set_variable name="Ship{{ ship.id }}RadDis" value="0" integer="yes" />

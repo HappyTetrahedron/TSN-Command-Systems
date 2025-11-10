@@ -1,8 +1,8 @@
 {# Destroy auto-named object. Refers to dynamic state - include this at the end. #}
 {% import 'Utils.xml' as util %}
 
-{% macro onDestroy() %}
-  {% do track("onDestroy", caller) %}
+{% macro onDestroy(identifier) %}
+  {% do track("onDestroy", caller, identifier) %}
 {% endmacro %}
 
   <event name="Begin Cycle">

@@ -6,6 +6,7 @@ from flask import stream_template
 from flask import g
 import os
 import datetime
+import jinja_functions as jf
 
 app = Blueprint('app', __name__)
 
@@ -24,6 +25,8 @@ def sanitize(filename):
 
 @app.route("/render", methods = ['POST'])
 def render():
+    jf.clear_all_state()
+
     data = request.json
     g.data = data
     g.version = current_app.config['version']
@@ -218,6 +221,7 @@ def create_app(datadir):
     myapp.jinja_env.lstrip_blocks = True
     myapp.jinja_env.trim_blocks = True
     myapp.jinja_env.add_extension('jinja2.ext.do')
+    jf.register(myapp.jinja_env)
     myapp.register_blueprint(app)
 
     return myapp

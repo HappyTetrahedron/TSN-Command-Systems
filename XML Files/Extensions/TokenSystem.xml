@@ -3,7 +3,7 @@
 {% import 'Utils.xml' as util %}
 {% import 'Start.xml' as start %}
 
-{% call start.onStart() %}
+{% call start.onStart("TokenSystem") %}
     <set_variable name="TokenSysT" value="0.0" integer="yes" />
     <set_variable name="TokenSysS" value="0.0" integer="yes" />
 {% endcall %}

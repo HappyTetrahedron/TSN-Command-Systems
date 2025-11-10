@@ -1,7 +1,7 @@
 {% import 'Utils.xml' as util %}
 
-{% macro onStart() %}
-  {% do track("onStart", caller) %}
+{% macro onStart(identifier) %}
+  {% do track("onStart", caller, identifier) %}
 {% endmacro %}
 
 {% set data = g.data if g else {} %}

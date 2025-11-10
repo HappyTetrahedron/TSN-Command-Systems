@@ -1,8 +1,8 @@
 {% import 'Utils.xml' as util %}
 {% import 'GM Menus.xml' as menu %}
 
-{% macro addStatusLine() %}
-  {% do track("commStatusLines", caller) %}
+{% macro addStatusLine(identifier) %}
+  {% do track("commStatusLines", caller, identifier) %}
 {% endmacro %}
 
 {% macro createMenu(name, id ) %}

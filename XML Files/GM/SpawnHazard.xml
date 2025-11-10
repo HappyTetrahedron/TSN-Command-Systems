@@ -90,6 +90,6 @@
     <set_variable name="Podnumber" value="1.0" />
   </event>
 
-{% call start.onStart() %}
+{% call start.onStart("HazardSpawn") %}
     <set_variable name="Podnumber" value="1.0" integer="yes" />
 {% endcall %}

@@ -1,19 +1,19 @@
 {% import 'Utils.xml' as util %}
 {% import 'Start.xml' as start %}
 
-{% macro onSpawn() %}
-  {% do track("onSpawn", caller) %}
+{% macro onSpawn(identifier) %}
+  {% do track("onSpawn", caller, identifier) %}
 {% endmacro %}
 
-{% macro onRespawn() %}
-  {% do track("onRespawn", caller) %}
+{% macro onRespawn(identifier) %}
+  {% do track("onRespawn", caller, identifier) %}
 {% endmacro %}
 
-{% macro onDestroy() %}
-  {% do track("onPlayerDestroy", caller) %}
+{% macro onDestroy(identifier) %}
+  {% do track("onPlayerDestroy", caller, identifier) %}
 {% endmacro %}
 
-{% call start.onStart() %}
+{% call start.onStart("PlayerTracking") %}
   {% for ship in util.shipConfigs %}
     <set_variable name="Ship{{ ship.id }} Status" value="1.0" integer="yes" />
   {% endfor %}

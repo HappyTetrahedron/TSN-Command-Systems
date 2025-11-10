@@ -6,36 +6,12 @@ import faulthandler
 faulthandler.enable()
 from jinja2 import Environment, FileSystemLoader
 import datetime
+import sys
+import os
 
-track_dict = {}
-
-def track(key, value):
-    if key in track_dict:
-        if value not in track_dict[key]:
-            track_dict[key].append(value)
-    else:
-        track_dict[key] = [value]
-
-def retrieve(key):
-    return track_dict.get(key, [])
-
-def raise_helper(str):
-    raise str
-
-def textwidth(text):
-    w = 0
-    for c in text:
-        if c.isupper():
-            w += 9
-        elif c.isdigit():
-            w += 8
-        elif c.isalpha():
-            w += 7
-        elif c.isspace():
-            w += 2
-        else:
-            w += 4
-    return w
+# ugly but idgaf
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'render_server'))
+import jinja_functions as jf
 
 env = {
     "difficulty": 7,
@@ -78,8 +54,8 @@ template_env.lstrip_blocks = True
 template_env.trim_blocks = True
 template_env.autoescape = True
 template_env.add_extension('jinja2.ext.do')
-template_env.globals.update(track=track, retrieve=retrieve, panic=raise_helper)
-template_env.filters.update(textwidth=textwidth)
+
+jf.register(template_env)
 TMPL_FNAME = 'main.xml'
 OUT_FNAME = '../MISS_TSN-Command.xml'
 
@@ -89,5 +65,7 @@ context = {
     "time": datetime.datetime.now().isoformat()
 }
 
+
 with open(OUT_FNAME, 'w') as f:
+    jf.clear_all_state()
     f.write(template_env.get_template(TMPL_FNAME).render(g=context))

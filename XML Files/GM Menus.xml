@@ -94,7 +94,7 @@
     "type": "dismissableSubmenu",
     "name": name,
     "parentMenu": pk,
-  }) %}
+  }, name) %}
 {% endmacro %}
 
 {% macro addEphemeralSubmenu(name, parentMenu) %}
@@ -104,7 +104,7 @@
     "type": "ephemeralSubmenu",
     "name": name,
     "parentMenu": pk,
-  }) %}
+  }, name) %}
 {% endmacro %}
 
 {% macro addPermanentSubmenu(name, parentMenu) %}
@@ -114,7 +114,7 @@
     "type": "permanentSubmenu",
     "name": name,
     "parentMenu": pk,
-  }) %}
+  }, name) %}
 {% endmacro %}
 
 {% macro addButtonExpandMenu(name, parentMenu, x, y, w=90, h=30, rows=10) %}
@@ -130,7 +130,7 @@
     "w": w,
     "h": h,
     "rows": rows,
-  }) %}
+  }, name) %}
 {% endmacro %}
 
 {% macro onMenuClick(name, parentMenu) %}

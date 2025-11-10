@@ -9,17 +9,17 @@
 
 {{ menu.addDismissableSubmenu("Boarding", menu.main.interaction) }}
 
-{% call start.onStart() %}
+{% call start.onStart("BoardingActions") %}
   {% for ship in util.shipConfigs %}
     <set_variable name="Ship{{ ship.id }} Marines" value="1.0" integer="yes" />
     <set_variable name="Ship{{ ship.id }}MarinesMax" value="20.0" integer="yes" />
   {% endfor %}
 {% endcall %}
-{% call(ship) tracking.onRespawn() %}
+{% call(ship) tracking.onRespawn("BoardingActions") %}
   <set_variable name="Ship{{ ship.id }} Marines" value="1.0" integer="yes" />
   <set_variable name="Ship{{ ship.id }}MarinesMax" value="20.0" integer="yes" />
 {% endcall %}
-{% call(ship) comms.addStatusLine() %}
+{% call(ship) comms.addStatusLine("BoardingDefenders") %}
   We have |Ship{{ ship.id }}Marines| defenders ready for combat.
 {% endcall %}
 

@@ -4,7 +4,7 @@
 
 {{ menu.addDismissableSubmenu("Sensors", menu.main.interaction) }}
 
-{% call start.onStart() %}
+{% call start.onStart("SensorPings") %}
   {% for l in util.FleetLetters %}
   <set_variable name="digit{{ l }}1" value="0.0" integer="yes" />
   <set_variable name="digit{{ l }}2" value="0.0" integer="yes" />
