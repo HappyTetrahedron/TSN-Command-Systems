@@ -23,6 +23,7 @@
     <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="7" />
     <gm_instructions title="Instructions">Welcome to the TSN Sandbox Version {{ version }}. ^--Activation---^The activation sequence allows the GM to choose the System and Sector for the players to start.^Once the activation sequence is completed, the main Sandbox menu will appear and the GM can begin their mission. Below is a step-by-step guide to activation: ^- First, ensure all player ships have spawned before activating GM Mode.^- Next, click on Activate GM Mode to begin the Sandbox activation sequence.^- Finally, select the System and Sector where the players will start.^^The GM menus are as follows:^- Bas.: basic interactions, teleporting and deleting entities.^-SPWN.: Spawn AI ships.^-POI: Create points of interest such as waypoints, wrecks, rendezvous points or anomalies.^-Haz.: Spawn hazards such as mines, asteroids and nebulae.^- Int.: Interact with player ships by sending messages, modifying ordnance stores, and causing system damage.^CSTM: custom script features.^AI Off: Click to expand submenu to change NPC AI behaviour.</gm_instructions>
     <!--Test Variables (not required in start block)-->
+    <set_variable name="Refuel Ship1" value="0.0" integer="yes" />
     <!--End of Test Variables-->
     <set_variable name="tagShipNumber" value="0.0" integer="yes" />
     <set_variable name="CurrentLetter" value="1.0" integer="yes" />
@@ -47,12 +48,6 @@
     <set_variable name="GM Controls" value="0.0" integer="yes" />
     <set_timer name="Sandbox Activation" seconds="5" />
     <set_variable name="Sandbox Activation" value="1.0" integer="yes" />
-    <!--FCS System-->
-    <set_variable name="Enable FCS" value="1.0" integer="yes" />
-    <set_variable name="FCSRateMod" value="0.0" integer="yes" />
-    <set_variable name="FCSRechargeMod" value="0.0" integer="yes" />
-    <set_variable name="PDZModifier" value="0.0" integer="yes" />
-    <set_variable name="PDZRateModifier" value="0.0" integer="yes" />
     <!--General-->
     <set_variable name="Fuel Status Display" value="0.0" integer="yes" />
     <set_variable name="secondnumber" value="0.0" integer="yes" />

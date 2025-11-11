@@ -155,7 +155,7 @@
     <set_object_property property="angleDelta" value="0.05" name="Rv|rvnumber|" />
     <addto_object_property value="-8.0" property="positionY" name="Rv|rvnumber|" />
     <incoming_comms_text from="SYSTEMS" type="PLAYER">{{ cargo.name }} deployment zone identified.</incoming_comms_text>
-    <set_ship_text name="Rv" newname="Rv|rvnumber|" class="Marine Dz" desc="Designated {{ cargo.name|lower }} dropzone" />
+    <set_ship_text name="Rv|rvnumber|" class="Marine Dz" desc="Designated {{ cargo.name|lower }} dropzone" />
     <set_variable name="Rv|rvnumber|Type" value="{{ cargo.rv.drop }}" integer="yes" />
   {% endcall %}
   {% call spawn.createNumberedConditional("Rv|rvnumber|", cargo.name + " Pickup", "RVs", "RV Points", "rvnumber", cargo.rv.pickup) %}

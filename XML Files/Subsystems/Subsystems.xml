@@ -1,1 +1,2 @@
 {% include 'Subsystems/Shuttle.xml' %}
+{% include 'Subsystems/FCS.xml' %}
