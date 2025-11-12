@@ -54,7 +54,6 @@
     <set_variable name="Ship{{ ship.id }}TagCurrent" value="Ship{{ ship.id }}TagMax" integer="yes" />
     <!--Additional Trackers-->
     <set_variable name="{{ ship.shuttle }} Status" value="1.0" integer="yes" />
-    <set_variable name="Ship{{ ship.id }}Silent" value="0.0" integer="yes" />
     <set_variable name="Ship{{ ship.id }} Status" value="2.0" integer="yes" />
     <!--Dynamic Variables-->
     {% for caller in retrieve("onSpawn") %}
@@ -90,7 +89,6 @@
     <set_object_property property="countTag" value="Ship{{ ship.id }}TagRespawn" player_slot="{{ ship.slot }}" />
     <set_variable name="{{ ship.shuttle }} Status" value="1.0" integer="yes" />
     <set_variable name="Ship{{ ship.id }} Status" value="2.0" integer="yes" />
-    <set_variable name="Ship{{ ship.id }}Silent" value="0.0" integer="yes" />
     <!--Dynamic Variables-->
     {% for caller in retrieve("onSpawn") %}
       {{ caller(ship) }}
@@ -124,7 +122,6 @@
     <set_variable name="Ship{{ ship.id }}TagCurrent" value="Ship{{ ship.id }}TagMax" integer="yes" />
     <!--Additional Trackers-->
     <set_variable name="{{ ship.shuttle }} Status" value="1.0" integer="yes" />
-    <set_variable name="Ship{{ ship.id }}Silent" value="0.0" integer="yes" />
     <set_variable name="Ship{{ ship.id }} Status" value="2.0" integer="yes" />
     <!--Dynamic Variables-->
     {% for caller in retrieve("onSpawn") %}
