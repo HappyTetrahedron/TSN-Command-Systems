@@ -1,0 +1,30 @@
+{% import 'Utils.xml' as util %}
+{% import 'PlayerTracking.xml' as tracking %}
+
+{% call(ship) tracking.onSpawn("OrdnanceTracking") %}
+  {% for ordnance, property in util.ordnanceIdentifiers.items() %}
+      <get_object_property property="{{ property }}" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}{{ ordnance }}Current" />
+  {% endfor %}
+{% endcall %}
+
+{% call(ship) tracking.onDestroy("OrdnanceTracking") %}
+  {% for ordnance, property in util.ordnanceIdentifiers.items() %}
+    <set_variable name="Ship{{ ship.id }}{{ ordnance }}Respawn" value="Ship{{ ship.id }}{{ ordnance }}Current" />
+  {% endfor %}
+{% endcall %}
+
+{% call(ship) tracking.onRespawn("OrdnanceTracking") %}
+  {% for ordnance, property in util.ordnanceIdentifiers.items() %}
+    <set_object_property property="{{ property }}" value="Ship{{ ship.id }}{{ ordnance }}Respawn" player_slot="{{ ship.slot }}" />
+  {% endfor %}
+{% endcall %}
+
+{% for ship in util.shipConfigs %}
+  {% for ordnance, property in util.ordnanceIdentifiers.items() %}
+  <event name="Track {{ ordnance }} Ship{{ship.id}}">
+    <if_exists player_slot="{{ ship.slot }}" />
+    <if_object_property property="{{ property }}" player_slot="{{ ship.slot }}" comparator="NOT" value="Ship{{ ship.id }}{{ ordnance }}Current" />
+    <get_object_property property="{{ property }}" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}{{ ordnance }}Current" />
+  </event>
+  {% endfor %}
+{% endfor %}

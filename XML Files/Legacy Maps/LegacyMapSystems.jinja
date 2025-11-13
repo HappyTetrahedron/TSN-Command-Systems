@@ -1056,3 +1056,201 @@
     <set_object_property property="positionX" value="DynamicBHCoordX*1000" name="Dynamic Blackhole 20.0" />
     <set_object_property property="positionZ" value="DynamicBHCoordZ*1000" name="Dynamic Blackhole 20.0" />
   </event>
+
+
+{# Legacy Sector Buttons #}
+  <event name="101 (3x2)" id_arme="49e30087-c5e6-4a89-83b8-8a59608074fd" parent_id_arme="de68fc8e-8137-4c76-ad1d-cea535f027a3">
+    <if_variable name="GM Mode" comparator="EQUALS" value="3.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="101.0" />
+    <set_gm_button text="Select Sector" x="90" y="100" h="30" w="200" />
+    <set_gm_button text="Sector 1" x="170" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 2" x="235" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 3" x="300" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 4" x="170" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 5" x="235" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 6" x="300" y="255" h="60" w="60" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+    <set_variable name="GM Mode" value="4.0" integer="yes" />
+  </event>
+  <event name="102 (3x3)" id_arme="0155e27b-0746-4adc-9798-ddcce26d4fd0" parent_id_arme="de68fc8e-8137-4c76-ad1d-cea535f027a3">
+    <if_variable name="GM Mode" comparator="EQUALS" value="3.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="102.0" />
+    <set_gm_button text="Select Sector" x="90" y="100" h="30" w="200" />
+    <set_gm_button text="Sector 1" x="170" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 2" x="235" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 3" x="300" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 4" x="170" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 5" x="235" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 6" x="300" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 7" x="170" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 8" x="235" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 9" x="300" y="320" h="60" w="60" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+    <set_variable name="GM Mode" value="4.0" integer="yes" />
+  </event>
+  <event name="103 (4x2)" id_arme="4d7a5a37-308d-44be-8eda-0799eced4874" parent_id_arme="de68fc8e-8137-4c76-ad1d-cea535f027a3">
+    <if_variable name="GM Mode" comparator="EQUALS" value="3.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="103.0" />
+    <set_gm_button text="Select Sector" x="90" y="100" h="30" w="200" />
+    <set_gm_button text="Sector 1" x="170" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 2" x="235" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 3" x="300" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 4" x="365" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 5" x="170" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 6" x="235" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 7" x="300" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 8" x="365" y="255" h="60" w="60" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+    <set_variable name="GM Mode" value="4.0" integer="yes" />
+  </event>
+  <event name="104 (4x3)" id_arme="1a06dadf-6bb2-4c04-9b77-a85da9b47b99" parent_id_arme="de68fc8e-8137-4c76-ad1d-cea535f027a3">
+    <if_variable name="GM Mode" comparator="EQUALS" value="3.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="104.0" />
+    <set_gm_button text="Select Sector" x="90" y="100" h="30" w="200" />
+    <set_gm_button text="Sector 1" x="170" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 2" x="235" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 3" x="300" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 4" x="365" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 5" x="170" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 6" x="235" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 7" x="300" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 8" x="365" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 9" x="170" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 10" x="235" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 11" x="300" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 12" x="365" y="320" h="60" w="60" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+    <set_variable name="GM Mode" value="4.0" integer="yes" />
+  </event>
+  <event name="105 (4x4)" id_arme="9e9fde88-3d83-4007-8315-951a984691bb" parent_id_arme="de68fc8e-8137-4c76-ad1d-cea535f027a3">
+    <if_variable name="GM Mode" comparator="EQUALS" value="3.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="105.0" />
+    <set_gm_button text="Select Sector" x="90" y="100" h="30" w="200" />
+    <set_gm_button text="Sector 1" x="170" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 2" x="235" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 3" x="300" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 4" x="365" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 5" x="170" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 6" x="235" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 7" x="300" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 8" x="365" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 9" x="170" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 10" x="235" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 11" x="300" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 12" x="365" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 13" x="170" y="375" h="60" w="60" />
+    <set_gm_button text="Sector 14" x="235" y="375" h="60" w="60" />
+    <set_gm_button text="Sector 15" x="300" y="375" h="60" w="60" />
+    <set_gm_button text="Sector 16" x="365" y="375" h="60" w="60" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+    <set_variable name="GM Mode" value="4.0" integer="yes" />
+  </event>
+  <event name="106 (5x3)" id_arme="c711f8a5-4e79-4c58-a437-793d2715326e" parent_id_arme="de68fc8e-8137-4c76-ad1d-cea535f027a3">
+    <if_variable name="GM Mode" comparator="EQUALS" value="3.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="106.0" />
+    <set_gm_button text="Select Sector" x="90" y="100" h="30" w="200" />
+    <set_gm_button text="Sector 1" x="170" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 2" x="235" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 3" x="300" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 4" x="365" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 5" x="430" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 6" x="170" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 7" x="235" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 8" x="300" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 9" x="365" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 10" x="430" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 11" x="170" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 12" x="235" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 13" x="300" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 14" x="365" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 15" x="430" y="320" h="60" w="60" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+    <set_variable name="GM Mode" value="4.0" integer="yes" />
+  </event>
+  <event name="107 (5x4)" id_arme="d351eef3-47c1-4544-b5a5-22b7d8657838" parent_id_arme="de68fc8e-8137-4c76-ad1d-cea535f027a3">
+    <if_variable name="GM Mode" comparator="EQUALS" value="3.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="107.0" />
+    <set_gm_button text="Select Sector" x="90" y="100" h="30" w="200" />
+    <set_gm_button text="Sector 1" x="170" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 2" x="235" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 3" x="300" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 4" x="365" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 5" x="430" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 6" x="170" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 7" x="235" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 8" x="300" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 9" x="365" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 10" x="430" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 11" x="170" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 12" x="235" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 13" x="300" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 14" x="365" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 15" x="430" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 16" x="170" y="375" h="60" w="60" />
+    <set_gm_button text="Sector 17" x="235" y="375" h="60" w="60" />
+    <set_gm_button text="Sector 18" x="300" y="375" h="60" w="60" />
+    <set_gm_button text="Sector 19" x="365" y="375" h="60" w="60" />
+    <set_gm_button text="Sector 20" x="430" y="375" h="60" w="60" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+    <set_variable name="GM Mode" value="4.0" integer="yes" />
+  </event>
+  <event name="108 (2x2)" id_arme="29861a6e-2884-4fe7-a659-9d1fb76661e8" parent_id_arme="de68fc8e-8137-4c76-ad1d-cea535f027a3">
+    <if_variable name="GM Mode" comparator="EQUALS" value="3.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="108.0" />
+    <set_gm_button text="Select Sector" x="90" y="100" h="30" w="200" />
+    <set_gm_button text="Sector 1" x="170" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 2" x="235" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 3" x="170" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 4" x="235" y="255" h="60" w="60" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+    <set_variable name="GM Mode" value="4.0" integer="yes" />
+  </event>
+  <event name="109 (1x2)" id_arme="93fa5683-af26-4512-be54-4453ebff1d83" parent_id_arme="de68fc8e-8137-4c76-ad1d-cea535f027a3">
+    <if_variable name="GM Mode" comparator="EQUALS" value="3.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="109.0" />
+    <set_gm_button text="Select Sector" x="90" y="100" h="30" w="200" />
+    <set_gm_button text="Sector 1" x="170" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 2" x="170" y="255" h="60" w="60" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+    <set_variable name="GM Mode" value="4.0" integer="yes" />
+  </event>
+  <event name="110 (5x5)" id_arme="260601ef-57ea-47e5-993e-99db880d58a9" parent_id_arme="de68fc8e-8137-4c76-ad1d-cea535f027a3">
+    <if_variable name="GM Mode" comparator="EQUALS" value="3.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="110.0" />
+    <set_gm_button text="Select Sector" x="90" y="100" h="30" w="200" />
+    <set_gm_button text="Sector 1" x="170" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 2" x="235" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 3" x="300" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 4" x="365" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 5" x="430" y="190" h="60" w="60" />
+    <set_gm_button text="Sector 6" x="170" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 7" x="235" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 8" x="300" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 9" x="365" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 10" x="430" y="255" h="60" w="60" />
+    <set_gm_button text="Sector 11" x="170" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 12" x="235" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 13" x="300" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 14" x="365" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 15" x="430" y="320" h="60" w="60" />
+    <set_gm_button text="Sector 16" x="170" y="375" h="60" w="60" />
+    <set_gm_button text="Sector 17" x="235" y="375" h="60" w="60" />
+    <set_gm_button text="Sector 18" x="300" y="375" h="60" w="60" />
+    <set_gm_button text="Sector 19" x="365" y="375" h="60" w="60" />
+    <set_gm_button text="Sector 20" x="430" y="375" h="60" w="60" />
+    <set_gm_button text="Sector 21" x="170" y="440" h="60" w="60" />
+    <set_gm_button text="Sector 22" x="235" y="440" h="60" w="60" />
+    <set_gm_button text="Sector 23" x="300" y="440" h="60" w="60" />
+    <set_gm_button text="Sector 24" x="365" y="440" h="60" w="60" />
+    <set_gm_button text="Sector 25" x="430" y="440" h="60" w="60" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+    <set_variable name="GM Mode" value="4.0" integer="yes" />
+  </event>
+  <event name="200 (1x1)" id_arme="9c626b35-8507-4a61-8afd-2c91f194ac33" parent_id_arme="de68fc8e-8137-4c76-ad1d-cea535f027a3">
+    <if_variable name="GM Mode" comparator="EQUALS" value="3.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="200.0" />
+    <set_gm_button text="Select Sector" x="90" y="100" h="30" w="200" />
+    <set_gm_button text="Sector 1" x="170" y="190" h="60" w="60" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+    <set_variable name="GM Mode" value="4.0" integer="yes" />
+  </event>

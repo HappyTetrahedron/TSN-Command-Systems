@@ -1,0 +1,33 @@
+{# Fuel Status Display - shows public energy readouts of all ships #}
+{% import 'Utils.xml' as util %}
+
+{% for ship in util.shipConfigs %}
+  <event name="Energy Green">
+    <if_variable name="Refuel Ship{{ ship.id }}" comparator="EQUALS" value="0.0" />
+    <if_object_property property="energy" player_slot="{{ ship.slot }}" comparator="GREATER_EQUAL" value="600" />
+    <if_not_exists name="{{ ship.name }} - Green" />
+    <if_exists player_slot="{{ ship.slot }}" />
+    <create type="genericMesh" x="{{ 102000.0 - loop.index * 10000 }}" y="0.0" z="100.0" name="{{ ship.name }} - Green" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+    <destroy name="{{ ship.name }} - Amber" />
+    <destroy name="{{ ship.name }} - Red" />
+  </event>
+  <event name="Energy Amber">
+    <if_variable name="Refuel Ship{{ ship.id }}" comparator="EQUALS" value="0.0" />
+    <if_object_property property="energy" player_slot="{{ ship.slot }}" comparator="LESS" value="600" />
+    <if_object_property property="energy" player_slot="{{ ship.slot }}" comparator="GREATER_EQUAL" value="300" />
+    <if_not_exists name="{{ ship.name }} - Amber" />
+    <if_exists player_slot="{{ ship.slot }}" />
+    <destroy name="{{ ship.name }} - Green" />
+    <create type="genericMesh" x="{{ 102000.0 - loop.index * 10000 }}" y="0.0" z="100.0" name="{{ ship.name }} - Amber" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="0.9" colorBlue="0.0" />
+    <destroy name="{{ ship.name }} - Red" />
+  </event>
+  <event name="Energy Red">
+    <if_variable name="Refuel Ship{{ ship.id }}" comparator="EQUALS" value="0.0" />
+    <if_object_property property="energy" player_slot="{{ ship.slot }}" comparator="LESS" value="300" />
+    <if_not_exists name="{{ ship.name }} - Red" />
+    <if_exists player_slot="{{ ship.slot }}" />
+    <destroy name="{{ ship.name }} - Green" />
+    <destroy name="{{ ship.name }} - Amber" />
+    <create type="genericMesh" x="{{ 102000.0 - loop.index * 10000 }}" y="0.0" z="100.0" name="{{ ship.name }} - Red" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="0.0" colorBlue="0.1" />
+  </event>
+{% endfor %}

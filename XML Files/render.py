@@ -20,6 +20,7 @@ env = {
         "BoardingActions",
         "HazardPainter",
         "NebulaEffects",
+        "FuelStatusDisplay",
         "Radiation",
         "VerdantFleet",
         "CrookedStar",

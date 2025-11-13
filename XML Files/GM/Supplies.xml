@@ -1,5 +1,10 @@
 {% import 'GM Menus.xml' as menu %}
 {% import 'Utils.xml' as util %}
+{% import 'Start.xml' as start %}
+
+{% call start.onStart("SuppliesMenu") %}
+  <set_variable name="Ordnance" value="1.0" integer="yes" />
+{% endcall %}
 
 {% call(isCreate) menu.addButtonExpandMenu("Supplies", menu.main.interaction, x=230, y=125, h=30, w=100, rows=12) %}
   <set_variable name="Supplies_Toggle_ShouldShow" value="{{ 1 if isCreate else 0 }}" integer="yes" />

@@ -515,3 +515,34 @@
     <set_variable name="{{ name }} Initialized" value="1.0" integer="yes" />
   </event>
 {% endmacro %}
+
+
+{% set opposite = {
+  "LESS": "GREATER_EQUAL",
+  "LESS_EQUAL": "GREATER",
+  "GREATER_EQUAL": "LESS",
+  "GREATER": "LESS_EQUAL",
+  "EQUALS": "NOT",
+  "NOT": "EQUALS",
+}
+%}
+{% macro shipConditionalEventAnd(conditions, invert=False) %}
+  {% for ship in shipConfigs %}
+    <event name="Ship{{ ship.id }} Conditional Event">
+      {% for prop in conditions %}
+        <if_object_property property="{{ prop.property }}" player_slot="{{ ship.slot }}" comparator="{{ opposite[prop.cmp] if invert else prop.cmp }}" value="{{ prop.val }}" />
+      {% endfor %}
+      {{ caller(ship, prop) }}
+    </event>
+  {% endfor %}
+{% endmacro %}
+{% macro shipConditionalEventOr(conditions, invert=False) %}
+{% for ship in shipConfigs %}
+  {% for prop in conditions %}
+    <event name="Ship{{ ship.id }} Conditional Event based on {{ prop.property }}">
+      <if_object_property property="{{ prop.property }}" player_slot="{{ ship.slot }}" comparator="{{ opposite[prop.cmp] if invert else prop.cmp }}" value="{{ prop.val }}" />
+      {{ caller(ship, prop) }}
+    </event>
+  {% endfor %}
+{% endfor %}
+{% endmacro %}

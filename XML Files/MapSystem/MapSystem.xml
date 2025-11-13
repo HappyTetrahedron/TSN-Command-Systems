@@ -1,0 +1,2 @@
+{% include 'MapSystem/Gates.xml' %}
+{% include 'MapSystem/Transitions.xml' %}

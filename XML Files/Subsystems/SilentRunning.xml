@@ -53,38 +53,27 @@
   },
 ] %}
 
-{% set opposite = {
-  "LESS": "GREATER_EQUAL",
-  "LESS_EQUAL": "GREATER",
-  "GREATER_EQUAL": "LESS",
-  "GREATER": "LESS_EQUAL",
-  "EQUALS": "NOT",
-  "NOT": "EQUALS",
-}
-%}
-
 {% call(ship) tracking.onSpawn("SilentRunning") %}
   <set_variable name="Ship{{ ship.id }}Silent" value="0.0" integer="yes" />
 {% endcall %}
 
-{% for ship in util.shipConfigs %}
-  <event name="Ship{{ ship.id }} Silent">
-    <if_variable name="Ship{{ ship.id }} Status" comparator="EQUALS" value="2.0" />
-    <if_variable name="Ship{{ ship.id }}Silent" comparator="EQUALS" value="0.0" />
-    {% for prop in silent_properties %}
-    <if_object_property property="{{ prop.property }}" player_slot="{{ ship.slot }}" comparator="{{ prop.cmp }}" value="{{ prop.val }}" />
-    {% endfor %}
-    <set_variable name="Ship{{ ship.id }}Silent" value="1.0" integer="yes" />
-    <set_gm_button text="Ship{{ ship.id }} Silent" x="820" y="{{ 60 + loop.index0 * 30 }}" h="30" w="90" />
-    <warning_popup_message message="Silent Running enabled" consoles="MEO" player_slot="{{ ship.slot }}" />
-  </event>
-  {% for prop in silent_properties %}
-    <event name="Ship{{ ship.id }} Silent {{ prop.property }}">
-      <if_variable name="Ship{{ ship.id }}Silent" comparator="GREATER_EQUAL" value="1.0" />
-      <if_object_property property="{{ prop.property }}" player_slot="{{ ship.slot }}" comparator="{{ opposite[prop.cmp] }}" value="{{ prop.val }}" />
-      <warning_popup_message message="{{ prop.msg }}: Silent Running disabled" consoles="MEO" player_slot="{{ ship.slot }}" />
-      <clear_gm_button text="Ship{{ ship.id }} Silent" />
-      <set_variable name="Ship{{ ship.id }}Silent" value="0.0" integer="yes" />
-    </event>
-  {% endfor %}
-{% endfor %}
+{% call(ship) tracking.onDestroy("SilentRunning") %}
+  <clear_gm_button text="Ship{{ ship.id }} Silent" />
+  <set_variable name="Ship{{ ship.id }}Silent" value="0.0" integer="yes" />
+{% endcall %}
+
+{% call(ship, unused) util.shipConditionalEventAnd(silent_properties) %}
+  <if_exists player_slot="{{ ship.slot }}" />
+  <if_variable name="Ship{{ ship.id }} Status" comparator="EQUALS" value="2.0" />
+  <if_variable name="Ship{{ ship.id }}Silent" comparator="EQUALS" value="0.0" />
+  <set_variable name="Ship{{ ship.id }}Silent" value="1.0" integer="yes" />
+  <set_gm_button text="Ship{{ ship.id }} Silent" x="820" y="{{ 60 + ship.slot|int * 30 }}" h="30" w="90" />
+  <warning_popup_message message="Silent Running enabled" consoles="MEO" player_slot="{{ ship.slot }}" />
+{% endcall %}
+
+{% call(ship, prop) util.shipConditionalEventOr(silent_properties, invert=True) %}
+  <if_variable name="Ship{{ ship.id }}Silent" comparator="GREATER_EQUAL" value="1.0" />
+  <warning_popup_message message="{{ prop.msg }}: Silent Running disabled" consoles="MEO" player_slot="{{ ship.slot }}" />
+  <clear_gm_button text="Ship{{ ship.id }} Silent" />
+  <set_variable name="Ship{{ ship.id }}Silent" value="0.0" integer="yes" />
+{% endcall %}
