@@ -305,21 +305,25 @@
     2: {
       "macro": AI_HuntPlayer,
       "name": "HuntPlayer",
+      "overrideAvailable": True,
       "description": "Prioritize players, attack players in the entire sector, react only to very close proximity. Fleet behaviour, follow taunts, do NOT follow comms, use specials, launch fighters."
     },
     3: {
       "macro": AI_HuntBase,
       "name": "HuntBases",
+      "overrideAvailable": True,
       "description": "Prioritize bases, attack bases in the entire sector, fall back to proximity targets only if there are none. React only to very close proximity. Fleet behaviour, follow taunts, do NOT follow comms, use specials, launch fighters."
     },
     13: {
       "macro": AI_HuntNeutral,
       "name": "Hunt Neutral",
+      "overrideAvailable": True,
       "description": "Prioritize enemy AI ships, attack ships in the entire sector, fall back to bases and then players if there are none. React only to very close proximity. Fleet behaviour, follow taunts, follow comms, use specials, launch fighters."
     },
     4: {
       "macro": AI_GuardBase,
       "name": "GuardBases",
+      "overrideAvailable": True,
       "description": "Guard nearest allied station. React only to close proximity. Fleet behaviour, follow taunts, follow comms, use specials, launch fighters."
     },
     5: {
@@ -331,6 +335,7 @@
     6: {
       "macro": AI_Elite,
       "name": "Elite",
+      "overrideAvailable": True,
       "description": "Prioritizes players, attacks stations and AI ships only at proximity. Fleet behaviour, follow taunts, do NOT follow comms, use specials (duh). do NOT launch fighters."
     },
     7: {
@@ -352,11 +357,13 @@
     60: {
       "macro": AI_DefensiveAlly,
       "name": "DefensiveAlly",
+      "overrideAvailable": True,
       "description": "Like vanilla armed friendlies. By default chases AI ships all over the map. Fleet behaviour, follow taunts, follow comms, specials, fighters."
     },
     101: {
       "macro": AI_Pirate,
       "name": "Pirate",
+      "overrideAvailable": True,
       "description": "Prioritize AI ships all across the map. Follow taunts above all else. NO fleet behaviour, no comms, do launch fighters and use specials."
     },
     1000: {

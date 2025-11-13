@@ -267,7 +267,7 @@
   </event>
 
 
-  {% call menu.onButtonClick("ResetVerdant", menu.main.ai) %}
+  {% call menu.onButtonClick("ResetVerdant", menu.ai.aicommands) %}
     {% for name in ["TSN Verdant", "TSN Vengeance", "TSN Warspite", "TSN Fury", "TSN Dawn", "TSN Shield", "TSN Daring"] %}
       <clear_ai name="{{ name }}" />
       <add_ai type="SPCL_AI" name="{{ name }}" />
@@ -284,7 +284,7 @@
     {% endfor %}
   {% endcall %}
 
-  {% call menu.onButtonClick("BoostVerdant", menu.main.ai) %}
+  {% call menu.onButtonClick("BoostVerdant", menu.ai.aicommands) %}
     {{ verdantFleetShields() }}
   {% endcall %}
 

@@ -1,6 +1,7 @@
 {% import 'Picker.xml' as picker %}
 {% import 'Utils.xml' as util %}
 {% import 'GM Menus.xml' as menu %}
+{% import 'Fleets/AIDefinitions.xml' as aidefs %}
 
 {% set sides = range(1, 14)|list %}
 {% do sides.__setitem__(1, "2 PLYR") %}
@@ -12,6 +13,30 @@
 {% call(choice) picker.Picker("Dif", "Change", range(1, 11), "Difficulty", g.data.difficulty or 10, 40, 445) %}
   <set_difficulty_level value="{{ choice }}" />
 {% endcall %}
+
+{{ menu.addEphemeralSubmenu("Set AI", menu.main.spawn) }}
+
+{% call menu.onMenuClick("Default", "Set AI") %}
+  <set_variable name="AI Override" value="0.0" integer="yes" />
+{% endcall %}
+{% for id, ai in aidefs.availableAIs.items() if ai.overrideAvailable %}
+  {% call menu.onMenuClick(ai.name, "Set AI") %}
+    <set_variable name="AISetting" value="{{ id }}.0" integer="yes" />
+    <set_variable name="AI Override" value="1.0" integer="yes" />
+  {% endcall %}
+{% endfor %}
+
+{% call(isCreate) menu.addStatementToMenu("reassign", menu.main.spawn) %}
+  {% if not isCreate %}
+    <set_variable name="AI Override" value="0.0" integer="yes" />
+  {% endif %}
+{% endcall %}
+
+{% call(isCreate) menu.addStatementToMenu("reassign", menu.main.ai) %}
+    <set_variable name="SwSidePicker_Should_Show" value="{{ 1 if isCreate else 0 }}.0" integer="yes" />
+    <set_variable name="DifPicker_Should_Show" value="{{ 1 if isCreate else 0 }}.0" integer="yes" />
+{% endcall %}
+
 
   <folder_arme name="Comms Enable-Disable" id_arme="6e370a09-6c89-457e-b917-e7c866c6ad45" parent_id_arme="846725f1-9752-4065-a2a1-9f52b9a4a32b" />
   <event name="Enable Comms" id_arme="a074453c-bc65-4818-9f50-44c34f64b5eb" parent_id_arme="6e370a09-6c89-457e-b917-e7c866c6ad45">
@@ -31,24 +56,17 @@
     <if_gm_button text="Grp to GM" />
     <set_variable name="ReassignAI" value="1025.0" integer="yes" />
   </event>
-  <event name="Delete Group" id_arme="69e6def2-cb83-43cd-9026-90a502cbe5b5" parent_id_arme="7ef9ad11-aebe-4397-aa87-16d7e5aa88a2">
-    <if_gm_button text="Del Grp" />
-    <set_variable name="ReassignAI" value="1999.0" integer="yes" />
-  </event>
-  <folder_arme name="Direction Controls" id_arme="db6a0663-4c0e-4b4c-9baf-e203cf72afaf" parent_id_arme="7ef9ad11-aebe-4397-aa87-16d7e5aa88a2" />
-  <event name="STOP" id_arme="be3a5377-d770-48ad-9492-14aab538b014" parent_id_arme="db6a0663-4c0e-4b4c-9baf-e203cf72afaf">
-    <if_gm_button text="STOP    O" />
+  {% set dirX = 70 %}
+  {% set dirY = 540 %}
+  {% call menu.onButtonClick("STOP    O", menu.main.ai, pos={
+    "x":dirX,
+    "y":dirY,
+    "w":28,
+    "h":28,
+  }) %}
     <set_variable name="ReassignAI" value="1030.0" integer="yes" />
-  </event>
+  {% endcall %}
 
-  <event name="EnableDirMoveAI">
-      <if_gm_button text="Dir Move" />
-      <set_variable name="DirectionalStrikeEnabled" value="0.0" integer="yes" />
-  </event>
-  <event name="EnableDirStrikeAI">
-      <if_gm_button text="Dir Strike" />
-      <set_variable name="DirectionalStrikeEnabled" value="1.0" integer="yes" />
-  </event>
   {% for ai_code, props in {
     "1031.0": {
       "name": "move",
@@ -69,66 +87,89 @@
       270: "270   <<",
       315: "315   \\\\",
     }.items() %}
-    <event name="{{ dir }} degrees {{ props.name }}" id_arme="07509f0e-5c9b-4a08-97f9-169664290201" parent_id_arme="db6a0663-4c0e-4b4c-9baf-e203cf72afaf">
-      <if_gm_button text="{{ text }}" />
-      <if_variable name="DirectionalStrikeEnabled" comparator="EQUALS" value="{{ props.condition }}" />
-      <set_variable name="AI_Reassign_ThrottleDir" value="{{ dir }}.0" integer="yes" />
-      <set_variable name="ReassignAI" value="{{ ai_code }}" integer="yes" />
-    </event>
+      {% call menu.onButtonClick(text, menu.main.ai, pos={
+        "x":dirX + ((-30) if (dir+135)%360 <= 90 else (30 if (dir+315)%360 <= 90 else 0)),
+        "y":dirY + ((-30) if (dir+45)%360 <= 90 else (30 if (dir+225)%360 <= 90 else 0)),
+        "w":28,
+        "h":28,
+      }) %}
+        <set_variable name="AI_Reassign_ThrottleDir" value="{{ dir }}.0" integer="yes" />
+        <set_variable name="ReassignAI" value="{{ ai_code }}" integer="yes" />
+      {% endcall %}
     {% endfor %}
   {% endfor %}
 
-  <event name="Increase Speed" id_arme="bfebddcb-b230-4c94-98bd-5717a686ecdc" parent_id_arme="db6a0663-4c0e-4b4c-9baf-e203cf72afaf">
-    <if_gm_button text="Speed +0.6" />
+  {% call menu.onButtonClick("Speed +0.6", menu.main.ai, pos={
+    "x":88,
+    "y":600,
+    "w":40,
+    "h":28,
+  }) %}
     <set_variable name="ReassignAI" value="1040.0" integer="yes" />
-  </event>
-  <event name="Decrease Speed" id_arme="b463f0a4-edc2-483f-8fd5-8452706da009" parent_id_arme="db6a0663-4c0e-4b4c-9baf-e203cf72afaf">
-    <if_gm_button text="Speed -0.6" />
+  {% endcall %}
+  {% call menu.onButtonClick("Speed -0.6", menu.main.ai, pos={
+    "x":40,
+    "y":600,
+    "w":40,
+    "h":28,
+  }) %}
     <set_variable name="ReassignAI" value="1041.0" integer="yes" />
-  </event>
-  <folder_arme name="Enemy Commands" id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9" parent_id_arme="7ef9ad11-aebe-4397-aa87-16d7e5aa88a2" />
-  <event name="GrpToGM" id_arme="5ad2f952-0534-4a8b-b2ba-850bc1e61ac9" parent_id_arme="fbd2b394-7c69-4e27-b55e-6faaec28a8f9">
-    <if_gm_button text="GrpToGM" />
+  {% endcall %}
+  {% call menu.onButtonClick("GrpToGM", menu.main.ai, pos={
+    "x":40,
+    "y":480,
+    "w":88,
+    "h":28,
+  }) %}
     <set_variable name="ReassignAI" value="1025.0" integer="yes" />
-  </event>
-  {% call menu.onButtonClick("Unsurrender", menu.main.ai) %}
+  {% endcall %}
+  {% call menu.onButtonClick("Del Grp", menu.main.ai, pos={
+    "x":40,
+    "y":630,
+    "w":88,
+    "h":28,
+  }) %}
+    <set_variable name="ReassignAI" value="1999.0" integer="yes" />
+  {% endcall %}
+
+  {% call menu.onButtonClick("Unsurrender", menu.ai.aicommands) %}
     <set_variable name="ReassignAI" value="1022.0" integer="yes" />
   {% endcall %}
-  {% call menu.onButtonClick("Surrender", menu.main.ai) %}
+  {% call menu.onButtonClick("Surrender", menu.ai.aicommands) %}
     <set_variable name="ReassignAI" value="1021.0" integer="yes" />
   {% endcall %}
-  {% call menu.onButtonClick("DefaultAI", menu.main.ai) %}
+  {% call menu.onButtonClick("DefaultAI", menu.ai.aicommands) %}
     <set_variable name="ReassignAI" value="1.0" integer="yes" />
   {% endcall %}
-  {% call menu.onButtonClick("EliteAI", menu.main.ai) %}
+  {% call menu.onButtonClick("EliteAI", menu.ai.aicommands) %}
     <set_variable name="ReassignAI" value="6.0" integer="yes" />
   {% endcall %}
-  {% call menu.onButtonClick("Hunt Plyr", menu.main.ai) %}
+  {% call menu.onButtonClick("Hunt Plyr", menu.ai.aicommands) %}
     <set_variable name="ReassignAI" value="2.0" integer="yes" />
   {% endcall %}
-  {% call menu.onButtonClick("Hunt Bse", menu.main.ai) %}
+  {% call menu.onButtonClick("Hunt Bse", menu.ai.aicommands) %}
     <set_variable name="ReassignAI" value="3.0" integer="yes" />
   {% endcall %}
-  {% call menu.onButtonClick("Hunt Ntrl", menu.main.ai) %}
+  {% call menu.onButtonClick("Hunt Ntrl", menu.ai.aicommands) %}
     <set_variable name="ReassignAI" value="13.0" integer="yes" />
   {% endcall %}
-  {% call menu.onButtonClick("PirateAI", menu.main.ai) %}
+  {% call menu.onButtonClick("PirateAI", menu.ai.aicommands) %}
     <set_variable name="ReassignAI" value="101.0" integer="yes" />
   {% endcall %}
-  {% call menu.onButtonClick("AllyAI", menu.main.ai) %}
+  {% call menu.onButtonClick("AllyAI", menu.ai.aicommands) %}
     <set_variable name="ReassignAI" value="60.0" integer="yes" />
   {% endcall %}
-  {% call menu.onButtonClick("Guard Bse", menu.main.ai) %}
+  {% call menu.onButtonClick("Guard Bse", menu.ai.aicommands) %}
     <set_variable name="ReassignAI" value="4.0" integer="yes" />
   {% endcall %}
-  {% call menu.onButtonClick("GoToBase", menu.main.ai) %}
+  {% call menu.onButtonClick("GoToBase", menu.ai.aicommands) %}
     <set_variable name="ReassignAI" value="51.0" integer="yes" />
   {% endcall %}
-  {% call menu.onButtonClick("Noncombat", menu.main.ai) %}
+  {% call menu.onButtonClick("Noncombat", menu.ai.aicommands) %}
     <set_variable name="ReassignAI" value="50.0" integer="yes" />
   {% endcall %}
 
-  {{ menu.addDismissableSubmenu("Specials", menu.main.ai) }}
+  {{ menu.addDismissableSubmenu("Specials", menu.ai.aicommands) }}
 
 
   {% for ability in util.shipAbilities %}

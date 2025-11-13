@@ -1,5 +1,6 @@
 {% import 'Utils.xml' as util %}
 {% import 'Start.xml' as start %}
+{% import 'GM Menus.xml' as menu %}
 
 {% macro onTransition(identifier) %}
   {% do track("onMapTransition", caller, identifier) %}
@@ -177,9 +178,43 @@
 ] %}
 
 
+
+
 {% call start.onStart("TransitionsEngine") %}
   <set_timer name="Transition" seconds="1" />
 {% endcall %}
+
+
+{{ menu.createLabel("Transitions", menu.main.base, 100, 220, 90, 28) }}
+{% call menu.onButtonClick("UP   /\\", menu.main.base, pos={ "x":130, "y":250, "w":30, "h":25}) %}
+  {% for ship in util.shipConfigs %}
+    <set_object_property property="positionZ" value="10.0" player_slot="{{ ship.slot }}" />
+    <set_object_property property="positionX" value="{{ 49000  + 100 * loop.index0 }}.0" player_slot="{{ ship.slot }}" />
+    <set_object_property property="angle" value="3.141592654" player_slot="{{ ship.slot }}" />
+  {% endfor %}
+{% endcall %}
+{% call menu.onButtonClick("DOWN   V", menu.main.base, pos={"x":130, "y":310, "w":30, "h":25}) %}
+  {% for ship in util.shipConfigs %}
+    <set_object_property property="positionZ" value="99990.0" player_slot="{{ ship.slot }}" />
+    <set_object_property property="positionX" value="{{ 49000  + 100 * loop.index0 }}.0" player_slot="{{ ship.slot }}" />
+    <set_object_property property="angle" value="0.0" player_slot="{{ ship.slot }}" />
+  {% endfor %}
+{% endcall %}
+{% call menu.onButtonClick("LEFT   <<", menu.main.base, pos={"x":100, "y":280, "w":30, "h":25}) %}
+  {% for ship in util.shipConfigs %}
+    <set_object_property property="positionX" value="99990.0" player_slot="{{ ship.slot }}" />
+    <set_object_property property="positionZ" value="{{ 49000  + 100 * loop.index0 }}.0" player_slot="{{ ship.slot }}" />
+    <set_object_property property="angle" value="1.570796327" player_slot="{{ ship.slot }}" />
+  {% endfor %}
+{% endcall %}
+{% call menu.onButtonClick("RIGHT   >>", menu.main.base, pos={"x":160, "y":280, "w":30, "h":25}) %}
+  {% for ship in util.shipConfigs %}
+    <set_object_property property="positionX" value="10.0" player_slot="{{ ship.slot }}" />
+    <set_object_property property="positionZ" value="{{ 49000  + 100 * loop.index0 }}.0" player_slot="{{ ship.slot }}" />
+    <set_object_property property="angle" value="4.71238898" player_slot="{{ ship.slot }}" />
+  {% endfor %}
+{% endcall %}
+
 
 {% for transition in transitions %}
   {% call(ship, unused) util.shipConditionalEventAnd(transition.conditions) %}

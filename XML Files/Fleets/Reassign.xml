@@ -1,6 +1,7 @@
 {% import 'Picker.xml' as picker %}
 {% import 'Fleets/AIDefinitions.xml' as ai %}
 {% import 'Utils.xml' as util %}
+{% import 'GM Menus.xml' as menu %}
 
 {% set btns = ["GM"] %}
 {%- for l in util.FleetLetters -%} {% do btns.append(l) %} {%- endfor -%}
@@ -17,6 +18,19 @@
     <set_variable name="reassignNumber8" value="80.0" integer="yes" />
     <set_variable name="ReassignDigits" value="0.0" />
   {% endif %}
+{% endcall %}
+
+{% call(isCreate) menu.addStatementToMenu("reassign", menu.main.ai) %}
+    <set_variable name="TGrpPicker_Should_Show" value="{{ 1 if isCreate else 0 }}.0" integer="yes" />
+    {% if isCreate %}
+    <set_variable name="ReassignLetter" value="30.0" integer="yes" />
+    <set_variable name="reassignNumber0" value="0.0" integer="yes" />
+    <set_variable name="reassignNumber2" value="10.0" integer="yes" />
+    <set_variable name="reassignNumber4" value="35.0" integer="yes" />
+    <set_variable name="reassignNumber6" value="60.0" integer="yes" />
+    <set_variable name="reassignNumber8" value="80.0" integer="yes" />
+    <set_variable name="ReassignDigits" value="0.0" integer="yes" />
+    {% endif %}
 {% endcall %}
 
   <event name="Increase combined number">

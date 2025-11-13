@@ -1,9 +1,14 @@
 {# Destroy auto-named object. Refers to dynamic state - include this at the end. #}
 {% import 'Utils.xml' as util %}
+{% import 'GM Menus.xml' as menu %}
 
 {% macro onDestroy(identifier) %}
   {% do track("onDestroy", caller, identifier) %}
 {% endmacro %}
+
+{% call menu.onButtonClick("DelShips", menu.main.base) %}
+    <set_variable name="DestroyNamed" value="1.0" integer="yes" />
+{% endcall %}
 
   <event name="Begin Cycle">
     <if_variable name="DestroyNamed" comparator="EQUALS" value="1.0" />

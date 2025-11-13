@@ -121,6 +121,10 @@
 {% call(choice) picker.Picker("Side", "CHNG", sides, "Side Value:", 0, 95, 100, track="SideValue") %}
 {% endcall %}
 
+{% call(isCreate) menu.addStatementToMenu("sidepicker", menu.main.spawn) %}
+    <set_variable name="SidePicker_Should_Show" value="{{ 1 if isCreate else 0 }}.0" integer="yes" />
+{% endcall %}
+
 {% call spawn(factions.TSN.key, "TSN Ships", "Scout", autoAI=1, nameAssign=True, randomDir=True) %}
   <create type="enemy" use_gm_position="" name="--" hullID="1" sideValue="SideValue" fleetnumber="-1" />
 {% endcall %}
