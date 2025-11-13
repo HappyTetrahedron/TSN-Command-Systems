@@ -154,29 +154,3 @@
     {% endcall %}
 
 {% endfor %}
-
-{########################
-   Resupply Handling
-   ########################}
-
-
-{% for sup in util.supplyShips %}
-  {% call(ship) util.createConditionalMenuPerShip("Resupply" + sup.name) %}
-    <if_exists player_slot="{{ ship.slot }}" />
-    <if_variable name="{{ sup.name }}toShip{{ ship.id }}Resupply" comparator="EQUALS" value="2.0" />
-    {{ button("Resupply from " + sup.name, ship) }}
-  {% endcall %}
-
-  {% call(ship) util.destroyConditionalMenuPerShip("Resupply" + sup.name) %}
-    <if_variable name="{{ sup.name }}toShip{{ ship.id }}Resupply" comparator="NOT" value="2.0" />
-    {{ destroybutton("Resupply from " + sup.name, ship) }}
-  {% endcall %}
-
-  {% call(ship) onButtonPress("Resupply from " + sup.name) %}
-      <if_exists player_slot="{{ ship.slot }}" />
-      <if_variable name="{{ sup.name }}toShip{{ ship.id }}Resupply" comparator="EQUALS" value="2.0" />
-      <incoming_comms_text from="{{ sup.name }}" sideValue="playerSide" type="FRIEND">Request Received - beginning resupply.^Maintain distance 1000 from {{ sup.name }}, with shields offline.</incoming_comms_text>
-      <set_variable name="{{ sup.name }}toShip{{ ship.id }}Resupply" value="3.0" integer="yes" />
-  {% endcall %}
-
-{% endfor %}

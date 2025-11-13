@@ -170,15 +170,55 @@
   set supplyShips = [
     {
       "name": "Devin",
+      "stores": {
+        "torpedo": 200,
+        "mine": 100,
+        "nuke": 80,
+        "emp": 150,
+        "pshock": 100,
+        "probe": 100,
+        "tag": 100,
+        "beacon": 80,
+      },
     },
     {
       "name": "Grant",
+      "stores": {
+        "torpedo": 200,
+        "mine": 100,
+        "nuke": 80,
+        "emp": 150,
+        "pshock": 100,
+        "probe": 100,
+        "tag": 100,
+        "beacon": 80,
+      },
     },
     {
       "name": "Jinn",
+      "stores": {
+        "torpedo": 200,
+        "mine": 100,
+        "nuke": 80,
+        "emp": 150,
+        "pshock": 100,
+        "probe": 100,
+        "tag": 100,
+        "beacon": 80,
+      },
     },
     {
       "name": "Goblin",
+      "stores": {
+        "torpedo": 200,
+        "mine": 100,
+        "nuke": 80,
+        "emp": 150,
+        "pshock": 100,
+        "probe": 100,
+        "tag": 100,
+        "beacon": 80,
+      },
     },
   ]
 %}
@@ -186,8 +226,8 @@
 {%-
   set ordnanceIdentifiers = {
     "torpedo": "countHoming",
-    "mine": "countMine",
     "nuke": "countNuke",
+    "mine": "countMine",
     "emp": "countEMP",
     "pshock": "countShk",
     "probe": "countPro",
@@ -195,6 +235,8 @@
     "beacon": "countBea",
   }
 -%}
+
+{% set ordnance = ordnanceIdentifiers %}
 
 {%-
   set systemIdentifiers = {

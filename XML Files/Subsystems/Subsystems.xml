@@ -1,3 +1,4 @@
 {% include 'Subsystems/Shuttle.xml' %}
 {% include 'Subsystems/FCS.xml' %}
 {% include 'Subsystems/SilentRunning.xml' %}
+{% include 'Subsystems/SupplyShips.xml' %}
