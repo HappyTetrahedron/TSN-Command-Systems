@@ -259,22 +259,6 @@
   {% endfor %}
 {% endmacro %}
 
-{% macro AI_StrikeDirection(names) %}
-  {% for name in names %}
-    <clear_ai {{ nn(name) }} />
-    <add_ai type="SPCL_AI" {{ nn(name) }} />
-    <add_ai type="TRY_TO_BECOME_LEADER" {{ nn(name) }} />
-    <add_ai type="LEADER_LEADS" {{ nn(name) }} />
-    <add_ai type="DIR_THROTTLE" value1="AI_Reassign_ThrottleDir" value2="4.0" {{ nn(name) }} />
-    <add_ai type="CHASE_STATION" value1="5000" {{ nn(name) }} />
-    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="2500" {{ nn(name) }} />
-    <add_ai type="CHASE_PLAYER" value1="5000" value2="2500" {{ nn(name) }} />
-    <add_ai type="CHASE_ANGER" {{ nn(name) }} />
-    <add_ai type="FOLLOW_LEADER" {{ nn(name) }} />
-    <add_ai type="LAUNCH_FIGHTERS" value1="6000" {{ nn(name) }} />
-  {% endfor %}
-{% endmacro %}
-
 {% macro AI_IncreaseSpeed(names) %}
   {% for name in names %}
     <addto_object_property value="0.6" property="topSpeed" {{ nn(name) }} />
@@ -391,11 +375,6 @@
       "macro": AI_MoveDirection,
       "name": "MoveDirection",
       "description": "Ship will go towards `AI_Reassign_ThrottleDir` and only react to very close proximity. No taunts."
-    },
-    1032: {
-      "macro": AI_StrikeDirection,
-      "name": "StrikeDirection",
-      "description": "Ship will go towards `AI_Reassign_ThrottleDir` and react to moderate proximity. Fleet behaviour, specials, fighters, taunts."
     },
     1040: {
       "macro": AI_IncreaseSpeed,

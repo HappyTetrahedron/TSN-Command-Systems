@@ -70,11 +70,6 @@
   {% for ai_code, props in {
     "1031.0": {
       "name": "move",
-      "condition": "0.0",
-    },
-    "1032.0": {
-      "name": "strike",
-      "condition": "1.0",
     },
   }.items() %}
     {% for dir, text in {
