@@ -1,9 +1,17 @@
 {% import 'Utils.xml' as util %}
 {% import 'Start.xml' as start %}
+{% import 'GM Menus.xml' as menu %}
 
 {% call start.onStart("Gate System") %}
     <set_variable name="shipsInrange" value="0.0" integer="yes" />
 {% endcall %}
+
+  {% call menu.onMenuClick("Lock Gates", "Locking") %}
+    <set_variable name="Gates Offline" value="1.0" integer="yes" />
+  {% endcall %}
+  {% call menu.onMenuClick("Unlock Gates", "Locking") %}
+    <set_variable name="Gates Offline" value="0.0" integer="yes" />
+  {% endcall %}
 
 <event name="Ship Tracking">
   <if_variable name="shipsInrange" comparator="LESS" value="0.0" />
@@ -29,6 +37,12 @@
   </event>
 {% endfor %}
 
+  <event name="Deactive Gate (disabled)" id_arme="036a77e3-3e24-4c79-9213-ec9e5a340863" parent_id_arme="4d100278-3ca4-410d-b427-d409701fcf24">
+    <if_variable name="Gate System" comparator="GREATER_EQUALS" value="1.0" />
+    <if_variable name="Gates Offline" comparator="EQUALS" value="1.0" />
+    <set_variable name="ClearGateBtns" value="1.0" integer="yes" />
+    <set_variable name="Gate System" value="0.0" integer="yes" />
+  </event>
   <event name="Deactive Gate (all out of range)" id_arme="036a77e3-3e24-4c79-9213-ec9e5a340863" parent_id_arme="4d100278-3ca4-410d-b427-d409701fcf24">
     <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
     <if_variable name="shipsInrange" comparator="LESS" value="1.0" />

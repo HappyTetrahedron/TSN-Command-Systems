@@ -2,19 +2,19 @@
 {% import 'Start.xml' as start %}
 
 {% macro onSpawn(identifier) %}
-  {% do track("onSpawn", {"caller": caller, "name": name}, identifier) %}
+  {% do track("onSpawn", {"caller": caller, "name": identifier}, identifier) %}
 {% endmacro %}
 
 {% macro onRespawn(identifier) %}
-  {% do track("onRespawn", {"caller": caller, "name": name}, identifier) %}
+  {% do track("onRespawn", {"caller": caller, "name": identifier}, identifier) %}
 {% endmacro %}
 
 {% macro onDestroy(identifier) %}
-  {% do track("onPlayerDestroy", {"caller": caller, "name": name}, identifier) %}
+  {% do track("onPlayerDestroy", {"caller": caller, "name": identifier}, identifier) %}
 {% endmacro %}
 
 {% macro onInactive(identifier) %}
-  {% do track("onPlayerInactive", {"caller": caller, "name": name}, identifier) %}
+  {% do track("onPlayerInactive", {"caller": caller, "name": identifier}, identifier) %}
 {% endmacro %}
 
 {% call start.onStart("PlayerTracking") %}
@@ -49,7 +49,7 @@
     <if_not_exists player_slot="{{ ship.slot }}" />
     <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
     <set_variable name="Ship{{ ship.id }} Status" value="4.0" integer="yes" />
-    {% for hook in retrieve("onInactive") %}
+    {% for hook in retrieve("onPlayerInactive") %}
       <!--{{ hook.name }}-->
       {{ hook.caller(ship) }}
     {% endfor %}

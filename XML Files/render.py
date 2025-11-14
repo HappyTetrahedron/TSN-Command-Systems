@@ -26,9 +26,10 @@ env = {
         "CrookedStar",
     ],
     "maps": [
-        "Tibur",
-        "Mria",
-        "Helios",
+        "Vrae",
+        "Athorn",
+        "Khoros",
+
     ],
     "ordnance": {
         "ship1": {
