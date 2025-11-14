@@ -11,7 +11,7 @@
     <set_variable name="reassignNumber6" value="60.0" integer="yes" />
     <set_variable name="reassignNumber8" value="80.0" integer="yes" />
     <set_variable name="ReassignAI" value="0.0" integer="yes" />
-    <set_variable name="ReassignLetter" value="0.0" integer="yes" />
+    <set_variable name="ReassignLetter" value="30.0" integer="yes" />
     <set_variable name="ReassignDigits" value="0.0" integer="yes" />
 {% endcall %}
 
@@ -32,7 +32,7 @@
   {% endif %}
 {% endcall %}
 
-{% call(isCreate) menu.addStatementToMenu("reassign", menu.main.ai) %}
+{% call(isCreate) menu.addStatementToMenu("AI Reassign", menu.main.ai) %}
     <set_variable name="TGrpPicker_Should_Show" value="{{ 1 if isCreate else 0 }}.0" integer="yes" />
     {% if isCreate %}
     <set_variable name="ReassignLetter" value="30.0" integer="yes" />

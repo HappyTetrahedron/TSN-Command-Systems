@@ -37,7 +37,6 @@
     <if_variable name="Ship{{ ship.id }} Status" comparator="EQUALS" value="1.0" />
     <if_exists player_slot="{{ ship.slot }}" />
     <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <!--Additional Trackers-->
     <set_variable name="Ship{{ ship.id }} Status" value="2.0" integer="yes" />
     <!--Dynamic Variables-->
     {% for hook in retrieve("onSpawn") %}
@@ -61,6 +60,7 @@
     <set_side_value value="playerSide" player_slot="{{ ship.slot }}" />
     <set_variable name="shipCount" value="shipCount+1" integer="yes" />
     <set_variable name="Ship{{ ship.id }} Status" value="2.0" integer="yes" />
+    <set_variable name="Mission End" value="0.0" integer="yes" />
     <!--Dynamic Variables-->
     {% for hook in retrieve("onSpawn") %}
       <!--{{ hook.name }} (onSpawn)-->
@@ -76,8 +76,8 @@
     <if_exists player_slot="{{ ship.slot }}" />
     <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
     <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <!--Additional Trackers-->
     <set_variable name="Ship{{ ship.id }} Status" value="2.0" integer="yes" />
+    <set_variable name="Mission End" value="0.0" integer="yes" />
     <!--Dynamic Variables-->
     {% for hook in retrieve("onSpawn") %}
       <!--{{ hook.name }}-->

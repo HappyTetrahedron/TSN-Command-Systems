@@ -2,41 +2,26 @@
 
 {% import 'Utils.xml' as util %}
 {% import 'Start.xml' as start %}
+{% import 'GM Menus.xml' as menu %}
 
 {% call start.onStart("TokenSystem") %}
     <set_variable name="TokenSysT" value="0.0" integer="yes" />
     <set_variable name="TokenSysS" value="0.0" integer="yes" />
 {% endcall %}
 
-{% call() util.createConditionalMenu("TokenSys", {
-    "GM_Menu_Selector": "1",
-}) %}
-    <set_gm_button text="AddToken" x="195" y="235" h="28" w="90" />
-    <set_gm_button text="RmToken" x="195" y="265" h="28" w="90" />
-{% endcall %}
-
-{% call() util.destroyConditionalMenu("TokenSys", {
-    "GM_Menu_Selector": "1",
-}) %}
-    <clear_gm_button text="AddToken" />
-    <clear_gm_button text="RmToken" />
-{% endcall %}
-
-<event name="AddToken">
-  <if_gm_button text="AddToken" />
+{% call menu.onButtonClick("AddToken", menu.main.base) %}
   <set_variable name="TokenSysT" value="TokenSysT + 1" integer="yes" />
   {% for ship in util.shipConfigs %}
     <warning_popup_message message="&gt; You receive a token &lt;" consoles="MSC" player_slot="{{ ship.slot }}" />
   {% endfor %}
-</event>
+{% endcall %}
 
-<event name="RmToken">
-  <if_gm_button text="RmToken" />
+{% call menu.onButtonClick("RmToken", menu.main.base) %}
   <set_variable name="TokenSysT" value="TokenSysT - 1" integer="yes" />
   {% for ship in util.shipConfigs %}
     <warning_popup_message message="&gt; You spent a token &lt;" consoles="MSC" player_slot="{{ ship.slot }}" />
   {% endfor %}
-</event>
+{% endcall %}
 
 <event name="UpdateTokenCounter">
   <if_variable name="TokenSysT" comparator="NOT" value="TokenSysS" />

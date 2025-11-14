@@ -7,7 +7,7 @@
     "button": "Bas.",
     "id": 1,
     "buttons": {
-      "x": 290,
+      "x": 100,
       "y": 100,
       "w": 90,
       "h": 30,
@@ -21,10 +21,10 @@
     "id": 2,
     "buttons": {
       "x": 100,
-      "y": 100,
+      "y": 134,
       "w": 90,
       "h": 30,
-      "rows": 10,
+      "rows": 1,
     },
   },
   'poi': {
@@ -304,6 +304,9 @@
       {% for specbut in retrieve("specialbuttons" + name) %}
         <set_gm_button text="{{ specbut.name }}" x="{{ specbut.x }}" y="{{ specbut.y }}" w="{{ specbut.w }}" h="{{ specbut.h }}" /> 
       {% endfor %}
+      {% for caller in retrieve("extrastatements" + name) %}
+        {{ caller(True) }}
+      {% endfor %}
       <set_variable name="_GM_Submenu_{{ name }}_Active" value="1.0" integer="yes" />
     </event>
   {% endmacro %}
@@ -320,6 +323,9 @@
       {% endfor %}
       {% for buttonsubmenu in retrieve("buttonSubs" + name) %}
         {{ util.storeAndSet("GM_Submenu_" + name + buttonsubmenu + "_ShouldShow") }}
+      {% endfor %}
+      {% for caller in retrieve("extrastatements" + name) %}
+        {{ caller(False) }}
       {% endfor %}
       <set_variable name="_GM_Submenu_{{ name }}_Active" value="0.0" integer="yes" />
   </event>

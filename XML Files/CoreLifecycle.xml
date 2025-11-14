@@ -20,7 +20,6 @@
     <if_timer_finished name="Sandbox Activation" />
     <if_variable name="GM Mode" comparator="LESS_EQUAL" value="1.0" />
     <set_gm_button text="Activate GM Mode" x="90" y="100" h="50" w="200" />
-    <set_gm_button text="{{ version }}" x="115" y="38" h="25" w="100" />
     <set_timer name="Sandbox Activation" seconds="20" />
     <set_variable name="Sandbox Activation" value="2.0" integer="yes" />
   </event>
@@ -39,7 +38,6 @@
     <if_timer_finished name="Sandbox Activation" />
     <if_variable name="GM Mode" comparator="LESS" value="1.0" />
     <clear_gm_button text="Activate GM Mode" />
-    <clear_gm_button text="{{ version }}" />
     <set_timer name="Sandbox Activation" seconds="1" />
     <set_variable name="Sandbox Activation" value="1.0" integer="yes" />
   </event>
@@ -115,6 +113,7 @@
     <set_variable name="System Settings" value="1.0" integer="yes" />
     <set_variable name="Sandbox Activation" value="0.0" integer="yes" />
     <set_variable name="Custom Config" value="1.0" integer="yes" />
+    <set_variable name="GM_Menu_Root_ShouldShow" value="1.0" integer="yes" />
   </event>
 
 

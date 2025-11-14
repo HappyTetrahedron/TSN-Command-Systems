@@ -26,13 +26,13 @@
   {% endcall %}
 {% endfor %}
 
-{% call(isCreate) menu.addStatementToMenu("reassign", menu.main.spawn) %}
+{% call(isCreate) menu.addStatementToMenu("GM AI config", menu.main.spawn) %}
   {% if not isCreate %}
     <set_variable name="AI Override" value="0.0" integer="yes" />
   {% endif %}
 {% endcall %}
 
-{% call(isCreate) menu.addStatementToMenu("reassign", menu.main.ai) %}
+{% call(isCreate) menu.addStatementToMenu("GM AI Pickers", menu.main.ai) %}
     <set_variable name="SwSidePicker_Should_Show" value="{{ 1 if isCreate else 0 }}.0" integer="yes" />
     <set_variable name="DifPicker_Should_Show" value="{{ 1 if isCreate else 0 }}.0" integer="yes" />
 {% endcall %}

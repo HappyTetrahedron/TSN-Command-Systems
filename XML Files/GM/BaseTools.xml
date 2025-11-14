@@ -13,13 +13,13 @@
     <set_to_gm_position use_gm_selection=" " distance="0" angle="0.0" />
 {% endcall %}
 
-{% call menu.onButtonlick("DelTerrain", menu.main.base) %}
+{% call menu.onButtonClick("DelTerrain", menu.main.base) %}
     <destroy_near type="asteroids" radius="5000" use_gm_position="" />
     <destroy_near type="mines" radius="5000" use_gm_position="" />
     <destroy_near type="nebulas" radius="5000" use_gm_position="" />
 {% endcall %}
 
-{% call menu.onButtonlick("DelAllMines", menu.main.base) %}
+{% call menu.onButtonClick("DelAllMines", menu.main.base) %}
     <destroy_near type="mines" radius="80000" centerX="50000" centerY="0" centerZ="50000" />
 {% endcall %}
 
@@ -29,7 +29,7 @@
 
 {% set sides = range(1, 14)|list %}
 {% do sides.__setitem__(1, "2 Dflt") %}
-{% call(choice) picker.Picker("PS", "CHNG", sides, "Player Side:", 0, 235, 220, track="playerSide") %}
+{% call(choice) picker.Picker("PS", "CHNG", sides, "Player Side:", 0, 100, 68, track="playerSide") %}
   {% set side = 2 if choice == "2 Dflt" else choice|int %}
   {% for ship in util.shipConfigs %}
     <set_side_value value="{{ side }}" player_slot="{{ ship.slot }}" />
