@@ -1,4 +1,9 @@
 {% import 'Utils.xml' as util %}
+{% import 'Start.xml' as start %}
+
+{% call start.onStart("Gate System") %}
+    <set_variable name="shipsInrange" value="0.0" integer="yes" />
+{% endcall %}
 
 <event name="Ship Tracking">
   <if_variable name="shipsInrange" comparator="LESS" value="0.0" />

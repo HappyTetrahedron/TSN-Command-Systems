@@ -1,0 +1,148 @@
+{% import 'Utils.xml' as util %}
+{% import 'Start.xml' as start %}
+
+{% call start.onStart("lifecycle") %}
+  <set_variable name="GM Mode" value="0.0" integer="yes" />
+  <set_variable name="GM Controls" value="0.0" integer="yes" />
+  <set_timer name="Sandbox Activation" seconds="5" />
+  <set_variable name="Sandbox Activation" value="1.0" integer="yes" />
+  {% for ship in util.shipConfigs %}
+    <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="{{ ship.slot }}" />
+  {% endfor %}
+{% endcall %}
+
+  <event name="Set Activate Button" id_arme="32e38a24-d41e-477e-bf1c-d03ac902f653" parent_id_arme="d2f73ac8-352b-463b-aa12-87d61dd5064f">
+    <if_variable name="Sandbox Activation" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Sandbox Activation" />
+    <if_variable name="GM Mode" comparator="LESS_EQUAL" value="1.0" />
+    <set_gm_button text="Activate GM Mode" x="90" y="100" h="50" w="200" />
+    <set_gm_button text="{{ version }}" x="115" y="38" h="25" w="100" />
+    <set_timer name="Sandbox Activation" seconds="20" />
+    <set_variable name="Sandbox Activation" value="2.0" integer="yes" />
+  </event>
+
+
+  <event name="Reset All Buttons" id_arme="4db38589-05f0-4387-9dd4-ef08c201581c" parent_id_arme="dec1f604-a38a-449a-b80b-d630ce45845c">
+    <if_gm_button text="Restart Sandbox" />
+    <clear_gm_button text="Restart Sandbox" />
+    <set_variable name="GM Mode" value="0.0" integer="yes" />
+    <set_timer name="Sandbox Activation" seconds="1" />
+    <set_variable name="Sandbox Activation" value="1.0" integer="yes" />
+  </event>
+
+  <event name="Refresh Mode Select" id_arme="2d2b20c3-b5c0-4f2b-8239-a1c12796e6f0" parent_id_arme="d2f73ac8-352b-463b-aa12-87d61dd5064f">
+    <if_variable name="Sandbox Activation" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="Sandbox Activation" />
+    <if_variable name="GM Mode" comparator="LESS" value="1.0" />
+    <clear_gm_button text="Activate GM Mode" />
+    <clear_gm_button text="{{ version }}" />
+    <set_timer name="Sandbox Activation" seconds="1" />
+    <set_variable name="Sandbox Activation" value="1.0" integer="yes" />
+  </event>
+  <event name="GM Mode Selected" id_arme="18f7e6c4-bbfa-423f-8ca9-7cacea4f5587" parent_id_arme="d2f73ac8-352b-463b-aa12-87d61dd5064f">
+    <if_variable name="Sandbox Activation" comparator="EQUALS" value="2.0" />
+    <if_gm_button text="Activate GM Mode" />
+    <clear_gm_button text="Activate GM Mode" />
+    <set_gm_button text="Restart Sandbox" x="5" y="60" h="30" w="150" />
+    <set_variable name="Activation Menu" value="1.0" integer="yes" />
+    <set_gm_button text="Initial System Side\Hegemony (Side 1)" />
+    <set_gm_button text="Initial System Side\USFP (Side 2 Player)" />
+    <set_gm_button text="Initial System Side\USF (Side 3)" />
+    <set_gm_button text="Initial System Side\N'Tani (Side 4)" />
+    <set_gm_button text="Initial System Side\Pirate (Side 5)" />
+    <set_gm_button text="Initial System Side\Caltron (Side 6)" />
+    <set_variable name="Custom Config" value="1.0" integer="yes" />
+    <set_variable name="GM Mode" value="1.0" integer="yes" />
+  </event>
+
+{# Sector Selection #}
+
+{% for sector in range(1, 26) %}
+  <event name="Sector {{ sector }}">
+    <if_variable name="GM Mode" comparator="EQUALS" value="4.0" />
+    <if_gm_button text="Sector {{ sector }}" />
+    <set_variable name="Sector" value="{{ sector }}.0" integer="yes" />
+    <set_variable name="GM Mode" value="5.0" integer="yes" />
+    {% for ship in util.shipConfigs %}
+        <set_object_property property="positionX" value="{{ 18000 + ship.slot|int * 200 }}.0" player_slot="{{ ship.slot }}" />
+        <set_object_property property="positionZ" value="{{ 12635 + ship.slot|int * 200 }}.0" player_slot="{{ ship.slot }}" />
+        <set_object_property property="angle" value="3.141592654" player_slot="{{ ship.slot }}" />
+    {% endfor %}
+  </event>
+{% endfor %}
+
+  <event name="Selection Complete" id_arme="b4d9605f-f1c8-43ba-b92f-d0ef023f6e6e" parent_id_arme="10a3b890-07b8-4df7-8bb8-5ec4c9750c28">
+    <if_variable name="GM Mode" comparator="EQUALS" value="5.0" />
+    <set_variable name="Activation Menu" value="0.0" integer="yes" />
+    <!--Clear Buttons-->
+    <clear_gm_button text="Initial System Side\Hegemony (Side 1)" />
+    <clear_gm_button text="Initial System Side\USFP (Side 2 Player)" />
+    <clear_gm_button text="Initial System Side\USF (Side 3)" />
+    <clear_gm_button text="Initial System Side\N'Tani (Side 4)" />
+    <clear_gm_button text="Initial System Side\Pirate (Side 5)" />
+    <clear_gm_button text="Initial System Side\Caltron (Side 6)" />
+    <clear_gm_button text="Select Sector" />
+    {% for sector in range(1, 26) %}
+      <clear_gm_button text="Sector {{ sector }}" />
+    {% endfor %}
+    <clear_gm_button text="Restart Sandbox" />
+    <!---->
+    {% for ship in util.shipConfigs %}
+      <warning_popup_message message="Linking to Command Network" consoles="MHWESCO" player_slot="{{ ship.slot }}" />
+    {% endfor %}
+    <set_variable name="GM Controls" value="1.0" integer="yes" />
+    <set_variable name="GM Menu" value="1.0" integer="yes" />
+    <set_variable name="GM Backup" value="1.0" integer="yes" />
+    <set_timer name="GM Backup" seconds="1" />
+    <set_variable name="Sandbox Activation" value="5.0" integer="yes" />
+    <set_variable name="GM Mode" value="6.0" integer="yes" />
+  </event>
+
+  <event name="Run Sandbox" id_arme="d2729ef3-7f51-4135-a735-1990e4e7651e" parent_id_arme="d2f73ac8-352b-463b-aa12-87d61dd5064f">
+    <if_variable name="Sandbox Activation" comparator="EQUALS" value="5.0" />
+    {% for ship in util.shipConfigs %}
+      <warning_popup_message message="Impulse Engine Control: Online" consoles="H" player_slot="{{ ship.slot }}" />
+      <warning_popup_message message="Weapon Systems: Active" consoles="W" player_slot="{{ ship.slot }}" />
+      <warning_popup_message message="Engineering Management System: Online" consoles="E" player_slot="{{ ship.slot }}" />
+      <warning_popup_message message="Sensors: Active" consoles="S" player_slot="{{ ship.slot }}" />
+      <warning_popup_message message="Communications Array: Active" consoles="C" player_slot="{{ ship.slot }}" />
+      <warning_popup_message message="Ship Systems Activated" consoles="MHWESCO" player_slot="{{ ship.slot }}" />
+    {% endfor %}
+    <set_variable name="Refresh" value="0.0" integer="yes" />
+    <clear_gm_button text="Refresh" />
+    <set_variable name="System Settings" value="1.0" integer="yes" />
+    <set_variable name="Sandbox Activation" value="0.0" integer="yes" />
+    <set_variable name="Custom Config" value="1.0" integer="yes" />
+  </event>
+
+
+
+
+  <event name="Default Side Selected" id_arme="8294f72b-d72c-4413-a17a-7cb49eb5395a" parent_id_arme="7535f2af-4f53-432b-a70f-f2cd769f552b">
+    <if_gm_button text="Initial System Side\Default Side" />
+    <set_variable name="systemSideOverride" value="0.0" integer="yes" />
+  </event>
+  <event name="Side 1 Selected" id_arme="fc06625b-87ad-4ea0-aa64-7250d2610955" parent_id_arme="7535f2af-4f53-432b-a70f-f2cd769f552b">
+    <if_gm_button text="Initial System Side\Hegemony (Side 1)" />
+    <set_variable name="systemSideOverride" value="1.0" integer="yes" />
+  </event>
+  <event name="Side 2 Selected" id_arme="ba839264-5aee-4d00-9ac4-4fe5a8fbe128" parent_id_arme="7535f2af-4f53-432b-a70f-f2cd769f552b">
+    <if_gm_button text="Initial System Side\USFP (Side 2 Player)" />
+    <set_variable name="systemSideOverride" value="2.0" integer="yes" />
+  </event>
+  <event name="Side 3 Selected" id_arme="c1b76692-6287-42f0-8d03-2ea6defa51d6" parent_id_arme="7535f2af-4f53-432b-a70f-f2cd769f552b">
+    <if_gm_button text="Initial System Side\USF (Side 3)" />
+    <set_variable name="systemSideOverride" value="3.0" integer="yes" />
+  </event>
+  <event name="Side 4 Selected" id_arme="005fba81-584b-4a9c-a5ac-1cc41d6d4f23" parent_id_arme="7535f2af-4f53-432b-a70f-f2cd769f552b">
+    <if_gm_button text="Initial System Side\N'Tani (Side 4)" />
+    <set_variable name="systemSideOverride" value="4.0" integer="yes" />
+  </event>
+  <event name="Side 5 Selected" id_arme="e8acea1f-a8ed-495d-a1bd-fc5e227ab1df" parent_id_arme="7535f2af-4f53-432b-a70f-f2cd769f552b">
+    <if_gm_button text="Initial System Side\Pirate (Side 5)" />
+    <set_variable name="systemSideOverride" value="5.0" integer="yes" />
+  </event>
+  <event name="Side 6 Selected" id_arme="8425d72f-a0b0-434f-8b38-16513db8d4c2" parent_id_arme="7535f2af-4f53-432b-a70f-f2cd769f552b">
+    <if_gm_button text="Initial System Side\Caltron (Side 6)" />
+    <set_variable name="systemSideOverride" value="6.0" integer="yes" />
+  </event>

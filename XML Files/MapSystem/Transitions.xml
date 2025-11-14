@@ -182,6 +182,7 @@
 
 {% call start.onStart("TransitionsEngine") %}
   <set_timer name="Transition" seconds="1" />
+  <set_variable name="Sector Locked" value="0.0" integer="yes" />
 {% endcall %}
 
 

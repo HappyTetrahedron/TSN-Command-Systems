@@ -38,24 +38,6 @@
 {% endcall %}
 
 
-  <folder_arme name="Comms Enable-Disable" id_arme="6e370a09-6c89-457e-b917-e7c866c6ad45" parent_id_arme="846725f1-9752-4065-a2a1-9f52b9a4a32b" />
-  <event name="Enable Comms" id_arme="a074453c-bc65-4818-9f50-44c34f64b5eb" parent_id_arme="6e370a09-6c89-457e-b917-e7c866c6ad45">
-    <if_gm_button text="Comm:OFF" />
-    <clear_gm_button text="Comm:OFF" />
-    <set_gm_button text="Comm:ON" x="140" y="510" h="28" w="90" />
-    <set_variable name="AICommsControl" value="2.0" integer="yes" />
-  </event>
-  <event name="Disable Comms" id_arme="af117b8c-12c4-4d29-95a9-2f280e2af311" parent_id_arme="6e370a09-6c89-457e-b917-e7c866c6ad45">
-    <if_gm_button text="Comm:ON" />
-    <clear_gm_button text="Comm:ON" />
-    <set_gm_button text="Comm:OFF" x="140" y="510" h="28" w="90" />
-    <set_variable name="AICommsControl" value="1.0" integer="yes" />
-  </event>
-  <folder_arme name="Commands" id_arme="7ef9ad11-aebe-4397-aa87-16d7e5aa88a2" parent_id_arme="846725f1-9752-4065-a2a1-9f52b9a4a32b" />
-  <event name="Move to GM" id_arme="f1922817-0270-487a-ba37-d68a96c9c11b" parent_id_arme="7ef9ad11-aebe-4397-aa87-16d7e5aa88a2">
-    <if_gm_button text="Grp to GM" />
-    <set_variable name="ReassignAI" value="1025.0" integer="yes" />
-  </event>
   {% set dirX = 70 %}
   {% set dirY = 540 %}
   {% call menu.onButtonClick("STOP    O", menu.main.ai, pos={

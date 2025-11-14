@@ -4,6 +4,14 @@
 {% import 'Spawn.xml' as spawn %}
 {% import 'GM Menus.xml' as menu %}
 
+{% call start.onStart("Shuttles") %}
+    {% for ship in util.shipConfigs %}
+      <set_player_carried_type player_slot="{{ ship.slot }}" bay_slot="0" hullID="102" name="{{ ship.shuttle }}" />
+    {% endfor %}
+    <set_variable name="ShuttleSelect" value="0.0" integer="yes" />
+    <set_variable name="OperationType" value="0.0" integer="yes" />
+{% endcall %}
+
 {# Ship-to-ship RVs #}
 {% for ship in util.shipConfigs %}
   {% for othership in util.shipConfigs if not othership.id == ship.id %}

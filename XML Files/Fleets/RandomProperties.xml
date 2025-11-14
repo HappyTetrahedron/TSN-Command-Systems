@@ -1,3 +1,11 @@
+{% import 'Start.xml' as start %}
+
+{% call start.onStart("AI Random Properties") %}
+    <set_variable name="Random Coordinates" value="1.0" integer="yes" />
+    <set_variable name="Random Direction" value="1.0" integer="yes" />
+    <set_variable name="Fleetnumber" value="1.0" integer="yes" />
+{% endcall %}
+
 {# Handlers for setting random coordinates, direction, and multiplier. Need to be included before spawn / AI config events. #}
   <event name="Random Coordinates" id_arme="7c7265dd-f0de-4d29-9f42-9f23d1e09a4e" parent_id_arme="e5a3ec26-6d23-4bb8-9698-be3f70d38947">
     <if_variable name="Random Coordinates" comparator="EQUALS" value="1.0" />

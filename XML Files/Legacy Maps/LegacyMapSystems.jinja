@@ -1,3 +1,11 @@
+{% import 'Start.xml' as start %}
+
+{% call start.onStart("Legacy Maps") %}
+    <set_variable name="StaticBlackhole" value="0.0" integer="yes" />
+    <set_variable name="DynamicBlackhole" value="0.0" integer="yes" />
+    <set_timer name="DynamicBlackhole" seconds="1" />
+{% endcall %}
+
   <folder_arme name="Planets" id_arme="d1ec6b0e-f1ea-49bc-842e-02a63fc668e2" parent_id_arme="22ead096-32e5-4cf4-9f90-3c7924af9696" />
   <event name="Remove Planet" id_arme="7da1b3c5-74f0-4417-9620-dde70fd9f7d5" parent_id_arme="d1ec6b0e-f1ea-49bc-842e-02a63fc668e2">
     <if_variable name="DestroyPlanet" comparator="EQUALS" value="1.0" />

@@ -1,4 +1,12 @@
 {% import 'Utils.xml' as util %}
+{% import 'Start.xml' as start %}
+
+{% call start.onStart("Name Assign") %}
+  <set_variable name="secondnumber" value="0.0" integer="yes" />
+  <set_variable name="firstnumber" value="0.0" integer="yes" />
+  <set_variable name="Name Assign" value="0.0" integer="yes" />
+  <set_variable name="LetterPrefix" value="1.0" integer="yes" />
+{% endcall %}
 
   <event name="Restart Letter Cycle" id_arme="8e028e49-f46e-44b3-b585-c88fe25d4c62" parent_id_arme="2dd8bf7f-9203-4c1a-9bea-2a4d2d3c05a6">
     <if_not_exists name="--" />

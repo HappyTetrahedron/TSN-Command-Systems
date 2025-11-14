@@ -25,7 +25,7 @@
 
 {% set sides = range(1, 14)|list %}
 {% do sides.__setitem__(1, "2 Dflt") %}
-{% call(choice) picker.Picker("PS", "CHNG", sides, "Player Side:", 2, 235, 220) %}
+{% call(choice) picker.Picker("PS", "CHNG", sides, "Player Side:", 0, 235, 220, track="playerSide") %}
   {% set side = 2 if choice == "2 Dflt" else choice|int %}
   {% for ship in util.shipConfigs %}
     <set_side_value value="{{ side }}" player_slot="{{ ship.slot }}" />
