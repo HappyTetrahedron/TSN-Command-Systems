@@ -27,9 +27,8 @@
   <event name="All Inactive" id_arme="970521f0-180e-45e2-8cf8-693a4c3b200b" parent_id_arme="da1f4d06-129f-463c-a1e6-d7a4eae746b1">
     <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
     <if_variable name="shipCount" comparator="EQUALS" value="0.0" />
-    <set_timer name="Mission End" seconds="3" />
+    <set_timer name="Mission End" seconds="60" />
     <set_variable name="Mission End" value="1.0" integer="yes" />
-    <set_variable name="Sector Locked" value="1.0" integer="yes" />
     <set_variable name="Sandbox Activation" value="100.0" integer="yes" />
   </event>
 
@@ -39,7 +38,6 @@
     <if_exists player_slot="{{ ship.slot }}" />
     <set_variable name="shipCount" value="shipCount+1" integer="yes" />
     <!--Additional Trackers-->
-    <set_variable name="{{ ship.shuttle }} Status" value="1.0" integer="yes" />
     <set_variable name="Ship{{ ship.id }} Status" value="2.0" integer="yes" />
     <!--Dynamic Variables-->
     {% for hook in retrieve("onSpawn") %}
@@ -51,14 +49,6 @@
     <if_variable name="Ship{{ ship.id }} Status" comparator="EQUALS" value="1.0" />
     <if_not_exists player_slot="{{ ship.slot }}" />
     <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
-    <set_variable name="Ship{{ ship.id }} Ready Grid A" value="1.0" integer="yes" />
-    <set_variable name="Ship{{ ship.id }} Ready Grid E" value="1.0" integer="yes" />
-    <set_variable name="Ship{{ ship.id }} Ready Grid 1" value="1.0" integer="yes" />
-    <set_variable name="Ship{{ ship.id }} Ready Grid 5" value="1.0" integer="yes" />
-    <set_variable name="Ship{{ ship.id }} Ready Corner A1" value="1.0" integer="yes" />
-    <set_variable name="Ship{{ ship.id }} Ready Corner A5" value="1.0" integer="yes" />
-    <set_variable name="Ship{{ ship.id }} Ready Corner E1" value="1.0" integer="yes" />
-    <set_variable name="Ship{{ ship.id }} Ready Corner E5" value="1.0" integer="yes" />
     <set_variable name="Ship{{ ship.id }} Status" value="4.0" integer="yes" />
     {% for hook in retrieve("onInactive") %}
       <!--{{ hook.name }}-->
@@ -70,7 +60,6 @@
     <if_exists player_slot="{{ ship.slot }}" />
     <set_side_value value="playerSide" player_slot="{{ ship.slot }}" />
     <set_variable name="shipCount" value="shipCount+1" integer="yes" />
-    <set_variable name="{{ ship.shuttle }} Status" value="1.0" integer="yes" />
     <set_variable name="Ship{{ ship.id }} Status" value="2.0" integer="yes" />
     <!--Dynamic Variables-->
     {% for hook in retrieve("onSpawn") %}
@@ -88,7 +77,6 @@
     <if_variable name="Sandbox Activation" comparator="EQUALS" value="0.0" />
     <set_variable name="shipCount" value="shipCount+1" integer="yes" />
     <!--Additional Trackers-->
-    <set_variable name="{{ ship.shuttle }} Status" value="1.0" integer="yes" />
     <set_variable name="Ship{{ ship.id }} Status" value="2.0" integer="yes" />
     <!--Dynamic Variables-->
     {% for hook in retrieve("onSpawn") %}
@@ -99,14 +87,6 @@
   <event name="Ship{{ ship.id }} Destroyed" id_arme="defc1070-b7d2-4e08-b196-18fe9d407622" parent_id_arme="5e24183b-0344-45c6-9981-1b2d210778d7">
     <if_variable name="Ship{{ ship.id }} Status" comparator="EQUALS" value="2.0" />
     <if_not_exists player_slot="{{ ship.slot }}" />
-    <set_variable name="Ship{{ ship.id }} Ready Grid A" value="1.0" integer="yes" />
-    <set_variable name="Ship{{ ship.id }} Ready Grid E" value="1.0" integer="yes" />
-    <set_variable name="Ship{{ ship.id }} Ready Grid 1" value="1.0" integer="yes" />
-    <set_variable name="Ship{{ ship.id }} Ready Grid 5" value="1.0" integer="yes" />
-    <set_variable name="Ship{{ ship.id }} Ready Corner A1" value="1.0" integer="yes" />
-    <set_variable name="Ship{{ ship.id }} Ready Corner A5" value="1.0" integer="yes" />
-    <set_variable name="Ship{{ ship.id }} Ready Corner E1" value="1.0" integer="yes" />
-    <set_variable name="Ship{{ ship.id }} Ready Corner E5" value="1.0" integer="yes" />
     <set_variable name="shipCount" value="shipCount-1" integer="yes" />
     <set_variable name="Ship{{ ship.id }} Status" value="3.0" integer="yes" />
     <!--Dynamic Variables-->

@@ -3,6 +3,7 @@
 {% import 'Start.xml' as start %}
 {% import 'Spawn.xml' as spawn %}
 {% import 'GM Menus.xml' as menu %}
+{% import 'PlayerTracking.xml' as tracking %}
 
 {% call start.onStart("Shuttles") %}
     {% for ship in util.shipConfigs %}
@@ -10,6 +11,10 @@
     {% endfor %}
     <set_variable name="ShuttleSelect" value="0.0" integer="yes" />
     <set_variable name="OperationType" value="0.0" integer="yes" />
+{% endcall %}
+
+{% call(ship) tracking.onSpawn("Shuttles") %}
+  <set_variable name="{{ ship.shuttle }} Status" value="1.0" integer="yes" />
 {% endcall %}
 
 {# Ship-to-ship RVs #}
