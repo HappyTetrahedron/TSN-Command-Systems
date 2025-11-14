@@ -181,6 +181,20 @@
   {% do track("extrastatements" + (parentMenu.key if parentMenu is mapping else parentMenu), caller, name) %}
 {% endmacro %}
 
+<event name="Build Root Menu">
+    <if_variable name="GM_Menu_Root_ShouldShow" comparator="EQUALS" value="1.0" />
+    <if_variable name="_GM_Menu_Root_Shown" comparator="NOT" value="1.0" />
+    <set_gm_button text="Bas." x="40" y="100" h="30" w="50" />
+    <set_gm_button text="SPWN." x="40" y="140" h="30" w="50" />
+    <set_gm_button text="POI" x="40" y="180" h="30" w="50" />
+    <set_gm_button text="Haz." x="40" y="220" h="30" w="50" />
+    <set_gm_button text="Int." x="40" y="260" h="30" w="50" />
+    <set_gm_button text="CSTM" x="40" y="300" h="30" w="50" />
+    <set_gm_button text="DelOff" x="40" y="340" h="30" w="50" />
+    <set_gm_button text="AI Off" x="40" y="380" h="30" w="50" />
+    <set_variable name="_GM_Menu_Root_Shown" value="1.0" integer="yes" />
+</event>
+
   {% set allSubmenus = [] %}
   {% macro _createMenu(name, id) %}
   <event name="Menu Create {{ name }}">
@@ -494,21 +508,37 @@
 
 
   {# Menu Reset #}
-  <event name="Clear All Menus (Button Trigger)">
-    <if_gm_button text="Clear" />
+    {% macro _clearAllMenus() %}
+    <set_variable name="_GM_Menu_Root_Shown" value="0.0" integer="yes" />
     <set_variable name="GM_Menu_Selector" value="0.0" integer="yes" />
     <set_variable name="GM_SpawnMenu_Selector" value="0.0" integer="yes" />
     {% for submenu in allSubmenus %}
       <set_variable name="GM_Submenu_{{ submenu }}_ShouldShow" value="0.0" integer="yes" />
     {% endfor %}
+    <clear_gm_button text="DelOff" />
+    <clear_gm_button text="DelOn" />
+    <clear_gm_button text="AI Off" />
+    <clear_gm_button text="AI On" />
+    <clear_gm_button text="Bas." />
+    <clear_gm_button text="SPWN." />
+    <clear_gm_button text="POI" />
+    <clear_gm_button text="Haz." />
+    <clear_gm_button text="Int." />
+    <clear_gm_button text="CSTM" />
+    <clear_gm_button text="Spwn Dsbld" />
+    <clear_gm_button text="Delete Dsble" />
+    <clear_gm_button text="Spwn Enbld" />
+    <clear_gm_button text="Delete Enbld" />
+    <set_variable name="GM_Menu_Clear_All" value="0.0" integer="yes" />
+    {% endmacro %}
+
+  <event name="Refresh All Menus">
+    <if_variable name="GM_Menu_Clear_All" comparator="GREATER_EQUAL" value="1.0" />
+    {{ _clearAllMenus() }}
   </event>
 
-  <event name="Clear All Menus (Flag Trigger)">
-    <if_variable name="GM_Menu_Clear_All" comparator="GREATER_EQUAL" value="1.0" />
-    <set_variable name="GM_Menu_Selector" value="0.0" integer="yes" />
-    <set_variable name="GM_SpawnMenu_Selector" value="0.0" integer="yes" />
-    {% for submenu in allSubmenus %}
-      <set_variable name="GM_Submenu_{{ submenu }}_ShouldShow" value="0.0" integer="yes" />
-    {% endfor %}
-    <set_variable name="GM_Menu_Clear_All" value="0.0" integer="yes" />
+  <event name="Hide All Menus">
+    <if_variable name="GM_Menu_Root_ShouldShow" comparator="NOT" value="1.0" />
+    <if_variable name="_GM_Menu_Root_Shown" comparator="EQUALS" value="1.0" />
+    {{ _clearAllMenus() }}
   </event>

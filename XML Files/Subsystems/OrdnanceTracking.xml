@@ -1,9 +1,16 @@
 {% import 'Utils.xml' as util %}
+{% import 'End.xml' as end %}
 {% import 'PlayerTracking.xml' as tracking %}
 
 {% call(ship) tracking.onSpawn("OrdnanceTracking") %}
   {% for ordnance, property in util.ordnanceIdentifiers.items() %}
       <get_object_property property="{{ property }}" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}{{ ordnance }}Current" />
+  {% endfor %}
+{% endcall %}
+
+{% call end.onMissionEnd("OrdnanceTracking") %}
+  {% for ship in util.shipConfigs %}
+  <log text="Ship{{ ship.id }} Ordnance: {% for ord in util.ordnanceIdentifiers.keys() %}|Ship{{ ship.id }}{{ ord }}Current|, {% endfor %}" />
   {% endfor %}
 {% endcall %}
 

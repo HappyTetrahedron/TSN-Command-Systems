@@ -19,6 +19,10 @@
     <destroy_near type="nebulas" radius="5000" use_gm_position="" />
 {% endcall %}
 
+{% call menu.onButtonlick("DelAllMines", menu.main.base) %}
+    <destroy_near type="mines" radius="80000" centerX="50000" centerY="0" centerZ="50000" />
+{% endcall %}
+
 {% call menu.onButtonClick("DelSelected", menu.main.base) %}
     <destroy use_gm_selection="" />
 {% endcall %}
@@ -59,3 +63,17 @@
     {% endcall %}
 
 {% endfor %}
+
+{{ menu.addEphemeralSubmenu("End Mission", menu.main.base) }}
+  {% call menu.onMenuClick("Shut down ships", "End Mission") %}
+    <warning_popup_message message="Ship systems shutting down" consoles="MHWESC" />
+    <set_variable name="Mission End" value="1.0" />
+    <set_timer name="Mission End" seconds="3" />
+  {% endcall %}
+  {% call menu.onMenuClick("Engage Autopilot", "End Mission") %}
+    <warning_popup_message message="Transferring control to automated systems" consoles="MHWESC" />
+    <set_variable name="Mission End" value="1.0" />
+    <set_timer name="Mission End" seconds="3" />
+  {% endcall %}
+  {% call menu.onMenuClick("Cancel", "End Mission") %}
+  {% endcall %}

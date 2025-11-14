@@ -1,16 +1,20 @@
 {% import 'Utils.xml' as util %}
 {% import 'Start.xml' as start %}
+{% import 'GM Menus.xml' as menu %}
 
 {% call start.onStart("lifecycle") %}
   <set_variable name="GM Mode" value="0.0" integer="yes" />
-  <set_variable name="GM Controls" value="0.0" integer="yes" />
   <set_timer name="Sandbox Activation" seconds="5" />
   <set_variable name="Sandbox Activation" value="1.0" integer="yes" />
   {% for ship in util.shipConfigs %}
     <warning_popup_message message="Initialising ship systems...." consoles="MHWESCO" player_slot="{{ ship.slot }}" />
   {% endfor %}
+  <set_variable name="Refresh" value="1.0" integer="yes" />
+  <set_timer name="Refresh" seconds="10" />
 {% endcall %}
 
+
+{# Activation #}
   <event name="Set Activate Button" id_arme="32e38a24-d41e-477e-bf1c-d03ac902f653" parent_id_arme="d2f73ac8-352b-463b-aa12-87d61dd5064f">
     <if_variable name="Sandbox Activation" comparator="EQUALS" value="1.0" />
     <if_timer_finished name="Sandbox Activation" />
@@ -90,8 +94,6 @@
     {% for ship in util.shipConfigs %}
       <warning_popup_message message="Linking to Command Network" consoles="MHWESCO" player_slot="{{ ship.slot }}" />
     {% endfor %}
-    <set_variable name="GM Controls" value="1.0" integer="yes" />
-    <set_variable name="GM Menu" value="1.0" integer="yes" />
     <set_variable name="GM Backup" value="1.0" integer="yes" />
     <set_timer name="GM Backup" seconds="1" />
     <set_variable name="Sandbox Activation" value="5.0" integer="yes" />
@@ -145,4 +147,32 @@
   <event name="Side 6 Selected" id_arme="8425d72f-a0b0-434f-8b38-16513db8d4c2" parent_id_arme="7535f2af-4f53-432b-a70f-f2cd769f552b">
     <if_gm_button text="Initial System Side\Caltron (Side 6)" />
     <set_variable name="systemSideOverride" value="6.0" integer="yes" />
+  </event>
+
+
+{# Restart (Fallback) #}
+  <event name="Set Backup" id_arme="10f2edb1-31d9-47a6-9797-2fa6ac4c2df3" parent_id_arme="c6b5e50e-c4ae-4222-a318-f7fb7c467250">
+    <if_variable name="GM Backup" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="GM Backup" />
+    <set_gm_button text="Reboot" x="5" y="60" h="30" w="60" />
+    <set_timer name="GM Backup" seconds="30" />
+    <set_variable name="GM Backup" value="2.0" />
+  </event>
+  <event name="Refresh Backup" id_arme="42bf68f8-bf70-4da8-aeef-873031c0d764" parent_id_arme="c6b5e50e-c4ae-4222-a318-f7fb7c467250">
+    <if_variable name="GM Backup" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="GM Backup" />
+    <clear_gm_button text="Reboot" />
+    <set_timer name="GM Backup" seconds="2" />
+    <set_variable name="GM Backup" value="1.0" />
+  </event>
+
+  <event name="Reboot Menu" id_arme="d018f99c-ea99-45a3-a06f-f875ceaa885b" parent_id_arme="c6b5e50e-c4ae-4222-a318-f7fb7c467250">
+    <if_variable name="GM Backup" comparator="GREATER_EQUAL" value="1.0" />
+    <if_gm_button text="Reboot" />
+
+    <clear_gm_button text="Reboot" />
+    <set_variable name="GM_Menu_Clear_All" value="1.0" />
+
+    <set_timer name="GM Backup" seconds="2" />
+    <set_variable name="GM Backup" value="1.0" />
   </event>

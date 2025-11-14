@@ -27,10 +27,10 @@
 {% endmacro %}
 
 {% macro scaffoldNumbered(name_template, identifier, counter, amount=5) %}
-  {% call start.onStart("Spawn") %}
+  {% call start.onStart("Spawn: " + identifier) %}
     <set_variable name="{{ counter }}" value="1.0" integer="yes" />
   {% endcall %}
-  {% call destroy.onDestroy("Spawn") %}
+  {% call destroy.onDestroy("Spawn: " + identifier) %}
     {% for i in range(1, amount+1) %}
       {% set name = name_template|replace("|" + counter + "|", i|string) %}
       <destroy name="{{ name }}" />
