@@ -163,12 +163,12 @@
 {% for cargo in util.cargoTypes if not cargo.is_nothing %}
   {% call spawn.createNumberedConditional("Rv|rvnumber|", cargo.name + " Drop", "RVs", "RV Points", "rvnumber", cargo.rv.drop) %}
     <create type="genericMesh" use_gm_position="" name="Rv|rvnumber|" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
-    <set_object_property property="pushRadius" value="0.0" name="Rv|rvnumber|" />
+    <incoming_comms_text from="SYSTEMS" type="PLAYER">{{ cargo.name }} deployment zone identified.</incoming_comms_text>
     <set_object_property property="rollDelta" value="-0.2" name="Rv|rvnumber|" />
     <set_object_property property="angleDelta" value="0.05" name="Rv|rvnumber|" />
+    <set_object_property property="pushRadius" value="1.0" name="Rv|rvnumber|" />
     <addto_object_property value="-8.0" property="positionY" name="Rv|rvnumber|" />
-    <incoming_comms_text from="SYSTEMS" type="PLAYER">{{ cargo.name }} deployment zone identified.</incoming_comms_text>
-    <set_ship_text name="Rv|rvnumber|" class="Marine Dz" desc="Designated {{ cargo.name|lower }} dropzone" />
+    <set_ship_text name="Rv|rvnumber|" class="{{ cargo.name }} Dz" desc="Designated {{ cargo.name|lower }} dropzone" />
     <set_variable name="Rv|rvnumber|Type" value="{{ cargo.rv.drop }}" integer="yes" />
   {% endcall %}
   {% call spawn.createNumberedConditional("Rv|rvnumber|", cargo.name + " Pickup", "RVs", "RV Points", "rvnumber", cargo.rv.pickup) %}
@@ -179,20 +179,23 @@
     {% else %}
       <create type="genericMesh" use_gm_position="" name="Rv|rvnumber|" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
     {% endif %}
+    <incoming_comms_text from="SYSTEMS" type="PLAYER">{{ cargo.name }} extraction zone identified.</incoming_comms_text>
     {% if 'hull' not in cargo %}
       <set_ship_text name="Rv|rvnumber|" class="{{ cargo.name }} Exfil" desc="Designated {{ cargo.name|lower }} pickup zone" />
     {% endif %}
     {% if 'text' in cargo %}
       <set_ship_text name="Rv|rvnumber|" desc="{{ cargo.text.desc }}" scan_desc="{{ cargo.text.scan_desc }}" hailtext="{{ cargo.text.get('hailtext', "") }}" />
     {% endif %}
-    <set_object_property property="pushRadius" value="0.0" name="Rv|rvnumber|" />
+    {% for ship in util.shipConfigs %}
+      <warning_popup_message message="Rv|rvnumber|: {{ cargo.name }} Pickup Identified" consoles="CF" player_slot="{{ ship.slot }}" />
+    {% endfor %}
+    <set_object_property property="pushRadius" value="1.0" name="Rv|rvnumber|" />
     <set_object_property property="rollDelta" value="-0.2" name="Rv|rvnumber|" />
     <set_object_property property="angleDelta" value="0.05" name="Rv|rvnumber|" />
     <addto_object_property value="-8.0" property="positionY" name="Rv|rvnumber|" />
     {% for property, value in cargo.get(properties, {}).items() %}
       <set_object_property property="{{ property }}" value="{{ value }}" name="Rv|rvnumber|" />
     {% endfor %}
-    <incoming_comms_text from="SYSTEMS" type="PLAYER">{{ cargo.name }} extraction zone identified.</incoming_comms_text>
     <set_variable name="Rv|rvnumber|Type" value="{{ cargo.rv.pickup }}" integer="yes" />
   {% endcall %}
 {% endfor %}

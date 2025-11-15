@@ -14,22 +14,15 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'render_server'))
 import jinja_functions as jf
 
 env = {
-    "difficulty": 7,
+    "difficulty": 10,
     "extensions": [
         "TokenSystem",
-        "BoardingActions",
         "HazardPainter",
         "NebulaEffects",
-        "FuelStatusDisplay",
-        "Radiation",
-        "VerdantFleet",
-        "CrookedStar",
     ],
     "maps": [
-        "Vrae",
-        "Athorn",
+        "Mria",
         "Khoros",
-
     ],
     "ordnance": {
         "ship1": {
@@ -49,9 +42,9 @@ env = {
     },
     "modules": {
         "ship1": [
+            "KamikazeMine",
             "Decoy",
             "Fireworks",
-            "KamikazeMine",
         ],
     }
 }
