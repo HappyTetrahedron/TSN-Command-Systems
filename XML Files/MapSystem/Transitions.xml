@@ -250,6 +250,7 @@
   {% endcall %}
   <event name="{{ transition.name }} Transition Enabled">
     <if_variable name="Sector Locked" comparator="NOT" value="1.0" />
+    <if_variable name="shipCount" comparator="GREATER" value="0.0" />
     {% for ship in util.shipConfigs %}
       <if_variable name="Ship{{ ship.id }} Ready {{ transition.name }}" comparator="EQUALS" value="1.0" />
     {% endfor %}
