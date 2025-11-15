@@ -1,16 +1,26 @@
 {# KamikazeMine module - add a shuttle-deployable mine field to a ship. #}
 
+{% import "GM Menus.xml" as menu %}
+{% import "Start.xml" as start %}
+
 {% set moduleName = "KamikazeMine" %}
 {% set mineCargo = "101" %}
 {% set timer = "30" %}
 
 {% macro render(ship, util) %}
-  {% set marker = "CL." + ship.id + "0" %}
+
+  {% call start.onStart("Kamikaze Mine Ship" + ship.id) %}
+    <set_variable name="MKMShip{{ ship.id }}Bombs" value="1.0" integer="yes" />
+  {% endcall %}
+
+  {% call() menu.onButtonClick("Bombs Ship" + ship.id, "Supplies") %}
+    <set_variable name="MKMShip{{ ship.id }}Bombs" value="MKMShip{{ ship.id }}Bombs + Ordnance" integer="yes" />
+  {% endcall %}
 
   {# Menu Lifecycle #}
   {% call() util.createConditionalModuleButtons(ship, moduleName + "ClusterDeploy") %}
     {{ util.ifCommsMenuState(ship, 2) }}
-    <if_variable name="Module_{{ moduleName }}_Ship{{ ship.id }}_Used" comparator="NOT" value="1.0" />
+    <if_variable name="MKMShip{{ ship.id }}Bombs" comparator="GREATER" value="0.0" />
     {{ util.sendCommsButton("Load Bombs", ship) }}
   {% endcall %}
 
@@ -20,29 +30,8 @@
   {% endcall %}
 
   {% call() util.destroyConditionalModuleButtons(ship, moduleName + "ClusterDeploy") %}
-    <if_variable name="Module_{{ moduleName }}_Ship{{ ship.id }}_Used" comparator="EQUALS" value="1.0" />
+    <if_variable name="MKMShip{{ ship.id }}Bombs" comparator="LESS_EQUAL" value="0.0" />
     {{ util.clearCommsButton("Load Bombs", ship) }}
-  {% endcall %}
-
-  {% call util.destroyConditionalModuleButtons(ship, moduleName + "ClusterDeploy") %}
-    <if_exists name="{{ marker }}" />
-    {{ util.clearCommsButton("Deploy Cluster", ship) }}
-  {% endcall %}
-
-  {% call util.createConditionalModuleButtons(ship, moduleName + "ClusterActivate") %}
-    {{ util.ifCommsMenuState(ship, 3) }}
-    <if_exists name="{{ marker }}" />
-    {{ util.sendCommsButton("Activate Cluster", ship) }}
-  {% endcall %}
-
-  {% call util.destroyConditionalModuleButtons(ship, moduleName + "ClusterActivate") %}
-    {{ util.ifCommsMenuState(ship, 3, "NOT") }}
-    {{ util.clearCommsButton("Activate Cluster", ship) }}
-  {% endcall %}
-
-  {% call util.destroyConditionalModuleButtons(ship, moduleName + "ClusterActivate") %}
-    <if_not_exists name="{{ marker }}" />
-    {{ util.clearCommsButton("Activate Cluster", ship) }}
   {% endcall %}
 
   {# Button Handling #}
@@ -70,7 +59,7 @@
     <if_timer_finished name="ShuttleOps" />
     <if_variable name="{{ ship.shuttle }} Status" comparator="EQUALS" value="2.0" />
     <if_variable name="{{ ship.shuttle }}CurrentCargo" comparator="LESS" value="{{ ship.shuttle }}MaxCargo" />
-    <if_variable name="Module_{{ moduleName }}_Ship{{ ship.id }}_Used" comparator="NOT" value="1.0" />
+    <if_variable name="MKMShip{{ ship.id }}Bombs" comparator="GREATER" value="0.0" />
     <set_variable name="ShuttleSelect" value="0.0" integer="yes" />
     <set_variable name="OperationType" value="0.0" integer="yes" />
     <warning_popup_message message="Deployable mine field loaded." consoles="MCF" player_slot="0" />
@@ -78,7 +67,7 @@
     <set_variable name="{{ ship.shuttle }}CurrentCargo" value="{{ ship.shuttle }}CurrentCargo+1" integer="yes" />
     <set_variable name="{{ ship.shuttle }}CargoType" value="{{ mineCargo }}.0" integer="yes" />
     <!--Modify Ship Inventory-->
-    <set_variable name="Module_{{ moduleName }}_Ship{{ ship.id }}_Used" value="1.0" integer="yes" />
+    <set_variable name="MKMShip{{ ship.id }}Bombs" value="MKMShip{{ ship.id }}Bombs - 1" integer="yes" />
   </event>
 
   <event name="Ship {{ ship.id }} Unload Mines">
@@ -95,7 +84,7 @@
     <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">Deployable mine field safed and unloaded.</incoming_comms_text>
     <set_variable name="{{ ship.shuttle }}CargoType" value="0.0" integer="yes" />
     <!--Modify Ship Inventory-->
-    <set_variable name="Module_{{ moduleName }}_Ship{{ ship.id }}_Used" value="0.0" integer="yes" />
+    <set_variable name="MKMShip{{ ship.id }}Bombs" value="MKMShip{{ ship.id }}Bombs + 1" integer="yes" />
   </event>
 
 
@@ -141,11 +130,12 @@
 
     <set_variable name="Module_{{ moduleName }}_Ship{{ ship.id }}_TimerArmed" value="0.0" integer="yes" />
     <set_timer name="Module_{{ moduleName }}_Ship{{ ship.id }}_DeployTimer" seconds="1" />
+    <set_variable name="Module_{{ moduleName }}_Ship{{ ship.id }}_MinesHot" value="1.0" integer="yes" />
   </event>
 
   <event name="Ship {{ ship.id }} Mines Deploy Phase 2">
       <if_exists name="{{ ship.shuttle }}" />
-      <if_variable name="Module_{{ moduleName }}_Ship{{ ship.id }}_MinesDeployed" comparator="NOT" value="1.0" />
+      <if_variable name="Module_{{ moduleName }}_Ship{{ ship.id }}_MinesHot" comparator="EQUALS" value="1.0" />
       <if_timer_finished name="Module_{{ moduleName }}_Ship{{ ship.id }}_DeployTimer"/>
 
       <!-- deploy mines -->
@@ -153,7 +143,7 @@
       <create count="8" type="mines" startX="Module_{{ moduleName}}_{{ ship.shuttle }}_X" startY="Module_{{ moduleName}}_{{ ship.shuttle }}_Y" startZ="Module_{{ moduleName}}_{{ ship.shuttle }}_Z" radius="500" />
       <create count="16" type="mines" startX="Module_{{ moduleName}}_{{ ship.shuttle }}_X" startY="Module_{{ moduleName}}_{{ ship.shuttle }}_Y" startZ="Module_{{ moduleName}}_{{ ship.shuttle }}_Z" radius="1000" />
 
-      <set_variable name="Module_{{ moduleName }}_Ship{{ ship.id }}_MinesDeployed" value="1.0" integer="yes" />
+      <set_variable name="Module_{{ moduleName }}_Ship{{ ship.id }}_MinesHot" value="0.0" integer="yes" />
   </event>
 
   <event name="Ship {{ ship.id }} Mines Recovered">
