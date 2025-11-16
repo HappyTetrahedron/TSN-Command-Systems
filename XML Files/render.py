@@ -19,6 +19,7 @@ env = {
         "TokenSystem",
         "HazardPainter",
         "NebulaEffects",
+        "ForceShipNames",
     ],
     "maps": [
         "Mria",

@@ -1,0 +1,8 @@
+{# Force-configure names of the ships when they spawn #}
+
+{% import "Utils.xml" as util %}
+{% import "PlayerTracking.xml" as tracking %}
+
+{% call(ship) tracking.onSpawn("ForceShipNames") %}
+    <set_ship_text player_slot="{{ ship.slot }}" newname="TSN {{ ship.name }}" />
+{% endcall %}

@@ -2,7 +2,7 @@
     set shipConfigs = [
         {
             "id": "1",
-            "name": "Artemis",
+            "name": "Alecto",
             "slot": "0",
             "shuttle": "Tisiphone",
             "commPrefix": "-",
