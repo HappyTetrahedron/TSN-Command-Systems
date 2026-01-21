@@ -298,9 +298,9 @@
 {% endmacro %}
 
 {% macro createPickuppable(name_template, button, counter) %}
-  {% do track("spawn12", "Other\\" + button) %}
+  {% do track("spawn12", "Static\\" + button) %}
   <event name="Spawn Menu RV {{ prefix }} Click">
-    <if_gm_button text="Other\{{ button }}" />
+    <if_gm_button text="Static\{{ button }}" />
     <set_variable name="Spawn_{{ prefix }}" value="1.0" integer="yes" />
   </event>
   {% set outercaller = caller %}

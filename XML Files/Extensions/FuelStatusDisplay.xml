@@ -30,4 +30,11 @@
     <destroy name="{{ ship.name }} - Amber" />
     <create type="genericMesh" x="{{ 102000.0 - loop.index * 10000 }}" y="0.0" z="100.0" name="{{ ship.name }} - Red" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="0.0" colorBlue="0.1" />
   </event>
+  {% for color in ["Red", "Amber", "Green"] %}
+  <event name="Energy Refuelling From {{ color }}">
+    <if_variable name="Refuel Ship{{ ship.id }}" comparator="NOT" value="0.0" />
+    <if_exists name="{{ ship.name }} - {{ color }}" />
+    <destroy name="{{ ship.name }} - {{ color }}" />
+  </event>
+  {% endfor %}
 {% endfor %}

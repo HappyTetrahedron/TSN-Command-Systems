@@ -5,6 +5,7 @@
 
 {% for anomaly in util.anomalies %}
   {% call menu.onMenuClick(anomaly.type, "Anomalies") %}
-    <create type="Anomaly" pickupType="{{ anomaly.id }}" use_gm_position="" />
+    <create type="Anomaly" pickupType="{{ anomaly.id }}" use_gm_position="" name="--" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
   {% endcall %}
 {% endfor %}

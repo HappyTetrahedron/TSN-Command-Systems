@@ -35,20 +35,22 @@
     <create type="monster" monsterType="5" use_gm_position="" />
 {% endcall %}
 {% call menu.onMenuClick("Piranhas", "Creatures") %}
-    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="PIRA" />
-    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="PIRA" />
-    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="PIRA" />
-    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="PIRA" />
-    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="--" />
+    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="--" />
+    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="--" />
+    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="--" />
+    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="--" />
     <set_variable name="Podnumber" value="Podnumber + 1" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
 {% endcall %}
 {% call menu.onMenuClick("Dragon", "Creatures") %}
     <create type="monster" monsterType="3" use_gm_position="" />
 {% endcall %}
 {% call menu.onMenuClick("Whales", "Creatures") %}
-    <create type="monster" monsterType="1" podnumber="Podnumber" use_gm_position="" name="Xeno" />
-    <create type="monster" monsterType="1" podnumber="Podnumber" use_gm_position="" name="Xeno" />
-    <create type="monster" monsterType="1" podnumber="Podnumber" use_gm_position="" name="Xeno" />
+    <create type="monster" monsterType="1" podnumber="Podnumber" use_gm_position="" name="--" />
+    <create type="monster" monsterType="1" podnumber="Podnumber" use_gm_position="" name="--" />
+    <create type="monster" monsterType="1" podnumber="Podnumber" use_gm_position="" name="--" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
     <set_variable name="Podnumber" value="Podnumber + 1" integer="yes" />
 {% endcall %}
 
