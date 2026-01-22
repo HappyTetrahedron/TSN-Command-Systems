@@ -13,9 +13,6 @@
     <warning_popup_message message="Version {{ version }}" consoles="MHWESCO" player_slot="0" />
     <gm_instructions title="Instructions">Welcome to the TSN Sandbox Version {{ version }}. ^--Activation---^The activation sequence allows the GM to choose the System and Sector for the players to start.^Once the activation sequence is completed, the main Sandbox menu will appear and the GM can begin their mission. Below is a step-by-step guide to activation: ^- First, ensure all player ships have spawned before activating GM Mode.^- Next, click on Activate GM Mode to begin the Sandbox activation sequence.^- Finally, select the System and Sector where the players will start.^^The GM menus are as follows:^- Bas.: basic interactions, teleporting and deleting entities.^-SPWN.: Spawn AI ships.^-POI: Create points of interest such as waypoints, wrecks, rendezvous points or anomalies.^-Haz.: Spawn hazards such as mines, asteroids and nebulae.^- Int.: Interact with player ships by sending messages, modifying ordnance stores, and causing damage.^-AI Off: Click to expand submenu to change NPC AI behaviour.</gm_instructions>
     <!--Test Variables (debugging use only)-->
-    <set_variable name="ExitorRetreat" value="0.0" integer="yes" />
-    <set_variable name="DestroyNamed" value="0.0" integer="yes" />
-    <set_variable name="Auto Delete" value="0.0" integer="yes" />
     <!--End of Test Variables-->
     <!-- Core Variables-->
     <set_variable name="playerSide" value="2.0" integer="yes" />

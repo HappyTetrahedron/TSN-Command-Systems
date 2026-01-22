@@ -1,13 +1,14 @@
 {% import 'GM Menus.xml' as menu %}
 {% import 'Utils.xml' as util %}
 {% import 'Start.xml' as start %}
+{% import 'Toggle.xml' as toggle %}
 
 {% call start.onStart("SuppliesMenu") %}
   <set_variable name="Ordnance" value="1.0" integer="yes" />
 {% endcall %}
 
 {% call(isCreate) menu.addButtonExpandMenu("Supplies", menu.main.interaction, x=230, y=125, h=30, w=100, rows=12) %}
-  <set_variable name="Supplies_Toggle_ShouldShow" value="{{ 1 if isCreate else 0 }}" integer="yes" />
+  <set_variable name="Toggle_Ordnance_ShouldShow" value="{{ 1 if isCreate else 0 }}" integer="yes" />
 {% endcall %}
 
 {% for ord, id in util.ordnanceIdentifiers.items() %}
@@ -22,41 +23,4 @@
     <addto_object_property value="Ordnance" property="total_coolant" use_gm_selection=" " />
 {% endcall %}
 
-  {% call util.createConditionalMenu("SuppliesAddOrdn", {
-    "Ordnance": "1",
-    "Supplies_Toggle_ShouldShow": "1",
-  }) %}
-    <set_gm_button text="Add Ordn" x="230" y="95" h="28" w="98" />
-  {% endcall %}
-  {% call util.destroyConditionalMenu("SuppliesAddOrdn", {
-    "Ordnance": "1",
-    "Supplies_Toggle_ShouldShow": "1",
-  }) %}
-    <clear_gm_button text="Add Ordn" />
-  {% endcall %}
-
-  {% call util.createConditionalMenu("SuppliesRmOrdn", {
-    "Ordnance": "-1",
-    "Supplies_Toggle_ShouldShow": "1",
-  }) %}
-    <set_gm_button text="Rmv Ordn" x="230" y="95" h="28" w="98" />
-  {% endcall %}
-  {% call util.destroyConditionalMenu("SuppliesRmOrdn", {
-    "Ordnance": "-1",
-    "Supplies_Toggle_ShouldShow": "1",
-  }) %}
-    <clear_gm_button text="Rmv Ordn" />
-  {% endcall %}
-
-  <event name="Cycle Menu (Remove)" id_arme="cf713c51-6cea-4c9d-97db-ee85196cf5d8" parent_id_arme="c7d7a8b3-6000-4447-b2a0-2e04c03abfac">
-    <if_gm_button text="Add Ordn" />
-    <clear_gm_button text="Add Ordn" />
-    <set_gm_button text="Rmv Ordn" x="230" y="95" h="28" w="98" />
-    <set_variable name="Ordnance" value="0-1" integer="yes" />
-  </event>
-  <event name="Cycle Menu (Add)" id_arme="625d2920-e29f-4e4b-afae-3c363595a292" parent_id_arme="c7d7a8b3-6000-4447-b2a0-2e04c03abfac">
-    <if_gm_button text="Rmv Ordn" />
-    <clear_gm_button text="Rmv Ordn" />
-    <set_gm_button text="Add Ordn" x="230" y="95" h="28" w="98" />
-    <set_variable name="Ordnance" value="1.0" integer="yes" />
-  </event>
+{{ toggle.Toggle("Ordnance", [("Add Ordn", 1), ("Rmv Ordn", -1)], 230, 95, 98, 28) }}

@@ -1,0 +1,35 @@
+{% set padding = 16 %}
+{% set labelw = 80 %}
+{% set cancelw = 60 %}
+
+{% macro Toggle(variable, valueMap, x=0, y=0, w=90, h=30) %}
+{% set hascoords = x!=0 or y!=0 %}
+{% for (button, value) in valueMap %}
+<event name="Restore Button {{ button }}">
+  <if_variable name="Toggle_{{ variable }}_ShouldShow" comparator="NOT" value="0.0" />
+  <if_variable name="Toggle_{{ variable }}_State" comparator="NOT" value="{{ value }}" />
+  <if_variable name="{{ variable }}" comparator="EQUALS" value="{{ value }}" />
+  {% for (otherbutton, _) in valueMap if otherbutton != button %}
+    <clear_gm_button text="{{ otherbutton }}" />
+  {% endfor %}
+  {% if hascoords %}
+    <set_gm_button text="{{ button }}" x="{{ x }}" y="{{ y }}" h="{{ h }}" w="{{ w }}" />
+  {% else %}
+    <set_gm_button text="{{ button }}" />
+  {% endif %}
+  <set_variable name="Toggle_{{ variable }}_State" value="{{ value }}" integer="yes" />
+</event>
+<event name="OnClick Button {{ button }}">
+  <if_gm_button text="{{ button }}" />
+  <set_variable name="{{ variable }}" value="{{valueMap[loop.index % valueMap|length][1]}}" integer="yes" />
+</event>
+{% endfor %}
+<event name="Hide Toggle {{ variable }}">
+  <if_variable name="Toggle_{{ variable }}_ShouldShow" comparator="EQUALS" value="0.0" />
+  <if_variable name="Toggle_{{ variable }}_State" comparator="NOT" value="-404" />
+  {% for button, _ in valueMap %}
+    <clear_gm_button text="{{ button }}" />
+  {% endfor %}
+  <set_variable name="Toggle_{{ variable }}_State" value="-404" integer="yes" />
+</event>
+{% endmacro %}
