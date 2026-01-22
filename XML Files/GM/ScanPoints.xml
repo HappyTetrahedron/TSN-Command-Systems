@@ -136,6 +136,7 @@
 {% for sig in signatures %}
   {% call spawn.createNumberedConditional("(|ScanPointNumber|)", sig.faction + "\\" + sig.type, "Scan Points", "ScanPoint", "ScanPointNumber", loop.index) %}
     <create type="genericMesh" use_gm_position="" name="(|ScanPointNumber|)" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.1" colorGreen="0.5" colorBlue="0.1" />
+    <set_object_property property="positionY" value="-5000.0" name="(|ScanPointNumber|)" />
     <set_ship_text name="(|ScanPointNumber|)" race="Signature" class="Scan Location" desc="{{ sig.desc }}" scan_desc="{{ sig.scan_desc }}" />
   {% endcall %}
 {% endfor %}

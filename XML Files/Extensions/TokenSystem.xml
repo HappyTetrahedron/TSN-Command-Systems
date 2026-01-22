@@ -27,5 +27,6 @@
   <if_variable name="TokenSysT" comparator="NOT" value="TokenSysS" />
   <destroy name="Tokens: |TokenSysS|" />
   <create type="genericMesh" x="0.0" y="0.0" z="0.0" name="Tokens: |TokenSysT|" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+  <set_ship_text name="Tokens: |TokenSysT|" race="Token" class="Counter" desc="Counts how many tokens you have.^^You can spend tokens to find resupply, resolve a conflict peacefully, learn more about a situation, or influence the narrative in other ways." scan_desc="It is possible to commit no mistakes and still lose. That is not a weakness. That is life." hailtext="Why are you hailing the token counter?" />
   <set_variable name="TokenSysS" value="TokenSysT" integer="yes" />
 </event>
