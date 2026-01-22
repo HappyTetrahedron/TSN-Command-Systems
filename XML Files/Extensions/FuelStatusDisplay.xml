@@ -3,7 +3,7 @@
 
 {% for ship in util.shipConfigs %}
   <event name="Energy Green">
-    <if_variable name="Refuel Ship{{ ship.id }}" comparator="EQUALS" value="0.0" />
+    <if_variable name="Refuel Ship{{ ship.id }}" comparator="LESS_EQUAL" value="1.0" />
     <if_object_property property="energy" player_slot="{{ ship.slot }}" comparator="GREATER_EQUAL" value="600" />
     <if_not_exists name="{{ ship.name }} - Green" />
     <if_exists player_slot="{{ ship.slot }}" />
@@ -12,7 +12,7 @@
     <destroy name="{{ ship.name }} - Red" />
   </event>
   <event name="Energy Amber">
-    <if_variable name="Refuel Ship{{ ship.id }}" comparator="EQUALS" value="0.0" />
+    <if_variable name="Refuel Ship{{ ship.id }}" comparator="LESS_EQUAL" value="1.0" />
     <if_object_property property="energy" player_slot="{{ ship.slot }}" comparator="LESS" value="600" />
     <if_object_property property="energy" player_slot="{{ ship.slot }}" comparator="GREATER_EQUAL" value="300" />
     <if_not_exists name="{{ ship.name }} - Amber" />
@@ -22,7 +22,7 @@
     <destroy name="{{ ship.name }} - Red" />
   </event>
   <event name="Energy Red">
-    <if_variable name="Refuel Ship{{ ship.id }}" comparator="EQUALS" value="0.0" />
+    <if_variable name="Refuel Ship{{ ship.id }}" comparator="LESS_EQUAL" value="1.0" />
     <if_object_property property="energy" player_slot="{{ ship.slot }}" comparator="LESS" value="300" />
     <if_not_exists name="{{ ship.name }} - Red" />
     <if_exists player_slot="{{ ship.slot }}" />
@@ -32,7 +32,7 @@
   </event>
   {% for color in ["Red", "Amber", "Green"] %}
   <event name="Energy Refuelling From {{ color }}">
-    <if_variable name="Refuel Ship{{ ship.id }}" comparator="NOT" value="0.0" />
+    <if_variable name="Refuel Ship{{ ship.id }}" comparator="GREATER" value="1.0" />
     <if_exists name="{{ ship.name }} - {{ color }}" />
     <destroy name="{{ ship.name }} - {{ color }}" />
   </event>

@@ -21,10 +21,12 @@
     <set_variable name="combinednumber9" value="89.0" integer="yes" />
     <set_variable name="StaticBlackhole" value="0.0" integer="yes" />
     <set_variable name="DestroyNamed" value="0.0" integer="yes" />
+    <set_variable name="DestroyWrecks" value="0.0" integer="yes" />
 {% endcall %}
 
 {% call menu.onButtonClick("DelShips", menu.main.base) %}
     <set_variable name="DestroyNamed" value="1.0" integer="yes" />
+    <set_variable name="DestroyWrecks" value="1.0" integer="yes" />
 {% endcall %}
 
   <event name="Begin Cycle">
@@ -59,6 +61,17 @@
     <set_variable name="DestroyNamed" value="0.0" integer="yes" />
   </event>
 
+  <event name="Destroy Wrecks">
+    <if_variable name="DestroyWrecks" comparator="EQUALS" value="1.0" />
+    <if_exists name="WRECK" />
+    <destroy name="WRECK" />
+  </event>
+  <event name="Destroy Wrecks End">
+    <if_variable name="DestroyWrecks" comparator="EQUALS" value="1.0" />
+    <if_not_exists name="WRECK" />
+    <set_variable name="DestroyWrecks" value="0.0" integer="yes" />
+  </event>
+
   <event name="Auto Destroy Enabled1" id_arme="6540003c-2276-4027-97e5-f7e0e37e7052" parent_id_arme="1d1f904e-0da9-4f0f-9497-9a3f0077bc0a">
     <if_variable name="Auto Delete" comparator="EQUALS" value="1.0" />
     <if_variable name="ExitorRetreat" comparator="EQUALS" value="1.0" />
@@ -67,6 +80,7 @@
   </event>
   <event name="Auto Destroy Enabled2" id_arme="f8ede700-4c1e-43d3-bb10-75b6e732e6d2" parent_id_arme="1d1f904e-0da9-4f0f-9497-9a3f0077bc0a">
     <if_variable name="Auto Delete" comparator="EQUALS" value="2.0" />
+    <if_variable name="ExitorRetreat" comparator="NOT" value="1.0" />
     <if_variable name="DestroyNamed" comparator="EQUALS" value="0.0" />
     <set_variable name="Auto Delete" value="1.0" integer="yes" />
   </event>

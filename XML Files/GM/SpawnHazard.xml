@@ -1,6 +1,7 @@
 
 {% import 'GM Menus.xml' as menu %}
 {% import 'Start.xml' as start %}
+{% import 'Fleets/Destroy.xml' as destroy %}
 
 {{ menu.addDismissableSubmenu("Mines", menu.main.hazard) }}
 {{ menu.addDismissableSubmenu("Creatures", menu.main.hazard) }}
@@ -35,11 +36,11 @@
     <create type="monster" monsterType="5" use_gm_position="" />
 {% endcall %}
 {% call menu.onMenuClick("Piranhas", "Creatures") %}
-    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="--" />
-    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="--" />
-    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="--" />
-    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="--" />
-    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="--" />
+    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="PIRA" />
+    <create type="monster" monsterType="4" podnumber="Podnumber" use_gm_position="" name="PIRA" />
     <set_variable name="Podnumber" value="Podnumber + 1" integer="yes" />
     <set_variable name="Name Assign" value="1.0" integer="yes" />
 {% endcall %}
@@ -47,9 +48,9 @@
     <create type="monster" monsterType="3" use_gm_position="" />
 {% endcall %}
 {% call menu.onMenuClick("Whales", "Creatures") %}
-    <create type="monster" monsterType="1" podnumber="Podnumber" use_gm_position="" name="--" />
-    <create type="monster" monsterType="1" podnumber="Podnumber" use_gm_position="" name="--" />
-    <create type="monster" monsterType="1" podnumber="Podnumber" use_gm_position="" name="--" />
+    <create type="monster" monsterType="1" podnumber="Podnumber" use_gm_position="" name="WHALE" />
+    <create type="monster" monsterType="1" podnumber="Podnumber" use_gm_position="" name="WHALE" />
+    <create type="monster" monsterType="1" podnumber="Podnumber" use_gm_position="" name="WHALE" />
     <set_variable name="Name Assign" value="1.0" integer="yes" />
     <set_variable name="Podnumber" value="Podnumber + 1" integer="yes" />
 {% endcall %}
@@ -94,4 +95,21 @@
 
 {% call start.onStart("HazardSpawn") %}
     <set_variable name="Podnumber" value="1.0" integer="yes" />
+{% endcall %}
+
+{% call destroy.onDestroy("HazardSpawn") %}
+    <destroy name="BH" />
+    <destroy name="SHARK" />
+    <destroy name="TYPHON" />
+    <destroy name="DRAGON" />
+    <destroy name="CHARYBDIS" />
+    <destroy name="NSECT" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="PIRA" />
+    <destroy name="WHALE" />
+    <destroy name="WHALE" />
+    <destroy name="WHALE" />
 {% endcall %}

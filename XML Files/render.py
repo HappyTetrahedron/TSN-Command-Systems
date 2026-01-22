@@ -19,11 +19,13 @@ env = {
         "TokenSystem",
         "HazardPainter",
         "NebulaEffects",
+        "FuelStatusDisplay",
         "ForceShipNames",
     ],
     "maps": [
         "Mria",
         "Khoros",
+        "Athorn",
     ],
     "ordnance": {
         "ship1": {
