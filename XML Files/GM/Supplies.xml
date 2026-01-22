@@ -7,9 +7,9 @@
   <set_variable name="Ordnance" value="1.0" integer="yes" />
 {% endcall %}
 
-{% call(isCreate) menu.addButtonExpandMenu("Supplies", menu.main.interaction, x=230, y=125, h=30, w=100, rows=12) %}
-  <set_variable name="Toggle_Ordnance_ShouldShow" value="{{ 1 if isCreate else 0 }}" integer="yes" />
-{% endcall %}
+{{ menu.addButtonExpandMenu("Supplies", menu.main.interaction, x=230, y=95, h=30, w=100, rows=12) }}
+
+{{ menu.addButtonToggle("SupplyOrdnDir", "Supplies", "Ordnance", [("Add Ordn", 1), ("Rmv Ordn", -1)]) }}
 
 {% for ord, id in util.ordnanceIdentifiers.items() %}
   {% call menu.onButtonClick(ord|title, "Supplies") %}
@@ -22,5 +22,3 @@
 {% call menu.onButtonClick("Coolant", "Supplies") %}
     <addto_object_property value="Ordnance" property="total_coolant" use_gm_selection=" " />
 {% endcall %}
-
-{{ toggle.Toggle("Ordnance", [("Add Ordn", 1), ("Rmv Ordn", -1)], 230, 95, 98, 28) }}

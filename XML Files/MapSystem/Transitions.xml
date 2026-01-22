@@ -178,14 +178,8 @@
   },
 ] %}
 
-{{ menu.addEphemeralSubmenu("Locking", menu.main.base) }}
-  {% call menu.onMenuClick("Lock Sector", "Locking") %}
-    <set_variable name="Sector Locked" value="1.0" integer="yes" />
-  {% endcall %}
-  {% call menu.onMenuClick("Unlock Sector", "Locking") %}
-    <set_variable name="Sector Locked" value="0.0" integer="yes" />
-  {% endcall %}
-
+{{ menu.addDismissableSubmenu("Locking", menu.main.base) }}
+{{ menu.addMenuToggle("LockSector", "Locking", "Sector Locked", [("Sector unlocked", 0), ("Sector locked", 1)]) }}
 
 {% call(ship) tracking.onInactive("TransitionsEngine") %}
   {% for transition in transitions %}

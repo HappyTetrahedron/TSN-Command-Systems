@@ -1,4 +1,5 @@
 {% import 'Utils.xml' as util %}
+{% import 'Toggle.xml' as toggle %}
 
 {% set padding = 2 %}
 {% set main = {
@@ -102,8 +103,25 @@
 } %}
 
 {% macro _buttonGrid(buttons, x, y, w, h, rows, padding=2) %}
-  {% for button in buttons %}
-    <set_gm_button text="{{ button }}" x="{{ x + (loop.index0 / rows)|int * w }}" y="{{ y + (loop.index0 % rows) * h }}" w="{{ w - padding }}" h="{{ h - padding }}" /> 
+  {% for buttondata in buttons %}
+    {% if buttondata.type == "standard" %}
+      <set_gm_button text="{{ buttondata.name }}" x="{{ x + (loop.index0 / rows)|int * w }}" y="{{ y + (loop.index0 % rows) * h }}" w="{{ w - padding }}" h="{{ h - padding }}" />
+    {% elif buttondata.type == "toggle" %}
+      <set_variable name="Toggle_{{ buttondata.name }}_ShouldShow" value="1" integer="yes" />
+    {% endif %}
+  {% endfor %}
+{% endmacro %}
+
+{% macro _buttonHandlersNonStandard(name, x, y, w, h, rows, padding=2) %}
+  {% for buttondata in retrieve("specialbuttons" + name) %}
+    {% if buttondata.type == "toggle" %}
+      {{ toggle.Toggle(buttondata.name, buttondata.variable, buttondata.valueMap, buttondata.x, buttondata.y, buttondata.w, buttondata.h) }}
+    {% endif %}
+  {% endfor %}
+  {% for buttondata in retrieve("buttons" + name) %}
+    {% if buttondata.type == "toggle" %}
+      {{ toggle.Toggle(buttondata.name, buttondata.variable, buttondata.valueMap, x + (loop.index0 / rows)|int * w, y + (loop.index0 % rows) * h, w - 2, h - 2) }}
+    {% endif %}
   {% endfor %}
 {% endmacro %}
 
@@ -152,6 +170,14 @@
   }, name) %}
 {% endmacro %}
 
+{% macro addMenuToggle(name, parentMenu, variable, valueMap) %}
+  {% set pmkey = (parentMenu.key if parentMenu is mapping else parentMenu) %}
+  {% call(isCreate) addStatementToMenu(name, parentMenu) %}
+    <set_variable name="Toggle_{{ name }}_ShouldShow" value="{{ 1 if isCreate else 0 }}" integer="yes" />
+  {% endcall %}
+  {{ toggle.Toggle(name, variable, valueMap, parentkey=pmkey) }}
+{% endmacro %}
+
 {% macro onMenuClick(name, parentMenu) %}
   {% do track("menukey" + parentMenu, name) %}
   <event name="{{ name }} onClick">
@@ -160,12 +186,21 @@
   </event>
 {% endmacro %}
 
+{% macro addButtonToggle(name, parentMenu, variable, valueMap, pos={}) %}
+  {% set pmkey = (parentMenu.key if parentMenu is mapping else parentMenu) %}
+  {% if pos and "x" in pos and "y" in pos %}
+    {% do track("specialbuttons" + pmkey, {"name": name, "type": "toggle", "variable": variable, "valueMap": valueMap, "x": pos.x, "y": pos.y, "w": pos.get("w", 90), "h": pos.get("h", 30)}, name) %}
+  {% else %}
+    {% do track("buttons" + pmkey, {"name": name, "type": "toggle", "variable": variable, "valueMap": valueMap}, name) %}
+  {% endif %}
+{% endmacro %}
+
 {% macro onButtonClick(name, parentMenu, pos={}) %}
   {% set pmkey = (parentMenu.key if parentMenu is mapping else parentMenu) %}
   {% if pos and "x" in pos and "y" in pos %}
-    {% do track("specialbuttons" + pmkey, {"name": name, "x": pos.x, "y": pos.y, "w": pos.get("w", 90), "h": pos.get("h", 30)}, name) %}
+    {% do track("specialbuttons" + pmkey, {"name": name, "type": "standard", "x": pos.x, "y": pos.y, "w": pos.get("w", 90), "h": pos.get("h", 30)}, name) %}
   {% else %}
-    {% do track("buttons" + pmkey, name) %}
+    {% do track("buttons" + pmkey, {"name": name, "type": "standard"}, name) %}
   {% endif %}
   <event name="{{ name }} onClick">
     <if_gm_button text="{{ name }}" />
@@ -174,7 +209,7 @@
 {% endmacro %}
 
 {% macro createLabel(name, parentMenu, x, y, w=90, h=30) %}
-  {% do track("specialbuttons" + (parentMenu.key if parentMenu is mapping else parentMenu), { "name": name, "x": x, "y": y, "w": w, "h":h }, name) %}
+  {% do track("specialbuttons" + (parentMenu.key if parentMenu is mapping else parentMenu), { "name": name, "type": "standard", "x": x, "y": y, "w": w, "h":h }, name) %}
 {% endmacro %}
 
 {% macro addStatementToMenu(name, parentMenu) %}
@@ -217,14 +252,19 @@
     {% endfor %}
     <set_variable name="_GM_Menu_{{ name }}_Active" value="1.0" integer="yes" />
   </event>
+  {{ _buttonHandlersNonStandard(name, menu.buttons.x, menu.buttons.y, menu.buttons.w, menu.buttons.h, menu.buttons.rows) }}
   {% endmacro %}
   {% macro _destroyMenu(name, id) %}
   <event name="Menu Destroy {{ name }}">
     <if_variable name="GM_Menu_Selector" comparator="NOT" value="{{ id }}.0" />
     <if_variable name="_GM_Menu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
     {{ caller () }}
-    {% for button in retrieve("buttons" + name) %}
-      <clear_gm_button text="{{ button }}" />
+    {% for buttondata in retrieve("buttons" + name) %}
+      {% if buttondata.type == "standard" %}
+        <clear_gm_button text="{{ buttondata.name }}" />
+      {% elif buttondata.type == "toggle" %}
+        <set_variable name="Toggle_{{ buttondata.name }}_ShouldShow" value="0" integer="yes" />
+      {% endif %}
     {% endfor %}
     {% for specbut in retrieve("specialbuttons" + name) %}
       <clear_gm_button text="{{ specbut.name }}" /> 
@@ -289,42 +329,44 @@
       {{ outercaller }}
     {% endcall %}
   {% endmacro %}
-  {% macro _createSubmenu(name) %}
+  {% macro _createSubmenu(name, retrieve_key="") %}
+    {% set retkey = retrieve_key if retrieve_key != "" else name %}
     <event name="SubMenu Create {{ name }}">
       {% do allSubmenus.append(name) %}
       <if_variable name="GM_Submenu_{{ name }}_ShouldShow" comparator="EQUALS" value="1.0" />
       <if_variable name="_GM_Submenu_{{ name }}_Active" comparator="NOT" value="1.0" />
       {{ caller () }}
-      {% for permmenu in retrieve("permSubmenus" + name) %}
+      {% for permmenu in retrieve("permSubmenus" + retkey) %}
         <set_variable name="GM_Submenu_{{ permmenu }}_ShouldShow" value="1.0" integer="yes" />
       {% endfor %}
-      {% for buttonsubmenu in retrieve("buttonSubs" + name) %}
+      {% for buttonsubmenu in retrieve("buttonSubs" + retkey) %}
         {{ util.restore("GM_Submenu_" + name + buttonsubmenu + "_ShouldShow") }}
       {% endfor %}
-      {% for specbut in retrieve("specialbuttons" + name) %}
+      {% for specbut in retrieve("specialbuttons" + retkey) %}
         <set_gm_button text="{{ specbut.name }}" x="{{ specbut.x }}" y="{{ specbut.y }}" w="{{ specbut.w }}" h="{{ specbut.h }}" /> 
       {% endfor %}
-      {% for caller in retrieve("extrastatements" + name) %}
+      {% for caller in retrieve("extrastatements" + retkey) %}
         {{ caller(True) }}
       {% endfor %}
       <set_variable name="_GM_Submenu_{{ name }}_Active" value="1.0" integer="yes" />
     </event>
   {% endmacro %}
-  {% macro _destroySubmenu(name) %}
+  {% macro _destroySubmenu(name, retrieve_key="") %}
+    {% set retkey = retrieve_key if retrieve_key != "" else name %}
     <event name="SubMenu Destroy {{ name }}">
       <if_variable name="GM_Submenu_{{ name }}_ShouldShow" comparator="NOT" value="1.0" />
       <if_variable name="_GM_Submenu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
       {{ caller () }}
-      {% for permmenu in retrieve("permSubmenus" + name) %}
+      {% for permmenu in retrieve("permSubmenus" + retkey) %}
         <set_variable name="GM_Submenu_{{ permmenu }}_ShouldShow" value="0.0" integer="yes" />
       {% endfor %}
-      {% for specbut in retrieve("specialbuttons" + name) %}
+      {% for specbut in retrieve("specialbuttons" + retkey) %}
         <clear_gm_button text="{{ specbut.name }}" /> 
       {% endfor %}
-      {% for buttonsubmenu in retrieve("buttonSubs" + name) %}
+      {% for buttonsubmenu in retrieve("buttonSubs" + retkey) %}
         {{ util.storeAndSet("GM_Submenu_" + name + buttonsubmenu + "_ShouldShow") }}
       {% endfor %}
-      {% for caller in retrieve("extrastatements" + name) %}
+      {% for caller in retrieve("extrastatements" + retkey) %}
         {{ caller(False) }}
       {% endfor %}
       <set_variable name="_GM_Submenu_{{ name }}_Active" value="0.0" integer="yes" />
@@ -366,17 +408,17 @@
   {% if menu.type == "dismissableSubmenu" %}
     {% set menuname = menu.parentMenu + menu.name %}
     {% if menu.pos and "x" in menu.pos and "y" in menu.pos %}
-      {% do track("specialbuttons" + menu.parentMenu, {"name": menu.name, "x": menu.pos.x, "y": menu.pos.y, "w": menu.pos.get("w", 90), "h": menu.pos.get("h", 30)}, menu.name) %}
+      {% do track("specialbuttons" + menu.parentMenu, {"name": menu.name, "type": "standard", "x": menu.pos.x, "y": menu.pos.y, "w": menu.pos.get("w", 90), "h": menu.pos.get("h", 30)}, menu.name) %}
     {% else %}
-      {% do track("buttons" + menu.parentMenu, menu.name) %}
+      {% do track("buttons" + menu.parentMenu, {"name": menu.name, "type": "standard"}, menu.name) %}
     {% endif %}
-    {% call _createSubmenu(menuname) %}
+    {% call _createSubmenu(menuname, menu.name) %}
       {% for button in retrieve("menukey" + menu.name) %}
         <set_gm_button text="{{ menu.name }}\{{ button }}" />
       {% endfor %}
       <set_gm_button text="{{ menu.name }}\_Dismiss" />
     {% endcall %}
-    {% call _destroySubmenu(menuname) %}
+    {% call _destroySubmenu(menuname, menu.name) %}
       {% for button in retrieve("menukey" + menu.name) %}
         <clear_gm_button text="{{ menu.name }}\{{ button }}" />
       {% endfor %}
@@ -389,12 +431,12 @@
   {% if menu.type == "permanentSubmenu" %}
     {% set menuname = menu.parentMenu + menu.name %}
     {% do track("permSubmenus" + menu.parentMenu, menuname) %}
-    {% call _createSubmenu(menuname) %}
+    {% call _createSubmenu(menuname, menu.name) %}
       {% for button in retrieve("menukey" + menu.name) %}
         <set_gm_button text="{{ menu.name }}\{{ button }}" />
       {% endfor %}
     {% endcall %}
-    {% call _destroySubmenu(menuname) %}
+    {% call _destroySubmenu(menuname, menu.name) %}
       {% for button in retrieve("menukey" + menu.name) %}
         <clear_gm_button text="{{ menu.name }}\{{ button }}" />
       {% endfor %}
@@ -404,17 +446,17 @@
   {% if menu.type == "ephemeralSubmenu" %}
     {% set menuname = menu.parentMenu + menu.name %}
     {% if menu.pos and "x" in menu.pos and "y" in menu.pos %}
-      {% do track("specialbuttons" + menu.parentMenu, {"name": menu.name, "x": menu.pos.x, "y": menu.pos.y, "w": menu.pos.get("w", 90), "h": menu.pos.get("h", 30)}, menu.name) %}
+      {% do track("specialbuttons" + menu.parentMenu, {"name": menu.name, "type": "standard", "x": menu.pos.x, "y": menu.pos.y, "w": menu.pos.get("w", 90), "h": menu.pos.get("h", 30)}, menu.name) %}
     {% else %}
-      {% do track("buttons" + menu.parentMenu, menu.name) %}
+      {% do track("buttons" + menu.parentMenu, {"name": menu.name, "type": "standard"}, menu.name) %}
     {% endif %}
     {% set ephButtons = retrieve("menukey" + menu.name) %}
-    {% call _createSubmenu(menuname) %}
+    {% call _createSubmenu(menuname, menu.name) %}
       {% for button in ephButtons %}
         <set_gm_button text="{{ menu.name }}\{{ button }}" />
       {% endfor %}
     {% endcall %}
-    {% call _destroySubmenu(menuname) %}
+    {% call _destroySubmenu(menuname, menu.name) %}
       {% for button in ephButtons %}
         <clear_gm_button text="{{ menu.name }}\{{ button }}" />
       {% endfor %}
@@ -428,29 +470,34 @@
   {% if menu.type == "buttonExpandMenu" %}
     {% set menuname = menu.parentMenu + menu.name %}
     {% if menu.pos and "x" in menu.pos and "y" in menu.pos %}
-      {% do track("specialbuttons" + menu.parentMenu, {"name": menu.name, "x": menu.pos.x, "y": menu.pos.y, "w": menu.pos.get("w", 90), "h": menu.pos.get("h", 30)}, menu.name) %}
+      {% do track("specialbuttons" + menu.parentMenu, {"name": menu.name, "type": "standard", "x": menu.pos.x, "y": menu.pos.y, "w": menu.pos.get("w", 90), "h": menu.pos.get("h", 30)}, menu.name) %}
     {% else %}
-      {% do track("buttons" + menu.parentMenu, menu.name) %}
+      {% do track("buttons" + menu.parentMenu, {"name": menu.name, "type": "standard"}, menu.name) %}
     {% endif %}
     {% do track("buttonSubs" + menu.parentMenu, menu.name) %}
     {% set buttons = retrieve("buttons" + menu.name) %}
-    {% call _createSubmenu(menuname) %}
+    {% call _createSubmenu(menuname, menu.name) %}
       {% if menu.body %}
         {{ menu.body(True) }}
       {% endif %}
       {{ _buttonGrid(buttons + [menu.name + " Close"], menu.x, menu.y, menu.w, menu.h, menu.rows) }}
     {% endcall %}
-    {% call _destroySubmenu(menuname) %}
+    {% call _destroySubmenu(menuname, menu.name) %}
       {% if menu.body %}
         {{ menu.body(False) }}
       {% endif %}
-      {% for button in retrieve("buttons" + menu.name) %}
-        <clear_gm_button text="{{ button }}" />
+      {% for buttondata in retrieve("buttons" + menu.name) %}
+        {% if buttondata.type == "standard" %}
+          <clear_gm_button text="{{ buttondata.name }}" />
+        {% elif buttondata.type == "toggle" %}
+          <set_variable name="Toggle_{{ buttondata.name }}_ShouldShow" value="0" integer="yes" />
+        {% endif %}
       {% endfor %}
       <clear_gm_button text="{{ menu.name }} Close" />
     {% endcall %}
     {{ _submenuEvent(menuname, menu.name) }}
     {{ _dismissEvent(menuname, menu.name + " Close") }}
+    {{ _buttonHandlersNonStandard(menu.name, menu.x, menu.y, menu.w, menu.h, menu.rows) }}
   {% endif %}
 
 {% endfor %}
