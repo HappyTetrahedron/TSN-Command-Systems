@@ -26,9 +26,8 @@ env = {
     "maps": [
         "Atlantis",
         "Arietis",
-        "Khoros",
-        "Athorn",
-        "Burin",
+        "Helios",
+        "Tibur",
     ],
     "ordnance": {
         "ship1": {

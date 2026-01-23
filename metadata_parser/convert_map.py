@@ -52,6 +52,9 @@ def getGateTarget(sector_id, metadata):
     sector = metadata["sectors"][sector_id-1]
     for e in sector["entities"]:
         if e["type"] == "Gate":
+            if "gate_target_sector" not in e:
+                eprint("WARNING: unconnected gate: {}".format(e["name"]))
+                return 1
             return e["gate_target_sector"]
     eprint("Could not find gate in sector {}".format(sector_id))
     sys.exit(1)
@@ -90,6 +93,7 @@ TYPICALVARS = [
     "Sector Type",
     "USFPTraffic1",
     "USFPTraffic2",
+    "CustomPlanet",
 ]
 TYPICALTIMERS = [
     "Entry Random",
@@ -173,7 +177,7 @@ def convert_event(event, metadata, old_sector_id, out, sectormap):
             if action.tag == "set_ship_text":
                 if action.attrib.get("name", "") == "Planet":
                     action.set("name", "PLANET{}".format(getPlanetName(sector_id, metadata)))
-                    action.pop("newname")
+                    action.attrib.pop("newname")
                     sectormap[sector_id].append(action)
     return sector_id
 
