@@ -6,7 +6,7 @@
 {% set hascoords = x!=0 or y!=0 %}
 {% for (button, value) in valueMap %}
 <event name="Restore Button {{ button }}">
-  <if_variable name="Toggle_{{ name }}_ShouldShow" comparator="NOT" value="0.0" />
+  <if_variable name="Toggle_{{ name | stripspace }}_ShouldShow" comparator="NOT" value="0.0" />
   <if_variable name="_Toggle_{{ name }}_State" comparator="NOT" value="{{ value }}" />
   <if_variable name="{{ variable }}" comparator="EQUALS" value="{{ value }}" />
   {% for (otherbutton, _) in valueMap if otherbutton != button %}
@@ -35,7 +35,7 @@
 </event>
 {% endfor %}
 <event name="Hide Toggle {{ variable }}">
-  <if_variable name="Toggle_{{ name }}_ShouldShow" comparator="EQUALS" value="0.0" />
+  <if_variable name="Toggle_{{ name | stripspace }}_ShouldShow" comparator="EQUALS" value="0.0" />
   <if_variable name="_Toggle_{{ name }}_State" comparator="NOT" value="-404" />
   {% for button, _ in valueMap %}
     {% if parentkey != "" %}

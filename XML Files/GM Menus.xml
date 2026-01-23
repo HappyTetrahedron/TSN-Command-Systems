@@ -91,7 +91,7 @@
 } %}
 {% set ai = {
   'aicommands': {
-    "key": "AICmds",
+    "key": "AI Cmds",
     "buttons": {
       "x": 140,
       "y": 510,
@@ -107,7 +107,7 @@
     {% if buttondata.type == "standard" %}
       <set_gm_button text="{{ buttondata.name }}" x="{{ x + (loop.index0 / rows)|int * w }}" y="{{ y + (loop.index0 % rows) * h }}" w="{{ w - padding }}" h="{{ h - padding }}" />
     {% elif buttondata.type == "toggle" %}
-      <set_variable name="Toggle_{{ buttondata.name }}_ShouldShow" value="1" integer="yes" />
+      <set_variable name="Toggle_{{ buttondata.name | stripspace }}_ShouldShow" value="1" integer="yes" />
     {% endif %}
   {% endfor %}
 {% endmacro %}
@@ -173,7 +173,7 @@
 {% macro addMenuToggle(name, parentMenu, variable, valueMap) %}
   {% set pmkey = (parentMenu.key if parentMenu is mapping else parentMenu) %}
   {% call(isCreate) addStatementToMenu(name, parentMenu) %}
-    <set_variable name="Toggle_{{ name }}_ShouldShow" value="{{ 1 if isCreate else 0 }}" integer="yes" />
+    <set_variable name="Toggle_{{ name | stripspace }}_ShouldShow" value="{{ 1 if isCreate else 0 }}" integer="yes" />
   {% endcall %}
   {{ toggle.Toggle(name, variable, valueMap, parentkey=pmkey) }}
 {% endmacro %}
@@ -234,7 +234,7 @@
   {% macro _createMenu(name, id) %}
   <event name="Menu Create {{ name }}">
     <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ id }}.0" />
-    <if_variable name="_GM_Menu_{{ name }}_Active" comparator="NOT" value="1.0" />
+    <if_variable name="_GM_Menu_{{ name | stripspace }}_Active" comparator="NOT" value="1.0" />
     {{ caller () }}
     {% set menu = main[name] %}
     {{ _buttonGrid(retrieve("buttons" + name), menu.buttons.x, menu.buttons.y, menu.buttons.w, menu.buttons.h, menu.buttons.rows) }}
@@ -242,43 +242,43 @@
       <set_gm_button text="{{ specbut.name }}" x="{{ specbut.x }}" y="{{ specbut.y }}" w="{{ specbut.w }}" h="{{ specbut.h }}" /> 
     {% endfor %}
     {% for permmenu in retrieve("permSubmenus" + name) %}
-      <set_variable name="GM_Submenu_{{ permmenu }}_ShouldShow" value="1.0" integer="yes" />
+      <set_variable name="GM_Submenu_{{ permmenu | stripspace }}_ShouldShow" value="1.0" integer="yes" />
     {% endfor %}
     {% for buttonsubmenu in retrieve("buttonSubs" + name) %}
-      {{ util.restore("GM_Submenu_" + name + buttonsubmenu + "_ShouldShow") }}
+      {{ util.restore("GM_Submenu_" + (name + buttonsubmenu) | stripspace + "_ShouldShow") }}
     {% endfor %}
     {% for caller in retrieve("extrastatements" + name) %}
       {{ caller(True) }}
     {% endfor %}
-    <set_variable name="_GM_Menu_{{ name }}_Active" value="1.0" integer="yes" />
+    <set_variable name="_GM_Menu_{{ name | stripspace }}_Active" value="1.0" integer="yes" />
   </event>
   {{ _buttonHandlersNonStandard(name, menu.buttons.x, menu.buttons.y, menu.buttons.w, menu.buttons.h, menu.buttons.rows) }}
   {% endmacro %}
   {% macro _destroyMenu(name, id) %}
   <event name="Menu Destroy {{ name }}">
     <if_variable name="GM_Menu_Selector" comparator="NOT" value="{{ id }}.0" />
-    <if_variable name="_GM_Menu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
+    <if_variable name="_GM_Menu_{{ name | stripspace }}_Active" comparator="EQUALS" value="1.0" />
     {{ caller () }}
     {% for buttondata in retrieve("buttons" + name) %}
       {% if buttondata.type == "standard" %}
         <clear_gm_button text="{{ buttondata.name }}" />
       {% elif buttondata.type == "toggle" %}
-        <set_variable name="Toggle_{{ buttondata.name }}_ShouldShow" value="0" integer="yes" />
+        <set_variable name="Toggle_{{ buttondata.name | stripspace }}_ShouldShow" value="0" integer="yes" />
       {% endif %}
     {% endfor %}
     {% for specbut in retrieve("specialbuttons" + name) %}
       <clear_gm_button text="{{ specbut.name }}" /> 
     {% endfor %}
     {% for permmenu in retrieve("permSubmenus" + name) %}
-      <set_variable name="GM_Submenu_{{ permmenu }}_ShouldShow" value="0.0" integer="yes" />
+      <set_variable name="GM_Submenu_{{ permmenu | stripspace }}_ShouldShow" value="0.0" integer="yes" />
     {% endfor %}
     {% for buttonsubmenu in retrieve("buttonSubs" + name) %}
-      {{ util.storeAndSet("GM_Submenu_" + name + buttonsubmenu + "_ShouldShow") }}
+      {{ util.storeAndSet("GM_Submenu_" + (name + buttonsubmenu) | stripspace + "_ShouldShow") }}
     {% endfor %}
     {% for caller in retrieve("extrastatements" + name) %}
       {{ caller(False) }}
     {% endfor %}
-    <set_variable name="_GM_Menu_{{ name }}_Active" value="0.0" integer="yes" />
+    <set_variable name="_GM_Menu_{{ name | stripspace }}_Active" value="0.0" integer="yes" />
   </event>
   {% endmacro %}
   {% macro _menuEvent(name, id, triggerButton) %}
@@ -289,18 +289,18 @@
   {% endmacro %}
   {% macro _createExclusiveSubmenu(name, id, menuname, parent_id) %}
   <event name="{{ menuname }} Menu Create {{ name }}">
-    <if_variable name="GM_{{ menuname }}Menu_Selector" comparator="EQUALS" value="{{ id }}.0" />
+    <if_variable name="GM_{{ menuname | stripspace }}Menu_Selector" comparator="EQUALS" value="{{ id }}.0" />
     <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ parent_id }}.0" />
-    <if_variable name="_GM_{{ menuname }}Menu_{{ name }}_Active" comparator="NOT" value="1.0" />
+    <if_variable name="_GM_{{ menuname | stripspace }}Menu_{{ name | stripspace }}_Active" comparator="NOT" value="1.0" />
     {{ caller () }}
-    <set_variable name="_GM_{{ menuname }}Menu_{{ name }}_Active" value="1.0" integer="yes" />
+    <set_variable name="_GM_{{ menuname | stripspace }}Menu_{{ name | stripspace }}_Active" value="1.0" integer="yes" />
   </event>
   {% endmacro %}
   {% macro _exclusiveSubmenuEvent(name, triggerButton, id, menuname, parent_id, additional_variables={}) %}
   <event name="{{ menuname }}Menu Activate {{ name }}">
     <if_gm_button text="{{triggerButton}}" />
     <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ parent_id }}.0" />
-    <set_variable name="GM_{{ menuname }}Menu_Selector" value="{{ id }}.0" integer="yes" />
+    <set_variable name="GM_{{ menuname | stripspace }}Menu_Selector" value="{{ id }}.0" integer="yes" />
     {% for var, val in additional_variables.items() %}
     <set_variable name="{{ var }}" value="{{ val }}.0" integer="yes" />
     {% endfor %}
@@ -308,10 +308,10 @@
   {% endmacro %}
   {% macro _destroyExclusiveSubmenu(name, id, menuname) %}
   <event name="{{ menuname }} Menu Destroy {{ name }}">
-    <if_variable name="GM_{{ menuname }}Menu_Selector" comparator="NOT" value="{{ id }}.0" />
-    <if_variable name="_GM_{{ menuname }}Menu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
+    <if_variable name="GM_{{ menuname | stripspace }}Menu_Selector" comparator="NOT" value="{{ id }}.0" />
+    <if_variable name="_GM_{{ menuname | stripspace }}Menu_{{ name | stripspace }}_Active" comparator="EQUALS" value="1.0" />
     {{ caller () }}
-    <set_variable name="_GM_{{ menuname }}Menu_{{ name }}_Active" value="0.0" integer="yes" />
+    <set_variable name="_GM_{{ menuname | stripspace }}Menu_{{ name | stripspace }}_Active" value="0.0" integer="yes" />
   </event>
   {% endmacro %}
   {% macro _createSpawnMenu(name, id) %}
@@ -333,14 +333,14 @@
     {% set retkey = retrieve_key if retrieve_key != "" else name %}
     <event name="SubMenu Create {{ name }}">
       {% do allSubmenus.append(name) %}
-      <if_variable name="GM_Submenu_{{ name }}_ShouldShow" comparator="EQUALS" value="1.0" />
-      <if_variable name="_GM_Submenu_{{ name }}_Active" comparator="NOT" value="1.0" />
+      <if_variable name="GM_Submenu_{{ name | stripspace }}_ShouldShow" comparator="EQUALS" value="1.0" />
+      <if_variable name="_GM_Submenu_{{ name | stripspace }}_Active" comparator="NOT" value="1.0" />
       {{ caller () }}
       {% for permmenu in retrieve("permSubmenus" + retkey) %}
-        <set_variable name="GM_Submenu_{{ permmenu }}_ShouldShow" value="1.0" integer="yes" />
+        <set_variable name="GM_Submenu_{{ permmenu | stripspace }}_ShouldShow" value="1.0" integer="yes" />
       {% endfor %}
       {% for buttonsubmenu in retrieve("buttonSubs" + retkey) %}
-        {{ util.restore("GM_Submenu_" + name + buttonsubmenu + "_ShouldShow") }}
+        {{ util.restore("GM_Submenu_" + (name + buttonsubmenu) | stripspace + "_ShouldShow") }}
       {% endfor %}
       {% for specbut in retrieve("specialbuttons" + retkey) %}
         <set_gm_button text="{{ specbut.name }}" x="{{ specbut.x }}" y="{{ specbut.y }}" w="{{ specbut.w }}" h="{{ specbut.h }}" /> 
@@ -348,34 +348,34 @@
       {% for caller in retrieve("extrastatements" + retkey) %}
         {{ caller(True) }}
       {% endfor %}
-      <set_variable name="_GM_Submenu_{{ name }}_Active" value="1.0" integer="yes" />
+      <set_variable name="_GM_Submenu_{{ name | stripspace }}_Active" value="1.0" integer="yes" />
     </event>
   {% endmacro %}
   {% macro _destroySubmenu(name, retrieve_key="") %}
     {% set retkey = retrieve_key if retrieve_key != "" else name %}
     <event name="SubMenu Destroy {{ name }}">
-      <if_variable name="GM_Submenu_{{ name }}_ShouldShow" comparator="NOT" value="1.0" />
-      <if_variable name="_GM_Submenu_{{ name }}_Active" comparator="EQUALS" value="1.0" />
+      <if_variable name="GM_Submenu_{{ name | stripspace }}_ShouldShow" comparator="NOT" value="1.0" />
+      <if_variable name="_GM_Submenu_{{ name | stripspace }}_Active" comparator="EQUALS" value="1.0" />
       {{ caller () }}
       {% for permmenu in retrieve("permSubmenus" + retkey) %}
-        <set_variable name="GM_Submenu_{{ permmenu }}_ShouldShow" value="0.0" integer="yes" />
+        <set_variable name="GM_Submenu_{{ permmenu | stripspace }}_ShouldShow" value="0.0" integer="yes" />
       {% endfor %}
       {% for specbut in retrieve("specialbuttons" + retkey) %}
         <clear_gm_button text="{{ specbut.name }}" /> 
       {% endfor %}
       {% for buttonsubmenu in retrieve("buttonSubs" + retkey) %}
-        {{ util.storeAndSet("GM_Submenu_" + name + buttonsubmenu + "_ShouldShow") }}
+        {{ util.storeAndSet("GM_Submenu_" + (name + buttonsubmenu) | stripspace + "_ShouldShow") }}
       {% endfor %}
       {% for caller in retrieve("extrastatements" + retkey) %}
         {{ caller(False) }}
       {% endfor %}
-      <set_variable name="_GM_Submenu_{{ name }}_Active" value="0.0" integer="yes" />
+      <set_variable name="_GM_Submenu_{{ name | stripspace }}_Active" value="0.0" integer="yes" />
   </event>
   {% endmacro %}
   {% macro _dismissEvent(name, buttonPath) %}
   <event name="SubMenu Dismiss {{ name }} ({{ buttonPath }})">
     <if_gm_button text="{{buttonPath}}" />
-    <set_variable name="GM_Submenu_{{ name }}_ShouldShow" value="0.0" integer="yes" />
+    <set_variable name="GM_Submenu_{{ name | stripspace }}_ShouldShow" value="0.0" integer="yes" />
   </event>
   {% endmacro %}
   {% macro _submenuEvent(name, triggerButton, guard=0) %}
@@ -384,7 +384,7 @@
     {% if guard > 0 %}
       <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ guard }}.0" />
     {% endif %}
-    <set_variable name="GM_Submenu_{{ name }}_ShouldShow" value="1.0" integer="yes" />
+    <set_variable name="GM_Submenu_{{ name | stripspace }}_ShouldShow" value="1.0" integer="yes" />
   </event>
   {% endmacro %}
 
@@ -490,7 +490,7 @@
         {% if buttondata.type == "standard" %}
           <clear_gm_button text="{{ buttondata.name }}" />
         {% elif buttondata.type == "toggle" %}
-          <set_variable name="Toggle_{{ buttondata.name }}_ShouldShow" value="0" integer="yes" />
+          <set_variable name="Toggle_{{ buttondata.name | stripspace }}_ShouldShow" value="0" integer="yes" />
         {% endif %}
       {% endfor %}
       <clear_gm_button text="{{ menu.name }} Close" />
@@ -566,7 +566,7 @@
     <set_variable name="GM_Menu_Selector" value="0.0" integer="yes" />
     <set_variable name="GM_SpawnMenu_Selector" value="0.0" integer="yes" />
     {% for submenu in allSubmenus %}
-      <set_variable name="GM_Submenu_{{ submenu }}_ShouldShow" value="0.0" integer="yes" />
+      <set_variable name="GM_Submenu_{{ submenu | stripspace }}_ShouldShow" value="0.0" integer="yes" />
     {% endfor %}
     <clear_gm_button text="AI Off" />
     <clear_gm_button text="AI On" />
