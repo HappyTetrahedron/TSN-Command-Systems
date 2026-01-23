@@ -21,6 +21,7 @@ env = {
         "NebulaEffects",
         "FuelStatusDisplay",
         "ForceShipNames",
+        "VerdantFleet",
     ],
     "maps": [
         "Mria",

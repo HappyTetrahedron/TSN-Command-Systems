@@ -299,10 +299,9 @@
 
 {% macro createPickuppable(name_template, button, counter) %}
   {% do track("spawn12", "Other\\" + button) %}
-  <event name="Spawn Menu RV {{ button }} Click">
-    <if_gm_button text="Other\{{ button }}" />
+  {% call spawn.spawn(util.spawnFactions.Static.key, "Other", button) %}
     <set_variable name="Spawn_{{ button }}" value="1.0" integer="yes" />
-  </event>
+  {% endcall %}
   {% set outercaller = caller %}
   {% call spawn.createNumbered(name_template, button, "RVs", counter) %}
     {{ outercaller() }}

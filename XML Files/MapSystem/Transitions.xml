@@ -179,7 +179,7 @@
 ] %}
 
 {{ menu.addDismissableSubmenu("Locking", menu.main.base) }}
-{{ menu.addMenuToggle("LockSector", "Locking", "Sector Locked", [("Sector unlocked", 0), ("Sector locked", 1)]) }}
+{{ menu.addMenuToggle("LockSector", "Locking", "Sector Locked", [("Sector unlocked - click to lock", 0), ("Sector locked - click to unlock", 1)]) }}
 
 {% call(ship) tracking.onInactive("TransitionsEngine") %}
   {% for transition in transitions %}

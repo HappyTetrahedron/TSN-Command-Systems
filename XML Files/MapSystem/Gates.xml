@@ -6,7 +6,7 @@
     <set_variable name="shipsInrange" value="0.0" integer="yes" />
 {% endcall %}
 
-{{ menu.addMenuToggle("LockGate", "Locking", "Gates Offline", [("Gates unlocked", 0), ("Gates locked", 1)]) }}
+{{ menu.addMenuToggle("LockGate", "Locking", "Gates Offline", [("Gates unlocked - click to lock", 0), ("Gates locked - click to unlock", 1)]) }}
 
 <event name="Ship Tracking">
   <if_variable name="shipsInrange" comparator="LESS" value="0.0" />

@@ -125,24 +125,51 @@
 {% macro addButtonExpandMenu(name, parentMenu, x, y, w=90, h=30, rows=10, button="", pos={}, mutexKey="", mutexID=0) %}
   {% set pk = parentMenu.key if parentMenu is mapping else parentMenu %}
   {% if pk and mutexKey and mutexID %} {% do track("mutexSubmenus" + pk, mutexKey) %}
-  {% elif pk %} {% do track("buttonSubs" + pk, name) %} {% endif %}
-  {{ _trackMenuWithParentButton(name, parentMenu, "buttonExpandMenu", button, pos, {
-    "x": x,
-    "y": y,
-    "w": w,
-    "h": h,
-    "rows": rows,
-  }, caller, mutexKey, mutexID) }}
+  {% elif pk %}
+    {% do track("buttonSubs" + pk, name) %}
+  {% endif %}
+  {{ _trackMenuWithParentButton(
+    name=name,
+    parentMenu=parentMenu,
+    type="buttonExpandMenu",
+    button=button,
+    pos=pos,
+    buttons={
+      "x": x,
+      "y": y,
+      "w": w,
+      "h": h,
+      "rows": rows,
+    },
+    body=caller,
+    mutexKey=mutexKey,
+    mutexID=mutexID,
+    toggle=True,
+  ) }}
 {% endmacro %}
 
-{% macro _trackMenuWithParentButton(name, parentMenu, type, button, pos, buttons, body, mutexKey, mutexID, nobutton=False) %}
+{% macro _trackMenuWithParentButton(name, parentMenu, type, button, pos, buttons, body, mutexKey, mutexID, toggle=False, nobutton=False) %}
   {% set but = button if button else name %}
   {% set pk = parentMenu.key if parentMenu is mapping else parentMenu %}
   {% if pk %}
     {% if pos and "x" in pos and "y" in pos %}
-      {% do track("specialbuttons" + pk, {"name": but, "type": "standard", "x": pos.x, "y": pos.y, "w": pos.get("w", 90), "h": pos.get("h", 30)}, name) %}
+      {% do track("specialbuttons" + pk, {
+        "name": but,
+        "type": "toggle" if toggle else "standard",
+        "x": pos.x,
+        "y": pos.y,
+        "w": pos.get("w", 90),
+        "h": pos.get("h", 30),
+        "variable": "GM_Submenu_" + but | stripspace + "_ShouldShow",
+        "valueMap": [(but + " >", 0), (but + " <", 1)],
+      }, name) %}
     {% elif not nobutton %}
-      {% do track("buttons" + pk, {"name": but, "type": "standard"}, name) %}
+      {% do track("buttons" + pk, {
+        "name": but,
+        "type": "toggle" if toggle else "standard",
+        "variable": "GM_Submenu_" + but | stripspace + "_ShouldShow",
+        "valueMap": [(but + " >", 0), (but + " <", 1)],
+      }, name) %}
     {% endif %}
   {% endif %}
   {% do track("dynamicMenus", {
