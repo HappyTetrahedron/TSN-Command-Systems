@@ -93,6 +93,7 @@ PLANET_PREFIXES = [
     'ROCK-PLANET',
     'DEATHSTAR',
     'PULSAR',
+    'COMET',
     'MOON',
 ]
 
@@ -150,6 +151,8 @@ def type_from_name(name):
         return "Planet"
     if name.startswith("PULSAR"):
         return "Pulsar"
+    if name.startswith("COMET"):
+        return "Comet"
     if 'MOON' in name:
         return "Moon"
     if name.startswith("DEATHSTAR"):
@@ -230,6 +233,8 @@ def process_settext_action(action, original):
         original["type"] = "Moon"
     if 'moon' in action.attrib.get('class', "").lower():
         original["type"] = "Moon"
+    if 'asteroid' in action.attrib.get('class', "").lower():
+        original["type"] = "Asteroid"
     if 'newname' in action.attrib:
         original["name"] = action.attrib["newname"]
 

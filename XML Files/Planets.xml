@@ -44,6 +44,10 @@ set planetTypes = {
         'textureFiles': ['Asteroid_6_Albedo', 'Asteroid_7_Albedo', 'Asteroid_8_Albedo', 'Asteroid_9_Albedo', 'Asteroid_10_Albedo', 'Asteroid_11_Albedo', 'Asteroid_9_Albedo', 'Asteroid_7_Albedo'],
         'scale': 0.5,
     },
+    'COMET': {
+        'textureFiles': ['white32', 'white32', 'white32', 'white32', 'white32', 'white32', 'white32', 'white32'],
+        'scale': 0.7,
+    },
 }
 
 %}

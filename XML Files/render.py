@@ -27,6 +27,7 @@ env = {
         "Mria",
         "Khoros",
         "Athorn",
+        "Burin",
     ],
     "ordnance": {
         "ship1": {

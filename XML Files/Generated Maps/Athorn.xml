@@ -664,7 +664,7 @@
     <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
     <set_variable name="Athorn to Burin" value="1.0" />
     <set_variable name="Burin System" value="1.0" />
-    <set_variable name="Sector" value="8" />
+    <set_variable name="Sector" value="6" />
     <set_variable name="shipsInrange" value="0.0" integer="yes" />
     <set_timer name="Transition" seconds="2" />
     <set_variable name="ExitorRetreat" value="1.0" />
@@ -676,7 +676,7 @@
     <if_variable name="Athorn System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-          <create type="genericMesh" x="43169.0" y="8.0" z="25414.0" name="Burin Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+          <create type="genericMesh" x="43169.0" y="6.0" z="25414.0" name="Burin Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
     
 <create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="48746.0" y="0.0" z="28109.0" name="B2" />
     

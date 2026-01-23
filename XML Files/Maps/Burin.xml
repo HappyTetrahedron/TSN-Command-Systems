@@ -1,0 +1,158 @@
+<mission_data version="1.0" background_id_arme="4076349e-e1c0-4950-8e05-27c894bfaff8" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <start id_arme="4076349e-e1c0-4950-8e05-27c894bfaff8">
+    <set_variable name="Coordinate X" value="1680.0" />
+    <set_variable name="Coordinate Y" value="270.0" />
+    <set_variable name="Width" value="3.0" />
+    <set_variable name="Height" value="2.0" />
+    <set_variable name="Alignment" value="Neutral" />
+    <set_variable name="Skybox" value="24.0" />
+  </start>
+  <event name="Sector 1" id_arme="a7d0b21d-dd0a-4bc2-bd4f-2d5c7a5e0f19">
+    <create count="30" type="nebulas" nebType="3" startAngle="30" endAngle="50" startX="65636.0" startY="0.0" startZ="166710.0" radius="100000" randomRange="5000" randomSeed="1" />
+    <create count="300" type="asteroids" startAngle="-20" endAngle="38" startX="65636.0" startY="0.0" startZ="174710.0" radius="96812" randomRange="10000" randomSeed="1" />
+    <create count="300" type="asteroids" startAngle="-20" endAngle="35" startX="65636.0" startY="0.0" startZ="174710.0" radius="96812" randomRange="20000" />
+    <create type="neutral" x="54553.0" y="0.0" z="30242.0" angle="282.7" name="Laminar Flow" hullID="7714" />
+    <create type="genericMesh" x="65114.0" y="1.0" z="27966.0" name="Da'Riln Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="71397.0" y="0.0" z="34886.0" angle="39.1" name="Turbulent Flow" hullID="7714" />
+    <create type="neutral" x="11761.0" y="0.0" z="82139.0" angle="121.4" name="Buoyant Mission" hullID="7714" />
+    <set_ship_text name="Turbulent Flow" race="Budron" class="Clergy" desc="Administrative station and trade post overseeing operations at Da'Riln Gate." scan_desc="Station is half filled with phosphorous water. The other half is dedicated to unpressured cargo boxes." hailtext="Please respect our full authority in these waters, as the Prophecy foretold." />
+    <set_ship_text name="Laminar Flow" race="Budron" class="Clergy" desc="Administrative station and trade post overseeing operations at Da'Riln Gate." scan_desc="Station is half filled with phosphorous water. The other half is dedicated to unpressured cargo boxes." hailtext="Please respect our full authority in these waters, as the Prophecy foretold." />
+    <set_ship_text name="Buoyant Mission" race="Budron" class="Mining Platform" desc="Budron mining operation. Emits noxious outgassing. Proceed with caution." scan_desc="Station is completely filled with phosphorous water." hailtext="We wish only to pass through untroubled waters, Terran." />
+  </event>
+  <event name="Sector 2" id_arme="20f7737b-b971-49cd-a428-bea44d51ba6a">
+    <create count="50" type="nebulas" nebType="2" startX="55828.0" startY="0.0" startZ="36251.0" radius="16407" randomRange="5000" />
+    <create count="70" type="nebulas" nebType="2" startX="56010.0" startY="0.0" startZ="36251.0" radius="8350" randomRange="5000" />
+    <create count="80" type="asteroids" startX="92702.0" startY="0.0" startZ="81320.0" endX="77041.0" endY="0.0" endZ="95523.0" randomRange="15000" />
+    <create count="60" type="asteroids" startX="92246.0" startY="0.0" startZ="92154.0" endX="89879.0" endY="0.0" endZ="94704.0" randomRange="10000" />
+    <create type="neutral" x="65934.0" y="0.0" z="34977.0" angle="100" name="Covenant of Continuity" hullID="7714" />
+    <create count="100" type="nebulas" nebType="2" startAngle="20" endAngle="90" startX="100000.0" startY="0.0" startZ="126631.0" radius="100000" randomRange="20000" />
+    <create count="300" type="nebulas" nebType="2" startAngle="20" endAngle="90" startX="100000.0" startY="0.0" startZ="126631.0" radius="100000" randomRange="10000" />
+    <create count="100" type="nebulas" nebType="2" startAngle="20" endAngle="90" startX="100000.0" startY="0.0" startZ="126631.0" radius="100000" randomRange="7000" />
+    <create count="150" type="nebulas" nebType="2" startAngle="40" endAngle="90" startX="125000.0" startY="0.0" startZ="106631.0" radius="100000" randomRange="7000" />
+    <create count="15" type="nebulas" nebType="3" startX="99257.0" startY="0.0" startZ="87875.0" endX="90425.0" endY="0.0" endZ="99165.0" randomRange="5000" />
+    <create type="genericMesh" x="54826.0" y="0.0" z="36069.0" name="COMETPolyna" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="51184.0" y="0.0" z="29514.0" angle="207.8" name="Pressure" hullID="7714" />
+    <create type="neutral" x="46905.0" y="0.0" z="40895.0" angle="301.8" name="Wake" hullID="7714" />
+    <set_ship_text name="Pressure" race="Budron" class="Monastery" desc="Budron religious habitat. The local convocation is dedicated to the study of Polyna and the deeper meaning of having found water in deep space." scan_desc="Station is completely filled with phosphorous water." hailtext="May the Sacred Prophecy guide you safely through these holy waters, Terran." />
+    <set_ship_text name="Wake" race="Budron" class="Monastery" desc="Budron religious habitat. The local convocation is dedicated to the study of Polyna and the deeper meaning of having found water in deep space." scan_desc="Station is completely filled with phosphorous water." hailtext="May the Sacred Prophecy guide you safely through these holy waters, Terran." />
+    <set_ship_text name="Covenant of Continuity" race="Budron" class="Church" desc="Budron religious site. No permanent habitants, but serves as grounds for religious congregation." scan_desc="Station is completely filled with phosphorous water." hailtext="May the Sacred Prophecy guide you safely through these holy waters, Terran." />
+    <set_ship_text name="COMETPolyna" class="Class C Comet" desc="Ice comet, likely captured in this system megaanni ago.^Accepted and revered as a holy symbol in Budron culture." scan_desc="Comet core emits energetic pulses. Proceed with caution." />
+    <create type="genericMesh" x="60107.0" y="0.0" z="37799.0" name="Eddy" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="53278.0" y="0.0" z="41441.0" name="Displacement" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="47815.0" y="0.0" z="34339.0" name="Surface Tension" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="58468.0" y="0.0" z="29969.0" name="Bow" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="41897.0" y="0.0" z="44992.0" name="Stream" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="37800.0" y="0.0" z="52822.0" name="Flow" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="artScale" value="2.0" name="Eddy" />
+    <set_object_property property="pushRadius" value="1250.0" name="Eddy" />
+    <set_object_property property="angleDelta" value="0.1" name="Eddy" />
+    <set_ship_text name="Eddy" class="Class C ice asteroid" desc="Ice asteroid, originally part of Polyna." scan_desc="Composition: loosely packed ice." />
+    <set_object_property property="artScale" value="2.0" name="Displacement" />
+    <set_object_property property="pushRadius" value="1250.0" name="Displacement" />
+    <set_object_property property="angleDelta" value="0.1" name="Displacement" />
+    <set_ship_text name="Displacement" class="Class C ice asteroid" desc="Ice asteroid, originally part of Polyna." scan_desc="Composition: loosely packed ice." />
+    <set_object_property property="artScale" value="2.0" name="Surface Tension" />
+    <set_object_property property="pushRadius" value="1250.0" name="Surface Tension" />
+    <set_object_property property="angleDelta" value="0.1" name="Surface Tension" />
+    <set_ship_text name="Surface Tension" class="Class C ice asteroid" desc="Ice asteroid, originally part of Polyna." scan_desc="Composition: loosely packed ice." />
+    <set_object_property property="artScale" value="2.0" name="Bow" />
+    <set_object_property property="pushRadius" value="1250.0" name="Bow" />
+    <set_object_property property="angleDelta" value="0.1" name="Bow" />
+    <set_ship_text name="Bow" class="Class C ice asteroid" desc="Ice asteroid, originally part of Polyna." scan_desc="Composition: loosely packed ice." />
+    <set_object_property property="artScale" value="2.0" name="Stream" />
+    <set_object_property property="pushRadius" value="1250.0" name="Stream" />
+    <set_object_property property="angleDelta" value="0.1" name="Stream" />
+    <set_ship_text name="Stream" class="Class C ice asteroid" desc="Ice asteroid, originally part of Polyna." scan_desc="Composition: loosely packed ice." />
+    <set_object_property property="artScale" value="2.0" name="Flow" />
+    <set_object_property property="pushRadius" value="1250.0" name="Flow" />
+    <set_object_property property="angleDelta" value="0.1" name="Flow" />
+    <set_ship_text name="Flow" class="Class C ice asteroid" desc="Ice asteroid, originally part of Polyna." scan_desc="Composition: loosely packed ice." />
+  </event>
+  <event name="Sector 3" id_arme="054f5e37-48d8-4436-a384-07a1deb6c8ed">
+    <create count="170" type="nebulas" nebType="1" startX="39621.0" startY="0.0" startZ="28057.0" endX="26055.0" endY="0.0" endZ="49180.0" randomRange="22000" />
+    <create count="170" type="nebulas" startX="19591.0" startY="0.0" startZ="99711.0" endX="27694.0" endY="0.0" endZ="48907.0" randomRange="20000" />
+    <create count="170" type="nebulas" startX="25873.0" startY="0.0" startZ="92154.0" endX="32611.0" endY="0.0" endZ="44172.0" randomRange="14000" />
+    <create count="170" type="asteroids" startX="22049.0" startY="0.0" startZ="96160.0" endX="30517.0" endY="0.0" endZ="44901.0" randomRange="14000" />
+    <create count="170" type="asteroids" startX="34431.0" startY="0.0" startZ="43171.0" endX="35888.0" endY="0.0" endZ="37708.0" randomRange="14000" />
+    <create type="genericMesh" x="39621.0" y="0.0" z="38801.0" name="MOONSlurp" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="0.8" colorBlue="0.0" />
+    <create count="50" type="nebulas" nebType="2" startAngle="30" endAngle="65" startX="165966.0" startY="0.0" startZ="159529.0" radius="100000" randomRange="10000" />
+    <create type="genericMesh" x="34523.0" y="0.0" z="41350.0" name="MOONBackwater" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="0.8" colorBlue="0.0" />
+    <create type="neutral" x="36161.0" y="0.0" z="38801.0" angle="353.9" name="Tzamkitz" hullID="1100" />
+    <clear_ai name="Tzamkitz" />
+    <add_ai type="SPCL_AI" name="Tzamkitz" />
+    <set_special name="Tzamkitz" ability="LowVis" />
+    <set_special name="Tzamkitz" ability="Stealth" />
+    <set_special name="Tzamkitz" ability="Cloak" />
+    <add_ai type="CHASE_ANGER" name="Tzamkitz" />
+    <set_ship_text name="Tzamkitz" race="Sechatzal" class="Outpost" desc="Sechatzal outpost. Purpose unknown." scan_desc="Installation is shielded by Sechatzal cloaking technology. Deep scan failed." hailtext="Greetings, terrans. Apologies, but we do not trade." />
+    <create type="genericMesh" x="34705.0" y="0.0" z="36342.0" name="Faith" meshFileName="dat\asteroid8.dxs" textureFileName="dat\Asteroid_8_Albedo.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+    <set_object_property property="artScale" value="4.0" name="Faith" />
+    <set_object_property property="pushRadius" value="2500.0" name="Faith" />
+    <set_object_property property="angleDelta" value="0.1" name="Faith" />
+    <set_ship_text name="Faith" class="Class A asteroid" desc="Dang, that's one large asteroid." scan_desc="Composition analysis shows that this asteroid is a chunk broken off the planetoid Slurp." />
+    <set_ship_text name="MOONSlurp" class="Class A planetoid" desc="Asteroid large enough to keep itself round. Rich in dilithium minerals." scan_desc="Unique composition of mineral-rich regolith." />
+    <set_ship_text name="MOONBackwater" class="Class A planetoid" desc="Asteroid large enough to keep itself round. Kept in binary orbit with its partner Slurp." scan_desc="Composition: densely packed regolith." />
+  </event>
+  <event name="Sector 4" id_arme="870cb578-accf-4108-9292-27d240afa6a5">
+    <create type="genericMesh" x="52823.0" y="0.0" z="53277.0" name="BLUE-PLANETBurin" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="0.8" colorBlue="0.0" />
+    <create count="40" type="asteroids" startAngle="20" endAngle="60" startX="52277.0" startY="0.0" startZ="57192.0" radius="71163" randomRange="7000" />
+    <create count="15" type="mines" startAngle="40" endAngle="170" startX="74674.0" startY="0.0" startZ="49453.0" radius="6238" />
+    <create count="15" type="mines" startAngle="0" endAngle="130" startX="73035.0" startY="0.0" startZ="62018.0" radius="6238" />
+    <create count="15" type="mines" startAngle="-30" endAngle="100" startX="64841.0" startY="0.0" startZ="73672.0" radius="6238" />
+    <create count="15" type="mines" startAngle="-70" endAngle="60" startX="50092.0" startY="0.0" startZ="78042.0" radius="6238" />
+    <create count="15" type="mines" startAngle="-130" endAngle="0" startX="29333.0" startY="0.0" startZ="59195.0" radius="6238" />
+    <create count="15" type="mines" startAngle="170" endAngle="300" startX="30516.0" startY="0.0" startZ="44537.0" radius="6238" />
+    <create count="15" type="mines" startAngle="245" endAngle="115" startX="53733.0" startY="0.0" startZ="30880.0" radius="6238" />
+    <create count="15" type="mines" startAngle="210" endAngle="80" startX="67117.0" startY="0.0" startZ="36707.0" radius="6238" />
+    <create count="15" type="mines" startAngle="270" endAngle="140" startX="39712.0" startY="0.0" startZ="33793.0" radius="6238" />
+    <create count="15" type="mines" startAngle="-110" endAngle="20" startX="36343.0" startY="0.0" startZ="71213.0" radius="6238" />
+    <create count="50" type="nebulas" nebType="3" startAngle="-10" endAngle="120" startX="52732.0" startY="0.0" startZ="53004.0" radius="36769" randomRange="5000" />
+    <create count="50" type="nebulas" nebType="3" startAngle="30" endAngle="120" startX="52914.0" startY="0.0" startZ="53004.0" radius="36769" randomRange="5000" />
+    <create count="50" type="nebulas" nebType="3" startAngle="90" endAngle="120" startX="53278.0" startY="0.0" startZ="53277.0" radius="36769" randomRange="7000" randomSeed="1" />
+    <create count="50" type="nebulas" nebType="3" startAngle="170" endAngle="300" startX="52914.0" startY="0.0" startZ="53004.0" radius="36769" randomRange="5000" />
+    <create count="50" type="nebulas" nebType="3" startAngle="210" endAngle="300" startX="52732.0" startY="0.0" startZ="53186.0" radius="36769" randomRange="5000" />
+    <create count="50" type="nebulas" nebType="3" startAngle="270" endAngle="300" startX="52732.0" startY="0.0" startZ="52822.0" radius="36769" randomRange="7000" randomSeed="1" />
+    <create type="neutral" x="18589.0" y="0.0" z="67936.0" name="Riptide Mission" hullID="7714" />
+    <create type="neutral" x="87421.0" y="0.0" z="41896.0" name="Backwash Mission" hullID="7714" />
+    <set_ship_text name="Backwash Mission" race="Budron" class="Industry" desc="Budron industrial outpost. Lightly armed. Contains advanced sensors for monitoring surrounding space sectors." scan_desc="Station is completely filled with phosphorous water." hailtext="May the Sacred Prophecy guide you safely through these waters, Terran." />
+    <set_ship_text name="Riptide Mission" race="Budron" class="Industry" desc="Budron industrial outpost. Lightly armed. Contains advanced sensors for monitoring surrounding space sectors." scan_desc="Station is completely filled with phosphorous water." hailtext="May the Sacred Prophecy guide you safely through these waters, Terran." />
+    <set_ship_text name="BLUE-PLANETBurin" class="Class M Planet" desc="Home world of the Budron. Oceanic world, very few islands of dry land. Water is highly saturated with phosphorus - freediving not recommended." scan_desc="Estimated population: 183.340.000" />
+  </event>
+  <event name="Sector 5" id_arme="21ee2fa9-5c5a-4e7f-a07a-a123dbcd6890">
+    <create count="300" type="asteroids" startAngle="60" endAngle="120" startX="165167.0" startY="0.0" startZ="50000.0" radius="96812" randomRange="20000" />
+    <create count="300" type="asteroids" startAngle="60" endAngle="120" startX="165167.0" startY="0.0" startZ="50000.0" radius="96812" randomRange="10000" randomSeed="1" />
+    <create count="70" type="nebulas" nebType="3" startAngle="30" endAngle="80" startX="135167.0" startY="0.0" startZ="80000.0" radius="100000" randomRange="5000" />
+    <create count="100" type="nebulas" nebType="3" startAngle="60" endAngle="110" startX="155167.0" startY="0.0" startZ="80000.0" radius="100000" randomRange="10000" />
+    <create count="120" type="nebulas" nebType="3" startAngle="40" endAngle="90" startX="155167.0" startY="0.0" startZ="100000.0" radius="100000" randomRange="5000" />
+    <create count="30" type="nebulas" nebType="3" startAngle="40" endAngle="90" startX="135167.0" startY="0.0" startZ="100000.0" radius="100000" randomRange="5000" />
+    <create count="110" type="nebulas" nebType="3" startAngle="60" endAngle="90" startX="165167.0" startY="0.0" startZ="100000.0" radius="100000" randomRange="5000" />
+    <create count="40" type="nebulas" nebType="2" startAngle="60" endAngle="90" startX="110000.0" startY="0.0" startZ="46631.0" radius="100000" randomRange="10000" />
+    <create count="60" type="nebulas" nebType="2" startAngle="50" endAngle="100" startX="111909.0" startY="0.0" startZ="55386.0" radius="100000" randomRange="4000" randomSeed="1" />
+    <create type="neutral" x="76040.0" y="0.0" z="54279.0" angle="152.4" name="Hydraulic Mission" hullID="7714" />
+    <create type="neutral" x="85236.0" y="0.0" z="27693.0" angle="137.4" name="Mission of Vorticity" hullID="7714" />
+    <create type="neutral" x="57466.0" y="0.0" z="34704.0" angle="150.4" name="Fluctuating Mission" hullID="7714" />
+    <set_ship_text name="Hydraulic Mission" race="Budron" class="Mining Platform" desc="Budron mining operation. Emits noxious outgassing. Proceed with caution." scan_desc="Station is completely filled with phosphorous water." hailtext="We wish only to pass through untroubled waters, Terran." />
+    <set_ship_text name="Fluctuating Mission" race="Budron" class="Mining Platform" desc="Budron mining operation. Emits noxious outgassing. Proceed with caution." scan_desc="Station is completely filled with phosphorous water." hailtext="We wish only to pass through untroubled waters, Terran." />
+    <set_ship_text name="Mission of Vorticity" race="Budron" class="Mining Platform" desc="Budron mining operation. Emits noxious outgassing. Proceed with caution." scan_desc="Station is completely filled with phosphorous water." hailtext="We wish only to pass through untroubled waters, Terran." />
+    <create type="genericMesh" x="58741.0" y="0.0" z="37071.0" name="The Upwelling" meshFileName="dat\asteroid8.dxs" textureFileName="dat\Asteroid_8_Albedo.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+    <set_ship_text name="The Upwelling" class="Asteroid" desc="Particularly large asteroid. Part of Burin mining operations." scan_desc="Composition: loosely packed regolith." />
+    <set_object_property property="artScale" value="2.0" name="The Upwelling" />
+    <set_object_property property="pushRadius" value="1250.0" name="The Upwelling" />
+    <set_object_property property="angleDelta" value="0.1" name="The Upwelling" />
+  </event>
+  <event name="Sector 6" id_arme="f17f3a93-accf-46f8-bd23-ef69e4fc9075">
+    <create count="60" type="mines" startAngle="-150" endAngle="160" startX="15676.0" startY="0.0" startZ="40531.0" radius="11649" />
+    <create count="60" type="mines" startAngle="-245" endAngle="65" startX="35706.0" startY="0.0" startZ="58467.0" radius="11649" />
+    <create count="60" type="mines" startAngle="20" endAngle="330" startX="15403.0" startY="0.0" startZ="77314.0" radius="11649" />
+    <create count="300" type="nebulas" nebType="2" startAngle="50" endAngle="130" startX="175167.0" startY="0.0" startZ="50000.0" radius="96812" randomRange="10000" />
+    <create count="200" type="nebulas" nebType="2" startAngle="50" endAngle="100" startX="165167.0" startY="0.0" startZ="50000.0" radius="96812" randomRange="20000" />
+    <create count="100" type="nebulas" nebType="1" startX="18680.0" startY="0.0" startZ="-76.0" endX="9758.0" endY="0.0" endZ="44901.0" randomRange="15000" />
+    <create count="170" type="nebulas" nebType="1" startX="13491.0" startY="0.0" startZ="53004.0" endX="21776.0" endY="0.0" endZ="96433.0" randomRange="20000" />
+    <create count="100" type="asteroids" startX="19136.0" startY="0.0" startZ="288.0" endX="13855.0" endY="0.0" endZ="37981.0" randomRange="15000" />
+    <create count="10" type="asteroids" startX="17041.0" startY="0.0" startZ="49544.0" endX="32337.0" endY="0.0" endZ="95523.0" randomRange="15000" />
+    <create count="100" type="nebulas" nebType="2" startX="63293.0" startY="0.0" startZ="95250.0" endX="68392.0" endY="0.0" endZ="51820.0" randomRange="10000" />
+    <create type="neutral" x="47269.0" y="0.0" z="75311.0" angle="66.7" name="Flow Control" hullID="7714" />
+    <create type="genericMesh" x="17406.0" y="2.0" z="58194.0" name="Athorn Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <set_ship_text name="Flow Control" race="Budron" class="Clergy" desc="Administrative station and police post overseeing operations at Athorn Gate. Armed and capable of defence." scan_desc="Station is completely filled with phosphorous water." hailtext="Please respect our full authority in these waters, as the Prophecy foretold." />
+  </event>
+</mission_data>
