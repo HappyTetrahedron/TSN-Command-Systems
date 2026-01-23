@@ -84,17 +84,3 @@
     <if_variable name="DestroyNamed" comparator="EQUALS" value="0.0" />
     <set_variable name="Auto Delete" value="1.0" integer="yes" />
   </event>
-
-  {# Legacy Alert: These events rely on the main menu managing the toggle button independently. #}
-  <event name="Delete Disabled" id_arme="740d30e8-0bc0-42ac-8f09-4d841654414c" parent_id_arme="5db8bbfc-fdc4-4382-9094-b1c3795695b2">
-    <if_gm_button text="DelOn" />
-    <clear_gm_button text="DelOn" />
-    <set_gm_button text="DelOff" x="40" y="340" h="30" w="50" />
-    <set_variable name="Auto Delete" value="0.0" integer="yes" />
-  </event>
-  <event name="Delete Enabled" id_arme="43b93aad-68e8-43da-8e35-370cb3ebdff4" parent_id_arme="5db8bbfc-fdc4-4382-9094-b1c3795695b2">
-    <if_gm_button text="DelOff" />
-    <clear_gm_button text="DelOff" />
-    <set_gm_button text="DelOn" x="40" y="340" h="30" w="50" />
-    <set_variable name="Auto Delete" value="1.0" integer="yes" />
-  </event>

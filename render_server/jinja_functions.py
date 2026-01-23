@@ -38,6 +38,10 @@ def clear_all_state():
   for key in keys:
     del track_dict[key]
 
+def stripspace(text):
+    return ''.join(text.split())
+
+
 def register(jinja_env):
   jinja_env.globals.update(track=track, retrieve=retrieve, panic=raise_helper)
-  jinja_env.filters.update(textwidth=textwidth)
+  jinja_env.filters.update(textwidth=textwidth, stripspace=stripspace)
