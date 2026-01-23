@@ -1,5 +1,6 @@
 {% import 'Utils.xml' as util %}
 {% import 'Toggle.xml' as toggle %}
+{% import 'UISystem.xml' as ui %}
 
 {% set padding = 2 %}
 {% set main = {
@@ -18,14 +19,13 @@
   'spawn': {
     "key": "spawn",
     "button": "SPWN.",
-    "special": True,
     "id": 2,
     "buttons": {
       "x": 100,
-      "y": 134,
+      "y": 170,
       "w": 90,
       "h": 30,
-      "rows": 1,
+      "rows": 6,
     },
   },
   'poi': {
@@ -78,13 +78,12 @@
   },
   'ai': {
     "key": "ai",
-    "special": True,
     "buttons": {
       "x": 140,
-      "y": 510,
+      "y": 480,
       "w": 90,
-      "h": 30,
-      "rows": 6,
+      "h": 28,
+      "rows": 1,
     },
   },
 
@@ -102,71 +101,61 @@
   },
 } %}
 
-{% macro _buttonGrid(buttons, x, y, w, h, rows, padding=2) %}
-  {% for buttondata in buttons %}
-    {% if buttondata.type == "standard" %}
-      <set_gm_button text="{{ buttondata.name }}" x="{{ x + (loop.index0 / rows)|int * w }}" y="{{ y + (loop.index0 % rows) * h }}" w="{{ w - padding }}" h="{{ h - padding }}" />
-    {% elif buttondata.type == "toggle" %}
-      <set_variable name="Toggle_{{ buttondata.name | stripspace }}_ShouldShow" value="1" integer="yes" />
-    {% endif %}
-  {% endfor %}
+
+{% macro addDismissableSubmenu(name, parentMenu, button="", pos={}) %}
+  {{ _trackMenuWithParentButton(name, parentMenu, "dismissableSubmenu", button, pos, None, None, None) }}
 {% endmacro %}
 
-{% macro _buttonHandlersNonStandard(name, x, y, w, h, rows, padding=2) %}
-  {% for buttondata in retrieve("specialbuttons" + name) %}
-    {% if buttondata.type == "toggle" %}
-      {{ toggle.Toggle(buttondata.name, buttondata.variable, buttondata.valueMap, buttondata.x, buttondata.y, buttondata.w, buttondata.h) }}
-    {% endif %}
-  {% endfor %}
-  {% for buttondata in retrieve("buttons" + name) %}
-    {% if buttondata.type == "toggle" %}
-      {{ toggle.Toggle(buttondata.name, buttondata.variable, buttondata.valueMap, x + (loop.index0 / rows)|int * w, y + (loop.index0 % rows) * h, w - 2, h - 2) }}
-    {% endif %}
-  {% endfor %}
-{% endmacro %}
-
-{% macro addDismissableSubmenu(name, parentMenu, pos={}) %}
-  {% set pk = parentMenu.key if parentMenu is mapping else parentMenu %}
-  {% do track("dynamicMenus", {
-    "type": "dismissableSubmenu",
-    "name": name,
-    "parentMenu": pk,
-    "pos": pos,
-  }, name) %}
-{% endmacro %}
-
-{% macro addEphemeralSubmenu(name, parentMenu, pos={}) %}
-  {% set pk = parentMenu.key if parentMenu is mapping else parentMenu %}
-  {% do track("dynamicMenus", {
-    "type": "ephemeralSubmenu",
-    "name": name,
-    "parentMenu": pk,
-    "pos": pos,
-  }, name) %}
+{% macro addEphemeralSubmenu(name, parentMenu, button="", pos={}) %}
+  {{ _trackMenuWithParentButton(name, parentMenu, "ephemeralSubmenu", button, pos, None, None, None) }}
 {% endmacro %}
 
 {% macro addPermanentSubmenu(name, parentMenu) %}
   {% set pk = parentMenu.key if parentMenu is mapping else parentMenu %}
-  {% do track("dynamicMenus", {
-    "type": "permanentSubmenu",
-    "name": name,
-    "parentMenu": pk,
-  }, name) %}
+  {% if pk %} {% do track("permSubmenus" + pk, name) %} {% endif %}
+  {{ _trackMenuWithParentButton(name, parentMenu, "permanentSubmenu", {}, None, None, mutexKey, mutexID, nobutton=True) }}
 {% endmacro %}
 
-{% macro addButtonExpandMenu(name, parentMenu, x, y, w=90, h=30, rows=10, pos={}) %}
+{% macro addMutexSubmenu(name, parentMenu, mutexKey, mutexID, button="", pos={}) %}
   {% set pk = parentMenu.key if parentMenu is mapping else parentMenu %}
-  {% do track("dynamicMenus", {
-    "type": "buttonExpandMenu",
-    "name": name,
-    "parentMenu": pk,
-    "body": caller,
+  {% if pk %} {% do track("mutexSubmenus" + pk, mutexKey) %} {% endif %}
+  {{ _trackMenuWithParentButton(name, parentMenu, "permanentSubmenu", button, pos, None, None, mutexKey, mutexID) }}
+{% endmacro %}
+
+{% macro addButtonExpandMenu(name, parentMenu, x, y, w=90, h=30, rows=10, button="", pos={}, mutexKey="", mutexID=0) %}
+  {% set pk = parentMenu.key if parentMenu is mapping else parentMenu %}
+  {% if pk and mutexKey and mutexID %} {% do track("mutexSubmenus" + pk, mutexKey) %}
+  {% elif pk %} {% do track("buttonSubs" + pk, name) %} {% endif %}
+  {{ _trackMenuWithParentButton(name, parentMenu, "buttonExpandMenu", button, pos, {
     "x": x,
     "y": y,
     "w": w,
     "h": h,
     "rows": rows,
-    "pos": pos,
+  }, caller, mutexKey, mutexID) }}
+{% endmacro %}
+
+{% macro _trackMenuWithParentButton(name, parentMenu, type, button, pos, buttons, body, mutexKey, mutexID, nobutton=False) %}
+  {% set but = button if button else name %}
+  {% set pk = parentMenu.key if parentMenu is mapping else parentMenu %}
+  {% if pk %}
+    {% if pos and "x" in pos and "y" in pos %}
+      {% do track("specialbuttons" + pk, {"name": but, "type": "standard", "x": pos.x, "y": pos.y, "w": pos.get("w", 90), "h": pos.get("h", 30)}, name) %}
+    {% elif not nobutton %}
+      {% do track("buttons" + pk, {"name": but, "type": "standard"}, name) %}
+    {% endif %}
+  {% endif %}
+  {% do track("dynamicMenus", {
+    "key": name | stripspace,
+    "type": type,
+    "name": name,
+    "parentMenu": pk,
+    "buttons": buttons,
+    "body": body,
+    "selection": "mutex" if mutexKey and mutexID else "independent",
+    "mutexKey": mutexKey,
+    "button": but,
+    "id": mutexID,
   }, name) %}
 {% endmacro %}
 
@@ -182,6 +171,14 @@
   {% do track("menukey" + parentMenu, name) %}
   <event name="{{ name }} onClick">
     <if_gm_button text="{{ parentMenu }}\{{ name }}" />
+    {{ caller() }}
+  </event>
+{% endmacro %}
+
+{% macro onMenuClickRaw(name, parentMenu) %}
+  {% do track("menukeyRaw" + parentMenu, name) %}
+  <event name="{{ name }} onClick">
+    <if_gm_button text="{{ name }}" />
     {{ caller() }}
   </event>
 {% endmacro %}
@@ -216,6 +213,18 @@
   {% do track("extrastatements" + (parentMenu.key if parentMenu is mapping else parentMenu), caller, name) %}
 {% endmacro %}
 
+{% macro addStatementToMenuButton(name, parentMenu) %}
+  {% do track("extrastatementsBtn" + (parentMenu.key if parentMenu is mapping else parentMenu), caller, name) %}
+{% endmacro %}
+
+{% macro addVarToMenu(name, parentMenu, var, valueOnOpen, valueOnClose="restore") %}
+  {% do track("extravars" + (parentMenu.key if parentMenu is mapping else parentMenu), (var, valueOnOpen, valueOnClose), name) %}
+{% endmacro %}
+
+{% macro addVarToMenuButton(name, parentMenu, var, value) %}
+  {% do track("extravarsBtn" + (parentMenu.key if parentMenu is mapping else parentMenu), (var, value), name) %}
+{% endmacro %}
+
 <event name="Build Root Menu">
     <if_variable name="GM_Menu_Root_ShouldShow" comparator="EQUALS" value="1.0" />
     <if_variable name="_GM_Menu_Root_Shown" comparator="NOT" value="1.0" />
@@ -231,162 +240,8 @@
 </event>
 
   {% set allSubmenus = [] %}
-  {% macro _createMenu(name, id) %}
-  <event name="Menu Create {{ name }}">
-    <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ id }}.0" />
-    <if_variable name="_GM_Menu_{{ name | stripspace }}_Active" comparator="NOT" value="1.0" />
-    {{ caller () }}
-    {% set menu = main[name] %}
-    {{ _buttonGrid(retrieve("buttons" + name), menu.buttons.x, menu.buttons.y, menu.buttons.w, menu.buttons.h, menu.buttons.rows) }}
-    {% for specbut in retrieve("specialbuttons" + name) %}
-      <set_gm_button text="{{ specbut.name }}" x="{{ specbut.x }}" y="{{ specbut.y }}" w="{{ specbut.w }}" h="{{ specbut.h }}" /> 
-    {% endfor %}
-    {% for permmenu in retrieve("permSubmenus" + name) %}
-      <set_variable name="GM_Submenu_{{ permmenu | stripspace }}_ShouldShow" value="1.0" integer="yes" />
-    {% endfor %}
-    {% for buttonsubmenu in retrieve("buttonSubs" + name) %}
-      {{ util.restore("GM_Submenu_" + (name + buttonsubmenu) | stripspace + "_ShouldShow") }}
-    {% endfor %}
-    {% for caller in retrieve("extrastatements" + name) %}
-      {{ caller(True) }}
-    {% endfor %}
-    <set_variable name="_GM_Menu_{{ name | stripspace }}_Active" value="1.0" integer="yes" />
-  </event>
-  {{ _buttonHandlersNonStandard(name, menu.buttons.x, menu.buttons.y, menu.buttons.w, menu.buttons.h, menu.buttons.rows) }}
-  {% endmacro %}
-  {% macro _destroyMenu(name, id) %}
-  <event name="Menu Destroy {{ name }}">
-    <if_variable name="GM_Menu_Selector" comparator="NOT" value="{{ id }}.0" />
-    <if_variable name="_GM_Menu_{{ name | stripspace }}_Active" comparator="EQUALS" value="1.0" />
-    {{ caller () }}
-    {% for buttondata in retrieve("buttons" + name) %}
-      {% if buttondata.type == "standard" %}
-        <clear_gm_button text="{{ buttondata.name }}" />
-      {% elif buttondata.type == "toggle" %}
-        <set_variable name="Toggle_{{ buttondata.name | stripspace }}_ShouldShow" value="0" integer="yes" />
-      {% endif %}
-    {% endfor %}
-    {% for specbut in retrieve("specialbuttons" + name) %}
-      <clear_gm_button text="{{ specbut.name }}" /> 
-    {% endfor %}
-    {% for permmenu in retrieve("permSubmenus" + name) %}
-      <set_variable name="GM_Submenu_{{ permmenu | stripspace }}_ShouldShow" value="0.0" integer="yes" />
-    {% endfor %}
-    {% for buttonsubmenu in retrieve("buttonSubs" + name) %}
-      {{ util.storeAndSet("GM_Submenu_" + (name + buttonsubmenu) | stripspace + "_ShouldShow") }}
-    {% endfor %}
-    {% for caller in retrieve("extrastatements" + name) %}
-      {{ caller(False) }}
-    {% endfor %}
-    <set_variable name="_GM_Menu_{{ name | stripspace }}_Active" value="0.0" integer="yes" />
-  </event>
-  {% endmacro %}
-  {% macro _menuEvent(name, id, triggerButton) %}
-  <event name="Menu Activate {{ name }}">
-    <if_gm_button text="{{triggerButton}}" />
-    <set_variable name="GM_Menu_Selector" value="{{ id }}.0" integer="yes" />
-  </event>
-  {% endmacro %}
-  {% macro _createExclusiveSubmenu(name, id, menuname, parent_id) %}
-  <event name="{{ menuname }} Menu Create {{ name }}">
-    <if_variable name="GM_{{ menuname | stripspace }}Menu_Selector" comparator="EQUALS" value="{{ id }}.0" />
-    <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ parent_id }}.0" />
-    <if_variable name="_GM_{{ menuname | stripspace }}Menu_{{ name | stripspace }}_Active" comparator="NOT" value="1.0" />
-    {{ caller () }}
-    <set_variable name="_GM_{{ menuname | stripspace }}Menu_{{ name | stripspace }}_Active" value="1.0" integer="yes" />
-  </event>
-  {% endmacro %}
-  {% macro _exclusiveSubmenuEvent(name, triggerButton, id, menuname, parent_id, additional_variables={}) %}
-  <event name="{{ menuname }}Menu Activate {{ name }}">
-    <if_gm_button text="{{triggerButton}}" />
-    <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ parent_id }}.0" />
-    <set_variable name="GM_{{ menuname | stripspace }}Menu_Selector" value="{{ id }}.0" integer="yes" />
-    {% for var, val in additional_variables.items() %}
-    <set_variable name="{{ var }}" value="{{ val }}.0" integer="yes" />
-    {% endfor %}
-  </event>
-  {% endmacro %}
-  {% macro _destroyExclusiveSubmenu(name, id, menuname) %}
-  <event name="{{ menuname }} Menu Destroy {{ name }}">
-    <if_variable name="GM_{{ menuname | stripspace }}Menu_Selector" comparator="NOT" value="{{ id }}.0" />
-    <if_variable name="_GM_{{ menuname | stripspace }}Menu_{{ name | stripspace }}_Active" comparator="EQUALS" value="1.0" />
-    {{ caller () }}
-    <set_variable name="_GM_{{ menuname | stripspace }}Menu_{{ name | stripspace }}_Active" value="0.0" integer="yes" />
-  </event>
-  {% endmacro %}
-  {% macro _createSpawnMenu(name, id) %}
-    {% set outercaller = caller() %}
-    {% call _createExclusiveSubmenu(name, id, "Spawn", 2) %}
-      {{ outercaller }}
-    {% endcall %}
-  {% endmacro %}
-  {% macro _spawnMenuEvent(name, triggerButton, id, defaultSide) %}
-    {{ _exclusiveSubmenuEvent(name, triggerButton, id, "Spawn", 2, {"SideValue": defaultSide}) }}
-  {% endmacro %}
-  {% macro _destroySpawnMenu(name, id) %}
-    {% set outercaller = caller() %}
-    {% call _destroyExclusiveSubmenu(name, id, "Spawn") %}
-      {{ outercaller }}
-    {% endcall %}
-  {% endmacro %}
-  {% macro _createSubmenu(name, retrieve_key="") %}
-    {% set retkey = retrieve_key if retrieve_key != "" else name %}
-    <event name="SubMenu Create {{ name }}">
-      {% do allSubmenus.append(name) %}
-      <if_variable name="GM_Submenu_{{ name | stripspace }}_ShouldShow" comparator="EQUALS" value="1.0" />
-      <if_variable name="_GM_Submenu_{{ name | stripspace }}_Active" comparator="NOT" value="1.0" />
-      {{ caller () }}
-      {% for permmenu in retrieve("permSubmenus" + retkey) %}
-        <set_variable name="GM_Submenu_{{ permmenu | stripspace }}_ShouldShow" value="1.0" integer="yes" />
-      {% endfor %}
-      {% for buttonsubmenu in retrieve("buttonSubs" + retkey) %}
-        {{ util.restore("GM_Submenu_" + (name + buttonsubmenu) | stripspace + "_ShouldShow") }}
-      {% endfor %}
-      {% for specbut in retrieve("specialbuttons" + retkey) %}
-        <set_gm_button text="{{ specbut.name }}" x="{{ specbut.x }}" y="{{ specbut.y }}" w="{{ specbut.w }}" h="{{ specbut.h }}" /> 
-      {% endfor %}
-      {% for caller in retrieve("extrastatements" + retkey) %}
-        {{ caller(True) }}
-      {% endfor %}
-      <set_variable name="_GM_Submenu_{{ name | stripspace }}_Active" value="1.0" integer="yes" />
-    </event>
-  {% endmacro %}
-  {% macro _destroySubmenu(name, retrieve_key="") %}
-    {% set retkey = retrieve_key if retrieve_key != "" else name %}
-    <event name="SubMenu Destroy {{ name }}">
-      <if_variable name="GM_Submenu_{{ name | stripspace }}_ShouldShow" comparator="NOT" value="1.0" />
-      <if_variable name="_GM_Submenu_{{ name | stripspace }}_Active" comparator="EQUALS" value="1.0" />
-      {{ caller () }}
-      {% for permmenu in retrieve("permSubmenus" + retkey) %}
-        <set_variable name="GM_Submenu_{{ permmenu | stripspace }}_ShouldShow" value="0.0" integer="yes" />
-      {% endfor %}
-      {% for specbut in retrieve("specialbuttons" + retkey) %}
-        <clear_gm_button text="{{ specbut.name }}" /> 
-      {% endfor %}
-      {% for buttonsubmenu in retrieve("buttonSubs" + retkey) %}
-        {{ util.storeAndSet("GM_Submenu_" + (name + buttonsubmenu) | stripspace + "_ShouldShow") }}
-      {% endfor %}
-      {% for caller in retrieve("extrastatements" + retkey) %}
-        {{ caller(False) }}
-      {% endfor %}
-      <set_variable name="_GM_Submenu_{{ name | stripspace }}_Active" value="0.0" integer="yes" />
-  </event>
-  {% endmacro %}
-  {% macro _dismissEvent(name, buttonPath) %}
-  <event name="SubMenu Dismiss {{ name }} ({{ buttonPath }})">
-    <if_gm_button text="{{buttonPath}}" />
-    <set_variable name="GM_Submenu_{{ name | stripspace }}_ShouldShow" value="0.0" integer="yes" />
-  </event>
-  {% endmacro %}
-  {% macro _submenuEvent(name, triggerButton, guard=0) %}
-  <event name="SubMenu Activate {{ name }}">
-    <if_gm_button text="{{triggerButton}}" />
-    {% if guard > 0 %}
-      <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="{{ guard }}.0" />
-    {% endif %}
-    <set_variable name="GM_Submenu_{{ name | stripspace }}_ShouldShow" value="1.0" integer="yes" />
-  </event>
-  {% endmacro %}
+  {% set allMutexes = [] %}
+
 
 {{ addButtonExpandMenu(ai.aicommands.key, main.ai, 
   ai.aicommands.buttons.x,
@@ -394,179 +249,44 @@
   ai.aicommands.buttons.w,
   ai.aicommands.buttons.h,
   ai.aicommands.buttons.rows,
-  pos={
-    "x":140,
-    "y":480,
-    "h":28,
-  }
   ) }}
 
 {% set dynamicMenus = retrieve("dynamicMenus") %}
 
-{% for menu in dynamicMenus %}
-
-  {% if menu.type == "dismissableSubmenu" %}
-    {% set menuname = menu.parentMenu + menu.name %}
-    {% if menu.pos and "x" in menu.pos and "y" in menu.pos %}
-      {% do track("specialbuttons" + menu.parentMenu, {"name": menu.name, "type": "standard", "x": menu.pos.x, "y": menu.pos.y, "w": menu.pos.get("w", 90), "h": menu.pos.get("h", 30)}, menu.name) %}
-    {% else %}
-      {% do track("buttons" + menu.parentMenu, {"name": menu.name, "type": "standard"}, menu.name) %}
-    {% endif %}
-    {% call _createSubmenu(menuname, menu.name) %}
-      {% for button in retrieve("menukey" + menu.name) %}
-        <set_gm_button text="{{ menu.name }}\{{ button }}" />
-      {% endfor %}
-      <set_gm_button text="{{ menu.name }}\_Dismiss" />
-    {% endcall %}
-    {% call _destroySubmenu(menuname, menu.name) %}
-      {% for button in retrieve("menukey" + menu.name) %}
-        <clear_gm_button text="{{ menu.name }}\{{ button }}" />
-      {% endfor %}
-      <clear_gm_button text="{{ menu.name }}\_Dismiss" />
-    {% endcall %}
-    {{ _submenuEvent(menuname, menu.name) }}
-    {{ _dismissEvent(menuname, menu.name + "\\_Dismiss") }}
-  {% endif %}
-
-  {% if menu.type == "permanentSubmenu" %}
-    {% set menuname = menu.parentMenu + menu.name %}
-    {% do track("permSubmenus" + menu.parentMenu, menuname) %}
-    {% call _createSubmenu(menuname, menu.name) %}
-      {% for button in retrieve("menukey" + menu.name) %}
-        <set_gm_button text="{{ menu.name }}\{{ button }}" />
-      {% endfor %}
-    {% endcall %}
-    {% call _destroySubmenu(menuname, menu.name) %}
-      {% for button in retrieve("menukey" + menu.name) %}
-        <clear_gm_button text="{{ menu.name }}\{{ button }}" />
-      {% endfor %}
-    {% endcall %}
-  {% endif %}
-
-  {% if menu.type == "ephemeralSubmenu" %}
-    {% set menuname = menu.parentMenu + menu.name %}
-    {% if menu.pos and "x" in menu.pos and "y" in menu.pos %}
-      {% do track("specialbuttons" + menu.parentMenu, {"name": menu.name, "type": "standard", "x": menu.pos.x, "y": menu.pos.y, "w": menu.pos.get("w", 90), "h": menu.pos.get("h", 30)}, menu.name) %}
-    {% else %}
-      {% do track("buttons" + menu.parentMenu, {"name": menu.name, "type": "standard"}, menu.name) %}
-    {% endif %}
-    {% set ephButtons = retrieve("menukey" + menu.name) %}
-    {% call _createSubmenu(menuname, menu.name) %}
-      {% for button in ephButtons %}
-        <set_gm_button text="{{ menu.name }}\{{ button }}" />
-      {% endfor %}
-    {% endcall %}
-    {% call _destroySubmenu(menuname, menu.name) %}
-      {% for button in ephButtons %}
-        <clear_gm_button text="{{ menu.name }}\{{ button }}" />
-      {% endfor %}
-    {% endcall %}
-    {{ _submenuEvent(menuname, menu.name) }}
-    {% for button in ephButtons %}
-      {{ _dismissEvent(menuname, menu.name + "\\" + button) }}
-    {% endfor %}
-  {% endif %}
-
-  {% if menu.type == "buttonExpandMenu" %}
-    {% set menuname = menu.parentMenu + menu.name %}
-    {% if menu.pos and "x" in menu.pos and "y" in menu.pos %}
-      {% do track("specialbuttons" + menu.parentMenu, {"name": menu.name, "type": "standard", "x": menu.pos.x, "y": menu.pos.y, "w": menu.pos.get("w", 90), "h": menu.pos.get("h", 30)}, menu.name) %}
-    {% else %}
-      {% do track("buttons" + menu.parentMenu, {"name": menu.name, "type": "standard"}, menu.name) %}
-    {% endif %}
-    {% do track("buttonSubs" + menu.parentMenu, menu.name) %}
-    {% set buttons = retrieve("buttons" + menu.name) %}
-    {% call _createSubmenu(menuname, menu.name) %}
-      {% if menu.body %}
-        {{ menu.body(True) }}
-      {% endif %}
-      {{ _buttonGrid(buttons + [{"name": menu.name + " Close", "type": "standard"}], menu.x, menu.y, menu.w, menu.h, menu.rows) }}
-    {% endcall %}
-    {% call _destroySubmenu(menuname, menu.name) %}
-      {% if menu.body %}
-        {{ menu.body(False) }}
-      {% endif %}
-      {% for buttondata in retrieve("buttons" + menu.name) %}
-        {% if buttondata.type == "standard" %}
-          <clear_gm_button text="{{ buttondata.name }}" />
-        {% elif buttondata.type == "toggle" %}
-          <set_variable name="Toggle_{{ buttondata.name | stripspace }}_ShouldShow" value="0" integer="yes" />
-        {% endif %}
-      {% endfor %}
-      <clear_gm_button text="{{ menu.name }} Close" />
-    {% endcall %}
-    {{ _submenuEvent(menuname, menu.name) }}
-    {{ _dismissEvent(menuname, menu.name + " Close") }}
-    {{ _buttonHandlersNonStandard(menu.name, menu.x, menu.y, menu.w, menu.h, menu.rows) }}
-  {% endif %}
-
-{% endfor %}
-
 {# "Normal" menus: #}
   {% for menu in main.values() if not menu.special %} 
-    {% call _createMenu(menu.key, menu.id) %}
-    {% endcall %}
-    {% call _destroyMenu(menu.key, menu.id) %}
-    {% endcall %}
-    {{ _menuEvent(menu.key, menu.id, menu.button) }}
+    {{ addButtonExpandMenu(menu.key, "", menu.buttons.x, menu.buttons.y, menu.buttons.w, menu.buttons.h, menu.buttons.rows, button=menu.button, mutexKey="Menu", mutexID=menu.id) }}
   {% endfor %}
 
+{% for menu in dynamicMenus %}
+  {% if menu.selection != "mutex" %}
+    {% do allSubmenus.append(menu.name) %}
+  {% else %}
+    {% if menu.mutexKey not in allMutexes %}
+      {% do allMutexes.append(menu.mutexKey) %}
+    {% endif %}
+  {% endif %}
+  {{ ui.generateMenuEvents(menu) }}
+{% endfor %}
 
-{# Menus that work in peculiar ways: #}
-  {# Spawn menu #}
-  {% call _createMenu(main.spawn.key, main.spawn.id) %}
-    {{ util.restore("GM_SpawnMenu_Selector") }}
-    {% for faction in util.spawnFactions.values() %}
-    <set_gm_button text="{{ faction.name | safe }}" x="{{ 100 + 75 * (loop.index0 % 2) }}" y="{{ 170 + 35 * ((loop.index0 / 2)|int) }}" h="30" w="70" />
-    {% endfor %}
-  {% endcall %}
-  {% call _destroyMenu(main.spawn.key, main.spawn.id) %}
-    {{ util.storeAndSet("GM_SpawnMenu_Selector") }}
-    {% for faction in util.spawnFactions.values() %}
-    <clear_gm_button text="{{ faction.name | safe }}" />
-    {% endfor %}
-  {% endcall %}
-  {{ _menuEvent(main.spawn.key, main.spawn.id, main.spawn.button) }}
-
-  {% for faction in util.spawnFactions.values() %}
-    {{ _spawnMenuEvent("Spawn" + faction.name, faction.name, faction.key, faction.defaultSide) }}
-  {% endfor %}
-
-  {% for faction in util.spawnFactions.values() %}
-    {% set buttons = retrieve("spawn" + faction.key) %}
-    {% call _createSpawnMenu("Spawn" + faction.name, faction.key) %}
-      {% for b in buttons %}
-        <set_gm_button text="{{ b }}" />
-      {% endfor %}
-    {% endcall %}
-    {% call _destroySpawnMenu("Spawn" + faction.name, faction.key) %}
-      {% for b in buttons %}
-        <clear_gm_button text="{{ b }}" />
-      {% endfor %}
-    {% endcall %}
-  {% endfor %}
-
-
-  {# AI menu #}
-  {% call _createSubmenu(main.ai.key) %}
-    <clear_gm_button text="AI Off" />
-    <set_gm_button text="AI On" x="40" y="380" h="30" w="50" />
-  {% endcall %}
-  {% call _destroySubmenu(main.ai.key) %}
-    <clear_gm_button text="AI On" />
-    <set_gm_button text="AI Off" x="40" y="380" h="30" w="50" />
-  {% endcall %}
-  {{ _submenuEvent(main.ai.key, "AI Off") }}
-  {{ _dismissEvent(main.ai.key, "AI On") }}
-
+{% call ui.activateIndependentMenu(main.ai.key, "AI Off") %}
+  <clear_gm_button text="AI Off" />
+  <set_gm_button text="AI On" x="40" y="380" h="30" w="50" />
+{% endcall %}
+{% call ui.dismissIndependentMenu(main.ai.key, "AI On") %}
+  <clear_gm_button text="AI On" />
+  <set_gm_button text="AI Off" x="40" y="380" h="30" w="50" />
+{% endcall %}
 
   {# Menu Reset #}
     {% macro _clearAllMenus() %}
     <set_variable name="_GM_Menu_Root_Shown" value="0.0" integer="yes" />
     <set_variable name="GM_Menu_Selector" value="0.0" integer="yes" />
-    <set_variable name="GM_SpawnMenu_Selector" value="0.0" integer="yes" />
     {% for submenu in allSubmenus %}
       <set_variable name="GM_Submenu_{{ submenu | stripspace }}_ShouldShow" value="0.0" integer="yes" />
+    {% endfor %}
+    {% for mutex in allMutexes %}
+      <set_variable name="GM_{{ mutex | stripspace }}_Selector" value="0.0" integer="yes" />
     {% endfor %}
     <clear_gm_button text="AI Off" />
     <clear_gm_button text="AI On" />
@@ -576,10 +296,6 @@
     <clear_gm_button text="Haz." />
     <clear_gm_button text="Int." />
     <clear_gm_button text="CSTM" />
-    <clear_gm_button text="Spwn Dsbld" />
-    <clear_gm_button text="Delete Dsble" />
-    <clear_gm_button text="Spwn Enbld" />
-    <clear_gm_button text="Delete Enbld" />
     <set_variable name="Toggle_AutoDel_ShouldShow" value="0.0" integer="yes" />
     <set_variable name="GM_Menu_Clear_All" value="0.0" integer="yes" />
     {% endmacro %}

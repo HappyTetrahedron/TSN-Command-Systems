@@ -7,10 +7,9 @@
 {% set factions = util.spawnFactions %}
 
 {% macro spawn(factionKey, category, name, autoAI=0, nameAssign=False, randomDir=False, fleetSettings=False) %}
-  {% do track("spawn" + factionKey, category + "\\" + name) %}
-  <event name="Spawn {{ name }}">
-    <if_gm_button text="{{ category }}\{{ name }}" />
-    {{ caller() }}
+  {% set outercaller = caller %}
+  {% call menu.onMenuClickRaw(category + "\\" + name, "spawn" + factionKey) %}
+    {{ outercaller() }}
     {% if autoAI > 0 %}
       <set_variable name="Auto AI Type" value="{{ autoAI }}.0" integer="yes" />
     {% endif %}
@@ -23,8 +22,13 @@
     {% if fleetSettings %}
       <set_variable name="Fleet Settings" value="1.0" integer="yes" />
     {% endif %}
-  </event>
+  {% endcall %}
 {% endmacro %}
+
+{% for _, fac in factions.items() %}
+  {{ menu.addMutexSubmenu("spawn" + fac.key, menu.main.spawn, button=fac.name, mutexKey="Spawn", mutexID=fac.key) }}
+  {{ menu.addVarToMenuButton("defaultSettings", "spawn" + fac.key, "SideValue", fac.defaultSide) }}
+{% endfor %}
 
 {% macro scaffoldNumbered(name_template, identifier, counter, amount=5) %}
   {% call start.onStart("Spawn: " + identifier) %}

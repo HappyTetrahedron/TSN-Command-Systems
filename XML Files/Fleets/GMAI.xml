@@ -14,7 +14,7 @@
   <set_difficulty_level value="{{ choice }}" />
 {% endcall %}
 
-{{ menu.addEphemeralSubmenu("Set AI", menu.main.spawn) }}
+{{ menu.addEphemeralSubmenu("Set AI", menu.main.spawn, pos={"x": 100, "y": 134, "w": 120}) }}
 
 {% call menu.onMenuClick("Default", "Set AI") %}
   <set_variable name="AI Override" value="0.0" integer="yes" />
