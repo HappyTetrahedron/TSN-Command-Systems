@@ -28,6 +28,8 @@ env = {
         "Arietis",
         "Helios",
         "Tibur",
+        "Burin",
+        "Athorn"
     ],
     "ordnance": {
         "ship1": {

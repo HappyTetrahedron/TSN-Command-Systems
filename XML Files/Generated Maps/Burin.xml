@@ -1647,3 +1647,1011 @@
   </event>
 
 
+
+
+  <event name="Burin - Run On Load">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="_BurinOnLoadRan" comparator="NOT" value="1.0" />
+      <set_timer name="Burin_Nebula_Tick" seconds="2" />
+  <set_variable name="Burin_NearBlue" value="0.0" integer="yes" />
+  <set_variable name="Burin_NearYellow" value="0.0" integer="yes" />
+    <set_variable name="Burin_Ship1DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+    <set_variable name="Burin_Ship1NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+    <set_variable name="Burin_Ship2DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+    <set_variable name="Burin_Ship2NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+    <set_variable name="Burin_Ship3DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+    <set_variable name="Burin_Ship3NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+    <set_variable name="Burin_Ship4DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+    <set_variable name="Burin_Ship4NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+    <set_variable name="Burin_Ship5DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+    <set_variable name="Burin_Ship5NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+    <set_variable name="Burin_Ship6DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+    <set_variable name="Burin_Ship6NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+    <set_variable name="Burin_Ship7DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+    <set_variable name="Burin_Ship7NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+    <set_variable name="Burin_Ship8DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+    <set_variable name="Burin_Ship8NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+    <set_variable name="_BurinOnLoadRan" value="1.0" integer="yes" />
+  </event>
+  <event name="Burin - Reset On Load">
+    <if_variable name="Burin System" comparator="LESS" value="1.0" />
+    <if_variable name="_BurinOnLoadRan" comparator="EQUALS" value="1.0" />
+    <set_variable name="_BurinOnLoadRan" value="0.0" integer="yes" />
+  </event>
+
+  <event name="Burin - Run If In Sector [2, 5, 6]">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+            <if_variable name="Sector" comparator="NOT" value="1" />
+            <if_variable name="Sector" comparator="NOT" value="3" />
+            <if_variable name="Sector" comparator="NOT" value="4" />
+      <if_variable name="Burin_NearBlue" comparator="NOT" value="1.0" />
+  <warning_popup_message message="Warning: Ionized particles detected in nearby blue nebulae." consoles="MHWESCO" />
+  <set_variable name="Burin_NearBlue" value="1.0" integer="yes" />
+
+  </event>
+
+  <event name="Burin - Run If In Sector [1, 4, 5]">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+            <if_variable name="Sector" comparator="NOT" value="2" />
+            <if_variable name="Sector" comparator="NOT" value="3" />
+            <if_variable name="Sector" comparator="NOT" value="6" />
+      <if_variable name="Burin_NearYellow" comparator="NOT" value="1.0" />
+  <warning_popup_message message="Warning: Corrosive particles detected in nearby green nebulae." consoles="MHWESCO" />
+  <set_variable name="Burin_NearYellow" value="1.0" integer="yes" />
+
+  </event>
+
+  <event name="Burin - Run If In Sector [1, 3, 4]">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+            <if_variable name="Sector" comparator="NOT" value="2" />
+            <if_variable name="Sector" comparator="NOT" value="5" />
+            <if_variable name="Sector" comparator="NOT" value="6" />
+      <if_variable name="Burin_NearBlue" comparator="EQUALS" value="1.0" />
+  <set_variable name="Burin_NearBlue" value="0.0" integer="yes" />
+
+  </event>
+
+  <event name="Burin - Run If In Sector [2, 3, 6]">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+            <if_variable name="Sector" comparator="NOT" value="1" />
+            <if_variable name="Sector" comparator="NOT" value="4" />
+            <if_variable name="Sector" comparator="NOT" value="5" />
+      <if_variable name="Burin_NearYellow" comparator="EQUALS" value="1.0" />
+  <set_variable name="Burin_NearYellow" value="0.0" integer="yes" />
+
+  </event>
+
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <!-- Blue Nebula Tick Ship1 -->
+    <if_timer_finished name="Burin_Nebula_Tick" />
+    <if_in_nebula player_slot="0" compare="2" />
+    <if_object_property player_slot="0" property="energy" comparator="GREATER" value="50" />
+    <addto_object_property value="-10" property="energy" player_slot="0" />
+
+  </event>
+  
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship1 - Damage systemBeam -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="0" compare="3" />
+      <if_variable name="Burin_Ship1DamageType" comparator="EQUALS" value="1.0" />
+        <set_player_grid_damage value="0.1" player_slot="0" index="Burin_Ship1NodeSelect" systemType="systemBeam" countFrom="front" />
+
+      <set_variable name="Burin_Ship1DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship1NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship1 - Damage systemTorpedo -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="0" compare="3" />
+      <if_variable name="Burin_Ship1DamageType" comparator="EQUALS" value="2.0" />
+        <set_player_grid_damage value="0.1" player_slot="0" index="Burin_Ship1NodeSelect" systemType="systemTorpedo" countFrom="front" />
+
+      <set_variable name="Burin_Ship1DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship1NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship1 - Damage systemTactical -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="0" compare="3" />
+      <if_variable name="Burin_Ship1DamageType" comparator="EQUALS" value="3.0" />
+        <set_player_grid_damage value="0.1" player_slot="0" index="Burin_Ship1NodeSelect" systemType="systemTactical" countFrom="front" />
+
+      <set_variable name="Burin_Ship1DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship1NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship1 - Damage systemTurning -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="0" compare="3" />
+      <if_variable name="Burin_Ship1DamageType" comparator="EQUALS" value="4.0" />
+        <set_player_grid_damage value="0.1" player_slot="0" index="Burin_Ship1NodeSelect" systemType="systemTurning" countFrom="front" />
+
+      <set_variable name="Burin_Ship1DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship1NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship1 - Damage systemImpulse -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="0" compare="3" />
+      <if_variable name="Burin_Ship1DamageType" comparator="EQUALS" value="5.0" />
+        <set_player_grid_damage value="0.1" player_slot="0" index="Burin_Ship1NodeSelect" systemType="systemImpulse" countFrom="front" />
+
+      <set_variable name="Burin_Ship1DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship1NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship1 - Damage systemWarp -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="0" compare="3" />
+      <if_variable name="Burin_Ship1DamageType" comparator="EQUALS" value="6.0" />
+
+      <set_variable name="Burin_Ship1DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship1NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship1 - Damage systemFrontShield -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="0" compare="3" />
+      <if_variable name="Burin_Ship1DamageType" comparator="EQUALS" value="7.0" />
+        <set_player_grid_damage value="0.1" player_slot="0" index="Burin_Ship1NodeSelect" systemType="systemFrontShield" countFrom="front" />
+
+      <set_variable name="Burin_Ship1DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship1NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship1 - Damage systemBackShield -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="0" compare="3" />
+      <if_variable name="Burin_Ship1DamageType" comparator="EQUALS" value="8.0" />
+        <set_player_grid_damage value="0.1" player_slot="0" index="Burin_Ship1NodeSelect" systemType="systemBackShield" countFrom="front" />
+
+      <set_variable name="Burin_Ship1DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship1NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <!-- Blue Nebula Tick Ship2 -->
+    <if_timer_finished name="Burin_Nebula_Tick" />
+    <if_in_nebula player_slot="1" compare="2" />
+    <if_object_property player_slot="1" property="energy" comparator="GREATER" value="50" />
+    <addto_object_property value="-10" property="energy" player_slot="1" />
+
+  </event>
+  
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship2 - Damage systemBeam -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="1" compare="3" />
+      <if_variable name="Burin_Ship2DamageType" comparator="EQUALS" value="1.0" />
+        <set_player_grid_damage value="0.1" player_slot="1" index="Burin_Ship2NodeSelect" systemType="systemBeam" countFrom="front" />
+
+      <set_variable name="Burin_Ship2DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship2NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship2 - Damage systemTorpedo -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="1" compare="3" />
+      <if_variable name="Burin_Ship2DamageType" comparator="EQUALS" value="2.0" />
+        <set_player_grid_damage value="0.1" player_slot="1" index="Burin_Ship2NodeSelect" systemType="systemTorpedo" countFrom="front" />
+
+      <set_variable name="Burin_Ship2DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship2NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship2 - Damage systemTactical -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="1" compare="3" />
+      <if_variable name="Burin_Ship2DamageType" comparator="EQUALS" value="3.0" />
+        <set_player_grid_damage value="0.1" player_slot="1" index="Burin_Ship2NodeSelect" systemType="systemTactical" countFrom="front" />
+
+      <set_variable name="Burin_Ship2DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship2NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship2 - Damage systemTurning -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="1" compare="3" />
+      <if_variable name="Burin_Ship2DamageType" comparator="EQUALS" value="4.0" />
+        <set_player_grid_damage value="0.1" player_slot="1" index="Burin_Ship2NodeSelect" systemType="systemTurning" countFrom="front" />
+
+      <set_variable name="Burin_Ship2DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship2NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship2 - Damage systemImpulse -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="1" compare="3" />
+      <if_variable name="Burin_Ship2DamageType" comparator="EQUALS" value="5.0" />
+        <set_player_grid_damage value="0.1" player_slot="1" index="Burin_Ship2NodeSelect" systemType="systemImpulse" countFrom="front" />
+
+      <set_variable name="Burin_Ship2DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship2NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship2 - Damage systemWarp -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="1" compare="3" />
+      <if_variable name="Burin_Ship2DamageType" comparator="EQUALS" value="6.0" />
+
+      <set_variable name="Burin_Ship2DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship2NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship2 - Damage systemFrontShield -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="1" compare="3" />
+      <if_variable name="Burin_Ship2DamageType" comparator="EQUALS" value="7.0" />
+        <set_player_grid_damage value="0.1" player_slot="1" index="Burin_Ship2NodeSelect" systemType="systemFrontShield" countFrom="front" />
+
+      <set_variable name="Burin_Ship2DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship2NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship2 - Damage systemBackShield -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="1" compare="3" />
+      <if_variable name="Burin_Ship2DamageType" comparator="EQUALS" value="8.0" />
+        <set_player_grid_damage value="0.1" player_slot="1" index="Burin_Ship2NodeSelect" systemType="systemBackShield" countFrom="front" />
+
+      <set_variable name="Burin_Ship2DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship2NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <!-- Blue Nebula Tick Ship3 -->
+    <if_timer_finished name="Burin_Nebula_Tick" />
+    <if_in_nebula player_slot="2" compare="2" />
+    <if_object_property player_slot="2" property="energy" comparator="GREATER" value="50" />
+    <addto_object_property value="-10" property="energy" player_slot="2" />
+
+  </event>
+  
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship3 - Damage systemBeam -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="2" compare="3" />
+      <if_variable name="Burin_Ship3DamageType" comparator="EQUALS" value="1.0" />
+        <set_player_grid_damage value="0.1" player_slot="2" index="Burin_Ship3NodeSelect" systemType="systemBeam" countFrom="front" />
+
+      <set_variable name="Burin_Ship3DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship3NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship3 - Damage systemTorpedo -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="2" compare="3" />
+      <if_variable name="Burin_Ship3DamageType" comparator="EQUALS" value="2.0" />
+        <set_player_grid_damage value="0.1" player_slot="2" index="Burin_Ship3NodeSelect" systemType="systemTorpedo" countFrom="front" />
+
+      <set_variable name="Burin_Ship3DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship3NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship3 - Damage systemTactical -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="2" compare="3" />
+      <if_variable name="Burin_Ship3DamageType" comparator="EQUALS" value="3.0" />
+        <set_player_grid_damage value="0.1" player_slot="2" index="Burin_Ship3NodeSelect" systemType="systemTactical" countFrom="front" />
+
+      <set_variable name="Burin_Ship3DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship3NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship3 - Damage systemTurning -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="2" compare="3" />
+      <if_variable name="Burin_Ship3DamageType" comparator="EQUALS" value="4.0" />
+        <set_player_grid_damage value="0.1" player_slot="2" index="Burin_Ship3NodeSelect" systemType="systemTurning" countFrom="front" />
+
+      <set_variable name="Burin_Ship3DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship3NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship3 - Damage systemImpulse -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="2" compare="3" />
+      <if_variable name="Burin_Ship3DamageType" comparator="EQUALS" value="5.0" />
+        <set_player_grid_damage value="0.1" player_slot="2" index="Burin_Ship3NodeSelect" systemType="systemImpulse" countFrom="front" />
+
+      <set_variable name="Burin_Ship3DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship3NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship3 - Damage systemWarp -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="2" compare="3" />
+      <if_variable name="Burin_Ship3DamageType" comparator="EQUALS" value="6.0" />
+
+      <set_variable name="Burin_Ship3DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship3NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship3 - Damage systemFrontShield -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="2" compare="3" />
+      <if_variable name="Burin_Ship3DamageType" comparator="EQUALS" value="7.0" />
+        <set_player_grid_damage value="0.1" player_slot="2" index="Burin_Ship3NodeSelect" systemType="systemFrontShield" countFrom="front" />
+
+      <set_variable name="Burin_Ship3DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship3NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship3 - Damage systemBackShield -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="2" compare="3" />
+      <if_variable name="Burin_Ship3DamageType" comparator="EQUALS" value="8.0" />
+        <set_player_grid_damage value="0.1" player_slot="2" index="Burin_Ship3NodeSelect" systemType="systemBackShield" countFrom="front" />
+
+      <set_variable name="Burin_Ship3DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship3NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <!-- Blue Nebula Tick Ship4 -->
+    <if_timer_finished name="Burin_Nebula_Tick" />
+    <if_in_nebula player_slot="3" compare="2" />
+    <if_object_property player_slot="3" property="energy" comparator="GREATER" value="50" />
+    <addto_object_property value="-10" property="energy" player_slot="3" />
+
+  </event>
+  
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship4 - Damage systemBeam -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="3" compare="3" />
+      <if_variable name="Burin_Ship4DamageType" comparator="EQUALS" value="1.0" />
+        <set_player_grid_damage value="0.1" player_slot="3" index="Burin_Ship4NodeSelect" systemType="systemBeam" countFrom="front" />
+
+      <set_variable name="Burin_Ship4DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship4NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship4 - Damage systemTorpedo -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="3" compare="3" />
+      <if_variable name="Burin_Ship4DamageType" comparator="EQUALS" value="2.0" />
+        <set_player_grid_damage value="0.1" player_slot="3" index="Burin_Ship4NodeSelect" systemType="systemTorpedo" countFrom="front" />
+
+      <set_variable name="Burin_Ship4DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship4NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship4 - Damage systemTactical -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="3" compare="3" />
+      <if_variable name="Burin_Ship4DamageType" comparator="EQUALS" value="3.0" />
+        <set_player_grid_damage value="0.1" player_slot="3" index="Burin_Ship4NodeSelect" systemType="systemTactical" countFrom="front" />
+
+      <set_variable name="Burin_Ship4DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship4NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship4 - Damage systemTurning -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="3" compare="3" />
+      <if_variable name="Burin_Ship4DamageType" comparator="EQUALS" value="4.0" />
+        <set_player_grid_damage value="0.1" player_slot="3" index="Burin_Ship4NodeSelect" systemType="systemTurning" countFrom="front" />
+
+      <set_variable name="Burin_Ship4DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship4NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship4 - Damage systemImpulse -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="3" compare="3" />
+      <if_variable name="Burin_Ship4DamageType" comparator="EQUALS" value="5.0" />
+        <set_player_grid_damage value="0.1" player_slot="3" index="Burin_Ship4NodeSelect" systemType="systemImpulse" countFrom="front" />
+
+      <set_variable name="Burin_Ship4DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship4NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship4 - Damage systemWarp -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="3" compare="3" />
+      <if_variable name="Burin_Ship4DamageType" comparator="EQUALS" value="6.0" />
+
+      <set_variable name="Burin_Ship4DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship4NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship4 - Damage systemFrontShield -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="3" compare="3" />
+      <if_variable name="Burin_Ship4DamageType" comparator="EQUALS" value="7.0" />
+        <set_player_grid_damage value="0.1" player_slot="3" index="Burin_Ship4NodeSelect" systemType="systemFrontShield" countFrom="front" />
+
+      <set_variable name="Burin_Ship4DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship4NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship4 - Damage systemBackShield -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="3" compare="3" />
+      <if_variable name="Burin_Ship4DamageType" comparator="EQUALS" value="8.0" />
+        <set_player_grid_damage value="0.1" player_slot="3" index="Burin_Ship4NodeSelect" systemType="systemBackShield" countFrom="front" />
+
+      <set_variable name="Burin_Ship4DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship4NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <!-- Blue Nebula Tick Ship5 -->
+    <if_timer_finished name="Burin_Nebula_Tick" />
+    <if_in_nebula player_slot="4" compare="2" />
+    <if_object_property player_slot="4" property="energy" comparator="GREATER" value="50" />
+    <addto_object_property value="-10" property="energy" player_slot="4" />
+
+  </event>
+  
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship5 - Damage systemBeam -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="4" compare="3" />
+      <if_variable name="Burin_Ship5DamageType" comparator="EQUALS" value="1.0" />
+        <set_player_grid_damage value="0.1" player_slot="4" index="Burin_Ship5NodeSelect" systemType="systemBeam" countFrom="front" />
+
+      <set_variable name="Burin_Ship5DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship5NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship5 - Damage systemTorpedo -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="4" compare="3" />
+      <if_variable name="Burin_Ship5DamageType" comparator="EQUALS" value="2.0" />
+        <set_player_grid_damage value="0.1" player_slot="4" index="Burin_Ship5NodeSelect" systemType="systemTorpedo" countFrom="front" />
+
+      <set_variable name="Burin_Ship5DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship5NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship5 - Damage systemTactical -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="4" compare="3" />
+      <if_variable name="Burin_Ship5DamageType" comparator="EQUALS" value="3.0" />
+        <set_player_grid_damage value="0.1" player_slot="4" index="Burin_Ship5NodeSelect" systemType="systemTactical" countFrom="front" />
+
+      <set_variable name="Burin_Ship5DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship5NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship5 - Damage systemTurning -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="4" compare="3" />
+      <if_variable name="Burin_Ship5DamageType" comparator="EQUALS" value="4.0" />
+        <set_player_grid_damage value="0.1" player_slot="4" index="Burin_Ship5NodeSelect" systemType="systemTurning" countFrom="front" />
+
+      <set_variable name="Burin_Ship5DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship5NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship5 - Damage systemImpulse -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="4" compare="3" />
+      <if_variable name="Burin_Ship5DamageType" comparator="EQUALS" value="5.0" />
+        <set_player_grid_damage value="0.1" player_slot="4" index="Burin_Ship5NodeSelect" systemType="systemImpulse" countFrom="front" />
+
+      <set_variable name="Burin_Ship5DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship5NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship5 - Damage systemWarp -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="4" compare="3" />
+      <if_variable name="Burin_Ship5DamageType" comparator="EQUALS" value="6.0" />
+
+      <set_variable name="Burin_Ship5DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship5NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship5 - Damage systemFrontShield -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="4" compare="3" />
+      <if_variable name="Burin_Ship5DamageType" comparator="EQUALS" value="7.0" />
+        <set_player_grid_damage value="0.1" player_slot="4" index="Burin_Ship5NodeSelect" systemType="systemFrontShield" countFrom="front" />
+
+      <set_variable name="Burin_Ship5DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship5NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship5 - Damage systemBackShield -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="4" compare="3" />
+      <if_variable name="Burin_Ship5DamageType" comparator="EQUALS" value="8.0" />
+        <set_player_grid_damage value="0.1" player_slot="4" index="Burin_Ship5NodeSelect" systemType="systemBackShield" countFrom="front" />
+
+      <set_variable name="Burin_Ship5DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship5NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <!-- Blue Nebula Tick Ship6 -->
+    <if_timer_finished name="Burin_Nebula_Tick" />
+    <if_in_nebula player_slot="5" compare="2" />
+    <if_object_property player_slot="5" property="energy" comparator="GREATER" value="50" />
+    <addto_object_property value="-10" property="energy" player_slot="5" />
+
+  </event>
+  
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship6 - Damage systemBeam -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="5" compare="3" />
+      <if_variable name="Burin_Ship6DamageType" comparator="EQUALS" value="1.0" />
+        <set_player_grid_damage value="0.1" player_slot="5" index="Burin_Ship6NodeSelect" systemType="systemBeam" countFrom="front" />
+
+      <set_variable name="Burin_Ship6DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship6NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship6 - Damage systemTorpedo -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="5" compare="3" />
+      <if_variable name="Burin_Ship6DamageType" comparator="EQUALS" value="2.0" />
+        <set_player_grid_damage value="0.1" player_slot="5" index="Burin_Ship6NodeSelect" systemType="systemTorpedo" countFrom="front" />
+
+      <set_variable name="Burin_Ship6DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship6NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship6 - Damage systemTactical -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="5" compare="3" />
+      <if_variable name="Burin_Ship6DamageType" comparator="EQUALS" value="3.0" />
+        <set_player_grid_damage value="0.1" player_slot="5" index="Burin_Ship6NodeSelect" systemType="systemTactical" countFrom="front" />
+
+      <set_variable name="Burin_Ship6DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship6NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship6 - Damage systemTurning -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="5" compare="3" />
+      <if_variable name="Burin_Ship6DamageType" comparator="EQUALS" value="4.0" />
+        <set_player_grid_damage value="0.1" player_slot="5" index="Burin_Ship6NodeSelect" systemType="systemTurning" countFrom="front" />
+
+      <set_variable name="Burin_Ship6DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship6NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship6 - Damage systemImpulse -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="5" compare="3" />
+      <if_variable name="Burin_Ship6DamageType" comparator="EQUALS" value="5.0" />
+        <set_player_grid_damage value="0.1" player_slot="5" index="Burin_Ship6NodeSelect" systemType="systemImpulse" countFrom="front" />
+
+      <set_variable name="Burin_Ship6DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship6NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship6 - Damage systemWarp -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="5" compare="3" />
+      <if_variable name="Burin_Ship6DamageType" comparator="EQUALS" value="6.0" />
+
+      <set_variable name="Burin_Ship6DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship6NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship6 - Damage systemFrontShield -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="5" compare="3" />
+      <if_variable name="Burin_Ship6DamageType" comparator="EQUALS" value="7.0" />
+        <set_player_grid_damage value="0.1" player_slot="5" index="Burin_Ship6NodeSelect" systemType="systemFrontShield" countFrom="front" />
+
+      <set_variable name="Burin_Ship6DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship6NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship6 - Damage systemBackShield -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="5" compare="3" />
+      <if_variable name="Burin_Ship6DamageType" comparator="EQUALS" value="8.0" />
+        <set_player_grid_damage value="0.1" player_slot="5" index="Burin_Ship6NodeSelect" systemType="systemBackShield" countFrom="front" />
+
+      <set_variable name="Burin_Ship6DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship6NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <!-- Blue Nebula Tick Ship7 -->
+    <if_timer_finished name="Burin_Nebula_Tick" />
+    <if_in_nebula player_slot="6" compare="2" />
+    <if_object_property player_slot="6" property="energy" comparator="GREATER" value="50" />
+    <addto_object_property value="-10" property="energy" player_slot="6" />
+
+  </event>
+  
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship7 - Damage systemBeam -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="6" compare="3" />
+      <if_variable name="Burin_Ship7DamageType" comparator="EQUALS" value="1.0" />
+        <set_player_grid_damage value="0.1" player_slot="6" index="Burin_Ship7NodeSelect" systemType="systemBeam" countFrom="front" />
+
+      <set_variable name="Burin_Ship7DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship7NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship7 - Damage systemTorpedo -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="6" compare="3" />
+      <if_variable name="Burin_Ship7DamageType" comparator="EQUALS" value="2.0" />
+        <set_player_grid_damage value="0.1" player_slot="6" index="Burin_Ship7NodeSelect" systemType="systemTorpedo" countFrom="front" />
+
+      <set_variable name="Burin_Ship7DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship7NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship7 - Damage systemTactical -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="6" compare="3" />
+      <if_variable name="Burin_Ship7DamageType" comparator="EQUALS" value="3.0" />
+        <set_player_grid_damage value="0.1" player_slot="6" index="Burin_Ship7NodeSelect" systemType="systemTactical" countFrom="front" />
+
+      <set_variable name="Burin_Ship7DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship7NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship7 - Damage systemTurning -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="6" compare="3" />
+      <if_variable name="Burin_Ship7DamageType" comparator="EQUALS" value="4.0" />
+        <set_player_grid_damage value="0.1" player_slot="6" index="Burin_Ship7NodeSelect" systemType="systemTurning" countFrom="front" />
+
+      <set_variable name="Burin_Ship7DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship7NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship7 - Damage systemImpulse -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="6" compare="3" />
+      <if_variable name="Burin_Ship7DamageType" comparator="EQUALS" value="5.0" />
+        <set_player_grid_damage value="0.1" player_slot="6" index="Burin_Ship7NodeSelect" systemType="systemImpulse" countFrom="front" />
+
+      <set_variable name="Burin_Ship7DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship7NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship7 - Damage systemWarp -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="6" compare="3" />
+      <if_variable name="Burin_Ship7DamageType" comparator="EQUALS" value="6.0" />
+
+      <set_variable name="Burin_Ship7DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship7NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship7 - Damage systemFrontShield -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="6" compare="3" />
+      <if_variable name="Burin_Ship7DamageType" comparator="EQUALS" value="7.0" />
+        <set_player_grid_damage value="0.1" player_slot="6" index="Burin_Ship7NodeSelect" systemType="systemFrontShield" countFrom="front" />
+
+      <set_variable name="Burin_Ship7DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship7NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship7 - Damage systemBackShield -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="6" compare="3" />
+      <if_variable name="Burin_Ship7DamageType" comparator="EQUALS" value="8.0" />
+        <set_player_grid_damage value="0.1" player_slot="6" index="Burin_Ship7NodeSelect" systemType="systemBackShield" countFrom="front" />
+
+      <set_variable name="Burin_Ship7DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship7NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <!-- Blue Nebula Tick Ship8 -->
+    <if_timer_finished name="Burin_Nebula_Tick" />
+    <if_in_nebula player_slot="7" compare="2" />
+    <if_object_property player_slot="7" property="energy" comparator="GREATER" value="50" />
+    <addto_object_property value="-10" property="energy" player_slot="7" />
+
+  </event>
+  
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship8 - Damage systemBeam -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="7" compare="3" />
+      <if_variable name="Burin_Ship8DamageType" comparator="EQUALS" value="1.0" />
+        <set_player_grid_damage value="0.1" player_slot="7" index="Burin_Ship8NodeSelect" systemType="systemBeam" countFrom="front" />
+
+      <set_variable name="Burin_Ship8DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship8NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship8 - Damage systemTorpedo -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="7" compare="3" />
+      <if_variable name="Burin_Ship8DamageType" comparator="EQUALS" value="2.0" />
+        <set_player_grid_damage value="0.1" player_slot="7" index="Burin_Ship8NodeSelect" systemType="systemTorpedo" countFrom="front" />
+
+      <set_variable name="Burin_Ship8DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship8NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship8 - Damage systemTactical -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="7" compare="3" />
+      <if_variable name="Burin_Ship8DamageType" comparator="EQUALS" value="3.0" />
+        <set_player_grid_damage value="0.1" player_slot="7" index="Burin_Ship8NodeSelect" systemType="systemTactical" countFrom="front" />
+
+      <set_variable name="Burin_Ship8DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship8NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship8 - Damage systemTurning -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="7" compare="3" />
+      <if_variable name="Burin_Ship8DamageType" comparator="EQUALS" value="4.0" />
+        <set_player_grid_damage value="0.1" player_slot="7" index="Burin_Ship8NodeSelect" systemType="systemTurning" countFrom="front" />
+
+      <set_variable name="Burin_Ship8DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship8NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship8 - Damage systemImpulse -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="7" compare="3" />
+      <if_variable name="Burin_Ship8DamageType" comparator="EQUALS" value="5.0" />
+        <set_player_grid_damage value="0.1" player_slot="7" index="Burin_Ship8NodeSelect" systemType="systemImpulse" countFrom="front" />
+
+      <set_variable name="Burin_Ship8DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship8NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship8 - Damage systemWarp -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="7" compare="3" />
+      <if_variable name="Burin_Ship8DamageType" comparator="EQUALS" value="6.0" />
+
+      <set_variable name="Burin_Ship8DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship8NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship8 - Damage systemFrontShield -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="7" compare="3" />
+      <if_variable name="Burin_Ship8DamageType" comparator="EQUALS" value="7.0" />
+        <set_player_grid_damage value="0.1" player_slot="7" index="Burin_Ship8NodeSelect" systemType="systemFrontShield" countFrom="front" />
+
+      <set_variable name="Burin_Ship8DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship8NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+          <!-- Yellow Nebula Tick Ship8 - Damage systemBackShield -->
+      <if_timer_finished name="Burin_Nebula_Tick" />
+      <if_in_nebula player_slot="7" compare="3" />
+      <if_variable name="Burin_Ship8DamageType" comparator="EQUALS" value="8.0" />
+        <set_player_grid_damage value="0.1" player_slot="7" index="Burin_Ship8NodeSelect" systemType="systemBackShield" countFrom="front" />
+
+      <set_variable name="Burin_Ship8DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
+      <set_variable name="Burin_Ship8NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
+
+  </event>
+
+
+  <event name="Burin - Run If On Map Burin">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+      <!-- Timer Reset -->
+  <if_timer_finished name="Burin_Nebula_Tick" />
+  <set_timer name="Burin_Nebula_Tick" seconds="2" />
+
+  </event>
