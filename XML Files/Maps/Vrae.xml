@@ -32,7 +32,7 @@
     <create count="40" type="mines" startX="71211.0" startY="0.0" startZ="40556.0" endX="71356.0" endY="0.0" endZ="65689.0" />
     <create count="15" type="asteroids" startX="97071.0" startY="0.0" startZ="4092.0" endX="97071.0" endY="0.0" endZ="4092.0" randomRange="10000" />
     <create type="enemy" x="65836.0" y="0.0" z="40847.0" angle="0" name="Defense Grid C" hullID="1005" sideValue="0" fleetnumber="-1" />
-    <create type="genericMesh" x="71502.0" y="8.0" z="29806.0" name="Il'Is'Kar Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="genericMesh" x="71502.0" y="0.0" z="29806.0" name="Il'Is'Kar Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
   </event>
   <event name="Sector 3" id_arme="2eea04a0-5b77-463f-9ec4-35f6114fdb31">
     <create count="100" type="nebulas" startX="20800.0" startY="0.0" startZ="39539.0" endX="43899.0" endY="0.0" endZ="95762.0" randomRange="20000" />
@@ -163,7 +163,7 @@
     <create type="enemy" x="40267.0" y="0.0" z="23559.0" angle="322.8" name="Defense Grid A" hullID="1005" fleetnumber="-1" />
     <create type="enemy" x="40703.0" y="0.0" z="36198.0" angle="263.5" name="Defense Grid B" hullID="1005" fleetnumber="-1" />
     <create type="enemy" x="40848.0" y="0.0" z="49418.0" angle="229.4" name="Defense Grid D" hullID="1005" fleetnumber="-1" />
-    <create type="genericMesh" x="29371.0" y="8.0" z="36198.0" name="Ka'Morlin Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="genericMesh" x="29371.0" y="0.0" z="36198.0" name="Ka'Morlin Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
     <create type="enemy" x="31921.0" y="0.0" z="11099.0" angle="0" name="So Transport" hullID="2101" fleetnumber="-1" />
     <set_ship_text name="So Transport" class="Transport" desc="Bulk cargo vessel belonging to an independent crew. Volume: 0.12 cubic kilometers." scan_desc="En route from Ka'Morlin to Jhohara. Transporting clothing of the Arvonian fashion." hailtext="Who the fuck are you? Terrans?" />
     <clear_ai name="So Transport" />

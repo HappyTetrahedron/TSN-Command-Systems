@@ -1,4 +1,5 @@
 import random
+random.seed(2245)
 from math import sin, cos, tan
 
 track_dict = {}

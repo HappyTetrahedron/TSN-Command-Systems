@@ -73,7 +73,7 @@
 <create count="100" type="asteroids" startX="65670.0" startY="-300.0" startZ="32321.0" endX="36340.0" endY="-300.0" endZ="75982.0" randomRange="10000" />
     
 <create count="100" type="asteroids" startX="58840.0" startY="300.0" startZ="24419.0" endX="49599.0" endY="300.0" endZ="64732.0" randomRange="10000" />
-    
+  
 
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Helios System" value="2.0" />
@@ -138,20 +138,18 @@
     <if_variable name="Helios System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="1.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-          <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios I" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
-  
+          
 
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios I" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
 
 
-  
+
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="3.0" /> 
   </event>
 
       <event name="Destroy Sector Entities">
     <if_variable name="Helios System" comparator="EQUALS" value="3.0" />
-      <destroy name="Helios I" />
     <destroy name="Helios I" />
     <set_variable name="Helios System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
@@ -450,9 +448,7 @@
     <if_variable name="Helios System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-          <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios II" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
-    
-<create type="genericMesh" x="60581.0" y="6.0" z="30178.0" name="Athorn Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+          <create type="genericMesh" x="60581.0" y="6.0" z="30178.0" name="Athorn Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
     
 <create type="neutral" x="50000.0" y="0.0" z="75714.0" angle="0" name="DS-1126" hullID="1000" sideValue="sectorSide" />
     
@@ -472,15 +468,14 @@
       <set_object_property property="angle" value="4.71238898" name="Athorn Gate" />
       <set_object_property property="rollDelta" value="0.3" name="Athorn Gate" />
 
-          
+        
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="3.0" /> 
   </event>
 
       <event name="Destroy Sector Entities">
     <if_variable name="Helios System" comparator="EQUALS" value="3.0" />
-              <destroy name="Helios II" />
-    <destroy name="Athorn Gate" />
+            <destroy name="Athorn Gate" />
     <destroy name="DS-1126" />
     <destroy name="WP-48T" />
     <destroy name="WP-92Q" />
@@ -770,9 +765,7 @@
     <if_variable name="Helios System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="3.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-          <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios III" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
-    
-<create type="genericMesh" x="68483.0" y="8.0" z="52008.0" name="Tibur Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+          <create type="genericMesh" x="68483.0" y="8.0" z="52008.0" name="Tibur Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
     
 <create type="neutral" x="32590.0" y="0.0" z="46250.0" angle="0" name="Procanthi" hullID="1003" sideValue="sectorSide" />
     
@@ -788,15 +781,14 @@
       <set_object_property property="angle" value="4.71238898" name="Tibur Gate" />
       <set_object_property property="rollDelta" value="0.3" name="Tibur Gate" />
 
-        
+      
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="3.0" /> 
   </event>
 
       <event name="Destroy Sector Entities">
     <if_variable name="Helios System" comparator="EQUALS" value="3.0" />
-            <destroy name="Helios III" />
-    <destroy name="Tibur Gate" />
+          <destroy name="Tibur Gate" />
     <destroy name="Procanthi" />
     <destroy name="Procanthi SY" />
     <destroy name="Helios III" />
@@ -1111,7 +1103,7 @@
     <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
     <set_variable name="Helios to Castor" value="1.0" />
     <set_variable name="Castor System" value="1.0" />
-    <set_variable name="Sector" value="1" />
+    <set_variable name="Sector" value="0" />
     <set_variable name="shipsInrange" value="0.0" integer="yes" />
     <set_timer name="Transition" seconds="2" />
     <set_variable name="ExitorRetreat" value="1.0" />
@@ -1123,9 +1115,7 @@
     <if_variable name="Helios System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="4.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-          <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios IV" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
-    
-<create type="genericMesh" x="57233.0" y="1.0" z="38348.0" name="Castor Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+          <create type="genericMesh" x="57233.0" y="0.0" z="38348.0" name="Castor Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
     
 <create type="neutral" x="45179.0" y="0.0" z="62589.0" angle="0" name="Polydeukes Market" hullID="1001" sideValue="sectorSide" />
     
@@ -1139,15 +1129,14 @@
       <set_object_property property="angle" value="4.71238898" name="Castor Gate" />
       <set_object_property property="rollDelta" value="0.3" name="Castor Gate" />
 
-      
+    
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="3.0" /> 
   </event>
 
       <event name="Destroy Sector Entities">
     <if_variable name="Helios System" comparator="EQUALS" value="3.0" />
-          <destroy name="Helios IV" />
-    <destroy name="Castor Gate" />
+        <destroy name="Castor Gate" />
     <destroy name="Polydeukes Market" />
     <destroy name="Helios IV" />
     <set_variable name="Helios System" value="System" integer="yes" />
@@ -1339,9 +1328,7 @@
     <if_variable name="Helios System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="5.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-          <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios V" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
-    
-<create type="genericMesh" x="56027.0" y="0.0" z="60580.0" name="ARID-PLANETHelios" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+          <create type="genericMesh" x="56027.0" y="0.0" z="60580.0" name="ARID-PLANETHelios" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
     
 <create type="neutral" x="48527.0" y="0.0" z="41428.0" angle="0" name="Helios Memorial" hullID="1056" sideValue="sectorSide" />
     
@@ -1357,7 +1344,7 @@
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios V" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
 
 
-                   <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P0" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Planets\pa1.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+                 <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P0" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Planets\pa1.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
         <set_object_property property="pushRadius" value="0.0" name="P0" />
         <set_object_property property="artScale" value="8" name="P0" />
         <set_relative_position name2="P0" distance="2000" angle="0.0" name1="ARID-PLANETHelios" />
@@ -1424,7 +1411,7 @@
 
       <event name="Destroy Sector Entities">
     <if_variable name="Helios System" comparator="EQUALS" value="3.0" />
-               <destroy name=" " />
+             <destroy name=" " />
     <destroy name=" " />
     <destroy name=" " />
     <destroy name=" " />
@@ -1434,8 +1421,7 @@
     <destroy name=" " />
 
         <destroy name="Helios" />
-         <destroy name="Helios V" />
-    <destroy name="ARID-PLANETHelios" />
+         <destroy name="ARID-PLANETHelios" />
     <destroy name="Helios Memorial" />
     <destroy name="Helios Habitat" />
     <destroy name="Helios V" />
@@ -1559,9 +1545,7 @@
     <if_variable name="Helios System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="6.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-          <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios VI" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
-    
-<create type="neutral" x="53750.0" y="0.0" z="48928.0" angle="0" name="Helios Command" hullID="1002" sideValue="sectorSide" />
+          <create type="neutral" x="53750.0" y="0.0" z="48928.0" angle="0" name="Helios Command" hullID="1002" sideValue="sectorSide" />
     
 <create type="neutral" x="53750.0" y="0.0" z="63526.0" angle="0" name="WP-52A" hullID="1052" sideValue="sectorSide" />
     
@@ -1571,15 +1555,14 @@
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios VI" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
 
 
-        
+      
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="3.0" /> 
   </event>
 
       <event name="Destroy Sector Entities">
     <if_variable name="Helios System" comparator="EQUALS" value="3.0" />
-            <destroy name="Helios VI" />
-    <destroy name="Helios Command" />
+          <destroy name="Helios Command" />
     <destroy name="WP-52A" />
     <destroy name="WP-81K" />
     <destroy name="Helios VI" />
@@ -1667,9 +1650,7 @@
     <if_variable name="Helios System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="7.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-          <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios VII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
-    
-<create type="neutral" x="66742.0" y="200.0" z="52946.0" angle="0" name="Semelei Processors" hullID="1003" sideValue="sectorSide" />
+          <create type="neutral" x="66742.0" y="200.0" z="52946.0" angle="0" name="Semelei Processors" hullID="1003" sideValue="sectorSide" />
     
 <create type="neutral" x="50804.0" y="200.0" z="63794.0" angle="0" name="Leda Denabite" hullID="1051" sideValue="sectorSide" />
     
@@ -1683,15 +1664,14 @@
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios VII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
 
 
-          
+        
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="3.0" /> 
   </event>
 
       <event name="Destroy Sector Entities">
     <if_variable name="Helios System" comparator="EQUALS" value="3.0" />
-              <destroy name="Helios VII" />
-    <destroy name="Semelei Processors" />
+            <destroy name="Semelei Processors" />
     <destroy name="Leda Denabite" />
     <destroy name="Nyx Denabite" />
     <destroy name="Brontes Ores" />
@@ -1977,7 +1957,7 @@
     <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
     <set_variable name="Helios to Atilia" value="1.0" />
     <set_variable name="Atilia System" value="1.0" />
-    <set_variable name="Sector" value="1" />
+    <set_variable name="Sector" value="0" />
     <set_variable name="shipsInrange" value="0.0" integer="yes" />
     <set_timer name="Transition" seconds="2" />
     <set_variable name="ExitorRetreat" value="1.0" />
@@ -1989,9 +1969,7 @@
     <if_variable name="Helios System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="8.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-          <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios VIII" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
-    
-<create type="genericMesh" x="49331.0" y="1.0" z="56160.0" name="Atilia Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+          <create type="genericMesh" x="49331.0" y="0.0" z="56160.0" name="Atilia Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
     
 <create type="neutral" x="62858.0" y="0.0" z="30312.0" angle="0" name="Zarkov Labs" hullID="1004" sideValue="sectorSide" />
     
@@ -2005,15 +1983,14 @@
       <set_object_property property="angle" value="4.71238898" name="Atilia Gate" />
       <set_object_property property="rollDelta" value="0.3" name="Atilia Gate" />
 
-      
+    
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="3.0" /> 
   </event>
 
       <event name="Destroy Sector Entities">
     <if_variable name="Helios System" comparator="EQUALS" value="3.0" />
-          <destroy name="Helios VIII" />
-    <destroy name="Atilia Gate" />
+        <destroy name="Atilia Gate" />
     <destroy name="Zarkov Labs" />
     <destroy name="Helios VIII" />
     <set_variable name="Helios System" value="System" integer="yes" />
@@ -2057,7 +2034,7 @@
 <create count="100" type="nebulas" nebType="1" startX="38884.0" startY="0.0" startZ="22410.0" endX="68884.0" endY="0.0" endZ="60580.0" randomRange="20000" />
     
 <create count="100" type="nebulas" nebType="2" startX="53081.0" startY="0.0" startZ="19866.0" endX="41429.0" endY="0.0" endZ="67410.0" randomRange="20000" />
-    
+  
 
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Helios System" value="2.0" />
@@ -2122,20 +2099,18 @@
     <if_variable name="Helios System" comparator="EQUALS" value="2.0" />
     <if_variable name="Sector" comparator="EQUALS" value="9.0" />
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
-          <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios IX" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
-  
+          
 
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Helios IX" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
 
 
-  
+
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="3.0" /> 
   </event>
 
       <event name="Destroy Sector Entities">
     <if_variable name="Helios System" comparator="EQUALS" value="3.0" />
-      <destroy name="Helios IX" />
     <destroy name="Helios IX" />
     <set_variable name="Helios System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />

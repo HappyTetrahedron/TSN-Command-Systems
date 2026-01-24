@@ -1,0 +1,127 @@
+<mission_data version="1.0">
+  <start>
+    <set_variable name="Coordinate X" value="1450" />
+    <set_variable name="Coordinate Y" value="550" />
+    <set_variable name="Width" value="3" />
+    <set_variable name="Height" value="3" />
+    <set_variable name="Alignment" value="USFP" />
+    <set_variable name="Skybox" value="12" />
+  </start>
+  <event name="Sector 1">
+    <create count="100" type="nebulas" startX="72500.0" startY="0.0" startZ="79464.0" endX="39554.0" endY="0.0" endZ="32991.0" randomRange="9000" />
+    <create count="100" type="asteroids" startX="47456.0" startY="300.0" startZ="67678.0" endX="11697.0" endY="0.0" endZ="90580.0" randomRange="7000" />
+    <create count="100" type="asteroids" startX="29911.0" startY="-300.0" startZ="49732.0" endX="8081.0" endY="0.0" endZ="77053.0" randomRange="7000" />
+    <create count="50" type="mines" startAngle="0" endAngle="80" startX="58840.0" startY="0.0" startZ="39955.0" radius="25000" />
+    <create count="50" type="mines" startAngle="105" endAngle="175" startX="58840.0" startY="0.0" startZ="39955.0" radius="25000" />
+    <create count="50" type="mines" startAngle="200" endAngle="280" startX="58840.0" startY="0.0" startZ="39955.0" radius="25000" />
+    <create type="genericMesh" x="58974.0" y="15.0" z="39285.0" name="Mria Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="30447.0" y="0.0" z="65401.0" angle="0" name="DS 903" hullID="1000" />
+    <set_ship_text name="DS 903" desc="Primary gatekeeper for traffic to/from Mria, especially neutrals. Station Commander has a general distrust of neutrals." />
+    <create type="neutral" x="34063.0" y="0.0" z="41294.0" angle="0" name="WP-123J" hullID="1052" />
+    <create type="neutral" x="61384.0" y="0.0" z="65000.0" angle="0" name="WP-67U" hullID="1052" />
+  </event>
+  <event name="Sector 2">
+    <create count="100" type="nebulas" startX="65402.0" startY="300.0" startZ="18392.0" endX="26563.0" endY="300.0" endZ="43169.0" randomRange="15000" />
+    <create count="100" type="nebulas" nebType="2" startX="74108.0" startY="-300.0" startZ="19062.0" endX="17322.0" endY="-300.0" endZ="33392.0" randomRange="15000" />
+    <create count="100" type="asteroids" startX="79465.0" startY="0.0" startZ="52008.0" endX="48929.0" endY="0.0" endZ="16517.0" randomRange="10000" />
+    <create type="genericMesh" x="49197.0" y="0.0" z="66339.0" name="BLUE-PLANETTibur Prime" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="0.8" colorBlue="0.0" />
+    <set_ship_text name="BLUE-PLANETTibur Prime" desc="Ocean world. Water world, 50,000 islands; heavy fishing and tourism; peaceful unified republic. Friendly, open culture; loves gambling, haggling, and general trading." />
+    <create type="neutral" x="49197.0" y="0.0" z="43169.0" angle="0" name="Tibur Mall" hullID="1001" />
+    <set_ship_text name="Tibur Mall" desc="Primary market for planet exports and general trade." />
+    <create type="neutral" x="35536.0" y="0.0" z="52276.0" angle="0" name="Alders Council" hullID="1001" />
+    <set_ship_text name="Alders Council" desc="Seat of administration for Tibur sector." />
+  </event>
+  <event name="Sector 3">
+    <create count="100" type="nebulas" nebType="2" startX="36474.0" startY="0.0" startZ="48125.0" endX="53081.0" endY="0.0" endZ="21875.0" randomRange="15000" />
+    <create count="50" type="asteroids" startX="72233.0" startY="-300.0" startZ="49062.0" endX="80000.0" endY="300.0" endZ="81205.0" randomRange="10000" />
+    <create type="genericMesh" x="58170.0" y="2.0" z="25312.0" name="Enyalius Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="52545.0" y="0.0" z="65000.0" angle="0" name="Astral Agora" hullID="1001" />
+    <set_ship_text name="Astral Agora" desc="Ancient and sacred diplomatic facility. A demilitarized zone (DMZ) is set up around it." />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.3" colorGreen="0.5" colorBlue="0.8" />
+    <set_relative_position name2="--" distance="20000" angle="0.0" name1="Astral Agora" />
+    <set_ship_text name="--" newname="DMZ" desc="Boundary of demilitarized zone." />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.3" colorGreen="0.5" colorBlue="0.8" />
+    <set_relative_position name2="--" distance="20000" angle="45.0" name1="Astral Agora" />
+    <set_ship_text name="--" newname="DMZ" desc="Boundary of demilitarized zone." />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.3" colorGreen="0.5" colorBlue="0.8" />
+    <set_relative_position name2="--" distance="20000" angle="90.0" name1="Astral Agora" />
+    <set_ship_text name="--" newname="DMZ" desc="Boundary of demilitarized zone." />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.3" colorGreen="0.5" colorBlue="0.8" />
+    <set_relative_position name2="--" distance="20000" angle="135.0" name1="Astral Agora" />
+    <set_ship_text name="--" newname="DMZ" desc="Boundary of demilitarized zone." />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.3" colorGreen="0.5" colorBlue="0.8" />
+    <set_relative_position name2="--" distance="20000" angle="180.0" name1="Astral Agora" />
+    <set_ship_text name="--" newname="DMZ" desc="Boundary of demilitarized zone." />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.3" colorGreen="0.5" colorBlue="0.8" />
+    <set_relative_position name2="--" distance="20000" angle="225.0" name1="Astral Agora" />
+    <set_ship_text name="--" newname="DMZ" desc="Boundary of demilitarized zone." />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.3" colorGreen="0.5" colorBlue="0.8" />
+    <set_relative_position name2="--" distance="20000" angle="270.0" name1="Astral Agora" />
+    <set_ship_text name="--" newname="DMZ" desc="Boundary of demilitarized zone." />
+    <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.3" colorGreen="0.5" colorBlue="0.8" />
+    <set_relative_position name2="--" distance="20000" angle="315.0" name1="Astral Agora" />
+    <set_ship_text name="--" newname="DMZ" desc="Boundary of demilitarized zone." />
+  </event>
+  <event name="Sector 4">
+    <create count="100" type="mines" startAngle="35" endAngle="185" startX="44500.0" startY="0.0" startZ="46500.0" radius="20000" />
+    <create count="100" type="mines" startAngle="210" endAngle="370" startX="44500.0" startY="0.0" startZ="46500.0" radius="20000" />
+    <create count="100" type="nebulas" startX="73974.0" startY="-300.0" startZ="61785.0" endX="47724.0" endY="300.0" endZ="18125.0" randomRange="10000" />
+    <create count="40" type="asteroids" startX="56965.0" startY="200.0" startZ="76651.0" endX="40759.0" endY="200.0" endZ="86830.0" randomRange="8000" />
+    <create count="40" type="asteroids" startX="76117.0" startY="-200.0" startZ="26562.0" endX="53215.0" endY="-200.0" endZ="13035.0" randomRange="8000" />
+    <create type="neutral" x="44500.0" y="0.0" z="46500.0" angle="0" name="Tibur Command" hullID="1002" />
+    <set_ship_text name="Tibur Command" desc="Recently constructed due to the war efforts. Commandant is young but brilliant, clearly ambitious" />
+    <create type="neutral" x="54554.0" y="0.0" z="37410.0" angle="0" name="DS-59" hullID="1000" />
+    <set_ship_text name="DS-59" desc="Previously the command base for Tibur system. Base commander got the post just before Tibur Command was announced and built; highly resentful and petty" />
+    <create type="neutral" x="37009.0" y="0.0" z="28571.0" angle="0" name="WP-99T" hullID="1052" />
+    <create type="neutral" x="50268.0" y="0.0" z="65401.0" angle="0" name="WP-101E" hullID="1052" />
+    <create type="neutral" x="34599.0" y="0.0" z="50803.0" angle="0" name="SY-42" hullID="1053" />
+  </event>
+  <event name="Sector 5">
+    <create count="50" type="nebulas" startX="75983.0" startY="0.0" startZ="62991.0" endX="35536.0" endY="0.0" endZ="90446.0" randomRange="9000" />
+    <create count="50" type="nebulas" nebType="2" startX="78929.0" startY="0.0" startZ="54285.0" endX="41697.0" endY="0.0" endZ="89375.0" randomRange="9000" />
+    <create count="70" type="asteroids" startX="60313.0" startY="0.0" startZ="16116.0" endX="21742.0" endY="-300.0" endZ="34866.0" randomRange="10000" />
+    <create type="genericMesh" x="58170.0" y="0.0" z="45312.0" name="Keltor Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="41965.0" y="0.0" z="56428.0" angle="0" name="Grand Emporium" hullID="1001" />
+    <set_ship_text name="Grand Emporium" desc="Biggest trading post for Tibur sector, benefits from its strategic central location. Home to 100,000, mostly small shopkeeps. Recently beefed with TSN marines. Station Chief loves visitors of any kind, extremely friendly (because she gets rich from them)" />
+  </event>
+  <event name="Sector 6">
+    <create count="100" type="nebulas" startX="74911.0" startY="200.0" startZ="47187.0" endX="44108.0" endY="-200.0" endZ="94866.0" randomRange="10000" />
+    <create count="100" type="nebulas" nebType="2" startX="67411.0" startY="-200.0" startZ="44642.0" endX="52947.0" endY="200.0" endZ="92723.0" randomRange="10000" />
+    <create count="100" type="asteroids" startX="47992.0" startY="0.0" startZ="92187.0" endX="67411.0" endY="0.0" endZ="41696.0" randomRange="10000" />
+    <create type="neutral" x="54286.0" y="0.0" z="73437.0" angle="0" name="SB-87" hullID="1054" />
+    <create type="neutral" x="58036.0" y="0.0" z="65937.0" angle="0" name="CR-66" hullID="1055" />
+  </event>
+  <event name="Sector 7">
+    <create count="100" type="nebulas" startX="57099.0" startY="400.0" startZ="70491.0" endX="4197.0" endY="0.0" endZ="15178.0" randomRange="10000" />
+    <create count="100" type="nebulas" nebType="2" startX="51875.0" startY="400.0" startZ="77321.0" endX="1786.0" endY="0.0" endZ="20803.0" randomRange="10000" />
+    <create count="10" type="asteroids" startX="24286.0" startY="-300.0" startZ="65937.0" endX="24286.0" endY="-300.0" endZ="65937.0" randomRange="5000" />
+    <create count="10" type="asteroids" startX="67277.0" startY="300.0" startZ="36339.0" endX="67277.0" endY="300.0" endZ="36339.0" randomRange="5000" />
+    <create count="10" type="asteroids" startX="45447.0" startY="0.0" startZ="48928.0" endX="45447.0" endY="0.0" endZ="48928.0" randomRange="5000" />
+    <create type="genericMesh" x="63125.0" y="1.0" z="56696.0" name="Atilia Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="41295.0" y="0.0" z="36339.0" angle="0" name="Interstellar Spas" hullID="1001" />
+    <set_ship_text name="Interstellar Spas" desc="Primary marketplace for traffic to/from Atilia. Regional get-away for rich and famous. Station Chief is arrogant and snobby, disdains the TSN." />
+  </event>
+  <event name="Sector 8">
+    <create count="100" type="nebulas" nebType="2" startX="87768.0" startY="0.0" startZ="17321.0" endX="46652.0" endY="0.0" endZ="78526.0" randomRange="10000" />
+    <create count="100" type="nebulas" startX="97545.0" startY="0.0" startZ="12901.0" endX="75179.0" endY="0.0" endZ="49866.0" randomRange="10000" />
+    <create count="100" type="nebulas" nebType="2" startX="51875.0" startY="0.0" startZ="77321.0" endX="17456.0" endY="0.0" endZ="68348.0" randomRange="10000" />
+    <create count="50" type="nebulas" startX="50000.0" startY="0.0" startZ="41160.0" endX="77456.0" endY="0.0" endZ="39553.0" randomRange="5000" />
+    <create count="50" type="nebulas" startX="48393.0" startY="0.0" startZ="44776.0" endX="16384.0" endY="0.0" endZ="23080.0" randomRange="5000" />
+    <create count="50" type="nebulas" nebType="2" startX="46117.0" startY="0.0" startZ="72232.0" endX="11429.0" endY="0.0" endZ="59776.0" randomRange="5000" />
+    <create count="50" type="asteroids" startX="34197.0" startY="300.0" startZ="22946.0" endX="66608.0" endY="0.0" endZ="12767.0" randomRange="5000" />
+    <create count="50" type="asteroids" startX="21474.0" startY="300.0" startZ="80267.0" endX="57902.0" endY="0.0" endZ="59776.0" randomRange="5000" />
+    <create count="50" type="mines" startAngle="20" endAngle="100" startX="40500.0" startY="0.0" startZ="59000.0" radius="25000" />
+    <create count="50" type="mines" startAngle="285" endAngle="355" startX="40500.0" startY="0.0" startZ="59000.0" radius="25000" />
+    <create count="50" type="mines" startAngle="175" endAngle="260" startX="40500.0" startY="0.0" startZ="59000.0" radius="25000" />
+    <create type="genericMesh" x="40500.0" y="3.0" z="59000.0" name="Helios Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="72500.0" y="0.0" z="29375.0" angle="0" name="DS 777" hullID="1000" />
+    <set_ship_text name="DS 777" desc="Primary gatekeeper for traffic to/from Mria, especially neutrals. Station commander has an odd affections for xenos, rumored to be into doing unspecified weird stuff with them." />
+    <create type="neutral" x="36608.0" y="0.0" z="33794.0" angle="0" name="WP-89W" hullID="1052" />
+    <create type="neutral" x="65804.0" y="0.0" z="58571.0" angle="0" name="WP-104Z" hullID="1052" />
+  </event>
+  <event name="Sector 9">
+    <create count="100" type="nebulas" nebType="1" startX="41295.0" startY="-200.0" startZ="2723.0" endX="38617.0" endY="200.0" endZ="47857.0" randomRange="10000" />
+    <create count="100" type="nebulas" nebType="2" startX="44242.0" startY="200.0" startZ="848.0" endX="33929.0" endY="-200.0" endZ="49062.0" randomRange="10000" />
+    <create count="100" type="asteroids" startX="32724.0" startY="0.0" startZ="45848.0" endX="44375.0" endY="0.0" endZ="2455.0" randomRange="10000" />
+  </event>
+</mission_data>

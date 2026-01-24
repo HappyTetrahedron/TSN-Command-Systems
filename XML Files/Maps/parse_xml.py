@@ -30,8 +30,16 @@ system_dict = {
 }
 sectors = {}
 
+MAPS_FOLDER=os.path.dirname(__file__)
+LEGACY_FOLDER=(os.path.join(os.path.dirname(__file__), '..', 'Legacy Maps'))
+
 xml_tree = et.parse(file)
 root = xml_tree.getroot()
+
+def system_exists(name):
+    return os.path.exists(os.path.join(MAPS_FOLDER, "{}.xml".format(name))) \
+    or os.path.exists(os.path.join(LEGACY_FOLDER, "{}.xml".format(name)))
+
 
 def parse_start(start):
     for event in start:
@@ -116,13 +124,17 @@ def parse_event(event):
                     gate_target = name[0:-5]
                     gate_target_sector = int(action.attrib["y"].split('.')[0])
                     if gate_target_sector == 0:
-                        print("Error: No target sector configured for {}. Configure a target sector by adjusting the gate object's Y coordinate to the target sector's number. (I know, it's a hack.)".format(name))
-                        sys.exit(1)
+                        if system_exists(gate_target):
+                            print("ERROR: No target sector configured for {}. Configure a target sector by adjusting the gate object's Y coordinate to the target sector's number. (I know, it's a hack.)".format(name))
+                            sys.exit(1)
             else:
                 terrainLines.append(et.tostring(action, encoding="unicode"))
         elif action.tag == "set_skybox_index":
             terrainLines.append(et.tostring(action, encoding="unicode"))
         else:
+            if action.tag == "set_ship_text":
+                if "newname" in action.attrib:
+                    sector_dict["createdEntities"].append(action.get("newname"))
             sectorLines.append(et.tostring(action, encoding="unicode"))
 
 

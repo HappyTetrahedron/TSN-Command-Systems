@@ -24,7 +24,7 @@ env = {
         "VerdantFleet",
     ],
     "maps": [
-        "Atlantis",
+        "Onwia",
         "Arietis",
         "Helios",
         "Tibur",

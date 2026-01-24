@@ -94,6 +94,8 @@ TYPICALVARS = [
     "USFPTraffic1",
     "USFPTraffic2",
     "CustomPlanet",
+    "Moon",
+    "PirateRaid",
 ]
 TYPICALTIMERS = [
     "Entry Random",
@@ -107,6 +109,11 @@ def should_ignore(action):
     if action.tag == "set_object_property":
         if "Gate" in action.get("name"):
             return True
+    if action.tag == "create":
+        if action.get("type") == "genericMesh" and action.get("x") == "100000.0" and action.get("z") == "0.0":
+            if action.get("meshFileName") == "dat\\TSN\\USFP\\marker.dxs":
+                # Sector marker
+                return True
     return False
 
 def convert_event_actions(event, sector, sector_id, metadata):
@@ -179,6 +186,30 @@ def convert_event(event, metadata, old_sector_id, out, sectormap):
                     action.set("name", "PLANET{}".format(getPlanetName(sector_id, metadata)))
                     action.attrib.pop("newname")
                     sectormap[sector_id].append(action)
+    if event.attrib.get("name", "").startswith("Custom Moon Orbit"):
+        sector_id = old_sector_id
+        if sector_id not in sectormap:
+            eprint("Error: found moon but no sector defined")
+            sys.exit(1)
+        for action in event:
+            if action.tag == "set_relative_position":
+                if action.attrib.get("name1", "").lower() == getPlanetName(sector_id, metadata).lower():
+                    action.set("name1", "PLANET{}".format(getPlanetName(sector_id, metadata)))
+                    action.set("name2", "MOONMoon")
+                    sectormap[sector_id].append(et.Element("create", {
+                        "type": "genericMesh",
+                        "x": "0.0",
+                        "y": "0.0",
+                        "z": "0.0",
+                        "name": "MOONMoon",
+                        "name": "MOONMoon",
+                        "meshFileName": "dat\\TSN\\USFP\\marker.dxs",
+                        "textureFileName": "dat\\TSN\\USFP\\marker.png",
+                        "colorRed": "0.0",
+                        "colorGreen": "0.8",
+                        "colorBlue": "0.0",
+                    }))
+                    sectormap[sector_id].append(action)
     return sector_id
 
 
@@ -210,6 +241,7 @@ def convert(file):
 
 if __name__ == "__main__":
     file = sys.argv[1]
+    outfolder = sys.argv[2]
 
     if not file.endswith('.xml'):
         eprint("Invalid file type")
@@ -220,4 +252,4 @@ if __name__ == "__main__":
     basename = os.path.basename(file)
     tree = et.ElementTree(out)
     et.indent(tree, '  ')
-    tree.write(basename)
+    tree.write(os.path.join(outfolder, basename))
