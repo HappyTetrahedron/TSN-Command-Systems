@@ -7,6 +7,8 @@
 {% set blue = 2 %}
 {% set yellow = 3 %}
 
+{% set num_ring_fragments = 220 %}
+
 {% call sysutil.runOnMapLoad(g.map) %}
   <set_timer name="Burin_Nebula_Tick" seconds="{{ timer_interval }}" />
   <set_variable name="Burin_NearBlue" value="0.0" integer="yes" />
@@ -15,6 +17,36 @@
     <set_variable name="Burin_Ship{{ ship.id }}DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
     <set_variable name="Burin_Ship{{ ship.id }}NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
   {% endfor %}
+{% endcall %}
+
+{% call sysutil.runIfInSector(g.map, [4]) %}
+  {% set burin_x = 52823 %}
+  {% set burin_y = 53277 %}
+  {% set ring_radius = 3000 %}
+  {% set ring_spread = 200 %}
+  <if_variable name="Burin_4_Ring" comparator="NOT" value="1.0" />
+
+  {% for i in range(num_ring_fragments) %}
+    <create type="genericMesh" x="{{
+         burin_x + (sin(i*6.283/num_ring_fragments) * (ring_radius + randint(-ring_spread, ring_spread))) | int
+       }}.0" y="0.0" z="{{
+         burin_y + (cos(i*6.283/num_ring_fragments) * (ring_radius + randint(-ring_spread, ring_spread))) | int
+       }}.0" name="x" meshFileName="dat\asteroid{{ randint(6,11) }}.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.{{ randint(10, 19) }}" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+  {% endfor %}
+
+  <set_variable name="Burin_4_Ring" value="1.0" integer="yes" />
+{% endcall %}
+{% call sysutil.runIfNotInSector(g.map, [4]) %}
+  <if_variable name="Burin_4_Ring" comparator="EQUALS" value="1.0" />
+  {% for i in range(num_ring_fragments) %}
+    <destroy name=" " />
+  {% endfor %}
+  <set_variable name="Burin_4_Ring" value="0.0" integer="yes" />
 {% endcall %}
 
 {% call sysutil.runIfInSector(g.map, [2,5,6]) %}

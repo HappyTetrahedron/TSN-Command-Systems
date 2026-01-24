@@ -15,6 +15,16 @@
   </event>
 {% endmacro %}
 
+{% macro runIfNotInSector(sys, sectors) %}
+  <event name="{{ sys.name }} - Run If Not In Sector {{ sectors }}">
+    <if_variable name="{{ sys.name }} System" comparator="GREATER" value="0.0" />
+    {% for sector in sectors %}
+        <if_variable name="Sector" comparator="NOT" value="{{ sector }}" />
+    {% endfor %}
+    {{ caller() }}
+  </event>
+{% endmacro %}
+
 {% macro runIfOnMap(sys) %}
   <event name="{{ sys.name }} - Run If On Map {{ sys.name }}">
     <if_variable name="{{ sys.name }} System" comparator="GREATER" value="0.0" />

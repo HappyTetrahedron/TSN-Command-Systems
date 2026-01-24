@@ -1,3 +1,5 @@
+import random
+from math import sin, cos, tan
 
 track_dict = {}
 
@@ -43,5 +45,13 @@ def stripspace(text):
 
 
 def register(jinja_env):
-  jinja_env.globals.update(track=track, retrieve=retrieve, panic=raise_helper)
+  jinja_env.globals.update(
+    track=track,
+    retrieve=retrieve,
+    panic=raise_helper,
+    randint=random.randint,
+    sin=sin,
+    cos=cos,
+    tan=tan,
+    )
   jinja_env.filters.update(textwidth=textwidth, stripspace=stripspace)

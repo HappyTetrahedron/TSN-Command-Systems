@@ -1649,6 +1649,7 @@
 
 
 
+
   <event name="Burin - Run On Load">
     <if_variable name="Burin System" comparator="GREATER" value="0.0" />
     <if_variable name="_BurinOnLoadRan" comparator="NOT" value="1.0" />
@@ -1678,6 +1679,1564 @@
     <if_variable name="Burin System" comparator="LESS" value="1.0" />
     <if_variable name="_BurinOnLoadRan" comparator="EQUALS" value="1.0" />
     <set_variable name="_BurinOnLoadRan" value="0.0" integer="yes" />
+  </event>
+
+  <event name="Burin - Run If In Sector [4]">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <if_variable name="Sector" comparator="EQUALS" value="4" />
+      <if_variable name="Burin_4_Ring" comparator="NOT" value="1.0" />
+
+    <create type="genericMesh" x="52823.0" y="0.0" z="56459.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.14" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52912.0" y="0.0" z="56411.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53001.0" y="0.0" z="56375.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53085.0" y="0.0" z="56421.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53185.0" y="0.0" z="56157.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53260.0" y="0.0" z="56422.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53314.0" y="0.0" z="56087.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53382.0" y="0.0" z="56288.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53466.0" y="0.0" z="56071.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53580.0" y="0.0" z="56111.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53716.0" y="0.0" z="56135.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53764.0" y="0.0" z="56241.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53894.0" y="0.0" z="56239.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.14" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53888.0" y="0.0" z="56128.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53956.0" y="0.0" z="55938.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54046.0" y="0.0" z="56081.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54087.0" y="0.0" z="55877.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54256.0" y="0.0" z="55891.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54314.0" y="0.0" z="55750.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54407.0" y="0.0" z="55951.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.17" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54355.0" y="0.0" z="55941.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54470.0" y="0.0" z="55637.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54491.0" y="0.0" z="55726.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54750.0" y="0.0" z="55755.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54777.0" y="0.0" z="55534.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54813.0" y="0.0" z="55512.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.14" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54788.0" y="0.0" z="55504.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54862.0" y="0.0" z="55330.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55025.0" y="0.0" z="55346.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55031.0" y="0.0" z="55269.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55066.0" y="0.0" z="55366.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55246.0" y="0.0" z="55234.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55268.0" y="0.0" z="55040.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55275.0" y="0.0" z="55135.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55195.0" y="0.0" z="55006.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.18" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55409.0" y="0.0" z="54935.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55474.0" y="0.0" z="54854.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55403.0" y="0.0" z="54752.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55547.0" y="0.0" z="54713.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55411.0" y="0.0" z="54516.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.14" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55620.0" y="0.0" z="54604.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.14" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55730.0" y="0.0" z="54511.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.17" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55675.0" y="0.0" z="54431.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55711.0" y="0.0" z="54330.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55710.0" y="0.0" z="54189.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55529.0" y="0.0" z="54078.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55809.0" y="0.0" z="54004.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55552.0" y="0.0" z="53938.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.18" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55681.0" y="0.0" z="53900.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55693.0" y="0.0" z="53761.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55738.0" y="0.0" z="53694.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55784.0" y="0.0" z="53616.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55637.0" y="0.0" z="53536.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.17" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55999.0" y="0.0" z="53439.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55732.0" y="0.0" z="53359.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="56002.0" y="0.0" z="53277.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55636.0" y="0.0" z="53191.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55810.0" y="0.0" z="53113.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55746.0" y="0.0" z="53023.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55813.0" y="0.0" z="52925.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55663.0" y="0.0" z="52862.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.14" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55628.0" y="0.0" z="52735.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.14" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55806.0" y="0.0" z="52655.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55700.0" y="0.0" z="52642.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55863.0" y="0.0" z="52522.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55526.0" y="0.0" z="52378.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.17" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55609.0" y="0.0" z="52345.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55761.0" y="0.0" z="52290.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.14" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55460.0" y="0.0" z="52186.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55587.0" y="0.0" z="52084.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.17" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55693.0" y="0.0" z="52000.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55650.0" y="0.0" z="51930.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55456.0" y="0.0" z="51960.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.18" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55555.0" y="0.0" z="51767.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55440.0" y="0.0" z="51758.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.14" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55489.0" y="0.0" z="51733.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55192.0" y="0.0" z="51521.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55227.0" y="0.0" z="51603.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.17" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55085.0" y="0.0" z="51330.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55141.0" y="0.0" z="51324.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54975.0" y="0.0" z="51278.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.14" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55154.0" y="0.0" z="51318.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="55064.0" y="0.0" z="51284.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.18" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54957.0" y="0.0" z="51218.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.14" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54770.0" y="0.0" z="50959.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.17" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54912.0" y="0.0" z="50970.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54617.0" y="0.0" z="51091.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.18" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54641.0" y="0.0" z="50981.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54691.0" y="0.0" z="50999.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.18" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54624.0" y="0.0" z="50835.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54368.0" y="0.0" z="50841.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54290.0" y="0.0" z="50719.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54230.0" y="0.0" z="50639.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54187.0" y="0.0" z="50638.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.18" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54199.0" y="0.0" z="50439.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="54140.0" y="0.0" z="50649.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53954.0" y="0.0" z="50465.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53974.0" y="0.0" z="50306.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53821.0" y="0.0" z="50509.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53762.0" y="0.0" z="50298.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53716.0" y="0.0" z="50470.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53564.0" y="0.0" z="50557.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.14" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53505.0" y="0.0" z="50172.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53438.0" y="0.0" z="50419.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53327.0" y="0.0" z="50295.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.17" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53271.0" y="0.0" z="50384.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53163.0" y="0.0" z="50144.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53094.0" y="0.0" z="50136.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="53004.0" y="0.0" z="50088.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52907.0" y="0.0" z="50468.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.14" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52823.0" y="0.0" z="50191.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52740.0" y="0.0" z="50342.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52642.0" y="0.0" z="50329.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52554.0" y="0.0" z="50102.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52500.0" y="0.0" z="50341.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52399.0" y="0.0" z="50112.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52306.0" y="0.0" z="50235.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52259.0" y="0.0" z="50146.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52125.0" y="0.0" z="50503.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52060.0" y="0.0" z="50420.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51931.0" y="0.0" z="50414.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51848.0" y="0.0" z="50246.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51873.0" y="0.0" z="50482.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.18" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51781.0" y="0.0" z="50316.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51632.0" y="0.0" z="50581.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51533.0" y="0.0" z="50525.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.14" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51529.0" y="0.0" z="50608.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51482.0" y="0.0" z="50464.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51398.0" y="0.0" z="50831.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51356.0" y="0.0" z="50764.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51164.0" y="0.0" z="50816.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.18" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51183.0" y="0.0" z="50788.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51118.0" y="0.0" z="50879.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.17" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50945.0" y="0.0" z="50869.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50831.0" y="0.0" z="50805.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50806.0" y="0.0" z="50890.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50930.0" y="0.0" z="51103.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50636.0" y="0.0" z="50986.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.18" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50608.0" y="0.0" z="51202.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50485.0" y="0.0" z="51136.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50532.0" y="0.0" z="51236.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50374.0" y="0.0" z="51285.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.18" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50343.0" y="0.0" z="51537.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.17" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50391.0" y="0.0" z="51412.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.17" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50256.0" y="0.0" z="51484.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.17" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50315.0" y="0.0" z="51632.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50111.0" y="0.0" z="51758.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.18" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50369.0" y="0.0" z="51764.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50141.0" y="0.0" z="51867.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.14" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50006.0" y="0.0" z="51911.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="49956.0" y="0.0" z="52076.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.18" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50062.0" y="0.0" z="52128.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50072.0" y="0.0" z="52126.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="49894.0" y="0.0" z="52295.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="49911.0" y="0.0" z="52362.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.17" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="49888.0" y="0.0" z="52407.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50100.0" y="0.0" z="52469.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="49866.0" y="0.0" z="52585.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="49818.0" y="0.0" z="52669.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.17" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50033.0" y="0.0" z="52777.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50042.0" y="0.0" z="52872.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50000.0" y="0.0" z="52918.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.18" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="49711.0" y="0.0" z="53004.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.14" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="49734.0" y="0.0" z="53115.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="49653.0" y="0.0" z="53191.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="49631.0" y="0.0" z="53277.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="49947.0" y="0.0" z="53363.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="49784.0" y="0.0" z="53449.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50022.0" y="0.0" z="53538.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.18" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="49763.0" y="0.0" z="53599.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50032.0" y="0.0" z="53729.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="49793.0" y="0.0" z="53793.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="49790.0" y="0.0" z="53857.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.18" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="49774.0" y="0.0" z="53913.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.18" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50045.0" y="0.0" z="54045.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="49801.0" y="0.0" z="54143.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="49984.0" y="0.0" z="54257.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.17" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50165.0" y="0.0" z="54268.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="49934.0" y="0.0" z="54418.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="49878.0" y="0.0" z="54500.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50204.0" y="0.0" z="54455.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.17" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50008.0" y="0.0" z="54647.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50028.0" y="0.0" z="54731.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50378.0" y="0.0" z="54795.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50145.0" y="0.0" z="54755.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50308.0" y="0.0" z="54792.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50214.0" y="0.0" z="54928.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50519.0" y="0.0" z="55045.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50296.0" y="0.0" z="55179.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.14" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50347.0" y="0.0" z="55158.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50687.0" y="0.0" z="55223.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.17" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50557.0" y="0.0" z="55299.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50561.0" y="0.0" z="55336.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50677.0" y="0.0" z="55546.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50893.0" y="0.0" z="55543.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50773.0" y="0.0" z="55568.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.18" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50920.0" y="0.0" z="55617.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.10" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="50999.0" y="0.0" z="55566.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.14" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51041.0" y="0.0" z="55695.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51180.0" y="0.0" z="55873.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51234.0" y="0.0" z="55854.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51288.0" y="0.0" z="55857.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.18" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51385.0" y="0.0" z="55787.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51481.0" y="0.0" z="55875.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51524.0" y="0.0" z="55969.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51654.0" y="0.0" z="56002.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.14" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51690.0" y="0.0" z="55998.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.12" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51734.0" y="0.0" z="56073.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51824.0" y="0.0" z="56245.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.19" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="51846.0" y="0.0" z="56248.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52020.0" y="0.0" z="56305.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52048.0" y="0.0" z="56175.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.16" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52135.0" y="0.0" z="56312.0" name="x" meshFileName="dat\asteroid11.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52204.0" y="0.0" z="56230.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.18" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52334.0" y="0.0" z="56156.0" name="x" meshFileName="dat\asteroid9.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52402.0" y="0.0" z="56221.0" name="x" meshFileName="dat\asteroid8.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.13" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52461.0" y="0.0" z="56265.0" name="x" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52572.0" y="0.0" z="56241.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.15" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52651.0" y="0.0" z="56328.0" name="x" meshFileName="dat\asteroid7.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.11" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+    <create type="genericMesh" x="52734.0" y="0.0" z="56093.0" name="x" meshFileName="dat\asteroid6.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="0.1" name="x" />
+    <set_object_property property="pushRadius" value="62" name="x" />
+    <set_object_property property="angleDelta" value="0.17" name="x" />
+    <set_ship_text name="x" newname=" " class="Ring Fragment" />
+
+  <set_variable name="Burin_4_Ring" value="1.0" integer="yes" />
+
+  </event>
+  <event name="Burin - Run If Not In Sector [4]">
+    <if_variable name="Burin System" comparator="GREATER" value="0.0" />
+        <if_variable name="Sector" comparator="NOT" value="4" />
+      <if_variable name="Burin_4_Ring" comparator="EQUALS" value="1.0" />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+  <set_variable name="Burin_4_Ring" value="0.0" integer="yes" />
+
   </event>
 
   <event name="Burin - Run If In Sector [2, 5, 6]">

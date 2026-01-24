@@ -11,6 +11,10 @@ from jinja2 import Environment, FileSystemLoader
 import datetime
 import xml.etree.ElementTree as et
 
+# ugly but idgaf
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', 'render_server'))
+import jinja_functions as jf
+
 file = sys.argv[1]
 
 if not file.endswith('.xml'):
@@ -154,7 +158,10 @@ for i in range(w*h):
 template_env = Environment(loader=FileSystemLoader('..'))
 template_env.lstrip_blocks = True
 template_env.trim_blocks = True
+template_env.autoescape = False # this would mess with statement generation
 template_env.add_extension('jinja2.ext.do')
+
+jf.register(template_env)
 
 TMPL_FNAME = 'Maps/MapTemplate.jinja'
 TMPL_FOLDER = 'Maps/'
