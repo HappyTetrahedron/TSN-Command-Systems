@@ -690,6 +690,12 @@
     
 <create count="50" type="nebulas" nebType="2" startAngle="30" endAngle="65" startX="165966.0" startY="0.0" startZ="159529.0" radius="100000" randomRange="10000" />
     
+<create count="40" type="mines" startAngle="30" endAngle="340" startX="75038.0" startY="0.0" startZ="24051.0" radius="7000" />
+    
+<create count="40" type="mines" startAngle="-60" endAngle="250" startX="61655.0" startY="0.0" startZ="13854.0" radius="7000" />
+    
+<create count="40" type="mines" startAngle="120" endAngle="430" startX="86237.0" startY="0.0" startZ="11396.0" radius="7000" />
+    
 
     <set_variable name="Sector Entities" value="1.0" />
     <set_variable name="Burin System" value="2.0" />
@@ -749,6 +755,189 @@
 
 
     
+        <event name="Gate Offline" id_arme="4d2d3b10-fd64-4dd6-9e8d-b12ce7eb58a3" parent_id_arme="008d9df1-aa8c-4295-82ac-1fd4d150cb77">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="Sodrun Gate" />
+  </event>
+
+  <event name="Ship1 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="0" name2="Sodrun Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Sodrun Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship1" value="1.0" />
+  </event>
+  <event name="Ship1 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="0" name2="Sodrun Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Sodrun Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship1" value="0.0" />
+  </event> 
+  <event name="Ship2 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="1" name2="Sodrun Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Sodrun Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship2" value="1.0" />
+  </event>
+  <event name="Ship2 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="1" name2="Sodrun Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Sodrun Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship2" value="0.0" />
+  </event> 
+  <event name="Ship3 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="2" name2="Sodrun Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Sodrun Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship3" value="1.0" />
+  </event>
+  <event name="Ship3 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="2" name2="Sodrun Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Sodrun Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship3" value="0.0" />
+  </event> 
+  <event name="Ship4 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="3" name2="Sodrun Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Sodrun Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship4" value="1.0" />
+  </event>
+  <event name="Ship4 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="3" name2="Sodrun Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Sodrun Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship4" value="0.0" />
+  </event> 
+  <event name="Ship5 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="4" name2="Sodrun Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Sodrun Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship5" value="1.0" />
+  </event>
+  <event name="Ship5 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="4" name2="Sodrun Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Sodrun Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship5" value="0.0" />
+  </event> 
+  <event name="Ship6 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="5" name2="Sodrun Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Sodrun Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship6" value="1.0" />
+  </event>
+  <event name="Ship6 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="5" name2="Sodrun Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Sodrun Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship6" value="0.0" />
+  </event> 
+  <event name="Ship7 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="6" name2="Sodrun Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Sodrun Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship7" value="1.0" />
+  </event>
+  <event name="Ship7 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="6" name2="Sodrun Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Sodrun Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship7" value="0.0" />
+  </event> 
+  <event name="Ship8 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="7" name2="Sodrun Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Sodrun Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship8" value="1.0" />
+  </event>
+  <event name="Ship8 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="7" name2="Sodrun Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Sodrun Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship8" value="0.0" />
+  </event> 
+
+  <event name="Gate Online">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="Sodrun Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="Sodrun Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="Sodrun Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="Burin System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Burin to Sodrun" value="1.0" />
+    <set_variable name="Sodrun System" value="1.0" />
+    <set_variable name="Sector" value="0" />
+    <set_variable name="shipsInrange" value="0.0" integer="yes" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+    <set_variable name="Gate System" value="0.0" />
+  </event>
+
 
   <event name="Generate Sector Entities">
     <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
@@ -782,6 +971,12 @@
     
 <set_object_property property="angleDelta" value="0.1" name="Faith" />
     
+<create type="genericMesh" x="73946.0" y="0.0" z="12943.0" name="Sodrun Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    
+<set_ship_text name="Staggering Flow" race="Budron" class="Clergy" desc="Administrative station and police post overseeing operations at Sodrun Gate. Armed and capable of defence." scan_desc="Station is completely filled with phosphorous water." hailtext="Please respect our full authority in these waters, as the Prophecy foretold." />
+    
+<create type="neutral" x="85600.0" y="0.0" z="35523.0" angle="7.7" name="Staggering Flow" hullID="7714" sideValue="sectorSide" />
+    
 <set_ship_text name="Faith" class="Class A asteroid" desc="Dang, that's one large asteroid." scan_desc="Composition analysis shows that this asteroid is a chunk broken off the planetoid Slurp." />
     
 <set_ship_text name="MOONSlurp" class="Class A planetoid" desc="Asteroid large enough to keep itself round. Rich in dilithium minerals." scan_desc="Unique composition of mineral-rich regolith." />
@@ -791,6 +986,10 @@
 
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Burin III" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
 
+      <set_object_property property="artScale" value="1.0" name="Sodrun Gate" />
+      <set_object_property property="pushRadius" value="0.0" name="Sodrun Gate" />
+      <set_object_property property="angle" value="4.71238898" name="Sodrun Gate" />
+      <set_object_property property="rollDelta" value="0.3" name="Sodrun Gate" />
 
                  <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P0" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\Asteroid_6_Albedo.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
         <set_object_property property="pushRadius" value="0.0" name="P0" />
@@ -912,7 +1111,7 @@
     <set_object_property property="pushRadius" value="1000.0" name="MOONBackwater" />
     <set_ship_text name="MOONBackwater" newname="Backwater" />
 
-     
+         
     <set_variable name="ExitorRetreat" value="0.0" />
     <set_variable name="Sector Entities" value="3.0" /> 
   </event>
@@ -939,16 +1138,42 @@
     <destroy name=" " />
 
         <destroy name="Backwater" />
-         <destroy name="MOONSlurp" />
+             <destroy name="MOONSlurp" />
     <destroy name="MOONBackwater" />
     <destroy name="Tzamkitz" />
     <destroy name="Faith" />
+    <destroy name="Sodrun Gate" />
+    <destroy name="Staggering Flow" />
     <destroy name="Burin III" />
     <set_variable name="Burin System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
     
   </event>
 
+
+        <event name="Arrival From Sodrun">
+    <if_variable name="Sector" comparator="EQUALS" value="3" />
+    <if_variable name="Burin System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sodrun to Burin" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="Sodrun Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="Sodrun Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="Sodrun Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="Sodrun Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="Sodrun Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="Sodrun Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="Sodrun Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="Sodrun Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="Sodrun to Burin" value="0.0" />
+  </event>
 
 
   <event name="Create Burin Sector 4">

@@ -69,7 +69,7 @@
     <clear_ai name="{{ name }}" />
     {{ budronAI(name) }}
     <set_special name="{{ name }}" ship="1" /> <!-- overpowered -->
-    <set_ship_text name="{{ name }}" desc="Desolation class Battlecruiser.^1x high intensity pulse laser (Fore), 1x medium intensity pulse laser (Aft)^^Vessel is part of the Flow Control - the Budron border police." />
+    <set_ship_text name="{{ name }}" desc="Desolation class Battlecruiser.^1x high intensity pulse laser (Fore), 1x medium intensity pulse laser (Aft)^^Personal vessel of Aquila Aernias." />
   {% endcall %}
   {% endfor %}
 

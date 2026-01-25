@@ -86,9 +86,15 @@
     <add_ai type="CHASE_ANGER" name="Tzamkitz" />
     <set_ship_text name="Tzamkitz" race="Sechatzal" class="Outpost" desc="Sechatzal outpost. Purpose unknown." scan_desc="Installation is shielded by Sechatzal cloaking technology. Deep scan failed." hailtext="Greetings, terrans. Apologies, but we do not trade." />
     <create type="genericMesh" x="34705.0" y="0.0" z="36342.0" name="Faith" meshFileName="dat\asteroid8.dxs" textureFileName="dat\Asteroid_8_Albedo.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+    <create count="40" type="mines" startAngle="30" endAngle="340" startX="75038.0" startY="0.0" startZ="24051.0" radius="7000" />
     <set_object_property property="artScale" value="4.0" name="Faith" />
+    <create count="40" type="mines" startAngle="-60" endAngle="250" startX="61655.0" startY="0.0" startZ="13854.0" radius="7000" />
+    <create count="40" type="mines" startAngle="120" endAngle="430" startX="86237.0" startY="0.0" startZ="11396.0" radius="7000" />
     <set_object_property property="pushRadius" value="2500.0" name="Faith" />
     <set_object_property property="angleDelta" value="0.1" name="Faith" />
+    <create type="genericMesh" x="73946.0" y="0.0" z="12943.0" name="Sodrun Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <set_ship_text name="Staggering Flow" race="Budron" class="Clergy" desc="Administrative station and police post overseeing operations at Sodrun Gate. Armed and capable of defence." scan_desc="Station is completely filled with phosphorous water." hailtext="Please respect our full authority in these waters, as the Prophecy foretold." />
+    <create type="neutral" x="85600.0" y="0.0" z="35523.0" angle="7.7" name="Staggering Flow" hullID="7714" />
     <set_ship_text name="Faith" class="Class A asteroid" desc="Dang, that's one large asteroid." scan_desc="Composition analysis shows that this asteroid is a chunk broken off the planetoid Slurp." />
     <set_ship_text name="MOONSlurp" class="Class A planetoid" desc="Asteroid large enough to keep itself round. Rich in dilithium minerals." scan_desc="Unique composition of mineral-rich regolith." />
     <set_ship_text name="MOONBackwater" class="Class A planetoid" desc="Asteroid large enough to keep itself round. Kept in binary orbit with its partner Slurp." scan_desc="Composition: densely packed regolith." />
