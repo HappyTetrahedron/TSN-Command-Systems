@@ -1,0 +1,175 @@
+{# Adds various Budron NPC ships including Angelfin, Pressure Valve #}
+
+{% import 'Utils.xml' as util %}
+{% import 'Spawn.xml' as spawn %}
+{% import 'Fleets/Destroy.xml' as destroy %}
+{% import 'GM Menus.xml' as menu %}
+{% import 'Tools/Formation.xml' as form %}
+
+{% call destroy.onDestroy("BudronShips") %}
+  <destroy name="Angelfin" />
+  <destroy name="Pressure Valve" />
+  {% for i in range(1, 7) %}
+  <destroy name="Priest {{i}}" />
+  <destroy name="Escort {{i}}" />
+  {% endfor %}
+{% endcall %}
+
+{% macro budronAI(name) %}
+    <add_ai type="SPCL_AI" name="{{ name }}" />
+    <add_ai type="CHASE_AI_SHIP" name="{{ name }}" />
+    <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="{{ name }}" />
+    <add_ai type="CHASE_STATION" value1="1000" name="{{ name }}" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="500" name="{{ name }}" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="{{ name }}" />
+    <add_ai type="CHASE_ANGER" name="{{ name }}" />
+    <set_ship_text name="{{ name }}" race="Budron" />
+{% endmacro %}
+
+{% macro formationAI(name) %}
+    <add_ai type="SPCL_AI" name="{{ name }}" />
+    <add_ai type="CHASE_PLAYER" value1="2000" value2="500" name="{{ name }}" />
+    <add_ai type="CHASE_STATION" value1="1000" name="{{ name }}" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="500" name="{{ name }}" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="{{ name }}" />
+    <set_ship_text name="{{ name }}" race="Budron" />
+{% endmacro %}
+
+
+  {% for name in ["Angelfin"] %}
+  {% call spawn.spawn(util.spawnFactions.Neutral.key, "Budron", "+Angelfin") %}
+    <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="7704" sideValue="SideValue" fleetnumber="-1" />
+
+    <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+    <clear_ai name="{{ name }}" />
+    {{ formationAI(name) }}
+    <set_special name="{{ name }}" ship="1" /> <!-- overpowered -->
+    <set_ship_text name="{{ name }}" desc="Desolation class Battlecruiser.^1x high intensity pulse laser (Fore), 1x medium intensity pulse laser (Aft)^^Personal spaceship of Their Holines Clementus Sixtus the Seventh."
+      scan_desc="Though the ship is well capable of combat, the crew will do their utmost to avoid putting Their Holiness in danger, and will ignore all taunts." />
+  {% endcall %}
+  {% endfor %}
+
+  {% for name in ["Pressure Valve"] %}
+  {% call spawn.spawn(util.spawnFactions.Neutral.key, "Budron", "+PressureValve") %}
+    <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="7704" sideValue="SideValue" fleetnumber="-1" />
+
+    <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+    <clear_ai name="{{ name }}" />
+    {{ budronAI(name) }}
+    <set_special name="{{ name }}" ship="1" /> <!-- overpowered -->
+    <set_ship_text name="{{ name }}" desc="Desolation class Battlecruiser.^1x high intensity pulse laser (Fore), 1x medium intensity pulse laser (Aft)^^Vessel is part of the Flow Control - the Budron border police." />
+  {% endcall %}
+  {% endfor %}
+
+  {% for name in ["Undercurrent"] %}
+  {% call spawn.spawn(util.spawnFactions.Neutral.key, "Budron", "+Undercurrent") %}
+    <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="7704" sideValue="SideValue" fleetnumber="-1" />
+
+    <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+    <clear_ai name="{{ name }}" />
+    {{ budronAI(name) }}
+    <set_special name="{{ name }}" ship="1" /> <!-- overpowered -->
+    <set_ship_text name="{{ name }}" desc="Desolation class Battlecruiser.^1x high intensity pulse laser (Fore), 1x medium intensity pulse laser (Aft)^^Vessel is part of the Flow Control - the Budron border police." />
+  {% endcall %}
+  {% endfor %}
+
+  {% call spawn.spawn(util.spawnFactions.Neutral.key, "Budron", "+AngelfinFleet") %}
+    <!-- flagship -->
+    <create type="enemy" use_gm_position="" angle="0" name="Angelfin" hullID="7704" sideValue="SideValue" fleetnumber="-1" />
+    {% for i in range(1, 7) %}
+    <create type="neutral" use_gm_position="" angle="0" name="Priest {{i}}" hullID="7703" sideValue="SideValue" fleetnumber="98" />
+      <clear_ai name="Priest {{ i }}" />
+      {{ formationAI("Priest" + i|string) }}
+      <set_object_property property="surrenderChance" value="0" name="Priest {{ i }}" />
+      <set_ship_text name="Priest {{ i }}" scan_desc="The crew will do their utmost to avoid putting Their Holiness in danger, and will ignore all taunts." />
+    {% endfor %}
+
+    {% for name in ["Angelfin"] %}
+      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+      <clear_ai name="{{ name }}" />
+      {{ formationAI(name) }}
+      <set_ship_text name="{{ name }}" desc="Desolation class Battlecruiser.^1x high intensity pulse laser (Fore), 1x medium intensity pulse laser (Aft)^^Personal spaceship of Their Holines Clementus Sixtus the Seventh."
+        scan_desc="Though the ship is well capable of combat, the crew will do their utmost to avoid putting Their Holiness in danger, and will ignore all taunts." />
+    {% endfor %}
+
+    {{ form.beginFormation("AnglFin")}}
+  {% endcall %}
+
+  {% call spawn.spawn(util.spawnFactions.Neutral.key, "Budron", "+PressureValveFleet") %}
+    <!-- flagship -->
+    <create type="enemy" use_gm_position="" angle="0" name="Pressure Valve" hullID="7704" sideValue="SideValue" fleetnumber="-1" />
+    {% for i in range(1, 7) %}
+    <create type="neutral" use_gm_position="" angle="0" name="Escort {{i}}" hullID="7703" sideValue="SideValue" fleetnumber="98" />
+      <clear_ai name="Escort {{ i }}" />
+      {{ formationAI("Escort " + i|string) }}
+      <set_object_property property="surrenderChance" value="0" name="Escort {{ i }}" />
+    {% endfor %}
+
+    {% for name in ["Pressure Valve"] %}
+      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+      <clear_ai name="{{ name }}" />
+      {{ budronAI(name) }}
+      <set_ship_text name="{{ name }}" desc="Desolation class Battlecruiser.^1x high intensity pulse laser (Fore), 1x medium intensity pulse laser (Aft)^^Vessel is part of the Flow Control - the Budron border police." />
+        scan_desc="Though the ship is well capable of combat, the crew will do their utmost to avoid putting Their Holiness in danger." />
+    {% endfor %}
+
+    {{ form.beginFormation("Valve")}}
+  {% endcall %}
+
+{% call(name) form.formation("Valve", "Pressure Valve", {
+  "Escort 1": {
+    "straight": 1000,
+    "lateral": 700,
+  },
+  "Escort 2": {
+    "straight": 1000,
+    "lateral": -700,
+  },
+  "Escort 3": {
+    "straight": 2000,
+    "lateral": 1400,
+  },
+  "Escort 4": {
+    "straight": 2000,
+    "lateral": -1400,
+  },
+  "Escort 5": {
+    "straight": 3000,
+    "lateral": 2100,
+  },
+  "Escort 6": {
+    "straight": 3000,
+    "lateral": -2100,
+  },
+}) %}
+  {{ formationAI(name) }}
+{% endcall %}
+
+{% call(name) form.formation("AnglFin", "Angelfin", {
+  "Priest 1": {
+    "straight": 1000,
+    "lateral": 0,
+  },
+  "Priest 2": {
+    "straight": 860,
+    "lateral": 1000,
+  },
+  "Priest 3": {
+    "straight": -860,
+    "lateral": 1000,
+  },
+  "Priest 4": {
+    "straight": -1000,
+    "lateral": 0,
+  },
+  "Priest 5": {
+    "straight": -860,
+    "lateral": -1000,
+  },
+  "Priest 6": {
+    "straight": 860,
+    "lateral": -1000,
+  },
+}) %}
+  {{ formationAI(name) }}
+{% endcall %}

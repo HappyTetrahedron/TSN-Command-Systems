@@ -21,7 +21,7 @@ env = {
         "NebulaEffects",
         "FuelStatusDisplay",
         "ForceShipNames",
-        "VerdantFleet",
+        "BudronNPCs",
     ],
     "maps": [
         "Onwia",

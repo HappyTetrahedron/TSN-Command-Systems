@@ -21,5 +21,7 @@
        <!--{{ hook.name }}-->
       {{ hook.caller() }}
     {% endfor %}
+    <!-- Global constants -->
+    <set_variable name="Pi" value="3.1415926535989" />
     <!--End of Start Block-->
   </start>

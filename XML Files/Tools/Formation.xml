@@ -1,0 +1,95 @@
+{% import 'GM Menus.xml' as menu %}
+
+{# approximate cosine for range [-pi/2, pi/2] #}
+{% macro center_cos(x, pi) %}({{pi}} * {{pi}} - 4 * {{x}} * {{x}})/({{pi}} * {{pi}} + {{x}} * {{x}}){% endmacro %}
+
+{# With positive sign, approximate cosine for range [-3*pi/2, -pi/2]. With negative sign, for range [pi/2, 3*pi/2] #}
+{% macro rim_cos(x, pi, sideSign) %}(4 * {{pi}} * {{pi}} {{sideSign}} 8 * {{x}} * {{pi}} + 3 * {{x}} * {{x}})/({{x}} * {{x}} {{sideSign}} 2 * {{pi}} * {{x}} + 2 * {{pi}} * {{pi}}){% endmacro %}
+
+{# With positive sign, approximate sine for range [-pi, 0]. With negative sign, for range [0, pi] #}
+{% macro sin(x, pi, sideSign) %}(16 * {{x}} * ({{pi}} {{sideSign}} {{x}}))/(5 * {{pi}} * {{pi}} {{sideSign}} 4 * {{x}} * ({{pi}} {{sideSign}} {{x}})){% endmacro %}
+
+{% macro formation(uniqueID, flagship, escortShipData, projectiveSpeedCorrection=700) %}
+
+    {% for quadrant, data in {
+      "Q1": {
+        "sinSign": "-",
+        "angleMin": "0",
+        "angleMax": "1.57079632679",
+        "cosCenter": True,
+        "cosSign": "n/a",
+      },
+      "Q2": {
+        "sinSign": "-",
+        "angleMax": "3.1415926535989",
+        "angleMin": "1.57079632679",
+        "cosCenter": False,
+        "cosSign": "-",
+      },
+      "Q3": {
+        "sinSign": "+",
+        "angleMin": "-3.1415926535989",
+        "angleMax": "-1.57079632679",
+        "cosCenter": False,
+        "cosSign": "+",
+      },
+      "Q4": {
+        "sinSign": "+",
+        "angleMax": "0",
+        "angleMin": "-1.57079632679",
+        "cosCenter": True,
+        "cosSign": "n/a",
+      },
+    }.items() %}
+    <event name="{{ uniqueID }}FormationUpdate_{{ quadrant }}">
+    <if_timer_finished name="{{ uniqueID }}FormationTimer" />
+    <if_exists name="{{ flagship }}" />
+    <if_object_property property="angle" name="{{ flagship }}" comparator="GREATER_EQUAL" value="{{ data.angleMin }}" />
+    <if_object_property property="angle" name="{{ flagship }}" comparator="LESS" value="{{ data.angleMax }}" />
+
+    <get_object_property property="positionX" name="{{ flagship }}" variable="{{ uniqueID }}X" />
+    <get_object_property property="positionZ" name="{{ flagship }}" variable="{{ uniqueID }}Z" />
+    <get_object_property property="deltaX" name="{{ flagship }}" variable="{{ uniqueID }}DX" />
+    <get_object_property property="deltaZ" name="{{ flagship }}" variable="{{ uniqueID }}DZ" />
+    <get_object_property property="angle" name="{{ flagship }}" variable="{{ uniqueID }}Angle" />
+
+    <set_variable name="{{ uniqueID }}Sin" value="{{ sin(uniqueID + "Angle", "Pi", data.sinSign) }}" />
+    {% if data.cosCenter %}
+    <set_variable name="{{ uniqueID }}Cos" value="{{ center_cos(uniqueID + "Angle", "Pi") }}" />
+    {% else %}
+    <set_variable name="{{ uniqueID }}Cos" value="{{ rim_cos(uniqueID + "Angle", "Pi", data.cosSign) }}" />
+    {% endif %}
+
+    {% for name, offset in escortShipData.items() %}
+    <clear_ai name="{{ name }}" />
+    <add_ai type="POINT_THROTTLE" value4="2.0" value1="{{ uniqueID }}X + {{ projectiveSpeedCorrection }} * {{ uniqueID }}DX + {{ uniqueID }}Sin * {{ offset.straight }} + {{ uniqueID }}Cos * {{ offset.lateral }}" value3="{{ uniqueID }}Z + {{ projectiveSpeedCorrection }} * {{ uniqueID }}DZ + {{ uniqueID }}Cos * {{ offset.straight }} - {{ uniqueID }}Sin * {{ offset.lateral }}" name="{{ name }}" />
+    {{ caller(name) }}
+    {% endfor %}
+
+    <set_timer name="{{ uniqueID }}FormationTimer" seconds="1"/>
+  </event>
+  {% endfor %}
+
+  <event name="{{ uniqueID }}FormationUpdate_Dissolve">
+    <if_timer_finished name="{{ uniqueID }}FormationTimer" />
+    <if_not_exists name="{{ flagship }}" />
+    {% for name in escortShipData.keys() %}
+      <clear_ai name="{{ name }}" />
+      {{ caller(name) }}
+    {% endfor %}
+  </event>
+
+  {% set outercaller = caller %}
+  {% call menu.onButtonClick("{{ uniqueID }}Rst", menu.ai.aicommands) %}
+    <clear_ai name="{{ flagship }}" />
+    {{ outercaller(flagship) }}
+    {% for name in escortShipData.keys() %}
+      <clear_ai name="{{ name }}" />
+      {{ outercaller(name) }}
+    {% endfor %}
+  {% endcall %}
+{% endmacro %}
+
+{% macro beginFormation(uniqueID) %}
+  <set_timer name="{{ uniqueID }}FormationTimer" seconds="0"/>
+{% endmacro %}
