@@ -43,7 +43,7 @@
 
 {% set opposite = const.opposite %}
 {% macro shipConditionalEventAnd(conditions, invert=False) %}
-  {% for ship in shipConfigs %}
+  {% for ship in const.shipConfigs %}
     <event name="Ship{{ ship.id }} Conditional Event">
       {% for prop in conditions %}
         <if_object_property property="{{ prop.property }}" player_slot="{{ ship.slot }}" comparator="{{ opposite[prop.cmp] if invert else prop.cmp }}" value="{{ prop.val }}" />
@@ -53,7 +53,7 @@
   {% endfor %}
 {% endmacro %}
 {% macro shipConditionalEventOr(conditions, invert=False) %}
-{% for ship in shipConfigs %}
+{% for ship in const.shipConfigs %}
   {% for prop in conditions %}
     <event name="Ship{{ ship.id }} Conditional Event based on {{ prop.property }}">
       <if_object_property property="{{ prop.property }}" player_slot="{{ ship.slot }}" comparator="{{ opposite[prop.cmp] if invert else prop.cmp }}" value="{{ prop.val }}" />

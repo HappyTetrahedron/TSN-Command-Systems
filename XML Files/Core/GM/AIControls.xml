@@ -14,24 +14,25 @@
   <set_difficulty_level value="{{ choice }}" />
 {% endcall %}
 
-{{ menu.addEphemeralSubmenu("Set AI", menu.main.spawn, pos={"x": 100, "y": 134, "w": 120}) }}
-
-{% call menu.onMenuClick("Default", "Set AI") %}
-  <set_variable name="AI Override" value="0.0" integer="yes" />
-{% endcall %}
-{% for id, ai in aidefs.availableAIs.items() if ai.overrideAvailable %}
-  {% call menu.onMenuClick(ai.name, "Set AI") %}
-    <set_variable name="AISetting" value="{{ id }}.0" integer="yes" />
-    <set_variable name="AI Override" value="1.0" integer="yes" />
-  {% endcall %}
+{% set aiNames = ["Default"] %}
+{% for ai in aidefs.overrideAIs.values() %}
+  {% do aiNames.append(ai.name) %}
 {% endfor %}
-
-{% call(isCreate) menu.addStatementToMenu("GM AI config", menu.main.spawn) %}
-  {% if not isCreate %}
+{% call(choice) picker.Picker("AI", "Change", aiNames, "AI", 1, 100, 134) %}
+  {% if choice == "Default" %}
     <set_variable name="AI Override" value="0.0" integer="yes" />
+  {% else %}
+    {% for id, ai in aidefs.overrideAIs.items() if ai.name == choice %}
+      <set_variable name="AISetting" value="{{ id }}.0" integer="yes" />
+      <set_variable name="AI Override" value="1.0" integer="yes" />
+    {% endfor %}
   {% endif %}
+  <set_difficulty_level value="{{ choice }}" />
 {% endcall %}
 
+{% call(isCreate) menu.addStatementToMenu("GM AIOverride Pickers", menu.main.spawn) %}
+    <set_variable name="AIPicker_Should_Show" value="{{ 1 if isCreate else 0 }}.0" integer="yes" />
+{% endcall %}
 {% call(isCreate) menu.addStatementToMenu("GM AI Pickers", menu.main.ai) %}
     <set_variable name="SwSidePicker_Should_Show" value="{{ 1 if isCreate else 0 }}.0" integer="yes" />
     <set_variable name="DifPicker_Should_Show" value="{{ 1 if isCreate else 0 }}.0" integer="yes" />

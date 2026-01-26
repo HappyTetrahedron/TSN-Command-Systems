@@ -427,7 +427,7 @@
   "Neutral": {
     "key": "9",
     "name": "Neutral",
-    "defaultSide": 8,
+    "defaultSide": 2,
   },
   "Caltron": {
     "key": "10",

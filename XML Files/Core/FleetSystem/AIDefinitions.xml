@@ -389,6 +389,12 @@
   }
 %}
 
+{% set overrideAIs = {} %}
+
+{% for id, ai in availableAIs.items() if ai.overrideAvailable %}
+  {% do overrideAIs.update({id: ai}) %}
+{% endfor %}
+
 {% macro AutoAIEvents() %}
   {% for id, ai in availableAIs.items() if id < 1000 %}
     <event name="{{ id }} - {{ ai.name }} AI">
