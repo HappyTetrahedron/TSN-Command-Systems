@@ -112,6 +112,9 @@
     {% if menu.type == "dismissableSubmenu" %}
       <set_gm_button text="{{ menu.name }}\_Dismiss" />
     {% endif %}
+    {% if menu.type == "ephemeralSubmenu" %}
+      <set_gm_button text="{{ menu.name }}\_Cancel" />
+    {% endif %}
     {{ renderMenuBodyCommon(menu.name) }}
 {% endmacro %}
 
@@ -124,6 +127,9 @@
     {% endfor %}
     {% if menu.type == "dismissableSubmenu" %}
       <clear_gm_button text="{{ menu.name }}\_Dismiss" />
+    {% endif %}
+    {% if menu.type == "ephemeralSubmenu" %}
+      <clear_gm_button text="{{ menu.name }}\_Cancel" />
     {% endif %}
     {{ cleanupMenuBodyCommon(menu.name) }}
 {% endmacro %}
@@ -258,6 +264,7 @@
       {% for button in retrieve("menukeyRaw" + menu.name) %}
         {{ dismissIndependentMenu(menu.name, button) }}
       {% endfor %}
+      {{ dismissIndependentMenu(menu.name, menu.name + "\\_Cancel") }}
     {% endif %}
 
     {% if menu.type == "buttonExpandMenu" %}

@@ -12,11 +12,11 @@
     <create count="300" type="asteroids" startAngle="-20" endAngle="38" startX="65636.0" startY="0.0" startZ="174710.0" radius="96812" randomRange="10000" randomSeed="1" />
     <create count="300" type="asteroids" startAngle="-20" endAngle="35" startX="65636.0" startY="0.0" startZ="174710.0" radius="96812" randomRange="20000" />
     <create type="neutral" x="54553.0" y="0.0" z="30242.0" angle="282.7" name="Laminar Flow" hullID="7714" />
-    <create type="genericMesh" x="65114.0" y="0.0" z="27966.0" name="Sodrun Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="genericMesh" x="65114.0" y="0.0" z="27966.0" name="Sedrun Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
     <create type="neutral" x="71397.0" y="0.0" z="34886.0" angle="39.1" name="Turbulent Flow" hullID="7714" />
     <create type="neutral" x="11761.0" y="0.0" z="82139.0" angle="121.4" name="Buoyant Mission" hullID="7714" />
-    <set_ship_text name="Turbulent Flow" race="Budron" class="Clergy" desc="Administrative station and trade post overseeing operations at Sodrun Gate." scan_desc="Station is half filled with phosphorous water. The other half is dedicated to unpressured cargo boxes." hailtext="Please respect our full authority in these waters, as the Prophecy foretold." />
-    <set_ship_text name="Laminar Flow" race="Budron" class="Clergy" desc="Administrative station and trade post overseeing operations at Sodrun Gate." scan_desc="Station is half filled with phosphorous water. The other half is dedicated to unpressured cargo boxes." hailtext="Please respect our full authority in these waters, as the Prophecy foretold." />
+    <set_ship_text name="Turbulent Flow" race="Budron" class="Clergy" desc="Administrative station and trade post overseeing operations at Sedrun Gate." scan_desc="Station is half filled with phosphorous water. The other half is dedicated to unpressured cargo boxes." hailtext="Please respect our full authority in these waters, as the Prophecy foretold." />
+    <set_ship_text name="Laminar Flow" race="Budron" class="Clergy" desc="Administrative station and trade post overseeing operations at Sedrun Gate." scan_desc="Station is half filled with phosphorous water. The other half is dedicated to unpressured cargo boxes." hailtext="Please respect our full authority in these waters, as the Prophecy foretold." />
     <set_ship_text name="Buoyant Mission" race="Budron" class="Mining Platform" desc="Budron mining operation. Emits noxious outgassing. Proceed with caution." scan_desc="Station is completely filled with phosphorous water." hailtext="We wish only to pass through untroubled waters, Terran." />
   </event>
   <event name="Sector 2" id_arme="20f7737b-b971-49cd-a428-bea44d51ba6a">

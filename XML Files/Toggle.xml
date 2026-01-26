@@ -5,6 +5,30 @@
 {% macro Toggle(name, variable, valueMap, x=0, y=0, w=90, h=30, parentkey="") %}
 {% set hascoords = x!=0 or y!=0 %}
 {% for (button, value) in valueMap %}
+{% if value == "else" %}
+<event name="Restore Button {{ button }}">
+  <if_variable name="Toggle_{{ name | stripspace }}_ShouldShow" comparator="NOT" value="0.0" />
+  <if_variable name="_Toggle_{{ name }}_State" comparator="NOT" value="-403" />
+  {% for (otherbutton, otherval) in valueMap if otherbutton != button %}
+    <if_variable name="{{ variable }}" comparator="NOT" value="{{ otherval }}" />
+  {% endfor %}
+  {% for (otherbutton, _) in valueMap if otherbutton != button %}
+    {% if parentkey != "" %}
+    <clear_gm_button text="{{ parentkey }}\{{ otherbutton }}" />
+    {% else %}
+    <clear_gm_button text="{{ otherbutton }}" />
+    {% endif %}
+  {% endfor %}
+  {% if hascoords %}
+    <set_gm_button text="{{ button }}" x="{{ x }}" y="{{ y }}" h="{{ h }}" w="{{ w }}" />
+  {% elif parentkey != "" %}
+    <set_gm_button text="{{ parentkey }}\{{ button }}" />
+  {% else %}
+    <set_gm_button text="{{ button }}" />
+  {% endif %}
+  <set_variable name="_Toggle_{{ name }}_State" value="-403" integer="yes" />
+</event>
+{% else %}
 <event name="Restore Button {{ button }}">
   <if_variable name="Toggle_{{ name | stripspace }}_ShouldShow" comparator="NOT" value="0.0" />
   <if_variable name="_Toggle_{{ name }}_State" comparator="NOT" value="{{ value }}" />
@@ -25,13 +49,16 @@
   {% endif %}
   <set_variable name="_Toggle_{{ name }}_State" value="{{ value }}" integer="yes" />
 </event>
+{% endif %}
 <event name="OnClick Button {{ button }}">
+  {% set ni = loop.index % valueMap | length %}
+  {% set nextindex = ni if valueMap[ni][1] != "else" else (ni+1) % valueMap|length %}
   {% if parentkey != "" %}
   <if_gm_button text="{{ parentkey }}\{{ button }}" />
   {% else %}
   <if_gm_button text="{{ button }}" />
   {% endif %}
-  <set_variable name="{{ variable }}" value="{{valueMap[loop.index % valueMap|length][1]}}" integer="yes" />
+  <set_variable name="{{ variable }}" value="{{valueMap[nextindex][1]}}" integer="yes" />
 </event>
 {% endfor %}
 <event name="Hide Toggle {{ variable }}">

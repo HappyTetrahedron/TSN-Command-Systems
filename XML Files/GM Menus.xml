@@ -152,6 +152,8 @@
   {% set but = button if button else name %}
   {% set pk = parentMenu.key if parentMenu is mapping else parentMenu %}
   {% if pk %}
+    {% set valueMap = [(but + " <", mutexID), (but + " >", 0), (" " + but + " >", "else")] if mutexKey and mutexID else [(but + " >", 0), (but + " <", 1)] %}
+    {% set variable = "GM_" + mutexKey | stripspace + "_Selector" if mutexKey and mutexID else "GM_Submenu_" + but | stripspace + "_ShouldShow" %}
     {% if pos and "x" in pos and "y" in pos %}
       {% do track("specialbuttons" + pk, {
         "name": but,
@@ -160,15 +162,15 @@
         "y": pos.y,
         "w": pos.get("w", 90),
         "h": pos.get("h", 30),
-        "variable": "GM_Submenu_" + but | stripspace + "_ShouldShow",
-        "valueMap": [(but + " >", 0), (but + " <", 1)],
+        "variable": variable,
+        "valueMap": valueMap,
       }, name) %}
     {% elif not nobutton %}
       {% do track("buttons" + pk, {
         "name": but,
         "type": "toggle" if toggle else "standard",
-        "variable": "GM_Submenu_" + but | stripspace + "_ShouldShow",
-        "valueMap": [(but + " >", 0), (but + " <", 1)],
+        "variable": variable,
+        "valueMap": valueMap,
       }, name) %}
     {% endif %}
   {% endif %}
@@ -327,8 +329,6 @@
     <set_variable name="GM_Menu_Clear_All" value="0.0" integer="yes" />
     {% endmacro %}
 
-  {{ toggle.Toggle("AutoDel", "Auto Delete", [("DelOff", 0), ("DelOn", 1)], 40, 340, 50, 30) }}
-
   <event name="Refresh All Menus">
     <if_variable name="GM_Menu_Clear_All" comparator="GREATER_EQUAL" value="1.0" />
     {{ _clearAllMenus() }}
@@ -339,3 +339,6 @@
     <if_variable name="_GM_Menu_Root_Shown" comparator="EQUALS" value="1.0" />
     {{ _clearAllMenus() }}
   </event>
+
+  {# Order matters here: this toggle either needs to be set before the "Build Root Menu" event, or after the "Clear Root Menu" - it can't be in between or it won't get executed #}
+  {{ toggle.Toggle("AutoDel", "Auto Delete", [("DelOff", 0), ("DelOn", 1)], 40, 340, 50, 30) }}

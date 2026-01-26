@@ -105,7 +105,7 @@
     <add_ai type="DEFEND" value1="3000" value2="1000" name="--" />
   </event>
   <folder_arme name="Alien AI (100 - 149)" id_arme="1c478493-8c0e-45f5-ba6a-ecd2b4fbd624" parent_id_arme="f4e899cb-4edd-4729-ac40-d582379619fb" />
-  <event name="100 - Ximni" id_arme="9ea1a99d-faee-412c-a64f-f9cd7911060d" parent_id_arme="1c478493-8c0e-45f5-ba6a-ecd2b4fbd624">
+  <event name="305 - Ximni" id_arme="9ea1a99d-faee-412c-a64f-f9cd7911060d" parent_id_arme="1c478493-8c0e-45f5-ba6a-ecd2b4fbd624">
     <if_variable name="Auto AI Type" comparator="EQUALS" value="305.0" />
     <if_variable name="SideValue" comparator="NOT" value="2.0" />
     <clear_ai name="--" />
@@ -167,7 +167,7 @@
     <add_ai type="CHASE_AI_SHIP" value1="1000" value2="500" name="--" />
     <add_ai type="CHASE_ANGER" name="--" />
   </event>
-  <event name="105 - Sechateal" id_arme="6b695d90-5e00-473a-bef0-d843e4cb8f88" parent_id_arme="1c478493-8c0e-45f5-ba6a-ecd2b4fbd624">
+  <event name="105 - Sechatzal" id_arme="6b695d90-5e00-473a-bef0-d843e4cb8f88" parent_id_arme="1c478493-8c0e-45f5-ba6a-ecd2b4fbd624">
     <if_variable name="Auto AI Type" comparator="EQUALS" value="105.0" />
     <set_object_property property="surrenderChance" value="10" name="--" />
     <clear_ai name="--" />
@@ -187,6 +187,7 @@
     <add_ai type="LEADER_LEADS" name="--" />
     <add_ai type="FOLLOW_LEADER" name="--" />
     <add_ai type="LAUNCH_FIGHTERS" value1="8000" name="--" />
+    <set_ship_text name="--" race="Sechatzal" />
   </event>
   <event name="106 - Budron AI" id_arme="7c6f4932-33eb-459a-8219-6619127877e6" parent_id_arme="1c478493-8c0e-45f5-ba6a-ecd2b4fbd624">
     <if_variable name="Auto AI Type" comparator="EQUALS" value="106.0" />

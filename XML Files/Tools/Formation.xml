@@ -63,7 +63,7 @@
     {% for name, offset in escortShipData.items() %}
     <clear_ai name="{{ name }}" />
     <add_ai type="POINT_THROTTLE" value4="2.0" value1="{{ uniqueID }}X + {{ projectiveSpeedCorrection }} * {{ uniqueID }}DX + {{ uniqueID }}Sin * {{ offset.straight }} + {{ uniqueID }}Cos * {{ offset.lateral }}" value3="{{ uniqueID }}Z + {{ projectiveSpeedCorrection }} * {{ uniqueID }}DZ + {{ uniqueID }}Cos * {{ offset.straight }} - {{ uniqueID }}Sin * {{ offset.lateral }}" name="{{ name }}" />
-    {{ caller(name) }}
+    {{ caller(name, True) }}
     {% endfor %}
 
     <set_timer name="{{ uniqueID }}FormationTimer" seconds="1"/>
@@ -75,17 +75,22 @@
     <if_not_exists name="{{ flagship }}" />
     {% for name in escortShipData.keys() %}
       <clear_ai name="{{ name }}" />
-      {{ caller(name) }}
+      {{ caller(name, False) }}
     {% endfor %}
   </event>
 
   {% set outercaller = caller %}
-  {% call menu.onButtonClick("{{ uniqueID }}Rst", menu.ai.aicommands) %}
+  {% call menu.onButtonClick(uniqueID + "Rst", menu.ai.aicommands) %}
+    <if_exists name="{{ flagship }}" />
     <clear_ai name="{{ flagship }}" />
-    {{ outercaller(flagship) }}
+    {{ outercaller(flagship, False) }}
+  {% endcall %}
+  {% call menu.onButtonClick(uniqueID + "Rst", menu.ai.aicommands) %}
+    <if_not_exists name="{{ flagship }}" />
+    {{ outercaller(flagship, False) }}
     {% for name in escortShipData.keys() %}
       <clear_ai name="{{ name }}" />
-      {{ outercaller(name) }}
+      {{ outercaller(name, False) }}
     {% endfor %}
   {% endcall %}
 {% endmacro %}

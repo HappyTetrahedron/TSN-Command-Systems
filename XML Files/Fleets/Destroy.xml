@@ -28,6 +28,9 @@
     <set_variable name="DestroyNamed" value="1.0" integer="yes" />
     <set_variable name="DestroyWrecks" value="1.0" integer="yes" />
 {% endcall %}
+{% call menu.onButtonClick("DelWrecks", menu.main.base) %}
+    <set_variable name="DestroyWrecks" value="1.0" integer="yes" />
+{% endcall %}
 
   <event name="Begin Cycle">
     <if_variable name="DestroyNamed" comparator="EQUALS" value="1.0" />

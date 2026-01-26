@@ -7,7 +7,7 @@
   <set_variable name="Ordnance" value="1.0" integer="yes" />
 {% endcall %}
 
-{{ menu.addButtonExpandMenu("Supplies", menu.main.interaction, x=230, y=95, h=30, w=100, rows=12) }}
+{{ menu.addButtonExpandMenu("Supplies", menu.main.interaction, x=230, y=95, h=30, w=100, rows=12, mutexKey="IntSub", mutexID=1) }}
 
 {{ menu.addButtonToggle("SupplyOrdnDir", "Supplies", "Ordnance", [("Add Ordn", 1), ("Rmv Ordn", -1)]) }}
 

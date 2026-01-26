@@ -692,3 +692,7 @@
   <set_variable name="push" value="400.0" integer="yes" />
   <set_variable name="scale" value="0.3" />
 {% endcall %}
+
+{% call menu.onButtonClick("+Generic", "Wrecks") %}
+  <create type="monster" monsterType="8" use_gm_position="" name="WRECK" />
+{% endcall %}

@@ -75,5 +75,3 @@
     <set_variable name="Mission End" value="1.0" />
     <set_timer name="Mission End" seconds="3" />
   {% endcall %}
-  {% call menu.onMenuClick("Cancel", "End Mission") %}
-  {% endcall %}

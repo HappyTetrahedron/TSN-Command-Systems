@@ -3,6 +3,7 @@
 {% import 'Start.xml' as start %}
 {% import 'Spawn.xml' as spawn %}
 {% import 'GM Menus.xml' as menu %}
+{% import 'Picker.xml' as picker %}
 {% import 'PlayerTracking.xml' as tracking %}
 
 {% call start.onStart("Shuttles") %}
@@ -11,6 +12,8 @@
     {% endfor %}
     <set_variable name="ShuttleSelect" value="0.0" integer="yes" />
     <set_variable name="OperationType" value="0.0" integer="yes" />
+    <set_variable name="CargoTargetShip" value="1.0" integer="yes" />
+    <set_variable name="ShuttleCargoDir" value="1.0" integer="yes" />
 {% endcall %}
 
 {% call(ship) tracking.onSpawn("Shuttles") %}
@@ -426,4 +429,32 @@
     <set_player_station_carried name="{{ ship.shuttle }} Pickup" raceKeys="TSN" hullKeys="TSN Shuttle shuttle" singleSeatName="{{ ship.shuttle }}" />
     <set_variable name="{{ ship.shuttle }} Status" value="1.0" integer="yes" />
   {% endcall %}
+{% endfor %}
+
+{% call(_) picker.Picker("ShuCargo", "SWCH", range(1, 8), "Ship", 1, 230, 95, track="CargoTargetShip") %}{% endcall %}
+
+{{ menu.addButtonExpandMenu("Cargos", menu.main.interaction, x=230, y=125, h=30, w=100, rows=12, mutexKey="IntSub", mutexID=2) }}
+{% call(isCreate) menu.addStatementToMenu("shippicker", "Cargos") %}
+  <set_variable name="ShuCargoPicker_Should_Show" value="{{ 1 if isCreate else 0 }}" integer="yes" />
+{% endcall %}
+
+{{ menu.addButtonToggle("SupplyCarDir", "Cargos", "ShuttleCargoDir", [("Add Cargo", 1), ("Rmv Cargo", -1)]) }}
+
+{% for cargo in util.cargoTypes if not cargo.is_nothing %}
+  {% call menu.onButtonClick(cargo.name, "Cargos") %}
+    <set_variable name="ShuttleCargoTypeToAdd" value="{{ cargo.id }}" integer="yes" />
+  {% endcall %}
+{% endfor %}
+
+{# sigh ... this *almost* worked with string var substitution but not quite - string var substitution does not work inside numerical expression. #}
+{# So I can use that for setting a dynamic variable, but not for reading a dynamic variable... -.- #}
+{% for ship in util.shipConfigs %}
+  {% for cargo in util.cargoTypes if not cargo.is_nothing %}
+    <event name="Ship {{ ship.id }} add or remove {{ cargo.name }}">
+      <if_variable name="ShuttleCargoTypeToAdd" comparator="EQUALS" value="{{ cargo.id }}.0" />
+      <if_variable name="CargoTargetShip" comparator="EQUALS" value="{{ ship.id }}.0" />
+      <set_variable name="Ship{{ ship.id }}{{ cargo.variable }}" value="Ship{{ ship.id }}{{ cargo.variable }}+ShuttleCargoDir" integer="yes" />
+      <set_variable name="ShuttleCargoTypeToAdd" value="0.0" integer="yes" />
+    </event>
+  {% endfor %}
 {% endfor %}

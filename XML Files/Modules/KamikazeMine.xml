@@ -13,8 +13,8 @@
     <set_variable name="MKMShip{{ ship.id }}Bombs" value="1.0" integer="yes" />
   {% endcall %}
 
-  {% call() menu.onButtonClick("Bombs Ship" + ship.id, "Supplies") %}
-    <set_variable name="MKMShip{{ ship.id }}Bombs" value="MKMShip{{ ship.id }}Bombs + Ordnance" integer="yes" />
+  {% call() menu.onButtonClick("Bombs Ship" + ship.id, "Cargos") %}
+    <set_variable name="MKMShip{{ ship.id }}Bombs" value="MKMShip{{ ship.id }}Bombs + ShuttleCargoDir" integer="yes" />
   {% endcall %}
 
   {# Menu Lifecycle #}
