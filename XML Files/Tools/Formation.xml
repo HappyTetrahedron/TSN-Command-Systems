@@ -1,4 +1,4 @@
-{% import 'GM Menus.xml' as menu %}
+{% import 'Core/Menus.xml' as menu %}
 
 {# approximate cosine for range [-pi/2, pi/2] #}
 {% macro center_cos(x, pi) %}({{pi}} * {{pi}} - 4 * {{x}} * {{x}})/({{pi}} * {{pi}} + {{x}} * {{x}}){% endmacro %}

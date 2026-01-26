@@ -1,8 +1,8 @@
 {# Adds the notorious pirate ship Crooked Star #}
-{% import 'Spawn.xml' as spawn %}
-{% import 'Utils.xml' as util %}
+{% import 'Core/Spawn.xml' as spawn %}
+{% import 'Constants.xml' as const %}
 
-{% call spawn.spawn(util.spawnFactions.Pirate.key, "Skull Pirates", "+Crooked Star") %}
+{% call spawn.spawn(const.spawnFactions.Pirate.key, "Skull Pirates", "+Crooked Star") %}
   <create type="enemy" use_gm_position="" angle="0" name="Crooked Star" hullID="7107" sideValue="SideValue" fleetnumber="-1" />
   <clear_ai name="Crooked Star" />
   <set_object_property property="surrenderChance" value="0" name="Crooked Star" />

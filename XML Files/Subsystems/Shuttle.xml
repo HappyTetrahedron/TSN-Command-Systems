@@ -1,13 +1,13 @@
-{% import 'Utils.xml' as util %}
-{% import 'Comms.xml' as comms %}
-{% import 'Start.xml' as start %}
-{% import 'Spawn.xml' as spawn %}
-{% import 'GM Menus.xml' as menu %}
-{% import 'Picker.xml' as picker %}
-{% import 'PlayerTracking.xml' as tracking %}
+{% import 'Constants.xml' as const %}
+{% import 'Core/Comms.xml' as comms %}
+{% import 'Core/Start.xml' as start %}
+{% import 'Core/Spawn.xml' as spawn %}
+{% import 'Core/Menus.xml' as menu %}
+{% import 'Tools/Picker.xml' as picker %}
+{% import 'Core/PlayerTracking.xml' as tracking %}
 
 {% call start.onStart("Shuttles") %}
-    {% for ship in util.shipConfigs %}
+    {% for ship in const.shipConfigs %}
       <set_player_carried_type player_slot="{{ ship.slot }}" bay_slot="0" hullID="102" name="{{ ship.shuttle }}" />
     {% endfor %}
     <set_variable name="ShuttleSelect" value="0.0" integer="yes" />
@@ -21,9 +21,9 @@
 {% endcall %}
 
 {# Ship-to-ship RVs #}
-{% for ship in util.shipConfigs %}
-  {% for othership in util.shipConfigs if not othership.id == ship.id %}
-    {% for cargo in util.cargoTypes if not cargo.is_nothing %}
+{% for ship in const.shipConfigs %}
+  {% for othership in const.shipConfigs if not othership.id == ship.id %}
+    {% for cargo in const.cargoTypes if not cargo.is_nothing %}
       <event name="Cargo: {{ ship.shuttle }} to Ship{{ othership.id }}">
         <if_variable name="{{ ship.shuttle}}CargoType" comparator="EQUALS" value="{{ cargo.id }}.0" />
         <if_distance name1="{{ ship.shuttle }}" name2="C{{ othership.id }} Rv" comparator="LESS" value="100.0" />
@@ -40,7 +40,7 @@
   {% endfor %}
 {% endfor %}
 
-{% for ship in util.shipConfigs %}
+{% for ship in const.shipConfigs %}
   <event name="{{ ship.shuttle }} Initial Settings">
     <if_variable name="{{ ship.shuttle }} Status" comparator="EQUALS" value="1.0" />
     <set_variable name="{{ ship.shuttle }}MaxCargo" value="1.0" integer="yes" />
@@ -80,7 +80,7 @@
   </event>
 
   {# Cargo Tracking #}
-  {% for cargo in util.cargoTypes if not cargo.is_nothing %}
+  {% for cargo in const.cargoTypes if not cargo.is_nothing %}
     <event name="No {{ cargo.name }}">
       <if_variable name="ShuttleSelect" comparator="EQUALS" value="{{ ship.id }}" />
       <if_variable name="OperationType" comparator="EQUALS" value="{{ cargo.loadOp }}.0" />
@@ -163,7 +163,7 @@
 
 {# RV spawn #}
 {{ menu.addDismissableSubmenu("RVs", menu.main.poi) }}
-{% for cargo in util.cargoTypes if not cargo.is_nothing %}
+{% for cargo in const.cargoTypes if not cargo.is_nothing %}
   {% call spawn.createNumberedConditional("Rv|rvnumber|", cargo.name + " Drop", "RVs", "RV Points", "rvnumber", cargo.rv.drop) %}
     <create type="genericMesh" use_gm_position="" name="Rv|rvnumber|" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
     <incoming_comms_text from="SYSTEMS" type="PLAYER">{{ cargo.name }} deployment zone identified.</incoming_comms_text>
@@ -189,7 +189,7 @@
     {% if 'text' in cargo %}
       <set_ship_text name="Rv|rvnumber|" desc="{{ cargo.text.desc }}" scan_desc="{{ cargo.text.scan_desc }}" hailtext="{{ cargo.text.get('hailtext', "") }}" />
     {% endif %}
-    {% for ship in util.shipConfigs %}
+    {% for ship in const.shipConfigs %}
       <warning_popup_message message="Rv|rvnumber|: {{ cargo.name }} Pickup Identified" consoles="CF" player_slot="{{ ship.slot }}" />
     {% endfor %}
     <set_object_property property="pushRadius" value="1.0" name="Rv|rvnumber|" />
@@ -205,9 +205,9 @@
 {{ spawn.scaffoldNumbered("Rv|rvnumber|", "RV Points", "rvnumber", amount=9) }}
 
 {# RV pickup #}
-{% for ship in util.shipConfigs %}
+{% for ship in const.shipConfigs %}
   {% for rv in range(1, 10) %}
-    {% for cargo in util.cargoTypes if not cargo.is_nothing %}
+    {% for cargo in const.cargoTypes if not cargo.is_nothing %}
       <event name="{{ cargo.name }} Drop">
         <if_variable name="Rv{{ rv }}Type" comparator="EQUALS" value="{{ cargo.rv.drop }}.0" />
         <if_variable name="{{ ship.shuttle }}CargoType" comparator="EQUALS" value="{{ cargo.id }}.0" />
@@ -259,7 +259,7 @@
 {# Custom pickuppables #}
 
 {% macro shuttlePickup(name, resultingCargoType) %}
-  {% for ship in util.shipConfigs %}
+  {% for ship in const.shipConfigs %}
     {% for id in range(1, 6) %}
       <event name="Pickup {{ name }} {{ id }}">
         <if_exists name="{{ name }} {{ id }}" />
@@ -281,7 +281,7 @@
     <if_variable name="{{ ship.shuttle }}CargoType" comparator="EQUALS" value="{{ cargoType }}" />
       <incoming_comms_text from="CHANNEL {{ ship.id }}" sideValue="playerSide" type="STATUS">{{ ship.shuttle }} has {{ name | lower }} loaded.</incoming_comms_text>
   {% endcall %}
-  {% for ship in util.shipConfigs %}
+  {% for ship in const.shipConfigs %}
     <event name="Unload {{ name }}">
       <if_variable name="ShuttleSelect" comparator="EQUALS" value="{{ ship.id }}" />
       <if_variable name="OperationType" comparator="EQUALS" value="1.0" />
@@ -302,7 +302,7 @@
 
 {% macro createPickuppable(name_template, button, counter) %}
   {% do track("spawn12", "Other\\" + button) %}
-  {% call spawn.spawn(util.spawnFactions.Static.key, "Other", button) %}
+  {% call spawn.spawn(const.spawnFactions.Static.key, "Other", button) %}
     <set_variable name="Spawn_{{ button }}" value="1.0" integer="yes" />
   {% endcall %}
   {% set outercaller = caller %}
@@ -341,7 +341,7 @@
 {% endcall %}
 
 {# Black boxes #}
-{% for ship in util.shipConfigs %}
+{% for ship in const.shipConfigs %}
   {% for id in range(1, 6) %}
   <event name="Black Box {{ id }} collection {{ ship.shuttle }}">
     <if_exists name="*{{ id }}*" />
@@ -406,7 +406,7 @@
   <set_object_property property="pushRadius" value="10.0" name="*|BBNumber|*" />
   <set_object_property property="artScale" value="0.02" name="*|BBNumber|*" />
   <set_object_property property="positionY" value="2.5" name="*|BBNumber|*" />
-  {% for ship in util.ShipConfigs %}
+  {% for ship in const.ShipConfigs %}
     <set_variable name="Black Box |BBNumber| {{ ship.shuttle }} Retrieves" value="0.0" integer="yes" />
   {% endfor %}
 {% endcall %}
@@ -414,7 +414,7 @@
 {# Shuttle Resupply #}
 {{ menu.addDismissableSubmenu("Shuttle Resup", menu.main.interaction) }}
 
-{% for ship in util.shipConfigs %}
+{% for ship in const.shipConfigs %}
   {% call menu.onMenuClick(ship.shuttle, "Shuttle Resup") %}
     <create type="station" use_gm_position="" name="{{ ship.shuttle }} Pickup" hullID="1058" sideValue="2" />
     <set_object_property property="canBuild" value="0" name="{{ ship.shuttle }} Pickup" />
@@ -440,7 +440,7 @@
 
 {{ menu.addButtonToggle("SupplyCarDir", "Cargos", "ShuttleCargoDir", [("Add Cargo", 1), ("Rmv Cargo", -1)]) }}
 
-{% for cargo in util.cargoTypes if not cargo.is_nothing %}
+{% for cargo in const.cargoTypes if not cargo.is_nothing %}
   {% call menu.onButtonClick(cargo.name, "Cargos") %}
     <set_variable name="ShuttleCargoTypeToAdd" value="{{ cargo.id }}" integer="yes" />
   {% endcall %}
@@ -448,8 +448,8 @@
 
 {# sigh ... this *almost* worked with string var substitution but not quite - string var substitution does not work inside numerical expression. #}
 {# So I can use that for setting a dynamic variable, but not for reading a dynamic variable... -.- #}
-{% for ship in util.shipConfigs %}
-  {% for cargo in util.cargoTypes if not cargo.is_nothing %}
+{% for ship in const.shipConfigs %}
+  {% for cargo in const.cargoTypes if not cargo.is_nothing %}
     <event name="Ship {{ ship.id }} add or remove {{ cargo.name }}">
       <if_variable name="ShuttleCargoTypeToAdd" comparator="EQUALS" value="{{ cargo.id }}.0" />
       <if_variable name="CargoTargetShip" comparator="EQUALS" value="{{ ship.id }}.0" />

@@ -1,16 +1,16 @@
 <mission_data version="1.7" background_id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4" playerShipNames_arme="TSN Sabre\TSN Valiant\TSN Lancer\TSN Stalker\TSN Scorpion\TSN Horizon\TSN Necessity\TSN Hunter">
   <mission_description>TSN Command Systems Version {{ g.version }}, compiled at {{ g.time }}. Maps:{% for map in g.data.get("maps", []) %} {{ map }}{% endfor %} - Extensions:{% for script in g.data.get("extensions", []) %} {{ script }}{% endfor %}</mission_description>
-{% include 'CoreLifecycle.xml' %}
+{% include 'Core/CoreLifecycle.xml' %}
 {% include 'Legacy Maps/LegacyMapSystems.jinja' %}
-{% include 'Custom Config.xml' %}
-{% include 'Spawn.xml' %}
-{% include 'Fleets/FleetSystem.xml' %}
+{% include 'Core/CustomConfig.xml' %}
+{% include 'Core/Spawn.xml' %}
+{% include 'Core/FleetSystem/FleetSystem.xml' %}
 {% include 'Subsystems/Subsystems.xml' %}
-{% include 'GM/GMTools.xml' %}
+{% include 'Core/GM/GMTools.xml' %}
 
-{% import 'ModuleUtils.xml' as modutil %}
-{% import 'Utils.xml' as util %}
-{% for ship in util.shipConfigs %}
+{% import 'Tools/ModuleButtons.xml' as modutil %}
+{% import 'Constants.xml' as const %}
+{% for ship in const.shipConfigs %}
   {% for module in g.data.get("modules", {}).get("ship" + ship.id, []) %}
       {% import 'Modules/' + module + '.xml' as mod %}
       {{ mod.render(ship, modutil) }}
@@ -25,12 +25,12 @@
 
 {# Below are core files that track information from other files/modules and therefore need to come last. #}
 {# Their relative order is also sensitive; handle with care. #}
-{% include 'MapSystem/MapSystem.xml' %}
+{% include 'Core/MovementSystem/MovementSystem.xml' %}
 {# Having `Destroy` before `MapSystem` breaks auto-delete on transitions involving E or 5 - for not-yet-understood reasons #}
-{% include 'Fleets/Destroy.xml' %}
-{% include 'PlayerTracking.xml' %}
-{% include 'Comms.xml' %}
-{% include 'GM Menus.xml' %}
-{% include 'End.xml' %}
-{% include 'Start.xml' %}
+{% include 'Core/Destroy.xml' %}
+{% include 'Core/PlayerTracking.xml' %}
+{% include 'Core/Comms.xml' %}
+{% include 'Core/Menus.xml' %}
+{% include 'Core/End.xml' %}
+{% include 'Core/Start.xml' %}
 </mission_data>

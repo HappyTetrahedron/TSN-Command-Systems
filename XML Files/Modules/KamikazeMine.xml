@@ -1,7 +1,7 @@
 {# KamikazeMine module - add a shuttle-deployable mine field to a ship. #}
 
-{% import "GM Menus.xml" as menu %}
-{% import "Start.xml" as start %}
+{% import "Core/Menus.xml" as menu %}
+{% import "Core/Start.xml" as start %}
 
 {% set moduleName = "KamikazeMine" %}
 {% set mineCargo = "101" %}

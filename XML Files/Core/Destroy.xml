@@ -1,0 +1,89 @@
+{# Destroy auto-named object. Refers to dynamic state - include this at the end. #}
+{% import 'Constants.xml' as const %}
+{% import 'Core/Menus.xml' as menu %}
+{% import 'Core/Start.xml' as start %}
+
+{% macro onDestroy(identifier) %}
+  {% do track("onDestroy", caller, identifier) %}
+{% endmacro %}
+
+{% call start.onStart("Destruction") %}
+    <set_variable name="Auto Delete" value="0.0" integer="yes" />
+    <set_variable name="combinednumber0" value="0.0" integer="yes" />
+    <set_variable name="combinednumber1" value="9.0" integer="yes" />
+    <set_variable name="combinednumber2" value="19.0" integer="yes" />
+    <set_variable name="combinednumber3" value="29.0" integer="yes" />
+    <set_variable name="combinednumber4" value="39.0" integer="yes" />
+    <set_variable name="combinednumber5" value="49.0" integer="yes" />
+    <set_variable name="combinednumber6" value="59.0" integer="yes" />
+    <set_variable name="combinednumber7" value="69.0" integer="yes" />
+    <set_variable name="combinednumber8" value="79.0" integer="yes" />
+    <set_variable name="combinednumber9" value="89.0" integer="yes" />
+    <set_variable name="StaticBlackhole" value="0.0" integer="yes" />
+    <set_variable name="DestroyNamed" value="0.0" integer="yes" />
+    <set_variable name="DestroyWrecks" value="0.0" integer="yes" />
+{% endcall %}
+
+{% call menu.onButtonClick("DelShips", menu.main.base) %}
+    <set_variable name="DestroyNamed" value="1.0" integer="yes" />
+    <set_variable name="DestroyWrecks" value="1.0" integer="yes" />
+{% endcall %}
+{% call menu.onButtonClick("DelWrecks", menu.main.base) %}
+    <set_variable name="DestroyWrecks" value="1.0" integer="yes" />
+{% endcall %}
+
+  <event name="Begin Cycle">
+    <if_variable name="DestroyNamed" comparator="EQUALS" value="1.0" />
+    {% for i in range(10) %}
+      <set_variable name="combinednumber{{ i }}" value="{{ i * 10 }}.0" integer="yes" />
+    {% endfor %}
+    <set_gm_button text="DELETING SHIPS" x="150" y="100" h="30" w="200" />
+    <set_variable name="DestroyNamed" value="2.0" integer="yes" />
+    {% set callers = retrieve("onDestroy") %}
+    {% for caller in callers %}
+      {{ caller() }}
+    {% endfor %}
+  </event>
+
+  <event name="Destroy">
+    <if_variable name="DestroyNamed" comparator="EQUALS" value="2.0" />
+    {% for cn in range(10) %}
+      {% for l in const.FleetLetters %}
+        <destroy name="{{ l }}{{ '0' if cn == 0 else '' }}|combinednumber{{ cn }}|" />
+      {% endfor %}
+      <set_variable name="combinednumber{{ cn }}" value="combinednumber{{ cn }}+1" integer="yes" />
+    {% endfor %}
+  </event>
+
+  <event name="End Cycle">
+    <if_variable name="combinednumber0" comparator="EQUALS" value="10.0" />
+    {% for i in range(10) %}
+      <set_variable name="combinednumber{{ i }}" value="{{ i * 10 }}.0" integer="yes" />
+    {% endfor %}
+    <clear_gm_button text="DELETING SHIPS" />
+    <set_variable name="DestroyNamed" value="0.0" integer="yes" />
+  </event>
+
+  <event name="Destroy Wrecks">
+    <if_variable name="DestroyWrecks" comparator="EQUALS" value="1.0" />
+    <if_exists name="WRECK" />
+    <destroy name="WRECK" />
+  </event>
+  <event name="Destroy Wrecks End">
+    <if_variable name="DestroyWrecks" comparator="EQUALS" value="1.0" />
+    <if_not_exists name="WRECK" />
+    <set_variable name="DestroyWrecks" value="0.0" integer="yes" />
+  </event>
+
+  <event name="Auto Destroy Enabled1" id_arme="6540003c-2276-4027-97e5-f7e0e37e7052" parent_id_arme="1d1f904e-0da9-4f0f-9497-9a3f0077bc0a">
+    <if_variable name="Auto Delete" comparator="EQUALS" value="1.0" />
+    <if_variable name="ExitorRetreat" comparator="EQUALS" value="1.0" />
+    <set_variable name="DestroyNamed" value="1.0" integer="yes" />
+    <set_variable name="Auto Delete" value="2.0" integer="yes" />
+  </event>
+  <event name="Auto Destroy Enabled2" id_arme="f8ede700-4c1e-43d3-bb10-75b6e732e6d2" parent_id_arme="1d1f904e-0da9-4f0f-9497-9a3f0077bc0a">
+    <if_variable name="Auto Delete" comparator="EQUALS" value="2.0" />
+    <if_variable name="ExitorRetreat" comparator="NOT" value="1.0" />
+    <if_variable name="DestroyNamed" comparator="EQUALS" value="0.0" />
+    <set_variable name="Auto Delete" value="1.0" integer="yes" />
+  </event>

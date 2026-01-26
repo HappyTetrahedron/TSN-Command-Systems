@@ -1,8 +1,8 @@
-{% import 'Utils.xml' as util %}
-{% import 'PlayerTracking.xml' as tracking %}
+{% import 'Constants.xml' as const %}
+{% import 'Core/PlayerTracking.xml' as tracking %}
 
 {% call(ship) tracking.onRespawn("RespawnIncapacitated") %}
-  {% for system, property in util.systemIdentifiers.items() %}
+  {% for system, property in const.systemIdentifiers.items() %}
     {% for i in range(6) %}
       <set_player_grid_damage systemType="{{ property }}" player_slot="{{ ship.slot }}" value="1.0" countFrom="front" index="{{ i }}" />
     {% endfor %}

@@ -1,10 +1,10 @@
 {# Adds a radiation source hazard to the game #}
-{% import 'GM Menus.xml' as menu %}
-{% import 'Utils.xml' as util %}
-{% import 'Start.xml' as start %}
+{% import 'Core/Menus.xml' as menu %}
+{% import 'Constants.xml' as const %}
+{% import 'Core/Start.xml' as start %}
 
 {% call start.onStart("Radiation") %}
-  {% for ship in util.shipConfigs %}
+  {% for ship in const.shipConfigs %}
     <set_variable name="Ship{{ ship.id }}Level" value="0" integer="yes" />
     <set_variable name="Ship{{ ship.id }}RadDis" value="0" integer="yes" />
   {% endfor %}
@@ -25,7 +25,7 @@
 <event name="Radiation Alert" id_arme="77581f6f-6ccb-4c07-965d-f7039bf91e90" parent_id_arme="a86142bd-50be-414e-8dd4-3cea6b57aaec">
   <if_variable name="Active Radiation" comparator="EQUALS" value="1.0" />
   <if_exists name="'" />
-  {% for ship in util.shipConfigs %}
+  {% for ship in const.shipConfigs %}
     <warning_popup_message message="Radiation Detected" consoles="MHWESC" player_slot="{{ ship.slot }}" />
     <set_timer name="Ship{{ ship.id }} Radiation" seconds="2" />
   {% endfor %}
@@ -46,7 +46,7 @@
   <set_variable name="Active Radiation" value="0.0" integer="yes" />
 </event>
 
-{% for ship in util.shipConfigs %}
+{% for ship in const.shipConfigs %}
   <event name="Shield Failure">
     <if_variable name="Ship{{ ship.id }}Monitor" comparator="EQUALS" value="1.0" />
     <if_variable name="Ship{{ ship.id }}Level" comparator="GREATER_EQUAL" value="60.0" />

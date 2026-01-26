@@ -1,0 +1,16 @@
+{% include 'Core/GM/BaseTools.xml' %}
+
+{% include 'Core/GM/Waypoints.xml' %}
+{% include 'Core/GM/ScanPoints.xml' %}
+{% include 'Core/GM/Anomalies.xml' %}
+{% include 'Core/GM/Wrecks.xml' %}
+
+{% include 'Core/GM/SpawnHazard.xml' %}
+
+{% include 'Core/GM/SensorPings.xml' %}
+{% include 'Core/GM/RepairDamage.xml' %}
+{% include 'Core/GM/Supplies.xml' %}
+{% include 'Core/GM/ScanText.xml' %}
+{% include 'Core/GM/QuickComms.xml' %}
+
+{% include 'Core/GM/AIControls.xml' %}

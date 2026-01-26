@@ -1,0 +1,64 @@
+{% import 'Constants.xml' as const %}
+
+{% macro runIfCondition(name, conditions={}) %}
+    <event name="Conditional Menu {{ name }} setup">
+        {% for var, val in conditions.items() %}
+        <if_variable name="{{ var }}" comparator="EQUALS" value="{{ val }}.0" />
+        {% endfor %}
+        <if_variable name="_Conditional_{{ name }}_Active" comparator="NOT" value="1.0" />
+        {{ caller(True) }}
+        <set_variable name="_Conditional_{{ name }}_Active" value="1.0" integer="yes" />
+    </event>
+    {% for var, val in conditions.items() %}
+    <event name="Conditional Menu {{ name }} destroy based on {{ var }}">
+        <if_variable name="{{ var }}" comparator="NOT" value="{{ val }}.0" />
+        <if_variable name="_Conditional_{{ name }}_Active" comparator="EQUALS" value="1.0" />
+        {{ caller(False) }}
+        <set_variable name="_Conditional_{{ name }}_Active" value="0.0" integer="yes" />
+    </event>
+    {% endfor %}
+    {% if not conditions %}
+        <event name="Conditional Menu {{ name }} destroy">
+            <if_variable name="_Conditional_{{ name }}_Active" comparator="EQUALS" value="1.0" />
+            {{ caller(False) }}
+            <set_variable name="_Conditional_{{ name }}_Active" value="0.0" integer="yes" />
+        </event>
+    {% endif %}
+{% endmacro %}
+
+{% macro runIfConditionPerShip(name, conditions={}) %}
+  {% for ship in const.shipConfigs %}
+    <event name="Conditional Menu {{ name }} setup - ship{{ ship.id }}">
+      <if_variable name="_Conditional_ship{{ ship.id }}_{{ name }}_Active" comparator="NOT" value="1.0" />
+      {{ caller(ship, True) }}
+      <set_variable name="_Conditional_ship{{ ship.id }}_{{ name }}_Active" value="1.0" integer="yes" />
+    </event>
+    <event name="Conditional Menu {{ name }} destroy - ship{{ ship.id }}">
+      <if_variable name="_Conditional_ship{{ ship.id }}_{{ name }}_Active" comparator="NOT" value="1.0" />
+      {{ caller(ship, False) }}
+      <set_variable name="_Conditional_ship{{ ship.id }}_{{ name }}_Active" value="1.0" integer="yes" />
+    </event>
+  {% endfor %}
+{% endmacro %}
+
+{% set opposite = const.opposite %}
+{% macro shipConditionalEventAnd(conditions, invert=False) %}
+  {% for ship in shipConfigs %}
+    <event name="Ship{{ ship.id }} Conditional Event">
+      {% for prop in conditions %}
+        <if_object_property property="{{ prop.property }}" player_slot="{{ ship.slot }}" comparator="{{ opposite[prop.cmp] if invert else prop.cmp }}" value="{{ prop.val }}" />
+      {% endfor %}
+      {{ caller(ship, prop) }}
+    </event>
+  {% endfor %}
+{% endmacro %}
+{% macro shipConditionalEventOr(conditions, invert=False) %}
+{% for ship in shipConfigs %}
+  {% for prop in conditions %}
+    <event name="Ship{{ ship.id }} Conditional Event based on {{ prop.property }}">
+      <if_object_property property="{{ prop.property }}" player_slot="{{ ship.slot }}" comparator="{{ opposite[prop.cmp] if invert else prop.cmp }}" value="{{ prop.val }}" />
+      {{ caller(ship, prop) }}
+    </event>
+  {% endfor %}
+{% endfor %}
+{% endmacro %}

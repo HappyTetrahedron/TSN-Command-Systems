@@ -1,9 +1,9 @@
 {# Adds various Budron NPC ships including Angelfin, Pressure Valve #}
 
-{% import 'Utils.xml' as util %}
-{% import 'Spawn.xml' as spawn %}
-{% import 'Fleets/Destroy.xml' as destroy %}
-{% import 'GM Menus.xml' as menu %}
+{% import 'Constants.xml' as const %}
+{% import 'Core/Spawn.xml' as spawn %}
+{% import 'Core/Destroy.xml' as destroy %}
+{% import 'Core/Menus.xml' as menu %}
 {% import 'Tools/Formation.xml' as form %}
 
 {% call destroy.onDestroy("BudronShips") %}
@@ -42,7 +42,7 @@
 
 
   {% for name in ["Angelfin"] %}
-  {% call spawn.spawn(util.spawnFactions.Neutral.key, "Budron", "+Angelfin") %}
+  {% call spawn.spawn(const.spawnFactions.Neutral.key, "Budron", "+Angelfin") %}
     <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="7704" sideValue="SideValue" fleetnumber="-1" />
 
     <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
@@ -55,7 +55,7 @@
   {% endfor %}
 
   {% for name in ["Pressure Valve"] %}
-  {% call spawn.spawn(util.spawnFactions.Neutral.key, "Budron", "+PressureValve") %}
+  {% call spawn.spawn(const.spawnFactions.Neutral.key, "Budron", "+PressureValve") %}
     <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="7704" sideValue="SideValue" fleetnumber="-1" />
 
     <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
@@ -67,7 +67,7 @@
   {% endfor %}
 
   {% for name in ["Undercurrent"] %}
-  {% call spawn.spawn(util.spawnFactions.Neutral.key, "Budron", "+Undercurrent") %}
+  {% call spawn.spawn(const.spawnFactions.Neutral.key, "Budron", "+Undercurrent") %}
     <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="7704" sideValue="SideValue" fleetnumber="-1" />
 
     <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
@@ -78,7 +78,7 @@
   {% endcall %}
   {% endfor %}
 
-  {% call spawn.spawn(util.spawnFactions.Neutral.key, "Budron", "+AngelfinFleet") %}
+  {% call spawn.spawn(const.spawnFactions.Neutral.key, "Budron", "+AngelfinFleet") %}
     <!-- flagship -->
     <create type="enemy" use_gm_position="" angle="0" name="Angelfin" hullID="7704" sideValue="SideValue" fleetnumber="-1" />
     {% for i in range(1, 7) %}
@@ -100,7 +100,7 @@
     {{ form.beginFormation("AnglFin")}}
   {% endcall %}
 
-  {% call spawn.spawn(util.spawnFactions.Neutral.key, "Budron", "+PressureValveFleet") %}
+  {% call spawn.spawn(const.spawnFactions.Neutral.key, "Budron", "+PressureValveFleet") %}
     <!-- flagship -->
     <create type="enemy" use_gm_position="" angle="0" name="Pressure Valve" hullID="7704" sideValue="SideValue" fleetnumber="-1" />
     {% for i in range(1, 7) %}

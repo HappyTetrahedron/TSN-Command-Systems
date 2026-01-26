@@ -1,7 +1,7 @@
-{% import 'Utils.xml' as util %}
-{% import 'Start.xml' as start %}
-{% import 'PlayerTracking.xml' as tracking %}
-{% import 'GM Menus.xml' as menu %}
+{% import 'Constants.xml' as const %}
+{% import 'Core/Start.xml' as start %}
+{% import 'Core/PlayerTracking.xml' as tracking %}
+{% import 'Core/Menus.xml' as menu %}
 
 {% call start.onStart("FCS") %}
   <set_variable name="PDZRange" value="10000.0" integer="yes" />
@@ -12,7 +12,7 @@
   <set_variable name="PDZModifier" value="25.0" integer="yes" />
   <set_variable name="PDZRateModifier" value="-1.0" integer="yes" />
   <!-- Per-ship timers and additive modifiers for FCS rate and recharge per FCS tick -->
-  {% for ship in util.shipConfigs %}
+  {% for ship in const.shipConfigs %}
     <set_timer name="Refuel Ship{{ ship.id }}" seconds="1" />
     <set_variable name="Refuel Ship{{ ship.id }}" value="0.0" integer="yes" />
     <set_variable name="Ship{{ ship.id }}RateFCS" value="0.0" integer="yes" />
@@ -65,7 +65,7 @@
   <set_variable name="Refuel Ship{{ ship.id }}" value="0.0" />
 {% endcall %}
   
-{% for ship in util.shipConfigs %}
+{% for ship in const.shipConfigs %}
   <event name="Activating Collectors" id_arme="2f7d39dd-aabc-4a92-91a7-42176b72246d" parent_id_arme="972624a9-7450-4d67-93da-8ae0e5e22871">
     <if_variable name="Refuel Ship{{ ship.id }}" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="{{ ship.slot}}" />

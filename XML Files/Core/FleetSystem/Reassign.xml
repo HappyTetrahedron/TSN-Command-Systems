@@ -1,0 +1,98 @@
+{% import 'Tools/Picker.xml' as picker %}
+{% import 'Core/FleetSystem/AIDefinitions.xml' as ai %}
+{% import 'Constants.xml' as const %}
+{% import 'Core/Menus.xml' as menu %}
+{% import 'Core/Start.xml' as start %}
+
+{% call start.onStart("AI Reassign") %}
+    <set_variable name="reassignNumber0" value="0.0" integer="yes" />
+    <set_variable name="reassignNumber2" value="10.0" integer="yes" />
+    <set_variable name="reassignNumber4" value="35.0" integer="yes" />
+    <set_variable name="reassignNumber6" value="60.0" integer="yes" />
+    <set_variable name="reassignNumber8" value="80.0" integer="yes" />
+    <set_variable name="ReassignAI" value="0.0" integer="yes" />
+    <set_variable name="ReassignLetter" value="30.0" integer="yes" />
+    <set_variable name="ReassignDigits" value="0.0" integer="yes" />
+{% endcall %}
+
+{% set btns = ["GM"] %}
+{%- for l in const.FleetLetters -%} {% do btns.append(l) %} {%- endfor -%}
+
+{% call(choice) picker.Picker("TGrp", "SWCH", btns, "Target:", 1, 40, 415) %}
+  {% if choice == "GM" %}
+    <set_variable name="ReassignLetter" value="30.0" integer="yes" />
+  {% else %}
+    <set_variable name="ReassignLetter" value="{{ btns.index(choice) }}.0" integer="yes" />
+    <set_variable name="reassignNumber0" value="0.0" integer="yes" />
+    <set_variable name="reassignNumber2" value="10.0" integer="yes" />
+    <set_variable name="reassignNumber4" value="35.0" integer="yes" />
+    <set_variable name="reassignNumber6" value="60.0" integer="yes" />
+    <set_variable name="reassignNumber8" value="80.0" integer="yes" />
+    <set_variable name="ReassignDigits" value="0.0" />
+  {% endif %}
+{% endcall %}
+
+{% call(isCreate) menu.addStatementToMenu("AI Reassign", menu.main.ai) %}
+    <set_variable name="TGrpPicker_Should_Show" value="{{ 1 if isCreate else 0 }}.0" integer="yes" />
+    {% if isCreate %}
+    <set_variable name="ReassignLetter" value="30.0" integer="yes" />
+    <set_variable name="reassignNumber0" value="0.0" integer="yes" />
+    <set_variable name="reassignNumber2" value="10.0" integer="yes" />
+    <set_variable name="reassignNumber4" value="35.0" integer="yes" />
+    <set_variable name="reassignNumber6" value="60.0" integer="yes" />
+    <set_variable name="reassignNumber8" value="80.0" integer="yes" />
+    <set_variable name="ReassignDigits" value="0.0" integer="yes" />
+    {% endif %}
+{% endcall %}
+
+  <event name="Increase combined number">
+    <if_variable name="ReassignDigits" comparator="EQUALS" value="1.0" />
+    <set_variable name="reassignNumber8" value="reassignNumber8+1" integer="yes" />
+    <set_variable name="reassignNumber6" value="reassignNumber6+1" integer="yes" />
+    <set_variable name="reassignNumber4" value="reassignNumber4+1" integer="yes" />
+    <set_variable name="reassignNumber2" value="reassignNumber2+1" integer="yes" />
+    <set_variable name="reassignNumber0" value="reassignNumber0+1" integer="yes" />
+    <set_variable name="ReassignDigits" value="2.0" integer="yes" />
+  </event>
+  <event name="End Cycle">
+    <if_variable name="reassignNumber0" comparator="GREATER" value="10.0" />
+    <if_variable name="reassignNumber2" comparator="GREATER" value="35.0" />
+    <if_variable name="reassignNumber4" comparator="GREATER" value="60.0" />
+    <if_variable name="reassignNumber6" comparator="GREATER" value="80.0" />
+    <if_variable name="reassignNumber8" comparator="GREATER" value="100.0" />
+    <set_variable name="reassignNumber0" value="0.0" integer="yes" />
+    <set_variable name="reassignNumber2" value="10.0" integer="yes" />
+    <set_variable name="reassignNumber4" value="35.0" integer="yes" />
+    <set_variable name="reassignNumber6" value="60.0" integer="yes" />
+    <set_variable name="reassignNumber8" value="80.0" integer="yes" />
+    <clear_gm_button text="Reassigning AI" />
+    <set_variable name="ReassignAI" value="0.0" integer="yes" />
+    <set_variable name="ReassignDigits" value="0.0" integer="yes" />
+  </event>
+
+{% for id, ai in ai.availableAIs.items() if not ai.get("skipInReassign", False) %}
+  <event name="Reassign {{ ai.name }} AI GM">
+    <if_variable name="ReassignLetter" comparator="EQUALS" value="30" />
+    <if_variable name="ReassignAI" comparator="EQUALS" value="{{ id }}.0" />
+    <if_variable name="ReassignDigits" comparator="NOT" value="1.0" />
+{{    ai.macro(["GM"]) | indent(2, True) }}
+    <set_variable name="ReassignAI" value="0.0" integer="yes" />
+  </event>
+  {% for letter in const.FleetLetters %}
+    <event name="Reassign {{ ai.name }} AI {{ letter }}">
+      <if_variable name="ReassignLetter" comparator="EQUALS" value="{{ loop.index }}" />
+      <if_variable name="ReassignAI" comparator="EQUALS" value="{{ id }}.0" />
+      <if_variable name="ReassignDigits" comparator="NOT" value="1.0" />
+{{      ai.macro([
+        letter + "0|reassignNumber0|",
+        letter + "|reassignNumber2|",
+        letter + "|reassignNumber4|",
+        letter + "|reassignNumber8|",
+        letter + "|reassignNumber6|",
+      ]) | indent(4, True) }}
+      <set_gm_button text="Reassigning AI" x="230" y="415" h="60" w="150" />
+      <set_variable name="ReassignDigits" value="1.0" integer="yes" />
+    </event>
+  {% endfor %}
+
+{% endfor %}

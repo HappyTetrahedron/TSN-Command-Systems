@@ -1,0 +1,274 @@
+{% import 'Constants.xml' as const %}
+{% import 'Tools/Conditions.xml' as cond %}
+{% import 'Core/Start.xml' as start %}
+{% import 'Core/Menus.xml' as menu %}
+{% import 'Core/PlayerTracking.xml' as tracking %}
+
+{% macro onTransition(identifier) %}
+  {% do track("onMapTransition", {"caller":caller, "name":identifier}, identifier) %}
+{% endmacro %}
+
+{% set transitions = [
+  {
+    "name": "Grid A",
+    "set": {
+      "positionZ": 98900,
+    },
+    "conditions": [
+      {
+        "property": "positionX",
+        "cmp": "GREATER",
+        "val": 3000,
+      },
+      {
+        "property": "positionX",
+        "cmp": "LESS",
+        "val": 97000,
+      },
+      {
+        "property": "positionZ",
+        "cmp": "LESS",
+        "val": 1000,
+      },
+    ],
+  },
+  {
+    "name": "Grid E",
+    "set": {
+      "positionZ": 1100,
+    },
+    "conditions": [
+      {
+        "property": "positionX",
+        "cmp": "GREATER",
+        "val": 3000,
+      },
+      {
+        "property": "positionX",
+        "cmp": "LESS",
+        "val": 97000,
+      },
+      {
+        "property": "positionZ",
+        "cmp": "GREATER",
+        "val": 99000,
+      },
+    ],
+  },
+  {
+    "name": "Grid 1",
+    "set": {
+      "positionX": 1100,
+    },
+    "conditions": [
+      {
+        "property": "positionX",
+        "cmp": "GREATER",
+        "val": 99000,
+      },
+      {
+        "property": "positionZ",
+        "cmp": "GREATER",
+        "val": 3000,
+      },
+      {
+        "property": "positionZ",
+        "cmp": "LESS",
+        "val": 97000,
+      },
+    ],
+  },
+  {
+    "name": "Grid 5",
+    "set": {
+      "positionX": 98900,
+    },
+    "conditions": [
+      {
+        "property": "positionX",
+        "cmp": "LESS",
+        "val": 1000,
+      },
+      {
+        "property": "positionZ",
+        "cmp": "GREATER",
+        "val": 3000,
+      },
+      {
+        "property": "positionZ",
+        "cmp": "LESS",
+        "val": 97000,
+      },
+    ],
+  },
+  {
+    "name": "Corner A1",
+    "add": {
+      "positionX": -87950,
+      "positionZ": 87950,
+    },
+    "conditions": [
+      {
+        "property": "positionX",
+        "cmp": "GREATER",
+        "val": 97000,
+      },
+      {
+        "property": "positionZ",
+        "cmp": "LESS",
+        "val": 3000,
+      },
+    ],
+  },
+  {
+    "name": "Corner A5",
+    "add": {
+      "positionX": 87950,
+      "positionZ": 87950,
+    },
+    "conditions": [
+      {
+        "property": "positionX",
+        "cmp": "LESS",
+        "val": 3000,
+      },
+      {
+        "property": "positionZ",
+        "cmp": "LESS",
+        "val": 3000,
+      },
+    ],
+  },
+  {
+    "name": "Corner E1",
+    "add": {
+      "positionX": -87950,
+      "positionZ": -87950,
+    },
+    "conditions": [
+      {
+        "property": "positionX",
+        "cmp": "GREATER",
+        "val": 97000,
+      },
+      {
+        "property": "positionZ",
+        "cmp": "GREATER",
+        "val": 97000,
+      },
+    ],
+  },
+  {
+    "name": "Corner E5",
+    "add": {
+      "positionX": 87950,
+      "positionZ": -87950,
+    },
+    "conditions": [
+      {
+        "property": "positionX",
+        "cmp": "LESS",
+        "val": 3000,
+      },
+      {
+        "property": "positionZ",
+        "cmp": "GREATER",
+        "val": 97000,
+      },
+    ],
+  },
+] %}
+
+{{ menu.addDismissableSubmenu("Locking", menu.main.base) }}
+{{ menu.addMenuToggle("LockSector", "Locking", "Sector Locked", [("Sector unlocked - click to lock", 0), ("Sector locked - click to unlock", 1)]) }}
+
+{% call(ship) tracking.onInactive("TransitionsEngine") %}
+  {% for transition in transitions %}
+    <set_variable name="Ship{{ ship.id }} Ready {{ transition.name }}" value="1.0" integer="yes" />
+  {% endfor %}
+{% endcall %}
+
+{% call(ship) tracking.onDestroy("TransitionsEngine") %}
+  {% for transition in transitions %}
+    <set_variable name="Ship{{ ship.id }} Ready {{ transition.name }}" value="1.0" integer="yes" />
+  {% endfor %}
+{% endcall %}
+
+
+{% call start.onStart("TransitionsEngine") %}
+  <set_timer name="Transition" seconds="1" />
+  <set_variable name="Sector Locked" value="0.0" integer="yes" />
+{% endcall %}
+
+
+{{ menu.createLabel("Transitions", menu.main.base, 100, 280, 90, 28) }}
+{% call menu.onButtonClick("UP   /\\", menu.main.base, pos={ "x":130, "y":310, "w":30, "h":25}) %}
+  {% for ship in const.shipConfigs %}
+    <set_object_property property="positionZ" value="10.0" player_slot="{{ ship.slot }}" />
+    <set_object_property property="positionX" value="{{ 49000  + 100 * loop.index0 }}.0" player_slot="{{ ship.slot }}" />
+    <set_object_property property="angle" value="3.141592654" player_slot="{{ ship.slot }}" />
+  {% endfor %}
+{% endcall %}
+{% call menu.onButtonClick("DOWN   V", menu.main.base, pos={"x":130, "y":370, "w":30, "h":25}) %}
+  {% for ship in const.shipConfigs %}
+    <set_object_property property="positionZ" value="99990.0" player_slot="{{ ship.slot }}" />
+    <set_object_property property="positionX" value="{{ 49000  + 100 * loop.index0 }}.0" player_slot="{{ ship.slot }}" />
+    <set_object_property property="angle" value="0.0" player_slot="{{ ship.slot }}" />
+  {% endfor %}
+{% endcall %}
+{% call menu.onButtonClick("LEFT   <<", menu.main.base, pos={"x":100, "y":340, "w":30, "h":25}) %}
+  {% for ship in const.shipConfigs %}
+    <set_object_property property="positionX" value="99990.0" player_slot="{{ ship.slot }}" />
+    <set_object_property property="positionZ" value="{{ 49000  + 100 * loop.index0 }}.0" player_slot="{{ ship.slot }}" />
+    <set_object_property property="angle" value="1.570796327" player_slot="{{ ship.slot }}" />
+  {% endfor %}
+{% endcall %}
+{% call menu.onButtonClick("RIGHT   >>", menu.main.base, pos={"x":160, "y":340, "w":30, "h":25}) %}
+  {% for ship in const.shipConfigs %}
+    <set_object_property property="positionX" value="10.0" player_slot="{{ ship.slot }}" />
+    <set_object_property property="positionZ" value="{{ 49000  + 100 * loop.index0 }}.0" player_slot="{{ ship.slot }}" />
+    <set_object_property property="angle" value="4.71238898" player_slot="{{ ship.slot }}" />
+  {% endfor %}
+{% endcall %}
+
+
+{% for transition in transitions %}
+  {% call(ship, unused) cond.shipConditionalEventAnd(transition.conditions) %}
+    <if_exists player_slot="{{ ship.slot }}" />
+    <if_variable name="Ship{{ ship.id }} Ready {{ transition.name }}" comparator="EQUALS" value="0.0" />
+    <set_variable name="Ship{{ ship.id }} Ready {{ transition.name }}" value="1.0" />
+  {% endcall %}
+  {% call(ship, unused) cond.shipConditionalEventOr(transition.conditions, invert=True) %}
+    <if_exists player_slot="{{ ship.slot }}" />
+    <set_variable name="Ship{{ ship.id }} Ready {{ transition.name }}" value="0.0" />
+    <set_variable name="{{ transition.name }} Transition" value="0.0" />
+  {% endcall %}
+  <event name="{{ transition.name }} Transition Enabled">
+    <if_variable name="Sector Locked" comparator="NOT" value="1.0" />
+    <if_variable name="shipCount" comparator="GREATER" value="0.0" />
+    {% for ship in const.shipConfigs %}
+      <if_variable name="Ship{{ ship.id }} Ready {{ transition.name }}" comparator="EQUALS" value="1.0" />
+    {% endfor %}
+    <if_variable name="{{ transition.name }} Transition Enabled" comparator="EQUALS" value="1.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    {% for ship in const.shipConfigs %}
+      {% for prop, val in transition.get("set", {}).items() %}
+        <set_object_property property="{{ prop }}" value="{{ val }}.0" player_slot="{{ ship.slot }}" />
+      {% endfor %}
+      {% for prop, val in transition.get("add", {}).items() %}
+        <addto_object_property property="{{ prop }}" value="{{ val }}.0" player_slot="{{ ship.slot }}" />
+      {% endfor %}
+    {% endfor %}
+    <set_variable name="ExitorRetreat" value="1.0" />
+    {% for othertrans in transitions %}
+      <set_variable name="{{ othertrans.name }} Transition Enabled" value="0.0" />
+    {% endfor %}
+    <set_variable name="{{ transition.name }} Transition" value="1.0" />
+    <set_variable name="System" value="1.0" integer="yes" />
+    <set_variable name="System Settings" value="1.0" integer="yes" />
+    {% for hook in retrieve("onMapTransition") %}
+      <!--{{ hook.name }}-->
+      {{ hook.caller() }}
+    {% endfor %}
+  </event>
+{% endfor %}

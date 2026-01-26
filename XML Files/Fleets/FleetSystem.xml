@@ -1,5 +1,0 @@
-{% include 'Fleets/RandomProperties.xml' %}
-{% include 'Fleets/AutoAI.xml' %}
-{% include 'Fleets/NameAssign.xml' %}
-{% include 'Fleets/Reassign.xml' %}
-{% include 'Fleets/GMAI.xml' %}

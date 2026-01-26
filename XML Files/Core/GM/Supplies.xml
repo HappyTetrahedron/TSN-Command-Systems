@@ -1,0 +1,24 @@
+{% import 'Core/Menus.xml' as menu %}
+{% import 'Constants.xml' as const %}
+{% import 'Core/Start.xml' as start %}
+{% import 'Tools/Toggle.xml' as toggle %}
+
+{% call start.onStart("SuppliesMenu") %}
+  <set_variable name="Ordnance" value="1.0" integer="yes" />
+{% endcall %}
+
+{{ menu.addButtonExpandMenu("Supplies", menu.main.interaction, x=230, y=95, h=30, w=100, rows=12, mutexKey="IntSub", mutexID=1) }}
+
+{{ menu.addButtonToggle("SupplyOrdnDir", "Supplies", "Ordnance", [("Add Ordn", 1), ("Rmv Ordn", -1)]) }}
+
+{% for ord, id in const.ordnanceIdentifiers.items() %}
+  {% call menu.onButtonClick(ord|title, "Supplies") %}
+    <addto_object_property value="Ordnance" property="{{ id }}" use_gm_selection=" " />
+  {% endcall %}
+{% endfor %}
+{% call menu.onButtonClick("100 Enrgy", "Supplies") %}
+    <addto_object_property value="Ordnance*100" property="energy" use_gm_selection=" " />
+{% endcall %}
+{% call menu.onButtonClick("Coolant", "Supplies") %}
+    <addto_object_property value="Ordnance" property="total_coolant" use_gm_selection=" " />
+{% endcall %}

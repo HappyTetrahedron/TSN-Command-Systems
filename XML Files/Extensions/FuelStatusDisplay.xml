@@ -1,7 +1,7 @@
 {# Fuel Status Display - shows public energy readouts of all ships #}
-{% import 'Utils.xml' as util %}
+{% import 'Constants.xml' as const %}
 
-{% for ship in util.shipConfigs %}
+{% for ship in const.shipConfigs %}
   <event name="Energy Green">
     <if_variable name="Refuel Ship{{ ship.id }}" comparator="LESS_EQUAL" value="1.0" />
     <if_object_property property="energy" player_slot="{{ ship.slot }}" comparator="GREATER_EQUAL" value="600" />

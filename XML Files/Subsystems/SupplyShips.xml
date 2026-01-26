@@ -1,12 +1,13 @@
-{% import 'Utils.xml' as util %}
-{% import 'Comms.xml' as comms %}
-{% import 'Spawn.xml' as spawn %}
-{% import 'PlayerTracking.xml' as tracking %}
+{% import 'Constants.xml' as const %}
+{% import 'Tools/Conditions.xml' as cond %}
+{% import 'Core/Comms.xml' as comms %}
+{% import 'Core/Spawn.xml' as spawn %}
+{% import 'Core/PlayerTracking.xml' as tracking %}
 
-{% for sup in util.supplyShips %}
+{% for sup in const.supplyShips %}
   {# Ship state tracking #}
   {% call(ship) tracking.onSpawn("MaxOrdnance") %}
-    {% for ordnance, property in util.ordnanceIdentifiers.items() %}
+    {% for ordnance, property in const.ordnanceIdentifiers.items() %}
       <get_object_property property="{{ property }}" player_slot="{{ ship.slot }}" variable="Ship{{ ship.id }}{{ ordnance }}Max" />
     {% endfor %}
   {% endcall %}
@@ -33,18 +34,18 @@
   <event name="{{ sup.name }} Active" id_arme="4f73b7d3-5ecd-470e-ae41-1483520e1218" parent_id_arme="09e6e2df-4395-454f-a7c8-ebd5613c7ecc">
     <if_variable name="{{ sup.name }} Supplies" comparator="EQUALS" value="0.0" />
     <if_exists name="{{ sup.name }}" />
-    {% for ship in util.shipConfigs %}
+    {% for ship in const.shipConfigs %}
     <set_variable name="{{ sup.name }}toShip{{ ship.id }}Resupply" value="0.0" integer="yes" />
     {% endfor %}
     <!--Stores and Building-->
-    {% for ordnance in util.ordnanceIdentifiers.keys() %}
+    {% for ordnance in const.ordnanceIdentifiers.keys() %}
       <set_variable name="{{ sup.name }}{{ ordnance }}" value="{{ sup.stores[ordnance] }}.0" integer="yes" />
       <set_variable name="{{ sup.name }}build{{ ordnance }}" value="0.0" integer="yes" />
       <set_timer name="{{ sup.name }}build{{ ordnance }}" seconds="2" />
     {% endfor %}
     <!--General Stats-->
-    <set_ship_text name="{{ sup.name }}" desc="Auxiliary supply ship for TSN combat vessels" scan_desc="Max. Supplies: {% for ord in util.ordnance.keys() %}{{ sup.stores[ord]}} {{ ord|title }}{{ '.' if loop.last else ','}}{% endfor %}" hailtext="Wrenches on standby!" />
-    <incoming_comms_text from="{{ sup.name }}" sideValue="playerSide" type="FRIEND">Supply Ship {{ sup.name }} is standing ready to resupply TSN ships.^Stores:{% for ord in util.ordnance.keys() %}^{{ ord|title }}s: |{{ sup.name }}{{ ord }}|{% endfor %}</incoming_comms_text>
+    <set_ship_text name="{{ sup.name }}" desc="Auxiliary supply ship for TSN combat vessels" scan_desc="Max. Supplies: {% for ord in const.ordnance.keys() %}{{ sup.stores[ord]}} {{ ord|title }}{{ '.' if loop.last else ','}}{% endfor %}" hailtext="Wrenches on standby!" />
+    <incoming_comms_text from="{{ sup.name }}" sideValue="playerSide" type="FRIEND">Supply Ship {{ sup.name }} is standing ready to resupply TSN ships.^Stores:{% for ord in const.ordnance.keys() %}^{{ ord|title }}s: |{{ sup.name }}{{ ord }}|{% endfor %}</incoming_comms_text>
     <set_object_property property="topSpeed" value="0.8" name="{{ sup.name }}" />
     <clear_ai name="{{ sup.name }}" />
     <add_ai type="DIR_THROTTLE" value1="0" value2="1.0" name="{{ sup.name }}" />
@@ -53,7 +54,7 @@
   </event>
 
   {# Ordnance Manufacturing #}
-  {% for ordnance in util.ordnanceIdentifiers.keys() %}
+  {% for ordnance in const.ordnanceIdentifiers.keys() %}
     <event name="Track {{ ordnance }}">
       <if_variable name="{{ sup.name }} Supplies" comparator="EQUALS" value="2.0" />
       <if_variable name="{{ sup.name }}{{ ordnance }}" comparator="LESS_EQUAL" value="1.0" />
@@ -78,7 +79,7 @@
   {% endfor %}
 
   {# Ship Proximity Tracking #}
-  {% for ship in util.shipConfigs %}
+  {% for ship in const.shipConfigs %}
     <event name="Ship{{ ship.id }} In Range">
       <if_variable name="{{ sup.name }}toShip{{ ship.id }}Resupply" comparator="EQUALS" value="0.0" />
       <if_distance player_slot1="{{ ship.slot }}" name2="{{ sup.name }}" comparator="LESS" value="1000.0" />
@@ -109,8 +110,8 @@
   {% endfor %}
 
   {# Resupply Procedures #}
-  {% for ship in util.shipConfigs %}
-    {% for ordnance, property in util.ordnanceIdentifiers.items() %}
+  {% for ship in const.shipConfigs %}
+    {% for ordnance, property in const.ordnanceIdentifiers.items() %}
       <event name="Resupply {{ ordnance }}">
         <if_variable name="{{ sup.name }}toShip{{ ship.id }}Resupply" comparator="EQUALS" value="3.0" />
         <if_variable name="{{ sup.name }}{{ ordnance }}" comparator="GREATER" value="1.0" />
@@ -127,25 +128,25 @@
   {% endfor %}
 
   {# Comms buttons #}
-  {% call(ship) util.createConditionalMenuPerShip("Resupply" + sup.name) %}
-    <if_exists player_slot="{{ ship.slot }}" />
-    <if_variable name="{{ sup.name }}toShip{{ ship.id }}Resupply" comparator="EQUALS" value="2.0" />
+  {% call(ship, isCreate) cond.runIfConditionPerShip("Resupply" + sup.name) %}
+    {% if isCreate %}
+      <if_exists player_slot="{{ ship.slot }}" />
+    {% endif %}
+    <if_variable name="{{ sup.name }}toShip{{ ship.id }}Resupply" comparator="{{ "EQUALS" if isCreate else "NOT" }}" value="2.0" />
     {{ comms.button("Resupply from " + sup.name, ship) }}
-  {% endcall %}
-
-  {% call(ship) util.destroyConditionalMenuPerShip("Resupply" + sup.name) %}
-    <if_variable name="{{ sup.name }}toShip{{ ship.id }}Resupply" comparator="NOT" value="2.0" />
-    {{ comms.destroybutton("Resupply from " + sup.name, ship) }}
+    {% if isCreate %}
+      {{ comms.button("Resupply from " + sup.name, ship) }}
+    {% else %}
+      {{ comms.destroybutton("Resupply from " + sup.name, ship) }}
+    {% endif %}
   {% endcall %}
 
   {% call(ship) comms.onButtonPress("Resupply from " + sup.name) %}
       <if_exists player_slot="{{ ship.slot }}" />
       <if_variable name="{{ sup.name }}toShip{{ ship.id }}Resupply" comparator="EQUALS" value="2.0" />
-      <incoming_comms_text from="{{ sup.name }}" sideValue="playerSide" type="FRIEND">Request Received - beginning resupply.^Maintain distance 1000 from {{ sup.name }}, with shields offline.^Remaining Stores:{% for ord in util.ordnance.keys() %}^{{ ord|title }}s: |{{ sup.name }}{{ ord }}|{% endfor %}</incoming_comms_text>
+      <incoming_comms_text from="{{ sup.name }}" sideValue="playerSide" type="FRIEND">Request Received - beginning resupply.^Maintain distance 1000 from {{ sup.name }}, with shields offline.^Remaining Stores:{% for ord in const.ordnance.keys() %}^{{ ord|title }}s: |{{ sup.name }}{{ ord }}|{% endfor %}</incoming_comms_text>
       <set_variable name="{{ sup.name }}toShip{{ ship.id }}Resupply" value="3.0" integer="yes" />
   {% endcall %}
 
 {# End of loop over supply ships #}
 {% endfor %}
-
-2368

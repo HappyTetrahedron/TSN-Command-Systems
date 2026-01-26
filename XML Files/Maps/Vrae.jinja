@@ -1,6 +1,6 @@
-{% include 'Maps/MapTemplate.jinja' %}
-{% import 'Maps/MapUtils.jinja' as sysutil %}
-{% import 'Utils.xml' as util %}
+{% include 'Maps/Generator/MapTemplate.jinja' %}
+{% import 'Maps/Generator/MapUtils.jinja' as sysutil %}
+{% import 'Constants.xml' as const %}
 
 {% set timer_interval = 1 %}
 {% set energy_per_interval_slow = 5 %}
@@ -25,7 +25,7 @@
 
 {% call sysutil.runIfInSector(g.map, [2,3,4,6,8,10,11,12]) %}
   <if_timer_finished name="Vrae_Pulsar_Timer" />
-  {% for ship in util.shipConfigs %}
+  {% for ship in const.shipConfigs %}
     <addto_object_property value="{{ energy_per_interval_slow }}" property="energy" player_slot="{{ ship.slot }}"  />
   {% endfor %}
   <set_timer name="Vrae_Pulsar_Timer" seconds="{{ timer_interval }}" />
@@ -33,7 +33,7 @@
 
 {% call sysutil.runIfInSector(g.map, [7]) %}
   <if_timer_finished name="Vrae_Pulsar_Timer" />
-  {% for ship in util.shipConfigs %}
+  {% for ship in const.shipConfigs %}
     <addto_object_property value="{{ energy_per_interval_fast }}" property="energy" player_slot="{{ ship.slot }}"  />
   {% endfor %}
   <set_timer name="Vrae_Pulsar_Timer" seconds="{{ timer_interval }}" />

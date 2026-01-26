@@ -1,16 +1,16 @@
 {# Simulate boarding actions on ships #}
 
-{% import 'GM Menus.xml' as menu %}
-{% import 'Utils.xml' as util %}
-{% import 'Start.xml' as start %}
-{% import 'Comms.xml' as comms %}
-{% import 'PlayerTracking.xml' as tracking %}
+{% import 'Core/Menus.xml' as menu %}
+{% import 'Constants.xml' as const %}
+{% import 'Core/Start.xml' as start %}
+{% import 'Core/Comms.xml' as comms %}
+{% import 'Core/PlayerTracking.xml' as tracking %}
 
 
 {{ menu.addDismissableSubmenu("Boarding", menu.main.interaction) }}
 
 {% call start.onStart("BoardingActions") %}
-  {% for ship in util.shipConfigs %}
+  {% for ship in const.shipConfigs %}
     <set_variable name="Ship{{ ship.id }} Marines" value="1.0" integer="yes" />
     <set_variable name="Ship{{ ship.id }}MarinesMax" value="20.0" integer="yes" />
   {% endfor %}
@@ -23,7 +23,7 @@
   We have |Ship{{ ship.id }}Marines| defenders ready for combat.
 {% endcall %}
 
-{% for ship in util.shipConfigs %}
+{% for ship in const.shipConfigs %}
   <event name="Add Marine Complement" id_arme="43ca4cd1-f396-435e-ab59-44493e228b2d" parent_id_arme="3c6f84c6-53fa-4242-8c00-80cc7dda3f50">
     <if_variable name="Ship{{ ship.id }} Marines" comparator="EQUALS" value="1.0" />
     <set_variable name="Ship{{ ship.id }}Marines" value="Ship{{ ship.id }}MarinesMax" integer="yes" />
@@ -71,7 +71,7 @@
     <set_variable name="Ship{{ ship.id }} Marines" value="2.0" integer="yes" />
   </event>
 {% endfor %}
-{% for ship in util.shipConfigs %}
+{% for ship in const.shipConfigs %}
   {% call menu.onMenuClick("Attack Ship " + ship.id, "Boarding") %}
     <set_variable name="Atk Ship{{ ship.id }}" value="1.0" />
     <set_variable name="Ship{{ ship.id }}Attackers" randomIntLow="10" randomIntHigh="30" />
@@ -185,7 +185,7 @@
     <set_variable name="DamageShip{{ ship.id }}" value="2.0" />
     <set_variable name="Atk Ship{{ ship.id }}" value="1.0" integer="yes" />
   </event>
-  {% for system, name in util.systemIdentifiers.items() %}
+  {% for system, name in const.systemIdentifiers.items() %}
     {% set systemID = loop.index %}
     {% for i in range(4) %}
       {% for percentage in [0.5, 1] %}

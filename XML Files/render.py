@@ -22,6 +22,12 @@ env = {
         "FuelStatusDisplay",
         "ForceShipNames",
         "BudronNPCs",
+        "BoardingActions",
+        "CrookedStar",
+        "CureTags",
+        "Radiation",
+        "Signature Scrambler",
+        "VerdantFleet",
     ],
     "maps": [
         "Onwia",
@@ -52,6 +58,8 @@ env = {
             "KamikazeMine",
             "Decoy",
             "Fireworks",
+            "ClusterMine",
+            "ShieldEnhancer",
         ],
     }
 }

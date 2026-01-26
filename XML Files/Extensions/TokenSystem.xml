@@ -1,8 +1,8 @@
 {# GM tool to give the player virtual "tokens", a counter for which gets displayed on the map. #}
 
-{% import 'Utils.xml' as util %}
-{% import 'Start.xml' as start %}
-{% import 'GM Menus.xml' as menu %}
+{% import 'Constants.xml' as const %}
+{% import 'Core/Start.xml' as start %}
+{% import 'Core/Menus.xml' as menu %}
 
 {% call start.onStart("TokenSystem") %}
     <set_variable name="TokenSysT" value="0.0" integer="yes" />
@@ -11,14 +11,14 @@
 
 {% call menu.onButtonClick("AddToken", menu.main.base) %}
   <set_variable name="TokenSysT" value="TokenSysT + 1" integer="yes" />
-  {% for ship in util.shipConfigs %}
+  {% for ship in const.shipConfigs %}
     <warning_popup_message message="&gt; You receive a token &lt;" consoles="MSC" player_slot="{{ ship.slot }}" />
   {% endfor %}
 {% endcall %}
 
 {% call menu.onButtonClick("RmToken", menu.main.base) %}
   <set_variable name="TokenSysT" value="TokenSysT - 1" integer="yes" />
-  {% for ship in util.shipConfigs %}
+  {% for ship in const.shipConfigs %}
     <warning_popup_message message="&gt; You spent a token &lt;" consoles="MSC" player_slot="{{ ship.slot }}" />
   {% endfor %}
 {% endcall %}

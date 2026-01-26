@@ -1,6 +1,6 @@
-{% include 'Maps/MapTemplate.jinja' %}
-{% import 'Maps/MapUtils.jinja' as sysutil %}
-{% import 'Utils.xml' as util %}
+{% include 'Maps/Generator/MapTemplate.jinja' %}
+{% import 'Maps/Generator/MapUtils.jinja' as sysutil %}
+{% import 'Constants.xml' as const %}
 
 {% set timer_interval = 2 %}
 {% set energy_per_interval = 10 %}
@@ -13,7 +13,7 @@
   <set_timer name="Burin_Nebula_Tick" seconds="{{ timer_interval }}" />
   <set_variable name="Burin_NearBlue" value="0.0" integer="yes" />
   <set_variable name="Burin_NearYellow" value="0.0" integer="yes" />
-  {% for ship in util.shipConfigs %}
+  {% for ship in const.shipConfigs %}
     <set_variable name="Burin_Ship{{ ship.id }}DamageType" randomIntLow="1.0" randomIntHigh="8.0" integer="yes" />
     <set_variable name="Burin_Ship{{ ship.id }}NodeSelect" randomIntLow="0.0" randomIntHigh="4.0" integer="yes" />
   {% endfor %}
@@ -71,7 +71,7 @@
   <set_variable name="Burin_NearYellow" value="0.0" integer="yes" />
 {% endcall %}
 
-{% for ship in util.shipConfigs %}
+{% for ship in const.shipConfigs %}
   {% call sysutil.runIfOnMap(g.map) %}
     <!-- Blue Nebula Tick Ship{{ ship.id }} -->
     <if_timer_finished name="Burin_Nebula_Tick" />
@@ -80,7 +80,7 @@
     <addto_object_property value="-{{ energy_per_interval }}" property="energy" player_slot="{{ ship.slot }}" />
   {% endcall %}
   
-  {% for system, name in util.systemIdentifiers.items() %}
+  {% for system, name in const.systemIdentifiers.items() %}
     {% set systemID = loop.index %}
     {% call sysutil.runIfOnMap(g.map) %}
       <!-- Yellow Nebula Tick Ship{{ ship.id }} - Damage {{ name }} -->

@@ -1,6 +1,7 @@
 
-{% import 'Utils.xml' as util %}
-{% import 'PlayerTracking.xml' as tracking %}
+{% import 'Constants.xml' as const %}
+{% import 'Tools/Conditions.xml' as cond %}
+{% import 'Core/PlayerTracking.xml' as tracking %}
 
 {% set silent_properties = [
   {
@@ -62,7 +63,7 @@
   <set_variable name="Ship{{ ship.id }}Silent" value="0.0" integer="yes" />
 {% endcall %}
 
-{% call(ship, unused) util.shipConditionalEventAnd(silent_properties) %}
+{% call(ship, unused) cond.shipConditionalEventAnd(silent_properties) %}
   <if_exists player_slot="{{ ship.slot }}" />
   <if_variable name="Ship{{ ship.id }} Status" comparator="EQUALS" value="2.0" />
   <if_variable name="Ship{{ ship.id }}Silent" comparator="EQUALS" value="0.0" />
@@ -71,7 +72,7 @@
   <warning_popup_message message="Silent Running enabled" consoles="MEO" player_slot="{{ ship.slot }}" />
 {% endcall %}
 
-{% call(ship, prop) util.shipConditionalEventOr(silent_properties, invert=True) %}
+{% call(ship, prop) cond.shipConditionalEventOr(silent_properties, invert=True) %}
   <if_variable name="Ship{{ ship.id }}Silent" comparator="GREATER_EQUAL" value="1.0" />
   <warning_popup_message message="{{ prop.msg }}: Silent Running disabled" consoles="MEO" player_slot="{{ ship.slot }}" />
   <clear_gm_button text="Ship{{ ship.id }} Silent" />

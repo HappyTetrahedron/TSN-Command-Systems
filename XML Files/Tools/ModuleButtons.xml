@@ -1,0 +1,49 @@
+{% import 'Core/Comms.xml' as _comms %}
+{% import 'Tools/Conditions.xml' as _cond %}
+
+{% macro registerPermanentModuleButtons(ship, buttonTexts, identifier) %}
+  {# Adds a list of 'permanent' module buttons - buttons that are always available if this module is loaded. #}
+  {# Buttons with more complicated conditions for when they should show need to be created and managed by hand. #}
+  {% call(isCreate) _cond.runIfCondition("Mod" + identifier + "_Ship" + ship.id) %}
+    {{ _comms.ifMenuVariable(ship, 3, "EQUALS" if isCreate else "NOT") }}
+    {% for text in buttonTexts %}
+      {% if isCreate %}
+        {{ _comms.button(text, ship) }}
+      {% else %}
+        {{ _comms.destroybutton(text, ship) }}
+      {% endif %}
+    {% endfor %}
+  {% endcall %}
+{% endmacro %}
+
+{% macro createConditionalModuleButtons(ship, identifier) %}
+  {% set caller_cont = caller() %}
+  {% call(ship) _cond.runIfCondition("Mod" + identifier + "_Ship" + ship.id) %}
+    {{ caller_cont }}
+  {% endcall %}
+{% endmacro %}
+
+{% macro destroyConditionalModuleButtons(ship, identifier) %}
+  {% set caller_cont = caller() %}
+  {% call(ship) _cond.runIfCondition("Mod" + identifier + "_Ship" + ship.id) %}
+    {{ caller_cont }}
+  {% endcall %}
+{% endmacro %}
+
+{% macro sendCommsButton(text, ship) %}
+    {{ _comms.button(text, ship) }}
+{% endmacro %}
+{% macro clearCommsButton(text, ship) %}
+    {{ _comms.destroybutton(text, ship) }}
+{% endmacro %}
+
+{% macro ifCommsMenuState(ship, id, comparator="EQUALS") %}
+    {{ _comms.ifMenuVariable(ship, id, comparator) }}
+{% endmacro %}
+
+{% macro onModuleButtonPressed(text, ship) %}
+<event name="Module Button {{ name }} pressed - ship{{ ship.id }}">
+    <if_comms_button text="{{ ship.commPrefix }}{{ text }}" />
+    {{ caller() }}
+</event>
+{% endmacro %}

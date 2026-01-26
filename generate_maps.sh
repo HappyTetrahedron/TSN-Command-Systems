@@ -48,7 +48,7 @@ cd "XML Files/Maps"
 for file in *.xml
 do
     echo "XML Files/Maps/$file"
-    python parse_xml.py "$file"
+    python Generator/parse_xml.py "$file"
 done
 
 cd ../../

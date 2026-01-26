@@ -1,0 +1,4 @@
+{% include 'Core/FleetSystem/RandomProperties.xml' %}
+{% include 'Core/FleetSystem/AutoAI.xml' %}
+{% include 'Core/FleetSystem/NameAssign.xml' %}
+{% include 'Core/FleetSystem/Reassign.xml' %}

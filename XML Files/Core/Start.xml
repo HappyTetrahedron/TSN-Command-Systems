@@ -1,0 +1,25 @@
+{% macro onStart(identifier) %}
+  {% do track("onStart", { "caller": caller, "name": identifier }, identifier) %}
+{% endmacro %}
+
+{% set data = g.data if g else {} %}
+{% set version = g.version if g else '\" />' %}
+
+  <start name="Start" id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4">
+    <set_difficulty_level value="{{ data.difficulty or 10 }}" />
+    <big_message title="The TSN Universe" subtitle1="Tetra's Fork Version {{ version }}" subtitle2="Maps:{% for map in data.get("maps", []) %} {{ map }}{% endfor %} - Extensions:{% for script in data.get("extensions", []) %} {{ script }}{% endfor %}" />
+    <warning_popup_message message="Version {{ version }}" consoles="MHWESCO" player_slot="0" />
+    <gm_instructions title="Instructions">Welcome to the TSN Sandbox Version {{ version }}. ^--Activation---^The activation sequence allows the GM to choose the System and Sector for the players to start.^Once the activation sequence is completed, the main Sandbox menu will appear and the GM can begin their mission. Below is a step-by-step guide to activation: ^- First, ensure all player ships have spawned before activating GM Mode.^- Next, click on Activate GM Mode to begin the Sandbox activation sequence.^- Finally, select the System and Sector where the players will start.^^The GM menus are as follows:^- Bas.: basic interactions, teleporting and deleting entities.^-SPWN.: Spawn AI ships.^-POI: Create points of interest such as waypoints, wrecks, rendezvous points or anomalies.^-Haz.: Spawn hazards such as mines, asteroids and nebulae.^- Int.: Interact with player ships by sending messages, modifying ordnance stores, and causing damage.^-AI Off: Click to expand submenu to change NPC AI behaviour.</gm_instructions>
+    <!--Test Variables (debugging use only)-->
+    <!--End of Test Variables-->
+    <!-- Core Variables-->
+    <set_variable name="playerSide" value="2.0" integer="yes" />
+    <!--Dynamic Initialization-->
+    {% for hook in retrieve("onStart") %}
+       <!--{{ hook.name }}-->
+      {{ hook.caller() }}
+    {% endfor %}
+    <!-- Global constants -->
+    <set_variable name="Pi" value="3.1415926535989" />
+    <!--End of Start Block-->
+  </start>
