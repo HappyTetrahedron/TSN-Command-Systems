@@ -20,5 +20,5 @@
     <addto_object_property value="Ordnance*100" property="energy" use_gm_selection=" " />
 {% endcall %}
 {% call menu.onButtonClick("Coolant", "Supplies") %}
-    <addto_object_property value="Ordnance" property="total_coolant" use_gm_selection=" " />
+    <addto_object_property value="Ordnance" property="totalCoolant" use_gm_selection=" " />
 {% endcall %}
