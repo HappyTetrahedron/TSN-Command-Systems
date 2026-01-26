@@ -39,7 +39,7 @@ env = {
     ],
     "ordnance": {
         "ship1": {
-            "torpedo": -1,
+            "torpedo": "6",
             "pshock": -1,
         },
         "ship2": {

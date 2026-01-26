@@ -6,7 +6,7 @@
     <if_variable name="Ship{{ ship.id }}OrdnanceConfig" comparator="NOT" value="1.0" />
     <if_exists player_slot="{{ ship.slot }}" />
     {% for type, count in g.data.get("ordnance", {}).get("ship" + ship.id, {}).items() %}
-    {% if count >= 0 %}
+    {% if count | int >= 0 %}
       <set_object_property property="{{ const.ordnanceIdentifiers[type] }}" value="{{ count }}" player_slot="{{ ship.slot }}" />
     {% endif %}
     {% endfor %}
