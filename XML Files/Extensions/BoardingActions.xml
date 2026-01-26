@@ -1,0 +1,203 @@
+{# Simulate boarding actions on ships #}
+
+{% import 'Core/Menus.xml' as menu %}
+{% import 'Constants.xml' as const %}
+{% import 'Core/Start.xml' as start %}
+{% import 'Core/Comms.xml' as comms %}
+{% import 'Core/PlayerTracking.xml' as tracking %}
+
+
+{{ menu.addDismissableSubmenu("Boarding", menu.main.interaction) }}
+
+{% call start.onStart("BoardingActions") %}
+  {% for ship in const.shipConfigs %}
+    <set_variable name="Ship{{ ship.id }} Marines" value="1.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}MarinesMax" value="20.0" integer="yes" />
+  {% endfor %}
+{% endcall %}
+{% call(ship) tracking.onRespawn("BoardingActions") %}
+  <set_variable name="Ship{{ ship.id }} Marines" value="1.0" integer="yes" />
+  <set_variable name="Ship{{ ship.id }}MarinesMax" value="20.0" integer="yes" />
+{% endcall %}
+{% call(ship) comms.addStatusLine("BoardingDefenders") %}
+  We have |Ship{{ ship.id }}Marines| defenders ready for combat.
+{% endcall %}
+
+{% for ship in const.shipConfigs %}
+  <event name="Add Marine Complement" id_arme="43ca4cd1-f396-435e-ab59-44493e228b2d" parent_id_arme="3c6f84c6-53fa-4242-8c00-80cc7dda3f50">
+    <if_variable name="Ship{{ ship.id }} Marines" comparator="EQUALS" value="1.0" />
+    <set_variable name="Ship{{ ship.id }}Marines" value="Ship{{ ship.id }}MarinesMax" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}MarineReplen" randomIntLow="50" randomIntHigh="240" />
+    <set_variable name="Atk Ship{{ ship.id }}" value="0.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }} Marines" value="0.0" integer="yes" />
+  </event>
+  <event name="Full Complement" id_arme="00362ef5-ff45-422f-ba2a-35bbbee03087" parent_id_arme="3c6f84c6-53fa-4242-8c00-80cc7dda3f50">
+    <if_variable name="Ship{{ ship.id }} Marines" comparator="EQUALS" value="2.0" />
+    <if_variable name="Ship{{ ship.id }}Marines" comparator="EQUALS" value="Ship{{ ship.id }}MarinesMax" />
+    <if_variable name="Atk Ship{{ ship.id }}" comparator="EQUALS" value="0.0" />
+    <set_variable name="Ship{{ ship.id }} Marines" value="0.0" integer="yes" />
+  </event>
+  <event name="Below Complement" id_arme="20c19c05-f629-4923-86d5-3a8fad5b1af9" parent_id_arme="3c6f84c6-53fa-4242-8c00-80cc7dda3f50">
+    <if_variable name="Ship{{ ship.id }} Marines" comparator="EQUALS" value="2.0" />
+    <if_variable name="Ship{{ ship.id }}Marines" comparator="LESS" value="Ship{{ ship.id }}MarinesMax-3" />
+    <if_variable name="Atk Ship{{ ship.id }}" comparator="EQUALS" value="0.0" />
+    <set_variable name="reduceShip{{ ship.id }}Marines" randomIntLow="1" randomIntHigh="3" />
+    <set_timer name="Ship{{ ship.id }} Marines" seconds="Ship{{ ship.id }}MarineReplen" />
+    <set_variable name="Ship{{ ship.id }} Marines" value="3.0" integer="yes" />
+  </event>
+  <event name="Below Complement" id_arme="f560dee8-a8d6-41c4-bd49-435d8f912911" parent_id_arme="3c6f84c6-53fa-4242-8c00-80cc7dda3f50">
+    <if_variable name="Ship{{ ship.id }} Marines" comparator="EQUALS" value="2.0" />
+    <if_variable name="Ship{{ ship.id }}Marines" comparator="LESS" value="Ship{{ ship.id }}MarinesMax-2" />
+    <if_variable name="Atk Ship{{ ship.id }}" comparator="EQUALS" value="0.0" />
+    <set_variable name="reduceShip{{ ship.id }}Marines" randomIntLow="1" randomIntHigh="2" />
+    <set_timer name="Ship{{ ship.id }} Marines" seconds="Ship{{ ship.id }}MarineReplen" />
+    <set_variable name="Ship{{ ship.id }} Marines" value="3.0" integer="yes" />
+  </event>
+  <event name="Below Complement" id_arme="3878ea48-f593-43b0-985a-862a3efab8f6" parent_id_arme="3c6f84c6-53fa-4242-8c00-80cc7dda3f50">
+    <if_variable name="Ship{{ ship.id }} Marines" comparator="EQUALS" value="2.0" />
+    <if_variable name="Ship{{ ship.id }}Marines" comparator="LESS_EQUAL" value="Ship{{ ship.id }}MarinesMax-1" />
+    <if_variable name="Atk Ship{{ ship.id }}" comparator="EQUALS" value="0.0" />
+    <set_variable name="reduceShip{{ ship.id }}Marines" randomIntLow="0" randomIntHigh="1" />
+    <set_timer name="Ship{{ ship.id }} Marines" seconds="Ship{{ ship.id }}MarineReplen" />
+    <set_variable name="Ship{{ ship.id }} Marines" value="3.0" integer="yes" />
+  </event>
+  <event name="Marine Replen" id_arme="74cc6a65-99d6-4d02-9526-ed59a26a4afe" parent_id_arme="3c6f84c6-53fa-4242-8c00-80cc7dda3f50">
+    <if_variable name="Ship{{ ship.id }} Marines" comparator="EQUALS" value="3.0" />
+    <if_timer_finished name="Ship{{ ship.id }} Marines" />
+    <if_variable name="Atk Ship{{ ship.id }}" comparator="EQUALS" value="0.0" />
+    <set_variable name="Ship{{ ship.id }}Marines" value="Ship{{ ship.id }}Marines+reduceShip{{ ship.id }}Marines" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}MarineReplen" randomIntLow="50" randomIntHigh="240" />
+    <incoming_comms_text from="Marine Commander **Channel {{ ship.id }}**" sideValue="playerSide">Marines Back on Duty |reduceShip{{ ship.id }}Marines|^Total Marines |Ship{{ ship.id }}Marines|</incoming_comms_text>
+    <set_variable name="Ship{{ ship.id }} Marines" value="2.0" integer="yes" />
+  </event>
+{% endfor %}
+{% for ship in const.shipConfigs %}
+  {% call menu.onMenuClick("Attack Ship " + ship.id, "Boarding") %}
+    <set_variable name="Atk Ship{{ ship.id }}" value="1.0" />
+    <set_variable name="Ship{{ ship.id }}Attackers" randomIntLow="10" randomIntHigh="30" />
+    <warning_popup_message message="Intruder Alert!" consoles="MHWESC" player_slot="{{ ship.slot }}">Intruder Alert!</warning_popup_message>
+    <incoming_comms_text from="Ship{{ ship.id }}" type="STATUS">We have a hull breach! Marines are moving to respond.</incoming_comms_text>
+  {% endcall %}
+  <event name="Ship{{ ship.id }} Boarded Percentage" id_arme="699cd34f-21c7-4837-b2c6-f32028ac9ab6" parent_id_arme="c06a0e2d-29c2-4a75-9b0b-1520f61e9894">
+    <if_variable name="Atk Ship{{ ship.id }}" comparator="EQUALS" value="1.0" />
+    <if_variable name="Ship{{ ship.id }}Marines" comparator="GREATER" value="0.0" />
+    <if_variable name="Ship{{ ship.id }}Attackers" comparator="GREATER" value="0.0" />
+    <set_variable name="Ship{{ ship.id }}BoardedPercent" randomIntLow="0" randomIntHigh="100" />
+    <set_variable name="Ship{{ ship.id }}BoardedTimer" randomIntLow="2" randomIntHigh="10" />
+    <set_variable name="Ship{{ ship.id }}DamagePercent" randomIntLow="0" randomIntHigh="100" />
+    <set_variable name="Atk Ship{{ ship.id }}" value="2.0" />
+  </event>
+  <event name="No Marines Aboard" id_arme="3789b85d-0a61-461b-9e22-9950322adab2" parent_id_arme="c06a0e2d-29c2-4a75-9b0b-1520f61e9894">
+    <if_variable name="Atk Ship{{ ship.id }}" comparator="EQUALS" value="1.0" />
+    <if_variable name="Ship{{ ship.id }}Marines" comparator="LESS_EQUAL" value="0.0" />
+    <if_variable name="Ship{{ ship.id }}Attackers" comparator="GREATER" value="0.0" />
+    <set_variable name="Ship{{ ship.id }}Marines" value="0.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}Undefended" randomIntLow="10" randomIntHigh="20" />
+    <incoming_comms_text from="CHANNEL {{ ship.id }}" type="STATUS">Automated defensive systems active.</incoming_comms_text>
+    <set_variable name="Atk Ship{{ ship.id }}" value="10.0" />
+  </event>
+  <event name="End Attack (No Attackers Aboard)" id_arme="82f43f68-2a19-4697-b6d3-e03cf63ee039" parent_id_arme="c06a0e2d-29c2-4a75-9b0b-1520f61e9894">
+    <if_variable name="Atk Ship{{ ship.id }}" comparator="EQUALS" value="1.0" />
+    <if_variable name="Ship{{ ship.id }}Attackers" comparator="LESS_EQUAL" value="0.0" />
+    <set_variable name="Ship{{ ship.id }}Attackers" value="0.0" integer="yes" />
+    <incoming_comms_text from="CHANNEL {{ ship.id }}" type="STATUS">Boarders have been successfully repelled.^We have casualties though. We are down to |Ship{{ ship.id }}Marines| combat ready defenders.</incoming_comms_text>
+    <set_variable name="Atk Ship{{ ship.id }}" value="0.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }} Marines" value="2.0" />
+  </event>
+  <event name="Marines &gt; Attackers" id_arme="ff06848a-fc9f-4354-b54c-c5706738e6e6" parent_id_arme="c06a0e2d-29c2-4a75-9b0b-1520f61e9894">
+    <if_variable name="Atk Ship{{ ship.id }}" comparator="EQUALS" value="2.0" />
+    <if_variable name="Ship{{ ship.id }}Marines" comparator="GREATER" value="Ship{{ ship.id }}Attackers" />
+    <set_variable name="Ship{{ ship.id }}Defense" value="Ship{{ ship.id }}BoardedPercent+((Ship{{ ship.id }}Attackers/Ship{{ ship.id }}Marines)*20)" />
+    <set_timer name="Atk Ship{{ ship.id }}" seconds="Ship{{ ship.id }}BoardedTimer" />
+    <set_variable name="Atk Ship{{ ship.id }}" value="3.0" />
+  </event>
+  <event name="Marines &lt; Attackers" id_arme="76985bf9-be7d-4e54-8578-160a87bc4a9a" parent_id_arme="c06a0e2d-29c2-4a75-9b0b-1520f61e9894">
+    <if_variable name="Atk Ship{{ ship.id }}" comparator="EQUALS" value="2.0" />
+    <if_variable name="Ship{{ ship.id }}Marines" comparator="LESS" value="Ship{{ ship.id }}Attackers" />
+    <set_variable name="Ship{{ ship.id }}Defense" value="Ship{{ ship.id }}BoardedPercent-((Ship{{ ship.id }}Marines/Ship{{ ship.id }}Attackers)*20)" />
+    <set_timer name="Atk Ship{{ ship.id }}" seconds="Ship{{ ship.id }}BoardedTimer" />
+    <set_variable name="Atk Ship{{ ship.id }}" value="3.0" />
+  </event>
+  <event name="Marines = Attackers" id_arme="d6edfc40-87ef-44b9-9591-372d5fa14b37" parent_id_arme="c06a0e2d-29c2-4a75-9b0b-1520f61e9894">
+    <if_variable name="Atk Ship{{ ship.id }}" comparator="EQUALS" value="2.0" />
+    <if_variable name="Ship{{ ship.id }}Marines" comparator="EQUALS" value="Ship{{ ship.id }}Attackers" />
+    <set_variable name="Ship{{ ship.id }}Defense" value="Ship{{ ship.id }}BoardedPercent" />
+    <set_timer name="Atk Ship{{ ship.id }}" seconds="Ship{{ ship.id }}BoardedTimer" />
+    <set_variable name="Atk Ship{{ ship.id }}" value="3.0" />
+  </event>
+  <event name="Attackers Win" id_arme="c53c0654-127c-43b9-98a5-bdb3f69db5ae" parent_id_arme="c06a0e2d-29c2-4a75-9b0b-1520f61e9894">
+    <if_variable name="Atk Ship{{ ship.id }}" comparator="EQUALS" value="3.0" />
+    <if_variable name="Ship{{ ship.id }}Defense" comparator="LESS" value="50.0" />
+    <if_timer_finished name="Atk Ship{{ ship.id }}" />
+    <set_variable name="reduceAttackers" randomIntLow="0" randomIntHigh="3" />
+    <set_variable name="reduceMarines" randomIntLow="0" randomIntHigh="3" />
+    <set_variable name="Atk Ship{{ ship.id }}" value="4.0" />
+  </event>
+  <event name="Defenders Win" id_arme="80c745d5-2c28-4994-9b8f-7b3d53282403" parent_id_arme="c06a0e2d-29c2-4a75-9b0b-1520f61e9894">
+    <if_variable name="Atk Ship{{ ship.id }}" comparator="EQUALS" value="3.0" />
+    <if_variable name="Ship{{ ship.id }}Defense" comparator="GREATER_EQUAL" value="50.0" />
+    <if_timer_finished name="Atk Ship{{ ship.id }}" />
+    <set_variable name="reduceAttackers" randomIntLow="1" randomIntHigh="5" />
+    <set_variable name="reduceMarines" randomIntLow="0" randomIntHigh="3" />
+    <set_variable name="Atk Ship{{ ship.id }}" value="4.0" />
+  </event>
+  <event name="Reduce Marines and Attackers" id_arme="80516fd3-808d-4549-8b58-f05f7411f695" parent_id_arme="c06a0e2d-29c2-4a75-9b0b-1520f61e9894">
+    <if_variable name="Atk Ship{{ ship.id }}" comparator="EQUALS" value="4.0" />
+    <set_variable name="Ship{{ ship.id }}Attackers" value="Ship{{ ship.id }}Attackers-reduceAttackers" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}Marines" value="Ship{{ ship.id }}Marines-reduceMarines" integer="yes" />
+    <set_variable name="Atk Ship{{ ship.id }}" value="5.0" integer="yes" />
+  </event>
+  <folder_arme name="Undefended Boarding Action" id_arme="fdfda4ad-898e-4778-b8a0-eb2a96f0ad52" parent_id_arme="c06a0e2d-29c2-4a75-9b0b-1520f61e9894" />
+  <event name="Attack Cycle Countdown" id_arme="af72551d-1b9c-411b-84fe-7f512efbee23" parent_id_arme="fdfda4ad-898e-4778-b8a0-eb2a96f0ad52">
+    <if_variable name="Atk Ship{{ ship.id }}" comparator="EQUALS" value="10.0" />
+    <if_variable name="Ship{{ ship.id }}Undefended" comparator="GREATER" value="0.0" />
+    <set_variable name="Ship{{ ship.id }}DamagePercent" value="100.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}Undefended" value="Ship{{ ship.id }}Undefended-1" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}DamageType" randomIntLow="1" randomIntHigh="7" />
+    <set_variable name="Ship{{ ship.id }}NodeSelect" randomIntLow="0" randomIntHigh="4" />
+    <set_variable name="DamageShip{{ ship.id }}" randomIntLow="1" randomIntHigh="2" />
+  </event>
+  <event name="End Undefended Attack" id_arme="583dd03c-ca6d-4567-a2ed-ea8cd7d40706" parent_id_arme="fdfda4ad-898e-4778-b8a0-eb2a96f0ad52">
+    <if_variable name="Atk Ship{{ ship.id }}" comparator="EQUALS" value="10.0" />
+    <if_variable name="Ship{{ ship.id }}Undefended" comparator="EQUALS" value="0.0" />
+    <incoming_comms_text from="CHANNEL {{ ship.id }}" type="STATUS">Boarders have evacuated the ship.</incoming_comms_text>
+    <set_variable name="Atk Ship{{ ship.id }}" value="0.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }} Marines" value="2.0" />
+  </event>
+  <event name="Select System to Damage" id_arme="9147cb85-ecc9-4210-a61e-8ccce53c271e" parent_id_arme="41eabd30-d1bb-4f71-b09e-c098f7a9419d">
+    <if_variable name="Atk Ship{{ ship.id }}" comparator="EQUALS" value="5.0" />
+    <set_variable name="Ship{{ ship.id }}DamagePercent" value="Ship{{ ship.id }}DamagePercent+((Ship{{ ship.id }}Marines/Ship{{ ship.id }}Attackers)*20)" integer="yes" />
+    <set_variable name="Atk Ship{{ ship.id }}" value="6.0" integer="yes" />
+  </event>
+  <event name="Light Damage" id_arme="f731af03-c36d-4608-9418-5e7be958dea1" parent_id_arme="41eabd30-d1bb-4f71-b09e-c098f7a9419d">
+    <if_variable name="Atk Ship{{ ship.id }}" comparator="EQUALS" value="6.0" />
+    <if_variable name="Ship{{ ship.id }}DamagePercent" comparator="LESS_EQUAL" value="50.0" />
+    <set_variable name="Ship{{ ship.id }}DamageType" randomIntLow="1" randomIntHigh="7" />
+    <set_variable name="Ship{{ ship.id }}NodeSelect" randomIntLow="0" randomIntHigh="4" />
+    <set_variable name="DamageShip{{ ship.id }}" value="1.0" />
+    <set_variable name="Atk Ship{{ ship.id }}" value="1.0" integer="yes" />
+  </event>
+  <event name="Heavy Damage" id_arme="f2e7cd64-8a99-4650-b756-e7478fca5860" parent_id_arme="41eabd30-d1bb-4f71-b09e-c098f7a9419d">
+    <if_variable name="Atk Ship{{ ship.id }}" comparator="EQUALS" value="6.0" />
+    <if_variable name="Ship{{ ship.id }}DamagePercent" comparator="GREATER" value="50.0" />
+    <set_variable name="Ship{{ ship.id }}DamageType" randomIntLow="1" randomIntHigh="7" />
+    <set_variable name="Ship{{ ship.id }}NodeSelect" randomIntLow="0" randomIntHigh="4" />
+    <set_variable name="DamageShip{{ ship.id }}" value="2.0" />
+    <set_variable name="Atk Ship{{ ship.id }}" value="1.0" integer="yes" />
+  </event>
+  {% for system, name in const.systemIdentifiers.items() %}
+    {% set systemID = loop.index %}
+    {% for i in range(4) %}
+      {% for percentage in [0.5, 1] %}
+        {% set percentageID = loop.index %}
+        <event name="Damage {{ system }} {{ i }} by {{ percentage }}">
+          <if_variable name="DamageShip{{ ship.id }}" comparator="EQUALS" value="{{ percentageID }}.0" />
+          <if_variable name="Ship{{ ship.id }}DamageType" comparator="EQUALS" value="{{ systemID }}.0" />
+          <if_variable name="Ship{{ ship.id }}NodeSelect" comparator="EQUALS" value="{{ i+1 }}.0" />
+          <set_player_grid_damage value="{{ percentage }}" player_slot="{{ ship.slot }}" index="{{ i }}" systemType="{{ name }}" countFrom="front" />
+          <set_variable name="DamageShip{{ ship.id }}" value="0.0" />
+        </event>
+      {% endfor %}
+    {% endfor %}
+  {% endfor %}
+{% endfor %}

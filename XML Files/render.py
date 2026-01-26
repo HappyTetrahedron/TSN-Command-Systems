@@ -6,28 +6,36 @@ import faulthandler
 faulthandler.enable()
 from jinja2 import Environment, FileSystemLoader
 import datetime
+import sys
+import os
 
-track_dict = {}
-
-def track(key, value):
-    if key in track_dict:
-        track_dict[key].append(value)
-    else:
-        track_dict[key] = [value]
-
-def retrieve(key):
-    return track_dict.get(key, [])
+# ugly but idgaf
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'render_server'))
+import jinja_functions as jf
 
 env = {
+    "difficulty": 10,
     "extensions": [
         "TokenSystem",
-        "VerdantFleet",
+        "HazardPainter",
         "NebulaEffects",
+        "FuelStatusDisplay",
+        "ForceShipNames",
+        "BudronNPCs",
+        "BoardingActions",
+        "CrookedStar",
+        "CureTags",
+        "Radiation",
+        "Signature Scrambler",
+        "VerdantFleet",
     ],
     "maps": [
-        "Acantha",
-        "Ibroan",
-        "Erowis",
+        "Onwia",
+        "Arietis",
+        "Helios",
+        "Tibur",
+        "Burin",
+        "Athorn"
     ],
     "ordnance": {
         "ship1": {
@@ -47,8 +55,11 @@ env = {
     },
     "modules": {
         "ship1": [
-            "Decoy",
             "KamikazeMine",
+            "Decoy",
+            "Fireworks",
+            "ClusterMine",
+            "ShieldEnhancer",
         ],
     }
 }
@@ -58,7 +69,8 @@ template_env.lstrip_blocks = True
 template_env.trim_blocks = True
 template_env.autoescape = True
 template_env.add_extension('jinja2.ext.do')
-template_env.globals.update(track=track, retrieve=retrieve)
+
+jf.register(template_env)
 TMPL_FNAME = 'main.xml'
 OUT_FNAME = '../MISS_TSN-Command.xml'
 
@@ -68,5 +80,7 @@ context = {
     "time": datetime.datetime.now().isoformat()
 }
 
+
 with open(OUT_FNAME, 'w') as f:
+    jf.clear_all_state()
     f.write(template_env.get_template(TMPL_FNAME).render(g=context))

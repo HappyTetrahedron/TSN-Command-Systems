@@ -1,0 +1,179 @@
+{% import 'Constants.xml' as util %}
+{% import 'Maps/Generator/Planets.jinja' as planet %}
+{% macro transitionEvent(dir, fromSector, inSystem, w, h) %}
+
+  <event name="{{ dir }} Transition">
+    <if_variable name="{{ inSystem }} System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="{{ fromSector }}.0" />
+    <if_variable name="{{ dir }} Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="{{ dir }} Transition" value="0.0" />
+
+    <set_variable name="Sector" value="{{
+         fromSector - 1 if dir == "Grid 1" else
+         fromSector + 1 if dir == "Grid 5" else
+         fromSector - w if dir == "Grid A" else
+         fromSector + w if dir == "Grid E" else
+         fromSector - w - 1 if dir == "Corner A1" else
+         fromSector - w + 1 if dir == "Corner A5" else
+         fromSector + w - 1 if dir == "Corner E1" else
+         fromSector + w + 1
+    }}.0" integer="yes" />
+    <set_variable name="{{ inSystem }} System" value="3.0" integer="yes" />
+  </event>
+
+{% endmacro %}
+
+{% macro jumpGateEvents(fromSystem, toSystem, fromSector, toSector) %}
+  {# TODO what this event dooo?? #}
+  <event name="Gate Offline" id_arme="4d2d3b10-fd64-4dd6-9e8d-b12ce7eb58a3" parent_id_arme="008d9df1-aa8c-4295-82ac-1fd4d150cb77">
+    <if_variable name="Sector" comparator="EQUALS" value="{{ fromSector }}" />
+    <if_variable name="{{ fromSystem }} System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="{{ toSystem }} Gate" />
+  </event>
+
+  {% for ship in util.shipConfigs %}
+  <event name="Ship{{ ship.id }} Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="{{ fromSector }}" />
+    <if_variable name="{{ fromSystem }} System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship{{ ship.id }}" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="{{ ship.slot }}" name2="{{ toSystem }} Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="{{ toSystem }} Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship{{ ship.id }}" value="1.0" />
+  </event>
+  <event name="Ship{{ ship.id }} Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="{{ fromSector }}" />
+    <if_variable name="{{ fromSystem }} System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship{{ ship.id }}" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="{{ ship.slot }}" name2="{{ toSystem }} Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="{{ toSystem }} Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship{{ ship.id }}" value="0.0" />
+  </event> 
+  {% endfor %}
+
+  <event name="Gate Online">
+    <if_variable name="Sector" comparator="EQUALS" value="{{ fromSector }}" />
+    <if_variable name="{{ fromSystem }} System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="{{ toSystem }} Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="{{ toSystem }} Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated">
+    <if_variable name="Sector" comparator="EQUALS" value="{{ fromSector }}" />
+    <if_variable name="{{ fromSystem }} System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="{{ toSystem }} Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="{{ fromSystem }} System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="{{ fromSystem }} to {{ toSystem }}" value="1.0" />
+    <set_variable name="{{ toSystem }} System" value="1.0" />
+    <set_variable name="Sector" value="{{ toSector }}" />
+    <set_variable name="shipsInrange" value="0.0" integer="yes" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+    <set_variable name="Gate System" value="0.0" />
+  </event>
+{% endmacro %}
+
+
+{% macro arrivalEvent(fromSystem, toSystem, fromSector, toSector) %}
+  <event name="Arrival From {{ toSystem }}">
+    <if_variable name="Sector" comparator="EQUALS" value="{{ fromSector }}" />
+    <if_variable name="{{ fromSystem }} System" comparator="EQUALS" value="2.0" />
+    <if_variable name="{{ toSystem }} to {{ fromSystem }}" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="{{ toSystem }} Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="{{ toSystem }} Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="{{ toSystem }} Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="{{ toSystem }} Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="{{ toSystem }} Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="{{ toSystem }} Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="{{ toSystem }} Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="{{ toSystem }} Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="{{ toSystem }} to {{ fromSystem }}" value="0.0" />
+  </event>
+{% endmacro %}
+
+{% macro createEvent(system, sector, transitions, skybox) %}
+  <event name="Create {{ system }} Sector {{ sector }}">
+    <if_variable name="{{ system }} System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="{{ sector }}.0" />
+    <if_timer_finished name="Transition" />
+    {% if skybox >= 0 %}
+    <set_skybox_index index="{{ skybox }}" />
+    {% endif %}
+    {{ caller() }}
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="{{ system }} System" value="2.0" />
+    {% for transition in util.transitionTypes %}
+    <set_variable name="{{ transition }} Transition Enabled" value="{{ 1 if transition in transitions else 0 }}.0" />
+    {% endfor %}
+  </event>
+{% endmacro %}
+
+{% macro entitiesEvent(system, sector, gateTarget, entityNames) %}
+  <event name="Generate Sector Entities">
+    <if_variable name="{{ system }} System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="{{ sector }}.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    {{ caller() }}
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="{{ system }} {{ util.romanNumerals[sector] }}" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+    {% if gateTarget %}
+      <set_object_property property="artScale" value="1.0" name="{{ gateTarget }} Gate" />
+      <set_object_property property="pushRadius" value="0.0" name="{{ gateTarget }} Gate" />
+      <set_object_property property="angle" value="4.71238898" name="{{ gateTarget }} Gate" />
+      <set_object_property property="rollDelta" value="0.3" name="{{ gateTarget }} Gate" />
+    {% endif %}
+
+    {% for entity in entityNames %} {% for prefix in planet.planetTypes.keys() %}
+      {% if entity.startswith(prefix) %}
+        {{ planet.createPlanetSlices(entity, planet.planetTypes[prefix], prefix)}}
+      {% endif %}
+    {% endfor %} {% endfor %}
+
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> {# I *think* we can get away with skipping the "sector settings" step here. #}
+
+  </event>
+{% endmacro %}
+
+{% macro destroyEvent(system, sector, entityList) %}
+  <event name="Destroy Sector Entities">
+    <if_variable name="{{ system }} System" comparator="EQUALS" value="3.0" />
+    {% for entity in entityList %} {% for prefix in planet.planetTypes.keys() %}
+      {% if entity.startswith(prefix) %}
+        {{ planet.deletePlanetSlices()}}
+        <destroy name="{{ entity.removeprefix(prefix) }}" />
+      {% endif %}
+    {% endfor %} {% endfor %}
+    {% for entity in entityList %}
+    <destroy name="{{ entity }}" />
+    {% endfor %}
+    <destroy name="{{ system }} {{ util.romanNumerals[sector]}}" />
+    <set_variable name="{{ system }} System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+{% endmacro %}

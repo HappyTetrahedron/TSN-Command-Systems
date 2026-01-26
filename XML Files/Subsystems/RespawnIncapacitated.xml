@@ -1,0 +1,13 @@
+{% import 'Constants.xml' as const %}
+{% import 'Core/PlayerTracking.xml' as tracking %}
+
+{% call(ship) tracking.onRespawn("RespawnIncapacitated") %}
+  {% for system, property in const.systemIdentifiers.items() %}
+    {% for i in range(6) %}
+      <set_player_grid_damage systemType="{{ property }}" player_slot="{{ ship.slot }}" value="1.0" countFrom="front" index="{{ i }}" />
+    {% endfor %}
+  {% endfor %}
+  {% for i in range(3) %}
+    <set_damcon_members player_slot="{{ ship.slot }}" team_index="{{ i }}" value="0" />
+  {% endfor %}
+{% endcall %}

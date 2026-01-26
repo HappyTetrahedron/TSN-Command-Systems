@@ -1,57 +1,34 @@
 {# Adds the TSN Verdant and its fleet. They are beefed-up NPC ships able to do fancy formation flying. Also adds various other ships: TSN Whispers of Freedom (refugee transport), Ubuntu (Tolunay's ship), Wisdom (Liam's ship), Keloi Gitosz (Kralien boss), Black Bertha (pirate) #}
 
-{% import 'Utils.xml' as util %}
-{% import 'Spawn.xml' as spawn %}
+{% import 'Constants.xml' as const %}
+{% import 'Core/Spawn.xml' as spawn %}
+{% import 'Core/Destroy.xml' as destroy %}
+{% import 'Core/Menus.xml' as menu %}
 
-{% call() util.createConditionalMenu("VerdantBase", {
-    "GM_Menu_Selector": "1",
-}) %}
-    <set_gm_button text="RmVerdantShips" x="295" y="130" h="28" w="150" />
+{% call destroy.onDestroy("VerdantShips") %}
+  <destroy name="TSN Verdant" />
+  <destroy name="TSN Vengeance" />
+  <destroy name="TSN Warspite" />
+  <destroy name="TSN Fury" />
+  <destroy name="TSN Dawn" />
+  <destroy name="TSN Shield" />
+  <destroy name="TSN Daring" />
+  <destroy name=" TSN Verdant " />
+  <destroy name=" TSN Vengeance " />
+  <destroy name=" TSN Warspite " />
+  <destroy name=" TSN Fury " />
+  <destroy name=" TSN Dawn " />
+  <destroy name=" TSN Shield " />
+  <destroy name=" TSN Daring " />
+  <destroy name="Keloi Gitosz" />
+  <destroy name="Black Bertha" />
+  <destroy name="TSN Whispers of Freedom" />
+  <destroy name="Wisdom" />
+  <destroy name="Ubuntu" />
 {% endcall %}
-{% call() util.destroyConditionalMenu("VerdantBase", {
-    "GM_Menu_Selector": "1",
-}) %}
-    <clear_gm_button text="RmVerdantShips" />
-{% endcall %}
-
-{% call() util.createConditionalMenu("VerdantAI", {
-    "GM_Submenu_AICommands_ShouldShow": "1",
-}) %}
-    <set_gm_button text="ResetVerdant" x="320" y="540" h="28" w="90" />
-    <set_gm_button text="BoostVerdant" x="320" y="570" h="28" w="90" />
-{% endcall %}
-{% call() util.destroyConditionalMenu("VerdantAI", {
-    "GM_Submenu_AICommands_ShouldShow": "1",
-}) %}
-    <clear_gm_button text="ResetVerdant" />
-    <clear_gm_button text="BoostVerdant" />
-{% endcall %}
-
-  <event name="Verdant_RemoveCustomShips">
-    <if_gm_button text="RmVerdantShips" />
-    <destroy name="TSN Verdant" />
-    <destroy name="TSN Vengeance" />
-    <destroy name="TSN Warspite" />
-    <destroy name="TSN Fury" />
-    <destroy name="TSN Dawn" />
-    <destroy name="TSN Shield" />
-    <destroy name="TSN Daring" />
-    <destroy name=" TSN Verdant " />
-    <destroy name=" TSN Vengeance " />
-    <destroy name=" TSN Warspite " />
-    <destroy name=" TSN Fury " />
-    <destroy name=" TSN Dawn " />
-    <destroy name=" TSN Shield " />
-    <destroy name=" TSN Daring " />
-    <destroy name="Keloi Gitosz" />
-    <destroy name="Black Bertha" />
-    <destroy name="TSN Whispers of Freedom" />
-    <destroy name="Wisdom" />
-    <destroy name="Ubuntu" />
-  </event>
 
   {% for name in ["TSN Verdant"] %}
-  {% call spawn.spawn(spawn.TSN.key, "TSN Ships", "+Verdant") %}
+  {% call spawn.spawn(const.spawnFactions.TSN.key, "TSN Ships", "+Verdant") %}
     <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="1701" sideValue="SideValue" fleetnumber="-1" />
 
     <clear_ai name="{{ name }}" />
@@ -113,7 +90,7 @@
   {% endmacro %}
 
   {% for mode in ["Fleet", "Form"] %}
-    {% call spawn.spawn(spawn.TSN.key, "TSN Fleets", "+Verdant" + mode) %}
+    {% call spawn.spawn(const.spawnFactions.TSN.key, "TSN Fleets", "+Verdant" + mode) %}
       <!-- flagship -->
       <create type="neutral" use_gm_position="" angle="0" name="TSN Verdant" hullID="1701" sideValue="SideValue" fleetnumber="98" />
 
@@ -290,8 +267,7 @@
   </event>
 
 
-  <event name="VerdantFleet_AIReset" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
-    <if_gm_button text="ResetVerdant" />
+  {% call menu.onButtonClick("ResetVerdant", menu.ai.aicommands) %}
     {% for name in ["TSN Verdant", "TSN Vengeance", "TSN Warspite", "TSN Fury", "TSN Dawn", "TSN Shield", "TSN Daring"] %}
       <clear_ai name="{{ name }}" />
       <add_ai type="SPCL_AI" name="{{ name }}" />
@@ -306,16 +282,15 @@
       <add_ai type="CHASE_AI_SHIP" value1="3000" value2="3000" name="{{ name }}" />
       <add_ai type="CHASE_PLAYER" value1="3000" value2="3000" name="{{ name }}" />
     {% endfor %}
-  </event>
+  {% endcall %}
 
-  <event name="VerdantFleet_PlotArmor" id_arme="1923bd22-e490-4245-a797-2d14e56dd7f6" parent_id_arme="8d34f566-84d9-4830-a518-47fee928470a">
-    <if_gm_button text="BoostVerdant" />
+  {% call menu.onButtonClick("BoostVerdant", menu.ai.aicommands) %}
     {{ verdantFleetShields() }}
-  </event>
+  {% endcall %}
 
 
   {% for name in ["Keloi Gitosz"] %}
-    {% call spawn.spawn(spawn.Hegemony.key, "Single Hegemony", "+KeloiGitos") %}
+    {% call spawn.spawn(const.spawnFactions.Hegemony.key, "Single Hegemony", "+KeloiGitos") %}
     <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="2002" sideValue="SideValue" fleetnumber="-1" />
 
     <set_object_property property="shieldMaxStateFront" value="2000" name="{{ name }}" />
@@ -348,7 +323,7 @@
   {% endfor %}
 
   {% for name in ["Black Bertha"] %}
-  {% call spawn.spawn(spawn.Pirate.key, "Euphini Pirates", "+BlackBertha") %}
+  {% call spawn.spawn(const.spawnFactions.Pirate.key, "Euphini Pirates", "+BlackBertha") %}
     <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="7301" sideValue="SideValue" fleetnumber="-1" />
 
     <set_object_property property="shieldMaxStateFront" value="400" name="{{ name }}" />
@@ -380,7 +355,7 @@
   {% endfor %}
 
   {% for name in ["TSN Whispers of Freedom"] %}
-  {% call spawn.spawn(spawn.TSN.key, "TSN Ships", "+WhispersofFreedom") %}
+  {% call spawn.spawn(const.spawnFactions.TSN.key, "TSN Ships", "+WhispersofFreedom") %}
     <create type="neutral" use_gm_position="" angle="0" name="{{ name }}" hullID="1503" sideValue="SideValue" fleetnumber="-1" />
 
     <set_object_property property="shieldMaxStateFront" value="180" name="{{ name }}" />
@@ -402,7 +377,7 @@
   {% endfor %}
 
   {% for name in ["Wisdom"] %}
-  {% call spawn.spawn(spawn.USFP.key, "Civilian USFP", "+Wisdom") %}
+  {% call spawn.spawn(const.spawnFactions.USFP.key, "Civilian USFP", "+Wisdom") %}
     <create type="neutral" use_gm_position="" angle="0" name="{{ name }}" hullID="1504" sideValue="SideValue" fleetnumber="-1" />
 
     <set_object_property property="shieldMaxStateFront" value="400" name="{{ name }}" />
@@ -427,7 +402,7 @@
   {% endfor %}
 
   {% for name in ["Ubuntu"] %}
-  {% call spawn.spawn(spawn.USFP.key, "Civilian USFP", "+Ubuntu") %}
+  {% call spawn.spawn(const.spawnFactions.USFP.key, "Civilian USFP", "+Ubuntu") %}
     <create type="neutral" use_gm_position="" angle="0" name="{{ name }}" hullID="1602" sideValue="SideValue" fleetnumber="-1" />
 
     <set_object_property property="shieldMaxStateFront" value="600" name="{{ name }}" />

@@ -1,0 +1,61 @@
+{% macro runIfInSector(sys, sectors) %}
+  <event name="{{ sys.name }} - Run If In Sector {{ sectors }}">
+    <if_variable name="{{ sys.name }} System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+    {% if sectors|length == 1 %}
+        <if_variable name="Sector" comparator="EQUALS" value="{{ sectors[0] }}" />
+    {% else %}
+        {% for i in range(sys.width * sys.height) %}
+          {% if i+1 not in sectors %}
+            <if_variable name="Sector" comparator="NOT" value="{{ i+1 }}" />
+          {% endif %}
+        {% endfor %}
+    {% endif %}
+    {{ caller() }}
+  </event>
+{% endmacro %}
+
+{% macro runIfNotInSector(sys, sectors) %}
+  <event name="{{ sys.name }} - Run If Not In Sector {{ sectors }}">
+    <if_variable name="{{ sys.name }} System" comparator="GREATER" value="0.0" />
+    {% for sector in sectors %}
+        <if_variable name="Sector" comparator="NOT" value="{{ sector }}" />
+    {% endfor %}
+    {{ caller() }}
+  </event>
+{% endmacro %}
+
+{% macro runIfOnMap(sys) %}
+  <event name="{{ sys.name }} - Run If On Map {{ sys.name }}">
+    <if_variable name="{{ sys.name }} System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+    {{ caller() }}
+  </event>
+{% endmacro %}
+
+{% macro runOnMapLoad(sys) %}
+  <event name="{{ sys.name }} - Run On Load">
+    <if_variable name="{{ sys.name }} System" comparator="GREATER" value="0.0" />
+    <if_variable name="_{{ sys.name }}OnLoadRan" comparator="NOT" value="1.0" />
+    {{ caller() }}
+    <set_variable name="_{{ sys.name }}OnLoadRan" value="1.0" integer="yes" />
+  </event>
+  <event name="{{ sys.name }} - Reset On Load">
+    <if_variable name="{{ sys.name }} System" comparator="LESS" value="1.0" />
+    <if_variable name="_{{ sys.name }}OnLoadRan" comparator="EQUALS" value="1.0" />
+    <set_variable name="_{{ sys.name }}OnLoadRan" value="0.0" integer="yes" />
+  </event>
+{% endmacro %}
+{% macro runOnMapUnload(sys) %}
+  <event name="{{ sys.name }} - Run On Unload">
+    <if_variable name="{{ sys.name }} System" comparator="LESS" value="1.0" />
+    <if_variable name="_{{ sys.name }}OnUnloadRan" comparator="NOT" value="1.0" />
+    {{ caller() }}
+    <set_variable name="_{{ sys.name }}OnUnloadRan" value="1.0" integer="yes" />
+  </event>
+  <event name="{{ sys.name }} - Reset On Unload">
+    <if_variable name="{{ sys.name }} System" comparator="GREATER" value="0.0" />
+    <if_variable name="_{{ sys.name }}OnUnloadRan" comparator="EQUALS" value="1.0" />
+    <set_variable name="_{{ sys.name }}OnUnloadRan" value="0.0" integer="yes" />
+  </event>
+{% endmacro %}

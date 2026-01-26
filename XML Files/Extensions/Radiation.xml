@@ -1,0 +1,158 @@
+{# Adds a radiation source hazard to the game #}
+{% import 'Core/Menus.xml' as menu %}
+{% import 'Constants.xml' as const %}
+{% import 'Core/Start.xml' as start %}
+
+{% call start.onStart("Radiation") %}
+  {% for ship in const.shipConfigs %}
+    <set_variable name="Ship{{ ship.id }}Level" value="0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}RadDis" value="0" integer="yes" />
+  {% endfor %}
+{% endcall %}
+
+{% call menu.onButtonClick("Radiation", menu.main.hazard) %}
+  <if_exists name="'" />
+  <set_to_gm_position name="'" />
+{% endcall %}
+{% call menu.onButtonClick("Radiation", menu.main.hazard) %}
+  <if_not_exists name="'" />
+  <create type="genericMesh" use_gm_position="" name="'" meshFileName="dat\mine.dxs" textureFileName="dat\cargo_vessel_glow.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+  <set_ship_text name="'" desc="Approximate location of radiation source." scan_desc="Radiation causes shield failure if the level rises above 60, and can destabilize energy containment if the level rises above 100." hailtext="Signal relay established. Communication link active." />
+  <set_variable name="Active Radiation" value="1.0" integer="yes" />
+  <set_variable name="RadiationLevel" value="1.0" integer="yes" />
+{% endcall %}
+
+<event name="Radiation Alert" id_arme="77581f6f-6ccb-4c07-965d-f7039bf91e90" parent_id_arme="a86142bd-50be-414e-8dd4-3cea6b57aaec">
+  <if_variable name="Active Radiation" comparator="EQUALS" value="1.0" />
+  <if_exists name="'" />
+  {% for ship in const.shipConfigs %}
+    <warning_popup_message message="Radiation Detected" consoles="MHWESC" player_slot="{{ ship.slot }}" />
+    <set_timer name="Ship{{ ship.id }} Radiation" seconds="2" />
+  {% endfor %}
+  <incoming_comms_text from="System" sideValue="playerSide" type="ALERT">Severe radiation source detected^Monitors activated</incoming_comms_text>
+  <set_variable name="Active Radiation" value="2.0" integer="yes" />
+  <set_variable name="Radiation Sector" value="Sector" integer="yes" />
+</event>
+
+<event name="Radiation Sector Changed" id_arme="31c08a78-8447-4b84-8556-d926ef0ad2fc" parent_id_arme="a86142bd-50be-414e-8dd4-3cea6b57aaec">
+  <if_exists name="'" />
+  <if_variable name="Radiation Sector" comparator="NOT" value="Sector" />
+  <destroy name="'" />
+</event>
+
+<event name="Radiation Removed" id_arme="31c08a78-8447-4b84-8556-d926ef0ad2fc" parent_id_arme="a86142bd-50be-414e-8dd4-3cea6b57aaec">
+  <if_variable name="Active Radiation" comparator="EQUALS" value="2.0" />
+  <if_not_exists name="'" />
+  <set_variable name="Active Radiation" value="0.0" integer="yes" />
+</event>
+
+{% for ship in const.shipConfigs %}
+  <event name="Shield Failure">
+    <if_variable name="Ship{{ ship.id }}Monitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="Ship{{ ship.id }}Level" comparator="GREATER_EQUAL" value="60.0" />
+    <if_timer_finished name="Ship{{ ship.id }} Radiation" />
+    <addto_object_property value="-3.0" property="shieldStateFront" player_slot="{{ ship.slot }}" />
+    <addto_object_property value="-3.0" property="shieldStateBack" player_slot="{{ ship.slot }}" />
+  </event>
+  <event name="Major Shield Failure">
+    <if_variable name="Ship{{ ship.id }}Monitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="Ship{{ ship.id }}Level" comparator="GREATER_EQUAL" value="80.0" />
+    <if_timer_finished name="Ship{{ ship.id }} Radiation" />
+    <addto_object_property value="-3.0" property="shieldStateFront" player_slot="{{ ship.slot }}" />
+    <addto_object_property value="-3.0" property="shieldStateBack" player_slot="{{ ship.slot }}" />
+  </event>
+  <event name="Energy Containment Failure">
+    <if_variable name="Ship{{ ship.id }}Monitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="Ship{{ ship.id }}Level" comparator="GREATER_EQUAL" value="100.0" />
+    <if_timer_finished name="Ship{{ ship.id }} Radiation" />
+    <addto_object_property value="-20.0" property="energy" player_slot="{{ ship.slot }}" />
+  </event>
+  <event name="Ship{{ ship.id }} Exposed">
+    <if_variable name="Ship{{ ship.id }}RadDist" comparator="GREATER" value="0.0" />
+    <if_timer_finished name="Ship{{ ship.id }} Radiation" />
+    <if_variable name="Ship{{ ship.id }}Level" comparator="LESS" value="100.0" />
+    <set_variable name="Ship{{ ship.id }}Level" value="Ship{{ ship.id }}Level + (Ship{{ ship.id }}RadDist * RadiationLevel)" integer="yes" />
+    <set_timer name="Ship{{ ship.id }} Radiation" seconds="5" />
+  </event>
+  <event name="Ship{{ ship.id }} Max Exposure">
+    <if_variable name="Ship{{ ship.id }}RadDist" comparator="GREATER" value="0.0" />
+    <if_timer_finished name="Ship{{ ship.id }} Radiation" />
+    <if_variable name="Ship{{ ship.id }}Level" comparator="GREATER_EQUAL" value="100.0" />
+    <set_timer name="Ship{{ ship.id }} Radiation" seconds="5" />
+  </event>
+  <event name="Ship{{ ship.id }} Safe">
+    <if_variable name="Ship{{ ship.id }}Level" comparator="GREATER" value="0.0" />
+    <if_variable name="Ship{{ ship.id }}RadDist" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="Ship{{ ship.id }} Radiation" />
+    <set_variable name="Ship{{ ship.id }}Level" value="Ship{{ ship.id }}Level - 2" integer="yes" />
+    <set_timer name="Ship{{ ship.id }} Radiation" seconds="5" />
+  </event>
+  <event name="Ship{{ ship.id }} Underflow">
+    <if_variable name="Ship{{ ship.id }}Level" comparator="LESS" value="0.0" />
+    <set_variable name="Ship{{ ship.id }}Level" value="0.0" integer="yes" />
+  </event>
+  {# Order matters: Notify events must be in between level recalculation and monitor update. #}
+  <event name="Ship{{ ship.id }} Shield Failure Notify">
+    <if_variable name="Ship{{ ship.id }}Level" comparator="GREATER_EQUAL" value="60.0" />
+    <if_variable name="Ship{{ ship.id }}RadDis" comparator="LESS" value="60.0" />
+    <warning_popup_message message="Radiation Levels High: Shields Failing" consoles="MES" player_slot="{{ ship.slot }}" />
+  </event>
+  <event name="Ship{{ ship.id }} Energy Breach Notify">
+    <if_variable name="Ship{{ ship.id }}Level" comparator="GREATER_EQUAL" value="100.0" />
+    <if_variable name="Ship{{ ship.id }}RadDis" comparator="LESS" value="100.0" />
+    <warning_popup_message message="Radiation Levels Critical: Energy Containment Failing" consoles="MES" player_slot="{{ ship.slot }}" />
+  </event>
+  <event name="Create Ship{{ ship.id }} Monitor">
+    <if_variable name="Active Radiation" comparator="EQUALS" value="2.0" />
+    <if_exists player_slot="{{ ship.slot }}" />
+    <if_not_exists name="Rad. Mon. {{ ship.id }}: |Ship{{ ship.id }}Level|" />
+    <if_variable name="Ship{{ ship.id }}Monitor" comparator="NOT" value="1.0" />
+    <create type="genericMesh" x="{{ 100000 - ship.id|int * 10000 }}" y="750.0" z="98000.0" name="Rad. Mon. {{ ship.id }}: 0" meshFileName="dat\mine.dxs" textureFileName="dat\electricNoise2.png" colorRed="0.5" colorGreen="0.5" colorBlue="1.0" />
+    <set_variable name="Ship{{ ship.id }}Level" value="0.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}RadDis" value="Ship{{ ship.id }}Level" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}Monitor" value="1.0" integer="yes" />
+  </event>
+  <event name="Remove Ship{{ ship.id }} Monitor">
+    <if_variable name="Active Radiation" comparator="EQUALS" value="0.0" />
+    <if_exists name="Rad. Mon. {{ ship.id }}: |Ship{{ ship.id }}RadDis|" />
+    <destroy name="Rad. Mon. {{ ship.id }}: |Ship{{ ship.id }}RadDis|" />
+    <warning_popup_message message="Radiation levels nominal." consoles="MSO" player_slot="{{ ship.slot }}">Radiation levels nominal^Deactivating radiation monitors</warning_popup_message>
+    <set_variable name="Ship{{ ship.id }}Level" value="0.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}Monitor" value="0.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}RadDis" value="0.0" integer="yes" />
+  </event>
+  <event name="Ship{{ ship.id }} Radiation Monitor">
+    <if_variable name="Ship{{ ship.id }}Level" comparator="NOT" value="Ship{{ ship.id }}RadDis" />
+    <set_ship_text name="Rad. Mon. {{ ship.id }}: |Ship{{ ship.id }}RadDis|" newname="Rad. Mon. {{ ship.id }}: |Ship{{ ship.id }}Level|" />
+    <set_variable name="Ship{{ ship.id }}RadDis" value="Ship{{ ship.id }}Level" integer="yes" />
+  </event>
+  <event name="Radiation Source Removed">
+    <if_not_exists name="'" />
+    <if_variable name="Ship{{ ship.id }}Level" comparator="GREATER" value="2.0" />
+    <set_variable name="Ship{{ ship.id }}RadDist" value="0.0" integer="yes" />
+  </event>
+  <event name="Outside Zone" id_arme="4862afed-944f-4cb8-be2a-53af903f7464" parent_id_arme="4e6ec7c4-23cd-43ef-a9e1-664e1267a3df">
+    <if_distance player_slot1="0" name2="'" comparator="GREATER" value="16000.0" />
+    <if_variable name="Ship{{ ship.id }}Level" comparator="GREATER" value="2.0" />
+    <set_variable name="Ship{{ ship.id }}RadDist" value="0.0" integer="yes" />
+  </event>
+  <event name="Range: 16000" id_arme="2f1df2df-72af-4214-9017-278ee3218a33" parent_id_arme="4e6ec7c4-23cd-43ef-a9e1-664e1267a3df">
+    <if_distance player_slot1="0" name2="'" comparator="LESS_EQUAL" value="16000.0" />
+    <if_distance player_slot1="0" name2="'" comparator="GREATER" value="8000.0" />
+    <set_variable name="Ship{{ ship.id }}RadDist" value="1.0" integer="yes" />
+  </event>
+  <event name="Range: 8000" id_arme="faca08a4-ea7a-4cbc-b7f7-20d44b5f7b5b" parent_id_arme="4e6ec7c4-23cd-43ef-a9e1-664e1267a3df">
+    <if_distance player_slot1="0" name2="'" comparator="LESS_EQUAL" value="8000.0" />
+    <if_distance player_slot1="0" name2="'" comparator="GREATER" value="4000.0" />
+    <set_variable name="Ship{{ ship.id }}RadDist" value="2.0" integer="yes" />
+  </event>
+  <event name="Range: 4000" id_arme="edd61122-ae4b-4415-b413-d63d8369251e" parent_id_arme="4e6ec7c4-23cd-43ef-a9e1-664e1267a3df">
+    <if_distance player_slot1="0" name2="'" comparator="LESS_EQUAL" value="4000.0" />
+    <if_distance player_slot1="0" name2="'" comparator="GREATER" value="2000.0" />
+    <set_variable name="Ship{{ ship.id }}RadDist" value="3.0" integer="yes" />
+  </event>
+  <event name="Range: 2000" id_arme="04006f3e-a9b2-45a7-9bde-588a3e8cd89c" parent_id_arme="4e6ec7c4-23cd-43ef-a9e1-664e1267a3df">
+    <if_distance player_slot1="0" name2="'" comparator="LESS_EQUAL" value="2000.0" />
+    <set_variable name="Ship{{ ship.id }}RadDist" value="4.0" integer="yes" />
+  </event>
+{% endfor %}

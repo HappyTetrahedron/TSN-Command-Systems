@@ -1,0 +1,460 @@
+{% import 'Constants.xml' as const %}
+{% import 'Core/Comms.xml' as comms %}
+{% import 'Core/Start.xml' as start %}
+{% import 'Core/Spawn.xml' as spawn %}
+{% import 'Core/Menus.xml' as menu %}
+{% import 'Tools/Picker.xml' as picker %}
+{% import 'Core/PlayerTracking.xml' as tracking %}
+
+{% call start.onStart("Shuttles") %}
+    {% for ship in const.shipConfigs %}
+      <set_player_carried_type player_slot="{{ ship.slot }}" bay_slot="0" hullID="102" name="{{ ship.shuttle }}" />
+    {% endfor %}
+    <set_variable name="ShuttleSelect" value="0.0" integer="yes" />
+    <set_variable name="OperationType" value="0.0" integer="yes" />
+    <set_variable name="CargoTargetShip" value="1.0" integer="yes" />
+    <set_variable name="ShuttleCargoDir" value="1.0" integer="yes" />
+{% endcall %}
+
+{% call(ship) tracking.onSpawn("Shuttles") %}
+  <set_variable name="{{ ship.shuttle }} Status" value="1.0" integer="yes" />
+{% endcall %}
+
+{# Ship-to-ship RVs #}
+{% for ship in const.shipConfigs %}
+  {% for othership in const.shipConfigs if not othership.id == ship.id %}
+    {% for cargo in const.cargoTypes if not cargo.is_nothing %}
+      <event name="Cargo: {{ ship.shuttle }} to Ship{{ othership.id }}">
+        <if_variable name="{{ ship.shuttle}}CargoType" comparator="EQUALS" value="{{ cargo.id }}.0" />
+        <if_distance name1="{{ ship.shuttle }}" name2="C{{ othership.id }} Rv" comparator="LESS" value="100.0" />
+        <if_variable name="{{ ship.shuttle }}CurrentCargo" comparator="GREATER" value="0.0" />
+        <set_variable name="{{ ship.shuttle }}CurrentCargo" value="{{ ship.shuttle }}CurrentCargo-1" integer="yes" />
+        <warning_popup_message message="{{ cargo.name }} Deposited" consoles="MCF" player_slot="{{ship.slot}}" />
+        <warning_popup_message message="{{ cargo.name }} Received" consoles="MC" player_slot="{{othership.slot}}" />
+        <incoming_comms_text from="{{ ship.shuttle }}" type="PLAYER">{{ cargo.name }} transferred.</incoming_comms_text>
+        <set_variable name="{{ ship.shuttle }}CargoType" value="0.0" integer="yes" />
+        <destroy name="C{{ othership.id }} Rv" />
+        <set_variable name="Ship2Cargos" value="Ship2Cargos+1" integer="yes" />
+      </event>
+    {% endfor %}
+  {% endfor %}
+{% endfor %}
+
+{% for ship in const.shipConfigs %}
+  <event name="{{ ship.shuttle }} Initial Settings">
+    <if_variable name="{{ ship.shuttle }} Status" comparator="EQUALS" value="1.0" />
+    <set_variable name="{{ ship.shuttle }}MaxCargo" value="1.0" integer="yes" />
+    <set_variable name="{{ ship.shuttle }}CurrentCargo" value="0.0" integer="yes" />
+    <set_variable name="{{ ship.shuttle }}CargoType" value="0.0" integer="yes" />
+    <set_variable name="{{ ship.shuttle }} Status" value="2.0" integer="yes" />
+  </event>
+
+  {# Shuttle tracking #}
+  <event name="Deployed">
+    <if_exists name="{{ ship.shuttle }}" />
+    <if_variable name="{{ ship.shuttle }} Status" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="{{ ship.shuttle }} Launched" consoles="MCF" player_slot="{{ ship.slot }}" />
+    <clear_comms_button text="Select: {{ ship.shuttle }}" sideValue="playerSide" />
+    <set_variable name="{{ ship.shuttle }} Status" value="3.0" integer="yes" />
+  </event>
+  <event name="Re-docked">
+    <if_not_exists name="{{ ship.shuttle }}" />
+    <if_variable name="{{ ship.shuttle }} Status" comparator="EQUALS" value="4.0" />
+    <set_variable name="{{ ship.shuttle }} Status" value="2.0" integer="yes" />
+    <warning_popup_message message="{{ ship.shuttle }} Recovered" consoles="MCF" player_slot="{{ ship.slot }}" />
+  </event>
+  <event name="Recoverable Range">
+    <if_exists name="{{ ship.shuttle }}" />
+    <if_distance player_slot1="0" name2="{{ ship.shuttle }}" comparator="LESS" value="600.0" />
+    <set_variable name="{{ ship.shuttle }} Status" value="4.0" integer="yes" />
+  </event>
+  <event name="Non-recoverable Range">
+    <if_exists name="{{ ship.shuttle }}" />
+    <if_distance player_slot1="0" name2="{{ ship.shuttle }}" comparator="GREATER_EQUAL" value="600.0" />
+    <set_variable name="{{ ship.shuttle }} Status" value="3.0" integer="yes" />
+  </event>
+  <event name="Lost">
+    <if_not_exists name="{{ ship.shuttle }}" />
+    <if_variable name="{{ ship.shuttle }} Status" comparator="EQUALS" value="3.0" />
+    <set_variable name="{{ ship.shuttle }} Status" value="0.0" integer="yes" />
+  </event>
+
+  {# Cargo Tracking #}
+  {% for cargo in const.cargoTypes if not cargo.is_nothing %}
+    <event name="No {{ cargo.name }}">
+      <if_variable name="ShuttleSelect" comparator="EQUALS" value="{{ ship.id }}" />
+      <if_variable name="OperationType" comparator="EQUALS" value="{{ cargo.loadOp }}.0" />
+      <if_timer_finished name="ShuttleOps" />
+      <if_variable name="{{ ship.shuttle }} Status" comparator="EQUALS" value="2.0" />
+      <if_variable name="{{ ship.shuttle }}CurrentCargo" comparator="LESS" value="{{ ship.shuttle }}MaxCargo" />
+      <if_variable name="Ship{{ ship.id }}{{ cargo.variable }}" comparator="LESS_EQUAL" value="0.0" />
+      <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">Cancelled - No {{ cargo.name | lower }} available.</incoming_comms_text>
+      <set_variable name="ShuttleSelect" value="0.0" integer="yes" />
+      <set_variable name="OperationType" value="0.0" integer="yes" />
+    </event>
+    <event name="Load {{ cargo.name }}">
+      <if_variable name="ShuttleSelect" comparator="EQUALS" value="{{ ship.id }}" />
+      <if_variable name="OperationType" comparator="EQUALS" value="{{ cargo.loadOp }}.0" />
+      <if_timer_finished name="ShuttleOps" />
+      <if_variable name="{{ ship.shuttle }} Status" comparator="EQUALS" value="2.0" />
+      <if_variable name="{{ ship.shuttle }}CurrentCargo" comparator="LESS" value="{{ ship.shuttle }}MaxCargo" />
+      <if_variable name="Ship{{ ship.id }}{{ cargo.variable }}" comparator="GREATER" value="0.0" />
+      <set_variable name="ShuttleSelect" value="0.0" integer="yes" />
+      <set_variable name="OperationType" value="0.0" integer="yes" />
+      <warning_popup_message message="{{ cargo.name }} Ready" consoles="MCF" player_slot="{{ ship.slot }}" />
+      <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">{{ cargo.name }} loaded.</incoming_comms_text>
+      <set_variable name="{{ ship.shuttle }}CurrentCargo" value="{{ ship.shuttle }}CurrentCargo+1" integer="yes" />
+      <set_variable name="{{ ship.shuttle }}CargoType" value="{{ cargo.id }}.0" integer="yes" />
+      <!--Modify Ship Inventory-->
+      <set_variable name="Ship{{ ship.id }}{{ cargo.variable }}" value="Ship{{ ship.id }}{{ cargo.variable }}-1" integer="yes" />
+    </event>
+    <event name="Unload {{ cargo.name }}">
+      <if_variable name="ShuttleSelect" comparator="EQUALS" value="{{ ship.id }}" />
+      <if_variable name="OperationType" comparator="EQUALS" value="1.0" />
+      <if_timer_finished name="ShuttleOps" />
+      <if_variable name="{{ ship.shuttle }} Status" comparator="EQUALS" value="2.0" />
+      <if_variable name="{{ ship.shuttle }}CurrentCargo" comparator="GREATER" value="0.0" />
+      <if_variable name="{{ ship.shuttle }}CargoType" comparator="EQUALS" value="{{ cargo.id }}.0" />
+      <set_variable name="{{ ship.shuttle }}CurrentCargo" value="0.0" integer="yes" />
+      <set_variable name="ShuttleSelect" value="0.0" integer="yes" />
+      <set_variable name="OperationType" value="0.0" integer="yes" />
+      <warning_popup_message message="Shuttle Unloaded" consoles="MCF" player_slot="{{ ship.slot }}" />
+      <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">{{ cargo.name }} unloaded.</incoming_comms_text>
+      <set_variable name="{{ ship.shuttle }}CargoType" value="0.0" integer="yes" />
+      <!--Modify Ship Inventory-->
+      <set_variable name="Ship{{ ship.id }}{{ cargo.variable }}" value="Ship{{ ship.id }}{{ cargo.variable }}+1" integer="yes" />
+    </event>
+  {% endfor %}
+  <event name="Abort">
+    <if_variable name="ShuttleSelect" comparator="EQUALS" value="{{ ship.id }}" />
+    <if_variable name="OperationType" comparator="GREATER_EQUAL" value="1.0" />
+    <if_timer_finished name="ShuttleOps" />
+    <if_variable name="{{ ship.shuttle }} Status" comparator="GREATER" value="2.0" />
+    <set_variable name="ShuttleSelect" value="0.0" integer="yes" />
+    <set_variable name="OperationType" value="0.0" integer="yes" />
+    <warning_popup_message message="Cancelled - Shuttle launched" consoles="MCF" player_slot="{{ ship.slot }}" />
+    <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">Shuttle launched before we were able to complete the request.</incoming_comms_text>
+  </event>
+  <event name="Cargo Empty">
+    <if_variable name="ShuttleSelect" comparator="EQUALS" value="{{ ship.id }}" />
+    <if_variable name="OperationType" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="ShuttleOps" />
+    <if_variable name="{{ ship.shuttle }} Status" comparator="EQUALS" value="2.0" />
+    <if_variable name="{{ ship.shuttle }}CurrentCargo" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Cancelled - Cargo hold empty" consoles="MCF" player_slot="{{ ship.slot }}" />
+    <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">Negative. We've no cargo to unload.</incoming_comms_text>
+    <set_variable name="OperationType" value="0.0" integer="yes" />
+    <set_variable name="ShuttleSelect" value="0.0" integer="yes" />
+  </event>
+  <event name="Cargo Full">
+    <if_variable name="ShuttleSelect" comparator="EQUALS" value="{{ ship.id }}" />
+    <if_variable name="OperationType" comparator="GREATER_EQUAL" value="2.0" />
+    <if_timer_finished name="ShuttleOps" />
+    <if_variable name="{{ ship.shuttle }} Status" comparator="EQUALS" value="2.0" />
+    <if_variable name="{{ ship.shuttle }}CurrentCargo" comparator="GREATER_EQUAL" value="{{ ship.shuttle }}MaxCargo" />
+    <warning_popup_message message="Cancelled - Cargo hold full" consoles="MCF" player_slot="{{ ship.slot }}" />
+    <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">Negative. Our cargo hold is already full.</incoming_comms_text>
+    <set_variable name="OperationType" value="0.0" integer="yes" />
+    <set_variable name="ShuttleSelect" value="0.0" integer="yes" />
+  </event>
+{% endfor %}
+
+{# Static RV points #}
+
+{# RV spawn #}
+{{ menu.addDismissableSubmenu("RVs", menu.main.poi) }}
+{% for cargo in const.cargoTypes if not cargo.is_nothing %}
+  {% call spawn.createNumberedConditional("Rv|rvnumber|", cargo.name + " Drop", "RVs", "RV Points", "rvnumber", cargo.rv.drop) %}
+    <create type="genericMesh" use_gm_position="" name="Rv|rvnumber|" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
+    <incoming_comms_text from="SYSTEMS" type="PLAYER">{{ cargo.name }} deployment zone identified.</incoming_comms_text>
+    <set_object_property property="rollDelta" value="-0.2" name="Rv|rvnumber|" />
+    <set_object_property property="angleDelta" value="0.05" name="Rv|rvnumber|" />
+    <set_object_property property="pushRadius" value="1.0" name="Rv|rvnumber|" />
+    <addto_object_property value="-8.0" property="positionY" name="Rv|rvnumber|" />
+    <set_ship_text name="Rv|rvnumber|" class="{{ cargo.name }} Dz" desc="Designated {{ cargo.name|lower }} dropzone" />
+    <set_variable name="Rv|rvnumber|Type" value="{{ cargo.rv.drop }}" integer="yes" />
+  {% endcall %}
+  {% call spawn.createNumberedConditional("Rv|rvnumber|", cargo.name + " Pickup", "RVs", "RV Points", "rvnumber", cargo.rv.pickup) %}
+    {% if 'hull' in cargo %}
+          <create type="neutral" use_gm_position="" name="Rv|rvnumber|" hullID="{{ cargo.hull }}" />
+    {% elif 'model' in cargo %}
+      <create type="genericMesh" use_gm_position="" name="Rv|rvnumber|" meshFileName="{{ cargo.model.mesh }}" textureFileName="{{ cargo.model.tex }}" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
+    {% else %}
+      <create type="genericMesh" use_gm_position="" name="Rv|rvnumber|" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
+    {% endif %}
+    <incoming_comms_text from="SYSTEMS" type="PLAYER">{{ cargo.name }} extraction zone identified.</incoming_comms_text>
+    {% if 'hull' not in cargo %}
+      <set_ship_text name="Rv|rvnumber|" class="{{ cargo.name }} Exfil" desc="Designated {{ cargo.name|lower }} pickup zone" />
+    {% endif %}
+    {% if 'text' in cargo %}
+      <set_ship_text name="Rv|rvnumber|" desc="{{ cargo.text.desc }}" scan_desc="{{ cargo.text.scan_desc }}" hailtext="{{ cargo.text.get('hailtext', "") }}" />
+    {% endif %}
+    {% for ship in const.shipConfigs %}
+      <warning_popup_message message="Rv|rvnumber|: {{ cargo.name }} Pickup Identified" consoles="CF" player_slot="{{ ship.slot }}" />
+    {% endfor %}
+    <set_object_property property="pushRadius" value="1.0" name="Rv|rvnumber|" />
+    <set_object_property property="rollDelta" value="-0.2" name="Rv|rvnumber|" />
+    <set_object_property property="angleDelta" value="0.05" name="Rv|rvnumber|" />
+    <addto_object_property value="-8.0" property="positionY" name="Rv|rvnumber|" />
+    {% for property, value in cargo.get(properties, {}).items() %}
+      <set_object_property property="{{ property }}" value="{{ value }}" name="Rv|rvnumber|" />
+    {% endfor %}
+    <set_variable name="Rv|rvnumber|Type" value="{{ cargo.rv.pickup }}" integer="yes" />
+  {% endcall %}
+{% endfor %}
+{{ spawn.scaffoldNumbered("Rv|rvnumber|", "RV Points", "rvnumber", amount=9) }}
+
+{# RV pickup #}
+{% for ship in const.shipConfigs %}
+  {% for rv in range(1, 10) %}
+    {% for cargo in const.cargoTypes if not cargo.is_nothing %}
+      <event name="{{ cargo.name }} Drop">
+        <if_variable name="Rv{{ rv }}Type" comparator="EQUALS" value="{{ cargo.rv.drop }}.0" />
+        <if_variable name="{{ ship.shuttle }}CargoType" comparator="EQUALS" value="{{ cargo.id }}.0" />
+        <if_distance name1="{{ ship.shuttle }}" name2="Rv{{ rv }}" comparator="LESS" value="100.0" />
+        <if_variable name="{{ ship.shuttle }}CurrentCargo" comparator="GREATER" value="0.0" />
+        <set_variable name="{{ ship.shuttle }}CurrentCargo" value="{{ ship.shuttle }}CurrentCargo-1" integer="yes" />
+        <warning_popup_message message="{{ cargo.name }} deployed" consoles="MCF" player_slot="{{ ship.slot }}" />
+        <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">{{ cargo.name }} deployed.</incoming_comms_text>
+        {% if cargo.get('item_drop', False) %}
+          {% if 'hull' in cargo %}
+                <create type="neutral" x="100.0" y="100.0" z="100.0" name="--" hullID="{{ cargo.hull }}" />
+          {% elif 'model' in cargo %}
+            <create type="genericMesh" x="100.0" y="100.0" z="100.0" name="--" meshFileName="{{ cargo.model.mesh }}" textureFileName="{{ cargo.model.tex }}" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
+          {% else %}
+            <create type="genericMesh" x="100.0" y="100.0" z="100.0" name="--" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
+          {% endif %}
+          {% if 'hull' not in cargo %}
+            <set_ship_text name="--" class="{{ cargo.name }}" />
+          {% endif %}
+          {% if 'text' in cargo %}
+            <set_ship_text name="--" desc="{{ cargo.text.desc }}" scan_desc="{{ cargo.text.scan_desc }}" hailtext="{{ cargo.text.get('hailtext', "") }}" />
+          {% endif %}
+          <set_relative_position name2="--" distance="10" angle="180" name1="{{ ship.shuttle }}" />
+          {% if 'ai' in cargo %}
+            <set_variable name="Auto AI Type" value="{{ cargo.ai }}.0" integer="yes" />
+          {% endif %}
+          <set_variable name="Name Assign" value="1.0" integer="yes" />
+        {% endif %}
+        <set_variable name="{{ ship.shuttle }}CargoType" value="0.0" integer="yes" />
+        <set_variable name="Rv{{ rv }}Type" value="0.0" integer="yes" />
+        <destroy name="Rv{{ rv }}" />
+      </event>
+      <event name="{{ cargo.name }} Extraction" id_arme="80ca9056-93a4-4c54-82f0-234427d77c35" parent_id_arme="c5d2e8ac-57d9-41b6-ab45-f4323cfca844">
+        <if_variable name="Rv{{ rv }}Type" comparator="EQUALS" value="{{ cargo.rv.pickup }}.0" />
+        <if_variable name="{{ ship.shuttle }}CargoType" comparator="EQUALS" value="0.0" />
+        <if_distance name1="{{ ship.shuttle }}" name2="Rv{{ rv }}" comparator="LESS" value="100.0" />
+        <if_variable name="{{ ship.shuttle }}CurrentCargo" comparator="LESS" value="{{ ship.shuttle }}MaxCargo" />
+        <set_variable name="{{ ship.shuttle }}CurrentCargo" value="{{ ship.shuttle }}CurrentCargo+1" integer="yes" />
+        <warning_popup_message message="{{ cargo.name }} aboard" consoles="MCF" player_slot="{{ ship.slot }}" />
+        <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">{{ cargo.name }} recovered and aboard.</incoming_comms_text>
+        <set_variable name="{{ ship.shuttle }}CargoType" value="{{ cargo.id }}.0" integer="yes" />
+        <set_variable name="Rv{{ rv }}Type" value="0.0" integer="yes" />
+        <destroy name="Rv{{ rv }}" />
+      </event>
+    {% endfor %}
+  {% endfor %}
+{% endfor %}
+
+{# Custom pickuppables #}
+
+{% macro shuttlePickup(name, resultingCargoType) %}
+  {% for ship in const.shipConfigs %}
+    {% for id in range(1, 6) %}
+      <event name="Pickup {{ name }} {{ id }}">
+        <if_exists name="{{ name }} {{ id }}" />
+        <if_variable name="{{ ship.shuttle }}CargoType" comparator="EQUALS" value="0.0" />
+        <if_distance name1="{{ ship.shuttle }}" name2="{{ name }} {{ id }}" comparator="LESS" value="100.0" />
+        <if_variable name="{{ ship.shuttle }}CurrentCargo" comparator="LESS" value="{{ ship.shuttle }}MaxCargo" />
+        <set_variable name="{{ ship.shuttle }}CurrentCargo" value="{{ ship.shuttle }}CurrentCargo+1" integer="yes" />
+        <warning_popup_message message="{{ name }} secured." consoles="MCF" player_slot="{{ ship.slot }}" />
+        <set_variable name="{{ ship.shuttle }}CargoType" value="{{ resultingCargoType }}.0" integer="yes" />
+        <destroy name="{{ name }} {{ id }}" />
+        {{ caller(ship) }}
+      </event>
+    {% endfor %}
+  {% endfor %}
+{% endmacro %}
+
+{% macro shuttleUnload(name, cargoType) %}
+  {% call(ship) comms.onButtonPress("Shuttle Status") %}
+    <if_variable name="{{ ship.shuttle }}CargoType" comparator="EQUALS" value="{{ cargoType }}" />
+      <incoming_comms_text from="CHANNEL {{ ship.id }}" sideValue="playerSide" type="STATUS">{{ ship.shuttle }} has {{ name | lower }} loaded.</incoming_comms_text>
+  {% endcall %}
+  {% for ship in const.shipConfigs %}
+    <event name="Unload {{ name }}">
+      <if_variable name="ShuttleSelect" comparator="EQUALS" value="{{ ship.id }}" />
+      <if_variable name="OperationType" comparator="EQUALS" value="1.0" />
+      <if_timer_finished name="ShuttleOps" />
+      <if_variable name="{{ ship.shuttle }} Status" comparator="EQUALS" value="2.0" />
+      <if_variable name="{{ ship.shuttle }}CurrentCargo" comparator="GREATER" value="0.0" />
+      <if_variable name="{{ ship.shuttle }}CargoType" comparator="EQUALS" value="{{ cargoType }}.0" />
+      <set_variable name="{{ ship.shuttle }}CurrentCargo" value="0.0" integer="yes" />
+      <set_variable name="ShuttleSelect" value="0.0" integer="yes" />
+      <set_variable name="OperationType" value="0.0" integer="yes" />
+      <warning_popup_message message="Shuttle Unloaded" consoles="MCF" player_slot="{{ ship.slot }}" />
+      <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">{{ name }} unloaded.</incoming_comms_text>
+      <set_variable name="{{ ship.shuttle }}CargoType" value="0.0" integer="yes" />
+      {{ caller(ship) }}
+    </event>
+  {% endfor %}
+{% endmacro %}
+
+{% macro createPickuppable(name_template, button, counter) %}
+  {% do track("spawn12", "Other\\" + button) %}
+  {% call spawn.spawn(const.spawnFactions.Static.key, "Other", button) %}
+    <set_variable name="Spawn_{{ button }}" value="1.0" integer="yes" />
+  {% endcall %}
+  {% set outercaller = caller %}
+  {% call spawn.createNumbered(name_template, button, "RVs", counter) %}
+    {{ outercaller() }}
+  {% endcall %}
+{% endmacro %}
+
+
+{# Life pods #}
+{% call(ship) shuttlePickup("Life Pod", 30) %}
+  <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">Survivors are aboard. Minor injuries to some.</incoming_comms_text>
+{% endcall %}
+{% call(ship) shuttleUnload("Survivors", 30) %}
+{% endcall %}
+
+{# Weapon crates #}
+{% call(ship) shuttlePickup("Weapons Crate", 0) %}
+  {# argument cargo type is overwritten #}
+  <incoming_comms_text from="{{ ship.shuttle }}" sideValue="playerSide" type="STATUS">Ordnance secured.</incoming_comms_text>
+  <set_variable name="WeaponsCrateSelect" randomIntLow="31" randomIntHigh="32" integer="yes" />
+  <set_variable name="{{ ship.shuttle }}CargoType" value="WeaponsCrateSelect" integer="yes" />
+{% endcall %}
+
+{% call(ship) shuttleUnload("Weapons Crate", 31) %}
+  <addto_object_property property="countEMP" value="2.0" player_slot="{{ ship.slot }}" />
+  <addto_object_property property="countNuke" value="1.0" player_slot="{{ ship.slot }}" />
+  <addto_object_property property="countMine" value="1.0" player_slot="{{ ship.slot }}" />
+  <addto_object_property property="countShk" value="3.0" player_slot="{{ ship.slot }}" />
+{% endcall %}
+
+{% call(ship) shuttleUnload("Weapons Crate", 32) %}
+  <addto_object_property property="countEMP" value="1.0" player_slot="{{ ship.slot }}" />
+  <addto_object_property property="countMine" value="2.0" player_slot="{{ ship.slot }}" />
+  <addto_object_property property="countShk" value="7.0" player_slot="{{ ship.slot }}" />
+{% endcall %}
+
+{# Black boxes #}
+{% for ship in const.shipConfigs %}
+  {% for id in range(1, 6) %}
+  <event name="Black Box {{ id }} collection {{ ship.shuttle }}">
+    <if_exists name="*{{ id }}*" />
+    <if_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" comparator="EQUALS" value="0.0" />
+    <if_distance name1="{{ ship.shuttle }}" name2="*{{ id }}*" comparator="LESS" value="200.0" />
+    <if_object_property property="warpState" name="{{ ship.shuttle }}" comparator="LESS" value="1.0" />
+    <incoming_comms_text from="System">Data recorder detected.^Downloading data......</incoming_comms_text>
+    <warning_popup_message message="Downloading Data ..." consoles="CF">Downloading data......</warning_popup_message>
+    <set_timer name="Black Box {{ id }}" seconds="20" />
+    <set_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" value="1.0" integer="yes" />
+  </event>
+  <event name="{{ ship.shuttle }} leaves (Warp)">
+    <if_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" comparator="EQUALS" value="1.0" />
+    <if_object_property property="warpState" name="{{ ship.shuttle }}" comparator="GREATER" value="1.0" />
+    <set_timer name="Black Box {{ id }}" seconds="2" />
+    <set_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" value="2.0" integer="yes" />
+  </event>
+  <event name="{{ ship.shuttle }} leaves (Distance)">
+    <if_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" comparator="EQUALS" value="1.0" />
+    <if_distance name1="{{ ship.shuttle }}" name2="*{{ id }}*" comparator="GREATER" value="200.0" />
+    <set_timer name="Black Box {{ id }}" seconds="2" />
+    <set_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" value="2.0" integer="yes" />
+  </event>
+  <event name="{{ ship.shuttle }} Fails">
+    <if_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="Black Box {{ id }}" />
+    <incoming_comms_text from="System">Connection lost....^Data transfer failed.</incoming_comms_text>
+    <set_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" value="0.0" integer="yes" />
+  </event>
+  <event name="{{ ship.shuttle }} Succeeds">
+    <if_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Black Box {{ id }}" />
+    <destroy name="*{{ id }}*" />
+    <incoming_comms_text from="System">Download complete.^Data retrieved.^Transmitting to Command and Control....</incoming_comms_text>
+    <warning_popup_message message="Download complete." consoles="CF">Downloading data......</warning_popup_message>
+    <set_variable name="Black Box {{ id }} {{ ship.shuttle }} Retrieves" value="0.0" integer="yes" />
+  </event>
+  {% endfor %}
+{% endfor %}
+
+{% call createPickuppable("Life Pod |lifepodNumber|", "Lifepod", "lifepodNumber") %}
+  <create type="genericMesh" use_gm_position="" name="Life Pod |lifepodNumber|" meshFileName="dat\wreck1.dxs" textureFileName="dat\drone4_spec.png" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
+  <set_object_property property="rollDelta" value="-0.2" name="Life Pod |lifepodNumber|" />
+  <set_object_property property="pushRadius" value="20.0" name="Life Pod |lifepodNumber|" />
+  <set_object_property property="angleDelta" value="0.05" name="Life Pod |lifepodNumber|" />
+  <addto_object_property value="10.0" property="positionY" name="Life Pod |lifepodNumber|" />
+  <set_ship_text name="Life Pod |lifepodNumber|" desc="Life pod" scan_desc="Life signs detected." hailtext="Automated Distress Signal detected." />
+{% endcall %}
+{% call createPickuppable("Weapons Crate |crateNumber|", "WeaponCrate", "crateNumber") %}
+  <create type="genericMesh" use_gm_position="" name="Weapons Crate |crateNumber|" meshFileName="dat\TSN\USFP\cargoPod.dxs" textureFileName="dat\TSN\USFP\CargoPod.png" colorRed="0.9" colorGreen="1.0" colorBlue="1.0" />
+  <set_object_property property="rollDelta" value="-0.2" name="Weapons Crate |crateNumber|" />
+  <set_object_property property="pushRadius" value="20.0" name="Weapons Crate |crateNumber|" />
+  <set_object_property property="angleDelta" value="0.05" name="Weapons Crate |crateNumber|" />
+  <addto_object_property value="10.0" property="positionY" name="Weapons Crate |crateNumber|" />
+  <set_ship_text name="Weapons Crate |crateNumber|" desc="Ordnance containment unit" scan_desc="Contains heavy ordnance" hailtext="It's a crate. Why are you hailing it?" />
+{% endcall %}
+{% call createPickuppable("*|BBNumber|*", "Blackbox", "BBNumber") %}
+  <create type="genericMesh" use_gm_position="" name="*|BBNumber|*" meshFileName="dat\mine.dxs" textureFileName="dat\cargo_vessel_glow.png" colorRed="0.4" colorGreen="0.4" colorBlue="0.4" />
+  <warning_popup_message message="Blackbox Detected" consoles="MCF">Data recorder detected.^Downloading data......</warning_popup_message>
+  <set_object_property property="rollDelta" value="2.0" name="*|BBNumber|*" />
+  <set_object_property property="angle" value="0.5" name="*|BBNumber|*" />
+  <set_object_property property="pushRadius" value="10.0" name="*|BBNumber|*" />
+  <set_object_property property="artScale" value="0.02" name="*|BBNumber|*" />
+  <set_object_property property="positionY" value="2.5" name="*|BBNumber|*" />
+  {% for ship in const.ShipConfigs %}
+    <set_variable name="Black Box |BBNumber| {{ ship.shuttle }} Retrieves" value="0.0" integer="yes" />
+  {% endfor %}
+{% endcall %}
+
+{# Shuttle Resupply #}
+{{ menu.addDismissableSubmenu("Shuttle Resup", menu.main.interaction) }}
+
+{% for ship in const.shipConfigs %}
+  {% call menu.onMenuClick(ship.shuttle, "Shuttle Resup") %}
+    <create type="station" use_gm_position="" name="{{ ship.shuttle }} Pickup" hullID="1058" sideValue="2" />
+    <set_object_property property="canBuild" value="0" name="{{ ship.shuttle }} Pickup" />
+    <set_object_property property="missileStoresHoming" value="0" name="{{ ship.shuttle }} Pickup" />
+    <set_object_property property="missileStoresNuke" value="0" name="{{ ship.shuttle }} Pickup" />
+    <set_object_property property="missileStoresMine" value="0" name="{{ ship.shuttle }} Pickup" />
+    <set_object_property property="missileStoresEMP" value="0" name="{{ ship.shuttle }} Pickup" />
+    <set_object_property property="missileStoresPShock" value="0" name="{{ ship.shuttle }} Pickup" />
+    <set_object_property property="missileStoresTag" value="0" name="{{ ship.shuttle }} Pickup" />
+    <set_object_property property="missileStoresBeacon" value="0" name="{{ ship.shuttle }} Pickup" />
+    <set_object_property property="missileStoresProbe" value="0" name="{{ ship.shuttle }} Pickup" />
+    <set_player_station_carried name="{{ ship.shuttle }} Pickup" raceKeys="TSN" hullKeys="TSN Shuttle shuttle" singleSeatName="{{ ship.shuttle }}" />
+    <set_variable name="{{ ship.shuttle }} Status" value="1.0" integer="yes" />
+  {% endcall %}
+{% endfor %}
+
+{% call(_) picker.Picker("ShuCargo", "SWCH", range(1, 8), "Ship", 1, 230, 95, track="CargoTargetShip") %}{% endcall %}
+
+{{ menu.addButtonExpandMenu("Cargos", menu.main.interaction, x=230, y=125, h=30, w=100, rows=12, mutexKey="IntSub", mutexID=2) }}
+{% call(isCreate) menu.addStatementToMenu("shippicker", "Cargos") %}
+  <set_variable name="ShuCargoPicker_Should_Show" value="{{ 1 if isCreate else 0 }}" integer="yes" />
+{% endcall %}
+
+{{ menu.addButtonToggle("SupplyCarDir", "Cargos", "ShuttleCargoDir", [("Add Cargo", 1), ("Rmv Cargo", -1)]) }}
+
+{% for cargo in const.cargoTypes if not cargo.is_nothing %}
+  {% call menu.onButtonClick(cargo.name, "Cargos") %}
+    <set_variable name="ShuttleCargoTypeToAdd" value="{{ cargo.id }}" integer="yes" />
+  {% endcall %}
+{% endfor %}
+
+{# sigh ... this *almost* worked with string var substitution but not quite - string var substitution does not work inside numerical expression. #}
+{# So I can use that for setting a dynamic variable, but not for reading a dynamic variable... -.- #}
+{% for ship in const.shipConfigs %}
+  {% for cargo in const.cargoTypes if not cargo.is_nothing %}
+    <event name="Ship {{ ship.id }} add or remove {{ cargo.name }}">
+      <if_variable name="ShuttleCargoTypeToAdd" comparator="EQUALS" value="{{ cargo.id }}.0" />
+      <if_variable name="CargoTargetShip" comparator="EQUALS" value="{{ ship.id }}.0" />
+      <set_variable name="Ship{{ ship.id }}{{ cargo.variable }}" value="Ship{{ ship.id }}{{ cargo.variable }}+ShuttleCargoDir" integer="yes" />
+      <set_variable name="ShuttleCargoTypeToAdd" value="0.0" integer="yes" />
+    </event>
+  {% endfor %}
+{% endfor %}

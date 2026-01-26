@@ -36,6 +36,8 @@ TYPEMAP = {
     'Logistics Post': 'V',
     'Planet': 'P',
     'Pulsar': 'PUL',
+    'Comet': 'CO',
+    'Asteroid': 'A',
     'Moon': 'P',
     'Megastructure': 'MEG',
     'Black Hole': 'H',

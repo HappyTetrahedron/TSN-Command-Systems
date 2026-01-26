@@ -93,6 +93,7 @@ PLANET_PREFIXES = [
     'ROCK-PLANET',
     'DEATHSTAR',
     'PULSAR',
+    'COMET',
     'MOON',
 ]
 
@@ -150,6 +151,8 @@ def type_from_name(name):
         return "Planet"
     if name.startswith("PULSAR"):
         return "Pulsar"
+    if name.startswith("COMET"):
+        return "Comet"
     if 'MOON' in name:
         return "Moon"
     if name.startswith("DEATHSTAR"):
@@ -230,6 +233,8 @@ def process_settext_action(action, original):
         original["type"] = "Moon"
     if 'moon' in action.attrib.get('class', "").lower():
         original["type"] = "Moon"
+    if 'asteroid' in action.attrib.get('class', "").lower():
+        original["type"] = "Asteroid"
     if 'newname' in action.attrib:
         original["name"] = action.attrib["newname"]
 
@@ -264,7 +269,12 @@ def parse_event_actions(event, sector, system_name):
             process_settext_action(action, findByName(action.attrib["name"], sector["entities"]))
         if action.tag == "set_special":
             process_setspecial_action(action, findByName(action.attrib["name"], sector["entities"]), sector["entities"])
-    
+
+def find_skybox(event, system_dict):
+    for action in event:
+        if action.tag == "set_skybox_index":
+            if "index" in action.attrib:
+                system_dict["skybox"] = int(action.attrib.get("index"))
 
 def parse_newstyle_event(event, sectors, system_name):
     if not event.attrib.get("name", "").startswith("Sector "):
@@ -288,6 +298,7 @@ def parse_oldstyle_event(event, old_sector_id, system_dict, sectors):
         if sector_id-1 not in sectors:
             sectors[sector_id-1] = {"id": sector_id, "entities": []}
         parse_event_actions(event, sectors[sector_id-1], system_dict["name"])
+        find_skybox(event, system_dict)
     elif event.attrib.get("name", "").startswith("Create Waypoint"):
         sector_id = int(event.attrib["name"].split('-')[-1])
         if sector_id <= 0:
@@ -295,6 +306,8 @@ def parse_oldstyle_event(event, old_sector_id, system_dict, sectors):
             sys.exit(1)
         if sector_id-1 not in sectors:
             sectors[sector_id-1] = {"id": sector_id, "entities": []}
+        parse_event_actions(event, sectors[sector_id-1], system_dict["name"])
+        find_skybox(event, system_dict)
     if event.attrib.get("name", "").startswith("Generate Sector Entities"):
         sector_id = old_sector_id
         if sector_id-1 not in sectors:

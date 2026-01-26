@@ -1,20 +1,8 @@
+{# Adds the notorious pirate ship Crooked Star #}
+{% import 'Core/Spawn.xml' as spawn %}
+{% import 'Constants.xml' as const %}
 
-{% call() util.createConditionalMenu("CrookedStarSpawn", {
-    "GM_Menu_Selector": "2",
-    "GM_SpawnMenu_Selector": "8",
-}) %}
-    <set_gm_button text="Skull Pirates\+CrookedStar" />
-{% endcall %}
-{% call() util.destroyConditionalMenu("CrookedStarSpawn", {
-    "GM_Menu_Selector": "2",
-    "GM_SpawnMenu_Selector": "8",
-}) %}
-    <clear_gm_button text="Skull Pirates\+CrookedStar" />
-{% endcall %}
-
-
-<event name="Crooked Star" id_arme="7cbbe37d-6ec1-46fe-808c-f304306ad0a4" parent_id_arme="0fc9dd71-2783-4713-a773-bca1116e079d">
-  <if_gm_button text="Skull Pirates\+CrookedStar" />
+{% call spawn.spawn(const.spawnFactions.Pirate.key, "Skull Pirates", "+Crooked Star") %}
   <create type="enemy" use_gm_position="" angle="0" name="Crooked Star" hullID="7107" sideValue="SideValue" fleetnumber="-1" />
   <clear_ai name="Crooked Star" />
   <set_object_property property="surrenderChance" value="0" name="Crooked Star" />
@@ -41,4 +29,4 @@
   <set_special name="Crooked Star" clear="yes" ability="ShldVamp" />
   <set_special name="Crooked Star" clear="yes" ability="TeleBack" />
   <set_special name="Crooked Star" ability="ShldReset" />
-</event>
+{% endcall %}

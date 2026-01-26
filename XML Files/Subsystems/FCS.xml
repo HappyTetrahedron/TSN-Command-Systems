@@ -1,0 +1,139 @@
+{% import 'Constants.xml' as const %}
+{% import 'Core/Start.xml' as start %}
+{% import 'Core/PlayerTracking.xml' as tracking %}
+{% import 'Core/Menus.xml' as menu %}
+
+{% call start.onStart("FCS") %}
+  <set_variable name="PDZRange" value="10000.0" integer="yes" />
+  <!-- Global additive modifiers for FCS rate and recharge per FCS tick -->
+  <set_variable name="FCSRateMod" value="0.0" integer="yes" />
+  <set_variable name="FCSRechargeMod" value="0.0" integer="yes" />
+  <!-- Additive modifiers for FCS when close to a PDZ -->
+  <set_variable name="PDZModifier" value="25.0" integer="yes" />
+  <set_variable name="PDZRateModifier" value="-1.0" integer="yes" />
+  <!-- Per-ship timers and additive modifiers for FCS rate and recharge per FCS tick -->
+  {% for ship in const.shipConfigs %}
+    <set_timer name="Refuel Ship{{ ship.id }}" seconds="1" />
+    <set_variable name="Refuel Ship{{ ship.id }}" value="0.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}RateFCS" value="0.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}FCS" value="0.0" integer="yes" />
+  {% endfor %}
+{% endcall %}
+
+{% call menu.onButtonClick("+PDZ", menu.main.poi) %}
+  <create type="genericMesh" use_gm_position="" name="PDZ" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="0.9" colorBlue="0.0" />
+  <set_object_property property="pushRadius" value="0.0" name="PDZ" />
+  <set_ship_text name="PDZ" class="Power Delivery Zone" desc="Zone of high static energy. Can be exploited using Fuel Collection Systems.^Range: |PDZRange| units." />
+{% endcall %}
+
+{% set fcs_properties = [
+  { 
+    'property': 'throttle',
+    'cmp': "LESS_EQUAL",
+    'val': 0.5,
+  },
+  { 
+    'property': 'throttle',
+    'cmp': "GREATER",
+    'val': 0.1,
+  },
+  { 
+    'property': 'shieldsOn',
+    'cmp': "EQUALS",
+    'val': 0,
+  },
+  { 
+    'property': 'energy',
+    'cmp': "LESS_EQUAL",
+    'val': 981,
+  },
+]
+%}
+
+{% set opposite = {
+  "LESS": "GREATER_EQUAL",
+  "LESS_EQUAL": "GREATER",
+  "GREATER_EQUAL": "LESS",
+  "GREATER": "LESS_EQUAL",
+  "EQUALS": "NOT",
+  "NOT": "EQUALS",
+}
+%}
+
+{% call(ship) tracking.onDestroy("FCS") %}
+  <destroy name="FCS - {{ ship.name }}" />
+  <set_variable name="Refuel Ship{{ ship.id }}" value="0.0" />
+{% endcall %}
+  
+{% for ship in const.shipConfigs %}
+  <event name="Activating Collectors" id_arme="2f7d39dd-aabc-4a92-91a7-42176b72246d" parent_id_arme="972624a9-7450-4d67-93da-8ae0e5e22871">
+    <if_variable name="Refuel Ship{{ ship.id }}" comparator="EQUALS" value="0.0" />
+    <if_exists player_slot="{{ ship.slot}}" />
+    {% for prop in fcs_properties %}
+      <if_object_property property="{{ prop.property }}" player_slot="{{ ship.slot }}" comparator="{{ prop.cmp }}" value="{{ prop.val }}" />
+    {% endfor %}
+    <if_timer_finished name="Refuel Ship{{ ship.id }}" />
+    <set_variable name="Refuel Ship{{ ship.id }}" value="1.0" />
+    <set_timer name="Refuel Ship{{ ship.id }}" seconds="10" />
+    <set_timer name="Deactivate Ship{{ ship.id }} FCS" seconds="2" />
+  </event>
+  <event name="Activate Collectors" id_arme="ebd7db41-cb3b-4d26-96b1-b33975634de9" parent_id_arme="972624a9-7450-4d67-93da-8ae0e5e22871">
+    <if_variable name="Refuel Ship{{ ship.id }}" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Refuel Ship{{ ship.id }}" />
+    {% for prop in fcs_properties %}
+      <if_object_property property="{{ prop.property }}" player_slot="{{ ship.slot }}" comparator="{{ prop.cmp }}" value="{{ prop.val }}" />
+    {% endfor %}
+    <set_timer name="Refuel Ship{{ ship.id }}" seconds="9" />
+    <warning_popup_message message="Activating FCS" consoles="MEO" player_slot="{{ ship.slot }}">Activating Fuel Collection System</warning_popup_message>
+    <set_variable name="Refuel Ship{{ ship.id }}" value="2.0" />
+    <set_timer name="Deactivate Ship{{ ship.id }} FCS" seconds="2" />
+  </event>
+  <event name="Collectors Active" id_arme="9878647c-5210-4d0e-afb0-727396b14ed8" parent_id_arme="972624a9-7450-4d67-93da-8ae0e5e22871">
+    <if_variable name="Refuel Ship{{ ship.id }}" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="Refuel Ship{{ ship.id }}" />
+    {% for prop in fcs_properties %}
+      <if_object_property property="{{ prop.property }}" player_slot="{{ ship.slot }}" comparator="{{ prop.cmp }}" value="{{ prop.val }}" />
+    {% endfor %}
+    <addto_object_property value="25.0+FCSRechargeMod+Ship{{ ship.id }}FCS" property="energy" player_slot="{{ ship.slot }}" />
+    <set_timer name="Refuel Ship{{ ship.id }}" seconds="3+FCSRateMod+Ship{{ ship.id }}RateFCS" />
+    <set_variable name="CheckShip{{ ship.id }}PDZRange" value="1.0" integer="yes" />
+  </event>
+  <event name="Activation Messages" id_arme="ef546cd6-5824-44b5-abcc-e15df6d73a13" parent_id_arme="972624a9-7450-4d67-93da-8ae0e5e22871">
+    <if_not_exists name="FCS - {{ ship.name }}" />
+    <if_variable name="Refuel Ship{{ ship.id }}" comparator="EQUALS" value="2.0" />
+    <create type="genericMesh" x="{{ 102000 - ship.id|int * 10000 }}.0" y="0.0" z="0.0" name="FCS - {{ ship.name }}" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    <warning_popup_message message="FCS: Active" consoles="ME" player_slot="{{ ship.slot }}" />
+  </event>
+  <folder_arme name="Deactivation" id_arme="c80ca9c3-6c4c-4432-a7bc-fb48266e513f" parent_id_arme="972624a9-7450-4d67-93da-8ae0e5e22871" />
+  {% for prop in fcs_properties %}
+    <event name="Deactivate Collectors" id_arme="39e9a5ce-6b63-4adb-828c-7c1d5fc5e54a" parent_id_arme="c80ca9c3-6c4c-4432-a7bc-fb48266e513f">
+      <if_variable name="Refuel Ship{{ ship.id }}" comparator="EQUALS" value="2.0" />
+      <if_timer_finished name="Deactivate Ship{{ ship.id }} FCS" />
+      <if_object_property property="{{ prop.property }}" player_slot="{{ ship.slot }}" comparator="{{ opposite[prop.cmp] }}" value="{{ prop.val }}" />
+      <warning_popup_message message="FCS Deactivated" player_slot="{{ ship.slot }}">Fuel Collectors Deactivated</warning_popup_message>
+      <destroy name="FCS - {{ ship.name }}" />
+      <set_variable name="Refuel Ship{{ ship.id }}" value="0.0" />
+    </event>
+    <event name="Collectors Reset" id_arme="bfc21938-f680-4910-9cd9-b49b41e391c8" parent_id_arme="144b4056-23c6-4bad-a189-b8e2ffd5bc2c">
+      <if_variable name="Refuel Ship{{ ship.id }}" comparator="EQUALS" value="1.0" />
+      <if_timer_finished name="Deactivate Ship{{ ship.id }} FCS" />
+      <if_object_property property="{{ prop.property }}" player_slot="{{ ship.slot }}" comparator="{{ opposite[prop.cmp] }}" value="{{ prop.val }}" />
+      <set_variable name="Refuel Ship{{ ship.id }}" value="0.0" />
+    </event>
+  {% endfor %}
+  <folder_arme name="Location Modifiers" id_arme="72bd8996-bb36-401b-bc5e-e6d022d7c637" parent_id_arme="972624a9-7450-4d67-93da-8ae0e5e22871" />
+  <event name="Check range" id_arme="8f18e583-4546-4887-bbce-36f5069c1c0c" parent_id_arme="72bd8996-bb36-401b-bc5e-e6d022d7c637">
+    <if_variable name="CheckShip{{ ship.id }}PDZRange" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="{{ ship.slot }}" name2="PDZ" comparator="LESS_EQUAL" value="PDZRange" />
+    <set_variable name="Ship{{ ship.id }}FCS" value="PDZModifier" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}RateFCS" value="PDZRateModifier" integer="yes" />
+    <set_variable name="CheckShip{{ ship.id }}PDZRange" value="0.0" integer="yes" />
+  </event>
+  <event name="Out of Range" id_arme="15b9eccc-79b8-4693-9b11-c20493324997" parent_id_arme="72bd8996-bb36-401b-bc5e-e6d022d7c637">
+    <if_variable name="CheckShip{{ ship.id }}PDZRange" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="{{ ship.slot }}" name2="PDZ" comparator="GREATER" value="PDZRange" />
+    <set_variable name="Ship{{ ship.id }}FCS" value="0.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}RateFCS" value="0.0" integer="yes" />
+    <set_variable name="CheckShip{{ ship.id }}PDZRange" value="0.0" integer="yes" />
+  </event>
+{% endfor %}

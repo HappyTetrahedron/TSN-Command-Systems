@@ -41,7 +41,7 @@
     <create count="15" type="mines" startAngle="210" endAngle="80" startX="57204.0" startY="0.0" startZ="5708.0" radius="6238" />
     <create count="15" type="mines" startAngle="280" endAngle="150" startX="29226.0" startY="0.0" startZ="5987.0" radius="6238" />
     <create count="15" type="mines" startAngle="-100" endAngle="30" startX="27274.0" startY="0.0" startZ="45027.0" radius="6238" />
-    <create type="genericMesh" x="43169.0" y="8.0" z="25414.0" name="Burin Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="genericMesh" x="43169.0" y="6.0" z="25414.0" name="Burin Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
     <create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="48746.0" y="0.0" z="28109.0" name="B2" />
     <create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="41774.0" y="0.0" z="30619.0" name="B1" />
     <create type="Anomaly" pickupType="8" beaconEffect="1" beaconMonsterType="4" x="40938.0" y="0.0" z="20302.0" name="B4" />

@@ -1,0 +1,46 @@
+{% import 'Core/Menus.xml' as menu %}
+
+{{ menu.addDismissableSubmenu("Scan Text", menu.main.interaction) }}
+
+{% call menu.onMenuClick("Refugees", "Scan Text") %}
+    <set_ship_text use_gm_selection=" " scan_desc="Intel - Refugee Marker detected." hailtext="TSN vessel, we have refugees aboard and are transporting them to a safe location." />
+{% endcall %}
+{% call menu.onMenuClick("Contraband", "Scan Text") %}
+    <set_ship_text use_gm_selection=" " scan_desc="Intel - Cargohold shielding detected. Unregistered cargo aboard." hailtext="What we are transporting is none of your concern. " />
+{% endcall %}
+{% call menu.onMenuClick("Radiation", "Scan Text") %}
+    <set_ship_text use_gm_selection=" " scan_desc="Intel - Radiation hazard detected." />
+{% endcall %}
+{% call menu.onMenuClick("Explosives", "Scan Text") %}
+    <set_ship_text use_gm_selection=" " scan_desc="Intel - Volatile elements detected." />
+{% endcall %}
+{% call menu.onMenuClick("Chemical Leak", "Scan Text") %}
+    <set_ship_text use_gm_selection=" " scan_desc="Intel - Hazardous chemical elements emitting from hull." />
+{% endcall %}
+{% call menu.onMenuClick("Lifeforms", "Scan Text") %}
+    <set_ship_text use_gm_selection=" " scan_desc="Intel - Multiple, unregistered life signs detected." />
+{% endcall %}
+{% call menu.onMenuClick("No Life Signs", "Scan Text") %}
+    <set_ship_text use_gm_selection=" " scan_desc="Intel - No life signs detected aboard vessel." />
+{% endcall %}
+{% call menu.onMenuClick("No Cargo", "Scan Text") %}
+    <set_ship_text use_gm_selection=" " scan_desc="Intel - Low mass, cargo hold reading empty." />
+{% endcall %}
+{% call menu.onMenuClick("Unusual EM", "Scan Text") %}
+    <set_ship_text use_gm_selection=" " scan_desc="Intel - Unidentified EM readings fluctuating in lower bandwidth." />
+{% endcall %}
+{% call menu.onMenuClick("Unusual Shield", "Scan Text") %}
+    <set_ship_text use_gm_selection=" " scan_desc="Intel - Advanced shield arrays active. Signature unknown." />
+{% endcall %}
+{% call menu.onMenuClick("Hospital Ship", "Scan Text") %}
+    <set_ship_text use_gm_selection=" " desc="Hospital Ship" scan_desc="Intel - Medical facilities and personnel aboard." />
+{% endcall %}
+{% call menu.onMenuClick("Stations\\Denabite", "Scan Text") %}
+    <set_ship_text use_gm_selection=" " desc="Denabite deposits detected" scan_desc="Intel - Denabite refinery operations active." />
+{% endcall %}
+{% call menu.onMenuClick("Stations\\Metal", "Scan Text") %}
+    <set_ship_text use_gm_selection=" " desc="Metal deposits detected" scan_desc="Intel - Metal refinery operations active." />
+{% endcall %}
+{% call menu.onMenuClick("Stations\\Mineral", "Scan Text") %}
+    <set_ship_text use_gm_selection=" " desc="Mineral deposits detected" scan_desc="Intel - Mineral refinery operations active." />
+{% endcall %}

@@ -679,7 +679,7 @@
     <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
     <set_variable name="Vrae to Il'Is'Kar" value="1.0" />
     <set_variable name="Il'Is'Kar System" value="1.0" />
-    <set_variable name="Sector" value="8" />
+    <set_variable name="Sector" value="0" />
     <set_variable name="shipsInrange" value="0.0" integer="yes" />
     <set_timer name="Transition" seconds="2" />
     <set_variable name="ExitorRetreat" value="1.0" />
@@ -693,7 +693,7 @@
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
           <create type="enemy" x="65836.0" y="0.0" z="40847.0" angle="0" name="Defense Grid C" hullID="1005" sideValue="sectorSide" fleetnumber="-1" />
     
-<create type="genericMesh" x="71502.0" y="8.0" z="29806.0" name="Il'Is'Kar Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+<create type="genericMesh" x="71502.0" y="0.0" z="29806.0" name="Il'Is'Kar Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
   
 
     <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Vrae II" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
@@ -2484,7 +2484,7 @@
     <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
     <set_variable name="Vrae to Ka'Morlin" value="1.0" />
     <set_variable name="Ka'Morlin System" value="1.0" />
-    <set_variable name="Sector" value="8" />
+    <set_variable name="Sector" value="0" />
     <set_variable name="shipsInrange" value="0.0" integer="yes" />
     <set_timer name="Transition" seconds="2" />
     <set_variable name="ExitorRetreat" value="1.0" />
@@ -2502,7 +2502,7 @@
     
 <create type="enemy" x="40848.0" y="0.0" z="49418.0" angle="229.4" name="Defense Grid D" hullID="1005" fleetnumber="-1" sideValue="sectorSide" />
     
-<create type="genericMesh" x="29371.0" y="8.0" z="36198.0" name="Ka'Morlin Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+<create type="genericMesh" x="29371.0" y="0.0" z="36198.0" name="Ka'Morlin Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
     
 <create type="enemy" x="31921.0" y="0.0" z="11099.0" angle="0" name="So Transport" hullID="2101" fleetnumber="-1" sideValue="sectorSide" />
     

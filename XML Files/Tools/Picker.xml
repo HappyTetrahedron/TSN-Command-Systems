@@ -1,0 +1,129 @@
+{% set padding = 16 %}
+{% set labelw = 80 %}
+{% set cancelw = 60 %}
+
+{% macro Picker(prefix, switchBtn, pickBtns, label, initialChoice, startX, startY, track=None) %}
+{% if not track %}
+<event name="Initialize Picker {{ prefix }}">
+
+  <if_variable name="{{ prefix }}Picker_Choice" comparator="EQUALS" value="0.0" />
+  <set_variable name="{{ prefix }}Picker_Choice" value="{{ initialChoice }}.0" integer="yes" />
+</event>
+{% endif %}
+<event name="Open Picker {{ prefix }}">
+  <if_variable name="{{ prefix }}PickerOpen" comparator="EQUALS" value="0.0" />
+  <if_gm_button text="{{ prefix }}   {{ switchBtn }}" />
+
+  <clear_gm_button text="{{ prefix }}   {{ switchBtn }}" />
+
+  {% set tw = [0] %}
+  {% for p in pickBtns %}
+  {% set w = padding + (p|string|textwidth) %}
+  <clear_gm_button text="PIK{{ prefix }}   {{p}}" />
+  <set_gm_button text="{{ prefix }}   {{p}}" x="{{ startX + labelw + tw[0] }}" y="{{ startY }}" h="30" w="{{ w }}" />
+  {% do tw.append(tw.pop() + w) %}
+  {% endfor %}
+  <set_variable name="{{ prefix }}PickerOpen" value="1.0" integer="yes" />
+</event>
+
+<event name="Cleanup Picker {{ prefix }}">
+  <if_variable name="{{ prefix }}Picker_Should_Show" comparator="EQUALS" value="0.0" />
+  <if_variable name="{{ prefix }}Picker_Shown" comparator="EQUALS" value="1.0" />
+  {% for p in pickBtns %}
+  <clear_gm_button text="{{ prefix }}   {{p}}" />
+  <clear_gm_button text="PIK{{ prefix }}   {{p}}" />
+  {% endfor %}
+  <clear_gm_button text="{{ prefix }}   {{ switchBtn }}" />
+  <clear_gm_button text="{{ label }}" />
+
+  <set_variable name="{{ prefix }}PickerOpen" value="0.0" integer="yes" />
+  <set_variable name="{{ prefix }}Picker_Shown" value="0.0" integer="yes" />
+  <set_variable name="{{ prefix }}Picker_Choice_Shown" integer="yes" value="0.0" />
+</event>
+
+{% for btn in pickBtns %}
+  <event name="Picker {{ prefix }} Restore {{ btn }}">
+    <if_variable name="{{ prefix }}PickerOpen" comparator="EQUALS" value="0.0" />
+    {% if track %}
+    <if_variable name="{{ track }}" comparator="EQUALS" value="{{ loop.index }}.0" />
+    {% else %}
+    <if_variable name="{{ prefix }}Picker_Choice" comparator="EQUALS" value="{{ loop.index }}.0" />
+    {% endif %}
+    <if_variable name="{{ prefix }}Picker_Choice_Shown" comparator="NOT" value="{{ loop.index }}.0" />
+    <if_variable name="{{ prefix }}Picker_Should_Show" comparator="EQUALS" value="1.0" />
+
+    <clear_gm_button text="{{ prefix }}   {{ switchBtn }}" />
+    <set_gm_button text="{{ label }}" x="{{ startX }}" y="{{ startY }}" h="30" w="{{ labelw }}" />
+    <set_gm_button text="{{ prefix }}   {{ switchBtn }}" x="{{ labelw + startX + padding + (btn|string|textwidth) }}" y="{{ startY }}" h="30" w="{{ padding + (switchBtn|textwidth) }}" />
+
+    {% for p in pickBtns %}
+    <clear_gm_button text="{{ prefix }}   {{p}}" />
+    <clear_gm_button text="PIK{{ prefix }}   {{p}}" />
+    {% endfor %}
+
+    <set_gm_button text="PIK{{ prefix }}   {{ btn }}" x="{{ startX + labelw }}" y="{{ startY }}" h="30" w="{{ padding + (btn|string|textwidth) }}" />
+    <set_variable name="{{ prefix }}Picker_Choice_Shown" value="{{ loop.index }}.0" integer="yes" />
+    <set_variable name="{{ prefix }}Picker_Shown" value="1.0" integer="yes" />
+  </event>
+  <event name="Picker {{ prefix }} OnClick {{ btn }}">
+    <if_variable name="{{ prefix }}PickerOpen" comparator="EQUALS" value="1.0" />
+    <if_gm_button text="{{ prefix }}   {{ btn }}" />
+    {% if track %}
+    <set_variable name="{{ track }}" value="{{ loop.index }}.0" integer="yes" />
+    {% else %}
+    <set_variable name="{{ prefix }}Picker_Choice" value="{{ loop.index }}.0" integer="yes" />
+    {% endif %}
+    <set_variable name="{{ prefix }}PickerOpen" value="0.0" integer="yes" />
+    <set_variable name="{{ prefix }}Picker_Choice_Shown" integer="yes" value="0.0" />
+    {{ caller(btn) }}
+  </event>
+{% endfor %}
+{% endmacro %}
+
+{% macro PickerStateless(prefix, switchBtn, pickBtns, startX, startY) %}
+<event name="Show Picker {{ prefix }}">
+  <if_variable name="{{ prefix }}Picker_Should_Show" comparator="EQUALS" value="1.0" />
+  <if_variable name="{{ prefix }}Picker_Shown" comparator="NOT" value="1.0" />
+  <set_gm_button text="{{ prefix }}   {{ switchBtn }}" x="{{ startX }}" y="{{ startY }}" h="30" w="{{ labelw }}" />
+  <set_variable name="{{ prefix }}Picker_Shown" value="1.0" integer="yes" />
+</event>
+<event name="Open Picker {{ prefix }}">
+  <if_variable name="{{ prefix }}PickerOpen" comparator="EQUALS" value="0.0" />
+  <if_gm_button text="{{ prefix }}   {{ switchBtn }}" />
+  {% set tw = [0] %}
+  {% for p in pickBtns %}
+  {% set w = padding + (p|string|textwidth) %}
+  <set_gm_button text="{{ prefix }}   {{p}}" x="{{ startX + labelw + tw[0] }}" y="{{ startY }}" h="30" w="{{ w }}" />
+  {% do tw.append(tw.pop() + w) %}
+  {% endfor %}
+  <set_gm_button text="{{ prefix }}   Cancel" x="{{ startX + labelw + tw[0] }}" y="{{ startY }}" h="30" w="{{ cancelw }}" />
+</event>
+{% for btn in pickBtns %}
+  <event name="Picker {{ prefix }} OnClick {{ btn }}">
+    <if_gm_button text="{{ prefix }}   {{ btn }}" />
+    {{ caller(btn) }}
+    {% for btn in pickBtns %}
+    <clear_gm_button text="{{ prefix }}   {{btn}}" />
+    {% endfor %}
+    <clear_gm_button text="{{ prefix }}   Cancel" />
+  </event>
+{% endfor %}
+  <event name="Picker {{ prefix }} Cancel">
+    <if_gm_button text="{{ prefix }}   Cancel" />
+    {% for btn in pickBtns %}
+    <clear_gm_button text="{{ prefix }}   {{btn}}" />
+    {% endfor %}
+    <clear_gm_button text="{{ prefix }}   Cancel" />
+  </event>
+
+<event name="Cleanup Picker {{ prefix }}">
+  <if_variable name="{{ prefix }}Picker_Should_Show" comparator="EQUALS" value="0.0" />
+  <if_variable name="{{ prefix }}Picker_Shown" comparator="EQUALS" value="1.0" />
+  {% for p in pickBtns %}
+    <clear_gm_button text="{{ prefix }}   {{p}}" />
+  {% endfor %}
+  <clear_gm_button text="{{ prefix }}   Cancel" />
+  <clear_gm_button text="{{ prefix }}   {{ switchBtn }}" />
+  <set_variable name="{{ prefix }}Picker_Shown" value="0.0" integer="yes" />
+</event>
+{% endmacro %}

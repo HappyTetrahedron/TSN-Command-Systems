@@ -1,0 +1,698 @@
+{% import 'Core/Menus.xml' as menu %}
+{% import 'Constants.xml' as const %}
+
+
+{% set factions = const.spawnFactions %}
+
+{% for faction in factions.values() %}
+  {# Not all factions have wrecks so far #}
+  {% if faction.name not in ["Neutral"] %}
+    {{ menu.addEphemeralSubmenu("Wrecks " + faction.name, "Wrecks") }}
+  {% endif %}
+{% endfor %}
+
+{{ menu.addButtonExpandMenu("Wrecks", menu.main.poi, x=190, y=115, h=30, w=70, rows=6) }}
+
+
+{% macro spawnWreck(faction, name) %}
+  {% set outercaller = caller %}
+  {% call menu.onMenuClick(name, "Wrecks " + faction.name) %}
+    {{ outercaller() }}
+    <set_variable name="Auto AI Type" value="402.0" integer="yes" />
+    <set_variable name="Name Assign" value="1.0" integer="yes" />
+    <set_ship_text name="--" desc="Systems offline" scan_desc="No life signs. Trace energy signatures detected. " />
+  {% endcall %}
+{% endmacro %}
+
+{% call spawnWreck(factions.Hegemony, "Kralien Cruiser") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_RoundA.dxs" textureFileName="dat/roundA_diffuse.png" />
+  <set_ship_text name="--" race="Kralien" class="Cruiser" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.Hegemony, "Kralien Battleship") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_RoundB.dxs" textureFileName="dat/roundB_diffuse.png" />
+  <set_ship_text name="--" race="Kralien" class="Battleship" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.25" />
+{% endcall %}
+
+{% call spawnWreck(factions.Hegemony, "Kralien Dreadnought") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_RoundC.dxs" textureFileName="dat/RoundC_Diffuse.png" />
+  <set_ship_text name="--" race="Kralien" class="Dreadnaught" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.3" />
+{% endcall %}
+
+{% call spawnWreck(factions.Hegemony, "Torgoth Goliath") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_LeeA.dxs" textureFileName="dat/ship1_color_1024.png" />
+  <set_ship_text name="--" race="Torgoth" class="Goliath" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.3" />
+{% endcall %}
+
+{% call spawnWreck(factions.Hegemony, "Torgoth Leviathan") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_LeeB.dxs" textureFileName="dat/ship2_color_1024.png" />
+  <set_ship_text name="--" race="Torgoth" class="Leviathan" />
+  <set_variable name="push" value="200.0" integer="yes" />
+  <set_variable name="scale" value="0.35" />
+{% endcall %}
+
+{% call spawnWreck(factions.Hegemony, "Torgoth Behemoth") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_LeeC.dxs" textureFileName="dat/ship3_color_1024.png" />
+  <set_ship_text name="--" race="Torgoth" class="Behemoth" />
+  <set_variable name="push" value="250.0" integer="yes" />
+  <set_variable name="scale" value="0.4" />
+{% endcall %}
+
+{% call spawnWreck(factions.Hegemony, "Torgoth Command") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/TSN/Hegemony/TorgothCommand.dxs" textureFileName="dat/ship1A_diffuse.png" />
+  <set_ship_text name="--" race="Torgoth" class="Command" />
+  <set_variable name="push" value="250.0" integer="yes" />
+  <set_variable name="scale" value="0.4" />
+{% endcall %}
+
+{% call spawnWreck(factions.Hegemony, "Skaraan Defiler") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_EliteC.dxs" textureFileName="dat/ship1C_diffuse.png" />
+  <set_ship_text name="--" race="Skaraan" class="Defiler" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.25" />
+{% endcall %}
+
+{% call spawnWreck(factions.Hegemony, "Skaraan Enforcer") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_EliteA.dxs" textureFileName="dat/ship1A_diffuse.png" />
+  <set_ship_text name="--" race="Skaraan" class="Enforcer" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.25" />
+{% endcall %}
+
+{% call spawnWreck(factions.Hegemony, "Skaraan Executor") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_EliteB.dxs" textureFileName="dat/ship1B_diffuse.png" />
+  <set_ship_text name="--" race="Skaraan" class="Executor" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.25" />
+{% endcall %}
+
+{% call spawnWreck(factions.Hegemony, "Arvonian Fighter") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_Matt3A.dxs" textureFileName="dat/ship4A_diffuse.png" />
+  <set_ship_text name="--" race="Arvonian" class="Fighter" />
+  <set_variable name="push" value="80.0" integer="yes" />
+  <set_variable name="scale" value="0.05" />
+{% endcall %}
+
+{% call spawnWreck(factions.Hegemony, "Arvonian Light") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_Matt3B.dxs" textureFileName="dat/ship4B_diffuse.png" />
+  <set_ship_text name="--" race="Arvonian" class="Light Carrier" />
+  <set_variable name="push" value="200.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.Hegemony, "Arvonian Heavy") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/ENE_Matt3C.dxs" textureFileName="dat/ship4C_diffuse.png" />
+  <set_ship_text name="--" race="Arvonian" class="Carrier" />
+  <set_variable name="push" value="200.0" integer="yes" />
+  <set_variable name="scale" value="0.3" />
+{% endcall %}
+
+{% call spawnWreck(factions.Hegemony, "Arvonian Command") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/TSN/Hegemony/AVCommandShip.dxs" textureFileName="dat/TSN/Hegemony/AVCommand-diffuse.png" />
+  <set_ship_text name="--" race="Arvonian" class="Command Carrier" />
+  <set_variable name="push" value="200.0" integer="yes" />
+  <set_variable name="scale" value="0.4" />
+{% endcall %}
+
+{% call spawnWreck(factions.Hegemony, "Transport") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat/TSN/Hegemony/kralien-transport.dxs" textureFileName="dat/TSN/Hegemony/kralien-transport.png" />
+  <set_ship_text name="--" race="Hegemony" class="Transport" />
+  <set_variable name="push" value="175.0" integer="yes" />
+  <set_variable name="scale" value="0.17" />
+{% endcall %}
+
+{% call spawnWreck(factions.TSN, "Scout") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\artemis-scout.dxs" textureFileName="dat\artemis_diffuse.png" />
+  <set_ship_text name="--" race="TSN" class="Scout" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.TSN, "Light Cruiser") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\artemis.dxs" textureFileName="dat\LightCruiser_Diffuse.png" />
+  <set_ship_text name="--" race="TSN" class="Light Cruiser" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.TSN, "Battleship") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\artemis-3.dxs" textureFileName="dat\artemis_diffuse.png" />
+  <set_ship_text name="--" race="TSN" class="Battleship" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.TSN, "Missile Cruiser") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\artemis-4.dxs" textureFileName="dat\artemis_diffuse.png" />
+  <set_ship_text name="--" race="TSN" class="Missile Cruiser" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.TSN, "Dreadnought") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\artemis-5.dxs" textureFileName="dat\artemis_diffuse.png" />
+  <set_ship_text name="--" race="TSN" class="Dreadnaught" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.25" />
+{% endcall %}
+
+{% call spawnWreck(factions.TSN, "Carrier") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSNMediumCarrier.dxs" textureFileName="dat\CarrierDiffuse.png" />
+  <set_ship_text name="--" race="TSN" class="Carrier" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.25" />
+{% endcall %}
+
+{% call spawnWreck(factions.TSN, "Minelayer") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSNMineLayer.dxs" textureFileName="dat\CarrierDiffuse.png" />
+  <set_ship_text name="--" race="TSN" class="Minelayer" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.22" />
+{% endcall %}
+
+{% call spawnWreck(factions.TSN, "Juggernaut") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSNSuperDread.dxs" textureFileName="dat\CarrierDiffuse.png" />
+  <set_ship_text name="--" race="TSN" class="Juggernaut" />
+  <set_variable name="push" value="170.0" integer="yes" />
+  <set_variable name="scale" value="0.27" />
+{% endcall %}
+
+{% call spawnWreck(factions.TSN, "Battlecruiser") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Player\Battlecruiser.dxs" textureFileName="dat\artemis_diffuse.png" />
+  <set_ship_text name="--" race="TSN" class="Battlecruiser" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.TSN, "Ares Class") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Player\frigate.dxs" textureFileName="dat\artemis_diffuse.png" />
+  <set_ship_text name="--" race="TSN" class="Ares Class" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.TSN, "Valkyrie Class") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Player\missile-cruiser-mkII.dxs" textureFileName="dat\TSN\Player\artemis_diffuse_mkII.png" />
+  <set_ship_text name="--" race="TSN" class="Valkyrie Class" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.TSN, "Nemesis Class") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Player\nemesis.dxs" textureFileName="dat\TSN\Player\nemesis_diffuse.png" />
+  <set_ship_text name="--" race="TSN" class="Nemesis Class" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.TSN, "Supply Ship") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\TSNsupply.dxs" textureFileName="dat\artemis_diffuse.png" />
+  <set_ship_text name="--" race="TSN" class="Auxillary" />
+  <set_variable name="push" value="200.0" integer="yes" />
+  <set_variable name="scale" value="0.3" />
+{% endcall %}
+
+{% call spawnWreck(factions.TSN, "Escort") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\civilian1.dxs" textureFileName="dat\civilian1_diffuse.png" />
+  <set_ship_text name="--" race="TSN" class="Escort" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.TSN, "Destroyer") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\civilian2.dxs" textureFileName="dat\civilian1_diffuse.png" />
+  <set_ship_text name="--" race="TSN" class="Destroyer" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.TSN, "Patrol Boat") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\patrol-boat.dxs" textureFileName="dat\artemis_diffuse.png" />
+  <set_ship_text name="--" race="TSN" class="Patrol Boat" />
+  <set_variable name="push" value="100.0" integer="yes" />
+  <set_variable name="scale" value="0.1" />
+{% endcall %}
+
+{% call spawnWreck(factions.TSN, "Corvette") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\corvette.dxs" textureFileName="dat\artemis_diffuse.png" />
+  <set_ship_text name="--" race="TSN" class="Corvette" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.TSN, "Fighter-Bomber") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSNFighter.dxs" textureFileName="dat\LightCruiser_Diffuse.png" />
+  <set_ship_text name="--" race="TSN" class="Fighter-Bomber" />
+  <set_variable name="push" value="50.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.TSN, "Shuttle-LR Shuttle") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSNShuttle.dxs" textureFileName="dat\LightCruiser_Diffuse.png" />
+  <set_ship_text name="--" race="TSN" class="Shuttle" />
+  <set_variable name="push" value="50.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.USFP, "Science Vessel") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\science-vessel.dxs" textureFileName="dat\Science_Vessel_color.png" hullRace="USFP" hullType="Science Vessel" />
+  <set_ship_text name="--" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.32" />
+{% endcall %}
+
+{% call spawnWreck(factions.USFP, "Bulk Cargo") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\cargo_vessel.dxs" textureFileName="dat\cargo_vessel_color.png" hullRace="USFP" hullType="Bulk Cargo" />
+  <set_ship_text name="--" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.4" />
+{% endcall %}
+
+{% call spawnWreck(factions.USFP, "Luxury Liner") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\luxury-vessel.dxs" textureFileName="dat\leisure_vessel_color.png" hullRace="USFP" hullType="Luxury Liner" />
+  <set_ship_text name="--" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.3" />
+{% endcall %}
+
+{% call spawnWreck(factions.USFP, "Transport") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\transport-vessel.dxs" textureFileName="dat\transport_vessel_color.png" hullRace="USFP" hullType="Transport" />
+  <set_ship_text name="--" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.USFP, "Transport Mk II") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\transport.dxs" textureFileName="dat\TSN\USFP\transport_color.png" />
+  <set_variable name="push" value="320.0" integer="yes" />
+  <set_variable name="scale" value="0.8" />
+{% endcall %}
+
+{% call spawnWreck(factions.USFP, "Gaspode") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\miningrig.dxs" textureFileName="dat\TSN\USFP\miningrig_color.png" />
+  <set_variable name="push" value="170.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.USFP, "Scow") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\garbagescow.dxs" textureFileName="dat\TSN\USFP\scow-diffuse.png" />
+  <set_variable name="push" value="200.0" integer="yes" />
+  <set_variable name="scale" value="0.3" />
+{% endcall %}
+
+{% call spawnWreck(factions.Ximni, "Light Cruiser") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\ximni-light-cruiser.dxs" textureFileName="dat\XimniDiffuse.png" />
+  <set_ship_text name="--" race="Ximni" class="Light Cruiser" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.Ximni, "Scout") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\ximni-scout.dxs" textureFileName="dat\XimniDiffuse.png" />
+  <set_ship_text name="--" race="Ximni" class="Scout" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.Ximni, "Missile Cruiser") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\ximni-missile.dxs" textureFileName="dat\XimniDiffuse.png" />
+  <set_ship_text name="--" race="Ximni" class="Missile Cruiser" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.Ximni, "Battleship") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\ximni-battleship.dxs" textureFileName="dat\XimniDiffuse.png" />
+  <set_ship_text name="--" race="Ximni" class="Battleship" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.Ximni, "Carrier") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\ximni-carrier.dxs" textureFileName="dat\XimniDiffuse.png" />
+  <set_ship_text name="--" race="Ximni" class="Carrier" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.Ximni, "Dreadnought") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\ximni-dread.dxs" textureFileName="dat\XimniDiffuse.png" />
+  <set_ship_text name="--" race="Ximni" class="Dreadnought" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.23" />
+{% endcall %}
+
+{% call spawnWreck(factions.Ximni, "Fighter") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\ximni-fighter.dxs" textureFileName="dat\XimniDiffuse.png" />
+  <set_ship_text name="--" race="Ximni" class="Fighter" />
+  <set_variable name="push" value="50.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.Ximni, "Bomber") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\ximni-bomber.dxs" textureFileName="dat\XimniDiffuse.png" />
+  <set_ship_text name="--" race="Ximni" class="Bomber" />
+  <set_variable name="push" value="50.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.Ximni, "Shuttle") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\ximni-bomber.dxs" textureFileName="dat\XimniDiffuse.png" />
+  <set_ship_text name="--" race="Ximni" class="Shuttle" />
+  <set_variable name="push" value="50.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.Hjorden, "Cruiser") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Hjorden\hjordencruiser.dxs" textureFileName="dat\TSN\Hjorden\hjordencruiser_color.png" />
+  <set_ship_text name="--" race="Hjorden" class="Cruiser" />
+  <set_variable name="push" value="100.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.Hjorden, "Cruise Liner") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Hjorden\hjordensightseeing.dxs" textureFileName="dat\TSN\Hjorden\hjordensightseeing_color.png" />
+  <set_ship_text name="--" race="Hjorden" class="Cruise Liner" />
+  <set_variable name="push" value="100.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.Hjorden, "Transport") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Hjorden\hjordentransport.dxs" textureFileName="dat\TSN\Hjorden\hjordentransport_color.png" />
+  <set_ship_text name="--" race="Hjorden" class="Transport" />
+  <set_variable name="push" value="100.0" integer="yes" />
+  <set_variable name="scale" value="0.3" />
+{% endcall %}
+
+{% call spawnWreck(factions.USF, "Xenophobe") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Unakalhai\USNDread.dxs" textureFileName="dat\TSN\Unakalhai\USN_diffuse.png" />
+  <set_ship_text name="--" race="USF" class="Xenophobe" />
+  <set_variable name="scale" value="0.5" />
+  <set_variable name="push" value="200.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.USF, "Emu") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Unakalhai\USNbattleship.dxs" textureFileName="dat\TSN\Unakalhai\USN_diffuse.png" />
+  <set_ship_text name="--" race="USF" class="Emu" />
+  <set_variable name="scale" value="0.3" />
+  <set_variable name="push" value="200.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.USF, "Gallu") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Unakalhai\USNLC.dxs" textureFileName="dat\TSN\Unakalhai\USN_diffuse.png" />
+  <set_ship_text name="--" race="USF" class="Gallu" />
+  <set_variable name="scale" value="0.25" />
+  <set_variable name="push" value="200.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.USF, "Gladiator") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Unakalhai\USNScoutf.dxs" textureFileName="dat\TSN\Unakalhai\USN_diffuse.png" />
+  <set_ship_text name="--" race="USF" class="Gladiator" />
+  <set_variable name="push" value="200.0" integer="yes" />
+  <set_variable name="scale" value="0.2" />
+{% endcall %}
+
+{% call spawnWreck(factions.USF, "Nightmare") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Unakalhai\USNScout1.dxs" textureFileName="dat\TSN\Unakalhai\USN_diffuse.png" />
+  <set_ship_text name="--" race="USF" class="Nightmare" />
+  <set_variable name="push" value="200.0" integer="yes" />
+  <set_variable name="scale" value="0.25" />
+{% endcall %}
+
+{% call spawnWreck(factions.USF, "Griffzungenschwert") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Unakalhai\USNSuperdestroyer.dxs" textureFileName="dat\TSN\Unakalhai\USN_diffuse.png" />
+  <set_ship_text name="--" race="USF" class="Griffzungenschwert" />
+  <set_variable name="push" value="300.0" integer="yes" />
+  <set_variable name="scale" value="1.0" />
+{% endcall %}
+
+{% call spawnWreck(factions.NTani, "Skavanger") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\NTani\ntani-skavanger.dxs" textureFileName="dat\TSN\NTani\ntani-skavanger-diffuse.png" />
+  <set_ship_text name="--" race="N'Tani" class="Skavanger" />
+  <set_variable name="scale" value="0.2" />
+  <set_variable name="push" value="150.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.NTani, "Frigate") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\NTani\ntani-frigate.dxs" textureFileName="dat\TSN\NTani\ntani-frigate-diffuse.png" />
+  <set_ship_text name="--" race="N'Tani" class="Frigate" />
+  <set_variable name="scale" value="0.2" />
+  <set_variable name="push" value="100.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.NTani, "Cargo Pod Ship") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\NTani\ntani-cargo.dxs" textureFileName="dat\TSN\NTani\ntani-frigate-diffuse.png" />
+  <set_ship_text name="--" race="N'Tani" class="Cargo Pod Ship" />
+  <set_variable name="scale" value="0.2" />
+  <set_variable name="push" value="75.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.NTani, "Battlecruiser") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\NTani\ntani-battlecruiser.dxs" textureFileName="dat\TSN\NTani\ntani-frigate-diffuse.png" />
+  <set_ship_text name="--" race="N'Tani" class="Battlecruiser" />
+  <set_variable name="scale" value="0.4" />
+  <set_variable name="push" value="150.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.NTani, "Ranger") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\NTani\ntani-ranger.dxs" textureFileName="dat\TSN\NTani\ntani-ranger-diffuse.png" />
+  <set_ship_text name="--" race="N'Tani" class="Ranger" />
+  <set_variable name="scale" value="0.2" />
+  <set_variable name="push" value="100.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.Pirate, "Euphini Arrow") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Pirates\arrow-pirate.dxs" textureFileName="dat\TSN\Pirates\arrow-pirate-diffuse.png" />
+  <set_ship_text name="--" race="Pirates" class="Arrow" />
+  <set_variable name="scale" value="0.25" />
+  <set_variable name="push" value="100.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.Pirate, "Euphini Axe") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Pirates\axe-pirate.dxs" textureFileName="dat\TSN\Pirates\axe-pirate-diffuse.png" />
+  <set_ship_text name="--" race="Pirates" class="Axe" />
+  <set_variable name="scale" value="0.25" />
+  <set_variable name="push" value="100.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.Pirate, "Euphini Transport") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\transport-vessel.dxs" textureFileName="dat\TSN\Pirates\pirate-transport.png" />
+  <set_ship_text name="--" race="Pirates" class="Transport" />
+  <set_variable name="scale" value="0.3" />
+  <set_variable name="push" value="150.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.Pirate, "Strongbow") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\PirateStrongbow.dxs" textureFileName="dat\PirateBulky_Diffuse.png" />
+  <set_ship_text name="--" race="Pirate" class="Strongbow" />
+  <set_variable name="scale" value="0.2" />
+  <set_variable name="push" value="150.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.Pirate, "Longbow") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\PirateLongbow.dxs" textureFileName="dat\Pirate_Diffuse.png" />
+  <set_ship_text name="--" race="Pirate" class="Longbow" />
+  <set_variable name="scale" value="0.18" />
+  <set_variable name="push" value="150.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.Pirate, "Brigantine") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\PirateBrigantine.dxs" textureFileName="dat\PirateBulky_Diffuse.png" />
+  <set_ship_text name="--" race="Pirate" class="Brigantine" />
+  <set_variable name="scale" value="0.23" />
+  <set_variable name="push" value="200.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.Pirate, "Boarding Craft") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\patrol-boat.dxs" textureFileName="dat\artemis_diffuse.png" />
+  <set_ship_text name="--" race="Pirate" class="Boarding Craft" />
+  <set_variable name="scale" value="0.1" />
+  <set_variable name="push" value="75.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.Pirate, "Avenger") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\PirateAvenger.dxs" textureFileName="dat\Pirate_Diffuse.png" />
+  <set_ship_text name="--" race="Pirate" class="Avenger" />
+  <set_variable name="scale" value="0.2" />
+  <set_variable name="push" value="50.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.Caltron, "Primary") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Caltron\U1.dxs" textureFileName="dat\TSN\Caltron\shipHull10.png" />
+  <set_ship_text name="--" race="Caltron" class="Primary" />
+  <set_variable name="scale" value="0.6" />
+  <set_variable name="push" value="50.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.Caltron, "Tertiary") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Caltron\U3.dxs" textureFileName="dat\TSN\Caltron\shipHull10.png" />
+  <set_ship_text name="--" race="Caltron" class="Tertiary" />
+  <set_variable name="scale" value="0.6" />
+  <set_variable name="push" value="100.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.Caltron, "Senary") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Caltron\U6.dxs" textureFileName="dat\TSN\Caltron\shipHull10.png" />
+  <set_ship_text name="--" race="Caltron" class="Senary" />
+  <set_variable name="scale" value="0.6" />
+  <set_variable name="push" value="100.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.Caltron, "Duodenary") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Caltron\U12.dxs" textureFileName="dat\TSN\Caltron\shipHull10.png" />
+  <set_ship_text name="--" race="Caltron" class="Duodenary" />
+  <set_variable name="scale" value="0.6" />
+  <set_variable name="push" value="100.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.Caltron, "Swarm") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Caltron\U24.dxs" textureFileName="dat\TSN\Caltron\shipHull10.png" />
+  <set_ship_text name="--" race="Caltron" class="Swarm" />
+  <set_variable name="scale" value="0.6" />
+  <set_variable name="push" value="150.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.Caltron, "Super Swarm") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Caltron\U48.dxs" textureFileName="dat\TSN\Caltron\shipHull10.png" />
+  <set_ship_text name="--" race="Caltron" class="Super Swarm" />
+  <set_variable name="scale" value="0.6" />
+  <set_variable name="push" value="150.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.Caltron, "Primary (Var. B)") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Caltron\U1.dxs" textureFileName="dat\TSN\Caltron\shipHull10.png" />
+  <set_ship_text name="--" race="Caltron" class="Primary (Var. B)" />
+  <set_variable name="scale" value="0.6" />
+  <set_variable name="push" value="50.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.Biomech, "Stage 1") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\z-drone3.dxs" textureFileName="dat\drone3_color.png" />
+  <set_ship_text name="--" race="Biomech" class="Stage 1" />
+  <set_variable name="scale" value="0.25" />
+  <set_variable name="push" value="150.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.Biomech, "Stage 2") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\z-drone4.dxs" textureFileName="dat\drone4_color.png" />
+  <set_ship_text name="--" race="Biomech" class="Stage 2" />
+  <set_variable name="scale" value="0.25" />
+  <set_variable name="push" value="150.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.Biomech, "Stage 3") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\z-drone2.dxs" textureFileName="dat\drone2_color.png" />
+  <set_ship_text name="--" race="Biomech" class="Stage 3" />
+  <set_variable name="scale" value="0.35" />
+  <set_variable name="push" value="200.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.Biomech, "Stage 4") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\z-drone1.dxs" textureFileName="dat\drone1_color.png" />
+  <set_ship_text name="--" race="Biomech" class="Stage 4" />
+  <set_variable name="scale" value="0.45" />
+  <set_variable name="push" value="250.0" integer="yes" />
+{% endcall %}
+
+{% call spawnWreck(factions.Static, "TSN Gate") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" hullRace="USFP" hullType="Gate" />
+  <set_ship_text name="--" race="USFP" class="Jump Gate" />
+  <set_variable name="push" value="0.0" integer="yes" />
+  <set_variable name="scale" value="1.0" />
+{% endcall %}
+
+{% call spawnWreck(factions.Static, "TSN Cmd Base") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\station-starfish.dxs" textureFileName="dat\player_station_color_03.png" />
+  <set_ship_text name="--" race="USFP" class="Command Base" />
+  <set_variable name="push" value="250.0" integer="yes" />
+  <set_variable name="scale" value="0.3" />
+{% endcall %}
+
+{% call spawnWreck(factions.Static, "TSN Shipyard") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\USFP\USFP-shipyard.dxs" textureFileName="dat\artemis_diffuse.png" />
+  <set_ship_text name="--" race="USFP" class="Shipyard" />
+  <set_variable name="push" value="150.0" integer="yes" />
+  <set_variable name="scale" value="0.5" />
+{% endcall %}
+
+{% call spawnWreck(factions.Static, "Kralien Base") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\kralien-station.dxs" textureFileName="dat\kraliens_station_color.png" />
+  <set_ship_text name="--" race="Kralien" class="Base" />
+  <set_variable name="push" value="250.0" integer="yes" />
+  <set_variable name="scale" value="0.3" />
+{% endcall %}
+
+{% call spawnWreck(factions.Static, "Arvonian Base") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\arvonian-station.dxs" textureFileName="dat\arvonian_station_color.png" />
+  <set_ship_text name="--" race="Arvonian" class="Base" />
+  <set_variable name="push" value="450.0" integer="yes" />
+  <set_variable name="scale" value="0.3" />
+{% endcall %}
+
+{% call spawnWreck(factions.Static, "Torgoth Base") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\torgoth-station.dxs" textureFileName="dat\torgoth_color.png" />
+  <set_ship_text name="--" race="Torgoth" class="Base" />
+  <set_variable name="push" value="450.0" integer="yes" />
+  <set_variable name="scale" value="0.3" />
+{% endcall %}
+
+{% call spawnWreck(factions.Static, "Skaraan Base") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\skaraan-station.dxs" textureFileName="dat\skaraan_station_color.png" />
+  <set_ship_text name="--" race="Skaraan" class="Base" />
+  <set_variable name="push" value="250.0" integer="yes" />
+  <set_variable name="scale" value="0.3" />
+{% endcall %}
+
+{% call spawnWreck(factions.Static, "Pir. Asteroid Base") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Pirates\asteroid-fortress-base.dxs" textureFileName="dat\TSN\Pirates\asteroid-fortress-base.png" />
+  <set_ship_text name="--" race="Pirate" class="Asteroid Base" />
+  <set_variable name="push" value="600.0" integer="yes" />
+  <set_variable name="scale" value="0.5" />
+{% endcall %}
+
+{% call spawnWreck(factions.Static, "N'Tani Base") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\NTani\ntani-base.dxs" textureFileName="dat\TSN\NTani\ntani-base.png" />
+  <set_ship_text name="--" race="N'Tani" class="Fortified Base" />
+  <set_variable name="push" value="400.0" integer="yes" />
+  <set_variable name="scale" value="1.6" />
+{% endcall %}
+
+{% call spawnWreck(factions.Static, "Hjorden Base") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\TSN\Hjorden\hjorden-base.dxs" textureFileName="dat\TSN\Hjorden\hjorden-base_color.png" />
+  <set_ship_text name="--" race="Hjorden" class="Civilian Base" />
+  <set_variable name="push" value="400.0" integer="yes" />
+  <set_variable name="scale" value="1.6" />
+{% endcall %}
+
+{% call spawnWreck(factions.Static, "USFP Civ. Base") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\station-4donuts.dxs" textureFileName="dat\player_station_color_04.png" />
+  <set_ship_text name="--" race="USFP" class="Civilian Base" />
+  <set_variable name="push" value="250.0" integer="yes" />
+  <set_variable name="scale" value="0.6" />
+{% endcall %}
+
+{% call spawnWreck(factions.Static, "USFP Ind. Base") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\station-big1.dxs" textureFileName="dat\player_station_color_02.png" />
+  <set_ship_text name="--" race="USFP" class="Civilian Base" />
+  <set_variable name="push" value="400.0" integer="yes" />
+  <set_variable name="scale" value="0.6" />
+{% endcall %}
+
+{% call spawnWreck(factions.Static, "USFP Sci. Base") %}
+  <create type="genericMesh" use_gm_position="" name="--" meshFileName="dat\station-science.dxs" textureFileName="dat\player_station_color_01.png" />
+  <set_ship_text name="--" race="USFP" class="Science Base" />
+  <set_variable name="push" value="400.0" integer="yes" />
+  <set_variable name="scale" value="0.3" />
+{% endcall %}
+
+{% call menu.onButtonClick("+Generic", "Wrecks") %}
+  <create type="monster" monsterType="8" use_gm_position="" name="WRECK" />
+{% endcall %}

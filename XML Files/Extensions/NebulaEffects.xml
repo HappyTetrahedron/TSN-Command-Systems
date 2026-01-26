@@ -1,4 +1,4 @@
-{# NebulaEffects extension - nebulae have configurable effect on ships within them. Drain energy, corrode (damage) ship, or add heat.#}
+{# NebulaEffects extension - nebulae have configurable effect on ships within them. Drain energy, corrode (damage) ship, or add heat. TODO: currently corrosive nebulae only work if BoardingActions extension is also loaded. #}
   <event name="NebulaFX menu" id_arme="4228976f-1254-4e75-8f35-f579bcaf5543" parent_id_arme="5281ed9f-faab-47da-981b-3aa5f38459a0">
     <!-- Custom Menu -->
     <if_variable name="GM_Menu_Selector" comparator="EQUALS" value="6.0" />

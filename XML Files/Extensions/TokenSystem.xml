@@ -1,34 +1,32 @@
 {# GM tool to give the player virtual "tokens", a counter for which gets displayed on the map. #}
 
-{% import 'Utils.xml' as util %}
+{% import 'Constants.xml' as const %}
+{% import 'Core/Start.xml' as start %}
+{% import 'Core/Menus.xml' as menu %}
 
-{% call() util.createConditionalMenu("TokenSys", {
-    "GM_Menu_Selector": "1",
-}) %}
-    <set_gm_button text="AddToken" x="195" y="235" h="28" w="90" />
-    <set_gm_button text="RmToken" x="195" y="265" h="28" w="90" />
+{% call start.onStart("TokenSystem") %}
+    <set_variable name="TokenSysT" value="0.0" integer="yes" />
+    <set_variable name="TokenSysS" value="0.0" integer="yes" />
 {% endcall %}
 
-{% call() util.destroyConditionalMenu("TokenSys", {
-    "GM_Menu_Selector": "1",
-}) %}
-    <clear_gm_button text="AddToken" />
-    <clear_gm_button text="RmToken" />
-{% endcall %}
-
-<event name="AddToken">
-  <if_gm_button text="AddToken" />
+{% call menu.onButtonClick("AddToken", menu.main.base) %}
   <set_variable name="TokenSysT" value="TokenSysT + 1" integer="yes" />
-</event>
+  {% for ship in const.shipConfigs %}
+    <warning_popup_message message="&gt; You receive a token &lt;" consoles="MSC" player_slot="{{ ship.slot }}" />
+  {% endfor %}
+{% endcall %}
 
-<event name="RmToken">
-  <if_gm_button text="RmToken" />
+{% call menu.onButtonClick("RmToken", menu.main.base) %}
   <set_variable name="TokenSysT" value="TokenSysT - 1" integer="yes" />
-</event>
+  {% for ship in const.shipConfigs %}
+    <warning_popup_message message="&gt; You spent a token &lt;" consoles="MSC" player_slot="{{ ship.slot }}" />
+  {% endfor %}
+{% endcall %}
 
 <event name="UpdateTokenCounter">
   <if_variable name="TokenSysT" comparator="NOT" value="TokenSysS" />
   <destroy name="Tokens: |TokenSysS|" />
   <create type="genericMesh" x="0.0" y="0.0" z="0.0" name="Tokens: |TokenSysT|" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
-  <set_variable name="TokenSysS" value="TokenSysT" />
+  <set_ship_text name="Tokens: |TokenSysT|" race="Token" class="Counter" desc="Counts how many tokens you have.^^You can spend tokens to find resupply, resolve a conflict peacefully, learn more about a situation, or influence the narrative in other ways." scan_desc="It is possible to commit no mistakes and still lose. That is not a weakness. That is life." hailtext="Why are you hailing the token counter?" />
+  <set_variable name="TokenSysS" value="TokenSysT" integer="yes" />
 </event>

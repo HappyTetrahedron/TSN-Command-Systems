@@ -1,0 +1,80 @@
+
+{% import 'Constants.xml' as const %}
+{% import 'Tools/Conditions.xml' as cond %}
+{% import 'Core/PlayerTracking.xml' as tracking %}
+
+{% set silent_properties = [
+  {
+    'property': "shieldsOn",
+    'cmp': "EQUALS",
+    'val': 0,
+    'msg': "Shields raised",
+  },
+  {
+    'property': "systemCurEnergyTactical",
+    'cmp': "LESS_EQUAL",
+    'val': 0.34,
+    'msg': "Sensors overpowered",
+  },
+  {
+    'property': "systemCurEnergyImpulse",
+    'cmp': "LESS_EQUAL",
+    'val': 0.34,
+    'msg': "Impulse overpowered",
+  },
+  {
+    'property': "systemCurEnergyWarp",
+    'cmp': "LESS_EQUAL",
+    'val': 0.034,
+    'msg': "Warp on",
+  },
+  {
+    'property': "systemCurEnergyFrontShield",
+    'cmp': "LESS_EQUAL",
+    'val': 0.034,
+    'msg': "Front Shield on",
+  },
+  {
+    'property': "systemCurEnergyBackShield",
+    'cmp': "LESS_EQUAL",
+    'val': 0.034,
+    'msg': "Rear Shield on",
+  },
+  {
+    'property': "systemCurEnergyTorpedo",
+    'cmp': "LESS_EQUAL",
+    'val': 0.034,
+    'msg': "Torpedo Systems on",
+  },
+  {
+    'property': "systemCurEnergyBeam",
+    'cmp': "LESS_EQUAL",
+    'val': 0.034,
+    'msg': "Primary Beams on",
+  },
+] %}
+
+{% call(ship) tracking.onSpawn("SilentRunning") %}
+  <set_variable name="Ship{{ ship.id }}Silent" value="0.0" integer="yes" />
+{% endcall %}
+
+{% call(ship) tracking.onDestroy("SilentRunning") %}
+  <clear_gm_button text="Ship{{ ship.id }} Silent" />
+  <set_variable name="Ship{{ ship.id }}Silent" value="0.0" integer="yes" />
+{% endcall %}
+
+{% call(ship, unused) cond.shipConditionalEventAnd(silent_properties) %}
+  <if_exists player_slot="{{ ship.slot }}" />
+  <if_variable name="Ship{{ ship.id }} Status" comparator="EQUALS" value="2.0" />
+  <if_variable name="Ship{{ ship.id }}Silent" comparator="EQUALS" value="0.0" />
+  <set_variable name="Ship{{ ship.id }}Silent" value="1.0" integer="yes" />
+  <set_gm_button text="Ship{{ ship.id }} Silent" x="820" y="{{ 60 + ship.slot|int * 30 }}" h="30" w="90" />
+  <warning_popup_message message="Silent Running enabled" consoles="MEO" player_slot="{{ ship.slot }}" />
+{% endcall %}
+
+{% call(ship, prop) cond.shipConditionalEventOr(silent_properties, invert=True) %}
+  <if_variable name="Ship{{ ship.id }}Silent" comparator="GREATER_EQUAL" value="1.0" />
+  <warning_popup_message message="{{ prop.msg }}: Silent Running disabled" consoles="MEO" player_slot="{{ ship.slot }}" />
+  <clear_gm_button text="Ship{{ ship.id }} Silent" />
+  <set_variable name="Ship{{ ship.id }}Silent" value="0.0" integer="yes" />
+{% endcall %}

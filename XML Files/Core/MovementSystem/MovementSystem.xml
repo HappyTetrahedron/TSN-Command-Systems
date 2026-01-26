@@ -1,0 +1,10 @@
+{% import "Core/Start.xml" as start %}
+
+{% call start.onStart("MapSys") %}
+    <set_variable name="System" value="1.0" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" integer="yes" />
+    <set_variable name="ExitorRetreat" value="0.0" integer="yes" />
+{% endcall %}
+
+{% include 'Core/MovementSystem/Gates.xml' %}
+{% include 'Core/MovementSystem/Transitions.xml' %}

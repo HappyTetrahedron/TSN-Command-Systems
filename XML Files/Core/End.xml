@@ -1,0 +1,15 @@
+
+{% macro onMissionEnd(identifier) %}
+  {% do track("onEnd", { "caller": caller, "name": identifier }, identifier) %}
+{% endmacro %}
+
+{# Mission End #} 
+  <event name="End Mission" id_arme="3e9b80be-6696-467c-ba4f-26a41d2ae9ee" parent_id_arme="22ead096-32e5-4cf4-9f90-3c7924af9696">
+    <if_variable name="Mission End" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Mission End" />
+    {% for hook in retrieve("onEnd") %}
+    <!--{{ hook.name }}-->
+     {{ hook.caller() }}
+    {% endfor %}
+    <end_mission />
+  </event>

@@ -1,0 +1,92 @@
+{% set sys = g.map %}
+{{ '{#' }} x={{ sys.x }} y={{ sys.y }} alignment={{ sys.alignment }} {{ '#}' }}
+
+{% import "Maps/Generator/MapMacros.jinja" as macros %}
+
+  <event name="{{ sys.name}} Active">
+    <if_variable name="Activation Menu" comparator="EQUALS" value="1.0" />
+    <set_gm_button text="Systems/{{ sys.name }} System" />
+    <set_variable name="{{ sys.name }} Gate" value="1.0" integer="yes" />
+  </event>
+  <event name="Clear Menu Item">
+    <if_variable name="Activation Menu" comparator="EQUALS" value="0.0" />
+    <clear_gm_button text="Systems/{{ sys.name }} System" />
+  </event>
+  <event name="{{ sys.name }} System">
+    <if_gm_button text="Systems/{{ sys.name }} System" />
+    <set_variable name="Sandbox Activation" value="3.0" integer="yes" />
+    <set_variable name="{{ sys.name }} System" value="1.0" integer="yes" />
+    <set_gm_button text="Select Sector" x="90" y="100" h="30" w="200" />
+    {% for row in range(sys.height) %}
+      {% for col in range(sys.width) %}
+        {% set i = row * sys.width + col %}
+        <set_gm_button text="Sector {{ i+1 }}" x="{{ 170 + 65 * col }}" y="{{ 190 + 65 * row }}" h="60" w="60" />
+      {% endfor %}
+    {% endfor %}
+    <set_variable name="GM Mode" value="4.0" integer="yes" />
+  </event>
+  <event name="Default System Side">
+    <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
+    <if_variable name="{{ sys.name }} System" comparator="EQUALS" value="System" />
+    <if_variable name="systemSideOverride" comparator="LESS" value="1.0" />
+    <set_variable name="systemSide" value="{{ 1 if sys.alignment == 'Hegemony' else 2 }}.0" integer="yes" />
+    <set_variable name="System Settings" value="2.0" integer="yes" />
+  </event>
+  <event name="System Side Override">
+    <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
+    <if_variable name="{{ sys.name }} System" comparator="EQUALS" value="System" />
+    <if_variable name="systemSideOverride" comparator="GREATER_EQUAL" value="1.0" />
+    <set_variable name="systemSide" value="systemSideOverride" integer="yes" />
+    <set_variable name="System Settings" value="2.0" integer="yes" />
+  </event>
+  <event name="Sector Side Override" id_arme="3f602d27-595b-43f1-8fdb-b80385a8ec79" parent_id_arme="e12965cc-4adf-447b-9c58-37de11bbe78f">
+    <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
+    <if_variable name="{{ sys.name }} System" comparator="EQUALS" value="System" />
+    <if_variable name="sectorSideOverride" comparator="GREATER_EQUAL" value="1.0" />
+    <set_variable name="sectorSide" value="sectorSideOverride" integer="yes" />
+    <set_variable name="System Settings" value="3.0" integer="yes" />
+  </event>
+  <event name="Sector Side Override (RESET)" id_arme="6e959c03-0cf4-4896-8370-708ee5d520b5" parent_id_arme="e12965cc-4adf-447b-9c58-37de11bbe78f">
+    <if_variable name="System Settings" comparator="EQUALS" value="3.0" />
+    <set_variable name="sectorSideOverride" value="0.0" integer="yes" />
+    <set_variable name="System Settings" value="0.0" integer="yes" />
+  </event>
+  <event name="Set Sector Side" id_arme="f729a094-5131-48f9-a880-07becef4410b" parent_id_arme="e12965cc-4adf-447b-9c58-37de11bbe78f">
+    <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
+    <if_variable name="{{ sys.name }} System" comparator="EQUALS" value="System" />
+    <if_variable name="sectorSideOverride" comparator="LESS" value="1.0" />
+    <set_variable name="sectorSide" value="systemSide" integer="yes" />
+    <set_variable name="System Settings" value="0.0" integer="yes" />
+  </event>
+
+  {########################
+       START SECTORS 
+  ########################}
+
+  {% for sec in sys.sectors %}
+    {% set i = loop.index0 %}
+    {% call macros.createEvent(sys.name, i+1, sec.transitions, sys.skybox if "skybox" in sys else -1) %}
+      {{ sec.terrainStatements }}
+    {% endcall %}
+
+    {% for t in sec.transitions %}
+      {{ macros.transitionEvent(t, i+1, sys.name, sys.width, sys.height) }}
+    {% endfor %}
+    
+    {# Careful: order matters! For reasons I'm currently too tired to grasp, the "Initiate Jump" event must come before the sector entity events, or the sector doesn't get cleared correctly when jumping out. #}
+    {% if sec.get("gateTarget", {}).get("system") %}
+      {{ macros.jumpGateEvents(sys.name, sec.gateTarget.system, i+1, sec.gateTarget.sector) }}
+    {% endif %}
+
+    {% call macros.entitiesEvent(sys.name, i+1, sec.get("gateTarget", {}).get("system", ""), sec.createdEntities) %}
+      {{ sec.statements }}
+    {% endcall %}
+
+    {{ macros.destroyEvent(sys.name, i+1, sec.createdEntities) }}
+
+    {# Careful: order matters! The "Arrival from XY" must come after the sector entities, since the Arrival event tries to refer to the position of the gate entity in the same tick said entity gets created. #}
+    {% if sec.get("gateTarget", {}).get("system") %}
+      {{ macros.arrivalEvent(sys.name, sec.gateTarget.system, i+1, sec.gateTarget.sector) }}
+    {% endif %}
+
+  {% endfor %}
