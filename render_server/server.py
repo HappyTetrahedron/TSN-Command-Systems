@@ -20,12 +20,15 @@ VERSION_FILE="../.version"
 
 XML_EXT = ".xml"
 
+JINJAENV = {}
+
 def sanitize(filename):
     return filename.replace('.', '').lstrip('/')
 
 @app.route("/render", methods = ['POST'])
 def render():
     jf.clear_all_state()
+    JINJAENV["je"].cache.clear()
 
     data = request.json
     g.data = data
@@ -220,6 +223,7 @@ def create_app(datadir):
     myapp.config['datadir'] = datadir
     myapp.jinja_env.lstrip_blocks = True
     myapp.jinja_env.trim_blocks = True
+    JINJAENV["je"] = myapp.jinja_env
     myapp.jinja_env.add_extension('jinja2.ext.do')
     jf.register(myapp.jinja_env)
     myapp.register_blueprint(app)
