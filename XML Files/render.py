@@ -19,23 +19,12 @@ env = {
         "TokenSystem",
         "HazardPainter",
         "NebulaEffects",
-        "FuelStatusDisplay",
-        "ForceShipNames",
-        "BudronNPCs",
         "BoardingActions",
-        "CrookedStar",
-        "CureTags",
-        "Radiation",
-        "Signature Scrambler",
-        "VerdantFleet",
     ],
     "maps": [
-        "Onwia",
-        "Arietis",
-        "Helios",
-        "Tibur",
-        "Burin",
-        "Athorn"
+        "Ashia",
+        "Acantha",
+        "Krellis",
     ],
     "ordnance": {
         "ship1": {
