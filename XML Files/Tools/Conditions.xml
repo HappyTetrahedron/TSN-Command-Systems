@@ -34,9 +34,9 @@
       <set_variable name="_Conditional_ship{{ ship.id }}_{{ name }}_Active" value="1.0" integer="yes" />
     </event>
     <event name="Conditional Menu {{ name }} destroy - ship{{ ship.id }}">
-      <if_variable name="_Conditional_ship{{ ship.id }}_{{ name }}_Active" comparator="NOT" value="1.0" />
+      <if_variable name="_Conditional_ship{{ ship.id }}_{{ name }}_Active" comparator="EQUALS" value="1.0" />
       {{ caller(ship, False) }}
-      <set_variable name="_Conditional_ship{{ ship.id }}_{{ name }}_Active" value="1.0" integer="yes" />
+      <set_variable name="_Conditional_ship{{ ship.id }}_{{ name }}_Active" value="0.0" integer="yes" />
     </event>
   {% endfor %}
 {% endmacro %}

@@ -119,6 +119,7 @@
         <if_object_property property="shieldsOn" player_slot="{{ ship.slot }}" comparator="EQUALS" value="0.0" />
         <if_object_property property="{{ property }}" player_slot="{{ ship.slot }}" comparator="LESS" value="Ship{{ ship.id }}{{ ordnance }}Max" />
         <set_variable name="{{ sup.name }}{{ ordnance }}" value="{{ sup.name }}{{ ordnance }}-1" integer="yes" />
+        <set_ship_text name="{{ sup.name }}" hailtext="Wrenches on standby!^Stores:{% for ord in const.ordnance.keys() %}^{{ ord|title }}s: |{{ sup.name }}{{ ord }}|{% endfor %}" />
         <addto_object_property value="1.0" property="{{ property }}" player_slot="{{ ship.slot }}" />
         <set_timer name="Resupply Ship{{ ship.id }}" seconds="2" />
       </event>
@@ -133,7 +134,6 @@
       <if_exists player_slot="{{ ship.slot }}" />
     {% endif %}
     <if_variable name="{{ sup.name }}toShip{{ ship.id }}Resupply" comparator="{{ "EQUALS" if isCreate else "NOT" }}" value="2.0" />
-    {{ comms.button("Resupply from " + sup.name, ship) }}
     {% if isCreate %}
       {{ comms.button("Resupply from " + sup.name, ship) }}
     {% else %}

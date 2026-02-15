@@ -942,6 +942,7 @@
     <if_variable name="Erowis System" comparator="EQUALS" value="3.0" />
     <destroy name="Erowis VI" />
     <destroy name="Krellis Gate" />
+    <destroy name="Krellis Gatekeeper" />
     <set_variable name="Erowis System" value="System" integer="yes" />
     <set_variable name="Sector Entities" value="0.0" />
   </event>

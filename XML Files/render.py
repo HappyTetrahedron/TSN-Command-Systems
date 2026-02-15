@@ -25,6 +25,7 @@ env = {
         "Ashia",
         "Acantha",
         "Krellis",
+        "Erowis",
     ],
     "ordnance": {
         "ship1": {
