@@ -29,40 +29,24 @@
 
 {% set sides = range(1, 14)|list %}
 {% do sides.__setitem__(1, "2 Dflt") %}
-{% call(choice) picker.Picker("PS", "CHNG", sides, "Player Side:", 0, 100, 68, track="playerSide") %}
+{% call(choice) picker.Picker("PS", "CHNG", sides, "Plyr Side:", 0, 100, 68, track="playerSide") %}
   {% set side = 2 if choice == "2 Dflt" else choice|int %}
   {% for ship in const.shipConfigs %}
     <set_side_value value="{{ side }}" player_slot="{{ ship.slot }}" />
   {% endfor %}
 {% endcall %}
 
-{% call(isCreate) menu.addStatementToMenu("PS", menu.main.base) %}
+{% set sysSides = range(0, 10)|list %}
+{% do sysSides.__setitem__(0, "Dflt") %}
+{% call(choice) picker.Picker("SySi", "CHNG", sysSides, "Sys Side:", 0, 100, 99, track="systemSideOverride", startIndex=0) %}
+  {% set side = 0 if choice == "Dflt" else choice|int %}
+  <set_variable name="systemSideOverride" value="{{ side }}.0" integer="yes" />
+{% endcall %}
+
+{% call(isCreate) menu.addStatementToMenu("BasePickers", menu.main.base) %}
   <set_variable name="PSPicker_Should_Show" value="{{ 1 if isCreate else 0 }}" integer="yes" />
+  <set_variable name="SySiPicker_Should_Show" value="{{ 1 if isCreate else 0 }}" integer="yes" />
 {% endcall %}
-
-{{ menu.addEphemeralSubmenu("SectorSide", menu.main.base) }}
-{{ menu.addEphemeralSubmenu("SystemSide", menu.main.base) }}
-
-{% call menu.onMenuClick("Default", "SystemSide") %}
-    <set_variable name="systemSideOverride" value="0.0" integer="yes" />
-    <set_variable name="System Settings" value="1.0" integer="yes" />
-{% endcall %}
-{% call menu.onMenuClick("Default", "SectorSide") %}
-    <set_variable name="sectorSideOverride" value="1.0" integer="yes" />
-    <set_variable name="System Settings" value="2.0" integer="yes" />
-{% endcall %}
-
-{% for side in range(1, 10) %}
-    {% call menu.onMenuClick("Side " + side|string, "SystemSide") %}
-        <set_variable name="systemSideOverride" value="{{ side }}.0" integer="yes" />
-        <set_variable name="System Settings" value="1.0" integer="yes" />
-    {% endcall %}
-    {% call menu.onMenuClick("Side " + side|string, "SectorSide") %}
-        <set_variable name="sectorSideOverride" value="{{ side }}.0" integer="yes" />
-        <set_variable name="System Settings" value="2.0" integer="yes" />
-    {% endcall %}
-
-{% endfor %}
 
 {{ menu.addEphemeralSubmenu("End Mission", menu.main.base) }}
   {% call menu.onMenuClick("Shut down ships", "End Mission") %}

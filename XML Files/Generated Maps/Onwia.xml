@@ -28,21 +28,21 @@
   </event>
   <event name="Default System Side">
     <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
-    <if_variable name="Onwia System" comparator="EQUALS" value="System" />
+    <if_variable name="Onwia System" comparator="EQUALS" value="1" />
     <if_variable name="systemSideOverride" comparator="LESS" value="1.0" />
     <set_variable name="systemSide" value="1.0" integer="yes" />
     <set_variable name="System Settings" value="2.0" integer="yes" />
   </event>
   <event name="System Side Override">
     <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
-    <if_variable name="Onwia System" comparator="EQUALS" value="System" />
+    <if_variable name="Onwia System" comparator="EQUALS" value="1" />
     <if_variable name="systemSideOverride" comparator="GREATER_EQUAL" value="1.0" />
     <set_variable name="systemSide" value="systemSideOverride" integer="yes" />
     <set_variable name="System Settings" value="2.0" integer="yes" />
   </event>
   <event name="Sector Side Override" id_arme="3f602d27-595b-43f1-8fdb-b80385a8ec79" parent_id_arme="e12965cc-4adf-447b-9c58-37de11bbe78f">
     <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
-    <if_variable name="Onwia System" comparator="EQUALS" value="System" />
+    <if_variable name="Onwia System" comparator="EQUALS" value="1" />
     <if_variable name="sectorSideOverride" comparator="GREATER_EQUAL" value="1.0" />
     <set_variable name="sectorSide" value="sectorSideOverride" integer="yes" />
     <set_variable name="System Settings" value="3.0" integer="yes" />
@@ -54,7 +54,7 @@
   </event>
   <event name="Set Sector Side" id_arme="f729a094-5131-48f9-a880-07becef4410b" parent_id_arme="e12965cc-4adf-447b-9c58-37de11bbe78f">
     <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
-    <if_variable name="Onwia System" comparator="EQUALS" value="System" />
+    <if_variable name="Onwia System" comparator="EQUALS" value="1" />
     <if_variable name="sectorSideOverride" comparator="LESS" value="1.0" />
     <set_variable name="sectorSide" value="systemSide" integer="yes" />
     <set_variable name="System Settings" value="0.0" integer="yes" />
@@ -823,6 +823,7 @@
     <clear_comms_button text="Jump" sideValue="playerSide" />
     <set_variable name="Onwia System" value="3.0" integer="yes" />
     <set_variable name="System" value="0.0" />
+    <set_variable name="System Settings" value="1.0" />
     <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
     <set_variable name="Onwia to Drenan" value="1.0" />
     <set_variable name="Drenan System" value="1.0" />

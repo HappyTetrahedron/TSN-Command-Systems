@@ -1,0 +1,99 @@
+<mission_data version="1.0">
+  <start>
+    <set_variable name="Coordinate X" value="1056.0" />
+    <set_variable name="Coordinate Y" value="282.0" />
+    <set_variable name="Width" value="3" />
+    <set_variable name="Height" value="3" />
+    <set_variable name="Alignment" value="Hegemony" />
+    <set_variable name="Skybox" value="26" />
+  </start>
+  <event name="Sector 1">
+    <create count="100" type="nebulas" startX="77882.0" startY="-200.0" startZ="9925.0" endX="60484.0" endY="-300.0" endZ="39368.0" randomRange="10000" />
+    <create count="100" type="nebulas" startX="54238.0" startY="-400.0" startZ="76245.0" endX="60484.0" endY="-300.0" endZ="39368.0" randomRange="10000" />
+    <create count="100" type="nebulas" startX="9926.0" startY="300.0" startZ="77881.0" endX="12454.0" endY="400.0" endZ="21524.0" randomRange="10000" />
+    <create count="100" type="asteroids" startX="17724.0" startY="-200.0" startZ="51071.0" endX="10625.0" endY="-300.0" endZ="66205.0" randomRange="10000" />
+    <create count="50" type="asteroids" startX="56965.0" startY="0.0" startZ="61919.0" endX="56965.0" endY="0.0" endZ="61919.0" randomRange="8000" />
+    <create count="50" type="asteroids" startX="30045.0" startY="0.0" startZ="48526.0" endX="30045.0" endY="0.0" endZ="48526.0" randomRange="8000" />
+    <create type="genericMesh" x="46950.0" y="9.0" z="49564.0" name="Acantha Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="33125.0" y="0.0" z="78392.0" name="Eshi Directorate" hullID="1005" sideValue="sectorSide" />
+    <create type="neutral" x="15715.0" y="0.0" z="46919.0" name="Hagma Base" hullID="1005" sideValue="sectorSide" />
+    <create type="neutral" x="73170.0" y="0.0" z="79196.0" name="Edi Edi Base" hullID="1007" sideValue="sectorSide" />
+    <create type="enemy" x="34733.0" y="0.0" z="72767.0" angle="0" name="Defense Platform 1" hullID="1350" sideValue="sectorSide" fleetnumber="-1" />
+    <create type="enemy" x="23215.0" y="0.0" z="50937.0" angle="0" name="Defense Platform 2" hullID="1350" sideValue="sectorSide" fleetnumber="-1" />
+    <create type="enemy" x="69152.0" y="0.0" z="74642.0" angle="0" name="Defense Platform 3" hullID="1350" sideValue="sectorSide" fleetnumber="-1" />
+  </event>
+  <event name="Sector 2">
+    <create count="200" type="nebulas" startX="86697.0" startY="300.0" startZ="84687.0" endX="89375.0" endY="400.0" endZ="20401.0" randomRange="10000" />
+    <create count="200" type="nebulas" startX="87500.0" startY="300.0" startZ="61517.0" endX="64733.0" endY="400.0" endZ="98482.0" randomRange="10000" />
+    <create count="100" type="asteroids" startX="89108.0" startY="-300.0" startZ="31383.0" endX="81340.0" endY="-300.0" endZ="43973.0" randomRange="10000" />
+    <create count="100" type="asteroids" startX="81206.0" startY="-300.0" startZ="72901.0" endX="71295.0" endY="-300.0" endZ="83750.0" randomRange="10000" />
+    <create type="genericMesh" x="54286.0" y="0.0" z="45312.0" name="PLANETYk'Anu" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\Planets\planetTex4.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="39956.0" y="0.0" z="60848.0" name="Arshira Base" hullID="1005" sideValue="sectorSide" />
+    <create type="neutral" x="71027.0" y="0.0" z="31250.0" name="N'Taira Base" hullID="1005" sideValue="sectorSide" />
+    <create type="neutral" x="77322.0" y="0.0" z="35133.0" name="Onshi Mining" hullID="1005" sideValue="sectorSide" />
+    <create type="enemy" x="74777.0" y="0.0" z="42901.0" angle="0" name="Defense Platform 4" hullID="1350" sideValue="sectorSide" fleetnumber="-1" />
+    <set_ship_text name="PLANETYk'Anu" class="Class P Planet" />
+  </event>
+  <event name="Sector 3">
+    <create count="200" type="asteroids" startX="52277.0" startY="200.0" startZ="47187.0" endX="65000.0" endY="200.0" endZ="29107.0" randomRange="20000" />
+    <create count="200" type="asteroids" startX="58974.0" startY="-200.0" startZ="24687.0" endX="44509.0" endY="-200.0" endZ="64464.0" randomRange="20000" />
+    <create count="100" type="nebulas" nebType="2" startX="34465.0" startY="-200.0" startZ="22946.0" endX="27634.0" endY="200.0" endZ="69285.0" randomRange="10000" />
+    <create count="100" type="nebulas" nebType="2" startX="37545.0" startY="-200.0" startZ="29910.0" endX="74242.0" endY="200.0" endZ="10223.0" randomRange="10000" />
+    <create count="100" type="nebulas" nebType="2" startX="52679.0" startY="0.0" startZ="8750.0" endX="15581.0" endY="0.0" endZ="58437.0" randomRange="10000" />
+    <create type="neutral" x="34465.0" y="0.0" z="44910.0" name="Koth Ore Processor" hullID="1005" sideValue="sectorSide" />
+    <create type="neutral" x="48929.0" y="0.0" z="29107.0" name="P'Gel Metals" hullID="1005" sideValue="sectorSide" />
+    <create type="neutral" x="35670.0" y="0.0" z="32321.0" name="Uxa Base" hullID="1005" sideValue="sectorSide" />
+  </event>
+  <event name="Sector 4">
+    <create count="100" type="asteroids" startX="74509.0" startY="0.0" startZ="32455.0" endX="32456.0" endY="0.0" endZ="65803.0" randomRange="10000" />
+    <create count="100" type="nebulas" startX="57367.0" startY="0.0" startZ="29642.0" endX="41965.0" endY="0.0" endZ="67946.0" randomRange="30000" />
+    <create type="neutral" x="54018.0" y="0.0" z="51473.0" name="Turkeshi Mines" hullID="1005" sideValue="sectorSide" />
+  </event>
+  <event name="Sector 5">
+    <create count="150" type="asteroids" startX="50000.0" startY="0.0" startZ="50000.0" radius="30000" randomRange="5000" />
+    <create count="50" type="nebulas" startAngle="0" endAngle="120" startX="66742.0" startY="0.0" startZ="39687.0" radius="25000" randomRange="4000" />
+    <create count="30" type="nebulas" nebType="2" startAngle="60" endAngle="180" startX="50536.0" startY="0.0" startZ="33258.0" radius="25000" randomRange="4000" />
+    <create count="30" type="nebulas" startAngle="120" endAngle="240" startX="36875.0" startY="0.0" startZ="41160.0" radius="25000" randomRange="4000" />
+    <create count="30" type="nebulas" nebType="2" startAngle="180" endAngle="300" startX="37143.0" startY="0.0" startZ="58839.0" radius="25000" randomRange="4000" />
+    <create count="30" type="nebulas" startAngle="240" endAngle="360" startX="51474.0" startY="0.0" startZ="67812.0" radius="25000" randomRange="4000" />
+    <create count="30" type="nebulas" nebType="2" startAngle="-60" endAngle="60" startX="63661.0" startY="0.0" startZ="54821.0" radius="25000" randomRange="4000" />
+    <create count="50" type="nebulas" startX="74242.0" startY="0.0" startZ="3928.0" endX="56831.0" endY="0.0" endZ="13571.0" randomRange="7000" />
+    <create count="30" type="nebulas" startX="3259.0" startY="0.0" startZ="39821.0" endX="14643.0" endY="0.0" endZ="56026.0" randomRange="5000" />
+    <create count="40" type="nebulas" startX="71429.0" startY="0.0" startZ="81339.0" endX="61117.0" endY="0.0" endZ="97678.0" randomRange="5000" />
+    <create type="blackHole" x="50000.0" y="0.0" z="50000.0" name="O'o-Fada" />
+  </event>
+  <event name="Sector 6">
+    <create count="100" type="nebulas" startX="51742.0" startY="0.0" startZ="35133.0" endX="96608.0" endY="0.0" endZ="59107.0" randomRange="8000" />
+    <create count="100" type="asteroids" startX="71831.0" startY="0.0" startZ="22276.0" endX="27500.0" endY="0.0" endZ="68750.0" randomRange="10000" />
+  </event>
+  <event name="Sector 7">
+    <create count="100" type="nebulas" nebType="3" startX="56965.0" startY="0.0" startZ="49196.0" endX="44777.0" endY="0.0" endZ="39687.0" randomRange="10000" />
+    <create count="100" type="nebulas" nebType="2" startX="48795.0" startY="0.0" startZ="31919.0" endX="53750.0" endY="0.0" endZ="58973.0" randomRange="10000" />
+    <create count="100" type="nebulas" startX="61250.0" startY="0.0" startZ="38214.0" endX="44242.0" endY="0.0" endZ="52544.0" randomRange="10000" />
+    <create count="100" type="nebulas" startX="68884.0" startY="500.0" startZ="32723.0" endX="49465.0" endY="-500.0" endZ="63392.0" randomRange="10000" />
+    <create count="100" type="nebulas" startX="48393.0" startY="500.0" startZ="28571.0" endX="32858.0" endY="-500.0" endZ="55223.0" randomRange="10000" />
+    <create count="50" type="asteroids" startX="1920.0" startY="300.0" startZ="57901.0" endX="51474.0" endY="0.0" endZ="83482.0" randomRange="7000" />
+    <create type="neutral" x="64867.0" y="500.0" z="42633.0" name="Osca Base" hullID="1005" sideValue="sectorSide" />
+    <create type="neutral" x="53884.0" y="-500.0" z="58303.0" name="Zawpan Base" hullID="1005" sideValue="sectorSide" />
+    <create type="neutral" x="29777.0" y="0.0" z="32857.0" name="Ungswor Base" hullID="1005" sideValue="sectorSide" />
+    <create type="neutral" x="72500.0" y="0.0" z="60982.0" name="Zol-Quen Base" hullID="1005" sideValue="sectorSide" />
+  </event>
+  <event name="Sector 8">
+    <create count="50" type="asteroids" startX="93795.0" startY="300.0" startZ="58169.0" endX="33527.0" endY="0.0" endZ="25089.0" randomRange="7000" />
+    <create count="50" type="asteroids" startX="5402.0" startY="-300.0" startZ="29642.0" endX="67679.0" endY="0.0" endZ="36205.0" randomRange="7000" />
+    <create count="100" type="nebulas" startX="59777.0" startY="0.0" startZ="13571.0" endX="9956.0" endY="0.0" endZ="46517.0" randomRange="8000" />
+    <create count="30" type="nebulas" startX="58974.0" startY="0.0" startZ="3392.0" endX="46384.0" endY="0.0" endZ="22276.0" randomRange="5000" />
+    <create type="genericMesh" x="42634.0" y="6.0" z="58571.0" name="Erowis Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="71161.0" y="0.0" z="55892.0" name="On-Ansi Base" hullID="1005" sideValue="sectorSide" />
+  </event>
+  <event name="Sector 9">
+    <create count="50" type="asteroids" startX="98483.0" startY="-300.0" startZ="33258.0" endX="35536.0" endY="0.0" endZ="53080.0" randomRange="7000" />
+    <create count="100" type="nebulas" startX="39688.0" startY="0.0" startZ="65535.0" endX="94197.0" endY="0.0" endZ="46651.0" randomRange="8000" />
+    <create count="100" type="asteroids" startX="58170.0" startY="-200.0" startZ="26160.0" endX="31384.0" endY="-200.0" endZ="35669.0" randomRange="5000" />
+    <create count="100" type="asteroids" startX="51875.0" startY="200.0" startZ="22812.0" endX="30447.0" endY="200.0" endZ="44776.0" randomRange="5000" />
+    <create type="neutral" x="36875.0" y="0.0" z="27098.0" name="Kral-Ta Minerals" hullID="1005" sideValue="sectorSide" />
+    <create type="neutral" x="33527.0" y="0.0" z="49062.0" name="Yi-Pular'Me Base" hullID="1005" sideValue="sectorSide" />
+    <create type="neutral" x="66072.0" y="0.0" z="45848.0" name="Ootath Base" hullID="1005" sideValue="sectorSide" />
+    <create type="neutral" x="49599.0" y="0.0" z="41026.0" name="Re'eya Base" hullID="1005" sideValue="sectorSide" />
+  </event>
+</mission_data>

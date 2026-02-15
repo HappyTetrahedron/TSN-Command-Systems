@@ -122,7 +122,8 @@ def parse_event(event):
                         sys.exit(1)
                     gate_found = True
                     gate_target = name[0:-5]
-                    gate_target_sector = int(action.attrib["y"].split('.')[0])
+                    gate_y_pts = action.attrib["y"].split(".")
+                    gate_target_sector = int(gate_y_pts[0])
                     if gate_target_sector == 0:
                         if system_exists(gate_target):
                             print("ERROR: No target sector configured for {}. Configure a target sector by adjusting the gate object's Y coordinate to the target sector's number. (I know, it's a hack.)".format(name))
