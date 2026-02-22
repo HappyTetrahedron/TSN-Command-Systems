@@ -398,6 +398,11 @@ def parse_file(file, style):
             sys.exit(1)
         system_dict["sectors"].append(sectors[i])
 
+    system_dict["links"] = [ entity.get('gate_target_system')
+        for sector in system_dict["sectors"]
+        for entity in sector["entities"] if 'gate_target_system' in entity
+    ]
+
 
     return system_dict
 
