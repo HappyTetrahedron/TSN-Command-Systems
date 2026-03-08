@@ -1265,15 +1265,18 @@ TODO
 {% endcall %}
 
 {% call spawn(factions.Neutral.key, "Sechatzal", "Spectre", autoAI=105, nameAssign=True, randomDir=True) %}
-  <create type="enemy" use_gm_position="" name="--" hullID="7750" sideValue="SideValue" fleetnumber="-1" />
+  <create type="enemy" use_gm_position="" name="r" hullID="7750" sideValue="SideValue" fleetnumber="-1" />
+  <set_ship_text name="r" newname="--" race="Sechatzal" />
 {% endcall %}
 
 {% call spawn(factions.Neutral.key, "Sechatzal", "Ghost", autoAI=105, nameAssign=True, randomDir=True) %}
-  <create type="enemy" use_gm_position="" name="--" hullID="7751" sideValue="SideValue" fleetnumber="-1" />
+  <create type="enemy" use_gm_position="" name="r" hullID="7751" sideValue="SideValue" fleetnumber="-1" />
+  <set_ship_text name="r" newname="--" race="Sechatzal" />
 {% endcall %}
 
 {% call spawn(factions.Neutral.key, "Sechatzal", "Wraith", autoAI=105, nameAssign=True, randomDir=True) %}
-  <create type="enemy" use_gm_position="" name="--" hullID="7752" sideValue="SideValue" fleetnumber="-1" />
+  <create type="enemy" use_gm_position="" name="r" hullID="7752" sideValue="SideValue" fleetnumber="-1" />
+  <set_ship_text name="r" newname="--" race="Sechatzal" />
 {% endcall %}
 
 {% call spawn(factions.Neutral.key, "Dinkuno", "Warbird", autoAI=101, nameAssign=True, randomDir=True) %}

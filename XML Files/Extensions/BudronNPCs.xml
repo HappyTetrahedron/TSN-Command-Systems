@@ -54,6 +54,36 @@
   {% endcall %}
   {% endfor %}
 
+  {% for name in ["Chu Chu"] %}
+  {% call spawn.spawn(const.spawnFactions.Neutral.key, "Sechatzal", "+ChuChu") %}
+    <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="7752" sideValue="SideValue" fleetnumber="-1" />
+    <set_ship_text name="{{ name }}" race="Sechatzal" />
+
+    <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+    <clear_ai name="{{ name }}" />
+    <set_special name="{{ name }}" ship="1" /> <!-- overpowered -->
+    <set_ship_text name="{{ name }}" desc="Wraith class Stealthed Dreadnought, under the command of Katch Sikat." />
+
+    <clear_ai name="{{ name }}" />
+    <set_special name="{{ name }}" ship="-1" ability="Stealth" />
+    <set_special name="{{ name }}" ship="-1" captain="-1" ability="LowVis" />
+    <set_special name="{{ name }}" ship="-1" captain="-1" ability="ShldReset" />
+    <set_special name="{{ name }}" ship="-1" captain="-1" ability="Warp" />
+    <set_special name="{{ name }}" ship="-1" captain="-1" ability="HET" />
+    <set_special name="{{ name }}" ship="-1" captain="-1" ability="Cloak" />
+    <add_ai type="SPCL_AI" name="{{ name }}" />
+    <add_ai type="TRY_TO_BECOME_LEADER" name="{{ name }}" />
+    <add_ai type="CHASE_PLAYER" name="{{ name }}" />
+    <add_ai type="CHASE_STATION" value1="3000" name="{{ name }}" />
+    <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="{{ name }}" />
+    <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="{{ name }}" />
+    <add_ai type="CHASE_ANGER" name="{{ name }}" />
+    <add_ai type="LEADER_LEADS" name="{{ name }}" />
+    <add_ai type="FOLLOW_LEADER" name="{{ name }}" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="8000" name="{{ name }}" />
+  {% endcall %}
+  {% endfor %}
+
   {% for name in ["Pressure Valve"] %}
   {% call spawn.spawn(const.spawnFactions.Neutral.key, "Budron", "+PressureValve") %}
     <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="7704" sideValue="SideValue" fleetnumber="-1" />
@@ -177,4 +207,76 @@
   },
 }) %}
   {{ priestAI(name) }}
+{% endcall %}
+
+
+
+{# Budron Scan Points #}
+
+
+{% set signatures = [
+    {
+        "desc": "High concentration of phosphoric acid.",
+        "scan_desc": "Acid concentration matches Budron ship signatures.",
+        "type": "Energy",
+        "faction": "Budron",
+    },
+    {
+        "desc": "Residual high-frequency heat pulses",
+        "scan_desc": "Pulse frequency matches known Budron weapon systems",
+        "type": "Weapon",
+        "faction": "Budron",
+    },
+    {
+        "desc": "Increased density of H20 vapors",
+        "scan_desc": "Deep scan reveals traces of phosphorous, indicating Budron hull signatures.",
+        "type": "Hull",
+        "faction": "Budron",
+    },
+    {
+        "desc": "Traces of complex flavour compounds.",
+        "scan_desc": "Compounds identified as known Budron phonemes, indicating Budron communication",
+        "type": "Comms",
+        "faction": "Budron",
+    },
+    {
+        "desc": "Muted baryon-acoustic oscillation anomaly",
+        "scan_desc": "Distribution of oscillation pattern matches with Sechatzal warp drive technology",
+        "type": "Warp",
+        "faction": "Sechatzal",
+    },
+    {
+        "desc": "Traces of highly reflective organic compounds",
+        "scan_desc": "Analysis concluded: compounds match closely with known Sechatzal biological compounds, indicating presence of cloaked Sechatzal assets.",
+        "type": "Cloak",
+        "faction": "Sechatzal",
+    },
+    {
+        "desc": "Anomalous radiation static",
+        "scan_desc": "Analysis: Random noise p=48%, Obfuscated Sechatzal communications p=52%",
+        "type": "Comms",
+        "faction": "Sechatzal",
+    },
+]
+%}
+
+
+{% for sig in signatures %}
+  {% call spawn.createNumberedConditional("(|ScanPointNumber|)", sig.faction + "\\" + sig.type, "Scan Points", "ScanPoint", "ScanPointNumber", loop.index) %}
+    <create type="genericMesh" use_gm_position="" name="(|ScanPointNumber|)" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.1" colorGreen="0.5" colorBlue="0.1" />
+    <set_object_property property="positionY" value="-5000.0" name="(|ScanPointNumber|)" />
+    <set_ship_text name="(|ScanPointNumber|)" race="Signature" class="Scan Location" desc="{{ sig.desc }}" scan_desc="{{ sig.scan_desc }}" />
+  {% endcall %}
+{% endfor %}
+
+{% call menu.onMenuClick("Water Leak", "Scan Text") %}
+    <set_ship_text use_gm_selection=" " scan_desc="Intel - H2O particles emitting from hull, indicating possible water leak." />
+{% endcall %}
+
+{% call menu.onMenuClick("Budron Prisoner", "Scan Text") %}
+    <set_ship_text use_gm_selection=" " scan_desc="Intel - Vessel contains highly agitated water - indicating aquatic individuals moving around a lot, perhaps struggling or fighting." />
+{% endcall %}
+
+{% call menu.onMenuClick("Holy Aura", "Scan Text") %}
+    <set_ship_text use_gm_selection=" " scan_desc="Intel - Vessel contains a high concentration of flavor compounds that, in Budron society, are associated with holy individuals." />
 {% endcall %}

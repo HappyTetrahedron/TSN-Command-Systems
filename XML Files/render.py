@@ -20,6 +20,7 @@ env = {
         "HazardPainter",
         "NebulaEffects",
         "BoardingActions",
+        "BudronNPCs",
     ],
     "maps": [
         "Ashia",
