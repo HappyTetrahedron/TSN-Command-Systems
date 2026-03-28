@@ -16,7 +16,7 @@ import jinja_functions as jf
 env = {
     "difficulty": 10,
     "extensions": [
-        "TokenSystem",
+        "MultiShipTokens",
         "HazardPainter",
         "NebulaEffects",
         "BoardingActions",

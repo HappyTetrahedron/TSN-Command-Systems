@@ -1,0 +1,42 @@
+{# GM tool to give the player virtual "tokens", a counter for which gets displayed on the map. Variant for tokens counted per ship. #}
+
+{% import 'Constants.xml' as const %}
+{% import 'Core/Start.xml' as start %}
+{% import 'Core/Menus.xml' as menu %}
+
+{% call start.onStart("MultiShipTokens") %}
+  {% for ship in const.shipConfigs %}
+    <set_variable name="Ship{{ ship.id }}TokenT" value="0.0" integer="yes" />
+    <set_variable name="Ship{{ ship.id }}TokenS" value="0.0" integer="yes" />
+  {% endfor %}
+{% endcall %}
+
+{% call menu.onButtonClick("Token", "Cargos") %}
+  <set_variable name="MSToken_DoAdd" value="1" integer="yes" />
+{% endcall %}
+
+{% for ship in const.shipConfigs %}
+  <event name="UpdateTokenCounter Ship{{ ship.id }}">
+    <if_variable name="Ship{{ ship.id }}TokenT" comparator="NOT" value="Ship{{ ship.id }}TokenS" />
+    <destroy name="{{ ship.name }} Tokens: |Ship{{ ship.id }}TokenS|" />
+    <create type="genericMesh" x="0.0" z="{{ 3000 * ship.slot | int }}.0" y="0.0" name="{{ ship.name }} Tokens: |Ship{{ ship.id }}TokenT|" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_ship_text name="Tokens: |TokenSysT|" race="Token" class="Counter" desc="Counts how many tokens you have.^^You can spend tokens to find resupply, resolve a conflict peacefully, learn more about a situation, or influence the narrative in other ways." scan_desc="It is possible to commit no mistakes and still lose. That is not a weakness. That is life." hailtext="Why are you hailing the token counter?" />
+    <set_variable name="Ship{{ ship.id }}TokenS" value="Ship{{ ship.id }}TokenT" integer="yes" />
+  </event>
+  <event name="Ship {{ ship.id }} add token">
+    <if_variable name="CargoTargetShip" comparator="EQUALS" value="{{ ship.id }}.0" />
+    <if_variable name="MSToken_DoAdd" comparator="EQUALS" value="1.0" />
+    <if_variable name="ShuttleCargoDir" comparator="EQUALS" value="1.0" />
+    <set_variable name="Ship{{ ship.id }}TokenT" value="Ship{{ ship.id }}TokenT+1" integer="yes" />
+    <warning_popup_message message="&gt; You receive a token &lt;" consoles="MSC" player_slot="{{ ship.slot }}" />
+    <set_variable name="MSToken_DoAdd" value="0" integer="yes" />
+  </event>
+  <event name="Ship {{ ship.id }} remove token">
+    <if_variable name="CargoTargetShip" comparator="EQUALS" value="{{ ship.id }}.0" />
+    <if_variable name="MSToken_DoAdd" comparator="EQUALS" value="1.0" />
+    <if_variable name="ShuttleCargoDir" comparator="EQUALS" value="-1.0" />
+    <set_variable name="Ship{{ ship.id }}TokenT" value="Ship{{ ship.id }}TokenT-1" integer="yes" />
+    <warning_popup_message message="&gt; You spent a token &lt;" consoles="MSC" player_slot="{{ ship.slot }}" />
+    <set_variable name="MSToken_DoAdd" value="0" integer="yes" />
+  </event>
+{% endfor %}

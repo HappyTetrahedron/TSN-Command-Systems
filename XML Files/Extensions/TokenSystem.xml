@@ -1,4 +1,4 @@
-{# GM tool to give the player virtual "tokens", a counter for which gets displayed on the map. #}
+{# GM tool to give the player virtual "tokens", a counter for which gets displayed on the map. Variant for global tokens. #}
 
 {% import 'Constants.xml' as const %}
 {% import 'Core/Start.xml' as start %}
