@@ -29,6 +29,12 @@
         "faction": "Hegemony",
     },
     {
+        "desc": "Tritonic phase pulse spike.^Trace levels of Trellium concentration.^Tritonic ion shift.",
+        "scan_desc": "Signature indicates arrival of units traveling by Slingshot.",
+        "type": "Sling arrival",
+        "faction": "Hegemony",
+    },
+    {
         "desc": "Phased bio-electric particle trail",
         "scan_desc": "Phase shift correlates with Kralien energy signatures",
         "type": "Energy",
