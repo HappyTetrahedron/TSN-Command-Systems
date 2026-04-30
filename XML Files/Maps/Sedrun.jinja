@@ -1,0 +1,149 @@
+{% include 'Maps/Generator/MapTemplate.jinja' %}
+{% import 'Maps/Generator/MapUtils.jinja' as sysutil %}
+{% import 'Constants.xml' as const %}
+
+{% set timer_interval = 1 %}
+
+{% set num_ring_fragments = 11 %}
+
+{% call sysutil.runOnMapLoad(g.map) %}
+  <set_timer name="Sedrun_IronMoon_Check" seconds="{{ timer_interval }}" />
+  <set_variable name="Sector Locked" value="1.0" integer="yes" />
+{% endcall %}
+
+{% call sysutil.runOnMapUnload(g.map) %}
+  <set_variable name="Sector Locked" value="0.0" integer="yes" />
+{% endcall %}
+
+{% call sysutil.runIfInSector(g.map, [1]) %}
+  {% set planet_x = 22782 %}
+  {% set planet_y = 72917 %}
+  {% set ring_radius = 2800 %}
+  {% set ring2_radius = 2500 %}
+  {% set ring_spread = 0 %}
+  <if_variable name="Sedrun_1_Ring" comparator="NOT" value="1.0" />
+
+  {% for i in range(num_ring_fragments) %}
+    <create type="genericMesh" x="{{
+         planet_x + (sin(i*6.283/num_ring_fragments) * (ring_radius + randint(-ring_spread, ring_spread))) | int
+       }}.0" y="400.0" z="{{
+         planet_y + (cos(i*6.283/num_ring_fragments) * (ring_radius + randint(-ring_spread, ring_spread))) | int
+       }}.0" name="x" meshFileName="dat\TSN\USFP\USFP-shipyard.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="{{
+         planet_x + (sin((i + 0.5)*6.283/num_ring_fragments) * (ring2_radius + randint(-ring_spread, ring_spread))) | int
+       }}.0" y="-1000.0" z="{{
+         planet_y + (cos((i + 0.5)*6.283/num_ring_fragments) * (ring2_radius + randint(-ring_spread, ring_spread))) | int
+       }}.0" name="y" meshFileName="dat\TSN\USFP\TSNGateMk2.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="3" name="x" />
+    <set_object_property property="pushRadius" value="0" name="x" />
+    <set_object_property property="angle" value="{{ i*6.283/num_ring_fragments }}" name="x" />
+    <set_object_property property="rollDelta" value="{% if i%2 == 0 %}-{% endif %}{{ 0.1 }}" name="x" />
+    <set_ship_text name="x" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_object_property property="artScale" value="3" name="y" />
+    <set_object_property property="pushRadius" value="0" name="y" />
+    <set_object_property property="pitch" value="{{ 3.141529/2 }}" name="y" />
+    <set_object_property property="angleDelta" value="0.{{ randint(10, 19) }}" name="y" />
+    <set_ship_text name="y" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_ship_text name="x" newname=" " class="Caltron Installation" />
+    <set_ship_text name="y" newname="  " class="Caltron Installation" />
+  {% endfor %}
+
+  <set_variable name="Sedrun_1_Ring" value="1.0" integer="yes" />
+{% endcall %}
+
+{% call sysutil.runIfNotInSector(g.map, [1]) %}
+  <if_variable name="Sedrun_1_Ring" comparator="EQUALS" value="1.0" />
+  {% for i in range(num_ring_fragments) %}
+    <destroy name=" " />
+    <destroy name="  " />
+  {% endfor %}
+  <set_variable name="Sedrun_1_Ring" value="0.0" integer="yes" />
+{% endcall %}
+
+
+{% call sysutil.runIfInSector(g.map, [1]) %}
+  <if_variable name="Sedrun_Button" comparator="NOT" value="1.0" />
+  <set_gm_button text="ToIronMoon" x="840" y="120" h="30" w="90" />
+  <set_gm_button text="IMRename" x="840" y="150" h="30" w="90" />
+  <clear_gm_button text="ToSedrun" />
+  <set_variable name="Sedrun_Button" value="1.0" integer="yes" />
+{% endcall %}
+
+{% call sysutil.runIfInSector(g.map, [2]) %}
+  <if_variable name="Sedrun_Button" comparator="NOT" value="2.0" />
+  <set_gm_button text="ToSedrun" x="840" y="120" h="30" w="90" />
+  <clear_gm_button text="ToIronMoon" />
+  <clear_gm_button text="IMRename" />
+  <set_variable name="Sedrun_Button" value="2.0" integer="yes" />
+{% endcall %}
+
+<event name="Sedrun Refresh Le Menu">
+  <if_variable name="GM_Menu_Clear_All" comparator="GREATER_EQUAL" value="1.0" />
+  <clear_gm_button text="ToIronMoon" />
+  <clear_gm_button text="ToSedrun" />
+  <clear_gm_button text="IMRename" />
+  <set_variable name="Sedrun_1_Button" value="0.0" integer="yes" />
+</event>
+
+<event name="Iron Moon Rename">
+    <if_gm_button text="IMRename" />
+    <set_ship_text name="*UNKNOWN*" newname="Iron Moon" />
+</event>
+
+{% call sysutil.runIfNotInSector(g.map, [1]) %}
+  <if_exists name="Iron Moon" />
+  <destroy name="Iron Moon" />
+{% endcall %}
+
+<event name="Sedrun Teleport">
+  <if_gm_button text="ToIronMoon" />
+  <set_variable name="Sector Locked" value="0.0" integer="yes" />
+  {% for ship in const.shipConfigs %}
+    <set_object_property property="positionZ" value="99990.0" player_slot="{{ ship.slot }}" />
+    <set_object_property property="positionX" value="{{ 49000  + 100 * loop.index0 }}.0" player_slot="{{ ship.slot }}" />
+    <set_object_property property="angle" value="0.0" player_slot="{{ ship.slot }}" />
+  {% endfor %}
+  <!-- I feel gross for this one -->
+  <set_timer name="Sedrun_LockReset" seconds="5" />
+</event>
+
+<event name="Iron Moon Teleport">
+  <if_gm_button text="ToSedrun" />
+  <set_variable name="Sector Locked" value="0.0" integer="yes" />
+  {% for ship in const.shipConfigs %}
+    <set_object_property property="positionZ" value="10.0" player_slot="{{ ship.slot }}" />
+    <set_object_property property="positionX" value="{{ 49000  + 100 * loop.index0 }}.0" player_slot="{{ ship.slot }}" />
+    <set_object_property property="angle" value="3.141592654" player_slot="{{ ship.slot }}" />
+  {% endfor %}
+  <!-- I feel gross for this one -->
+  <set_timer name="Sedrun_LockReset" seconds="5" />
+</event>
+  
+<event name="Lock Reset">
+  <if_timer_finished name="Sedrun_LockReset" />
+  <if_variable name="Sector Locked" value="1.0" comparator="NOT" />
+  <set_variable name="Sector Locked" value="1.0" integer="yes" />
+</event>
+
+{% for ship in const.shipConfigs %}
+  {% call sysutil.runIfInSector(g.map, [2]) %}
+    <!-- Iron Moon Check Ship{{ ship.id }} -->
+    <if_timer_finished name="Sedrun_IronMoon_Check" />
+    <if_outside_sphere player_slot="{{ ship.slot }}" centerX="50000" centerY="0" centerZ="50000" radius="50000" />
+    <get_object_property player_slot="{{ ship.slot }}" property="positionX" variable="sedrunposX" />
+    <get_object_property player_slot="{{ ship.slot }}" property="positionZ" variable="sedrunposZ" />
+
+    <set_object_property player_slot="{{ ship.slot }}" property="positionX" value="50000+(50000-sedrunposX)" />
+    <set_object_property player_slot="{{ ship.slot }}" property="positionZ" value="50000+(50000-sedrunposZ)" />
+  {% endcall %}
+
+{% endfor %}
+
+{% call sysutil.runIfInSector(g.map, [2]) %}
+  <!-- Timer Reset -->
+  <if_timer_finished name="Sedrun_IronMoon_Check" />
+  <set_timer name="Sedrun_IronMoon_Check" seconds="{{ timer_interval }}" />
+{% endcall %}

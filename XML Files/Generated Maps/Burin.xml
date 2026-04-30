@@ -305,7 +305,7 @@
     <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
     <set_variable name="Burin to Sedrun" value="1.0" />
     <set_variable name="Sedrun System" value="1.0" />
-    <set_variable name="Sector" value="0" />
+    <set_variable name="Sector" value="1" />
     <set_variable name="shipsInrange" value="0.0" integer="yes" />
     <set_timer name="Transition" seconds="2" />
     <set_variable name="ExitorRetreat" value="1.0" />
@@ -319,7 +319,7 @@
     <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
           <create type="neutral" x="54553.0" y="0.0" z="30242.0" angle="282.7" name="Laminar Flow" hullID="7714" sideValue="sectorSide" />
     
-<create type="genericMesh" x="65114.0" y="0.0" z="27966.0" name="Sedrun Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+<create type="genericMesh" x="65114.0" y="1.0" z="27966.0" name="Sedrun Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
     
 <create type="neutral" x="71397.0" y="0.0" z="34886.0" angle="39.1" name="Turbulent Flow" hullID="7714" sideValue="sectorSide" />
     

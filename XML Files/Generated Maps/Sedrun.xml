@@ -1,0 +1,2418 @@
+{# x=1700.0 y=290.0 alignment=Hegemony #}
+
+
+  <event name="Sedrun Active">
+    <if_variable name="Activation Menu" comparator="EQUALS" value="1.0" />
+    <set_gm_button text="Systems/Sedrun System" />
+    <set_variable name="Sedrun Gate" value="1.0" integer="yes" />
+  </event>
+  <event name="Clear Menu Item">
+    <if_variable name="Activation Menu" comparator="EQUALS" value="0.0" />
+    <clear_gm_button text="Systems/Sedrun System" />
+  </event>
+  <event name="Sedrun System">
+    <if_gm_button text="Systems/Sedrun System" />
+    <set_variable name="Sandbox Activation" value="3.0" integer="yes" />
+    <set_variable name="Sedrun System" value="1.0" integer="yes" />
+    <set_gm_button text="Select Sector" x="90" y="100" h="30" w="200" />
+        <set_gm_button text="Sector 1" x="170" y="190" h="60" w="60" />
+        <set_gm_button text="Sector 2" x="170" y="255" h="60" w="60" />
+    <set_variable name="GM Mode" value="4.0" integer="yes" />
+  </event>
+  <event name="Default System Side">
+    <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="1" />
+    <if_variable name="systemSideOverride" comparator="LESS" value="1.0" />
+    <set_variable name="systemSide" value="1.0" integer="yes" />
+    <set_variable name="System Settings" value="2.0" integer="yes" />
+  </event>
+  <event name="System Side Override">
+    <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="1" />
+    <if_variable name="systemSideOverride" comparator="GREATER_EQUAL" value="1.0" />
+    <set_variable name="systemSide" value="systemSideOverride" integer="yes" />
+    <set_variable name="System Settings" value="2.0" integer="yes" />
+  </event>
+  <event name="Sector Side Override" id_arme="3f602d27-595b-43f1-8fdb-b80385a8ec79" parent_id_arme="e12965cc-4adf-447b-9c58-37de11bbe78f">
+    <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="1" />
+    <if_variable name="sectorSideOverride" comparator="GREATER_EQUAL" value="1.0" />
+    <set_variable name="sectorSide" value="sectorSideOverride" integer="yes" />
+    <set_variable name="System Settings" value="3.0" integer="yes" />
+  </event>
+  <event name="Sector Side Override (RESET)" id_arme="6e959c03-0cf4-4896-8370-708ee5d520b5" parent_id_arme="e12965cc-4adf-447b-9c58-37de11bbe78f">
+    <if_variable name="System Settings" comparator="EQUALS" value="3.0" />
+    <set_variable name="sectorSideOverride" value="0.0" integer="yes" />
+    <set_variable name="System Settings" value="0.0" integer="yes" />
+  </event>
+  <event name="Set Sector Side" id_arme="f729a094-5131-48f9-a880-07becef4410b" parent_id_arme="e12965cc-4adf-447b-9c58-37de11bbe78f">
+    <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="1" />
+    <if_variable name="sectorSideOverride" comparator="LESS" value="1.0" />
+    <set_variable name="sectorSide" value="systemSide" integer="yes" />
+    <set_variable name="System Settings" value="0.0" integer="yes" />
+  </event>
+
+
+  <event name="Create Sedrun Sector 1">
+    <if_variable name="Sedrun System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_skybox_index index="27" />
+          <create count="10" type="nebulas" nebType="2" startX="40824.0" startY="0.0" startZ="34205.0" endX="40824.0" endY="0.0" endZ="34205.0" randomRange="2000" />
+    
+<create count="10" type="nebulas" nebType="2" startX="61030.0" startY="0.0" startZ="64205.0" endX="61030.0" endY="0.0" endZ="64205.0" randomRange="2000" />
+    
+<create count="10" type="nebulas" nebType="2" startX="7429.0" startY="0.0" startZ="42657.0" endX="7429.0" endY="0.0" endZ="42657.0" randomRange="2000" />
+    
+<create count="10" type="nebulas" nebType="2" startX="30569.0" startY="0.0" startZ="52299.0" endX="30569.0" endY="0.0" endZ="52299.0" randomRange="2000" />
+    
+<create count="10" type="nebulas" nebType="2" startX="55785.0" startY="0.0" startZ="91606.0" endX="55785.0" endY="0.0" endZ="91606.0" randomRange="2000" />
+    
+<create count="100" type="nebulas" nebType="2" startX="23078.0" startY="0.0" startZ="72768.0" radius="12670" randomRange="4000" />
+    
+<create count="30" type="mines" startAngle="-140" endAngle="10" startX="38505.0" startY="0.0" startZ="65129.0" radius="10000" />
+    
+<create count="30" type="mines" startAngle="-100" endAngle="50" startX="31756.0" startY="0.0" startZ="46069.0" radius="10000" />
+    
+<create count="30" type="mines" startAngle="-180" endAngle="-30" startX="40581.0" startY="0.0" startZ="83745.0" radius="10000" />
+    
+<create count="150" type="nebulas" nebType="2" startAngle="-110" endAngle="10" startX="7652.0" startY="0.0" startZ="87898.0" radius="38506" randomRange="5000" />
+    
+<create count="150" type="nebulas" nebType="2" startAngle="-110" endAngle="10" startX="3647.0" startY="0.0" startZ="57713.0" radius="38506" randomRange="5000" />
+    
+<create count="30" type="mines" startAngle="-120" endAngle="30" startX="11360.0" startY="0.0" startZ="31755.0" radius="10000" />
+    
+<create count="150" type="asteroids" startAngle="-110" endAngle="10" startX="5575.0" startY="0.0" startZ="95241.0" radius="70552" randomRange="10000" />
+    
+<create count="60" type="mines" startAngle="-20" endAngle="320" startX="82411.0" startY="0.0" startZ="15438.0" radius="6000" />
+    
+<create count="10" type="nebulas" nebType="1" startX="23078.0" startY="0.0" startZ="72991.0" endX="23078.0" endY="0.0" endZ="72991.0" randomRange="2000" />
+    
+<create count="3" type="nebulas" nebType="2" startX="55266.0" startY="0.0" startZ="62830.0" endX="58455.0" endY="0.0" endZ="63423.0" randomRange="500" />
+    
+<create count="5" type="nebulas" nebType="2" startX="79485.0" startY="0.0" startZ="95173.0" endX="57509.0" endY="0.0" endZ="41051.0" randomRange="15000" />
+    
+<create count="3" type="nebulas" nebType="2" startX="52967.0" startY="0.0" startZ="87453.0" endX="55340.0" endY="0.0" endZ="90123.0" randomRange="500" />
+    
+
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Sedrun System" value="2.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="0.0" />
+    <set_variable name="Grid A Transition Enabled" value="0.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="0.0" />
+    <set_variable name="Grid E Transition Enabled" value="1.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+  </event>
+
+      
+  <event name="Grid E Transition">
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_variable name="Grid E Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid E Transition" value="0.0" />
+
+    <set_variable name="Sector" value="2.0" integer="yes" />
+    <set_variable name="Sedrun System" value="3.0" integer="yes" />
+  </event>
+
+
+    
+        <event name="Gate Offline" id_arme="4d2d3b10-fd64-4dd6-9e8d-b12ce7eb58a3" parent_id_arme="008d9df1-aa8c-4295-82ac-1fd4d150cb77">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="0.0" />
+    <set_object_property property="rollDelta" value="0.3" name="Burin Gate" />
+  </event>
+
+  <event name="Ship1 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="0" name2="Burin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship1" value="1.0" />
+  </event>
+  <event name="Ship1 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship1" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="0" name2="Burin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship1" value="0.0" />
+  </event> 
+  <event name="Ship2 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="1" name2="Burin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship2" value="1.0" />
+  </event>
+  <event name="Ship2 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship2" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="1" name2="Burin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship2" value="0.0" />
+  </event> 
+  <event name="Ship3 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="2" name2="Burin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship3" value="1.0" />
+  </event>
+  <event name="Ship3 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship3" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="2" name2="Burin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship3" value="0.0" />
+  </event> 
+  <event name="Ship4 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="3" name2="Burin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship4" value="1.0" />
+  </event>
+  <event name="Ship4 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship4" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="3" name2="Burin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship4" value="0.0" />
+  </event> 
+  <event name="Ship5 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="4" name2="Burin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship5" value="1.0" />
+  </event>
+  <event name="Ship5 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship5" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="4" name2="Burin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship5" value="0.0" />
+  </event> 
+  <event name="Ship6 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="5" name2="Burin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship6" value="1.0" />
+  </event>
+  <event name="Ship6 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship6" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="5" name2="Burin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship6" value="0.0" />
+  </event> 
+  <event name="Ship7 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="6" name2="Burin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship7" value="1.0" />
+  </event>
+  <event name="Ship7 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship7" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="6" name2="Burin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship7" value="0.0" />
+  </event> 
+  <event name="Ship8 Activation Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="0.0" />
+    <if_distance player_slot1="7" name2="Burin Gate" comparator="LESS" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange+1" />
+    <set_variable name="Gate Tracking Ship8" value="1.0" />
+  </event>
+  <event name="Ship8 Out of Range">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate Tracking Ship8" comparator="EQUALS" value="1.0" />
+    <if_distance player_slot1="7" name2="Burin Gate" comparator="GREATER" value="4000.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <set_variable name="shipsInrange" value="shipsInrange-1" />
+    <set_variable name="Gate Tracking Ship8" value="0.0" />
+  </event> 
+
+  <event name="Gate Online">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Gate System" comparator="EQUALS" value="1.0" />
+    <if_comms_button text="Activate Gate" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Gate System" sideValue="playerSide" type="STATUS">Activating Gate^Locking signal...</incoming_comms_text>
+    <set_object_property property="rollDelta" value="1.0" name="Burin Gate" />
+    <set_timer name="Gate System" seconds="5" />
+    <set_variable name="Gate System" value="2.0" />
+    <clear_comms_button text="Activate Gate" sideValue="playerSide" />
+  </event>
+  <event name="Jump Initiated">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Jump" />
+    <if_variable name="Gate System" comparator="EQUALS" value="3.0" />
+    <if_variable name="Burin Gate" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Jump" sideValue="playerSide" />
+    <set_variable name="Sedrun System" value="3.0" integer="yes" />
+    <set_variable name="System" value="0.0" />
+    <set_variable name="System Settings" value="1.0" />
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_variable name="Sedrun to Burin" value="1.0" />
+    <set_variable name="Burin System" value="1.0" />
+    <set_variable name="Sector" value="1" />
+    <set_variable name="shipsInrange" value="0.0" integer="yes" />
+    <set_timer name="Transition" seconds="2" />
+    <set_variable name="ExitorRetreat" value="1.0" />
+    <set_variable name="Gate System" value="0.0" />
+  </event>
+
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          <create type="neutral" x="31607.0" y="0.0" z="30271.0" angle="282.7" name="Reservoir" hullID="7714" sideValue="sectorSide" />
+    
+<create type="genericMesh" x="82485.0" y="1.0" z="15735.0" name="Burin Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    
+<create type="neutral" x="85971.0" y="0.0" z="27750.0" angle="39.1" name="Flow Control" hullID="7714" sideValue="sectorSide" />
+    
+<create type="neutral" x="34055.0" y="0.0" z="72249.0" angle="121.4" name="Communion" hullID="7714" sideValue="sectorSide" />
+    
+<create type="genericMesh" x="22782.0" y="0.0" z="72917.0" name="DEATHSTAR*UNKNOWN*" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="0.8" colorBlue="0.0" />
+    
+<create type="genericMesh" x="27528.0" y="0.0" z="27453.0" name="SAND-PLANETDisentis" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="0.8" colorBlue="0.0" />
+    
+<create type="neutral" x="61051.0" y="0.0" z="60383.0" angle="160" name="Immense Mission" hullID="7714" sideValue="sectorSide" />
+    
+<create type="genericMesh" x="39766.0" y="0.0" z="34128.0" name="Chunk" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    
+<create type="genericMesh" x="30272.0" y="0.0" z="52076.0" name="Boulder" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    
+<create type="genericMesh" x="59865.0" y="0.0" z="64536.0" name="Rock" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    
+<create type="genericMesh" x="7726.0" y="0.0" z="42954.0" name="Hunk" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    
+<create type="genericMesh" x="55563.0" y="0.0" z="91532.0" name="Thunk" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    
+<create type="neutral" x="58085.0" y="0.0" z="85970.0" angle="70.1" name="Watchful Eye" hullID="7714" sideValue="sectorSide" />
+    
+<create type="neutral" x="33239.0" y="0.0" z="24412.0" angle="87.4" name="Formidable Mission" hullID="7714" sideValue="sectorSide" />
+    
+<set_ship_text name="Formidable Mission" race="Budron" class="Mining Platform" desc="Budron mining operation, apparently focused on transporting large volumes of dihydrogen monoxide gasses." scan_desc="Station is completely filled with phosphorous water." hailtext="We are not permitted to speak to you, strangers." />
+    
+<set_ship_text name="Immense Mission" race="Budron" class="Mining Platform" desc="Budron mining operation, apparently focused on transporting large volumes of dihydrogen monoxide gasses." scan_desc="Station is completely filled with phosphorous water." hailtext="We are not permitted to speak to you, strangers." />
+    
+<set_ship_text name="Reservoir" race="Budron" class="Water Reservoir" desc="Station purpose-built to hold immense volumes of water ice and evaporate it into space." scan_desc="Trace analysis indicates that the water was largely sourced from the planet Disentis. It also contains traces of flavor compounds associated with Budron holy individuals." hailtext="Please respect our full authority in these waters, as the Prophecy foretold." />
+    
+<set_ship_text name="Watchful Eye" race="Budron" class="Clergy" desc="Some manner of overseeing station. Exact purpose unknown." scan_desc="Station is equipped with advanced sensing equipment." hailtext="Please respect our full authority in these waters, as the Prophecy foretold." />
+    
+<set_ship_text name="Communion" race="Budron" class="Temple" desc="Hull design matches with known Budron temple station architecture.^No activity detected. Station appears derelict." scan_desc="No life signs. No phosphorous water aboard station detected. Station is inhabitable to Budrons.^^Nearby space contains traces of flavor compounds associated with Budron holy individuals." hailtext="[AUTOMATED RESPONSE]" />
+    
+<set_ship_text name="Flow Control" race="Budron" class="Clergy" desc="Administrative station and border control at Burin Gate." scan_desc="Station may have moderate defensive capabilities." hailtext="Please respect our full authority in these waters, as the Prophecy foretold." />
+    
+<set_ship_text name="Hunk" class="Ice Asteroid" desc="Large asteroid, primarily comprised of water-ice. Slowly outgassing water vapor into space, creating a high concentration of dihydrogen monoxide gasses in the region." scan_desc="Anchoring points detected on the surface. This object was likely brought here from somewhere else." hailtext="..." />
+    
+<set_ship_text name="Chunk" class="Ice Asteroid" desc="Large asteroid, primarily comprised of water-ice. Slowly outgassing water vapor into space, creating a high concentration of dihydrogen monoxide gasses in the region." scan_desc="Anchoring points detected on the surface. This object was likely brought here from somewhere else." hailtext="..." />
+    
+<set_ship_text name="Boulder" class="Ice Asteroid" desc="Large asteroid, primarily comprised of water-ice. Slowly outgassing water vapor into space, creating a high concentration of dihydrogen monoxide gasses in the region." scan_desc="Composition matches that of ice comet &quot;Polyna&quot; in Burin system" hailtext="..." />
+    
+<set_ship_text name="Thunk" class="Ice Asteroid" desc="Large asteroid, primarily comprised of water-ice. Slowly outgassing water vapor into space, creating a high concentration of dihydrogen monoxide gasses in the region." scan_desc="Composition matches that of ice comet &quot;Polyna&quot; in Burin system" hailtext="..." />
+    
+<set_ship_text name="Rock" class="Ice Asteroid" desc="Large asteroid, primarily comprised of water-ice. Slowly outgassing water vapor into space, creating a high concentration of dihydrogen monoxide gasses in the region." scan_desc="Anchoring points detected on the surface. This object was likely brought here from somewhere else." hailtext="..." />
+    
+<set_ship_text name="SAND-PLANETDisentis" race="Class Y" class="Planet" desc="Arid sand planet. Scans indicate 86% of the planet's surface used to be covered in water or water-ice." scan_desc="Detected mining installation on the surface, likely used to bring large volumes of water into space." hailtext="Please respect our full authority in these waters, as the Prophecy foretold." />
+    
+<set_ship_text name="DEATHSTAR*UNKNOWN*" race="That's No" class="Moon" desc="The object radiates infrared energy. Spectroscopic analysis results suggest a profile similar to a class of stellar object known as an iron star. Hawking radiation detected towards the poles. Gravity at surface: 25G. Invulnerable to conventional weaponry. Exact properties unknown." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+  
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Sedrun I" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+      <set_object_property property="artScale" value="1.0" name="Burin Gate" />
+      <set_object_property property="pushRadius" value="0.0" name="Burin Gate" />
+      <set_object_property property="angle" value="4.71238898" name="Burin Gate" />
+      <set_object_property property="rollDelta" value="0.3" name="Burin Gate" />
+
+                         <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P0" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P0" />
+        <set_object_property property="artScale" value="8" name="P0" />
+        <set_relative_position name2="P0" distance="2000" angle="0.0" name1="DEATHSTAR*UNKNOWN*" />
+        <set_object_property property="positionY" value="0.0" name="P0" />
+        <set_object_property property="angle" value="0.0" name="P0" />
+        <set_ship_text name="P0" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P1" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P1" />
+        <set_object_property property="artScale" value="8" name="P1" />
+        <set_relative_position name2="P1" distance="2000" angle="45.0" name1="DEATHSTAR*UNKNOWN*" />
+        <set_object_property property="positionY" value="0.0" name="P1" />
+        <set_object_property property="angle" value="0.78539816339" name="P1" />
+        <set_ship_text name="P1" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P2" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P2" />
+        <set_object_property property="artScale" value="8" name="P2" />
+        <set_relative_position name2="P2" distance="2000" angle="90.0" name1="DEATHSTAR*UNKNOWN*" />
+        <set_object_property property="positionY" value="0.0" name="P2" />
+        <set_object_property property="angle" value="1.57079632678" name="P2" />
+        <set_ship_text name="P2" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P3" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P3" />
+        <set_object_property property="artScale" value="8" name="P3" />
+        <set_relative_position name2="P3" distance="2000" angle="135.0" name1="DEATHSTAR*UNKNOWN*" />
+        <set_object_property property="positionY" value="0.0" name="P3" />
+        <set_object_property property="angle" value="2.35619449017" name="P3" />
+        <set_ship_text name="P3" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P4" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P4" />
+        <set_object_property property="artScale" value="8" name="P4" />
+        <set_relative_position name2="P4" distance="2000" angle="180.0" name1="DEATHSTAR*UNKNOWN*" />
+        <set_object_property property="positionY" value="0.0" name="P4" />
+        <set_object_property property="angle" value="3.14159265356" name="P4" />
+        <set_ship_text name="P4" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P5" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P5" />
+        <set_object_property property="artScale" value="8" name="P5" />
+        <set_relative_position name2="P5" distance="2000" angle="225.0" name1="DEATHSTAR*UNKNOWN*" />
+        <set_object_property property="positionY" value="0.0" name="P5" />
+        <set_object_property property="angle" value="3.92699081695" name="P5" />
+        <set_ship_text name="P5" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P6" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P6" />
+        <set_object_property property="artScale" value="8" name="P6" />
+        <set_relative_position name2="P6" distance="2000" angle="270.0" name1="DEATHSTAR*UNKNOWN*" />
+        <set_object_property property="positionY" value="0.0" name="P6" />
+        <set_object_property property="angle" value="4.71238898034" name="P6" />
+        <set_ship_text name="P6" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P7" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P7" />
+        <set_object_property property="artScale" value="8" name="P7" />
+        <set_relative_position name2="P7" distance="2000" angle="315.0" name1="DEATHSTAR*UNKNOWN*" />
+        <set_object_property property="positionY" value="0.0" name="P7" />
+        <set_object_property property="angle" value="5.49778714373" name="P7" />
+        <set_ship_text name="P7" newname=" " />
+    <set_object_property property="angleDelta" value="0.004" name="DEATHSTAR*UNKNOWN*" />
+    <set_object_property property="pushRadius" value="2000" name="DEATHSTAR*UNKNOWN*" />
+    <set_ship_text name="DEATHSTAR*UNKNOWN*" newname="*UNKNOWN*" />
+
+                  <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P0" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Planets\planetTex5.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P0" />
+        <set_object_property property="artScale" value="8" name="P0" />
+        <set_relative_position name2="P0" distance="2000" angle="0.0" name1="SAND-PLANETDisentis" />
+        <set_object_property property="positionY" value="0.0" name="P0" />
+        <set_object_property property="angle" value="0.0" name="P0" />
+        <set_ship_text name="P0" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P1" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Planets\planetTex5.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P1" />
+        <set_object_property property="artScale" value="8" name="P1" />
+        <set_relative_position name2="P1" distance="2000" angle="45.0" name1="SAND-PLANETDisentis" />
+        <set_object_property property="positionY" value="0.0" name="P1" />
+        <set_object_property property="angle" value="0.78539816339" name="P1" />
+        <set_ship_text name="P1" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P2" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Planets\planetTex5.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P2" />
+        <set_object_property property="artScale" value="8" name="P2" />
+        <set_relative_position name2="P2" distance="2000" angle="90.0" name1="SAND-PLANETDisentis" />
+        <set_object_property property="positionY" value="0.0" name="P2" />
+        <set_object_property property="angle" value="1.57079632678" name="P2" />
+        <set_ship_text name="P2" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P3" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Planets\planetTex5.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P3" />
+        <set_object_property property="artScale" value="8" name="P3" />
+        <set_relative_position name2="P3" distance="2000" angle="135.0" name1="SAND-PLANETDisentis" />
+        <set_object_property property="positionY" value="0.0" name="P3" />
+        <set_object_property property="angle" value="2.35619449017" name="P3" />
+        <set_ship_text name="P3" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P4" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Planets\planetTex5.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P4" />
+        <set_object_property property="artScale" value="8" name="P4" />
+        <set_relative_position name2="P4" distance="2000" angle="180.0" name1="SAND-PLANETDisentis" />
+        <set_object_property property="positionY" value="0.0" name="P4" />
+        <set_object_property property="angle" value="3.14159265356" name="P4" />
+        <set_ship_text name="P4" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P5" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Planets\planetTex5.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P5" />
+        <set_object_property property="artScale" value="8" name="P5" />
+        <set_relative_position name2="P5" distance="2000" angle="225.0" name1="SAND-PLANETDisentis" />
+        <set_object_property property="positionY" value="0.0" name="P5" />
+        <set_object_property property="angle" value="3.92699081695" name="P5" />
+        <set_ship_text name="P5" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P6" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Planets\planetTex5.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P6" />
+        <set_object_property property="artScale" value="8" name="P6" />
+        <set_relative_position name2="P6" distance="2000" angle="270.0" name1="SAND-PLANETDisentis" />
+        <set_object_property property="positionY" value="0.0" name="P6" />
+        <set_object_property property="angle" value="4.71238898034" name="P6" />
+        <set_ship_text name="P6" newname=" " />
+        <create type="genericMesh" x="100.0" y="0.0" z="100.0" angle="0" name="P7" meshFileName="dat\TSN\Planets\planet8.dxs" textureFileName="dat\TSN\Planets\planetTex5.png" fakeShieldsFront="1" fakeShieldsRear="1" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+        <set_object_property property="pushRadius" value="0.0" name="P7" />
+        <set_object_property property="artScale" value="8" name="P7" />
+        <set_relative_position name2="P7" distance="2000" angle="315.0" name1="SAND-PLANETDisentis" />
+        <set_object_property property="positionY" value="0.0" name="P7" />
+        <set_object_property property="angle" value="5.49778714373" name="P7" />
+        <set_ship_text name="P7" newname=" " />
+    <set_object_property property="angleDelta" value="0.004" name="SAND-PLANETDisentis" />
+    <set_object_property property="pushRadius" value="2000" name="SAND-PLANETDisentis" />
+    <set_ship_text name="SAND-PLANETDisentis" newname="Disentis" />
+
+                 
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> 
+  </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Sedrun System" comparator="EQUALS" value="3.0" />
+                     <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+
+        <destroy name="*UNKNOWN*" />
+              <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+    <destroy name=" " />
+
+        <destroy name="Disentis" />
+                     <destroy name="Reservoir" />
+    <destroy name="Burin Gate" />
+    <destroy name="Flow Control" />
+    <destroy name="Communion" />
+    <destroy name="DEATHSTAR*UNKNOWN*" />
+    <destroy name="SAND-PLANETDisentis" />
+    <destroy name="Immense Mission" />
+    <destroy name="Chunk" />
+    <destroy name="Boulder" />
+    <destroy name="Rock" />
+    <destroy name="Hunk" />
+    <destroy name="Thunk" />
+    <destroy name="Watchful Eye" />
+    <destroy name="Formidable Mission" />
+    <destroy name="Sedrun I" />
+    <set_variable name="Sedrun System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+
+
+        <event name="Arrival From Burin">
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Burin to Sedrun" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Transition" />
+    <set_relative_position player_slot2="0" distance="4200" angle="0.0" name1="Burin Gate" />
+    <set_relative_position player_slot2="1" distance="4200" angle="5.0" name1="Burin Gate" />
+    <set_relative_position player_slot2="2" distance="4200" angle="10.0" name1="Burin Gate" />
+    <set_relative_position player_slot2="3" distance="4200" angle="15.0" name1="Burin Gate" />
+    <set_relative_position player_slot2="4" distance="4200" angle="20.0" name1="Burin Gate" />
+    <set_relative_position player_slot2="5" distance="4200" angle="355.0" name1="Burin Gate" />
+    <set_relative_position player_slot2="6" distance="4200" angle="350.0" name1="Burin Gate" />
+    <set_relative_position player_slot2="7" distance="4200" angle="345.0" name1="Burin Gate" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+    <set_variable name="Burin to Sedrun" value="0.0" />
+  </event>
+
+
+  <event name="Create Sedrun Sector 2">
+    <if_variable name="Sedrun System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="Transition" />
+    <set_skybox_index index="27" />
+          <create count="100" type="nebulas" nebType="1" startAngle="0" endAngle="360" startX="50000.0" startY="0.0" startZ="50000.0" radius="52500" />
+    
+<create count="1" type="mines" startX="93000-9000" startY="5000.0" startZ="7000+22000" />
+    
+<create count="1" type="mines" startX="93000-10000" startY="5000.0" startZ="7000+22000" />
+    
+<create count="1" type="mines" startX="93000-10000" startY="5000.0" startZ="7000+23000" />
+    
+<create count="1" type="mines" startX="93000-11000" startY="5000.0" startZ="7000+21000" />
+    
+<create count="1" type="mines" startX="93000-11000" startY="5000.0" startZ="7000+22000" />
+    
+<create count="1" type="mines" startX="93000-11000" startY="5000.0" startZ="7000+23000" />
+    
+<create count="1" type="mines" startX="93000-12000" startY="5000.0" startZ="7000+20000" />
+    
+<create count="1" type="mines" startX="93000-12000" startY="5000.0" startZ="7000+22000" />
+    
+<create count="1" type="mines" startX="93000-12000" startY="5000.0" startZ="7000+23000" />
+    
+<create count="1" type="mines" startX="93000-12000" startY="5000.0" startZ="7000+24000" />
+    
+<create count="1" type="mines" startX="93000-13000" startY="5000.0" startZ="7000+20000" />
+    
+<create count="1" type="mines" startX="93000-13000" startY="5000.0" startZ="7000+22000" />
+    
+<create count="1" type="mines" startX="93000-13000" startY="5000.0" startZ="7000+24000" />
+    
+<create count="1" type="mines" startX="93000-13000" startY="5000.0" startZ="7000+25000" />
+    
+<create count="1" type="mines" startX="93000-13000" startY="5000.0" startZ="7000+75000" />
+    
+<create count="1" type="mines" startX="93000-14000" startY="5000.0" startZ="7000+19000" />
+    
+<create count="1" type="mines" startX="93000-14000" startY="5000.0" startZ="7000+22000" />
+    
+<create count="1" type="mines" startX="93000-14000" startY="5000.0" startZ="7000+25000" />
+    
+<create count="1" type="mines" startX="93000-14000" startY="5000.0" startZ="7000+26000" />
+    
+<create count="1" type="mines" startX="93000-14000" startY="5000.0" startZ="7000+75000" />
+    
+<create count="1" type="mines" startX="93000-15000" startY="5000.0" startZ="7000+17000" />
+    
+<create count="1" type="mines" startX="93000-15000" startY="5000.0" startZ="7000+18000" />
+    
+<create count="1" type="mines" startX="93000-15000" startY="5000.0" startZ="7000+22000" />
+    
+<create count="1" type="mines" startX="93000-15000" startY="5000.0" startZ="7000+25000" />
+    
+<create count="1" type="mines" startX="93000-15000" startY="5000.0" startZ="7000+26000" />
+    
+<create count="1" type="mines" startX="93000-15000" startY="5000.0" startZ="7000+27000" />
+    
+<create count="1" type="mines" startX="93000-15000" startY="5000.0" startZ="7000+41000" />
+    
+<create count="1" type="mines" startX="93000-15000" startY="5000.0" startZ="7000+74000" />
+    
+<create count="1" type="mines" startX="93000-15000" startY="5000.0" startZ="7000+75000" />
+    
+<create count="1" type="mines" startX="93000-16000" startY="5000.0" startZ="7000+18000" />
+    
+<create count="1" type="mines" startX="93000-16000" startY="5000.0" startZ="7000+22000" />
+    
+<create count="1" type="mines" startX="93000-16000" startY="5000.0" startZ="7000+27000" />
+    
+<create count="1" type="mines" startX="93000-16000" startY="5000.0" startZ="7000+28000" />
+    
+<create count="1" type="mines" startX="93000-16000" startY="5000.0" startZ="7000+40000" />
+    
+<create count="1" type="mines" startX="93000-16000" startY="5000.0" startZ="7000+41000" />
+    
+<create count="1" type="mines" startX="93000-16000" startY="5000.0" startZ="7000+72000" />
+    
+<create count="1" type="mines" startX="93000-16000" startY="5000.0" startZ="7000+73000" />
+    
+<create count="1" type="mines" startX="93000-16000" startY="5000.0" startZ="7000+74000" />
+    
+<create count="1" type="mines" startX="93000-16000" startY="5000.0" startZ="7000+75000" />
+    
+<create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+18000" />
+    
+<create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+22000" />
+    
+<create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+26000" />
+    
+<create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+39000" />
+    
+<create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+40000" />
+    
+<create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+41000" />
+    
+<create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+67000" />
+    
+<create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+68000" />
+    
+<create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+69000" />
+    
+<create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+70000" />
+    
+<create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+71000" />
+    
+<create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+73000" />
+    
+<create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+74000" />
+    
+<create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+75000" />
+    
+<create count="1" type="mines" startX="93000-18000" startY="5000.0" startZ="7000+19000" />
+    
+<create count="1" type="mines" startX="93000-18000" startY="5000.0" startZ="7000+22000" />
+    
+<create count="1" type="mines" startX="93000-18000" startY="5000.0" startZ="7000+26000" />
+    
+<create count="1" type="mines" startX="93000-18000" startY="5000.0" startZ="7000+41000" />
+    
+<create count="1" type="mines" startX="93000-18000" startY="5000.0" startZ="7000+68000" />
+    
+<create count="1" type="mines" startX="93000-18000" startY="5000.0" startZ="7000+73000" />
+    
+<create count="1" type="mines" startX="93000-18000" startY="5000.0" startZ="7000+75000" />
+    
+<create count="1" type="mines" startX="93000-19000" startY="5000.0" startZ="7000+20000" />
+    
+<create count="1" type="mines" startX="93000-19000" startY="5000.0" startZ="7000+22000" />
+    
+<create count="1" type="mines" startX="93000-19000" startY="5000.0" startZ="7000+25000" />
+    
+<create count="1" type="mines" startX="93000-19000" startY="5000.0" startZ="7000+41000" />
+    
+<create count="1" type="mines" startX="93000-19000" startY="5000.0" startZ="7000+68000" />
+    
+<create count="1" type="mines" startX="93000-19000" startY="5000.0" startZ="7000+73000" />
+    
+<create count="1" type="mines" startX="93000-19000" startY="5000.0" startZ="7000+75000" />
+    
+<create count="1" type="mines" startX="93000-20000" startY="5000.0" startZ="7000+20000" />
+    
+<create count="1" type="mines" startX="93000-20000" startY="5000.0" startZ="7000+23000" />
+    
+<create count="1" type="mines" startX="93000-20000" startY="5000.0" startZ="7000+25000" />
+    
+<create count="1" type="mines" startX="93000-20000" startY="5000.0" startZ="7000+41000" />
+    
+<create count="1" type="mines" startX="93000-20000" startY="5000.0" startZ="7000+42000" />
+    
+<create count="1" type="mines" startX="93000-20000" startY="5000.0" startZ="7000+68000" />
+    
+<create count="1" type="mines" startX="93000-20000" startY="5000.0" startZ="7000+72000" />
+    
+<create count="1" type="mines" startX="93000-20000" startY="5000.0" startZ="7000+73000" />
+    
+<create count="1" type="mines" startX="93000-20000" startY="5000.0" startZ="7000+75000" />
+    
+<create count="1" type="mines" startX="93000-20000" startY="5000.0" startZ="7000+76000" />
+    
+<create count="1" type="mines" startX="93000-21000" startY="5000.0" startZ="7000+21000" />
+    
+<create count="1" type="mines" startX="93000-21000" startY="5000.0" startZ="7000+23000" />
+    
+<create count="1" type="mines" startX="93000-21000" startY="5000.0" startZ="7000+25000" />
+    
+<create count="1" type="mines" startX="93000-21000" startY="5000.0" startZ="7000+42000" />
+    
+<create count="1" type="mines" startX="93000-21000" startY="5000.0" startZ="7000+68000" />
+    
+<create count="1" type="mines" startX="93000-21000" startY="5000.0" startZ="7000+72000" />
+    
+<create count="1" type="mines" startX="93000-21000" startY="5000.0" startZ="7000+76000" />
+    
+<create count="1" type="mines" startX="93000-22000" startY="5000.0" startZ="7000+22000" />
+    
+<create count="1" type="mines" startX="93000-22000" startY="5000.0" startZ="7000+23000" />
+    
+<create count="1" type="mines" startX="93000-22000" startY="5000.0" startZ="7000+25000" />
+    
+<create count="1" type="mines" startX="93000-22000" startY="5000.0" startZ="7000+42000" />
+    
+<create count="1" type="mines" startX="93000-22000" startY="5000.0" startZ="7000+68000" />
+    
+<create count="1" type="mines" startX="93000-22000" startY="5000.0" startZ="7000+71000" />
+    
+<create count="1" type="mines" startX="93000-22000" startY="5000.0" startZ="7000+72000" />
+    
+<create count="1" type="mines" startX="93000-22000" startY="5000.0" startZ="7000+76000" />
+    
+<create count="1" type="mines" startX="93000-22000" startY="5000.0" startZ="7000+77000" />
+    
+<create count="1" type="mines" startX="93000-23000" startY="5000.0" startZ="7000+22000" />
+    
+<create count="1" type="mines" startX="93000-23000" startY="5000.0" startZ="7000+24000" />
+    
+<create count="1" type="mines" startX="93000-23000" startY="5000.0" startZ="7000+25000" />
+    
+<create count="1" type="mines" startX="93000-23000" startY="5000.0" startZ="7000+42000" />
+    
+<create count="1" type="mines" startX="93000-23000" startY="5000.0" startZ="7000+67000" />
+    
+<create count="1" type="mines" startX="93000-23000" startY="5000.0" startZ="7000+70000" />
+    
+<create count="1" type="mines" startX="93000-23000" startY="5000.0" startZ="7000+71000" />
+    
+<create count="1" type="mines" startX="93000-23000" startY="5000.0" startZ="7000+76000" />
+    
+<create count="1" type="mines" startX="93000-24000" startY="5000.0" startZ="7000+23000" />
+    
+<create count="1" type="mines" startX="93000-24000" startY="5000.0" startZ="7000+24000" />
+    
+<create count="1" type="mines" startX="93000-24000" startY="5000.0" startZ="7000+25000" />
+    
+<create count="1" type="mines" startX="93000-24000" startY="5000.0" startZ="7000+42000" />
+    
+<create count="1" type="mines" startX="93000-24000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-24000" startY="5000.0" startZ="7000+67000" />
+    
+<create count="1" type="mines" startX="93000-24000" startY="5000.0" startZ="7000+69000" />
+    
+<create count="1" type="mines" startX="93000-24000" startY="5000.0" startZ="7000+70000" />
+    
+<create count="1" type="mines" startX="93000-24000" startY="5000.0" startZ="7000+75000" />
+    
+<create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+24000" />
+    
+<create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+25000" />
+    
+<create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+26000" />
+    
+<create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+42000" />
+    
+<create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+54000" />
+    
+<create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+55000" />
+    
+<create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+56000" />
+    
+<create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+57000" />
+    
+<create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+58000" />
+    
+<create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+59000" />
+    
+<create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+60000" />
+    
+<create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+61000" />
+    
+<create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+67000" />
+    
+<create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+68000" />
+    
+<create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+69000" />
+    
+<create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+73000" />
+    
+<create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+74000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+25000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+27000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+42000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+52000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+53000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+55000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+56000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+57000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+58000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+59000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+60000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+61000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+62000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+63000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+64000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+65000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+66000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+67000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+68000" />
+    
+<create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+72000" />
+    
+<create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+26000" />
+    
+<create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+28000" />
+    
+<create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+42000" />
+    
+<create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+51000" />
+    
+<create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+53000" />
+    
+<create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+54000" />
+    
+<create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+62000" />
+    
+<create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+63000" />
+    
+<create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+64000" />
+    
+<create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+65000" />
+    
+<create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+66000" />
+    
+<create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+67000" />
+    
+<create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+68000" />
+    
+<create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+69000" />
+    
+<create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+70000" />
+    
+<create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+71000" />
+    
+<create count="1" type="mines" startX="93000-28000" startY="5000.0" startZ="7000+26000" />
+    
+<create count="1" type="mines" startX="93000-28000" startY="5000.0" startZ="7000+27000" />
+    
+<create count="1" type="mines" startX="93000-28000" startY="5000.0" startZ="7000+29000" />
+    
+<create count="1" type="mines" startX="93000-28000" startY="5000.0" startZ="7000+30000" />
+    
+<create count="1" type="mines" startX="93000-28000" startY="5000.0" startZ="7000+42000" />
+    
+<create count="1" type="mines" startX="93000-28000" startY="5000.0" startZ="7000+44000" />
+    
+<create count="1" type="mines" startX="93000-28000" startY="5000.0" startZ="7000+50000" />
+    
+<create count="1" type="mines" startX="93000-28000" startY="5000.0" startZ="7000+51000" />
+    
+<create count="1" type="mines" startX="93000-28000" startY="5000.0" startZ="7000+53000" />
+    
+<create count="1" type="mines" startX="93000-29000" startY="5000.0" startZ="7000+27000" />
+    
+<create count="1" type="mines" startX="93000-29000" startY="5000.0" startZ="7000+28000" />
+    
+<create count="1" type="mines" startX="93000-29000" startY="5000.0" startZ="7000+29000" />
+    
+<create count="1" type="mines" startX="93000-29000" startY="5000.0" startZ="7000+31000" />
+    
+<create count="1" type="mines" startX="93000-29000" startY="5000.0" startZ="7000+32000" />
+    
+<create count="1" type="mines" startX="93000-29000" startY="5000.0" startZ="7000+42000" />
+    
+<create count="1" type="mines" startX="93000-29000" startY="5000.0" startZ="7000+44000" />
+    
+<create count="1" type="mines" startX="93000-29000" startY="5000.0" startZ="7000+49000" />
+    
+<create count="1" type="mines" startX="93000-29000" startY="5000.0" startZ="7000+52000" />
+    
+<create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+29000" />
+    
+<create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+30000" />
+    
+<create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+31000" />
+    
+<create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+32000" />
+    
+<create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+33000" />
+    
+<create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+34000" />
+    
+<create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+35000" />
+    
+<create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+42000" />
+    
+<create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+44000" />
+    
+<create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+49000" />
+    
+<create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+52000" />
+    
+<create count="1" type="mines" startX="93000-31000" startY="5000.0" startZ="7000+32000" />
+    
+<create count="1" type="mines" startX="93000-31000" startY="5000.0" startZ="7000+33000" />
+    
+<create count="1" type="mines" startX="93000-31000" startY="5000.0" startZ="7000+35000" />
+    
+<create count="1" type="mines" startX="93000-31000" startY="5000.0" startZ="7000+36000" />
+    
+<create count="1" type="mines" startX="93000-31000" startY="5000.0" startZ="7000+42000" />
+    
+<create count="1" type="mines" startX="93000-31000" startY="5000.0" startZ="7000+44000" />
+    
+<create count="1" type="mines" startX="93000-31000" startY="5000.0" startZ="7000+49000" />
+    
+<create count="1" type="mines" startX="93000-31000" startY="5000.0" startZ="7000+52000" />
+    
+<create count="1" type="mines" startX="93000-32000" startY="5000.0" startZ="7000+34000" />
+    
+<create count="1" type="mines" startX="93000-32000" startY="5000.0" startZ="7000+36000" />
+    
+<create count="1" type="mines" startX="93000-32000" startY="5000.0" startZ="7000+41000" />
+    
+<create count="1" type="mines" startX="93000-32000" startY="5000.0" startZ="7000+42000" />
+    
+<create count="1" type="mines" startX="93000-32000" startY="5000.0" startZ="7000+44000" />
+    
+<create count="1" type="mines" startX="93000-32000" startY="5000.0" startZ="7000+49000" />
+    
+<create count="1" type="mines" startX="93000-32000" startY="5000.0" startZ="7000+51000" />
+    
+<create count="1" type="mines" startX="93000-32000" startY="5000.0" startZ="7000+52000" />
+    
+<create count="1" type="mines" startX="93000-33000" startY="5000.0" startZ="7000+35000" />
+    
+<create count="1" type="mines" startX="93000-33000" startY="5000.0" startZ="7000+37000" />
+    
+<create count="1" type="mines" startX="93000-33000" startY="5000.0" startZ="7000+41000" />
+    
+<create count="1" type="mines" startX="93000-33000" startY="5000.0" startZ="7000+44000" />
+    
+<create count="1" type="mines" startX="93000-33000" startY="5000.0" startZ="7000+48000" />
+    
+<create count="1" type="mines" startX="93000-33000" startY="5000.0" startZ="7000+51000" />
+    
+<create count="1" type="mines" startX="93000-34000" startY="5000.0" startZ="7000+35000" />
+    
+<create count="1" type="mines" startX="93000-34000" startY="5000.0" startZ="7000+37000" />
+    
+<create count="1" type="mines" startX="93000-34000" startY="5000.0" startZ="7000+40000" />
+    
+<create count="1" type="mines" startX="93000-34000" startY="5000.0" startZ="7000+44000" />
+    
+<create count="1" type="mines" startX="93000-34000" startY="5000.0" startZ="7000+48000" />
+    
+<create count="1" type="mines" startX="93000-34000" startY="5000.0" startZ="7000+51000" />
+    
+<create count="1" type="mines" startX="93000-35000" startY="5000.0" startZ="7000+35000" />
+    
+<create count="1" type="mines" startX="93000-35000" startY="5000.0" startZ="7000+38000" />
+    
+<create count="1" type="mines" startX="93000-35000" startY="5000.0" startZ="7000+39000" />
+    
+<create count="1" type="mines" startX="93000-35000" startY="5000.0" startZ="7000+44000" />
+    
+<create count="1" type="mines" startX="93000-35000" startY="5000.0" startZ="7000+45000" />
+    
+<create count="1" type="mines" startX="93000-35000" startY="5000.0" startZ="7000+48000" />
+    
+<create count="1" type="mines" startX="93000-35000" startY="5000.0" startZ="7000+51000" />
+    
+<create count="1" type="mines" startX="93000-36000" startY="5000.0" startZ="7000+35000" />
+    
+<create count="1" type="mines" startX="93000-36000" startY="5000.0" startZ="7000+45000" />
+    
+<create count="1" type="mines" startX="93000-36000" startY="5000.0" startZ="7000+46000" />
+    
+<create count="1" type="mines" startX="93000-36000" startY="5000.0" startZ="7000+47000" />
+    
+<create count="1" type="mines" startX="93000-36000" startY="5000.0" startZ="7000+51000" />
+    
+<create count="1" type="mines" startX="93000-37000" startY="5000.0" startZ="7000+35000" />
+    
+<create count="1" type="mines" startX="93000-37000" startY="5000.0" startZ="7000+51000" />
+    
+<create count="1" type="mines" startX="93000-37000" startY="5000.0" startZ="7000+59000" />
+    
+<create count="1" type="mines" startX="93000-37000" startY="5000.0" startZ="7000+60000" />
+    
+<create count="1" type="mines" startX="93000-37000" startY="5000.0" startZ="7000+61000" />
+    
+<create count="1" type="mines" startX="93000-37000" startY="5000.0" startZ="7000+62000" />
+    
+<create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+24000" />
+    
+<create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+25000" />
+    
+<create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+26000" />
+    
+<create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+27000" />
+    
+<create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+28000" />
+    
+<create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+29000" />
+    
+<create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+30000" />
+    
+<create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+31000" />
+    
+<create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+35000" />
+    
+<create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+38000" />
+    
+<create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+39000" />
+    
+<create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+46000" />
+    
+<create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+47000" />
+    
+<create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+50000" />
+    
+<create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+57000" />
+    
+<create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+58000" />
+    
+<create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+61000" />
+    
+<create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+22000" />
+    
+<create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+23000" />
+    
+<create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+32000" />
+    
+<create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+33000" />
+    
+<create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+34000" />
+    
+<create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+37000" />
+    
+<create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+38000" />
+    
+<create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+39000" />
+    
+<create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+46000" />
+    
+<create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+47000" />
+    
+<create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+48000" />
+    
+<create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+50000" />
+    
+<create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+56000" />
+    
+<create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+57000" />
+    
+<create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+23000" />
+    
+<create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+33000" />
+    
+<create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+34000" />
+    
+<create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+37000" />
+    
+<create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+38000" />
+    
+<create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+47000" />
+    
+<create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+48000" />
+    
+<create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+51000" />
+    
+<create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+52000" />
+    
+<create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+53000" />
+    
+<create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+54000" />
+    
+<create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+55000" />
+    
+<create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+56000" />
+    
+<create count="1" type="mines" startX="93000-41000" startY="5000.0" startZ="7000+34000" />
+    
+<create count="1" type="mines" startX="93000-41000" startY="5000.0" startZ="7000+41000" />
+    
+<create count="1" type="mines" startX="93000-41000" startY="5000.0" startZ="7000+42000" />
+    
+<create count="1" type="mines" startX="93000-41000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-41000" startY="5000.0" startZ="7000+44000" />
+    
+<create count="1" type="mines" startX="93000-41000" startY="5000.0" startZ="7000+51000" />
+    
+<create count="1" type="mines" startX="93000-41000" startY="5000.0" startZ="7000+52000" />
+    
+<create count="1" type="mines" startX="93000-41000" startY="5000.0" startZ="7000+53000" />
+    
+<create count="1" type="mines" startX="93000-41000" startY="5000.0" startZ="7000+54000" />
+    
+<create count="1" type="mines" startX="93000-41000" startY="5000.0" startZ="7000+55000" />
+    
+<create count="1" type="mines" startX="93000-42000" startY="5000.0" startZ="7000+35000" />
+    
+<create count="1" type="mines" startX="93000-42000" startY="5000.0" startZ="7000+40000" />
+    
+<create count="1" type="mines" startX="93000-42000" startY="5000.0" startZ="7000+41000" />
+    
+<create count="1" type="mines" startX="93000-42000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-42000" startY="5000.0" startZ="7000+44000" />
+    
+<create count="1" type="mines" startX="93000-42000" startY="5000.0" startZ="7000+45000" />
+    
+<create count="1" type="mines" startX="93000-42000" startY="5000.0" startZ="7000+50000" />
+    
+<create count="1" type="mines" startX="93000-43000" startY="5000.0" startZ="7000+35000" />
+    
+<create count="1" type="mines" startX="93000-43000" startY="5000.0" startZ="7000+40000" />
+    
+<create count="1" type="mines" startX="93000-43000" startY="5000.0" startZ="7000+41000" />
+    
+<create count="1" type="mines" startX="93000-43000" startY="5000.0" startZ="7000+42000" />
+    
+<create count="1" type="mines" startX="93000-43000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-43000" startY="5000.0" startZ="7000+44000" />
+    
+<create count="1" type="mines" startX="93000-43000" startY="5000.0" startZ="7000+45000" />
+    
+<create count="1" type="mines" startX="93000-43000" startY="5000.0" startZ="7000+50000" />
+    
+<create count="1" type="mines" startX="93000-44000" startY="5000.0" startZ="7000+30000" />
+    
+<create count="1" type="mines" startX="93000-44000" startY="5000.0" startZ="7000+31000" />
+    
+<create count="1" type="mines" startX="93000-44000" startY="5000.0" startZ="7000+32000" />
+    
+<create count="1" type="mines" startX="93000-44000" startY="5000.0" startZ="7000+33000" />
+    
+<create count="1" type="mines" startX="93000-44000" startY="5000.0" startZ="7000+34000" />
+    
+<create count="1" type="mines" startX="93000-44000" startY="5000.0" startZ="7000+41000" />
+    
+<create count="1" type="mines" startX="93000-44000" startY="5000.0" startZ="7000+42000" />
+    
+<create count="1" type="mines" startX="93000-44000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-44000" startY="5000.0" startZ="7000+44000" />
+    
+<create count="1" type="mines" startX="93000-44000" startY="5000.0" startZ="7000+51000" />
+    
+<create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+29000" />
+    
+<create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+30000" />
+    
+<create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+31000" />
+    
+<create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+32000" />
+    
+<create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+33000" />
+    
+<create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+34000" />
+    
+<create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+37000" />
+    
+<create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+38000" />
+    
+<create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+47000" />
+    
+<create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+48000" />
+    
+<create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+51000" />
+    
+<create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+52000" />
+    
+<create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+62000" />
+    
+<create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+28000" />
+    
+<create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+29000" />
+    
+<create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+35000" />
+    
+<create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+37000" />
+    
+<create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+38000" />
+    
+<create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+39000" />
+    
+<create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+46000" />
+    
+<create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+47000" />
+    
+<create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+48000" />
+    
+<create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+51000" />
+    
+<create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+52000" />
+    
+<create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+53000" />
+    
+<create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+62000" />
+    
+<create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+63000" />
+    
+<create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+24000" />
+    
+<create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+27000" />
+    
+<create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+28000" />
+    
+<create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+35000" />
+    
+<create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+38000" />
+    
+<create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+39000" />
+    
+<create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+46000" />
+    
+<create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+47000" />
+    
+<create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+50000" />
+    
+<create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+54000" />
+    
+<create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+55000" />
+    
+<create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+56000" />
+    
+<create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+57000" />
+    
+<create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+58000" />
+    
+<create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+59000" />
+    
+<create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+60000" />
+    
+<create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+61000" />
+    
+<create count="1" type="mines" startX="93000-48000" startY="5000.0" startZ="7000+23000" />
+    
+<create count="1" type="mines" startX="93000-48000" startY="5000.0" startZ="7000+24000" />
+    
+<create count="1" type="mines" startX="93000-48000" startY="5000.0" startZ="7000+25000" />
+    
+<create count="1" type="mines" startX="93000-48000" startY="5000.0" startZ="7000+26000" />
+    
+<create count="1" type="mines" startX="93000-48000" startY="5000.0" startZ="7000+34000" />
+    
+<create count="1" type="mines" startX="93000-48000" startY="5000.0" startZ="7000+50000" />
+    
+<create count="1" type="mines" startX="93000-49000" startY="5000.0" startZ="7000+34000" />
+    
+<create count="1" type="mines" startX="93000-49000" startY="5000.0" startZ="7000+38000" />
+    
+<create count="1" type="mines" startX="93000-49000" startY="5000.0" startZ="7000+39000" />
+    
+<create count="1" type="mines" startX="93000-49000" startY="5000.0" startZ="7000+40000" />
+    
+<create count="1" type="mines" startX="93000-49000" startY="5000.0" startZ="7000+50000" />
+    
+<create count="1" type="mines" startX="93000-50000" startY="5000.0" startZ="7000+34000" />
+    
+<create count="1" type="mines" startX="93000-50000" startY="5000.0" startZ="7000+37000" />
+    
+<create count="1" type="mines" startX="93000-50000" startY="5000.0" startZ="7000+40000" />
+    
+<create count="1" type="mines" startX="93000-50000" startY="5000.0" startZ="7000+41000" />
+    
+<create count="1" type="mines" startX="93000-50000" startY="5000.0" startZ="7000+46000" />
+    
+<create count="1" type="mines" startX="93000-50000" startY="5000.0" startZ="7000+47000" />
+    
+<create count="1" type="mines" startX="93000-50000" startY="5000.0" startZ="7000+50000" />
+    
+<create count="1" type="mines" startX="93000-51000" startY="5000.0" startZ="7000+34000" />
+    
+<create count="1" type="mines" startX="93000-51000" startY="5000.0" startZ="7000+37000" />
+    
+<create count="1" type="mines" startX="93000-51000" startY="5000.0" startZ="7000+41000" />
+    
+<create count="1" type="mines" startX="93000-51000" startY="5000.0" startZ="7000+45000" />
+    
+<create count="1" type="mines" startX="93000-51000" startY="5000.0" startZ="7000+48000" />
+    
+<create count="1" type="mines" startX="93000-51000" startY="5000.0" startZ="7000+50000" />
+    
+<create count="1" type="mines" startX="93000-52000" startY="5000.0" startZ="7000+34000" />
+    
+<create count="1" type="mines" startX="93000-52000" startY="5000.0" startZ="7000+37000" />
+    
+<create count="1" type="mines" startX="93000-52000" startY="5000.0" startZ="7000+41000" />
+    
+<create count="1" type="mines" startX="93000-52000" startY="5000.0" startZ="7000+44000" />
+    
+<create count="1" type="mines" startX="93000-52000" startY="5000.0" startZ="7000+48000" />
+    
+<create count="1" type="mines" startX="93000-52000" startY="5000.0" startZ="7000+50000" />
+    
+<create count="1" type="mines" startX="93000-53000" startY="5000.0" startZ="7000+33000" />
+    
+<create count="1" type="mines" startX="93000-53000" startY="5000.0" startZ="7000+34000" />
+    
+<create count="1" type="mines" startX="93000-53000" startY="5000.0" startZ="7000+36000" />
+    
+<create count="1" type="mines" startX="93000-53000" startY="5000.0" startZ="7000+41000" />
+    
+<create count="1" type="mines" startX="93000-53000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-53000" startY="5000.0" startZ="7000+44000" />
+    
+<create count="1" type="mines" startX="93000-53000" startY="5000.0" startZ="7000+49000" />
+    
+<create count="1" type="mines" startX="93000-53000" startY="5000.0" startZ="7000+51000" />
+    
+<create count="1" type="mines" startX="93000-54000" startY="5000.0" startZ="7000+33000" />
+    
+<create count="1" type="mines" startX="93000-54000" startY="5000.0" startZ="7000+36000" />
+    
+<create count="1" type="mines" startX="93000-54000" startY="5000.0" startZ="7000+41000" />
+    
+<create count="1" type="mines" startX="93000-54000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-54000" startY="5000.0" startZ="7000+49000" />
+    
+<create count="1" type="mines" startX="93000-54000" startY="5000.0" startZ="7000+50000" />
+    
+<create count="1" type="mines" startX="93000-54000" startY="5000.0" startZ="7000+52000" />
+    
+<create count="1" type="mines" startX="93000-54000" startY="5000.0" startZ="7000+53000" />
+    
+<create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+33000" />
+    
+<create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+36000" />
+    
+<create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+41000" />
+    
+<create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+50000" />
+    
+<create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+51000" />
+    
+<create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+52000" />
+    
+<create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+53000" />
+    
+<create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+54000" />
+    
+<create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+55000" />
+    
+<create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+56000" />
+    
+<create count="1" type="mines" startX="93000-56000" startY="5000.0" startZ="7000+33000" />
+    
+<create count="1" type="mines" startX="93000-56000" startY="5000.0" startZ="7000+36000" />
+    
+<create count="1" type="mines" startX="93000-56000" startY="5000.0" startZ="7000+41000" />
+    
+<create count="1" type="mines" startX="93000-56000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-56000" startY="5000.0" startZ="7000+53000" />
+    
+<create count="1" type="mines" startX="93000-56000" startY="5000.0" startZ="7000+54000" />
+    
+<create count="1" type="mines" startX="93000-56000" startY="5000.0" startZ="7000+56000" />
+    
+<create count="1" type="mines" startX="93000-56000" startY="5000.0" startZ="7000+57000" />
+    
+<create count="1" type="mines" startX="93000-56000" startY="5000.0" startZ="7000+58000" />
+    
+<create count="1" type="mines" startX="93000-57000" startY="5000.0" startZ="7000+32000" />
+    
+<create count="1" type="mines" startX="93000-57000" startY="5000.0" startZ="7000+34000" />
+    
+<create count="1" type="mines" startX="93000-57000" startY="5000.0" startZ="7000+35000" />
+    
+<create count="1" type="mines" startX="93000-57000" startY="5000.0" startZ="7000+41000" />
+    
+<create count="1" type="mines" startX="93000-57000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-57000" startY="5000.0" startZ="7000+55000" />
+    
+<create count="1" type="mines" startX="93000-57000" startY="5000.0" startZ="7000+56000" />
+    
+<create count="1" type="mines" startX="93000-57000" startY="5000.0" startZ="7000+58000" />
+    
+<create count="1" type="mines" startX="93000-57000" startY="5000.0" startZ="7000+59000" />
+    
+<create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+13000" />
+    
+<create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+14000" />
+    
+<create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+15000" />
+    
+<create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+16000" />
+    
+<create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+17000" />
+    
+<create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+18000" />
+    
+<create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+19000" />
+    
+<create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+20000" />
+    
+<create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+21000" />
+    
+<create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+22000" />
+    
+<create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+23000" />
+    
+<create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+31000" />
+    
+<create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+32000" />
+    
+<create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+34000" />
+    
+<create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+42000" />
+    
+<create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+57000" />
+    
+<create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+59000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+12000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+16000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+17000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+18000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+19000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+20000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+21000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+22000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+23000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+24000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+25000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+26000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+27000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+28000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+29000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+30000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+32000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+33000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+42000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+58000" />
+    
+<create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+60000" />
+    
+<create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+10000" />
+    
+<create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+11000" />
+    
+<create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+15000" />
+    
+<create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+16000" />
+    
+<create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+17000" />
+    
+<create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+24000" />
+    
+<create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+25000" />
+    
+<create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+26000" />
+    
+<create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+27000" />
+    
+<create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+28000" />
+    
+<create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+29000" />
+    
+<create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+30000" />
+    
+<create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+31000" />
+    
+<create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+42000" />
+    
+<create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+59000" />
+    
+<create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+60000" />
+    
+<create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+61000" />
+    
+<create count="1" type="mines" startX="93000-61000" startY="5000.0" startZ="7000+9000" />
+    
+<create count="1" type="mines" startX="93000-61000" startY="5000.0" startZ="7000+14000" />
+    
+<create count="1" type="mines" startX="93000-61000" startY="5000.0" startZ="7000+15000" />
+    
+<create count="1" type="mines" startX="93000-61000" startY="5000.0" startZ="7000+17000" />
+    
+<create count="1" type="mines" startX="93000-61000" startY="5000.0" startZ="7000+42000" />
+    
+<create count="1" type="mines" startX="93000-61000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-61000" startY="5000.0" startZ="7000+60000" />
+    
+<create count="1" type="mines" startX="93000-61000" startY="5000.0" startZ="7000+61000" />
+    
+<create count="1" type="mines" startX="93000-61000" startY="5000.0" startZ="7000+62000" />
+    
+<create count="1" type="mines" startX="93000-62000" startY="5000.0" startZ="7000+8000" />
+    
+<create count="1" type="mines" startX="93000-62000" startY="5000.0" startZ="7000+13000" />
+    
+<create count="1" type="mines" startX="93000-62000" startY="5000.0" startZ="7000+14000" />
+    
+<create count="1" type="mines" startX="93000-62000" startY="5000.0" startZ="7000+17000" />
+    
+<create count="1" type="mines" startX="93000-62000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-62000" startY="5000.0" startZ="7000+60000" />
+    
+<create count="1" type="mines" startX="93000-62000" startY="5000.0" startZ="7000+61000" />
+    
+<create count="1" type="mines" startX="93000-62000" startY="5000.0" startZ="7000+63000" />
+    
+<create count="1" type="mines" startX="93000-63000" startY="5000.0" startZ="7000+7000" />
+    
+<create count="1" type="mines" startX="93000-63000" startY="5000.0" startZ="7000+8000" />
+    
+<create count="1" type="mines" startX="93000-63000" startY="5000.0" startZ="7000+12000" />
+    
+<create count="1" type="mines" startX="93000-63000" startY="5000.0" startZ="7000+13000" />
+    
+<create count="1" type="mines" startX="93000-63000" startY="5000.0" startZ="7000+16000" />
+    
+<create count="1" type="mines" startX="93000-63000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-63000" startY="5000.0" startZ="7000+60000" />
+    
+<create count="1" type="mines" startX="93000-63000" startY="5000.0" startZ="7000+62000" />
+    
+<create count="1" type="mines" startX="93000-63000" startY="5000.0" startZ="7000+63000" />
+    
+<create count="1" type="mines" startX="93000-64000" startY="5000.0" startZ="7000+8000" />
+    
+<create count="1" type="mines" startX="93000-64000" startY="5000.0" startZ="7000+12000" />
+    
+<create count="1" type="mines" startX="93000-64000" startY="5000.0" startZ="7000+16000" />
+    
+<create count="1" type="mines" startX="93000-64000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-64000" startY="5000.0" startZ="7000+60000" />
+    
+<create count="1" type="mines" startX="93000-64000" startY="5000.0" startZ="7000+62000" />
+    
+<create count="1" type="mines" startX="93000-64000" startY="5000.0" startZ="7000+64000" />
+    
+<create count="1" type="mines" startX="93000-65000" startY="5000.0" startZ="7000+9000" />
+    
+<create count="1" type="mines" startX="93000-65000" startY="5000.0" startZ="7000+12000" />
+    
+<create count="1" type="mines" startX="93000-65000" startY="5000.0" startZ="7000+16000" />
+    
+<create count="1" type="mines" startX="93000-65000" startY="5000.0" startZ="7000+43000" />
+    
+<create count="1" type="mines" startX="93000-65000" startY="5000.0" startZ="7000+44000" />
+    
+<create count="1" type="mines" startX="93000-65000" startY="5000.0" startZ="7000+60000" />
+    
+<create count="1" type="mines" startX="93000-65000" startY="5000.0" startZ="7000+62000" />
+    
+<create count="1" type="mines" startX="93000-65000" startY="5000.0" startZ="7000+65000" />
+    
+<create count="1" type="mines" startX="93000-66000" startY="5000.0" startZ="7000+9000" />
+    
+<create count="1" type="mines" startX="93000-66000" startY="5000.0" startZ="7000+11000" />
+    
+<create count="1" type="mines" startX="93000-66000" startY="5000.0" startZ="7000+16000" />
+    
+<create count="1" type="mines" startX="93000-66000" startY="5000.0" startZ="7000+44000" />
+    
+<create count="1" type="mines" startX="93000-66000" startY="5000.0" startZ="7000+60000" />
+    
+<create count="1" type="mines" startX="93000-66000" startY="5000.0" startZ="7000+63000" />
+    
+<create count="1" type="mines" startX="93000-66000" startY="5000.0" startZ="7000+65000" />
+    
+<create count="1" type="mines" startX="93000-67000" startY="5000.0" startZ="7000+9000" />
+    
+<create count="1" type="mines" startX="93000-67000" startY="5000.0" startZ="7000+10000" />
+    
+<create count="1" type="mines" startX="93000-67000" startY="5000.0" startZ="7000+11000" />
+    
+<create count="1" type="mines" startX="93000-67000" startY="5000.0" startZ="7000+16000" />
+    
+<create count="1" type="mines" startX="93000-67000" startY="5000.0" startZ="7000+44000" />
+    
+<create count="1" type="mines" startX="93000-67000" startY="5000.0" startZ="7000+59000" />
+    
+<create count="1" type="mines" startX="93000-67000" startY="5000.0" startZ="7000+63000" />
+    
+<create count="1" type="mines" startX="93000-67000" startY="5000.0" startZ="7000+66000" />
+    
+<create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+9000" />
+    
+<create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+10000" />
+    
+<create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+11000" />
+    
+<create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+13000" />
+    
+<create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+14000" />
+    
+<create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+15000" />
+    
+<create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+16000" />
+    
+<create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+17000" />
+    
+<create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+44000" />
+    
+<create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+45000" />
+    
+<create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+46000" />
+    
+<create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+59000" />
+    
+<create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+63000" />
+    
+<create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+67000" />
+    
+<create count="1" type="mines" startX="93000-69000" startY="5000.0" startZ="7000+9000" />
+    
+<create count="1" type="mines" startX="93000-69000" startY="5000.0" startZ="7000+10000" />
+    
+<create count="1" type="mines" startX="93000-69000" startY="5000.0" startZ="7000+11000" />
+    
+<create count="1" type="mines" startX="93000-69000" startY="5000.0" startZ="7000+12000" />
+    
+<create count="1" type="mines" startX="93000-69000" startY="5000.0" startZ="7000+44000" />
+    
+<create count="1" type="mines" startX="93000-69000" startY="5000.0" startZ="7000+45000" />
+    
+<create count="1" type="mines" startX="93000-69000" startY="5000.0" startZ="7000+58000" />
+    
+<create count="1" type="mines" startX="93000-69000" startY="5000.0" startZ="7000+63000" />
+    
+<create count="1" type="mines" startX="93000-69000" startY="5000.0" startZ="7000+67000" />
+    
+<create count="1" type="mines" startX="93000-70000" startY="5000.0" startZ="7000+9000" />
+    
+<create count="1" type="mines" startX="93000-70000" startY="5000.0" startZ="7000+10000" />
+    
+<create count="1" type="mines" startX="93000-70000" startY="5000.0" startZ="7000+44000" />
+    
+<create count="1" type="mines" startX="93000-70000" startY="5000.0" startZ="7000+57000" />
+    
+<create count="1" type="mines" startX="93000-70000" startY="5000.0" startZ="7000+58000" />
+    
+<create count="1" type="mines" startX="93000-70000" startY="5000.0" startZ="7000+59000" />
+    
+<create count="1" type="mines" startX="93000-70000" startY="5000.0" startZ="7000+60000" />
+    
+<create count="1" type="mines" startX="93000-70000" startY="5000.0" startZ="7000+63000" />
+    
+<create count="1" type="mines" startX="93000-70000" startY="5000.0" startZ="7000+67000" />
+    
+<create count="1" type="mines" startX="93000-70000" startY="5000.0" startZ="7000+68000" />
+    
+<create count="1" type="mines" startX="93000-71000" startY="5000.0" startZ="7000+9000" />
+    
+<create count="1" type="mines" startX="93000-71000" startY="5000.0" startZ="7000+59000" />
+    
+<create count="1" type="mines" startX="93000-71000" startY="5000.0" startZ="7000+60000" />
+    
+<create count="1" type="mines" startX="93000-71000" startY="5000.0" startZ="7000+63000" />
+    
+<create count="1" type="mines" startX="93000-71000" startY="5000.0" startZ="7000+66000" />
+    
+<create count="1" type="mines" startX="93000-72000" startY="5000.0" startZ="7000+9000" />
+    
+<create count="1" type="mines" startX="93000-72000" startY="5000.0" startZ="7000+60000" />
+    
+<create count="1" type="mines" startX="93000-72000" startY="5000.0" startZ="7000+61000" />
+    
+<create count="1" type="mines" startX="93000-72000" startY="5000.0" startZ="7000+63000" />
+    
+<create count="1" type="mines" startX="93000-72000" startY="5000.0" startZ="7000+65000" />
+    
+<create count="1" type="mines" startX="93000-73000" startY="5000.0" startZ="7000+61000" />
+    
+<create count="1" type="mines" startX="93000-73000" startY="5000.0" startZ="7000+62000" />
+    
+<create count="1" type="mines" startX="93000-73000" startY="5000.0" startZ="7000+63000" />
+    
+<create count="1" type="mines" startX="93000-73000" startY="5000.0" startZ="7000+65000" />
+    
+<create count="1" type="mines" startX="93000-74000" startY="5000.0" startZ="7000+62000" />
+    
+<create count="1" type="mines" startX="93000-74000" startY="5000.0" startZ="7000+63000" />
+    
+<create count="1" type="mines" startX="93000-74000" startY="5000.0" startZ="7000+64000" />
+    
+<create count="1" type="mines" startX="93000-75000" startY="5000.0" startZ="7000+63000" />
+    
+<create count="1" type="mines" startX="93000-76000" startY="5000.0" startZ="7000+63000" />
+    
+
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Sedrun System" value="2.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="0.0" />
+    <set_variable name="Grid A Transition Enabled" value="1.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="0.0" />
+    <set_variable name="Grid E Transition Enabled" value="0.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+  </event>
+
+      
+  <event name="Grid A Transition">
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Grid A Transition" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Sector Transition" consoles="MHWESCO">Sector Transition in progress</warning_popup_message>
+    <destroy_near type="all" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <set_timer name="Transition" seconds="0.5" />
+    <set_variable name="Grid A Transition" value="0.0" />
+
+    <set_variable name="Sector" value="1.0" integer="yes" />
+    <set_variable name="Sedrun System" value="3.0" integer="yes" />
+  </event>
+
+
+    
+
+  <event name="Generate Sector Entities">
+    <if_variable name="Sedrun System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+          <create type="genericMesh" x="50000.0" y="5000.0" z="15000.0" name="B U D R 0 N   A 5 T R 4 L 1 S" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="genericMesh" x="15000.0" y="5000.0" z="60000.0" name="C0mpos1tion:" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="genericMesh" x="15000.0" y="5000.0" z="62000.0" name="  H2O: 65%" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="genericMesh" x="15000.0" y="5000.0" z="64000.0" name="   C2: 18%" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="genericMesh" x="15000.0" y="5000.0" z="66000.0" name="    P:  3%" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="genericMesh" x="15000.0" y="5000.0" z="68000.0" name="oth3r: 14%" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="genericMesh" x="85000.0" y="5000.0" z="62000.0" name="F1r5t con7act:" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="genericMesh" x="85000.0" y="5000.0" z="64000.0" name="Sc0u7 fl3et 0x7C83B7" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="genericMesh" x="85000.0" y="5000.0" z="66000.0" name="0 A.D. (Bur1n Pr1m3 time)" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="genericMesh" x="85000.0" y="5000.0" z="40000.0" name="Cod3 replic4tion:" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="genericMesh" x="85000.0" y="5000.0" z="42000.0" name="bi0el3ctric pat7erns" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="genericMesh" x="85000.0" y="5000.0" z="44000.0" name="(pl4tyh3lm1nths)" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="genericMesh" x="85000.0" y="5000.0" z="46000.0" name="(l1ke T3rran fl4tworms)" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="genericMesh" x="60000.0" y="5000.0" z="76000.0" name="C0mput3:" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="genericMesh" x="60000.0" y="5000.0" z="78000.0" name="4.1 x 10^23 flops" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="genericMesh" x="60000.0" y="5000.0" z="80000.0" name="1.0 x 10^14 b1ts" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="genericMesh" x="60000.0" y="5000.0" z="82000.0" name="5.0 x 10^23 byt3s" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="genericMesh" x="50000.0" y="5000.0" z="86000.0" name="G0v3rnmen7: th30cr4cy" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="genericMesh" x="50000.0" y="5000.0" z="88000.0" name="R3ligion: s1ngle" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="genericMesh" x="50000.0" y="5000.0" z="90000.0" name="Cul7ures: mul71pl3" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="genericMesh" x="50000.0" y="5000.0" z="92000.0" name="Rac35: mult1ple" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    
+<create type="neutral" x="50000.0" y="0.0" z="50000.0" name="5h311 4cce55" hullID="1054" sideValue="sectorSide" />
+    
+<set_ship_text name="5h311 4cce55" race="Caltron" class="Structure" desc="Some sort of bio-electrical interface." scan_desc="Biological traces match Budron physiology, indicating that Budron have interfaced with this terminal in the past." />
+    
+<set_object_property property="shieldMaxStateFront" value="2000" name="5h311 4cce55" />
+    
+<set_object_property property="shieldMaxStateBack" value="2000" name="5h311 4cce55" />
+    
+<set_object_property property="shieldStateFront" value="2000" name="5h311 4cce55" />
+    
+<set_object_property property="shieldStateBack" value="2000" name="5h311 4cce55" />
+  
+
+    <create type="genericMesh" x="100000.0" y="0.0" z="0.0" name="Sedrun II" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+
+
+                                            
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="3.0" /> 
+  </event>
+
+      <event name="Destroy Sector Entities">
+    <if_variable name="Sedrun System" comparator="EQUALS" value="3.0" />
+                                                <destroy name="B U D R 0 N   A 5 T R 4 L 1 S" />
+    <destroy name="C0mpos1tion:" />
+    <destroy name="  H2O: 65%" />
+    <destroy name="   C2: 18%" />
+    <destroy name="    P:  3%" />
+    <destroy name="oth3r: 14%" />
+    <destroy name="F1r5t con7act:" />
+    <destroy name="Sc0u7 fl3et 0x7C83B7" />
+    <destroy name="0 A.D. (Bur1n Pr1m3 time)" />
+    <destroy name="Cod3 replic4tion:" />
+    <destroy name="bi0el3ctric pat7erns" />
+    <destroy name="(pl4tyh3lm1nths)" />
+    <destroy name="(l1ke T3rran fl4tworms)" />
+    <destroy name="C0mput3:" />
+    <destroy name="4.1 x 10^23 flops" />
+    <destroy name="1.0 x 10^14 b1ts" />
+    <destroy name="5.0 x 10^23 byt3s" />
+    <destroy name="G0v3rnmen7: th30cr4cy" />
+    <destroy name="R3ligion: s1ngle" />
+    <destroy name="Cul7ures: mul71pl3" />
+    <destroy name="Rac35: mult1ple" />
+    <destroy name="5h311 4cce55" />
+    <destroy name="Sedrun II" />
+    <set_variable name="Sedrun System" value="System" integer="yes" />
+    <set_variable name="Sector Entities" value="0.0" />
+    
+  </event>
+
+
+
+
+
+
+  <event name="Sedrun - Run On Load">
+    <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
+    <if_variable name="_SedrunOnLoadRan" comparator="NOT" value="1.0" />
+      <set_timer name="Sedrun_IronMoon_Check" seconds="1" />
+  <set_variable name="Sector Locked" value="1.0" integer="yes" />
+
+    <set_variable name="_SedrunOnLoadRan" value="1.0" integer="yes" />
+  </event>
+  <event name="Sedrun - Reset On Load">
+    <if_variable name="Sedrun System" comparator="LESS" value="1.0" />
+    <if_variable name="_SedrunOnLoadRan" comparator="EQUALS" value="1.0" />
+    <set_variable name="_SedrunOnLoadRan" value="0.0" integer="yes" />
+  </event>
+
+  <event name="Sedrun - Run On Unload">
+    <if_variable name="Sedrun System" comparator="LESS" value="1.0" />
+    <if_variable name="_SedrunOnUnloadRan" comparator="NOT" value="1.0" />
+      <set_variable name="Sector Locked" value="0.0" integer="yes" />
+
+    <set_variable name="_SedrunOnUnloadRan" value="1.0" integer="yes" />
+  </event>
+  <event name="Sedrun - Reset On Unload">
+    <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
+    <if_variable name="_SedrunOnUnloadRan" comparator="EQUALS" value="1.0" />
+    <set_variable name="_SedrunOnUnloadRan" value="0.0" integer="yes" />
+  </event>
+
+  <event name="Sedrun - Run If In Sector [1]">
+    <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <if_variable name="Sector" comparator="EQUALS" value="1" />
+      <if_variable name="Sedrun_1_Ring" comparator="NOT" value="1.0" />
+
+    <create type="genericMesh" x="22782.0" y="400.0" z="75717.0" name="x" meshFileName="dat\TSN\USFP\USFP-shipyard.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="23486.0" y="-1000.0" z="75315.0" name="y" meshFileName="dat\TSN\USFP\TSNGateMk2.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="3" name="x" />
+    <set_object_property property="pushRadius" value="0" name="x" />
+    <set_object_property property="angle" value="0.0" name="x" />
+    <set_object_property property="rollDelta" value="-0.1" name="x" />
+    <set_ship_text name="x" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_object_property property="artScale" value="3" name="y" />
+    <set_object_property property="pushRadius" value="0" name="y" />
+    <set_object_property property="pitch" value="1.5707645" name="y" />
+    <set_object_property property="angleDelta" value="0.10" name="y" />
+    <set_ship_text name="y" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_ship_text name="x" newname=" " class="Caltron Installation" />
+    <set_ship_text name="y" newname="  " class="Caltron Installation" />
+    <create type="genericMesh" x="24295.0" y="400.0" z="75272.0" name="x" meshFileName="dat\TSN\USFP\USFP-shipyard.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="24671.0" y="-1000.0" z="74554.0" name="y" meshFileName="dat\TSN\USFP\TSNGateMk2.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="3" name="x" />
+    <set_object_property property="pushRadius" value="0" name="x" />
+    <set_object_property property="angle" value="0.5711818181818182" name="x" />
+    <set_object_property property="rollDelta" value="0.1" name="x" />
+    <set_ship_text name="x" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_object_property property="artScale" value="3" name="y" />
+    <set_object_property property="pushRadius" value="0" name="y" />
+    <set_object_property property="pitch" value="1.5707645" name="y" />
+    <set_object_property property="angleDelta" value="0.18" name="y" />
+    <set_ship_text name="y" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_ship_text name="x" newname=" " class="Caltron Installation" />
+    <set_ship_text name="y" newname="  " class="Caltron Installation" />
+    <create type="genericMesh" x="25328.0" y="400.0" z="74080.0" name="x" meshFileName="dat\TSN\USFP\USFP-shipyard.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="25256.0" y="-1000.0" z="73272.0" name="y" meshFileName="dat\TSN\USFP\TSNGateMk2.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="3" name="x" />
+    <set_object_property property="pushRadius" value="0" name="x" />
+    <set_object_property property="angle" value="1.1423636363636365" name="x" />
+    <set_object_property property="rollDelta" value="-0.1" name="x" />
+    <set_ship_text name="x" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_object_property property="artScale" value="3" name="y" />
+    <set_object_property property="pushRadius" value="0" name="y" />
+    <set_object_property property="pitch" value="1.5707645" name="y" />
+    <set_object_property property="angleDelta" value="0.13" name="y" />
+    <set_ship_text name="y" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_ship_text name="x" newname=" " class="Caltron Installation" />
+    <set_ship_text name="y" newname="  " class="Caltron Installation" />
+    <create type="genericMesh" x="25553.0" y="400.0" z="72519.0" name="x" meshFileName="dat\TSN\USFP\USFP-shipyard.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="25056.0" y="-1000.0" z="71879.0" name="y" meshFileName="dat\TSN\USFP\TSNGateMk2.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="3" name="x" />
+    <set_object_property property="pushRadius" value="0" name="x" />
+    <set_object_property property="angle" value="1.7135454545454545" name="x" />
+    <set_object_property property="rollDelta" value="0.1" name="x" />
+    <set_ship_text name="x" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_object_property property="artScale" value="3" name="y" />
+    <set_object_property property="pushRadius" value="0" name="y" />
+    <set_object_property property="pitch" value="1.5707645" name="y" />
+    <set_object_property property="angleDelta" value="0.15" name="y" />
+    <set_ship_text name="y" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_ship_text name="x" newname=" " class="Caltron Installation" />
+    <set_ship_text name="y" newname="  " class="Caltron Installation" />
+    <create type="genericMesh" x="24898.0" y="400.0" z="71084.0" name="x" meshFileName="dat\TSN\USFP\USFP-shipyard.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="24133.0" y="-1000.0" z="70814.0" name="y" meshFileName="dat\TSN\USFP\TSNGateMk2.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="3" name="x" />
+    <set_object_property property="pushRadius" value="0" name="x" />
+    <set_object_property property="angle" value="2.284727272727273" name="x" />
+    <set_object_property property="rollDelta" value="-0.1" name="x" />
+    <set_ship_text name="x" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_object_property property="artScale" value="3" name="y" />
+    <set_object_property property="pushRadius" value="0" name="y" />
+    <set_object_property property="pitch" value="1.5707645" name="y" />
+    <set_object_property property="angleDelta" value="0.11" name="y" />
+    <set_ship_text name="y" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_ship_text name="x" newname=" " class="Caltron Installation" />
+    <set_ship_text name="y" newname="  " class="Caltron Installation" />
+    <create type="genericMesh" x="23571.0" y="400.0" z="70231.0" name="x" meshFileName="dat\TSN\USFP\USFP-shipyard.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="22782.0" y="-1000.0" z="70418.0" name="y" meshFileName="dat\TSN\USFP\TSNGateMk2.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="3" name="x" />
+    <set_object_property property="pushRadius" value="0" name="x" />
+    <set_object_property property="angle" value="2.855909090909091" name="x" />
+    <set_object_property property="rollDelta" value="0.1" name="x" />
+    <set_ship_text name="x" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_object_property property="artScale" value="3" name="y" />
+    <set_object_property property="pushRadius" value="0" name="y" />
+    <set_object_property property="pitch" value="1.5707645" name="y" />
+    <set_object_property property="angleDelta" value="0.14" name="y" />
+    <set_ship_text name="y" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_ship_text name="x" newname=" " class="Caltron Installation" />
+    <set_ship_text name="y" newname="  " class="Caltron Installation" />
+    <create type="genericMesh" x="21994.0" y="400.0" z="70231.0" name="x" meshFileName="dat\TSN\USFP\USFP-shipyard.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="21431.0" y="-1000.0" z="70814.0" name="y" meshFileName="dat\TSN\USFP\TSNGateMk2.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="3" name="x" />
+    <set_object_property property="pushRadius" value="0" name="x" />
+    <set_object_property property="angle" value="3.427090909090909" name="x" />
+    <set_object_property property="rollDelta" value="-0.1" name="x" />
+    <set_ship_text name="x" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_object_property property="artScale" value="3" name="y" />
+    <set_object_property property="pushRadius" value="0" name="y" />
+    <set_object_property property="pitch" value="1.5707645" name="y" />
+    <set_object_property property="angleDelta" value="0.14" name="y" />
+    <set_ship_text name="y" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_ship_text name="x" newname=" " class="Caltron Installation" />
+    <set_ship_text name="y" newname="  " class="Caltron Installation" />
+    <create type="genericMesh" x="20667.0" y="400.0" z="71084.0" name="x" meshFileName="dat\TSN\USFP\USFP-shipyard.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="20509.0" y="-1000.0" z="71879.0" name="y" meshFileName="dat\TSN\USFP\TSNGateMk2.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="3" name="x" />
+    <set_object_property property="pushRadius" value="0" name="x" />
+    <set_object_property property="angle" value="3.9982727272727274" name="x" />
+    <set_object_property property="rollDelta" value="0.1" name="x" />
+    <set_ship_text name="x" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_object_property property="artScale" value="3" name="y" />
+    <set_object_property property="pushRadius" value="0" name="y" />
+    <set_object_property property="pitch" value="1.5707645" name="y" />
+    <set_object_property property="angleDelta" value="0.11" name="y" />
+    <set_ship_text name="y" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_ship_text name="x" newname=" " class="Caltron Installation" />
+    <set_ship_text name="y" newname="  " class="Caltron Installation" />
+    <create type="genericMesh" x="20011.0" y="400.0" z="72519.0" name="x" meshFileName="dat\TSN\USFP\USFP-shipyard.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="20308.0" y="-1000.0" z="73272.0" name="y" meshFileName="dat\TSN\USFP\TSNGateMk2.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="3" name="x" />
+    <set_object_property property="pushRadius" value="0" name="x" />
+    <set_object_property property="angle" value="4.569454545454546" name="x" />
+    <set_object_property property="rollDelta" value="-0.1" name="x" />
+    <set_ship_text name="x" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_object_property property="artScale" value="3" name="y" />
+    <set_object_property property="pushRadius" value="0" name="y" />
+    <set_object_property property="pitch" value="1.5707645" name="y" />
+    <set_object_property property="angleDelta" value="0.15" name="y" />
+    <set_ship_text name="y" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_ship_text name="x" newname=" " class="Caltron Installation" />
+    <set_ship_text name="y" newname="  " class="Caltron Installation" />
+    <create type="genericMesh" x="20235.0" y="400.0" z="74079.0" name="x" meshFileName="dat\TSN\USFP\USFP-shipyard.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="20893.0" y="-1000.0" z="74553.0" name="y" meshFileName="dat\TSN\USFP\TSNGateMk2.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="3" name="x" />
+    <set_object_property property="pushRadius" value="0" name="x" />
+    <set_object_property property="angle" value="5.140636363636364" name="x" />
+    <set_object_property property="rollDelta" value="0.1" name="x" />
+    <set_ship_text name="x" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_object_property property="artScale" value="3" name="y" />
+    <set_object_property property="pushRadius" value="0" name="y" />
+    <set_object_property property="pitch" value="1.5707645" name="y" />
+    <set_object_property property="angleDelta" value="0.12" name="y" />
+    <set_ship_text name="y" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_ship_text name="x" newname=" " class="Caltron Installation" />
+    <set_ship_text name="y" newname="  " class="Caltron Installation" />
+    <create type="genericMesh" x="21268.0" y="400.0" z="75272.0" name="x" meshFileName="dat\TSN\USFP\USFP-shipyard.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="22078.0" y="-1000.0" z="75315.0" name="y" meshFileName="dat\TSN\USFP\TSNGateMk2.dxs" textureFileName="dat\TSN\Planets\planetTex6.png" colorRed="0.0" colorGreen="1.0" colorBlue="1.0" />
+
+    <set_object_property property="artScale" value="3" name="x" />
+    <set_object_property property="pushRadius" value="0" name="x" />
+    <set_object_property property="angle" value="5.711818181818182" name="x" />
+    <set_object_property property="rollDelta" value="-0.1" name="x" />
+    <set_ship_text name="x" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_object_property property="artScale" value="3" name="y" />
+    <set_object_property property="pushRadius" value="0" name="y" />
+    <set_object_property property="pitch" value="1.5707645" name="y" />
+    <set_object_property property="angleDelta" value="0.14" name="y" />
+    <set_ship_text name="y" race="Caltron" class="Installation" desc="Some metallic installation protruding from the planetoid." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+
+    <set_ship_text name="x" newname=" " class="Caltron Installation" />
+    <set_ship_text name="y" newname="  " class="Caltron Installation" />
+
+  <set_variable name="Sedrun_1_Ring" value="1.0" integer="yes" />
+
+  </event>
+
+  <event name="Sedrun - Run If Not In Sector [1]">
+    <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
+        <if_variable name="Sector" comparator="NOT" value="1" />
+      <if_variable name="Sedrun_1_Ring" comparator="EQUALS" value="1.0" />
+    <destroy name=" " />
+    <destroy name="  " />
+    <destroy name=" " />
+    <destroy name="  " />
+    <destroy name=" " />
+    <destroy name="  " />
+    <destroy name=" " />
+    <destroy name="  " />
+    <destroy name=" " />
+    <destroy name="  " />
+    <destroy name=" " />
+    <destroy name="  " />
+    <destroy name=" " />
+    <destroy name="  " />
+    <destroy name=" " />
+    <destroy name="  " />
+    <destroy name=" " />
+    <destroy name="  " />
+    <destroy name=" " />
+    <destroy name="  " />
+    <destroy name=" " />
+    <destroy name="  " />
+  <set_variable name="Sedrun_1_Ring" value="0.0" integer="yes" />
+
+  </event>
+
+
+  <event name="Sedrun - Run If In Sector [1]">
+    <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <if_variable name="Sector" comparator="EQUALS" value="1" />
+      <if_variable name="Sedrun_Button" comparator="NOT" value="1.0" />
+  <set_gm_button text="ToIronMoon" x="840" y="120" h="30" w="90" />
+  <set_gm_button text="IMRename" x="840" y="150" h="30" w="90" />
+  <clear_gm_button text="ToSedrun" />
+  <set_variable name="Sedrun_Button" value="1.0" integer="yes" />
+
+  </event>
+
+  <event name="Sedrun - Run If In Sector [2]">
+    <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <if_variable name="Sector" comparator="EQUALS" value="2" />
+      <if_variable name="Sedrun_Button" comparator="NOT" value="2.0" />
+  <set_gm_button text="ToSedrun" x="840" y="120" h="30" w="90" />
+  <clear_gm_button text="ToIronMoon" />
+  <clear_gm_button text="IMRename" />
+  <set_variable name="Sedrun_Button" value="2.0" integer="yes" />
+
+  </event>
+
+<event name="Sedrun Refresh Le Menu">
+  <if_variable name="GM_Menu_Clear_All" comparator="GREATER_EQUAL" value="1.0" />
+  <clear_gm_button text="ToIronMoon" />
+  <clear_gm_button text="ToSedrun" />
+  <clear_gm_button text="IMRename" />
+  <set_variable name="Sedrun_1_Button" value="0.0" integer="yes" />
+</event>
+
+<event name="Iron Moon Rename">
+    <if_gm_button text="IMRename" />
+    <set_ship_text name="*UNKNOWN*" newname="Iron Moon" />
+</event>
+
+  <event name="Sedrun - Run If Not In Sector [1]">
+    <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
+        <if_variable name="Sector" comparator="NOT" value="1" />
+      <if_exists name="Iron Moon" />
+  <destroy name="Iron Moon" />
+
+  </event>
+
+<event name="Sedrun Teleport">
+  <if_gm_button text="ToIronMoon" />
+  <set_variable name="Sector Locked" value="0.0" integer="yes" />
+    <set_object_property property="positionZ" value="99990.0" player_slot="0" />
+    <set_object_property property="positionX" value="49000.0" player_slot="0" />
+    <set_object_property property="angle" value="0.0" player_slot="0" />
+    <set_object_property property="positionZ" value="99990.0" player_slot="1" />
+    <set_object_property property="positionX" value="49100.0" player_slot="1" />
+    <set_object_property property="angle" value="0.0" player_slot="1" />
+    <set_object_property property="positionZ" value="99990.0" player_slot="2" />
+    <set_object_property property="positionX" value="49200.0" player_slot="2" />
+    <set_object_property property="angle" value="0.0" player_slot="2" />
+    <set_object_property property="positionZ" value="99990.0" player_slot="3" />
+    <set_object_property property="positionX" value="49300.0" player_slot="3" />
+    <set_object_property property="angle" value="0.0" player_slot="3" />
+    <set_object_property property="positionZ" value="99990.0" player_slot="4" />
+    <set_object_property property="positionX" value="49400.0" player_slot="4" />
+    <set_object_property property="angle" value="0.0" player_slot="4" />
+    <set_object_property property="positionZ" value="99990.0" player_slot="5" />
+    <set_object_property property="positionX" value="49500.0" player_slot="5" />
+    <set_object_property property="angle" value="0.0" player_slot="5" />
+    <set_object_property property="positionZ" value="99990.0" player_slot="6" />
+    <set_object_property property="positionX" value="49600.0" player_slot="6" />
+    <set_object_property property="angle" value="0.0" player_slot="6" />
+    <set_object_property property="positionZ" value="99990.0" player_slot="7" />
+    <set_object_property property="positionX" value="49700.0" player_slot="7" />
+    <set_object_property property="angle" value="0.0" player_slot="7" />
+  <!-- I feel gross for this one -->
+  <set_timer name="Sedrun_LockReset" seconds="5" />
+</event>
+
+<event name="Iron Moon Teleport">
+  <if_gm_button text="ToSedrun" />
+  <set_variable name="Sector Locked" value="0.0" integer="yes" />
+    <set_object_property property="positionZ" value="10.0" player_slot="0" />
+    <set_object_property property="positionX" value="49000.0" player_slot="0" />
+    <set_object_property property="angle" value="3.141592654" player_slot="0" />
+    <set_object_property property="positionZ" value="10.0" player_slot="1" />
+    <set_object_property property="positionX" value="49100.0" player_slot="1" />
+    <set_object_property property="angle" value="3.141592654" player_slot="1" />
+    <set_object_property property="positionZ" value="10.0" player_slot="2" />
+    <set_object_property property="positionX" value="49200.0" player_slot="2" />
+    <set_object_property property="angle" value="3.141592654" player_slot="2" />
+    <set_object_property property="positionZ" value="10.0" player_slot="3" />
+    <set_object_property property="positionX" value="49300.0" player_slot="3" />
+    <set_object_property property="angle" value="3.141592654" player_slot="3" />
+    <set_object_property property="positionZ" value="10.0" player_slot="4" />
+    <set_object_property property="positionX" value="49400.0" player_slot="4" />
+    <set_object_property property="angle" value="3.141592654" player_slot="4" />
+    <set_object_property property="positionZ" value="10.0" player_slot="5" />
+    <set_object_property property="positionX" value="49500.0" player_slot="5" />
+    <set_object_property property="angle" value="3.141592654" player_slot="5" />
+    <set_object_property property="positionZ" value="10.0" player_slot="6" />
+    <set_object_property property="positionX" value="49600.0" player_slot="6" />
+    <set_object_property property="angle" value="3.141592654" player_slot="6" />
+    <set_object_property property="positionZ" value="10.0" player_slot="7" />
+    <set_object_property property="positionX" value="49700.0" player_slot="7" />
+    <set_object_property property="angle" value="3.141592654" player_slot="7" />
+  <!-- I feel gross for this one -->
+  <set_timer name="Sedrun_LockReset" seconds="5" />
+</event>
+  
+<event name="Lock Reset">
+  <if_timer_finished name="Sedrun_LockReset" />
+  <if_variable name="Sector Locked" value="1.0" comparator="NOT" />
+  <set_variable name="Sector Locked" value="1.0" integer="yes" />
+</event>
+
+  <event name="Sedrun - Run If In Sector [2]">
+    <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <if_variable name="Sector" comparator="EQUALS" value="2" />
+        <!-- Iron Moon Check Ship1 -->
+    <if_timer_finished name="Sedrun_IronMoon_Check" />
+    <if_outside_sphere player_slot="0" centerX="50000" centerY="0" centerZ="50000" radius="50000" />
+    <get_object_property player_slot="0" property="positionX" variable="sedrunposX" />
+    <get_object_property player_slot="0" property="positionZ" variable="sedrunposZ" />
+
+    <set_object_property player_slot="0" property="positionX" value="50000+(50000-sedrunposX)" />
+    <set_object_property player_slot="0" property="positionZ" value="50000+(50000-sedrunposZ)" />
+
+  </event>
+
+  <event name="Sedrun - Run If In Sector [2]">
+    <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <if_variable name="Sector" comparator="EQUALS" value="2" />
+        <!-- Iron Moon Check Ship2 -->
+    <if_timer_finished name="Sedrun_IronMoon_Check" />
+    <if_outside_sphere player_slot="1" centerX="50000" centerY="0" centerZ="50000" radius="50000" />
+    <get_object_property player_slot="1" property="positionX" variable="sedrunposX" />
+    <get_object_property player_slot="1" property="positionZ" variable="sedrunposZ" />
+
+    <set_object_property player_slot="1" property="positionX" value="50000+(50000-sedrunposX)" />
+    <set_object_property player_slot="1" property="positionZ" value="50000+(50000-sedrunposZ)" />
+
+  </event>
+
+  <event name="Sedrun - Run If In Sector [2]">
+    <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <if_variable name="Sector" comparator="EQUALS" value="2" />
+        <!-- Iron Moon Check Ship3 -->
+    <if_timer_finished name="Sedrun_IronMoon_Check" />
+    <if_outside_sphere player_slot="2" centerX="50000" centerY="0" centerZ="50000" radius="50000" />
+    <get_object_property player_slot="2" property="positionX" variable="sedrunposX" />
+    <get_object_property player_slot="2" property="positionZ" variable="sedrunposZ" />
+
+    <set_object_property player_slot="2" property="positionX" value="50000+(50000-sedrunposX)" />
+    <set_object_property player_slot="2" property="positionZ" value="50000+(50000-sedrunposZ)" />
+
+  </event>
+
+  <event name="Sedrun - Run If In Sector [2]">
+    <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <if_variable name="Sector" comparator="EQUALS" value="2" />
+        <!-- Iron Moon Check Ship4 -->
+    <if_timer_finished name="Sedrun_IronMoon_Check" />
+    <if_outside_sphere player_slot="3" centerX="50000" centerY="0" centerZ="50000" radius="50000" />
+    <get_object_property player_slot="3" property="positionX" variable="sedrunposX" />
+    <get_object_property player_slot="3" property="positionZ" variable="sedrunposZ" />
+
+    <set_object_property player_slot="3" property="positionX" value="50000+(50000-sedrunposX)" />
+    <set_object_property player_slot="3" property="positionZ" value="50000+(50000-sedrunposZ)" />
+
+  </event>
+
+  <event name="Sedrun - Run If In Sector [2]">
+    <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <if_variable name="Sector" comparator="EQUALS" value="2" />
+        <!-- Iron Moon Check Ship5 -->
+    <if_timer_finished name="Sedrun_IronMoon_Check" />
+    <if_outside_sphere player_slot="4" centerX="50000" centerY="0" centerZ="50000" radius="50000" />
+    <get_object_property player_slot="4" property="positionX" variable="sedrunposX" />
+    <get_object_property player_slot="4" property="positionZ" variable="sedrunposZ" />
+
+    <set_object_property player_slot="4" property="positionX" value="50000+(50000-sedrunposX)" />
+    <set_object_property player_slot="4" property="positionZ" value="50000+(50000-sedrunposZ)" />
+
+  </event>
+
+  <event name="Sedrun - Run If In Sector [2]">
+    <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <if_variable name="Sector" comparator="EQUALS" value="2" />
+        <!-- Iron Moon Check Ship6 -->
+    <if_timer_finished name="Sedrun_IronMoon_Check" />
+    <if_outside_sphere player_slot="5" centerX="50000" centerY="0" centerZ="50000" radius="50000" />
+    <get_object_property player_slot="5" property="positionX" variable="sedrunposX" />
+    <get_object_property player_slot="5" property="positionZ" variable="sedrunposZ" />
+
+    <set_object_property player_slot="5" property="positionX" value="50000+(50000-sedrunposX)" />
+    <set_object_property player_slot="5" property="positionZ" value="50000+(50000-sedrunposZ)" />
+
+  </event>
+
+  <event name="Sedrun - Run If In Sector [2]">
+    <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <if_variable name="Sector" comparator="EQUALS" value="2" />
+        <!-- Iron Moon Check Ship7 -->
+    <if_timer_finished name="Sedrun_IronMoon_Check" />
+    <if_outside_sphere player_slot="6" centerX="50000" centerY="0" centerZ="50000" radius="50000" />
+    <get_object_property player_slot="6" property="positionX" variable="sedrunposX" />
+    <get_object_property player_slot="6" property="positionZ" variable="sedrunposZ" />
+
+    <set_object_property player_slot="6" property="positionX" value="50000+(50000-sedrunposX)" />
+    <set_object_property player_slot="6" property="positionZ" value="50000+(50000-sedrunposZ)" />
+
+  </event>
+
+  <event name="Sedrun - Run If In Sector [2]">
+    <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <if_variable name="Sector" comparator="EQUALS" value="2" />
+        <!-- Iron Moon Check Ship8 -->
+    <if_timer_finished name="Sedrun_IronMoon_Check" />
+    <if_outside_sphere player_slot="7" centerX="50000" centerY="0" centerZ="50000" radius="50000" />
+    <get_object_property player_slot="7" property="positionX" variable="sedrunposX" />
+    <get_object_property player_slot="7" property="positionZ" variable="sedrunposZ" />
+
+    <set_object_property player_slot="7" property="positionX" value="50000+(50000-sedrunposX)" />
+    <set_object_property player_slot="7" property="positionZ" value="50000+(50000-sedrunposZ)" />
+
+  </event>
+
+
+  <event name="Sedrun - Run If In Sector [2]">
+    <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
+    <if_variable name="Sector" comparator="NOT" value="0.0" />
+        <if_variable name="Sector" comparator="EQUALS" value="2" />
+      <!-- Timer Reset -->
+  <if_timer_finished name="Sedrun_IronMoon_Check" />
+  <set_timer name="Sedrun_IronMoon_Check" seconds="1" />
+
+  </event>

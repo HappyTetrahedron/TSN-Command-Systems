@@ -1,0 +1,692 @@
+<mission_data version="1.0" background_id_arme="4076349e-e1c0-4950-8e05-27c894bfaff8" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <start id_arme="4076349e-e1c0-4950-8e05-27c894bfaff8">
+    <set_variable name="Coordinate X" value="1700.0" />
+    <set_variable name="Coordinate Y" value="290.0" />
+    <set_variable name="Width" value="1.0" />
+    <set_variable name="Height" value="2.0" />
+    <set_variable name="Alignment" value="Hegemony" />
+    <set_variable name="Skybox" value="27.0" />
+  </start>
+  <event name="Sector 1" id_arme="a7d0b21d-dd0a-4bc2-bd4f-2d5c7a5e0f19">
+    <create count="10" type="nebulas" nebType="2" startX="40824.0" startY="0.0" startZ="34205.0" endX="40824.0" endY="0.0" endZ="34205.0" randomRange="2000" />
+    <create count="10" type="nebulas" nebType="2" startX="61030.0" startY="0.0" startZ="64205.0" endX="61030.0" endY="0.0" endZ="64205.0" randomRange="2000" />
+    <create count="10" type="nebulas" nebType="2" startX="7429.0" startY="0.0" startZ="42657.0" endX="7429.0" endY="0.0" endZ="42657.0" randomRange="2000" />
+    <create count="10" type="nebulas" nebType="2" startX="30569.0" startY="0.0" startZ="52299.0" endX="30569.0" endY="0.0" endZ="52299.0" randomRange="2000" />
+    <create count="10" type="nebulas" nebType="2" startX="55785.0" startY="0.0" startZ="91606.0" endX="55785.0" endY="0.0" endZ="91606.0" randomRange="2000" />
+    <create count="100" type="nebulas" nebType="2" startX="23078.0" startY="0.0" startZ="72768.0" radius="12670" randomRange="4000" />
+    <create count="30" type="mines" startAngle="-140" endAngle="10" startX="38505.0" startY="0.0" startZ="65129.0" radius="10000" />
+    <create count="30" type="mines" startAngle="-100" endAngle="50" startX="31756.0" startY="0.0" startZ="46069.0" radius="10000" />
+    <create count="30" type="mines" startAngle="-180" endAngle="-30" startX="40581.0" startY="0.0" startZ="83745.0" radius="10000" />
+    <create count="150" type="nebulas" nebType="2" startAngle="-110" endAngle="10" startX="7652.0" startY="0.0" startZ="87898.0" radius="38506" randomRange="5000" />
+    <create count="150" type="nebulas" nebType="2" startAngle="-110" endAngle="10" startX="3647.0" startY="0.0" startZ="57713.0" radius="38506" randomRange="5000" />
+    <create count="30" type="mines" startAngle="-120" endAngle="30" startX="11360.0" startY="0.0" startZ="31755.0" radius="10000" />
+    <create count="150" type="asteroids" startAngle="-110" endAngle="10" startX="5575.0" startY="0.0" startZ="95241.0" radius="70552" randomRange="10000" />
+    <create count="60" type="mines" startAngle="-20" endAngle="320" startX="82411.0" startY="0.0" startZ="15438.0" radius="6000" />
+    <create count="10" type="nebulas" nebType="1" startX="23078.0" startY="0.0" startZ="72991.0" endX="23078.0" endY="0.0" endZ="72991.0" randomRange="2000" />
+    <create count="3" type="nebulas" nebType="2" startX="55266.0" startY="0.0" startZ="62830.0" endX="58455.0" endY="0.0" endZ="63423.0" randomRange="500" />
+    <create count="5" type="nebulas" nebType="2" startX="79485.0" startY="0.0" startZ="95173.0" endX="57509.0" endY="0.0" endZ="41051.0" randomRange="15000" />
+    <create count="3" type="nebulas" nebType="2" startX="52967.0" startY="0.0" startZ="87453.0" endX="55340.0" endY="0.0" endZ="90123.0" randomRange="500" />
+    <create type="neutral" x="31607.0" y="0.0" z="30271.0" angle="282.7" name="Reservoir" hullID="7714" />
+    <create type="genericMesh" x="82485.0" y="1.0" z="15735.0" name="Burin Gate" meshFileName="dat\TSN\USFP\TSNGate.dxs" textureFileName="dat\TSN\USFP\TSNGate.png" colorRed="1.0" colorGreen="0.5" colorBlue="0.0" />
+    <create type="neutral" x="85971.0" y="0.0" z="27750.0" angle="39.1" name="Flow Control" hullID="7714" />
+    <create type="neutral" x="34055.0" y="0.0" z="72249.0" angle="121.4" name="Communion" hullID="7714" />
+    <create type="genericMesh" x="22782.0" y="0.0" z="72917.0" name="DEATHSTAR*UNKNOWN*" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="0.8" colorBlue="0.0" />
+    <create type="genericMesh" x="27528.0" y="0.0" z="27453.0" name="SAND-PLANETDisentis" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.0" colorGreen="0.8" colorBlue="0.0" />
+    <create type="neutral" x="61051.0" y="0.0" z="60383.0" angle="160" name="Immense Mission" hullID="7714" />
+    <create type="genericMesh" x="39766.0" y="0.0" z="34128.0" name="Chunk" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="30272.0" y="0.0" z="52076.0" name="Boulder" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="59865.0" y="0.0" z="64536.0" name="Rock" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="7726.0" y="0.0" z="42954.0" name="Hunk" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="55563.0" y="0.0" z="91532.0" name="Thunk" meshFileName="dat\asteroid10.dxs" textureFileName="dat\white32.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="neutral" x="58085.0" y="0.0" z="85970.0" angle="70.1" name="Watchful Eye" hullID="7714" />
+    <create type="neutral" x="33239.0" y="0.0" z="24412.0" angle="87.4" name="Formidable Mission" hullID="7714" />
+    <set_ship_text name="Formidable Mission" race="Budron" class="Mining Platform" desc="Budron mining operation, apparently focused on transporting large volumes of dihydrogen monoxide gasses." scan_desc="Station is completely filled with phosphorous water." hailtext="We are not permitted to speak to you, strangers." />
+    <set_ship_text name="Immense Mission" race="Budron" class="Mining Platform" desc="Budron mining operation, apparently focused on transporting large volumes of dihydrogen monoxide gasses." scan_desc="Station is completely filled with phosphorous water." hailtext="We are not permitted to speak to you, strangers." />
+    <set_ship_text name="Reservoir" race="Budron" class="Water Reservoir" desc="Station purpose-built to hold immense volumes of water ice and evaporate it into space." scan_desc="Trace analysis indicates that the water was largely sourced from the planet Disentis.^It also contains traces of flavor compounds associated with Budron holy individuals." hailtext="Please respect our full authority in these waters, as the Prophecy foretold." />
+    <set_ship_text name="Watchful Eye" race="Budron" class="Clergy" desc="Some manner of overseeing station. Exact purpose unknown." scan_desc="Station is equipped with advanced sensing equipment." hailtext="Please respect our full authority in these waters, as the Prophecy foretold." />
+    <set_ship_text name="Communion" race="Budron" class="Temple" desc="Hull design matches with known Budron temple station architecture.^No activity detected. Station appears derelict." scan_desc="No life signs. No phosphorous water aboard station detected. Station is inhabitable to Budrons.^^Nearby space contains traces of flavor compounds associated with Budron holy individuals." hailtext="[AUTOMATED RESPONSE]" />
+    <set_ship_text name="Flow Control" race="Budron" class="Clergy" desc="Administrative station and border control at Burin Gate." scan_desc="Station may have moderate defensive capabilities." hailtext="Please respect our full authority in these waters, as the Prophecy foretold." />
+    <set_ship_text name="Hunk" class="Ice Asteroid" desc="Large asteroid, primarily comprised of water-ice. Slowly outgassing water vapor into space, creating a high concentration of dihydrogen monoxide gasses in the region." scan_desc="Anchoring points detected on the surface. This object was likely brought here from somewhere else." hailtext="..." />
+    <set_ship_text name="Chunk" class="Ice Asteroid" desc="Large asteroid, primarily comprised of water-ice. Slowly outgassing water vapor into space, creating a high concentration of dihydrogen monoxide gasses in the region." scan_desc="Anchoring points detected on the surface. This object was likely brought here from somewhere else." hailtext="..." />
+    <set_ship_text name="Boulder" class="Ice Asteroid" desc="Large asteroid, primarily comprised of water-ice. Slowly outgassing water vapor into space, creating a high concentration of dihydrogen monoxide gasses in the region." scan_desc="Composition matches that of ice comet &quot;Polyna&quot; in Burin system" hailtext="..." />
+    <set_ship_text name="Thunk" class="Ice Asteroid" desc="Large asteroid, primarily comprised of water-ice. Slowly outgassing water vapor into space, creating a high concentration of dihydrogen monoxide gasses in the region." scan_desc="Composition matches that of ice comet &quot;Polyna&quot; in Burin system" hailtext="..." />
+    <set_ship_text name="Rock" class="Ice Asteroid" desc="Large asteroid, primarily comprised of water-ice. Slowly outgassing water vapor into space, creating a high concentration of dihydrogen monoxide gasses in the region." scan_desc="Anchoring points detected on the surface. This object was likely brought here from somewhere else." hailtext="..." />
+    <set_ship_text name="SAND-PLANETDisentis" race="Class Y" class="Planet" desc="Arid sand planet. Scans indicate 86% of the planet's surface used to be covered in water or water-ice." scan_desc="Detected mining installation on the surface, likely used to bring large volumes of water into space." hailtext="Please respect our full authority in these waters, as the Prophecy foretold." />
+    <set_ship_text name="DEATHSTAR*UNKNOWN*" race="That's No" class="Moon" desc="The object radiates infrared energy. Spectroscopic analysis results suggest a profile similar to a class of stellar object known as an iron star. Hawking radiation detected towards the poles. Gravity at surface: 25G. Invulnerable to conventional weaponry. Deep scan recommended." scan_desc="DATABASE MATCH: Caltron artifact, originally discovered 71023-2240 in Vilnara asteroid belt, titled 'Iron Moon'. [see: Zu Chongzhi et al].^^Artifact was later recognized by Budron contacts as a holy artefact of their culture, seized by Budron delegates, and hyperjumped to an unknown location." />
+  </event>
+  <event name="Sector 2" id_arme="23bc6bee-950a-4711-810e-b87143147071">
+    <create count="100" type="nebulas" nebType="1" startAngle="0" endAngle="360" startX="50000.0" startY="0.0" startZ="50000.0" radius="52500" />
+    <create count="1" type="mines" startX="93000-9000" startY="5000.0" startZ="7000+22000" />
+    <create count="1" type="mines" startX="93000-10000" startY="5000.0" startZ="7000+22000" />
+    <create count="1" type="mines" startX="93000-10000" startY="5000.0" startZ="7000+23000" />
+    <create count="1" type="mines" startX="93000-11000" startY="5000.0" startZ="7000+21000" />
+    <create count="1" type="mines" startX="93000-11000" startY="5000.0" startZ="7000+22000" />
+    <create count="1" type="mines" startX="93000-11000" startY="5000.0" startZ="7000+23000" />
+    <create count="1" type="mines" startX="93000-12000" startY="5000.0" startZ="7000+20000" />
+    <create count="1" type="mines" startX="93000-12000" startY="5000.0" startZ="7000+22000" />
+    <create count="1" type="mines" startX="93000-12000" startY="5000.0" startZ="7000+23000" />
+    <create count="1" type="mines" startX="93000-12000" startY="5000.0" startZ="7000+24000" />
+    <create count="1" type="mines" startX="93000-13000" startY="5000.0" startZ="7000+20000" />
+    <create count="1" type="mines" startX="93000-13000" startY="5000.0" startZ="7000+22000" />
+    <create count="1" type="mines" startX="93000-13000" startY="5000.0" startZ="7000+24000" />
+    <create count="1" type="mines" startX="93000-13000" startY="5000.0" startZ="7000+25000" />
+    <create count="1" type="mines" startX="93000-13000" startY="5000.0" startZ="7000+75000" />
+    <create count="1" type="mines" startX="93000-14000" startY="5000.0" startZ="7000+19000" />
+    <create count="1" type="mines" startX="93000-14000" startY="5000.0" startZ="7000+22000" />
+    <create count="1" type="mines" startX="93000-14000" startY="5000.0" startZ="7000+25000" />
+    <create count="1" type="mines" startX="93000-14000" startY="5000.0" startZ="7000+26000" />
+    <create count="1" type="mines" startX="93000-14000" startY="5000.0" startZ="7000+75000" />
+    <create count="1" type="mines" startX="93000-15000" startY="5000.0" startZ="7000+17000" />
+    <create count="1" type="mines" startX="93000-15000" startY="5000.0" startZ="7000+18000" />
+    <create count="1" type="mines" startX="93000-15000" startY="5000.0" startZ="7000+22000" />
+    <create count="1" type="mines" startX="93000-15000" startY="5000.0" startZ="7000+25000" />
+    <create count="1" type="mines" startX="93000-15000" startY="5000.0" startZ="7000+26000" />
+    <create count="1" type="mines" startX="93000-15000" startY="5000.0" startZ="7000+27000" />
+    <create count="1" type="mines" startX="93000-15000" startY="5000.0" startZ="7000+41000" />
+    <create count="1" type="mines" startX="93000-15000" startY="5000.0" startZ="7000+74000" />
+    <create count="1" type="mines" startX="93000-15000" startY="5000.0" startZ="7000+75000" />
+    <create count="1" type="mines" startX="93000-16000" startY="5000.0" startZ="7000+18000" />
+    <create count="1" type="mines" startX="93000-16000" startY="5000.0" startZ="7000+22000" />
+    <create count="1" type="mines" startX="93000-16000" startY="5000.0" startZ="7000+27000" />
+    <create count="1" type="mines" startX="93000-16000" startY="5000.0" startZ="7000+28000" />
+    <create count="1" type="mines" startX="93000-16000" startY="5000.0" startZ="7000+40000" />
+    <create count="1" type="mines" startX="93000-16000" startY="5000.0" startZ="7000+41000" />
+    <create count="1" type="mines" startX="93000-16000" startY="5000.0" startZ="7000+72000" />
+    <create count="1" type="mines" startX="93000-16000" startY="5000.0" startZ="7000+73000" />
+    <create count="1" type="mines" startX="93000-16000" startY="5000.0" startZ="7000+74000" />
+    <create count="1" type="mines" startX="93000-16000" startY="5000.0" startZ="7000+75000" />
+    <create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+18000" />
+    <create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+22000" />
+    <create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+26000" />
+    <create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+39000" />
+    <create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+40000" />
+    <create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+41000" />
+    <create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+67000" />
+    <create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+68000" />
+    <create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+69000" />
+    <create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+70000" />
+    <create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+71000" />
+    <create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+73000" />
+    <create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+74000" />
+    <create count="1" type="mines" startX="93000-17000" startY="5000.0" startZ="7000+75000" />
+    <create count="1" type="mines" startX="93000-18000" startY="5000.0" startZ="7000+19000" />
+    <create count="1" type="mines" startX="93000-18000" startY="5000.0" startZ="7000+22000" />
+    <create count="1" type="mines" startX="93000-18000" startY="5000.0" startZ="7000+26000" />
+    <create count="1" type="mines" startX="93000-18000" startY="5000.0" startZ="7000+41000" />
+    <create count="1" type="mines" startX="93000-18000" startY="5000.0" startZ="7000+68000" />
+    <create count="1" type="mines" startX="93000-18000" startY="5000.0" startZ="7000+73000" />
+    <create count="1" type="mines" startX="93000-18000" startY="5000.0" startZ="7000+75000" />
+    <create count="1" type="mines" startX="93000-19000" startY="5000.0" startZ="7000+20000" />
+    <create count="1" type="mines" startX="93000-19000" startY="5000.0" startZ="7000+22000" />
+    <create count="1" type="mines" startX="93000-19000" startY="5000.0" startZ="7000+25000" />
+    <create count="1" type="mines" startX="93000-19000" startY="5000.0" startZ="7000+41000" />
+    <create count="1" type="mines" startX="93000-19000" startY="5000.0" startZ="7000+68000" />
+    <create count="1" type="mines" startX="93000-19000" startY="5000.0" startZ="7000+73000" />
+    <create count="1" type="mines" startX="93000-19000" startY="5000.0" startZ="7000+75000" />
+    <create count="1" type="mines" startX="93000-20000" startY="5000.0" startZ="7000+20000" />
+    <create count="1" type="mines" startX="93000-20000" startY="5000.0" startZ="7000+23000" />
+    <create count="1" type="mines" startX="93000-20000" startY="5000.0" startZ="7000+25000" />
+    <create count="1" type="mines" startX="93000-20000" startY="5000.0" startZ="7000+41000" />
+    <create count="1" type="mines" startX="93000-20000" startY="5000.0" startZ="7000+42000" />
+    <create count="1" type="mines" startX="93000-20000" startY="5000.0" startZ="7000+68000" />
+    <create count="1" type="mines" startX="93000-20000" startY="5000.0" startZ="7000+72000" />
+    <create count="1" type="mines" startX="93000-20000" startY="5000.0" startZ="7000+73000" />
+    <create count="1" type="mines" startX="93000-20000" startY="5000.0" startZ="7000+75000" />
+    <create count="1" type="mines" startX="93000-20000" startY="5000.0" startZ="7000+76000" />
+    <create count="1" type="mines" startX="93000-21000" startY="5000.0" startZ="7000+21000" />
+    <create count="1" type="mines" startX="93000-21000" startY="5000.0" startZ="7000+23000" />
+    <create count="1" type="mines" startX="93000-21000" startY="5000.0" startZ="7000+25000" />
+    <create count="1" type="mines" startX="93000-21000" startY="5000.0" startZ="7000+42000" />
+    <create count="1" type="mines" startX="93000-21000" startY="5000.0" startZ="7000+68000" />
+    <create count="1" type="mines" startX="93000-21000" startY="5000.0" startZ="7000+72000" />
+    <create count="1" type="mines" startX="93000-21000" startY="5000.0" startZ="7000+76000" />
+    <create count="1" type="mines" startX="93000-22000" startY="5000.0" startZ="7000+22000" />
+    <create count="1" type="mines" startX="93000-22000" startY="5000.0" startZ="7000+23000" />
+    <create count="1" type="mines" startX="93000-22000" startY="5000.0" startZ="7000+25000" />
+    <create count="1" type="mines" startX="93000-22000" startY="5000.0" startZ="7000+42000" />
+    <create count="1" type="mines" startX="93000-22000" startY="5000.0" startZ="7000+68000" />
+    <create count="1" type="mines" startX="93000-22000" startY="5000.0" startZ="7000+71000" />
+    <create count="1" type="mines" startX="93000-22000" startY="5000.0" startZ="7000+72000" />
+    <create count="1" type="mines" startX="93000-22000" startY="5000.0" startZ="7000+76000" />
+    <create count="1" type="mines" startX="93000-22000" startY="5000.0" startZ="7000+77000" />
+    <create count="1" type="mines" startX="93000-23000" startY="5000.0" startZ="7000+22000" />
+    <create count="1" type="mines" startX="93000-23000" startY="5000.0" startZ="7000+24000" />
+    <create count="1" type="mines" startX="93000-23000" startY="5000.0" startZ="7000+25000" />
+    <create count="1" type="mines" startX="93000-23000" startY="5000.0" startZ="7000+42000" />
+    <create count="1" type="mines" startX="93000-23000" startY="5000.0" startZ="7000+67000" />
+    <create count="1" type="mines" startX="93000-23000" startY="5000.0" startZ="7000+70000" />
+    <create count="1" type="mines" startX="93000-23000" startY="5000.0" startZ="7000+71000" />
+    <create count="1" type="mines" startX="93000-23000" startY="5000.0" startZ="7000+76000" />
+    <create count="1" type="mines" startX="93000-24000" startY="5000.0" startZ="7000+23000" />
+    <create count="1" type="mines" startX="93000-24000" startY="5000.0" startZ="7000+24000" />
+    <create count="1" type="mines" startX="93000-24000" startY="5000.0" startZ="7000+25000" />
+    <create count="1" type="mines" startX="93000-24000" startY="5000.0" startZ="7000+42000" />
+    <create count="1" type="mines" startX="93000-24000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-24000" startY="5000.0" startZ="7000+67000" />
+    <create count="1" type="mines" startX="93000-24000" startY="5000.0" startZ="7000+69000" />
+    <create count="1" type="mines" startX="93000-24000" startY="5000.0" startZ="7000+70000" />
+    <create count="1" type="mines" startX="93000-24000" startY="5000.0" startZ="7000+75000" />
+    <create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+24000" />
+    <create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+25000" />
+    <create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+26000" />
+    <create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+42000" />
+    <create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+54000" />
+    <create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+55000" />
+    <create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+56000" />
+    <create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+57000" />
+    <create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+58000" />
+    <create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+59000" />
+    <create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+60000" />
+    <create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+61000" />
+    <create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+67000" />
+    <create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+68000" />
+    <create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+69000" />
+    <create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+73000" />
+    <create count="1" type="mines" startX="93000-25000" startY="5000.0" startZ="7000+74000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+25000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+27000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+42000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+52000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+53000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+55000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+56000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+57000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+58000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+59000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+60000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+61000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+62000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+63000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+64000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+65000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+66000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+67000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+68000" />
+    <create count="1" type="mines" startX="93000-26000" startY="5000.0" startZ="7000+72000" />
+    <create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+26000" />
+    <create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+28000" />
+    <create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+42000" />
+    <create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+51000" />
+    <create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+53000" />
+    <create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+54000" />
+    <create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+62000" />
+    <create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+63000" />
+    <create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+64000" />
+    <create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+65000" />
+    <create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+66000" />
+    <create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+67000" />
+    <create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+68000" />
+    <create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+69000" />
+    <create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+70000" />
+    <create count="1" type="mines" startX="93000-27000" startY="5000.0" startZ="7000+71000" />
+    <create count="1" type="mines" startX="93000-28000" startY="5000.0" startZ="7000+26000" />
+    <create count="1" type="mines" startX="93000-28000" startY="5000.0" startZ="7000+27000" />
+    <create count="1" type="mines" startX="93000-28000" startY="5000.0" startZ="7000+29000" />
+    <create count="1" type="mines" startX="93000-28000" startY="5000.0" startZ="7000+30000" />
+    <create count="1" type="mines" startX="93000-28000" startY="5000.0" startZ="7000+42000" />
+    <create count="1" type="mines" startX="93000-28000" startY="5000.0" startZ="7000+44000" />
+    <create count="1" type="mines" startX="93000-28000" startY="5000.0" startZ="7000+50000" />
+    <create count="1" type="mines" startX="93000-28000" startY="5000.0" startZ="7000+51000" />
+    <create count="1" type="mines" startX="93000-28000" startY="5000.0" startZ="7000+53000" />
+    <create count="1" type="mines" startX="93000-29000" startY="5000.0" startZ="7000+27000" />
+    <create count="1" type="mines" startX="93000-29000" startY="5000.0" startZ="7000+28000" />
+    <create count="1" type="mines" startX="93000-29000" startY="5000.0" startZ="7000+29000" />
+    <create count="1" type="mines" startX="93000-29000" startY="5000.0" startZ="7000+31000" />
+    <create count="1" type="mines" startX="93000-29000" startY="5000.0" startZ="7000+32000" />
+    <create count="1" type="mines" startX="93000-29000" startY="5000.0" startZ="7000+42000" />
+    <create count="1" type="mines" startX="93000-29000" startY="5000.0" startZ="7000+44000" />
+    <create count="1" type="mines" startX="93000-29000" startY="5000.0" startZ="7000+49000" />
+    <create count="1" type="mines" startX="93000-29000" startY="5000.0" startZ="7000+52000" />
+    <create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+29000" />
+    <create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+30000" />
+    <create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+31000" />
+    <create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+32000" />
+    <create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+33000" />
+    <create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+34000" />
+    <create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+35000" />
+    <create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+42000" />
+    <create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+44000" />
+    <create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+49000" />
+    <create count="1" type="mines" startX="93000-30000" startY="5000.0" startZ="7000+52000" />
+    <create count="1" type="mines" startX="93000-31000" startY="5000.0" startZ="7000+32000" />
+    <create count="1" type="mines" startX="93000-31000" startY="5000.0" startZ="7000+33000" />
+    <create count="1" type="mines" startX="93000-31000" startY="5000.0" startZ="7000+35000" />
+    <create count="1" type="mines" startX="93000-31000" startY="5000.0" startZ="7000+36000" />
+    <create count="1" type="mines" startX="93000-31000" startY="5000.0" startZ="7000+42000" />
+    <create count="1" type="mines" startX="93000-31000" startY="5000.0" startZ="7000+44000" />
+    <create count="1" type="mines" startX="93000-31000" startY="5000.0" startZ="7000+49000" />
+    <create count="1" type="mines" startX="93000-31000" startY="5000.0" startZ="7000+52000" />
+    <create count="1" type="mines" startX="93000-32000" startY="5000.0" startZ="7000+34000" />
+    <create count="1" type="mines" startX="93000-32000" startY="5000.0" startZ="7000+36000" />
+    <create count="1" type="mines" startX="93000-32000" startY="5000.0" startZ="7000+41000" />
+    <create count="1" type="mines" startX="93000-32000" startY="5000.0" startZ="7000+42000" />
+    <create count="1" type="mines" startX="93000-32000" startY="5000.0" startZ="7000+44000" />
+    <create count="1" type="mines" startX="93000-32000" startY="5000.0" startZ="7000+49000" />
+    <create count="1" type="mines" startX="93000-32000" startY="5000.0" startZ="7000+51000" />
+    <create count="1" type="mines" startX="93000-32000" startY="5000.0" startZ="7000+52000" />
+    <create count="1" type="mines" startX="93000-33000" startY="5000.0" startZ="7000+35000" />
+    <create count="1" type="mines" startX="93000-33000" startY="5000.0" startZ="7000+37000" />
+    <create count="1" type="mines" startX="93000-33000" startY="5000.0" startZ="7000+41000" />
+    <create count="1" type="mines" startX="93000-33000" startY="5000.0" startZ="7000+44000" />
+    <create count="1" type="mines" startX="93000-33000" startY="5000.0" startZ="7000+48000" />
+    <create count="1" type="mines" startX="93000-33000" startY="5000.0" startZ="7000+51000" />
+    <create count="1" type="mines" startX="93000-34000" startY="5000.0" startZ="7000+35000" />
+    <create count="1" type="mines" startX="93000-34000" startY="5000.0" startZ="7000+37000" />
+    <create count="1" type="mines" startX="93000-34000" startY="5000.0" startZ="7000+40000" />
+    <create count="1" type="mines" startX="93000-34000" startY="5000.0" startZ="7000+44000" />
+    <create count="1" type="mines" startX="93000-34000" startY="5000.0" startZ="7000+48000" />
+    <create count="1" type="mines" startX="93000-34000" startY="5000.0" startZ="7000+51000" />
+    <create count="1" type="mines" startX="93000-35000" startY="5000.0" startZ="7000+35000" />
+    <create count="1" type="mines" startX="93000-35000" startY="5000.0" startZ="7000+38000" />
+    <create count="1" type="mines" startX="93000-35000" startY="5000.0" startZ="7000+39000" />
+    <create count="1" type="mines" startX="93000-35000" startY="5000.0" startZ="7000+44000" />
+    <create count="1" type="mines" startX="93000-35000" startY="5000.0" startZ="7000+45000" />
+    <create count="1" type="mines" startX="93000-35000" startY="5000.0" startZ="7000+48000" />
+    <create count="1" type="mines" startX="93000-35000" startY="5000.0" startZ="7000+51000" />
+    <create count="1" type="mines" startX="93000-36000" startY="5000.0" startZ="7000+35000" />
+    <create count="1" type="mines" startX="93000-36000" startY="5000.0" startZ="7000+45000" />
+    <create count="1" type="mines" startX="93000-36000" startY="5000.0" startZ="7000+46000" />
+    <create count="1" type="mines" startX="93000-36000" startY="5000.0" startZ="7000+47000" />
+    <create count="1" type="mines" startX="93000-36000" startY="5000.0" startZ="7000+51000" />
+    <create count="1" type="mines" startX="93000-37000" startY="5000.0" startZ="7000+35000" />
+    <create count="1" type="mines" startX="93000-37000" startY="5000.0" startZ="7000+51000" />
+    <create count="1" type="mines" startX="93000-37000" startY="5000.0" startZ="7000+59000" />
+    <create count="1" type="mines" startX="93000-37000" startY="5000.0" startZ="7000+60000" />
+    <create count="1" type="mines" startX="93000-37000" startY="5000.0" startZ="7000+61000" />
+    <create count="1" type="mines" startX="93000-37000" startY="5000.0" startZ="7000+62000" />
+    <create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+24000" />
+    <create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+25000" />
+    <create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+26000" />
+    <create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+27000" />
+    <create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+28000" />
+    <create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+29000" />
+    <create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+30000" />
+    <create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+31000" />
+    <create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+35000" />
+    <create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+38000" />
+    <create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+39000" />
+    <create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+46000" />
+    <create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+47000" />
+    <create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+50000" />
+    <create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+57000" />
+    <create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+58000" />
+    <create count="1" type="mines" startX="93000-38000" startY="5000.0" startZ="7000+61000" />
+    <create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+22000" />
+    <create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+23000" />
+    <create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+32000" />
+    <create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+33000" />
+    <create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+34000" />
+    <create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+37000" />
+    <create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+38000" />
+    <create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+39000" />
+    <create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+46000" />
+    <create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+47000" />
+    <create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+48000" />
+    <create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+50000" />
+    <create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+56000" />
+    <create count="1" type="mines" startX="93000-39000" startY="5000.0" startZ="7000+57000" />
+    <create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+23000" />
+    <create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+33000" />
+    <create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+34000" />
+    <create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+37000" />
+    <create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+38000" />
+    <create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+47000" />
+    <create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+48000" />
+    <create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+51000" />
+    <create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+52000" />
+    <create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+53000" />
+    <create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+54000" />
+    <create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+55000" />
+    <create count="1" type="mines" startX="93000-40000" startY="5000.0" startZ="7000+56000" />
+    <create count="1" type="mines" startX="93000-41000" startY="5000.0" startZ="7000+34000" />
+    <create count="1" type="mines" startX="93000-41000" startY="5000.0" startZ="7000+41000" />
+    <create count="1" type="mines" startX="93000-41000" startY="5000.0" startZ="7000+42000" />
+    <create count="1" type="mines" startX="93000-41000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-41000" startY="5000.0" startZ="7000+44000" />
+    <create count="1" type="mines" startX="93000-41000" startY="5000.0" startZ="7000+51000" />
+    <create count="1" type="mines" startX="93000-41000" startY="5000.0" startZ="7000+52000" />
+    <create count="1" type="mines" startX="93000-41000" startY="5000.0" startZ="7000+53000" />
+    <create count="1" type="mines" startX="93000-41000" startY="5000.0" startZ="7000+54000" />
+    <create count="1" type="mines" startX="93000-41000" startY="5000.0" startZ="7000+55000" />
+    <create count="1" type="mines" startX="93000-42000" startY="5000.0" startZ="7000+35000" />
+    <create count="1" type="mines" startX="93000-42000" startY="5000.0" startZ="7000+40000" />
+    <create count="1" type="mines" startX="93000-42000" startY="5000.0" startZ="7000+41000" />
+    <create count="1" type="mines" startX="93000-42000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-42000" startY="5000.0" startZ="7000+44000" />
+    <create count="1" type="mines" startX="93000-42000" startY="5000.0" startZ="7000+45000" />
+    <create count="1" type="mines" startX="93000-42000" startY="5000.0" startZ="7000+50000" />
+    <create count="1" type="mines" startX="93000-43000" startY="5000.0" startZ="7000+35000" />
+    <create count="1" type="mines" startX="93000-43000" startY="5000.0" startZ="7000+40000" />
+    <create count="1" type="mines" startX="93000-43000" startY="5000.0" startZ="7000+41000" />
+    <create count="1" type="mines" startX="93000-43000" startY="5000.0" startZ="7000+42000" />
+    <create count="1" type="mines" startX="93000-43000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-43000" startY="5000.0" startZ="7000+44000" />
+    <create count="1" type="mines" startX="93000-43000" startY="5000.0" startZ="7000+45000" />
+    <create count="1" type="mines" startX="93000-43000" startY="5000.0" startZ="7000+50000" />
+    <create count="1" type="mines" startX="93000-44000" startY="5000.0" startZ="7000+30000" />
+    <create count="1" type="mines" startX="93000-44000" startY="5000.0" startZ="7000+31000" />
+    <create count="1" type="mines" startX="93000-44000" startY="5000.0" startZ="7000+32000" />
+    <create count="1" type="mines" startX="93000-44000" startY="5000.0" startZ="7000+33000" />
+    <create count="1" type="mines" startX="93000-44000" startY="5000.0" startZ="7000+34000" />
+    <create count="1" type="mines" startX="93000-44000" startY="5000.0" startZ="7000+41000" />
+    <create count="1" type="mines" startX="93000-44000" startY="5000.0" startZ="7000+42000" />
+    <create count="1" type="mines" startX="93000-44000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-44000" startY="5000.0" startZ="7000+44000" />
+    <create count="1" type="mines" startX="93000-44000" startY="5000.0" startZ="7000+51000" />
+    <create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+29000" />
+    <create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+30000" />
+    <create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+31000" />
+    <create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+32000" />
+    <create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+33000" />
+    <create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+34000" />
+    <create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+37000" />
+    <create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+38000" />
+    <create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+47000" />
+    <create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+48000" />
+    <create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+51000" />
+    <create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+52000" />
+    <create count="1" type="mines" startX="93000-45000" startY="5000.0" startZ="7000+62000" />
+    <create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+28000" />
+    <create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+29000" />
+    <create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+35000" />
+    <create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+37000" />
+    <create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+38000" />
+    <create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+39000" />
+    <create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+46000" />
+    <create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+47000" />
+    <create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+48000" />
+    <create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+51000" />
+    <create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+52000" />
+    <create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+53000" />
+    <create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+62000" />
+    <create count="1" type="mines" startX="93000-46000" startY="5000.0" startZ="7000+63000" />
+    <create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+24000" />
+    <create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+27000" />
+    <create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+28000" />
+    <create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+35000" />
+    <create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+38000" />
+    <create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+39000" />
+    <create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+46000" />
+    <create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+47000" />
+    <create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+50000" />
+    <create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+54000" />
+    <create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+55000" />
+    <create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+56000" />
+    <create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+57000" />
+    <create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+58000" />
+    <create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+59000" />
+    <create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+60000" />
+    <create count="1" type="mines" startX="93000-47000" startY="5000.0" startZ="7000+61000" />
+    <create count="1" type="mines" startX="93000-48000" startY="5000.0" startZ="7000+23000" />
+    <create count="1" type="mines" startX="93000-48000" startY="5000.0" startZ="7000+24000" />
+    <create count="1" type="mines" startX="93000-48000" startY="5000.0" startZ="7000+25000" />
+    <create count="1" type="mines" startX="93000-48000" startY="5000.0" startZ="7000+26000" />
+    <create count="1" type="mines" startX="93000-48000" startY="5000.0" startZ="7000+34000" />
+    <create count="1" type="mines" startX="93000-48000" startY="5000.0" startZ="7000+50000" />
+    <create count="1" type="mines" startX="93000-49000" startY="5000.0" startZ="7000+34000" />
+    <create count="1" type="mines" startX="93000-49000" startY="5000.0" startZ="7000+38000" />
+    <create count="1" type="mines" startX="93000-49000" startY="5000.0" startZ="7000+39000" />
+    <create count="1" type="mines" startX="93000-49000" startY="5000.0" startZ="7000+40000" />
+    <create count="1" type="mines" startX="93000-49000" startY="5000.0" startZ="7000+50000" />
+    <create count="1" type="mines" startX="93000-50000" startY="5000.0" startZ="7000+34000" />
+    <create count="1" type="mines" startX="93000-50000" startY="5000.0" startZ="7000+37000" />
+    <create count="1" type="mines" startX="93000-50000" startY="5000.0" startZ="7000+40000" />
+    <create count="1" type="mines" startX="93000-50000" startY="5000.0" startZ="7000+41000" />
+    <create count="1" type="mines" startX="93000-50000" startY="5000.0" startZ="7000+46000" />
+    <create count="1" type="mines" startX="93000-50000" startY="5000.0" startZ="7000+47000" />
+    <create count="1" type="mines" startX="93000-50000" startY="5000.0" startZ="7000+50000" />
+    <create count="1" type="mines" startX="93000-51000" startY="5000.0" startZ="7000+34000" />
+    <create count="1" type="mines" startX="93000-51000" startY="5000.0" startZ="7000+37000" />
+    <create count="1" type="mines" startX="93000-51000" startY="5000.0" startZ="7000+41000" />
+    <create count="1" type="mines" startX="93000-51000" startY="5000.0" startZ="7000+45000" />
+    <create count="1" type="mines" startX="93000-51000" startY="5000.0" startZ="7000+48000" />
+    <create count="1" type="mines" startX="93000-51000" startY="5000.0" startZ="7000+50000" />
+    <create count="1" type="mines" startX="93000-52000" startY="5000.0" startZ="7000+34000" />
+    <create count="1" type="mines" startX="93000-52000" startY="5000.0" startZ="7000+37000" />
+    <create count="1" type="mines" startX="93000-52000" startY="5000.0" startZ="7000+41000" />
+    <create count="1" type="mines" startX="93000-52000" startY="5000.0" startZ="7000+44000" />
+    <create count="1" type="mines" startX="93000-52000" startY="5000.0" startZ="7000+48000" />
+    <create count="1" type="mines" startX="93000-52000" startY="5000.0" startZ="7000+50000" />
+    <create count="1" type="mines" startX="93000-53000" startY="5000.0" startZ="7000+33000" />
+    <create count="1" type="mines" startX="93000-53000" startY="5000.0" startZ="7000+34000" />
+    <create count="1" type="mines" startX="93000-53000" startY="5000.0" startZ="7000+36000" />
+    <create count="1" type="mines" startX="93000-53000" startY="5000.0" startZ="7000+41000" />
+    <create count="1" type="mines" startX="93000-53000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-53000" startY="5000.0" startZ="7000+44000" />
+    <create count="1" type="mines" startX="93000-53000" startY="5000.0" startZ="7000+49000" />
+    <create count="1" type="mines" startX="93000-53000" startY="5000.0" startZ="7000+51000" />
+    <create count="1" type="mines" startX="93000-54000" startY="5000.0" startZ="7000+33000" />
+    <create count="1" type="mines" startX="93000-54000" startY="5000.0" startZ="7000+36000" />
+    <create count="1" type="mines" startX="93000-54000" startY="5000.0" startZ="7000+41000" />
+    <create count="1" type="mines" startX="93000-54000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-54000" startY="5000.0" startZ="7000+49000" />
+    <create count="1" type="mines" startX="93000-54000" startY="5000.0" startZ="7000+50000" />
+    <create count="1" type="mines" startX="93000-54000" startY="5000.0" startZ="7000+52000" />
+    <create count="1" type="mines" startX="93000-54000" startY="5000.0" startZ="7000+53000" />
+    <create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+33000" />
+    <create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+36000" />
+    <create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+41000" />
+    <create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+50000" />
+    <create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+51000" />
+    <create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+52000" />
+    <create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+53000" />
+    <create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+54000" />
+    <create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+55000" />
+    <create count="1" type="mines" startX="93000-55000" startY="5000.0" startZ="7000+56000" />
+    <create count="1" type="mines" startX="93000-56000" startY="5000.0" startZ="7000+33000" />
+    <create count="1" type="mines" startX="93000-56000" startY="5000.0" startZ="7000+36000" />
+    <create count="1" type="mines" startX="93000-56000" startY="5000.0" startZ="7000+41000" />
+    <create count="1" type="mines" startX="93000-56000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-56000" startY="5000.0" startZ="7000+53000" />
+    <create count="1" type="mines" startX="93000-56000" startY="5000.0" startZ="7000+54000" />
+    <create count="1" type="mines" startX="93000-56000" startY="5000.0" startZ="7000+56000" />
+    <create count="1" type="mines" startX="93000-56000" startY="5000.0" startZ="7000+57000" />
+    <create count="1" type="mines" startX="93000-56000" startY="5000.0" startZ="7000+58000" />
+    <create count="1" type="mines" startX="93000-57000" startY="5000.0" startZ="7000+32000" />
+    <create count="1" type="mines" startX="93000-57000" startY="5000.0" startZ="7000+34000" />
+    <create count="1" type="mines" startX="93000-57000" startY="5000.0" startZ="7000+35000" />
+    <create count="1" type="mines" startX="93000-57000" startY="5000.0" startZ="7000+41000" />
+    <create count="1" type="mines" startX="93000-57000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-57000" startY="5000.0" startZ="7000+55000" />
+    <create count="1" type="mines" startX="93000-57000" startY="5000.0" startZ="7000+56000" />
+    <create count="1" type="mines" startX="93000-57000" startY="5000.0" startZ="7000+58000" />
+    <create count="1" type="mines" startX="93000-57000" startY="5000.0" startZ="7000+59000" />
+    <create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+13000" />
+    <create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+14000" />
+    <create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+15000" />
+    <create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+16000" />
+    <create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+17000" />
+    <create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+18000" />
+    <create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+19000" />
+    <create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+20000" />
+    <create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+21000" />
+    <create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+22000" />
+    <create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+23000" />
+    <create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+31000" />
+    <create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+32000" />
+    <create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+34000" />
+    <create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+42000" />
+    <create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+57000" />
+    <create count="1" type="mines" startX="93000-58000" startY="5000.0" startZ="7000+59000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+12000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+16000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+17000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+18000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+19000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+20000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+21000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+22000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+23000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+24000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+25000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+26000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+27000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+28000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+29000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+30000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+32000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+33000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+42000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+58000" />
+    <create count="1" type="mines" startX="93000-59000" startY="5000.0" startZ="7000+60000" />
+    <create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+10000" />
+    <create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+11000" />
+    <create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+15000" />
+    <create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+16000" />
+    <create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+17000" />
+    <create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+24000" />
+    <create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+25000" />
+    <create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+26000" />
+    <create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+27000" />
+    <create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+28000" />
+    <create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+29000" />
+    <create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+30000" />
+    <create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+31000" />
+    <create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+42000" />
+    <create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+59000" />
+    <create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+60000" />
+    <create count="1" type="mines" startX="93000-60000" startY="5000.0" startZ="7000+61000" />
+    <create count="1" type="mines" startX="93000-61000" startY="5000.0" startZ="7000+9000" />
+    <create count="1" type="mines" startX="93000-61000" startY="5000.0" startZ="7000+14000" />
+    <create count="1" type="mines" startX="93000-61000" startY="5000.0" startZ="7000+15000" />
+    <create count="1" type="mines" startX="93000-61000" startY="5000.0" startZ="7000+17000" />
+    <create count="1" type="mines" startX="93000-61000" startY="5000.0" startZ="7000+42000" />
+    <create count="1" type="mines" startX="93000-61000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-61000" startY="5000.0" startZ="7000+60000" />
+    <create count="1" type="mines" startX="93000-61000" startY="5000.0" startZ="7000+61000" />
+    <create count="1" type="mines" startX="93000-61000" startY="5000.0" startZ="7000+62000" />
+    <create count="1" type="mines" startX="93000-62000" startY="5000.0" startZ="7000+8000" />
+    <create count="1" type="mines" startX="93000-62000" startY="5000.0" startZ="7000+13000" />
+    <create count="1" type="mines" startX="93000-62000" startY="5000.0" startZ="7000+14000" />
+    <create count="1" type="mines" startX="93000-62000" startY="5000.0" startZ="7000+17000" />
+    <create count="1" type="mines" startX="93000-62000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-62000" startY="5000.0" startZ="7000+60000" />
+    <create count="1" type="mines" startX="93000-62000" startY="5000.0" startZ="7000+61000" />
+    <create count="1" type="mines" startX="93000-62000" startY="5000.0" startZ="7000+63000" />
+    <create count="1" type="mines" startX="93000-63000" startY="5000.0" startZ="7000+7000" />
+    <create count="1" type="mines" startX="93000-63000" startY="5000.0" startZ="7000+8000" />
+    <create count="1" type="mines" startX="93000-63000" startY="5000.0" startZ="7000+12000" />
+    <create count="1" type="mines" startX="93000-63000" startY="5000.0" startZ="7000+13000" />
+    <create count="1" type="mines" startX="93000-63000" startY="5000.0" startZ="7000+16000" />
+    <create count="1" type="mines" startX="93000-63000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-63000" startY="5000.0" startZ="7000+60000" />
+    <create count="1" type="mines" startX="93000-63000" startY="5000.0" startZ="7000+62000" />
+    <create count="1" type="mines" startX="93000-63000" startY="5000.0" startZ="7000+63000" />
+    <create count="1" type="mines" startX="93000-64000" startY="5000.0" startZ="7000+8000" />
+    <create count="1" type="mines" startX="93000-64000" startY="5000.0" startZ="7000+12000" />
+    <create count="1" type="mines" startX="93000-64000" startY="5000.0" startZ="7000+16000" />
+    <create count="1" type="mines" startX="93000-64000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-64000" startY="5000.0" startZ="7000+60000" />
+    <create count="1" type="mines" startX="93000-64000" startY="5000.0" startZ="7000+62000" />
+    <create count="1" type="mines" startX="93000-64000" startY="5000.0" startZ="7000+64000" />
+    <create count="1" type="mines" startX="93000-65000" startY="5000.0" startZ="7000+9000" />
+    <create count="1" type="mines" startX="93000-65000" startY="5000.0" startZ="7000+12000" />
+    <create count="1" type="mines" startX="93000-65000" startY="5000.0" startZ="7000+16000" />
+    <create count="1" type="mines" startX="93000-65000" startY="5000.0" startZ="7000+43000" />
+    <create count="1" type="mines" startX="93000-65000" startY="5000.0" startZ="7000+44000" />
+    <create count="1" type="mines" startX="93000-65000" startY="5000.0" startZ="7000+60000" />
+    <create count="1" type="mines" startX="93000-65000" startY="5000.0" startZ="7000+62000" />
+    <create count="1" type="mines" startX="93000-65000" startY="5000.0" startZ="7000+65000" />
+    <create count="1" type="mines" startX="93000-66000" startY="5000.0" startZ="7000+9000" />
+    <create count="1" type="mines" startX="93000-66000" startY="5000.0" startZ="7000+11000" />
+    <create count="1" type="mines" startX="93000-66000" startY="5000.0" startZ="7000+16000" />
+    <create count="1" type="mines" startX="93000-66000" startY="5000.0" startZ="7000+44000" />
+    <create count="1" type="mines" startX="93000-66000" startY="5000.0" startZ="7000+60000" />
+    <create count="1" type="mines" startX="93000-66000" startY="5000.0" startZ="7000+63000" />
+    <create count="1" type="mines" startX="93000-66000" startY="5000.0" startZ="7000+65000" />
+    <create count="1" type="mines" startX="93000-67000" startY="5000.0" startZ="7000+9000" />
+    <create count="1" type="mines" startX="93000-67000" startY="5000.0" startZ="7000+10000" />
+    <create count="1" type="mines" startX="93000-67000" startY="5000.0" startZ="7000+11000" />
+    <create count="1" type="mines" startX="93000-67000" startY="5000.0" startZ="7000+16000" />
+    <create count="1" type="mines" startX="93000-67000" startY="5000.0" startZ="7000+44000" />
+    <create count="1" type="mines" startX="93000-67000" startY="5000.0" startZ="7000+59000" />
+    <create count="1" type="mines" startX="93000-67000" startY="5000.0" startZ="7000+63000" />
+    <create count="1" type="mines" startX="93000-67000" startY="5000.0" startZ="7000+66000" />
+    <create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+9000" />
+    <create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+10000" />
+    <create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+11000" />
+    <create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+13000" />
+    <create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+14000" />
+    <create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+15000" />
+    <create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+16000" />
+    <create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+17000" />
+    <create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+44000" />
+    <create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+45000" />
+    <create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+46000" />
+    <create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+59000" />
+    <create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+63000" />
+    <create count="1" type="mines" startX="93000-68000" startY="5000.0" startZ="7000+67000" />
+    <create count="1" type="mines" startX="93000-69000" startY="5000.0" startZ="7000+9000" />
+    <create count="1" type="mines" startX="93000-69000" startY="5000.0" startZ="7000+10000" />
+    <create count="1" type="mines" startX="93000-69000" startY="5000.0" startZ="7000+11000" />
+    <create count="1" type="mines" startX="93000-69000" startY="5000.0" startZ="7000+12000" />
+    <create count="1" type="mines" startX="93000-69000" startY="5000.0" startZ="7000+44000" />
+    <create count="1" type="mines" startX="93000-69000" startY="5000.0" startZ="7000+45000" />
+    <create count="1" type="mines" startX="93000-69000" startY="5000.0" startZ="7000+58000" />
+    <create count="1" type="mines" startX="93000-69000" startY="5000.0" startZ="7000+63000" />
+    <create count="1" type="mines" startX="93000-69000" startY="5000.0" startZ="7000+67000" />
+    <create count="1" type="mines" startX="93000-70000" startY="5000.0" startZ="7000+9000" />
+    <create count="1" type="mines" startX="93000-70000" startY="5000.0" startZ="7000+10000" />
+    <create count="1" type="mines" startX="93000-70000" startY="5000.0" startZ="7000+44000" />
+    <create count="1" type="mines" startX="93000-70000" startY="5000.0" startZ="7000+57000" />
+    <create count="1" type="mines" startX="93000-70000" startY="5000.0" startZ="7000+58000" />
+    <create count="1" type="mines" startX="93000-70000" startY="5000.0" startZ="7000+59000" />
+    <create count="1" type="mines" startX="93000-70000" startY="5000.0" startZ="7000+60000" />
+    <create count="1" type="mines" startX="93000-70000" startY="5000.0" startZ="7000+63000" />
+    <create count="1" type="mines" startX="93000-70000" startY="5000.0" startZ="7000+67000" />
+    <create count="1" type="mines" startX="93000-70000" startY="5000.0" startZ="7000+68000" />
+    <create count="1" type="mines" startX="93000-71000" startY="5000.0" startZ="7000+9000" />
+    <create count="1" type="mines" startX="93000-71000" startY="5000.0" startZ="7000+59000" />
+    <create count="1" type="mines" startX="93000-71000" startY="5000.0" startZ="7000+60000" />
+    <create count="1" type="mines" startX="93000-71000" startY="5000.0" startZ="7000+63000" />
+    <create count="1" type="mines" startX="93000-71000" startY="5000.0" startZ="7000+66000" />
+    <create count="1" type="mines" startX="93000-72000" startY="5000.0" startZ="7000+9000" />
+    <create count="1" type="mines" startX="93000-72000" startY="5000.0" startZ="7000+60000" />
+    <create count="1" type="mines" startX="93000-72000" startY="5000.0" startZ="7000+61000" />
+    <create count="1" type="mines" startX="93000-72000" startY="5000.0" startZ="7000+63000" />
+    <create count="1" type="mines" startX="93000-72000" startY="5000.0" startZ="7000+65000" />
+    <create count="1" type="mines" startX="93000-73000" startY="5000.0" startZ="7000+61000" />
+    <create count="1" type="mines" startX="93000-73000" startY="5000.0" startZ="7000+62000" />
+    <create count="1" type="mines" startX="93000-73000" startY="5000.0" startZ="7000+63000" />
+    <create count="1" type="mines" startX="93000-73000" startY="5000.0" startZ="7000+65000" />
+    <create count="1" type="mines" startX="93000-74000" startY="5000.0" startZ="7000+62000" />
+    <create count="1" type="mines" startX="93000-74000" startY="5000.0" startZ="7000+63000" />
+    <create count="1" type="mines" startX="93000-74000" startY="5000.0" startZ="7000+64000" />
+    <create count="1" type="mines" startX="93000-75000" startY="5000.0" startZ="7000+63000" />
+    <create count="1" type="mines" startX="93000-76000" startY="5000.0" startZ="7000+63000" />
+    <create type="genericMesh" x="50000.0" y="5000.0" z="15000.0" name="B U D R 0 N   A 5 T R 4 L 1 S" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="genericMesh" x="15000.0" y="5000.0" z="60000.0" name="C0mpos1tion:" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="genericMesh" x="15000.0" y="5000.0" z="62000.0" name="  H2O: 65%" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="genericMesh" x="15000.0" y="5000.0" z="64000.0" name="   C2: 18%" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="genericMesh" x="15000.0" y="5000.0" z="66000.0" name="    P:  3%" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="genericMesh" x="15000.0" y="5000.0" z="68000.0" name="oth3r: 14%" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="genericMesh" x="85000.0" y="5000.0" z="62000.0" name="F1r5t con7act:" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="genericMesh" x="85000.0" y="5000.0" z="64000.0" name="Sc0u7 fl3et 0x7C83B7" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="genericMesh" x="85000.0" y="5000.0" z="66000.0" name="0 A.D. (Bur1n Pr1m3 time)" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="genericMesh" x="85000.0" y="5000.0" z="40000.0" name="Cod3 replic4tion:" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="genericMesh" x="85000.0" y="5000.0" z="42000.0" name="bi0el3ctric pat7erns" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="genericMesh" x="85000.0" y="5000.0" z="44000.0" name="(pl4tyh3lm1nths)" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="genericMesh" x="85000.0" y="5000.0" z="46000.0" name="(l1ke T3rran fl4tworms)" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="genericMesh" x="60000.0" y="5000.0" z="76000.0" name="C0mput3:" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="genericMesh" x="60000.0" y="5000.0" z="78000.0" name="4.1 x 10^23 flops" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="genericMesh" x="60000.0" y="5000.0" z="80000.0" name="1.0 x 10^14 b1ts" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="genericMesh" x="60000.0" y="5000.0" z="82000.0" name="5.0 x 10^23 byt3s" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="genericMesh" x="50000.0" y="5000.0" z="86000.0" name="G0v3rnmen7: th30cr4cy" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="genericMesh" x="50000.0" y="5000.0" z="88000.0" name="R3ligion: s1ngle" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="genericMesh" x="50000.0" y="5000.0" z="90000.0" name="Cul7ures: mul71pl3" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="genericMesh" x="50000.0" y="5000.0" z="92000.0" name="Rac35: mult1ple" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.2" colorGreen="0.7" colorBlue="0.3" />
+    <create type="neutral" x="50000.0" y="0.0" z="50000.0" name="5h311 4cce55" hullID="1054" sideValue="2" />
+    <set_ship_text name="5h311 4cce55" race="Caltron" class="Structure" desc="Some sort of bio-electrical interface." scan_desc="Biological traces match Budron physiology, indicating that Budron have interfaced with this terminal in the past." />
+    <set_object_property property="shieldMaxStateFront" value="2000" name="5h311 4cce55" />
+    <set_object_property property="shieldMaxStateBack" value="2000" name="5h311 4cce55" />
+    <set_object_property property="shieldStateFront" value="2000" name="5h311 4cce55" />
+    <set_object_property property="shieldStateBack" value="2000" name="5h311 4cce55" />
+  </event>
+</mission_data>

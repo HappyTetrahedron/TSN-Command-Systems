@@ -16,17 +16,17 @@ import jinja_functions as jf
 env = {
     "difficulty": 10,
     "extensions": [
-        "MultiShipTokens",
+        "TokenSystem",
         "HazardPainter",
         "NebulaEffects",
-        "BoardingActions",
         "BudronNPCs",
     ],
     "maps": [
         "Ashia",
         "Acantha",
         "Krellis",
-        "Erowis",
+        "Burin",
+        "Sedrun",
     ],
     "ordnance": {
         "ship1": {
