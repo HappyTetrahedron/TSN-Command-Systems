@@ -1,0 +1,106 @@
+{# Adds various Caltron NPC ships #}
+
+{% import 'Constants.xml' as const %}
+{% import 'Core/Spawn.xml' as spawn %}
+{% import 'Core/Destroy.xml' as destroy %}
+{% import 'Core/Menus.xml' as menu %}
+{% import 'Tools/Formation.xml' as form %}
+
+{% set caltronships = [
+  {
+    "name": "T5N A1ec70",
+    "desc": "Database match: TSN Alecto, Flagship, 1st Support Division",
+    "scan": "A near perfect replica of TSN Alecto. Electromagnetic analysis matches Caltron. No lifesigns detected.^Specials: Warp HET AntiTorp",
+    "hull": "0",
+    "class": "Artemis",
+    "race": "TSN",
+    "specials": ["Warp", "HET", "AntiTorp"],
+  },
+  {
+    "name": "T5N 1n7rep1d",
+    "desc": "Database match: TSN Intrepid, 1st Support Division",
+    "scan": "A near perfect replica of TSN Intrepid. Electromagnetic analysis matches Caltron. No lifesigns detected.^Specials: Warp HET AntiTorp",
+    "hull": "0",
+    "class": "Artemis",
+    "race": "TSN",
+    "specials": ["Warp", "HET", "AntiTorp"],
+  },
+  {
+    "name": "T5N L4nc3r",
+    "desc": "Database match: TSN Lancer, 2nd Space Fleet, 4th Light Division (Decommissioned)",
+    "scan": "A near perfect replica of TSN Lancer. Electromagnetic analysis matches Caltron. No lifesigns detected.^Specials: LancerWarp HET",
+    "hull": "1702",
+    "class": "Nemesis",
+    "race": "TSN",
+    "specials": ["Warp", "HET"],
+  },
+  {
+    "name": "T5N 54br3",
+    "desc": "Database match: TSN Sabre, 2nd Space Fleet, 4th Light Division (Decommissioned)",
+    "scan": "A near perfect replica of TSN Sabre. Electromagnetic analysis matches Caltron. No lifesigns detected.^Specials: Warp HET ShldVamp",
+    "hull": "1706",
+    "class": "Ares",
+    "race": "TSN",
+    "specials": ["Warp", "HET", "ShldVamp"],
+  },
+  {
+    "name": "4ng31f1n",
+    "desc": "Database match: Budron priest-ship Angelfin, property of Their Holiness Clementus Sixtus VII",
+    "scan": "A near perfect replica of Angelfin. Electromagnetic analysis matches Caltron. No lifesigns detected.^Specials: HET ShldVamp AntiMine AntiTorp",
+    "hull": "7704",
+    "class": "Desolation",
+    "race": "Budron",
+    "specials": ["HET", "ShldVamp", "AntiMine", "AntiTorp"],
+  },
+  {
+    "name": "Und3rcurr3n7",
+    "desc": "Database match: Budron priest-ship Undercurrent, property of Aquila Aernias",
+    "scan": "A near perfect replica of Undercurrent. Electromagnetic analysis matches Caltron. No lifesigns detected.^Specials: HET ShldVamp AntiMine AntiTorp",
+    "hull": "7704",
+    "class": "Desolation",
+    "race": "Budron",
+    "specials": ["HET", "ShldVamp", "AntiMine", "AntiTorp"],
+  },
+  {
+    "name": "chU cHu",
+    "desc": "Database match: Sechatzal trading-ship Chu Chu, led by Katch (Captain) Sikat of Chonos",
+    "scan": "A near perfect replica of the Chu Chu. Electromagnetic analysis matches Caltron. No lifesigns detected.^Specials: Stealth Cloak LowVis ShldReset",
+    "hull": "7752",
+    "class": "Wrath",
+    "race": "Sechatzal",
+    "specials": ["Stealth", "Cloak", "LowVis", "ShldReset"],
+  },
+  ] %}
+
+{% call destroy.onDestroy("CaltronShips") %}
+  {% for npc in caltronships %}
+  <destroy name="{{ npc.name }}" />
+  {% endfor %}
+{% endcall %}
+
+{% macro caltronSpecialAI(name) %}
+    <add_ai type="SPCL_AI" name="{{ name }}" />
+    <add_ai type="CHASE_PLAYER" name="{{ name }}" />
+    <add_ai type="CHASE_STATION" value1="1000" name="{{ name }}" />
+    <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="{{ name }}" />
+    <add_ai type="CHASE_PLAYER" value1="5000" value2="500" name="{{ name }}" />
+    <add_ai type="CHASE_ANGER" name="{{ name }}" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="2000" name="{{ name }}" />
+    <set_special name="{{ name }}" ship="1" /> <!-- overpowered -->
+{% endmacro %}
+
+
+  {% for npc in caltronships %}
+  {% call spawn.spawn(const.spawnFactions.Caltron.key, "Replica", "+" + npc.name) %}
+    <create type="enemy" use_gm_position="" angle="0" name="{{ npc.name }}" hullID="{{ npc.hull }}" sideValue="SideValue" fleetnumber="-1" />
+
+    <set_object_property property="surrenderChance" value="0" name="{{ npc.name }}" />
+    <clear_ai name="{{ npc.name }}" />
+    {{ caltronSpecialAI(npc.name) }}
+    {% for spec in npc.specials %}
+    <set_special name="{{ npc.name }}" ability="{{ spec }}" />
+    {% endfor %}
+    <set_ship_text name="{{ npc.name }}" desc="{{ npc.desc }}" race="{{ npc.race }}" class="{{ npc.class }}"
+      scan_desc="{{ npc.scan }}" />
+  {% endcall %}
+  {% endfor %}
