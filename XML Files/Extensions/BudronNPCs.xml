@@ -10,9 +10,12 @@
   <destroy name="Angelfin" />
   <destroy name="Pressure Valve" />
   <destroy name="Undercurrent" />
+  <destroy name="First Wave" />
+  <destroy name="Golden Fish" />
   {% for i in range(1, 7) %}
   <destroy name="Priest {{i}}" />
   <destroy name="Escort {{i}}" />
+  <destroy name="Defender {{i}}" />
   {% endfor %}
 {% endcall %}
 
@@ -96,6 +99,18 @@
   {% endcall %}
   {% endfor %}
 
+  {% for name in ["TSN Alecto "] %}
+  {% call spawn.spawn(const.spawnFactions.Neutral.key, "Budron", "+FakeAlecto") %}
+    <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="7704" sideValue="SideValue" fleetnumber="-1" />
+
+    <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+    <clear_ai name="{{ name }}" />
+    {{ budronAI(name) }}
+    <set_special name="{{ name }}" ship="1" /> <!-- overpowered -->
+    <set_ship_text name="{{ name }}" class="Artemis Class" race="TSN" desc="Artemis Class Light Cruiser.^General purpose patrol vessel and first of the Light Cruiser classes to be designed.^2 Standard beams^2 Torpedo tubes^^IFF signature matches that of TSN Alecto - their IFF must be spoofed." scan_desc="This is clearly an attempt to frame us for something nefarious. An EMP hit might reset their IFF." />
+  {% endcall %}
+  {% endfor %}
+
   {% for name in ["Undercurrent"] %}
   {% call spawn.spawn(const.spawnFactions.Neutral.key, "Budron", "+Undercurrent") %}
     <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="7704" sideValue="SideValue" fleetnumber="-1" />
@@ -104,7 +119,31 @@
     <clear_ai name="{{ name }}" />
     {{ budronAI(name) }}
     <set_special name="{{ name }}" ship="1" /> <!-- overpowered -->
-    <set_ship_text name="{{ name }}" desc="Desolation class Battlecruiser.^1x high intensity pulse laser (Fore), 1x medium intensity pulse laser (Aft)^^Personal vessel of Aquila Aernias." />
+    <set_ship_text name="{{ name }}" desc="Desolation class Battlecruiser.^1x high intensity pulse laser (Fore), 1x medium intensity pulse laser (Aft)^^Personal vessel of High Priest Aquila Aernias, leader of the Eleventh Path." />
+  {% endcall %}
+  {% endfor %}
+
+  {% for name in ["Golden Fish"] %}
+  {% call spawn.spawn(const.spawnFactions.Neutral.key, "Budron", "+GoldenFish") %}
+    <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="7704" sideValue="SideValue" fleetnumber="-1" />
+
+    <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+    <clear_ai name="{{ name }}" />
+    {{ budronAI(name) }}
+    <set_special name="{{ name }}" ship="1" /> <!-- overpowered -->
+    <set_ship_text name="{{ name }}" desc="Desolation class Battlecruiser.^1x high intensity pulse laser (Fore), 1x medium intensity pulse laser (Aft)^^Personal vessel of High Priest Claudia Aurelia." />
+  {% endcall %}
+  {% endfor %}
+
+  {% for name in ["First Wave"] %}
+  {% call spawn.spawn(const.spawnFactions.Neutral.key, "Budron", "+FirstWave") %}
+    <create type="enemy" use_gm_position="" angle="0" name="{{ name }}" hullID="7705" sideValue="SideValue" fleetnumber="-1" />
+
+    <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+    <clear_ai name="{{ name }}" />
+    {{ budronAI(name) }}
+    <set_special name="{{ name }}" ship="1" /> <!-- overpowered -->
+    <set_ship_text name="{{ name }}" desc="Demolition class, stand-off battleship.^1x high intensity, gas-cooled, pulse laser. 1x drone launcher^^Flagship of the Budron navy, under the command of High Priest Titus Rufus, a known member of the Eleventh Path." />
   {% endcall %}
   {% endfor %}
 
@@ -123,11 +162,33 @@
       <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
       <clear_ai name="{{ name }}" />
       {{ priestAI(name) }}
-      <set_ship_text name="{{ name }}" desc="Desolation class Battlecruiser.^1x high intensity pulse laser (Fore), 1x medium intensity pulse laser (Aft)^^Personal spaceship of Their Holines Clementus Sixtus the Seventh."
+      <set_ship_text name="{{ name }}" desc="Desolation class Battlecruiser.^1x high intensity pulse laser (Fore), 1x medium intensity pulse laser (Aft)^^Personal spaceship of Their Holines Clementus Sixtus VII."
         scan_desc="Though the ship is well capable of combat, the crew will do their utmost to avoid putting Their Holiness in danger, and will ignore all taunts." />
     {% endfor %}
 
     {{ form.beginFormation("AnglFin")}}
+  {% endcall %}
+
+  {% call spawn.spawn(const.spawnFactions.Neutral.key, "Budron", "+FirstWvFleet") %}
+    <!-- flagship -->
+    <create type="enemy" use_gm_position="" angle="0" name="First Wave" hullID="7705" sideValue="SideValue" fleetnumber="-1" />
+    {% for i in range(1, 7) %}
+    <create type="neutral" use_gm_position="" angle="0" name="Defender {{i}}" hullID="7703" sideValue="SideValue" fleetnumber="95" />
+      <clear_ai name="Defender {{ i }}" />
+      {{ budronAI("Defender" + i|string) }}
+      <set_object_property property="surrenderChance" value="0" name="Defender {{ i }}" />
+      <set_special name="Defender {{ i }}" ability="Drones" />
+    {% endfor %}
+
+    {% for name in ["First Wave"] %}
+      <set_object_property property="surrenderChance" value="0" name="{{ name }}" />
+      <clear_ai name="{{ name }}" />
+      {{ budronAI(name) }}
+      <set_special name="{{ name }}" ship="1" /> <!-- overpowered -->
+      <set_ship_text name="{{ name }}" desc="Demolition class, stand-off battleship.^1x high intensity, gas-cooled, pulse laser. 1x drone launcher^^Flagship of the Budron navy, under the command of High Priest Titus Rufus, a known member of the Eleventh Path." />
+    {% endfor %}
+
+    {{ form.beginFormation("FstWv")}}
   {% endcall %}
 
   {% call spawn.spawn(const.spawnFactions.Neutral.key, "Budron", "+PressureValveFleet") %}
@@ -175,6 +236,35 @@
   "Escort 6": {
     "straight": 3000,
     "lateral": -2100,
+  },
+}) %}
+  {{ budronAI(name, isInFormation) }}
+{% endcall %}
+
+{% call(name, isInFormation) form.formation("FstWv", "First Wave", {
+  "Defender 1": {
+    "straight": 1000,
+    "lateral": 0,
+  },
+  "Defender 2": {
+    "straight": 860,
+    "lateral": 1000,
+  },
+  "Defender 3": {
+    "straight": -860,
+    "lateral": 1000,
+  },
+  "Defender 4": {
+    "straight": -1000,
+    "lateral": 0,
+  },
+  "Defender 5": {
+    "straight": -860,
+    "lateral": -1000,
+  },
+  "Defender 6": {
+    "straight": 860,
+    "lateral": -1000,
   },
 }) %}
   {{ budronAI(name, isInFormation) }}
@@ -280,3 +370,26 @@
 {% call menu.onMenuClick("Holy Aura", "Scan Text") %}
     <set_ship_text use_gm_selection=" " scan_desc="Intel - Vessel contains a high concentration of flavor compounds that, in Budron society, are associated with holy individuals." />
 {% endcall %}
+
+{% call menu.onButtonClick("FixAlectoIFF", menu.ai.aicommands) %}
+    <set_ship_text name="TSN Alecto " newname="Clandestine Current" race="Budron" class="Desolation" desc="Desolation class Battlecruiser.^1x high intensity pulse laser (Fore), 1x medium intensity pulse laser (Aft)^^Vessel formerly designated TSN Alecto" scan_desc="After an EMP hit, their IFF has been reset to its proper values."/>
+{% endcall %}
+
+{% set signatures = [
+    {
+        "desc": "Electromagnetic anomalies and Hawking radiation",
+        "scan_desc": "Spectrum matches known Caltron origin",
+        "type": "Energy",
+        "faction": "Caltron",
+    },
+]
+%}
+
+
+{% for sig in signatures %}
+  {% call spawn.createNumberedConditional("(|ScanPointNumber|)", sig.faction + "\\" + sig.type, "Scan Points", "ScanPoint", "ScanPointNumber", loop.index) %}
+    <create type="genericMesh" use_gm_position="" name="(|ScanPointNumber|)" meshFileName="dat\TSN\USFP\marker.dxs" textureFileName="dat\TSN\USFP\marker.png" colorRed="0.1" colorGreen="0.5" colorBlue="0.1" />
+    <set_object_property property="positionY" value="-5000.0" name="(|ScanPointNumber|)" />
+    <set_ship_text name="(|ScanPointNumber|)" race="Signature" class="Scan Location" desc="{{ sig.desc }}" scan_desc="{{ sig.scan_desc }}" />
+  {% endcall %}
+{% endfor %}

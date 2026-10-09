@@ -351,6 +351,10 @@
     
 <set_ship_text name="Communion" race="Budron" class="Temple" desc="Hull design matches with known Budron temple station architecture.^No activity detected. Station appears derelict." scan_desc="No life signs. No phosphorous water aboard station detected. Station is uninhabitable to Budrons.^^Nearby space contains traces of flavor compounds associated with Budron holy individuals." hailtext="[AUTOMATED RESPONSE]" />
     
+<clear_ai name="Communion" />
+    
+<clear_ai name="Reservoir" />
+    
 <set_ship_text name="Flow Control" race="Budron" class="Clergy" desc="Administrative station and border control at Burin Gate." scan_desc="Station may have moderate defensive capabilities." hailtext="Please respect our full authority in these waters, as the Prophecy foretold." />
     
 <set_ship_text name="Hunk" class="Ice Asteroid" desc="Large asteroid, primarily comprised of water-ice. Slowly outgassing water vapor into space, creating a high concentration of dihydrogen monoxide gasses in the region." scan_desc="Anchoring points detected on the surface. This object was likely brought here from somewhere else." hailtext="..." />
@@ -2180,6 +2184,7 @@
       <if_variable name="Sedrun_Button" comparator="NOT" value="1.0" />
   <set_gm_button text="ToIronMoon" x="840" y="120" h="30" w="90" />
   <set_gm_button text="IMRename" x="840" y="150" h="30" w="90" />
+  <set_gm_button text="RMIronMoon" x="840" y="180" h="30" w="90" />
   <clear_gm_button text="ToSedrun" />
   <set_variable name="Sedrun_Button" value="1.0" integer="yes" />
 
@@ -2192,6 +2197,7 @@
       <if_variable name="Sedrun_Button" comparator="NOT" value="2.0" />
   <set_gm_button text="ToSedrun" x="840" y="120" h="30" w="90" />
   <clear_gm_button text="ToIronMoon" />
+  <clear_gm_button text="RMIronMoon" />
   <clear_gm_button text="IMRename" />
   <set_variable name="Sedrun_Button" value="2.0" integer="yes" />
 
@@ -2201,6 +2207,7 @@
   <if_variable name="GM_Menu_Clear_All" comparator="GREATER_EQUAL" value="1.0" />
   <clear_gm_button text="ToIronMoon" />
   <clear_gm_button text="ToSedrun" />
+  <clear_gm_button text="RMIronMoon" />
   <clear_gm_button text="IMRename" />
   <set_variable name="Sedrun_1_Button" value="0.0" integer="yes" />
 </event>
@@ -2208,6 +2215,42 @@
 <event name="Iron Moon Rename">
     <if_gm_button text="IMRename" />
     <set_ship_text name="*UNKNOWN*" newname="Iron Moon" />
+</event>
+
+<event name="Iron Moon Yeet">
+    <if_gm_button text="RMIronMoon" />
+    <destroy name="Iron Moon" />
+    <destroy name="*UNKNOWN*" />
+      <destroy name=" " />
+      <destroy name="  " />
+      <destroy name=" " />
+      <destroy name="  " />
+      <destroy name=" " />
+      <destroy name="  " />
+      <destroy name=" " />
+      <destroy name="  " />
+      <destroy name=" " />
+      <destroy name="  " />
+      <destroy name=" " />
+      <destroy name="  " />
+      <destroy name=" " />
+      <destroy name="  " />
+      <destroy name=" " />
+      <destroy name="  " />
+      <destroy name=" " />
+      <destroy name="  " />
+      <destroy name=" " />
+      <destroy name="  " />
+      <destroy name=" " />
+      <destroy name="  " />
+      <destroy name="" />
+      <destroy name="" />
+      <destroy name="" />
+      <destroy name="" />
+      <destroy name="" />
+      <destroy name="" />
+      <destroy name="" />
+      <destroy name="" />
 </event>
 
   <event name="Sedrun - Run If Not In Sector [1]">
@@ -2295,12 +2338,10 @@
     <if_outside_sphere player_slot="0" centerX="50000" centerY="0" centerZ="50000" radius="50000" />
     <get_object_property player_slot="0" property="positionX" variable="sedrunposX" />
     <get_object_property player_slot="0" property="positionZ" variable="sedrunposZ" />
-
     <set_object_property player_slot="0" property="positionX" value="50000+(50000-sedrunposX)" />
     <set_object_property player_slot="0" property="positionZ" value="50000+(50000-sedrunposZ)" />
 
   </event>
-
   <event name="Sedrun - Run If In Sector [2]">
     <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
     <if_variable name="Sector" comparator="NOT" value="0.0" />
@@ -2310,12 +2351,10 @@
     <if_outside_sphere player_slot="1" centerX="50000" centerY="0" centerZ="50000" radius="50000" />
     <get_object_property player_slot="1" property="positionX" variable="sedrunposX" />
     <get_object_property player_slot="1" property="positionZ" variable="sedrunposZ" />
-
     <set_object_property player_slot="1" property="positionX" value="50000+(50000-sedrunposX)" />
     <set_object_property player_slot="1" property="positionZ" value="50000+(50000-sedrunposZ)" />
 
   </event>
-
   <event name="Sedrun - Run If In Sector [2]">
     <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
     <if_variable name="Sector" comparator="NOT" value="0.0" />
@@ -2325,12 +2364,10 @@
     <if_outside_sphere player_slot="2" centerX="50000" centerY="0" centerZ="50000" radius="50000" />
     <get_object_property player_slot="2" property="positionX" variable="sedrunposX" />
     <get_object_property player_slot="2" property="positionZ" variable="sedrunposZ" />
-
     <set_object_property player_slot="2" property="positionX" value="50000+(50000-sedrunposX)" />
     <set_object_property player_slot="2" property="positionZ" value="50000+(50000-sedrunposZ)" />
 
   </event>
-
   <event name="Sedrun - Run If In Sector [2]">
     <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
     <if_variable name="Sector" comparator="NOT" value="0.0" />
@@ -2340,12 +2377,10 @@
     <if_outside_sphere player_slot="3" centerX="50000" centerY="0" centerZ="50000" radius="50000" />
     <get_object_property player_slot="3" property="positionX" variable="sedrunposX" />
     <get_object_property player_slot="3" property="positionZ" variable="sedrunposZ" />
-
     <set_object_property player_slot="3" property="positionX" value="50000+(50000-sedrunposX)" />
     <set_object_property player_slot="3" property="positionZ" value="50000+(50000-sedrunposZ)" />
 
   </event>
-
   <event name="Sedrun - Run If In Sector [2]">
     <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
     <if_variable name="Sector" comparator="NOT" value="0.0" />
@@ -2355,12 +2390,10 @@
     <if_outside_sphere player_slot="4" centerX="50000" centerY="0" centerZ="50000" radius="50000" />
     <get_object_property player_slot="4" property="positionX" variable="sedrunposX" />
     <get_object_property player_slot="4" property="positionZ" variable="sedrunposZ" />
-
     <set_object_property player_slot="4" property="positionX" value="50000+(50000-sedrunposX)" />
     <set_object_property player_slot="4" property="positionZ" value="50000+(50000-sedrunposZ)" />
 
   </event>
-
   <event name="Sedrun - Run If In Sector [2]">
     <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
     <if_variable name="Sector" comparator="NOT" value="0.0" />
@@ -2370,12 +2403,10 @@
     <if_outside_sphere player_slot="5" centerX="50000" centerY="0" centerZ="50000" radius="50000" />
     <get_object_property player_slot="5" property="positionX" variable="sedrunposX" />
     <get_object_property player_slot="5" property="positionZ" variable="sedrunposZ" />
-
     <set_object_property player_slot="5" property="positionX" value="50000+(50000-sedrunposX)" />
     <set_object_property player_slot="5" property="positionZ" value="50000+(50000-sedrunposZ)" />
 
   </event>
-
   <event name="Sedrun - Run If In Sector [2]">
     <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
     <if_variable name="Sector" comparator="NOT" value="0.0" />
@@ -2385,12 +2416,10 @@
     <if_outside_sphere player_slot="6" centerX="50000" centerY="0" centerZ="50000" radius="50000" />
     <get_object_property player_slot="6" property="positionX" variable="sedrunposX" />
     <get_object_property player_slot="6" property="positionZ" variable="sedrunposZ" />
-
     <set_object_property player_slot="6" property="positionX" value="50000+(50000-sedrunposX)" />
     <set_object_property player_slot="6" property="positionZ" value="50000+(50000-sedrunposZ)" />
 
   </event>
-
   <event name="Sedrun - Run If In Sector [2]">
     <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />
     <if_variable name="Sector" comparator="NOT" value="0.0" />
@@ -2400,12 +2429,10 @@
     <if_outside_sphere player_slot="7" centerX="50000" centerY="0" centerZ="50000" radius="50000" />
     <get_object_property player_slot="7" property="positionX" variable="sedrunposX" />
     <get_object_property player_slot="7" property="positionZ" variable="sedrunposZ" />
-
     <set_object_property player_slot="7" property="positionX" value="50000+(50000-sedrunposX)" />
     <set_object_property player_slot="7" property="positionZ" value="50000+(50000-sedrunposZ)" />
 
   </event>
-
 
   <event name="Sedrun - Run If In Sector [2]">
     <if_variable name="Sedrun System" comparator="GREATER" value="0.0" />

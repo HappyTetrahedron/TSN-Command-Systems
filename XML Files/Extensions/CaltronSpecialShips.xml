@@ -62,6 +62,33 @@
     "specials": ["HET", "ShldVamp", "AntiMine", "AntiTorp"],
   },
   {
+    "name": "Pr355ure V4lv3",
+    "desc": "Database match: Budron police ship Pressure Valve, part of border control force Flow Control",
+    "scan": "A near perfect replica of Pressure Valve. Electromagnetic analysis matches Caltron. No lifesigns detected.^Specials: HET ShldVamp AntiMine AntiTorp",
+    "hull": "7704",
+    "class": "Desolation",
+    "race": "Budron",
+    "specials": ["HET", "ShldVamp", "AntiMine", "AntiTorp"],
+  },
+  {
+    "name": "G0ld3n F1sh",
+    "desc": "Database match: Budron priest-ship Golden Fish, property of Claudia Aurelia",
+    "scan": "A near perfect replica of Golden Fish. Electromagnetic analysis matches Caltron. No lifesigns detected.^Specials: HET ShldVamp AntiMine AntiTorp",
+    "hull": "7704",
+    "class": "Desolation",
+    "race": "Budron",
+    "specials": ["HET", "ShldVamp", "AntiMine", "AntiTorp"],
+  },
+  {
+    "name": "F1rs7 W4v3",
+    "desc": "Database match: Budron warship First Wave, flagship of the Budron navy",
+    "scan": "A near perfect replica of First Wave. Electromagnetic analysis matches Caltron. No lifesigns detected.^Specials: HET ShldVamp AntiMine AntiTorp",
+    "hull": "7704",
+    "class": "Desolation",
+    "race": "Budron",
+    "specials": ["HET", "ShldVamp", "AntiMine", "AntiTorp"],
+  },
+  {
     "name": "chU cHu",
     "desc": "Database match: Sechatzal trading-ship Chu Chu, led by Katch (Captain) Sikat of Chonos",
     "scan": "A near perfect replica of the Chu Chu. Electromagnetic analysis matches Caltron. No lifesigns detected.^Specials: Stealth Cloak LowVis ShldReset",
@@ -104,3 +131,8 @@
       scan_desc="{{ npc.scan }}" />
   {% endcall %}
   {% endfor %}
+
+
+{% call menu.onMenuClick("Caltron Influence", "Scan Text") %}
+    <set_ship_text use_gm_selection=" " scan_desc="Intel - Vessel's electromagnetic signature correlates with known Caltron patterns." />
+{% endcall %}
