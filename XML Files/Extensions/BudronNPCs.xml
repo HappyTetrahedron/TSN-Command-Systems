@@ -299,6 +299,18 @@
   {{ priestAI(name) }}
 {% endcall %}
 
+{% call menu.onButtonClick("Bad1Wv", menu.ai.aicommands) %}
+  <set_side_value value="1" name="First Wave" />
+  {% for i in range(1, 7) %}
+  <set_side_value value="1" name="Defender {{i}}" />
+  {% endfor %}
+{% endcall %}
+{% call menu.onButtonClick("Good1Wv", menu.ai.aicommands) %}
+  <set_side_value value="2" name="First Wave" />
+  {% for i in range(1, 7) %}
+  <set_side_value value="2" name="Defender {{i}}" />
+  {% endfor %}
+{% endcall %}
 
 
 {# Budron Scan Points #}
